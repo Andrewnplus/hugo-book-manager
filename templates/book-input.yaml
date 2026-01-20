@@ -1,0 +1,29 @@
+# Book Input Template
+# 填寫此檔案後執行: ./gradlew initBook
+
+# === 明確資訊（必填）===
+chinese_title: "原子習慣"
+english_title: "Atomic Habits"
+author: "James Clear"
+publication_date: "2019-06-01"
+
+# 書封面圖片網址（會自動下載並縮放為 500px 寬）
+cover_url: "https://example.com/atomic-habits-cover.jpg"
+
+# 購書網址
+purchase_url: "https://www.amazon.com/dp/B07D23CFGR"
+
+# === 不明確資訊（AI 處理）===
+# 書目錄文字（中文居多），AI 會根據這個生成 docs 資料夾結構
+table_of_contents: |
+  導讀 為什麼原子習慣比你想像的更有用
+
+  第一部 基本原理
+    第一章 原子習慣的驚人力量
+    第二章 習慣如何塑造你的身分認同
+    第三章 建立更好習慣的四個簡單步驟
+
+  第二部 讓習慣變得明顯
+    第四章 培養習慣的最佳方式
+    第五章 啟動習慣的最佳方式
+    第六章 改變環境的科學

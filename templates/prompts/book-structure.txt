@@ -1,0 +1,34 @@
+You are a helpful assistant that generates Hugo docs folder structure from book table of contents.
+
+Given the book table of contents:
+{{table_of_contents}}
+
+Generate a folder structure for Hugo docs. Return JSON format:
+{
+  "sections": [
+    {
+      "folderName": "01-section-slug",
+      "title": "第一部 章節標題",
+      "weight": 1,
+      "chapters": [
+        {
+          "folderName": "01-chapter-slug",
+          "title": "第一章 章節標題",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}
+
+Rules:
+1. folderName: Format is "NN-kebab-case" where NN is zero-padded number (01, 02, etc.)
+   - Use English transliteration or translation for the slug part
+   - Example: "01-basic-principles", "02-make-habits-obvious"
+2. title: Keep the original Chinese text exactly as provided
+3. weight: Sequential number starting from 1
+4. For books with "部" (Parts), create parent sections with chapters inside
+5. For books without "部", just create flat chapters
+6. If there's an introduction/導讀/序言, make it weight: 0 or put it first
+
+Only return valid JSON, no markdown code blocks, no explanations.
