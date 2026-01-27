@@ -215,10 +215,11 @@ class ConvertDocsCommand : CliktCommand(name = "convert-docs") {
         println()
 
         // Build list of input/output pairs
-        val filePairs = files.map { inputFile ->
-            val outputFile = File(outputDir, inputFile.name)
-            inputFile.absolutePath to outputFile.absolutePath
-        }
+        val filePairs =
+            files.map { inputFile ->
+                val outputFile = File(outputDir, inputFile.name)
+                inputFile.absolutePath to outputFile.absolutePath
+            }
 
         // Check how many are already converted
         val existingCount = filePairs.count { (_, output) -> File(output).exists() }

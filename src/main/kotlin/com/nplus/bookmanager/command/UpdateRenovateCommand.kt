@@ -43,14 +43,15 @@ class UpdateRenovateCommand : CliktCommand(name = "update-renovate") {
         }
 
         // Get all subdirectories that are git repos
-        val repos = if (recursive) {
-            findGitReposRecursively(parentDirFile)
-        } else {
-            parentDirFile
-                .listFiles { file ->
-                    file.isDirectory && gitService.isGitRepo(file)
-                }?.toList() ?: emptyList()
-        }
+        val repos =
+            if (recursive) {
+                findGitReposRecursively(parentDirFile)
+            } else {
+                parentDirFile
+                    .listFiles { file ->
+                        file.isDirectory && gitService.isGitRepo(file)
+                    }?.toList() ?: emptyList()
+            }
 
         if (repos.isEmpty()) {
             println("No git repositories found in $parentDir")

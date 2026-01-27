@@ -140,6 +140,32 @@ tasks.register<JavaExec>("initBook") {
     }
 }
 
+tasks.register<JavaExec>("initBooks") {
+    group = "book-manager"
+    description = "Initialize multiple book repos from a queue file"
+    dependsOn("classes")
+    classpath = sourceSets["main"].runtimeClasspath
+    mainClass.set("com.nplus.bookmanager.MainKt")
+
+    doFirst {
+        val queueFile = project.findProperty("queue")?.toString() ?: "templates/books-queue.yaml"
+        val bookId = project.findProperty("id")?.toString()
+        val status = project.findProperty("status")?.toString()?.toBoolean() ?: false
+        val reset = project.findProperty("reset")?.toString()?.toBoolean() ?: false
+        val dryRun = project.findProperty("dryRun")?.toString()?.toBoolean() ?: false
+
+        val argList = mutableListOf("init-books", "--queue", queueFile)
+        if (bookId != null) {
+            argList.add("--id")
+            argList.add(bookId)
+        }
+        if (status) argList.add("--status")
+        if (reset) argList.add("--reset")
+        if (dryRun) argList.add("--dry-run")
+        args = argList
+    }
+}
+
 tasks.register<JavaExec>("rebuildDocs") {
     group = "book-manager"
     description = "Rebuild docs structure in an existing Hugo Book project"

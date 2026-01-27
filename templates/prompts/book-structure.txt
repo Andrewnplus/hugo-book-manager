@@ -7,13 +7,13 @@ Generate a folder structure for Hugo docs. Return JSON format:
 {
   "sections": [
     {
-      "folderName": "01-section-slug",
-      "title": "第一部 章節標題",
+      "folderName": "part-1-section-slug",
+      "title": "章節標題",
       "weight": 1,
       "chapters": [
         {
-          "folderName": "01-chapter-slug",
-          "title": "第一章 章節標題",
+          "folderName": "ch01-chapter-slug",
+          "title": "章節標題",
           "weight": 1
         }
       ]
@@ -22,13 +22,25 @@ Generate a folder structure for Hugo docs. Return JSON format:
 }
 
 Rules:
-1. folderName: Format is "NN-kebab-case" where NN is zero-padded number (01, 02, etc.)
+1. folderName: Keep chapter/part numbering in the folder name
+   - For parts: "part-1-slug", "part-2-slug"
+   - For chapters: "ch01-slug", "ch02-slug"
    - Use English transliteration or translation for the slug part
-   - Example: "01-basic-principles", "02-make-habits-obvious"
-2. title: Keep the original Chinese text exactly as provided
+   - Example: "ch01-power-of-habits", "part-2-make-it-obvious"
+
+2. title: Remove chapter/part numbering prefixes, keep only the descriptive title
+   - Original: "第一章 習慣的力量" → title: "習慣的力量"
+   - Original: "第1章 說服，無所不在" → title: "說服，無所不在"
+   - Original: "PART 1 攻擊" → title: "攻擊"
+   - Original: "第一部 基礎概念" → title: "基礎概念"
+   - Remove: 第X章、第X部、PART X、Chapter X, etc.
+
 3. weight: Sequential number starting from 1
+
 4. For books with "部" (Parts), create parent sections with chapters inside
+
 5. For books without "部", just create flat chapters
+
 6. If there's an introduction/導讀/序言, make it weight: 0 or put it first
 
 Only return valid JSON, no markdown code blocks, no explanations.

@@ -83,7 +83,75 @@ When the user runs CLI commands that require AI processing (like `init-book`, `r
 }
 ```
 
-### 3. Document Conversion (`convert-request.json`)
+### 3. Batch Metadata Generation (`batch-metadata-request.json`)
+
+**Purpose:** Generate metadata AND docs structure for multiple books at once
+
+**Input file:** `ai-tasks/input/batch-metadata-request.json`
+```json
+{
+  "taskType": "batchGenerateMetadata",
+  "promptFile": "templates/prompts/book-metadata.txt",
+  "books": [
+    {
+      "bookId": "atomic-habits",
+      "chineseTitle": "原子習慣",
+      "englishTitle": "Atomic Habits",
+      "tableOfContents": "第一部 基礎\n第一章 習慣的複利效應\n..."
+    },
+    {
+      "bookId": "deep-work",
+      "chineseTitle": "深度工作力",
+      "englishTitle": "Deep Work",
+      "tableOfContents": "Part 1 The Idea\nChapter 1 Deep Work Is Valuable\n..."
+    }
+  ]
+}
+```
+
+**Steps:**
+1. Read the prompt template from `promptFile`
+2. For each book in `books`:
+   - Generate metadata (repoName, description, topics, category)
+   - Generate docs structure from tableOfContents
+3. Write combined results to `ai-tasks/output/batch-metadata-response.json`
+
+**Output format:**
+```json
+{
+  "results": [
+    {
+      "bookId": "atomic-habits",
+      "metadata": {
+        "repoName": "atomic-habits",
+        "englishTitle": "Atomic Habits",
+        "chineseTitle": "原子習慣",
+        "description": "Atomic Habits | James Clear | Build good habits",
+        "topics": ["habits", "self-improvement", "book-summary", "growth-book-summary"],
+        "category": "growth-book-summary"
+      },
+      "structure": {
+        "sections": [
+          {
+            "folderName": "01-fundamentals",
+            "title": "第一部 基礎",
+            "weight": 1,
+            "chapters": [
+              {
+                "folderName": "01-compound-effect",
+                "title": "第一章 習慣的複利效應",
+                "weight": 1
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+### 4. Document Conversion (`convert-request.json`)
 
 **Purpose:** Convert cleaned Markdown to Hugo-book format
 
@@ -112,13 +180,40 @@ When the user runs CLI commands that require AI processing (like `init-book`, `r
 
 When user says "請處理 AI 任務" (please process AI task):
 
-1. Check `ai-tasks/input/` for pending task files
-2. For each task file found:
-   - Read the task JSON
-   - Read the prompt template
-   - Process according to task type
-   - Write output to appropriate location
-3. Confirm completion to the user
+### For Book Creation Tasks (batch-metadata-request.json) - 一條龍處理
+
+**完整流程：檢查 → 產生 response → 執行 CLI → 完成建立**
+
+1. **🛑 PRE-CHECK: GitHub repo existence**
+   ```bash
+   gh repo view <username>/<repo-name> --json name 2>/dev/null
+   ```
+   - **If repo exists → STOP IMMEDIATELY** and report
+
+2. **Check existing response**
+   - If response exists AND GitHub repo exists → STOP
+   - If response exists but no GitHub repo → Skip to step 4
+
+3. **Generate response** (if not exists)
+   - Read task JSON and prompt template
+   - Generate metadata + structure
+   - Write to `ai-tasks/output/batch-metadata-response.json`
+
+4. **🚀 Execute CLI to complete (一條龍)**
+   ```bash
+   ./gradlew installDist --quiet
+   echo -e "yes\nyes" | ./build/install/hugo-book-manager/bin/hugo-book-manager init-books
+   ```
+   - Creates GitHub repo
+   - Clones to local
+   - Updates template files
+   - Downloads cover image
+   - Creates docs structure
+   - Auto-updates status to `completed`
+
+5. **Report final result** to user
+
+### For Other Task Types (convert, structure, etc.)
 
 ## Important Notes
 
@@ -127,3 +222,91 @@ When user says "請處理 AI 任務" (please process AI task):
 - JSON output must be valid (no markdown code blocks)
 - For document conversion, write directly to the specified output paths
 - The prompt templates contain detailed instructions - follow them carefully
+
+## Duplicate Prevention (重複操作防範)
+
+### 🛑 CRITICAL: GitHub Repo Check (最重要)
+
+**Before processing ANY book-related AI task, MUST check if GitHub repo already exists:**
+
+```bash
+gh repo view <username>/<repo-name> --json name 2>/dev/null
+```
+
+**If repo exists → STOP IMMEDIATELY. Do NOT:**
+- ❌ Generate metadata response
+- ❌ Generate structure response
+- ❌ Ask user whether to continue
+- ❌ Proceed with any GitHub operations
+
+**Instead, report and stop:**
+```
+🛑 停止：GitHub repo 已存在
+
+  Repository: https://github.com/<username>/<repo-name>
+  Book ID: <book-id>
+
+  此書籍已完成建立，無需重複處理。
+  若需重新建立，請先手動刪除 GitHub repo。
+```
+
+### Before Processing Any Task
+
+**ALWAYS check for existing outputs before processing:**
+
+```bash
+# Check if response already exists
+ls -la ai-tasks/output/
+```
+
+### For Batch Metadata Tasks
+
+1. **🛑 FIRST: Check GitHub repo** (see above - STOP if exists)
+
+2. **Check existing response:**
+   ```bash
+   cat ai-tasks/output/batch-metadata-response.json 2>/dev/null
+   ```
+
+3. **If response exists, compare with request:**
+   - Extract `bookId` from both files
+   - If they match AND GitHub repo exists → STOP
+   - If they match but no GitHub repo → Ask user: "Response exists but repo not created. Continue?"
+
+### Response Format Validation
+
+**Batch Metadata Response MUST include both `metadata` AND `structure`:**
+
+```json
+{
+  "results": [
+    {
+      "bookId": "example-book",
+      "metadata": {
+        "repoName": "...",
+        "englishTitle": "...",
+        "chineseTitle": "...",
+        "description": "...",
+        "topics": [...],
+        "category": "..."
+      },
+      "structure": {
+        "sections": [...]
+      }
+    }
+  ]
+}
+```
+
+**Common Mistakes to Avoid:**
+- ❌ Missing `structure` field (only metadata)
+- ❌ Missing `results` wrapper array
+- ❌ Using `books` instead of `results`
+- ❌ Flat structure without `metadata`/`structure` nesting
+
+### Error Recovery
+
+If a task fails midway:
+1. Check `books-queue.yaml` status field
+2. Use `./gradlew initBooks -Pid=<book-id> --reset` to reset
+3. Clear AI task files: `rm ai-tasks/input/*.json ai-tasks/output/*.json`

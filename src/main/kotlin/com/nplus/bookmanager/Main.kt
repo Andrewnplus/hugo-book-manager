@@ -9,6 +9,7 @@ import com.nplus.bookmanager.command.ConvertDocsCommand
 import com.nplus.bookmanager.command.CreateReposCommand
 import com.nplus.bookmanager.command.GeneratePromptCommand
 import com.nplus.bookmanager.command.InitBookCommand
+import com.nplus.bookmanager.command.InitBooksCommand
 import com.nplus.bookmanager.command.MergePrsCommand
 import com.nplus.bookmanager.command.RebuildDocsCommand
 import com.nplus.bookmanager.command.UpdateRenovateCommand
@@ -33,6 +34,7 @@ fun main(args: Array<String>) {
             CheckEnvCommand(),
             CreateReposCommand(),
             InitBookCommand(),
+            InitBooksCommand(),
             RebuildDocsCommand(),
             UpdateRenovateCommand(),
             MergePrsCommand(),

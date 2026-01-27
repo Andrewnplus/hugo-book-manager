@@ -46,10 +46,36 @@ Commands that require AI processing (`init-book`, `rebuild-docs`, `convert-docs`
 
 When user says **"請處理 AI 任務"** (please process AI task):
 
+#### For Book Creation (batch-metadata-request.json) - 一條龍完成
+
+1. **🛑 PRE-CHECK: GitHub repo existence**
+   ```bash
+   gh repo view <username>/<repo-name> --json name 2>/dev/null
+   ```
+   - **If repo exists → STOP IMMEDIATELY** and report
+
+2. **Check existing response**
+   - If response exists AND GitHub repo exists → STOP
+   - If response exists but no GitHub repo → Skip to step 4
+
+3. **Generate response** (metadata + structure)
+   - Write to `ai-tasks/output/batch-metadata-response.json`
+   - Must include BOTH `metadata` AND `structure` fields
+
+4. **🚀 Execute CLI (一條龍完成建立)**
+   ```bash
+   ./gradlew installDist --quiet
+   echo -e "yes\nyes" | ./build/install/hugo-book-manager/bin/hugo-book-manager init-books
+   ```
+
+5. **Report result** (repo URL, website URL, local path)
+
+#### For Other Tasks (convert, structure, etc.)
+
 1. Check `ai-tasks/input/` for pending task files
-2. Read the task JSON and corresponding prompt template
-3. Process according to task type (see `templates/ai-task-guide.md` for details)
-4. Write output to `ai-tasks/output/` (or directly to specified paths for convert tasks)
+2. Read task JSON and prompt template
+3. Process and write output
+4. Report completion
 
 ### Task Types
 

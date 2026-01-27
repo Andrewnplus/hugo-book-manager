@@ -37,6 +37,8 @@ class AiTaskService {
         private const val STRUCTURE_RESPONSE_FILE = "structure-response.json"
         private const val CONVERT_REQUEST_FILE = "convert-request.json"
         private const val CONVERT_RESPONSE_DIR = "converted"
+        private const val BATCH_METADATA_REQUEST_FILE = "batch-metadata-request.json"
+        private const val BATCH_METADATA_RESPONSE_FILE = "batch-metadata-response.json"
 
         private const val PROMPTS_DIR = "templates/prompts"
         private const val METADATA_PROMPT_FILE = "book-metadata.txt"
@@ -44,11 +46,12 @@ class AiTaskService {
         private const val CONVERT_PROMPT_FILE = "doc-convert.txt"
     }
 
-    private val json = Json {
-        prettyPrint = true
-        ignoreUnknownKeys = true
-        isLenient = true
-    }
+    private val json =
+        Json {
+            prettyPrint = true
+            ignoreUnknownKeys = true
+            isLenient = true
+        }
 
     // ==================== Request Models ====================
 
@@ -77,6 +80,65 @@ class AiTaskService {
         val tableOfContents: String,
     )
 
+    // ==================== Batch Request Models ====================
+
+    @Serializable
+    data class BatchMetadataRequest(
+        val taskType: String = "batchGenerateMetadata",
+        val promptFile: String,
+        val books: List<BatchBookInput>,
+    )
+
+    @Serializable
+    data class BatchBookInput(
+        val bookId: String,
+        val chineseTitle: String,
+        val englishTitle: String,
+        val tableOfContents: String,
+    )
+
+    @Serializable
+    data class BatchMetadataResponse(
+        val results: List<BatchMetadataResult>,
+    )
+
+    @Serializable
+    data class BatchMetadataResult(
+        val bookId: String,
+        val metadata: MetadataResultData,
+        val structure: StructureResultData,
+    )
+
+    @Serializable
+    data class MetadataResultData(
+        val repoName: String,
+        val englishTitle: String,
+        val chineseTitle: String,
+        val description: String,
+        val topics: List<String>,
+        val category: String,
+    )
+
+    @Serializable
+    data class StructureResultData(
+        val sections: List<StructureSectionData>,
+    )
+
+    @Serializable
+    data class StructureSectionData(
+        val folderName: String,
+        val title: String,
+        val weight: Int,
+        val chapters: List<StructureChapterData> = emptyList(),
+    )
+
+    @Serializable
+    data class StructureChapterData(
+        val folderName: String,
+        val title: String,
+        val weight: Int,
+    )
+
     @Serializable
     data class ConvertRequest(
         val taskType: String = "convertDocument",
@@ -100,13 +162,15 @@ class AiTaskService {
         ensureDirectories()
 
         val promptFile = File(PROMPTS_DIR, METADATA_PROMPT_FILE)
-        val request = MetadataRequest(
-            promptFile = promptFile.path,
-            input = MetadataInput(
-                chineseTitle = input.chineseTitle,
-                englishTitle = input.englishTitle,
-            ),
-        )
+        val request =
+            MetadataRequest(
+                promptFile = promptFile.path,
+                input =
+                    MetadataInput(
+                        chineseTitle = input.chineseTitle,
+                        englishTitle = input.englishTitle,
+                    ),
+            )
 
         val requestFile = File(INPUT_DIR, METADATA_REQUEST_FILE)
         requestFile.writeText(json.encodeToString(request))
@@ -122,12 +186,14 @@ class AiTaskService {
         ensureDirectories()
 
         val promptFile = File(PROMPTS_DIR, STRUCTURE_PROMPT_FILE)
-        val request = StructureRequest(
-            promptFile = promptFile.path,
-            input = StructureInput(
-                tableOfContents = tableOfContents,
-            ),
-        )
+        val request =
+            StructureRequest(
+                promptFile = promptFile.path,
+                input =
+                    StructureInput(
+                        tableOfContents = tableOfContents,
+                    ),
+            )
 
         val requestFile = File(INPUT_DIR, STRUCTURE_REQUEST_FILE)
         requestFile.writeText(json.encodeToString(request))
@@ -148,14 +214,38 @@ class AiTaskService {
         ensureDirectories()
 
         val promptFile = customPromptFile ?: File(PROMPTS_DIR, CONVERT_PROMPT_FILE).path
-        val request = ConvertRequest(
-            promptFile = promptFile,
-            files = files.map { (input, output) ->
-                ConvertFileEntry(inputFile = input, outputFile = output)
-            },
-        )
+        val request =
+            ConvertRequest(
+                promptFile = promptFile,
+                files =
+                    files.map { (input, output) ->
+                        ConvertFileEntry(inputFile = input, outputFile = output)
+                    },
+            )
 
         val requestFile = File(INPUT_DIR, CONVERT_REQUEST_FILE)
+        requestFile.writeText(json.encodeToString(request))
+
+        return requestFile
+    }
+
+    /**
+     * Write a batch metadata request file for multiple books.
+     * This generates both metadata and structure for each book in one request.
+     * @param books List of books to process (each needs id, chineseTitle, englishTitle, tableOfContents)
+     * @return The path to the request file
+     */
+    fun writeBatchMetadataRequest(books: List<BatchBookInput>): File {
+        ensureDirectories()
+
+        val promptFile = File(PROMPTS_DIR, METADATA_PROMPT_FILE)
+        val request =
+            BatchMetadataRequest(
+                promptFile = promptFile.path,
+                books = books,
+            )
+
+        val requestFile = File(INPUT_DIR, BATCH_METADATA_REQUEST_FILE)
         requestFile.writeText(json.encodeToString(request))
 
         return requestFile
@@ -201,24 +291,26 @@ class AiTaskService {
             val content = responseFile.readText()
             val jsonObj = json.parseToJsonElement(content).jsonObject
 
-            val sections = jsonObj["sections"]?.jsonArray?.map { sectionElement ->
-                val section = sectionElement.jsonObject
-                val chapters = section["chapters"]?.jsonArray?.map { chapterElement ->
-                    val chapter = chapterElement.jsonObject
-                    DocsStructure.Chapter(
-                        folderName = chapter["folderName"]?.jsonPrimitive?.content ?: "",
-                        title = chapter["title"]?.jsonPrimitive?.content ?: "",
-                        weight = chapter["weight"]?.jsonPrimitive?.content?.toIntOrNull() ?: 1,
+            val sections =
+                jsonObj["sections"]?.jsonArray?.map { sectionElement ->
+                    val section = sectionElement.jsonObject
+                    val chapters =
+                        section["chapters"]?.jsonArray?.map { chapterElement ->
+                            val chapter = chapterElement.jsonObject
+                            DocsStructure.Chapter(
+                                folderName = chapter["folderName"]?.jsonPrimitive?.content ?: "",
+                                title = chapter["title"]?.jsonPrimitive?.content ?: "",
+                                weight = chapter["weight"]?.jsonPrimitive?.content?.toIntOrNull() ?: 1,
+                            )
+                        } ?: emptyList()
+
+                    DocsStructure.Section(
+                        folderName = section["folderName"]?.jsonPrimitive?.content ?: "",
+                        title = section["title"]?.jsonPrimitive?.content ?: "",
+                        weight = section["weight"]?.jsonPrimitive?.content?.toIntOrNull() ?: 1,
+                        chapters = chapters,
                     )
                 } ?: emptyList()
-
-                DocsStructure.Section(
-                    folderName = section["folderName"]?.jsonPrimitive?.content ?: "",
-                    title = section["title"]?.jsonPrimitive?.content ?: "",
-                    weight = section["weight"]?.jsonPrimitive?.content?.toIntOrNull() ?: 1,
-                    chapters = chapters,
-                )
-            } ?: emptyList()
 
             DocsStructure(sections = sections)
         } catch (e: Exception) {
@@ -232,9 +324,63 @@ class AiTaskService {
      * @param expectedFiles List of expected output file paths
      * @return true if all files exist
      */
-    fun hasConvertedFiles(expectedFiles: List<String>): Boolean {
-        return expectedFiles.all { File(it).exists() }
+    fun hasConvertedFiles(expectedFiles: List<String>): Boolean = expectedFiles.all { File(it).exists() }
+
+    /**
+     * Read the batch metadata response file.
+     * @return Map of bookId to (GeneratedMetadata, DocsStructure) pairs
+     */
+    fun readBatchMetadataResponse(): Map<String, Pair<GeneratedMetadata, DocsStructure>>? {
+        val responseFile = File(OUTPUT_DIR, BATCH_METADATA_RESPONSE_FILE)
+        if (!responseFile.exists()) return null
+
+        return try {
+            val content = responseFile.readText()
+            val response = json.decodeFromString<BatchMetadataResponse>(content)
+
+            response.results.associate { result ->
+                val metadata =
+                    GeneratedMetadata(
+                        repoName = result.metadata.repoName,
+                        englishTitle = result.metadata.englishTitle,
+                        chineseTitle = result.metadata.chineseTitle,
+                        description = result.metadata.description,
+                        topics = result.metadata.topics,
+                        category = result.metadata.category,
+                    )
+
+                val structure =
+                    DocsStructure(
+                        sections =
+                            result.structure.sections.map { section ->
+                                DocsStructure.Section(
+                                    folderName = section.folderName,
+                                    title = section.title,
+                                    weight = section.weight,
+                                    chapters =
+                                        section.chapters.map { chapter ->
+                                            DocsStructure.Chapter(
+                                                folderName = chapter.folderName,
+                                                title = chapter.title,
+                                                weight = chapter.weight,
+                                            )
+                                        },
+                                )
+                            },
+                    )
+
+                result.bookId to Pair(metadata, structure)
+            }
+        } catch (e: Exception) {
+            println("Error parsing batch metadata response: ${e.message}")
+            null
+        }
     }
+
+    /**
+     * Get result for a specific book from batch response.
+     */
+    fun getBatchResultForBook(bookId: String): Pair<GeneratedMetadata, DocsStructure>? = readBatchMetadataResponse()?.get(bookId)
 
     // ==================== Task Status Methods ====================
 
@@ -281,6 +427,38 @@ class AiTaskService {
     }
 
     /**
+     * Check if there's a pending batch metadata task.
+     */
+    fun hasPendingBatchMetadataTask(): Boolean {
+        val requestFile = File(INPUT_DIR, BATCH_METADATA_REQUEST_FILE)
+        val responseFile = File(OUTPUT_DIR, BATCH_METADATA_RESPONSE_FILE)
+        return requestFile.exists() && !responseFile.exists()
+    }
+
+    /**
+     * Check if there's a completed batch metadata task.
+     */
+    fun hasCompletedBatchMetadataTask(): Boolean {
+        val responseFile = File(OUTPUT_DIR, BATCH_METADATA_RESPONSE_FILE)
+        return responseFile.exists()
+    }
+
+    /**
+     * Read the batch metadata request to see which books are being processed.
+     */
+    fun readBatchMetadataRequest(): BatchMetadataRequest? {
+        val requestFile = File(INPUT_DIR, BATCH_METADATA_REQUEST_FILE)
+        if (!requestFile.exists()) return null
+
+        return try {
+            json.decodeFromString<BatchMetadataRequest>(requestFile.readText())
+        } catch (e: Exception) {
+            println("Error reading batch metadata request: ${e.message}")
+            null
+        }
+    }
+
+    /**
      * Read the convert request to get list of expected files.
      */
     fun readConvertRequest(): ConvertRequest? {
@@ -304,6 +482,7 @@ class AiTaskService {
         clearMetadataTasks()
         clearStructureTasks()
         clearConvertTasks()
+        clearBatchMetadataTasks()
     }
 
     /**
@@ -329,6 +508,14 @@ class AiTaskService {
         File(INPUT_DIR, CONVERT_REQUEST_FILE).delete()
     }
 
+    /**
+     * Clear batch metadata task files.
+     */
+    fun clearBatchMetadataTasks() {
+        File(INPUT_DIR, BATCH_METADATA_REQUEST_FILE).delete()
+        File(OUTPUT_DIR, BATCH_METADATA_RESPONSE_FILE).delete()
+    }
+
     // ==================== Helper Methods ====================
 
     private fun ensureDirectories() {
@@ -339,7 +526,10 @@ class AiTaskService {
     /**
      * Print the standard message prompting user to ask Claude Code to process.
      */
-    fun printTaskPrompt(taskFile: File, promptFile: String) {
+    fun printTaskPrompt(
+        taskFile: File,
+        promptFile: String,
+    ) {
         println()
         println("━".repeat(60))
         println("📋 AI Task Generated")
@@ -357,7 +547,11 @@ class AiTaskService {
     /**
      * Print message for batch convert task.
      */
-    fun printConvertTaskPrompt(taskFile: File, promptFile: String, fileCount: Int) {
+    fun printConvertTaskPrompt(
+        taskFile: File,
+        promptFile: String,
+        fileCount: Int,
+    ) {
         println()
         println("━".repeat(60))
         println("📋 AI Batch Convert Task Generated")
@@ -366,6 +560,33 @@ class AiTaskService {
         println("Task file: ${taskFile.path}")
         println("Prompt:    $promptFile")
         println("Files:     $fileCount file(s) to convert")
+        println()
+        println("👉 Please tell Claude Code: \"請處理 AI 任務\"")
+        println("   Then re-run this command to continue.")
+        println()
+        println("━".repeat(60))
+    }
+
+    /**
+     * Print message for batch book metadata task.
+     */
+    fun printBatchMetadataTaskPrompt(
+        taskFile: File,
+        promptFile: String,
+        bookCount: Int,
+        bookTitles: List<String>,
+    ) {
+        println()
+        println("━".repeat(60))
+        println("📚 AI Batch Book Metadata Task Generated")
+        println("━".repeat(60))
+        println()
+        println("Task file: ${taskFile.path}")
+        println("Prompt:    $promptFile")
+        println("Books:     $bookCount book(s) to process")
+        bookTitles.forEachIndexed { index, title ->
+            println("           ${index + 1}. $title")
+        }
         println()
         println("👉 Please tell Claude Code: \"請處理 AI 任務\"")
         println("   Then re-run this command to continue.")

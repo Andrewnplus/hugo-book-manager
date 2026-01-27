@@ -207,7 +207,7 @@ class InitBookCommand : CliktCommand(name = "init-book") {
 
         // Step 7: Download and resize cover image
         println("\nStep 7: Processing cover image...")
-        val coverFile = File(repoDir, "site/static/cover.png")
+        val coverFile = File(repoDir, "site/content/cover.png")
         if (!imageService.downloadAndResize(input.coverUrl, coverFile)) {
             println("Warning: Failed to download cover image")
         }
@@ -405,18 +405,21 @@ class InitBookCommand : CliktCommand(name = "init-book") {
             return
         }
 
+        val oldZhTitle = "讀書筆記模版"
+
         var content = indexFile.readText()
 
         // Replace placeholders
         content =
             content
-                .replace("src=\"cover.png\"", "src=\"cover.png\"") // Keep as is, we download the image
+                .replace("title: \"$oldZhTitle\"", "title: \"${input.chineseTitle}\"")
+                .replace("title=\"$oldZhTitle\"", "title=\"${input.chineseTitle}\"")
                 .replace("author=\"待填寫作者\"", "author=\"${input.author}\"")
                 .replace("date=\"待填寫日期\"", "date=\"${input.publicationDate}\"")
                 .replace("link=\"https://www.amazon.com/\"", "link=\"${input.purchaseUrl}\"")
 
         indexFile.writeText(content)
-        println("  Updated: _index.md (author, date, purchase link)")
+        println("  Updated: _index.md")
     }
 
     private fun updateGoMod(

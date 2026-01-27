@@ -44,32 +44,39 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
     companion object {
         private const val PROMPTS_DIR = "templates/prompts"
 
-        private val PROMPT_TYPES = mapOf(
-            "restructure-folders" to PromptInfo(
-                file = "restructure-folders.txt",
-                description = "建立資料夾結構：根據目錄建立 Hugo Book 資料夾和 _index.md 檔案",
-            ),
-            "enhance-katex" to PromptInfo(
-                file = "enhance-markdown-katex.txt",
-                description = "KaTeX 數學公式增強：將數學內容轉換為 KaTeX 格式",
-            ),
-            "enhance-mermaid" to PromptInfo(
-                file = "enhance-markdown-mermaid.txt",
-                description = "Mermaid 圖表增強：將流程、關係等內容轉換為 Mermaid 圖表",
-            ),
-            "review-markdown" to PromptInfo(
-                file = "review-markdown.txt",
-                description = "Markdown 審查：審查並統一所有 _index.md 的格式風格",
-            ),
-            "doc-convert" to PromptInfo(
-                file = "doc-convert.txt",
-                description = "文件轉換：批次將所有 _index.md 轉換為 Hugo-book 格式",
-            ),
-            "list-to-table" to PromptInfo(
-                file = "convert-list-to-table.txt",
-                description = "條列轉表格：分析條列式內容，將適合的轉換為 Markdown 表格",
-            ),
-        )
+        private val PROMPT_TYPES =
+            mapOf(
+                "restructure-folders" to
+                    PromptInfo(
+                        file = "restructure-folders.txt",
+                        description = "建立資料夾結構：根據目錄建立 Hugo Book 資料夾和 _index.md 檔案",
+                    ),
+                "enhance-katex" to
+                    PromptInfo(
+                        file = "enhance-markdown-katex.txt",
+                        description = "KaTeX 數學公式增強：將數學內容轉換為 KaTeX 格式",
+                    ),
+                "enhance-mermaid" to
+                    PromptInfo(
+                        file = "enhance-markdown-mermaid.txt",
+                        description = "Mermaid 圖表增強：將流程、關係等內容轉換為 Mermaid 圖表",
+                    ),
+                "review-markdown" to
+                    PromptInfo(
+                        file = "review-markdown.txt",
+                        description = "Markdown 審查：審查並統一所有 _index.md 的格式風格",
+                    ),
+                "doc-convert" to
+                    PromptInfo(
+                        file = "doc-convert.txt",
+                        description = "文件轉換：批次將所有 _index.md 轉換為 Hugo-book 格式",
+                    ),
+                "list-to-table" to
+                    PromptInfo(
+                        file = "convert-list-to-table.txt",
+                        description = "條列轉表格：分析條列式內容，將適合的轉換為 Markdown 表格",
+                    ),
+            )
 
         data class PromptInfo(
             val file: String,
@@ -139,7 +146,10 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
         println()
     }
 
-    private fun printPromptHeader(type: String, description: String) {
+    private fun printPromptHeader(
+        type: String,
+        description: String,
+    ) {
         println()
         println("━".repeat(60))
         println("📋 Prompt: $type")

@@ -1,0 +1,108 @@
+# Add Books to Queue Prompt
+
+## 任務說明
+根據用戶提供的中文書名清單，查詢書籍資訊並建立 `books-queue.yaml` 配置。
+
+## 輸入格式
+用戶會提供一系列中文書名，每行一本書。
+
+## 輸出格式
+為每本書產生以下 YAML 配置：
+
+```yaml
+-   id: {english-book-name-in-kebab-case}
+    status: pending
+    chinese_title: "{中文書名}"
+    english_title: "{英文書名}"
+    author: "{作者名}"
+    publication_date: "{Month DD, YYYY}"
+    cover_url: "{封面圖片URL}"
+    purchase_url: "{購買連結}"
+    table_of_contents: |
+        {目錄內容，保留原始格式}
+```
+
+## 欄位規範
+
+### id
+- 使用英文書名，轉換為 kebab-case
+- 範例：`The Hard Thing About Hard Things` → `hard-thing-about-hard-things`
+- 若無英文書名，使用中文書名的英文翻譯
+
+### cover_url 優先順序
+1. **優先使用 Amazon**：`https://m.media-amazon.com/images/I/{image-id}._SL1500_.jpg`
+2. 無 Amazon 圖片時，使用博客來圖片
+
+### table_of_contents
+- 以博客來查詢到的目錄為主
+- 保留原始章節結構和格式
+- 使用 YAML 多行字串格式 `|`
+
+### purchase_url 優先順序
+1. Amazon（原文版）
+2. 博客來（台灣中文版）
+3. 其他購書平台
+
+## 搜尋策略
+
+1. **第一步：識別書籍**
+   - 搜尋 `"{中文書名}" 博客來 作者`
+   - 確認書籍的英文原名和作者
+
+2. **第二步：取得封面圖片**
+   - 搜尋 `"{英文書名}" amazon book cover`
+   - 尋找 Amazon 產品頁的高解析度封面圖
+
+3. **第三步：取得目錄**
+   - 前往博客來書籍頁面
+   - 複製完整目錄內容
+
+## 範例輸入
+```
+麥肯錫教我的思考武器
+什麼才是經營最難的事
+```
+
+## 範例輸出
+```yaml
+-   id: issue-driven
+    status: pending
+    chinese_title: "麥肯錫教我的思考武器"
+    english_title: "イシューからはじめよ：知的生産の「シンプルな本質」"
+    author: "安宅和人"
+    publication_date: "Sep 22, 2024"
+    cover_url: "https://m.media-amazon.com/images/I/717Rf2eQywL._SL1500_.jpg"
+    purchase_url: "https://www.books.com.tw/products/0010560576"
+    table_of_contents: |
+        ◎序章　本書的思維：脫離事倍功半的「敗犬路徑」
+        ◎第一章　議題思考：解決問題之前，先查明問題
+        ◎第二章　假說思考一：分解議題並組排故事情節
+        ◎第三章　假說思考二：圖解故事線
+        ◎第四章　成果思考：進行實際分析
+        ◎第五章　訊息思考：統整「傳達訊息」
+
+-   id: hard-thing-about-hard-things
+    status: pending
+    chinese_title: "什麼才是經營最難的事"
+    english_title: "The Hard Thing About Hard Things"
+    author: "Ben Horowitz"
+    publication_date: "March 4, 2014"
+    cover_url: "https://m.media-amazon.com/images/I/81X8GaLT9sL._SL1500_.jpg"
+    purchase_url: "https://www.books.com.tw/products/0010632351"
+    table_of_contents: |
+        第1章 共黨爺爺創投孫
+        第2章 我會活下去
+        第3章 關關難過關關過
+        第4章 愈挫愈勇
+        第5章 先管人再管產品，最後才管利潤
+        第6章 規模大了，管理難了
+        第7章 執行長定心術
+        第8章 創業第一法則：沒有法則可言
+        第9章 從創業到創投
+```
+
+## 注意事項
+- 若書籍有多個版本，優先選擇最新版
+- 日文書籍的英文書名使用日文原名（羅馬拼音或原文）
+- 台灣作者的書籍，english_title 可使用中文書名的英文翻譯
+- 確保 YAML 格式正確，字串使用雙引號包覆
