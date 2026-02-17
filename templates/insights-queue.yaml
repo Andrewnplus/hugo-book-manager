@@ -1,0 +1,153 @@
+# Insights Queue - 追蹤已處理的書籍
+#
+# 此清單記錄已經從 books-done 抽取過 Excerpts 的書籍。
+# 用於避免重複處理同一本書。
+#
+# 使用方式：
+#   1. 執行 extract-insights prompt 後，將書籍資訊加入此清單
+#   2. 下次執行前，先檢查此清單跳過已處理的書籍
+#
+# 欄位說明：
+#   - repoPath: 書籍相對於 books-done 的路徑 (category/repo-name)
+#   - processedAt: 處理日期
+#   - insightCount: 抽取的 Excerpt 數量
+
+processedBooks:
+  - repoPath: "tech/clean-coder"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "tech/clean-code"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "tech/refactoring"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "tech/scrum-the-art-of-doing-twice-the-work-in-half-the-time"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "tech/the-effective-engineer"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "tech/thinking-in-programming-paradigms-and-oop"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "business/great-work-great-career"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "business/hbr-guide-to-persuasive-presentations"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "business/issue-driven"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "business/mba-confidential"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "business/mckinsey-writing-technique"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "business/rich-kids"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "business/the-end-of-jobs"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "business/the-way-of-munger"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "business/why-global-elites-believe-in-failure"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "business/zero-to-one"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "faith/bible-suspense-investigation"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "faith/eat-this-book"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "faith/gazing-at-life-theological-aesthetics-of-the-decalogue"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "faith/jesus-the-king"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "faith/the-call"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "faith/the-prodigal-god"
+    processedAt: "2025-02-04"
+    insightCount: 4
+  - repoPath: "faith/the-prodigal-prophet"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "faith/who-says-the-letter-kills"
+    processedAt: "2025-02-04"
+    insightCount: 4
+  - repoPath: "faith/written-in-stone"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "growth/attitude-of-the-rich"
+    processedAt: "2025-02-04"
+    insightCount: 4
+  - repoPath: "growth/deepwork"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "growth/how-to-win-in-a-winner-take-all-world"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "growth/reading-as-a-wilderness"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "growth/so-good-they-cant-ignore-you"
+    processedAt: "2025-02-04"
+    insightCount: 4
+  - repoPath: "growth/steal-like-an-artist"
+    processedAt: "2025-02-04"
+    insightCount: 3
+  - repoPath: "growth/the-power-of-reading"
+    processedAt: "2025-02-04"
+    insightCount: 4
+  - repoPath: "growth/whats-left-without-your-business-card"
+    processedAt: "2025-02-04"
+    insightCount: 4
+  - repoPath: "relation/born-liars"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/cai-kangyongs-way-of-speaking"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/cai-kangyongs-way-of-speaking-2"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/conversation-the-first-four-minutes"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/dangerous-personalities"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/financial-boundaries-with-family"
+    processedAt: "2025-02-04"
+    insightCount: 4
+  - repoPath: "relation/getting-more"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/how-to-talk-to-anyone"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/humble-inquiry"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/kiss-your-but-good-bye"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/lessons-in-love"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/secrets-of-sexual-body-language"
+    processedAt: "2025-02-04"
+    insightCount: 5
+  - repoPath: "relation/thank-you-for-arguing"
+    processedAt: "2025-02-04"
+    insightCount: 5

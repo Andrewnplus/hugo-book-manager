@@ -31,7 +31,7 @@ class GitService {
         repoDir: File,
         vararg files: String,
     ): Boolean {
-        val fileList = files.joinToString(" ")
+        val fileList = files.joinToString(" ") { "'${it.replace("'", "'\\''")}'" }
         return ProcessRunner.executeSuccessfully(
             "git add $fileList",
             repoDir,
@@ -76,11 +76,6 @@ class GitService {
         val result = ProcessRunner.executeForOutput("git status --porcelain", repoDir)
         return result?.isNotBlank() == true
     }
-
-    /**
-     * Get current branch name
-     */
-    fun getCurrentBranch(repoDir: File): String? = ProcessRunner.executeForOutput("git branch --show-current", repoDir)?.trim()
 
     /**
      * Full git workflow: add, commit, push

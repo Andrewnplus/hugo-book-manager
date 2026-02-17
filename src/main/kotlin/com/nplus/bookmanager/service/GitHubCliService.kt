@@ -27,6 +27,30 @@ class GitHubCliService {
     fun isAuthenticated(): Boolean = ProcessRunner.executeSuccessfully("gh auth status")
 
     /**
+     * Check GitHub CLI and authentication prerequisites.
+     * Prints status messages and returns false if any check fails.
+     */
+    fun checkPrerequisites(): Boolean {
+        println("\nChecking prerequisites...")
+
+        print("  GitHub CLI... ")
+        if (!isGhInstalled()) {
+            println("NOT FOUND")
+            return false
+        }
+        println("OK")
+
+        print("  GitHub authentication... ")
+        if (!isAuthenticated()) {
+            println("NOT AUTHENTICATED")
+            return false
+        }
+        println("OK")
+
+        return true
+    }
+
+    /**
      * Get the current authenticated GitHub username
      */
     fun getUsername(): String? = ProcessRunner.executeForOutput("gh api user --jq '.login'")?.trim()
@@ -92,8 +116,8 @@ class GitHubCliService {
         isPrivate: Boolean = true,
     ): Boolean {
         val visibility = if (isPrivate) "--private" else "--public"
-        val escapedDesc = description.replace("\"", "\\\"")
-        val cmd = """gh repo create $repoName --template $templateRepo $visibility --description "$escapedDesc""""
+        val escapedDesc = description.replace("'", "'\\''")
+        val cmd = "gh repo create $repoName --template $templateRepo $visibility --description '$escapedDesc'"
 
         val result = ProcessRunner.execute(cmd, description = "Creating repository...")
         if (!result.success) {
@@ -161,7 +185,7 @@ class GitHubCliService {
             if (addTopic(username, repoName, topic)) {
                 successCount++
             }
-            Thread.sleep(500) // Rate limiting
+            Thread.sleep(AppConfig.TOPIC_API_DELAY_MS) // Rate limiting
         }
         return successCount
     }
@@ -231,19 +255,12 @@ class GitHubCliService {
     /**
      * Get repository full name (owner/repo) from a local git directory
      */
-    fun getRepoFullName(repoDir: java.io.File): String? {
-        val result =
-            ProcessRunner.executeForOutput(
-                "git -C ${repoDir.absolutePath} remote get-url origin",
-            ) ?: return null
-
-        // Parse: git@github.com:owner/repo.git or https://github.com/owner/repo.git
-        return result
-            .trim()
-            .removePrefix("git@github.com:")
-            .removePrefix("https://github.com/")
-            .removeSuffix(".git")
-    }
+    fun getRepoFullName(repoDir: java.io.File): String? =
+        ProcessRunner
+            .executeForOutput(
+                "gh repo view --json nameWithOwner --jq '.nameWithOwner'",
+                workingDir = repoDir,
+            )?.trim()
 
     /**
      * List open Renovate PRs for a repository that have passing CI

@@ -3,20 +3,19 @@ package com.nplus.bookmanager.command
 import com.github.ajalt.clikt.core.CliktCommand
 import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.service.GitHubCliService
+import com.nplus.bookmanager.util.CliFormatter
 import com.nplus.bookmanager.util.ProcessRunner
 
 /**
  * Command to check environment prerequisites
  */
-class CheckEnvCommand : CliktCommand(name = "check-env") {
+class CheckEnvCommand(
+    private val ghService: GitHubCliService = GitHubCliService(),
+) : CliktCommand(name = "check-env") {
     override fun help(context: com.github.ajalt.clikt.core.Context) = "Check environment prerequisites"
 
-    private val ghService = GitHubCliService()
-
     override fun run() {
-        println("=".repeat(60))
-        println("Hugo Book Manager - Environment Check")
-        println("=".repeat(60))
+        CliFormatter.printHeader("Hugo Book Manager - Environment Check")
         println()
 
         var allOk = true
@@ -78,13 +77,8 @@ class CheckEnvCommand : CliktCommand(name = "check-env") {
 
         // Summary
         println()
-        println("=".repeat(60))
-        if (allOk) {
-            println("All checks passed! Ready to use.")
-        } else {
-            println("Some checks failed. Please fix the issues above.")
-        }
-        println("=".repeat(60))
+        val message = if (allOk) "All checks passed! Ready to use." else "Some checks failed. Please fix the issues above."
+        CliFormatter.printSectionHeader(message)
 
         // Print configuration summary
         println()

@@ -11,9 +11,10 @@ import com.nplus.bookmanager.model.DocsStructure
 import com.nplus.bookmanager.model.GeneratedMetadata
 import com.nplus.bookmanager.service.AiTaskService
 import com.nplus.bookmanager.service.BookInputService
-import com.nplus.bookmanager.service.DocsStructureService
+import com.nplus.bookmanager.service.BookRepoService
 import com.nplus.bookmanager.service.GitHubCliService
-import com.nplus.bookmanager.service.ImageService
+import com.nplus.bookmanager.util.CliFormatter
+import com.nplus.bookmanager.util.UserInput
 import java.io.File
 
 /**
@@ -34,7 +35,12 @@ import java.io.File
  * 5. Download and resize cover image
  * 6. Create docs folder structure
  */
-class InitBookCommand : CliktCommand(name = "init-book") {
+class InitBookCommand(
+    private val bookInputService: BookInputService = BookInputService(),
+    private val aiTaskService: AiTaskService = AiTaskService(),
+    private val ghService: GitHubCliService = GitHubCliService(),
+    private val bookRepoService: BookRepoService = BookRepoService(ghService = ghService),
+) : CliktCommand(name = "init-book") {
     override fun help(context: Context) = "Initialize a new book repository from YAML input file"
 
     private val inputFile by option("--input", "-i", help = "Path to book input YAML file")
@@ -43,17 +49,11 @@ class InitBookCommand : CliktCommand(name = "init-book") {
     private val dryRun by option("--dry-run", "-n", help = "Simulate without making changes")
         .flag(default = false)
 
-    private val bookInputService = BookInputService()
-    private val aiTaskService = AiTaskService()
-    private val ghService = GitHubCliService()
-    private val imageService = ImageService()
-    private val docsStructureService = DocsStructureService()
-
     override fun run() {
         printHeader()
 
         // Check prerequisites
-        if (!checkPrerequisites()) return
+        if (!ghService.checkPrerequisites()) return
 
         // Step 1: Read input file
         println("\nStep 1: Reading input file...")
@@ -95,15 +95,14 @@ class InitBookCommand : CliktCommand(name = "init-book") {
 
         // Check if tasks already pending
         if (aiTaskService.hasPendingMetadataTask() || aiTaskService.hasPendingStructureTask()) {
-            println()
-            println("⚠️  AI tasks are already pending. Please ask Claude Code to process them.")
-            println()
-            println("   Task files:")
-            println("   - ai-tasks/input/metadata-request.json")
-            println("   - ai-tasks/input/structure-request.json")
-            println()
-            println("👉 Tell Claude Code: \"請處理 AI 任務\"")
-            println("   Then re-run this command.")
+            CliFormatter.printPendingTaskWarning(
+                message = "AI tasks are already pending. Please ask Claude Code to process them.",
+                taskFiles =
+                    listOf(
+                        "ai-tasks/input/metadata-request.json",
+                        "ai-tasks/input/structure-request.json",
+                    ),
+            )
             return
         }
 
@@ -119,9 +118,7 @@ class InitBookCommand : CliktCommand(name = "init-book") {
 
         // Prompt user
         println()
-        println("━".repeat(70))
-        println("📋 AI Tasks Generated")
-        println("━".repeat(70))
+        CliFormatter.printTaskHeader("AI Tasks Generated")
         println()
         println("Two AI tasks have been created:")
         println()
@@ -136,7 +133,7 @@ class InitBookCommand : CliktCommand(name = "init-book") {
         println("👉 Please tell Claude Code: \"請處理 AI 任務\"")
         println("   Then re-run this command to continue.")
         println()
-        println("━".repeat(70))
+        CliFormatter.printTaskFooter()
     }
 
     /**
@@ -163,7 +160,7 @@ class InitBookCommand : CliktCommand(name = "init-book") {
             println("  Please check: ai-tasks/output/structure-response.json")
             return
         }
-        docsStructureService.printDocsStructure(docsStructure)
+        bookRepoService.printDocsStructure(docsStructure)
 
         if (dryRun) {
             printDryRunSummary(input, metadata, docsStructure)
@@ -176,81 +173,26 @@ class InitBookCommand : CliktCommand(name = "init-book") {
         }
 
         // Confirm before proceeding
-        print("\nProceed with creating repository? (yes/no): ")
-        val confirm = readLine()?.lowercase()
-        if (confirm != "yes") {
+        if (!UserInput.confirm("\nProceed with creating repository?")) {
             println("Cancelled")
             return
         }
 
-        // Step 4: Create GitHub repository
-        println("\nStep 4: Creating GitHub repository...")
-        val username = ghService.getUsername()
-        if (username == null) {
-            println("Error: Could not get GitHub username")
-            return
+        // Create repository using shared service
+        println("\nStep 4: Creating repository...")
+        val result = bookRepoService.createBookRepository(metadata, input, docsStructure)
+
+        if (result.success) {
+            // Clean up task files
+            println("\nCleaning up AI task files...")
+            aiTaskService.clearMetadataTasks()
+            aiTaskService.clearStructureTasks()
+            println("  Task files cleared.")
         }
-
-        if (!createGitHubRepo(username, metadata)) return
-
-        // Step 5: Clone repository
-        println("\nStep 5: Cloning repository...")
-        val repoDir = cloneRepository(username, metadata)
-        if (repoDir == null) {
-            println("Error: Failed to clone repository")
-            return
-        }
-
-        // Step 6: Update template files
-        println("\nStep 6: Updating template files...")
-        updateTemplateFiles(repoDir, metadata, input)
-
-        // Step 7: Download and resize cover image
-        println("\nStep 7: Processing cover image...")
-        val coverFile = File(repoDir, "site/content/cover.png")
-        if (!imageService.downloadAndResize(input.coverUrl, coverFile)) {
-            println("Warning: Failed to download cover image")
-        }
-
-        // Step 8: Create docs structure
-        println("\nStep 8: Creating docs folder structure...")
-        val createdCount = docsStructureService.createDocsStructure(repoDir, docsStructure)
-        println("  Created $createdCount items")
-
-        // Clean up task files
-        println("\nCleaning up AI task files...")
-        aiTaskService.clearMetadataTasks()
-        aiTaskService.clearStructureTasks()
-        println("  Task files cleared.")
-
-        // Done!
-        printSuccessSummary(username, metadata, repoDir)
     }
 
     private fun printHeader() {
-        println("=".repeat(70))
-        println("Hugo Book Manager - Initialize New Book")
-        println("=".repeat(70))
-    }
-
-    private fun checkPrerequisites(): Boolean {
-        println("\nChecking prerequisites...")
-
-        print("  GitHub CLI... ")
-        if (!ghService.isGhInstalled()) {
-            println("NOT FOUND")
-            return false
-        }
-        println("OK")
-
-        print("  GitHub authentication... ")
-        if (!ghService.isAuthenticated()) {
-            println("NOT AUTHENTICATED")
-            return false
-        }
-        println("OK")
-
-        return true
+        CliFormatter.printHeader("Hugo Book Manager - Initialize New Book")
     }
 
     private fun printMetadata(metadata: GeneratedMetadata) {
@@ -272,195 +214,5 @@ class InitBookCommand : CliktCommand(name = "init-book") {
         println("  6. Update template files (README.md, hugo.toml, etc.)")
         println("  7. Download cover from: ${input.coverUrl}")
         println("  8. Create ${structure.sections.size} doc sections")
-    }
-
-    private fun createGitHubRepo(
-        username: String,
-        metadata: GeneratedMetadata,
-    ): Boolean {
-        if (ghService.repoExists(username, metadata.repoName)) {
-            println("  Repository already exists: ${metadata.repoName}")
-            print("  Continue with cloning and updating? (yes/no): ")
-            val confirm = readLine()?.lowercase()
-            if (confirm != "yes") {
-                println("Cancelled")
-                return false
-            }
-        } else {
-            if (!ghService.createRepo(metadata.repoName, metadata.description)) {
-                println("Error: Failed to create repository")
-                return false
-            }
-            println("  Repository created: ${metadata.repoName}")
-            Thread.sleep(2000) // Wait for GitHub to process
-        }
-
-        // Configure repository
-        val homepageUrl = "${AppConfig.homepageBaseUrl}/${metadata.repoName}"
-        ghService.setHomepage(username, metadata.repoName, homepageUrl)
-        println("  Homepage set: $homepageUrl")
-
-        ghService.enableGitHubPages(username, metadata.repoName)
-        println("  GitHub Pages enabled")
-
-        val addedTopics = ghService.addTopics(username, metadata.repoName, metadata.topics)
-        println("  Added $addedTopics topics")
-
-        ghService.starRepo(username, metadata.repoName)
-        println("  Repository starred")
-
-        return true
-    }
-
-    private fun cloneRepository(
-        username: String,
-        metadata: GeneratedMetadata,
-    ): File? {
-        // Create category subfolder
-        val categoryDir = File(AppConfig.defaultWorkDir, metadata.category)
-        if (!categoryDir.exists()) {
-            categoryDir.mkdirs()
-        }
-
-        val repoDir = File(categoryDir, metadata.repoName)
-
-        if (repoDir.exists()) {
-            println("  Directory already exists: ${repoDir.absolutePath}")
-            return repoDir
-        }
-
-        if (!ghService.cloneRepo(username, metadata.repoName, repoDir.absolutePath)) {
-            return null
-        }
-
-        println("  Cloned to: ${repoDir.absolutePath}")
-        return repoDir
-    }
-
-    private fun updateTemplateFiles(
-        repoDir: File,
-        metadata: GeneratedMetadata,
-        input: BookInput,
-    ) {
-        val oldSlug = "hugo-book-template"
-        val oldEnTitle = "Hugo Book Template"
-        val oldZhTitle = "讀書筆記模版"
-
-        // Update README.md
-        updateFile(
-            File(repoDir, "README.md"),
-            mapOf(
-                oldSlug to metadata.repoName,
-                oldEnTitle to metadata.englishTitle,
-                oldZhTitle to metadata.chineseTitle,
-            ),
-        )
-
-        // Update settings.gradle.kts
-        updateFile(
-            File(repoDir, "settings.gradle.kts"),
-            mapOf(oldSlug to metadata.repoName),
-        )
-
-        // Update site/hugo.toml
-        updateFile(
-            File(repoDir, "site/hugo.toml"),
-            mapOf(
-                oldZhTitle to metadata.chineseTitle,
-                oldSlug to metadata.repoName,
-            ),
-        )
-
-        // Update site/content/_index.md with book info
-        updateIndexFile(repoDir, input)
-
-        // Update site/go.mod
-        updateGoMod(repoDir, metadata.repoName)
-    }
-
-    private fun updateFile(
-        file: File,
-        replacements: Map<String, String>,
-    ) {
-        if (!file.exists()) {
-            println("  Warning: File not found: ${file.path}")
-            return
-        }
-
-        var content = file.readText()
-        for ((old, new) in replacements) {
-            content = content.replace(old, new)
-        }
-        file.writeText(content)
-        println("  Updated: ${file.name}")
-    }
-
-    private fun updateIndexFile(
-        repoDir: File,
-        input: BookInput,
-    ) {
-        val indexFile = File(repoDir, "site/content/_index.md")
-        if (!indexFile.exists()) {
-            println("  Warning: _index.md not found")
-            return
-        }
-
-        val oldZhTitle = "讀書筆記模版"
-
-        var content = indexFile.readText()
-
-        // Replace placeholders
-        content =
-            content
-                .replace("title: \"$oldZhTitle\"", "title: \"${input.chineseTitle}\"")
-                .replace("title=\"$oldZhTitle\"", "title=\"${input.chineseTitle}\"")
-                .replace("author=\"待填寫作者\"", "author=\"${input.author}\"")
-                .replace("date=\"待填寫日期\"", "date=\"${input.publicationDate}\"")
-                .replace("link=\"https://www.amazon.com/\"", "link=\"${input.purchaseUrl}\"")
-
-        indexFile.writeText(content)
-        println("  Updated: _index.md")
-    }
-
-    private fun updateGoMod(
-        repoDir: File,
-        repoName: String,
-    ) {
-        val goModFile = File(repoDir, "site/go.mod")
-        if (!goModFile.exists()) {
-            println("  Warning: go.mod not found")
-            return
-        }
-
-        var content = goModFile.readText()
-        content =
-            content.replace(
-                Regex("module github\\.com/[^/]+/[^\\s]+"),
-                "module github.com/${AppConfig.githubUsername}/$repoName",
-            )
-        goModFile.writeText(content)
-        println("  Updated: go.mod")
-    }
-
-    private fun printSuccessSummary(
-        username: String,
-        metadata: GeneratedMetadata,
-        repoDir: File,
-    ) {
-        println()
-        println("=".repeat(70))
-        println("Book Initialized Successfully!")
-        println("=".repeat(70))
-        println()
-        println("  Book: ${metadata.chineseTitle}")
-        println("  Repository: https://github.com/$username/${metadata.repoName}")
-        println("  Website: ${AppConfig.homepageBaseUrl}/${metadata.repoName}")
-        println("  Local Path: ${repoDir.absolutePath}")
-        println()
-        println("Next steps:")
-        println("  1. Open in IDE: ${repoDir.absolutePath}")
-        println("  2. Review and edit the generated content")
-        println("  3. Commit and push when ready")
-        println()
     }
 }

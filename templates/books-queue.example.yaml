@@ -1,0 +1,38 @@
+# Books Queue - 批次建立書籍
+# 執行: ./gradlew initBooks
+#
+# 狀態說明:
+#   pending    - 等待處理
+#   processing - AI 任務已產生，等待 Claude 處理
+#   completed  - 已完成建立
+#   error      - 處理失敗
+#
+# 使用方式:
+#   1. 複製此檔案為 books-queue.yaml
+#   2. 在 books 列表中新增書籍資訊，status 設為 pending
+#   3. 執行 ./gradlew initBooks
+#   4. 依提示請 Claude 處理 AI 任務
+#   5. 再次執行 ./gradlew initBooks 完成建立
+#   6. 系統會自動處理下一本 pending 的書
+#
+# 進階用法:
+#   ./gradlew initBooks --status              # 顯示佇列狀態
+#   ./gradlew initBooks -Pid=book-id          # 只處理指定書籍
+#   ./gradlew initBooks -Pid=book-id --reset  # 重設狀態為 pending
+
+books:
+-   id: example-book
+    status: pending
+    chinese_title: "範例書名"
+    english_title: "Example Book Title"
+    author: "Author Name"
+    publication_date: "January 1, 2025"
+    cover_url: "https://example.com/cover.jpg"
+    purchase_url: "https://www.amazon.com/example"
+    table_of_contents: |
+      Part I: Introduction
+        Chapter 1: Getting Started
+        Chapter 2: Overview
+      Part II: Deep Dive
+        Chapter 3: Core Concepts
+        Chapter 4: Advanced Topics

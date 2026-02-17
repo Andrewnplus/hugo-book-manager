@@ -37,9 +37,4 @@ data class Book(
                 notes = row["notes"] ?: "",
             )
     }
-
-    /**
-     * Get topics as space-separated string (for CSV compatibility)
-     */
-    fun topicsAsString(): String = topics.joinToString(" ")
 }

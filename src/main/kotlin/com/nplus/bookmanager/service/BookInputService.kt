@@ -102,10 +102,18 @@ class BookInputService {
 
                 // Add or update error_message if present
                 if (book.errorMessage != null) {
-                    val errorPattern =
-                        """(\s*-\s+id:\s*${Regex.escape(book.id)}\s*\n\s*status:\s*\w+)(\s*\n\s*error_message:\s*[^\n]*)?""".toRegex()
+                    // First remove any existing error_message line
+                    val removeErrorPattern =
+                        """(\s*-\s+id:\s*${Regex.escape(book.id)}\s*\n\s*status:\s*\w+)\s*\n\s*error_message:\s*[^\n]*""".toRegex()
                     updatedContent =
-                        updatedContent.replace(errorPattern) { matchResult ->
+                        updatedContent.replace(removeErrorPattern) { matchResult ->
+                            matchResult.groupValues[1]
+                        }
+                    // Then inject the new error_message
+                    val addErrorPattern =
+                        """(\s*-\s+id:\s*${Regex.escape(book.id)}\s*\n\s*status:\s*\w+)""".toRegex()
+                    updatedContent =
+                        updatedContent.replace(addErrorPattern) { matchResult ->
                             "${matchResult.groupValues[1]}\n        error_message: \"${book.errorMessage}\""
                         }
                 }

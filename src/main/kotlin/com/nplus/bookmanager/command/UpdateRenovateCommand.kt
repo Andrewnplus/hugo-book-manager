@@ -6,12 +6,16 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.nplus.bookmanager.service.GitService
 import com.nplus.bookmanager.service.TemplateService
+import com.nplus.bookmanager.util.CliFormatter
 import java.io.File
 
 /**
  * Command to batch update renovate.json in multiple repositories
  */
-class UpdateRenovateCommand : CliktCommand(name = "update-renovate") {
+class UpdateRenovateCommand(
+    private val gitService: GitService = GitService(),
+    private val templateService: TemplateService = TemplateService(),
+) : CliktCommand(name = "update-renovate") {
     override fun help(context: com.github.ajalt.clikt.core.Context) = "Batch update renovate.json in multiple repositories"
 
     private val parentDir by option("--parent-dir", "-d", help = "Parent directory containing repos")
@@ -25,9 +29,6 @@ class UpdateRenovateCommand : CliktCommand(name = "update-renovate") {
 
     private val recursive by option("--recursive", "-r", help = "Recursively scan subdirectories for git repos")
         .flag(default = false)
-
-    private val gitService = GitService()
-    private val templateService = TemplateService()
 
     private var successCount = 0
     private var skippedCount = 0
@@ -78,9 +79,7 @@ class UpdateRenovateCommand : CliktCommand(name = "update-renovate") {
     }
 
     private fun printHeader() {
-        println("=".repeat(60))
-        println("Hugo Book Manager - Update Renovate Configuration")
-        println("=".repeat(60))
+        CliFormatter.printHeader("Hugo Book Manager - Update Renovate Configuration")
         println()
     }
 
@@ -167,9 +166,7 @@ class UpdateRenovateCommand : CliktCommand(name = "update-renovate") {
     }
 
     private fun printSummary(totalRepos: Int) {
-        println("=".repeat(60))
-        println("Summary")
-        println("=".repeat(60))
+        CliFormatter.printSectionHeader("Summary")
         println()
         println("Total repositories: $totalRepos")
         println("Updated: $successCount")

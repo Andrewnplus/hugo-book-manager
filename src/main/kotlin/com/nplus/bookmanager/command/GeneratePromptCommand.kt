@@ -4,21 +4,16 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
+import com.nplus.bookmanager.util.CliFormatter
 import java.io.File
 
 /**
  * Command to generate/display prompt templates for book project tasks.
  *
- * Available prompts:
- * - restructure-folders: Rename folders based on _index.md titles
- * - enhance-katex: Add KaTeX math formula support
- * - enhance-mermaid: Add Mermaid diagram support
- * - review-markdown: Review and fix markdown quality issues
- *
  * Usage:
+ *   ./gradlew generatePrompt --list
  *   ./gradlew generatePrompt -Ptype=restructure-folders
- *   ./gradlew generatePrompt -Ptype=enhance-katex
- *   ./gradlew generatePrompt -Ptype=enhance-mermaid -Poutput=/path/to/book/PROMPT.md
+ *   ./gradlew generatePrompt -Ptype=enhance-katex -Poutput=/path/to/book/PROMPT.md
  */
 class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
     override fun help(context: Context) = "Generate prompt templates for book project tasks"
@@ -26,7 +21,9 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
     private val promptType by option(
         "--type",
         "-t",
-        help = "Prompt type: restructure-folders, enhance-katex, enhance-mermaid, review-markdown, doc-convert, list-to-table",
+        help =
+            "Prompt type: restructure-folders, enhance-katex, enhance-mermaid, " +
+                "review-markdown, list-to-table, simplify-table, extract-insights",
     )
 
     private val outputFile by option(
@@ -66,15 +63,35 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
                         file = "review-markdown.txt",
                         description = "Markdown 審查：審查並統一所有 _index.md 的格式風格",
                     ),
-                "doc-convert" to
-                    PromptInfo(
-                        file = "doc-convert.txt",
-                        description = "文件轉換：批次將所有 _index.md 轉換為 Hugo-book 格式",
-                    ),
                 "list-to-table" to
                     PromptInfo(
                         file = "convert-list-to-table.txt",
                         description = "條列轉表格：分析條列式內容，將適合的轉換為 Markdown 表格",
+                    ),
+                "simplify-table" to
+                    PromptInfo(
+                        file = "simplify-table.txt",
+                        description = "精簡表格：移除表格中的冗餘資訊，只保留對主題最核心的內容",
+                    ),
+                "extract-insights" to
+                    PromptInfo(
+                        file = "extract-insights.txt",
+                        description = "抽取洞見：從書籍筆記中萃取值得收藏的精華句子或想法",
+                    ),
+                "add-books-to-queue" to
+                    PromptInfo(
+                        file = "add-books-to-queue.txt",
+                        description = "加入書籍：將新書籍資訊加入待處理佇列",
+                    ),
+                "refine-notes" to
+                    PromptInfo(
+                        file = "refine-notes.txt",
+                        description = "精煉筆記：改善讀書筆記的結構與可讀性",
+                    ),
+                "extract-pdf-figures" to
+                    PromptInfo(
+                        file = "extract-pdf-figures.txt",
+                        description = "擷取圖表：從 PDF 中擷取圖表並轉換為 Markdown",
                     ),
             )
 
@@ -129,9 +146,7 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
 
     private fun printAvailablePrompts() {
         println()
-        println("=".repeat(60))
-        println("Available Prompt Types")
-        println("=".repeat(60))
+        CliFormatter.printSectionHeader("Available Prompt Types")
         println()
 
         PROMPT_TYPES.forEach { (type, info) ->
@@ -151,9 +166,7 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
         description: String,
     ) {
         println()
-        println("━".repeat(60))
-        println("📋 Prompt: $type")
-        println("━".repeat(60))
+        CliFormatter.printTaskHeader("Prompt: $type")
         println()
         println("描述: $description")
         println()
@@ -162,11 +175,11 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
         println("  2. 開啟目標書籍專案的 Claude Code")
         println("  3. 貼上 Prompt 並執行")
         println()
-        println("─".repeat(60))
+        CliFormatter.printDivider()
     }
 
     private fun printPromptFooter() {
-        println("─".repeat(60))
+        CliFormatter.printDivider()
         println()
         println("提示：可使用 -o 參數將 Prompt 儲存到檔案：")
         println("  ./gradlew generatePrompt -Ptype=$promptType -Poutput=PROMPT.md")

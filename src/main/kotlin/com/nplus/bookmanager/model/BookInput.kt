@@ -1,5 +1,7 @@
 package com.nplus.bookmanager.model
 
+import kotlinx.serialization.Serializable
+
 /**
  * Status for books in the queue
  */
@@ -87,6 +89,7 @@ data class BooksQueue(
 /**
  * Data class representing AI-generated book metadata
  */
+@Serializable
 data class GeneratedMetadata(
     val repoName: String,
     val englishTitle: String,
@@ -99,9 +102,11 @@ data class GeneratedMetadata(
 /**
  * Data class representing AI-generated docs structure
  */
+@Serializable
 data class DocsStructure(
     val sections: List<Section>,
 ) {
+    @Serializable
     data class Section(
         val folderName: String,
         val title: String,
@@ -109,6 +114,7 @@ data class DocsStructure(
         val chapters: List<Chapter> = emptyList(),
     )
 
+    @Serializable
     data class Chapter(
         val folderName: String,
         val title: String,

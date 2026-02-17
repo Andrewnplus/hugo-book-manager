@@ -4,14 +4,11 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.core.subcommands
 import com.nplus.bookmanager.command.CheckEnvCommand
-import com.nplus.bookmanager.command.CleanDocsCommand
-import com.nplus.bookmanager.command.ConvertDocsCommand
 import com.nplus.bookmanager.command.CreateReposCommand
 import com.nplus.bookmanager.command.GeneratePromptCommand
 import com.nplus.bookmanager.command.InitBookCommand
 import com.nplus.bookmanager.command.InitBooksCommand
 import com.nplus.bookmanager.command.MergePrsCommand
-import com.nplus.bookmanager.command.RebuildDocsCommand
 import com.nplus.bookmanager.command.UpdateRenovateCommand
 
 /**
@@ -35,11 +32,8 @@ fun main(args: Array<String>) {
             CreateReposCommand(),
             InitBookCommand(),
             InitBooksCommand(),
-            RebuildDocsCommand(),
             UpdateRenovateCommand(),
             MergePrsCommand(),
-            CleanDocsCommand(),
-            ConvertDocsCommand(),
             GeneratePromptCommand(),
         ).main(args)
 }

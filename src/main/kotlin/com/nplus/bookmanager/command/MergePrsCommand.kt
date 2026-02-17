@@ -5,16 +5,22 @@ import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
+import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.service.GitHubCliService
 import com.nplus.bookmanager.service.GitHubCliService.ChecksStatus
 import com.nplus.bookmanager.service.GitHubCliService.PullRequest
 import com.nplus.bookmanager.service.GitService
+import com.nplus.bookmanager.util.CliFormatter
+import com.nplus.bookmanager.util.UserInput
 import java.io.File
 
 /**
  * Command to batch merge Renovate PRs across multiple repositories
  */
-class MergePrsCommand : CliktCommand(name = "merge-prs") {
+class MergePrsCommand(
+    private val ghService: GitHubCliService = GitHubCliService(),
+    private val gitService: GitService = GitService(),
+) : CliktCommand(name = "merge-prs") {
     override fun help(context: Context) = "Batch merge Renovate PRs with passing CI"
 
     private val parentDir by option("--parent-dir", "-d", help = "Parent directory containing repos")
@@ -23,14 +29,11 @@ class MergePrsCommand : CliktCommand(name = "merge-prs") {
     private val mergeMethod by option("--merge-method", "-m", help = "Merge method: merge, squash, rebase")
         .default("merge")
 
-    private val ghService = GitHubCliService()
-    private val gitService = GitService()
-
     override fun run() {
         printHeader()
 
         // Check prerequisites
-        if (!checkPrerequisites()) return
+        if (!ghService.checkPrerequisites()) return
 
         // Scan for repos
         val parentDirFile = File(parentDir)
@@ -81,9 +84,7 @@ class MergePrsCommand : CliktCommand(name = "merge-prs") {
 
         // Show PRs ready to merge
         if (allPrs.isNotEmpty()) {
-            println("=".repeat(70))
-            println("Renovate PRs ready to merge (CI passing): ${allPrs.size}")
-            println("=".repeat(70))
+            CliFormatter.printSectionHeader("Renovate PRs ready to merge (CI passing): ${allPrs.size}")
             println()
 
             allPrs.forEachIndexed { index, pr ->
@@ -95,9 +96,9 @@ class MergePrsCommand : CliktCommand(name = "merge-prs") {
 
         // Show skipped PRs
         if (skippedPrs.isNotEmpty()) {
-            println("-".repeat(70))
+            CliFormatter.printLightDivider()
             println("Skipped PRs (${skippedPrs.size}):")
-            println("-".repeat(70))
+            CliFormatter.printLightDivider()
             skippedPrs.forEach { (pr, reason) ->
                 println("  ${pr.repoFullName} #${pr.number}: $reason")
             }
@@ -110,11 +111,8 @@ class MergePrsCommand : CliktCommand(name = "merge-prs") {
         }
 
         // Confirm merge
-        println("=".repeat(70))
-        print("Merge all ${allPrs.size} PRs? (yes/no): ")
-        val confirm = readLine()?.lowercase()
-
-        if (confirm != "yes") {
+        println()
+        if (!UserInput.confirm("Merge all ${allPrs.size} PRs?")) {
             println("Cancelled.")
             return
         }
@@ -137,14 +135,12 @@ class MergePrsCommand : CliktCommand(name = "merge-prs") {
             }
 
             // Rate limiting
-            Thread.sleep(1000)
+            Thread.sleep(AppConfig.API_CALL_DELAY_MS)
         }
 
         // Summary
         println()
-        println("=".repeat(70))
-        println("Complete!")
-        println("=".repeat(70))
+        CliFormatter.printSectionHeader("Complete!")
         println()
         println("  Merged: $successCount")
         println("  Failed: $failCount")
@@ -152,30 +148,7 @@ class MergePrsCommand : CliktCommand(name = "merge-prs") {
     }
 
     private fun printHeader() {
-        println("=".repeat(70))
-        println("Hugo Book Manager - Merge Renovate PRs")
-        println("=".repeat(70))
+        CliFormatter.printHeader("Hugo Book Manager - Merge Renovate PRs")
         println()
-    }
-
-    private fun checkPrerequisites(): Boolean {
-        println("Checking prerequisites...")
-
-        print("  GitHub CLI... ")
-        if (!ghService.isGhInstalled()) {
-            println("NOT FOUND")
-            return false
-        }
-        println("OK")
-
-        print("  GitHub authentication... ")
-        if (!ghService.isAuthenticated()) {
-            println("NOT AUTHENTICATED")
-            return false
-        }
-        println("OK")
-
-        println()
-        return true
     }
 }

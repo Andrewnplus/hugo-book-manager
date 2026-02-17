@@ -1,0 +1,19 @@
+我現在在專案目錄下，附上了英文版 PDF。請就值得補上的圖片，從 PDF 中提取放到各章節中，用 {{< figure src="fig-X-Y.jpg" title="Figure X.Y: 說明" width="80%" >}} 來顯示。
+
+步驟：
+1. 用 pdfimages -j 提取 PDF 所有嵌入圖片到 /tmp 暫存目錄
+2. 用 pdfimages -list 建立 image number → page number 映射
+3. 用 pdftotext -layout 提取所有 "Figure X.Y" 標題及其精確頁碼
+4. 交叉比對 page number，建立 img-XXX.jpg → Figure X.Y 的完整對應表
+   - 同一頁有多張圖和多個 figure 時，按順序匹配
+   - 同一頁圖片數多於 figure 數時，取最後 N 張（前面的通常是章節裝飾插圖）
+5. 將圖片以 fig-X-Y.jpg 命名複製到對應章節目錄
+6. 用子代理並行處理各章節 markdown，在內容最相關的段落後插入 figure shortcode
+7. 清理暫存目錄
+
+注意：
+- 跳過裝飾性圖片（章節標題漫畫、作者照片、出版社 logo）
+- 跳過程式碼截圖（"Click here to view code image" 的替代圖片）
+- 只保留有標號的 Figure（如 Figure 1.1, Figure 5.3 等）
+- 每個 shortcode 獨立一行，前後各有一個空行
+- 不修改任何現有 markdown 內容

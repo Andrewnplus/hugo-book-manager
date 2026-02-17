@@ -35,3 +35,9 @@ temp/
 # AI task files (keep directories via .gitkeep)
 ai-tasks/input/*.json
 ai-tasks/output/*.json
+
+# Output files (generated artifacts)
+output/
+
+# Working queue file (use books-queue.example.yaml as template)
+templates/books-queue.yaml

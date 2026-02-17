@@ -10,11 +10,16 @@ import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.model.Book
 import com.nplus.bookmanager.service.CsvService
 import com.nplus.bookmanager.service.GitHubCliService
+import com.nplus.bookmanager.util.CliFormatter
+import com.nplus.bookmanager.util.UserInput
 
 /**
  * Command to create GitHub repositories from a CSV file
  */
-class CreateReposCommand : CliktCommand(name = "create-repos") {
+class CreateReposCommand(
+    private val csvService: CsvService = CsvService(),
+    private val ghService: GitHubCliService = GitHubCliService(),
+) : CliktCommand(name = "create-repos") {
     override fun help(context: com.github.ajalt.clikt.core.Context) = "Create GitHub repositories from a CSV file"
 
     private val csvFile by option("--csv", "-c", help = "Path to CSV file")
@@ -30,9 +35,6 @@ class CreateReposCommand : CliktCommand(name = "create-repos") {
     private val updateOnly by option("--update-only", "-u", help = "Only update existing repos")
         .flag(default = false)
 
-    private val csvService = CsvService()
-    private val ghService = GitHubCliService()
-
     private var successCount = 0
     private val failedBooks = mutableListOf<String>()
 
@@ -40,7 +42,7 @@ class CreateReposCommand : CliktCommand(name = "create-repos") {
         printHeader()
 
         // Check prerequisites
-        if (!checkPrerequisites()) return
+        if (!ghService.checkPrerequisites()) return
 
         // Load books from CSV
         val books = loadBooks() ?: return
@@ -56,33 +58,7 @@ class CreateReposCommand : CliktCommand(name = "create-repos") {
     }
 
     private fun printHeader() {
-        println("=".repeat(60))
-        println("Hugo Book Manager - Create Repos from CSV")
-        println("=".repeat(60))
-    }
-
-    private fun checkPrerequisites(): Boolean {
-        println("\nChecking prerequisites...")
-
-        // Check GitHub CLI
-        print("  1. GitHub CLI... ")
-        if (!ghService.isGhInstalled()) {
-            println("NOT FOUND")
-            println("     Please install: https://cli.github.com/")
-            return false
-        }
-        println("OK")
-
-        // Check authentication
-        print("  2. GitHub authentication... ")
-        if (!ghService.isAuthenticated()) {
-            println("NOT AUTHENTICATED")
-            println("     Please run: gh auth login")
-            return false
-        }
-        println("OK")
-
-        return true
+        CliFormatter.printHeader("Hugo Book Manager - Create Repos from CSV")
     }
 
     private fun loadBooks(): List<Book>? {
@@ -104,15 +80,12 @@ class CreateReposCommand : CliktCommand(name = "create-repos") {
             return true
         }
 
-        print("\nAbout to create $bookCount repositories. Continue? (yes/no): ")
-        val confirm = readLine()?.lowercase()
-        return confirm == "yes"
+        return UserInput.confirm("\nAbout to create $bookCount repositories. Continue?")
     }
 
     private fun createAllRepos(books: List<Book>) {
-        println("\n${"=".repeat(60)}")
-        println("Creating Repositories")
-        println("=".repeat(60))
+        println()
+        CliFormatter.printSectionHeader("Creating Repositories")
 
         val username = ghService.getUsername()
         if (username == null) {
@@ -144,8 +117,8 @@ class CreateReposCommand : CliktCommand(name = "create-repos") {
 
             // Rate limiting
             if (bookNum < books.size && !dryRun) {
-                println("  Waiting 3 seconds...")
-                Thread.sleep(3000)
+                println("  Waiting ${AppConfig.REPO_CREATION_DELAY_MS / 1000} seconds...")
+                Thread.sleep(AppConfig.REPO_CREATION_DELAY_MS)
             }
         }
     }
@@ -158,10 +131,8 @@ class CreateReposCommand : CliktCommand(name = "create-repos") {
         val description = book.description
         val topics = book.topics
 
-        println("\n${"=".repeat(60)}")
-        println("Repo: $repoName")
-        println("Title: ${book.chineseTitle}")
-        println("=".repeat(60))
+        println()
+        CliFormatter.printSectionHeader("Repo: $repoName\nTitle: ${book.chineseTitle}")
 
         if (dryRun) {
             println("[DRY RUN] Would perform:")
@@ -189,7 +160,7 @@ class CreateReposCommand : CliktCommand(name = "create-repos") {
                 return false
             }
             println("  Repository created")
-            Thread.sleep(1000)
+            Thread.sleep(AppConfig.API_CALL_DELAY_MS)
 
             // Set up the new repo
             updateRepoSettings(username, repoName, book, null)
@@ -246,9 +217,8 @@ class CreateReposCommand : CliktCommand(name = "create-repos") {
     }
 
     private fun printSummary(totalBooks: Int) {
-        println("\n${"=".repeat(60)}")
-        println("Complete!")
-        println("=".repeat(60))
+        println()
+        CliFormatter.printSectionHeader("Complete!")
 
         if (dryRun) {
             println("\n[DRY RUN] Would have processed $totalBooks books")

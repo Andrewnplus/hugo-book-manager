@@ -29,12 +29,6 @@ dependencies {
     // YAML parsing
     implementation("org.yaml:snakeyaml:2.3")
 
-    // HTML parsing
-    implementation("org.jsoup:jsoup:1.18.3")
-
-    // PDF parsing
-    implementation("org.apache.pdfbox:pdfbox:3.0.3")
-
     // SLF4J Simple implementation (to suppress SLF4J warnings)
     implementation("org.slf4j:slf4j-simple:$slf4jVersion")
 
@@ -166,37 +160,6 @@ tasks.register<JavaExec>("initBooks") {
     }
 }
 
-tasks.register<JavaExec>("rebuildDocs") {
-    group = "book-manager"
-    description = "Rebuild docs structure in an existing Hugo Book project"
-    dependsOn("classes")
-    classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.nplus.bookmanager.MainKt")
-
-    doFirst {
-        val repoDir =
-            project.findProperty("repoDir")?.toString()
-                ?: throw GradleException("Please specify repo directory: -PrepoDir=/path/to/book")
-        val toc = project.findProperty("toc")?.toString()
-        val tocText = project.findProperty("tocText")?.toString()
-        val dryRun = project.findProperty("dryRun")?.toString()?.toBoolean() ?: false
-        val yes = project.findProperty("yes")?.toString()?.toBoolean() ?: false
-
-        val argList = mutableListOf("rebuild-docs", "--repo-dir", repoDir)
-        if (toc != null) {
-            argList.add("--toc")
-            argList.add(toc)
-        }
-        if (tocText != null) {
-            argList.add("--toc-text")
-            argList.add(tocText)
-        }
-        if (dryRun) argList.add("--dry-run")
-        if (yes) argList.add("--yes")
-        args = argList
-    }
-}
-
 tasks.register<JavaExec>("mergePrs") {
     group = "book-manager"
     description = "Batch merge Renovate PRs with passing CI"
@@ -213,79 +176,6 @@ tasks.register<JavaExec>("mergePrs") {
         val argList = mutableListOf("merge-prs", "--parent-dir", parentDir)
         argList.add("--merge-method")
         argList.add(mergeMethod)
-        args = argList
-    }
-}
-
-tasks.register<JavaExec>("cleanDocs") {
-    group = "book-manager"
-    description = "Clean HTML/MHTML documents and convert to Markdown"
-    dependsOn("classes")
-    classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.nplus.bookmanager.MainKt")
-
-    doFirst {
-        val inputDir =
-            project.findProperty("inputDir")?.toString()
-                ?: throw GradleException("Please specify input directory: -PinputDir=/path/to/html/files")
-        val outputDir = project.findProperty("outputDir")?.toString()
-        val single = project.findProperty("single")?.toString()
-        val dryRun = project.findProperty("dryRun")?.toString()?.toBoolean() ?: false
-
-        val argList = mutableListOf("clean-docs", "--input-dir", inputDir)
-        if (outputDir != null) {
-            argList.add("--output-dir")
-            argList.add(outputDir)
-        }
-        if (single != null) {
-            argList.add("--single")
-            argList.add(single)
-        }
-        if (dryRun) argList.add("--dry-run")
-        args = argList
-    }
-}
-
-tasks.register<JavaExec>("convertDocs") {
-    group = "book-manager"
-    description = "Convert cleaned Markdown to Hugo-book format using AI"
-    dependsOn("classes")
-    classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.nplus.bookmanager.MainKt")
-
-    doFirst {
-        val inputDir =
-            project.findProperty("inputDir")?.toString()
-                ?: throw GradleException("Please specify input directory: -PinputDir=/path/to/md/files")
-        val outputDir = project.findProperty("outputDir")?.toString()
-        val single = project.findProperty("single")?.toString()
-        val prompt = project.findProperty("prompt")?.toString()
-        val delay = project.findProperty("delay")?.toString()
-        val startFrom = project.findProperty("startFrom")?.toString()
-        val dryRun = project.findProperty("dryRun")?.toString()?.toBoolean() ?: false
-
-        val argList = mutableListOf("convert-docs", "--input-dir", inputDir)
-        if (outputDir != null) {
-            argList.add("--output-dir")
-            argList.add(outputDir)
-        }
-        if (single != null) {
-            argList.add("--single")
-            argList.add(single)
-        }
-        if (prompt != null) {
-            argList.add("--prompt")
-            argList.add(prompt)
-        }
-        if (delay != null) {
-            argList.add("--delay")
-            argList.add(delay)
-        }
-        if (startFrom != null) {
-            argList.add("--start-from")
-            argList.add(startFrom)
-        }
-        if (dryRun) argList.add("--dry-run")
         args = argList
     }
 }

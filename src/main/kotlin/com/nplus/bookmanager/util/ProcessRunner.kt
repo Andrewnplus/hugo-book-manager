@@ -42,8 +42,16 @@ object ProcessRunner {
 
             val process = processBuilder.start()
 
+            // Read stdout and stderr in parallel to avoid deadlock
+            // when either buffer fills up
+            var stderr = ""
+            val stderrThread =
+                Thread {
+                    stderr = process.errorStream.bufferedReader().readText()
+                }
+            stderrThread.start()
             val stdout = process.inputStream.bufferedReader().readText()
-            val stderr = process.errorStream.bufferedReader().readText()
+            stderrThread.join()
 
             val completed = process.waitFor(timeoutSeconds, TimeUnit.SECONDS)
 

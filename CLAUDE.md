@@ -10,14 +10,11 @@ Hugo Book Manager is a Kotlin + Gradle tool that automatically creates GitHub re
 - Interactive AI-powered book metadata generation via Claude Code
 - Batch renovate.json configuration updates
 - One-stop book creation workflow (AI Task → GitHub → Clone → Update → Push)
-- Document cleaning: Convert PDF/HTML/MHTML to clean Markdown
-- Document conversion: Transform Markdown to Hugo-book format using AI
-- Rebuild docs structure: Regenerate Hugo-book docs folder from table of contents
 - Prompt generation: Generate reusable prompts for book project maintenance tasks
 
 ## AI Task Processing Workflow
 
-Commands that require AI processing (`init-book`, `rebuild-docs`, `convert-docs`) use a **two-phase interactive workflow**:
+Commands that require AI processing (`init-book`, `init-books`) use a **two-phase interactive workflow**:
 
 ### How It Works
 
@@ -83,7 +80,6 @@ When user says **"請處理 AI 任務"** (please process AI task):
 |-----------|---------|--------|
 | `metadata-request.json` | Generate book metadata from title | `metadata-response.json` |
 | `structure-request.json` | Generate docs structure from TOC | `structure-response.json` |
-| `convert-request.json` | Convert MD to Hugo-book format | Direct to specified output paths |
 
 ## Common Commands
 
@@ -108,37 +104,11 @@ When user says **"請處理 AI 任務"** (please process AI task):
 # Batch update renovate.json (actual)
 ./gradlew updateRenovate -PparentDir=/path/to/books
 
-# Clean HTML/MHTML documents to Markdown (Stage 1)
-./gradlew cleanDocs -PinputDir=/path/to/html/files -PdryRun=true
-./gradlew cleanDocs -PinputDir=/path/to/html/files
-./gradlew cleanDocs -PinputDir=/path/to/html/files -PoutputDir=/path/to/output
-
-# Clean a single file
-./gradlew cleanDocs -PinputDir=. -Psingle=sampleFile.mhtml
-
-# Convert Markdown to Hugo-book format (Stage 2) - Two-phase workflow
-# Phase 1: Generate AI task
-./gradlew convertDocs -PinputDir=/path/to/cleaned/md
-# Phase 2: After Claude processes, re-run to verify
-./gradlew convertDocs -PinputDir=/path/to/cleaned/md
-
-# Convert with custom prompt
-./gradlew convertDocs -PinputDir=/path/to/md -Pprompt=my-prompt.txt
-
 # Initialize a new book from YAML input - Two-phase workflow
 # Phase 1: Generate AI tasks
 ./gradlew initBook -Pinput=templates/book-input.yaml
 # Phase 2: After Claude processes, re-run to continue
 ./gradlew initBook -Pinput=templates/book-input.yaml
-
-# Rebuild docs structure - Two-phase workflow
-# Phase 1: Generate AI task
-./gradlew rebuildDocs -PrepoDir=/path/to/book -Ptoc=/path/to/toc.txt
-# Phase 2: After Claude processes, re-run to apply
-./gradlew rebuildDocs -PrepoDir=/path/to/book -Ptoc=/path/to/toc.txt
-
-# Rebuild docs (skip confirmation prompt)
-./gradlew rebuildDocs -PrepoDir=/path/to/book -Ptoc=/path/to/toc.txt -Pyes=true
 
 # Batch merge Renovate PRs with passing CI
 ./gradlew mergePrs -PparentDir=/path/to/books
@@ -152,8 +122,9 @@ When user says **"請處理 AI 任務"** (please process AI task):
 ./gradlew generatePrompt -Ptype=enhance-katex                 # Add KaTeX math formula support
 ./gradlew generatePrompt -Ptype=enhance-mermaid               # Add Mermaid diagram support
 ./gradlew generatePrompt -Ptype=review-markdown               # Review and fix markdown issues
-./gradlew generatePrompt -Ptype=doc-convert                   # Document conversion prompt
 ./gradlew generatePrompt -Ptype=list-to-table                 # Convert lists to markdown tables
+./gradlew generatePrompt -Ptype=simplify-table                # Simplify tables by removing redundant info
+./gradlew generatePrompt -Ptype=extract-insights              # Extract insights from book notes
 
 # Save prompt to file (for use in other projects)
 ./gradlew generatePrompt -Ptype=restructure-folders -Poutput=/path/to/book/PROMPT.md
@@ -166,10 +137,7 @@ When user says **"請處理 AI 任務"** (please process AI task):
 ./gradlew run --args="check-env"
 ./gradlew run --args="create-repos --csv data/test-3-books.csv --dry-run"
 ./gradlew run --args="update-renovate --parent-dir /path/to/books --dry-run"
-./gradlew run --args="clean-docs --input-dir /path/to/html --dry-run"
-./gradlew run --args="convert-docs --input-dir /path/to/md --dry-run"
 ./gradlew run --args="init-book --input templates/book-input.yaml --dry-run"
-./gradlew run --args="rebuild-docs --repo-dir /path/to/book --toc /path/to/toc.txt --dry-run"
 ./gradlew run --args="merge-prs --parent-dir /path/to/books"
 ./gradlew run --args="generate-prompt --list"
 ./gradlew run --args="generate-prompt --type restructure-folders"
@@ -208,15 +176,14 @@ hugo-book-manager/
 │   ├── config/
 │   │   └── AppConfig.kt          # Configuration from local.properties
 │   ├── model/
+│   │   ├── AiTaskModels.kt        # AI task request/response models
 │   │   ├── Book.kt               # CSV data model
-│   │   ├── BookInput.kt          # YAML input model for init-book
-│   │   ├── DocsStructure.kt      # AI-generated docs structure model
-│   │   └── GeneratedMetadata.kt  # AI response model
+│   │   └── BookInput.kt          # YAML input, queue, metadata & structure models
 │   ├── service/
 │   │   ├── AiTaskService.kt          # AI task file management
 │   │   ├── BookInputService.kt       # YAML input file parsing
+│   │   ├── BookRepoService.kt        # Shared book-repo creation workflow
 │   │   ├── CsvService.kt             # CSV file reading
-│   │   ├── DocumentCleanerService.kt # PDF/HTML/MHTML to Markdown
 │   │   ├── DocsStructureService.kt   # Hugo docs folder creation
 │   │   ├── GitHubCliService.kt       # gh CLI wrapper
 │   │   ├── GitService.kt             # Git operations
@@ -224,13 +191,11 @@ hugo-book-manager/
 │   │   └── TemplateService.kt        # Template file modifications
 │   ├── command/
 │   │   ├── CheckEnvCommand.kt        # Environment check
-│   │   ├── CleanDocsCommand.kt       # Stage 1: Clean PDF/HTML/MHTML
-│   │   ├── ConvertDocsCommand.kt     # Stage 2: Convert to Hugo-book
 │   │   ├── CreateReposCommand.kt     # Batch CSV creation
 │   │   ├── GeneratePromptCommand.kt  # Generate prompt templates
-│   │   ├── InitBookCommand.kt        # One-stop book initialization
+│   │   ├── InitBookCommand.kt        # Single book initialization
+│   │   ├── InitBooksCommand.kt       # Batch book initialization from queue
 │   │   ├── MergePrsCommand.kt        # Batch merge Renovate PRs
-│   │   ├── RebuildDocsCommand.kt     # Rebuild docs structure
 │   │   └── UpdateRenovateCommand.kt  # Renovate config update
 │   └── util/
 │       └── ProcessRunner.kt      # Shell command execution
@@ -244,6 +209,7 @@ hugo-book-manager/
         ├── book-metadata.txt             # Prompt for book metadata generation
         ├── book-structure.txt            # Prompt for docs structure generation
         ├── convert-list-to-table.txt     # Prompt for converting lists to tables
+        ├── simplify-table.txt            # Prompt for simplifying tables
         ├── doc-convert.txt               # Prompt for document conversion
         ├── restructure-folders.txt       # Prompt for renaming folders
         ├── enhance-markdown-katex.txt    # Prompt for KaTeX support
@@ -271,13 +237,7 @@ hugo-book-manager/
 
 **`DocsStructureService`** (`service/DocsStructureService.kt`):
 - `createDocsStructure()`: Create Hugo docs folder structure with _index.md files
-- `isValidHugoBookRepo()`: Validate Hugo Book repository structure
 - `printDocsStructure()`: Display structure to console
-
-**`DocumentCleanerService`** (`service/DocumentCleanerService.kt`):
-- `cleanDocument()`: Clean a single PDF/HTML/MHTML file to Markdown
-- `cleanDirectory()`: Batch clean all documents in a directory
-- Handles PDF text extraction, MHTML multipart parsing, quoted-printable decoding
 
 **`BookInputService`** (`service/BookInputService.kt`):
 - `loadBookInput()`: Parse YAML input file for init-book command
@@ -313,32 +273,7 @@ hugo-book-manager/
    - Update `.github/renovate.json` with standard config
    - `git commit` + `git push`
 
-#### 3. Clean Documents (`clean-docs`) - Stage 1
-1. Scan input directory for PDF/HTML/MHTML files
-2. For each file:
-   - **PDF**: Extract text using Apache PDFBox, detect headings/lists
-   - **MHTML**: Parse multipart format, decode quoted-printable
-   - **HTML**: Parse with Jsoup, extract main content
-   - Convert to clean Markdown with headings, lists, bold/italic
-3. Write cleaned Markdown files to output directory
-
-#### 4. Convert Documents (`convert-docs`) - Stage 2 (Two-Phase)
-**Phase 1:**
-1. Scan input directory for Markdown files
-2. Create `ai-tasks/input/convert-request.json` with file list
-3. Prompt user to ask Claude Code to process
-
-**Claude Processing:**
-1. Read prompt from `templates/prompts/doc-convert.txt`
-2. For each file, read content and generate Hugo-book formatted Markdown
-3. Write converted files to specified output paths
-
-**Phase 2:**
-1. Check if all output files exist
-2. Clean up task files
-3. Report completion
-
-#### 5. Initialize Book (`init-book`) (Two-Phase)
+#### 3. Initialize Book (`init-book`) (Two-Phase)
 **Phase 1:**
 1. Read book info from YAML input file
 2. Create `ai-tasks/input/metadata-request.json`
@@ -358,25 +293,7 @@ hugo-book-manager/
 5. Download and resize cover image
 6. Create docs folder structure with _index.md files
 
-#### 6. Rebuild Docs Structure (`rebuild-docs`) (Two-Phase)
-**Phase 1:**
-1. Validate target directory is a Hugo Book repository
-2. Read table of contents (from file, text argument, or interactive input)
-3. Create `ai-tasks/input/structure-request.json`
-4. Prompt user to ask Claude Code to process
-
-**Claude Processing:**
-1. Generate docs structure from TOC
-2. Write response to `ai-tasks/output/structure-response.json`
-
-**Phase 2:**
-1. Read AI-generated structure
-2. Preview changes (folders to delete/create)
-3. User prompted to confirm (can skip with --yes flag)
-4. Delete existing doc folders
-5. Create new folder structure with proper _index.md files
-
-#### 7. Merge Pull Requests (`merge-prs`)
+#### 4. Merge Pull Requests (`merge-prs`)
 1. Scan parent directory for git repositories
 2. For each repository:
    - Find open Renovate PRs
@@ -384,7 +301,7 @@ hugo-book-manager/
    - Merge passing PRs with specified method (merge/squash/rebase)
 3. Summary of merged/skipped PRs
 
-#### 8. Generate Prompt (`generate-prompt`)
+#### 5. Generate Prompt (`generate-prompt`)
 Generate reusable prompt templates for book project maintenance:
 
 | Type | Description |
@@ -393,8 +310,9 @@ Generate reusable prompt templates for book project maintenance:
 | `enhance-katex` | Add KaTeX math formula support |
 | `enhance-mermaid` | Add Mermaid diagram support |
 | `review-markdown` | Review and fix markdown quality issues |
-| `doc-convert` | Convert documents to Hugo-book format |
 | `list-to-table` | Convert list items to markdown tables |
+| `simplify-table` | Simplify tables by removing redundant info |
+| `extract-insights` | Extract valuable insights from book notes |
 
 **Usage workflow:**
 1. Run `./gradlew generatePrompt -Ptype=<type>` to display prompt
@@ -438,8 +356,6 @@ Expected CSV columns:
 - **kotlinx-serialization**: JSON parsing
 - **kotlin-csv**: CSV file reading
 - **Clikt**: CLI framework
-- **Jsoup**: HTML parsing for document cleaning
-- **Apache PDFBox**: PDF text extraction
 
 ## Development Notes
 
@@ -460,14 +376,6 @@ Expected CSV columns:
 - Use `./gradlew generatePrompt --list` to see all available prompts
 - Prompts can be saved to file: `./gradlew generatePrompt -Ptype=<type> -Poutput=PROMPT.md`
 - When pasted to Claude Code in another project, Claude will understand and execute the task
-
-### Document Processing
-- Document cleaning supports PDF, MHTML (saved web pages), HTML, and HTM formats
-- PDF parsing extracts text and attempts to detect headings, lists, and paragraphs
-- MHTML parsing handles quoted-printable encoding and multipart MIME structure
-- Slate.js editor format (used by 極客時間) is properly converted to Markdown
-- Custom prompts can be used for document conversion via `--prompt` option
-- The default conversion prompt is stored in `templates/prompts/doc-convert.txt`
 
 ### Hugo Book Structure
 - Hugo Book uses a specific folder structure: `site/content/docs/`

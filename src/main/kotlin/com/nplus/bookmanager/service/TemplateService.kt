@@ -1,16 +1,48 @@
 package com.nplus.bookmanager.service
 
+import com.nplus.bookmanager.config.AppConfig
+import com.nplus.bookmanager.model.BookInput
+import com.nplus.bookmanager.model.GeneratedMetadata
 import java.io.File
 
 /**
  * Service for modifying template files in cloned book repositories
  */
 class TemplateService {
-    private val templateRepoName = "hugo-book-template"
-    private val templateBookTitle = "讀書筆記模版"
+    companion object {
+        // Hugo Book repo file paths
+        const val README_PATH = "README.md"
+        const val SETTINGS_GRADLE_PATH = "settings.gradle.kts"
+        const val HUGO_TOML_PATH = "site/hugo.toml"
+        const val GO_MOD_PATH = "site/go.mod"
+        const val INDEX_MD_PATH = "site/content/_index.md"
+        const val COVER_IMAGE_PATH = "site/content/cover.png"
+
+        val STANDARD_RENOVATE_JSON =
+            """
+{
+  "${'$'}schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "schedule": ["every 3 weeks on saturday"],
+  "automerge": true,
+  "automergeType": "pr",
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "enabled": false
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "groupName": "major updates",
+      "automerge": true
+    }
+  ]
+}
+            """.trimIndent()
+    }
 
     /**
-     * Update all template files in a cloned repository
+     * Update all template files in a cloned repository (simple version for create-repos).
      *
      * @param repoDir The cloned repository directory
      * @param repoName The new repository name
@@ -25,49 +57,142 @@ class TemplateService {
 
         // Update README.md
         allSuccess = updateFile(
-            File(repoDir, "README.md"),
+            File(repoDir, README_PATH),
             mapOf(
-                templateRepoName to repoName,
-                templateBookTitle to chineseTitle,
+                AppConfig.TEMPLATE_SLUG to repoName,
+                AppConfig.TEMPLATE_ZH_TITLE to chineseTitle,
             ),
         ) &&
             allSuccess
 
         // Update settings.gradle.kts
         allSuccess = updateFile(
-            File(repoDir, "settings.gradle.kts"),
-            mapOf(templateRepoName to repoName),
+            File(repoDir, SETTINGS_GRADLE_PATH),
+            mapOf(AppConfig.TEMPLATE_SLUG to repoName),
         ) &&
             allSuccess
 
         // Update site/hugo.toml
-        val hugoToml = File(repoDir, "site/hugo.toml")
         allSuccess = updateFile(
-            hugoToml,
+            File(repoDir, HUGO_TOML_PATH),
             mapOf(
-                templateBookTitle to chineseTitle,
-                "baseURL = \"https://nplus.wiki/$templateRepoName/\"" to "baseURL = \"https://nplus.wiki/$repoName/\"",
+                AppConfig.TEMPLATE_ZH_TITLE to chineseTitle,
+                "baseURL = \"${AppConfig.homepageBaseUrl}/${AppConfig.TEMPLATE_SLUG}/\"" to
+                    "baseURL = \"${AppConfig.homepageBaseUrl}/$repoName/\"",
             ),
         ) &&
             allSuccess
 
         // Update site/content/_index.md
         allSuccess = updateFile(
-            File(repoDir, "site/content/_index.md"),
-            mapOf(templateBookTitle to chineseTitle),
+            File(repoDir, INDEX_MD_PATH),
+            mapOf(AppConfig.TEMPLATE_ZH_TITLE to chineseTitle),
         ) &&
             allSuccess
 
         // Update site/go.mod
         allSuccess = updateFile(
-            File(repoDir, "site/go.mod"),
+            File(repoDir, GO_MOD_PATH),
             mapOf(
-                "module github.com/Andrewnplus/$templateRepoName" to "module github.com/Andrewnplus/$repoName",
+                "module github.com/${AppConfig.githubUsername}/${AppConfig.TEMPLATE_SLUG}" to
+                    "module github.com/${AppConfig.githubUsername}/$repoName",
             ),
         ) &&
             allSuccess
 
         return allSuccess
+    }
+
+    /**
+     * Update all template files with full book metadata (for init-book / init-books).
+     *
+     * @param repoDir The cloned repository directory
+     * @param metadata AI-generated metadata
+     * @param bookInput Book input with author, date, purchase URL
+     */
+    fun updateTemplateFiles(
+        repoDir: File,
+        metadata: GeneratedMetadata,
+        bookInput: BookInput,
+    ): Boolean {
+        var allSuccess = true
+
+        // Update README.md
+        allSuccess = updateFile(
+            File(repoDir, README_PATH),
+            mapOf(
+                AppConfig.TEMPLATE_SLUG to metadata.repoName,
+                AppConfig.TEMPLATE_EN_TITLE to metadata.englishTitle,
+                AppConfig.TEMPLATE_ZH_TITLE to metadata.chineseTitle,
+            ),
+        ) && allSuccess
+
+        // Update settings.gradle.kts
+        allSuccess = updateFile(
+            File(repoDir, SETTINGS_GRADLE_PATH),
+            mapOf(AppConfig.TEMPLATE_SLUG to metadata.repoName),
+        ) && allSuccess
+
+        // Update site/hugo.toml
+        allSuccess = updateFile(
+            File(repoDir, HUGO_TOML_PATH),
+            mapOf(
+                AppConfig.TEMPLATE_ZH_TITLE to metadata.chineseTitle,
+                AppConfig.TEMPLATE_SLUG to metadata.repoName,
+            ),
+        ) && allSuccess
+
+        // Update site/content/_index.md with book info
+        updateIndexFile(repoDir, metadata.chineseTitle, bookInput)
+
+        // Update site/go.mod
+        updateGoMod(repoDir, metadata.repoName)
+
+        return allSuccess
+    }
+
+    private fun updateIndexFile(
+        repoDir: File,
+        chineseTitle: String,
+        bookInput: BookInput,
+    ) {
+        val indexFile = File(repoDir, INDEX_MD_PATH)
+        if (!indexFile.exists()) {
+            println("  Warning: _index.md not found")
+            return
+        }
+
+        var content = indexFile.readText()
+        content =
+            content
+                .replace("title: \"${AppConfig.TEMPLATE_ZH_TITLE}\"", "title: \"$chineseTitle\"")
+                .replace("title=\"${AppConfig.TEMPLATE_ZH_TITLE}\"", "title=\"$chineseTitle\"")
+                .replace("author=\"${AppConfig.TEMPLATE_AUTHOR_PLACEHOLDER}\"", "author=\"${bookInput.author}\"")
+                .replace("date=\"${AppConfig.TEMPLATE_DATE_PLACEHOLDER}\"", "date=\"${bookInput.publicationDate}\"")
+                .replace("link=\"${AppConfig.TEMPLATE_PURCHASE_URL_PLACEHOLDER}\"", "link=\"${bookInput.purchaseUrl}\"")
+
+        indexFile.writeText(content)
+        println("  Updated: _index.md")
+    }
+
+    private fun updateGoMod(
+        repoDir: File,
+        repoName: String,
+    ) {
+        val goModFile = File(repoDir, GO_MOD_PATH)
+        if (!goModFile.exists()) {
+            println("  Warning: go.mod not found")
+            return
+        }
+
+        var content = goModFile.readText()
+        content =
+            content.replace(
+                Regex("module github\\.com/[^/]+/[^\\s]+"),
+                "module github.com/${AppConfig.githubUsername}/$repoName",
+            )
+        goModFile.writeText(content)
+        println("  Updated: go.mod")
     }
 
     /**
@@ -116,29 +241,5 @@ class TemplateService {
             println("  Error updating renovate.json: ${e.message}")
             false
         }
-    }
-
-    companion object {
-        val STANDARD_RENOVATE_JSON =
-            """
-{
-  "${'$'}schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-  "schedule": ["every 3 weeks on saturday"],
-  "automerge": true,
-  "automergeType": "pr",
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch"],
-      "enabled": false
-    },
-    {
-      "matchUpdateTypes": ["major"],
-      "groupName": "major updates",
-      "automerge": true
-    }
-  ]
-}
-            """.trimIndent()
     }
 }
