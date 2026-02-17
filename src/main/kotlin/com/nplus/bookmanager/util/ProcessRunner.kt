@@ -88,8 +88,9 @@ object ProcessRunner {
         command: String,
         workingDir: File? = null,
         timeoutSeconds: Long = 60,
+        description: String? = null,
     ): String? {
-        val result = execute(command, workingDir, timeoutSeconds)
+        val result = execute(command, workingDir, timeoutSeconds, description)
         return if (result.success) result.stdout else null
     }
 

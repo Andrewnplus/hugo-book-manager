@@ -66,13 +66,13 @@ class InitBooksCommand(
 
         // Handle --status flag
         if (showStatus) {
-            printQueueStatus(queue)
+            handleStatusCommand(queue)
             return
         }
 
         // Handle --reset flag
         if (reset && bookId != null) {
-            resetBook(queue, bookId!!)
+            handleResetCommand(queue, bookId!!)
             return
         }
 
@@ -140,6 +140,29 @@ class InitBooksCommand(
                 println("  Use --reset --id=${targetBook.id} to retry")
             }
         }
+    }
+
+    private fun handleStatusCommand(queue: BooksQueue) {
+        printQueueStatus(queue)
+    }
+
+    private fun handleResetCommand(
+        queue: BooksQueue,
+        id: String,
+    ) {
+        val book = queue.getById(id)
+        if (book == null) {
+            println("Error: Book with ID '$id' not found in queue")
+            return
+        }
+
+        val updatedQueue = queue.updateStatus(id, BookStatus.PENDING)
+        bookInputService.saveBooksQueue(File(queueFile), updatedQueue)
+
+        // Also clear any pending AI tasks
+        aiTaskService.clearBatchMetadataTasks()
+
+        println("✅ Reset book '$id' to pending status")
     }
 
     /**
@@ -267,25 +290,6 @@ class InitBooksCommand(
         val updatedQueue = queue.updateStatus(book.id, BookStatus.ERROR, message)
         bookInputService.saveBooksQueue(File(queueFile), updatedQueue)
         println("  Marked as error: $message")
-    }
-
-    private fun resetBook(
-        queue: BooksQueue,
-        id: String,
-    ) {
-        val book = queue.getById(id)
-        if (book == null) {
-            println("Error: Book with ID '$id' not found in queue")
-            return
-        }
-
-        val updatedQueue = queue.updateStatus(id, BookStatus.PENDING)
-        bookInputService.saveBooksQueue(File(queueFile), updatedQueue)
-
-        // Also clear any pending AI tasks
-        aiTaskService.clearBatchMetadataTasks()
-
-        println("✅ Reset book '$id' to pending status")
     }
 
     private fun printHeader() {

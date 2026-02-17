@@ -13,6 +13,9 @@ object AppConfig {
     const val API_CALL_DELAY_MS = 1000L
     const val TOPIC_API_DELAY_MS = 500L
 
+    // Paths
+    const val PROMPTS_DIR = "templates/prompts"
+
     // Template placeholders — values to be replaced when creating a new book repo
     const val TEMPLATE_SLUG = "hugo-book-template"
     const val TEMPLATE_EN_TITLE = "Hugo Book Template"

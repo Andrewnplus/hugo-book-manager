@@ -2,9 +2,9 @@ package com.nplus.bookmanager.service
 
 import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.util.ProcessRunner
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
@@ -63,6 +63,17 @@ class GitHubCliService {
         repoName: String,
     ): Boolean = ProcessRunner.executeSuccessfully("gh repo view $username/$repoName --json name")
 
+    @Serializable
+    private data class GhRepoInfoResponse(
+        val homepageUrl: String = "",
+        val repositoryTopics: List<GhTopicNode> = emptyList(),
+    )
+
+    @Serializable
+    private data class GhTopicNode(
+        val name: String = "",
+    )
+
     /**
      * Get repository info (homepage, topics)
      */
@@ -76,30 +87,11 @@ class GitHubCliService {
             ) ?: return null
 
         return try {
-            val jsonObj = json.parseToJsonElement(output).jsonObject
-            val homepage = jsonObj["homepageUrl"]?.jsonPrimitive?.contentOrNull ?: ""
-            val topicsData = jsonObj["repositoryTopics"]
-
-            val topics =
-                when {
-                    topicsData == null -> emptyList()
-                    topicsData is JsonArray ->
-                        topicsData.mapNotNull {
-                            it.jsonObject["name"]?.jsonPrimitive?.contentOrNull
-                        }
-                    topicsData is JsonObject && topicsData.containsKey("nodes") -> {
-                        topicsData["nodes"]?.jsonArray?.mapNotNull {
-                            it.jsonObject["topic"]
-                                ?.jsonObject
-                                ?.get("name")
-                                ?.jsonPrimitive
-                                ?.contentOrNull
-                        } ?: emptyList()
-                    }
-                    else -> emptyList()
-                }
-
-            RepoInfo(homepage, topics)
+            val response = json.decodeFromString<GhRepoInfoResponse>(output)
+            RepoInfo(
+                homepageUrl = response.homepageUrl,
+                topics = response.repositoryTopics.map { it.name },
+            )
         } catch (e: Exception) {
             println("  Warning: Could not parse repo info: ${e.message}")
             null
@@ -222,6 +214,21 @@ class GitHubCliService {
             "gh repo clone $username/$repoName $targetDir",
             description = "Cloning repository...",
         )
+
+    /**
+     * Configure repository settings: homepage, GitHub Pages, topics, and star.
+     */
+    fun configureRepository(
+        username: String,
+        repoName: String,
+        homepageUrl: String,
+        topics: List<String>,
+    ) {
+        setHomepage(username, repoName, homepageUrl)
+        enableGitHubPages(username, repoName)
+        addTopics(username, repoName, topics)
+        starRepo(username, repoName)
+    }
 
     data class RepoInfo(
         val homepageUrl: String,

@@ -138,35 +138,54 @@ class BookInputService {
     /**
      * Validate book input has all required fields
      */
-    fun validate(input: BookInput): List<String> {
-        val errors = mutableListOf<String>()
-
-        if (input.chineseTitle.isBlank()) errors.add("chinese_title is required")
-        if (input.englishTitle.isBlank()) errors.add("english_title is required")
-        if (input.author.isBlank()) errors.add("author is required")
-        if (input.publicationDate.isBlank()) errors.add("publication_date is required")
-        if (input.coverUrl.isBlank()) errors.add("cover_url is required")
-        if (input.purchaseUrl.isBlank()) errors.add("purchase_url is required")
-        if (input.tableOfContents.isBlank()) errors.add("table_of_contents is required")
-
-        return errors
-    }
+    fun validate(input: BookInput): List<String> =
+        validateCommonFields(
+            chineseTitle = input.chineseTitle,
+            englishTitle = input.englishTitle,
+            author = input.author,
+            publicationDate = input.publicationDate,
+            coverUrl = input.coverUrl,
+            purchaseUrl = input.purchaseUrl,
+            tableOfContents = input.tableOfContents,
+        )
 
     /**
      * Validate a queued book has all required fields
      */
     fun validateQueuedBook(book: QueuedBook): List<String> {
         val errors = mutableListOf<String>()
-
         if (book.id.isBlank()) errors.add("id is required")
-        if (book.chineseTitle.isBlank()) errors.add("chinese_title is required")
-        if (book.englishTitle.isBlank()) errors.add("english_title is required")
-        if (book.author.isBlank()) errors.add("author is required")
-        if (book.publicationDate.isBlank()) errors.add("publication_date is required")
-        if (book.coverUrl.isBlank()) errors.add("cover_url is required")
-        if (book.purchaseUrl.isBlank()) errors.add("purchase_url is required")
-        if (book.tableOfContents.isBlank()) errors.add("table_of_contents is required")
+        errors.addAll(
+            validateCommonFields(
+                chineseTitle = book.chineseTitle,
+                englishTitle = book.englishTitle,
+                author = book.author,
+                publicationDate = book.publicationDate,
+                coverUrl = book.coverUrl,
+                purchaseUrl = book.purchaseUrl,
+                tableOfContents = book.tableOfContents,
+            ),
+        )
+        return errors
+    }
 
+    private fun validateCommonFields(
+        chineseTitle: String,
+        englishTitle: String,
+        author: String,
+        publicationDate: String,
+        coverUrl: String,
+        purchaseUrl: String,
+        tableOfContents: String,
+    ): List<String> {
+        val errors = mutableListOf<String>()
+        if (chineseTitle.isBlank()) errors.add("chinese_title is required")
+        if (englishTitle.isBlank()) errors.add("english_title is required")
+        if (author.isBlank()) errors.add("author is required")
+        if (publicationDate.isBlank()) errors.add("publication_date is required")
+        if (coverUrl.isBlank()) errors.add("cover_url is required")
+        if (purchaseUrl.isBlank()) errors.add("purchase_url is required")
+        if (tableOfContents.isBlank()) errors.add("table_of_contents is required")
         return errors
     }
 }

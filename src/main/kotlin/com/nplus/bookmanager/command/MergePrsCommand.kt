@@ -54,9 +54,41 @@ class MergePrsCommand(
 
         println("Scanning ${repos.size} repositories for Renovate PRs...\n")
 
-        // Collect all Renovate PRs with passing CI
-        val allPrs = mutableListOf<PullRequest>()
-        val skippedPrs = mutableListOf<Pair<PullRequest, String>>() // PR and reason
+        val (readyPrs, skippedPrs) = collectPrs(repos)
+
+        if (readyPrs.isEmpty() && skippedPrs.isEmpty()) {
+            println("No Renovate PRs found.")
+            return
+        }
+
+        displayPrSummary(readyPrs, skippedPrs)
+
+        if (readyPrs.isEmpty()) {
+            println("No PRs ready to merge.")
+            return
+        }
+
+        // Confirm merge
+        println()
+        if (!UserInput.confirm("Merge all ${readyPrs.size} PRs?")) {
+            println("Cancelled.")
+            return
+        }
+
+        val (successCount, failCount) = executeMerges(readyPrs)
+
+        // Summary
+        println()
+        CliFormatter.printSectionHeader("Complete!")
+        println()
+        println("  Merged: $successCount")
+        println("  Failed: $failCount")
+        println("  Skipped: ${skippedPrs.size}")
+    }
+
+    private fun collectPrs(repos: List<File>): Pair<List<PullRequest>, List<Pair<PullRequest, String>>> {
+        val readyPrs = mutableListOf<PullRequest>()
+        val skippedPrs = mutableListOf<Pair<PullRequest, String>>()
 
         for (repo in repos) {
             val repoFullName = ghService.getRepoFullName(repo)
@@ -68,7 +100,7 @@ class MergePrsCommand(
             val prs = ghService.listRenovatePrs(repoFullName)
             for (pr in prs) {
                 when (pr.checksStatus) {
-                    ChecksStatus.PASSING -> allPrs.add(pr)
+                    ChecksStatus.PASSING -> readyPrs.add(pr)
                     ChecksStatus.FAILING -> skippedPrs.add(pr to "CI failing")
                     ChecksStatus.PENDING -> skippedPrs.add(pr to "CI pending")
                     ChecksStatus.UNKNOWN -> skippedPrs.add(pr to "No CI status")
@@ -76,25 +108,24 @@ class MergePrsCommand(
             }
         }
 
-        // Display results
-        if (allPrs.isEmpty() && skippedPrs.isEmpty()) {
-            println("No Renovate PRs found.")
-            return
-        }
+        return readyPrs to skippedPrs
+    }
 
-        // Show PRs ready to merge
-        if (allPrs.isNotEmpty()) {
-            CliFormatter.printSectionHeader("Renovate PRs ready to merge (CI passing): ${allPrs.size}")
+    private fun displayPrSummary(
+        readyPrs: List<PullRequest>,
+        skippedPrs: List<Pair<PullRequest, String>>,
+    ) {
+        if (readyPrs.isNotEmpty()) {
+            CliFormatter.printSectionHeader("Renovate PRs ready to merge (CI passing): ${readyPrs.size}")
             println()
 
-            allPrs.forEachIndexed { index, pr ->
+            readyPrs.forEachIndexed { index, pr ->
                 println("  [${index + 1}] ${pr.repoFullName}")
                 println("      #${pr.number}: ${pr.title}")
             }
             println()
         }
 
-        // Show skipped PRs
         if (skippedPrs.isNotEmpty()) {
             CliFormatter.printLightDivider()
             println("Skipped PRs (${skippedPrs.size}):")
@@ -104,25 +135,14 @@ class MergePrsCommand(
             }
             println()
         }
+    }
 
-        if (allPrs.isEmpty()) {
-            println("No PRs ready to merge.")
-            return
-        }
-
-        // Confirm merge
-        println()
-        if (!UserInput.confirm("Merge all ${allPrs.size} PRs?")) {
-            println("Cancelled.")
-            return
-        }
-
-        // Execute merge
+    private fun executeMerges(readyPrs: List<PullRequest>): Pair<Int, Int> {
         println("\nMerging PRs...\n")
         var successCount = 0
         var failCount = 0
 
-        for (pr in allPrs) {
+        for (pr in readyPrs) {
             print("  Merging ${pr.repoFullName} #${pr.number}... ")
             val success = ghService.mergePr(pr.repoFullName, pr.number, mergeMethod)
 
@@ -134,17 +154,10 @@ class MergePrsCommand(
                 failCount++
             }
 
-            // Rate limiting
             Thread.sleep(AppConfig.API_CALL_DELAY_MS)
         }
 
-        // Summary
-        println()
-        CliFormatter.printSectionHeader("Complete!")
-        println()
-        println("  Merged: $successCount")
-        println("  Failed: $failCount")
-        println("  Skipped: ${skippedPrs.size}")
+        return successCount to failCount
     }
 
     private fun printHeader() {

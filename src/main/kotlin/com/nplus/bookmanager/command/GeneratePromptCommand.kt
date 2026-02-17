@@ -4,6 +4,7 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.Context
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
+import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.util.CliFormatter
 import java.io.File
 
@@ -39,8 +40,6 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
     ).flag()
 
     companion object {
-        private const val PROMPTS_DIR = "templates/prompts"
-
         private val PROMPT_TYPES =
             mapOf(
                 "restructure-folders" to
@@ -115,7 +114,7 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
             return
         }
 
-        val promptFile = File(PROMPTS_DIR, promptInfo.file)
+        val promptFile = File(AppConfig.PROMPTS_DIR, promptInfo.file)
         if (!promptFile.exists()) {
             println("Error: Prompt file not found: ${promptFile.absolutePath}")
             return
@@ -153,6 +152,23 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
             println("  $type")
             println("    ${info.description}")
             println()
+        }
+
+        // Scan for unregistered prompt files
+        val registeredFiles = PROMPT_TYPES.values.map { it.file }.toSet()
+        val promptsDir = File(AppConfig.PROMPTS_DIR)
+        if (promptsDir.exists()) {
+            val unregistered =
+                promptsDir
+                    .listFiles { f -> f.extension == "txt" && f.name !in registeredFiles }
+                    ?.sorted() ?: emptyList()
+            if (unregistered.isNotEmpty()) {
+                println("  Unregistered prompt files:")
+                unregistered.forEach { file ->
+                    println("    ${file.nameWithoutExtension} (unregistered)")
+                }
+                println()
+            }
         }
 
         println("Usage:")

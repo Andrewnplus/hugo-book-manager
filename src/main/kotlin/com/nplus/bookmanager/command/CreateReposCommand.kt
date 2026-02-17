@@ -162,8 +162,10 @@ class CreateReposCommand(
             println("  Repository created")
             Thread.sleep(AppConfig.API_CALL_DELAY_MS)
 
-            // Set up the new repo
-            updateRepoSettings(username, repoName, book, null)
+            // Configure the new repo
+            val homepageUrl = "${AppConfig.homepageBaseUrl}/$repoName"
+            ghService.configureRepository(username, repoName, homepageUrl, book.topics)
+            println("  Repository configured")
         }
 
         return true

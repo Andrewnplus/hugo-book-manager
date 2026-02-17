@@ -61,22 +61,24 @@ application {
 
 // Custom Gradle Tasks
 
-tasks.register<JavaExec>("checkEnv") {
+fun registerCliTask(
+    name: String,
+    desc: String,
+    configure: JavaExec.() -> Unit = {},
+) = tasks.register<JavaExec>(name) {
     group = "book-manager"
-    description = "Check environment prerequisites (gh CLI, authentication, etc.)"
+    description = desc
     dependsOn("classes")
     classpath = sourceSets["main"].runtimeClasspath
     mainClass.set("com.nplus.bookmanager.MainKt")
+    configure()
+}
+
+registerCliTask("checkEnv", "Check environment prerequisites (gh CLI, authentication, etc.)") {
     args = listOf("check-env")
 }
 
-tasks.register<JavaExec>("createRepos") {
-    group = "book-manager"
-    description = "Create GitHub repos from CSV file"
-    dependsOn("classes")
-    classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.nplus.bookmanager.MainKt")
-
+registerCliTask("createRepos", "Create GitHub repos from CSV file") {
     doFirst {
         val csvFile =
             project.findProperty("csv")?.toString()
@@ -94,13 +96,7 @@ tasks.register<JavaExec>("createRepos") {
     }
 }
 
-tasks.register<JavaExec>("updateRenovate") {
-    group = "book-manager"
-    description = "Batch update renovate.json in multiple repos"
-    dependsOn("classes")
-    classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.nplus.bookmanager.MainKt")
-
+registerCliTask("updateRenovate", "Batch update renovate.json in multiple repos") {
     doFirst {
         val parentDir =
             project.findProperty("parentDir")?.toString()
@@ -117,13 +113,7 @@ tasks.register<JavaExec>("updateRenovate") {
     }
 }
 
-tasks.register<JavaExec>("initBook") {
-    group = "book-manager"
-    description = "Initialize a new book repo from YAML input file"
-    dependsOn("classes")
-    classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.nplus.bookmanager.MainKt")
-
+registerCliTask("initBook", "Initialize a new book repo from YAML input file") {
     doFirst {
         val inputFile = project.findProperty("input")?.toString() ?: "templates/book-input.yaml"
         val dryRun = project.findProperty("dryRun")?.toString()?.toBoolean() ?: false
@@ -134,13 +124,7 @@ tasks.register<JavaExec>("initBook") {
     }
 }
 
-tasks.register<JavaExec>("initBooks") {
-    group = "book-manager"
-    description = "Initialize multiple book repos from a queue file"
-    dependsOn("classes")
-    classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.nplus.bookmanager.MainKt")
-
+registerCliTask("initBooks", "Initialize multiple book repos from a queue file") {
     doFirst {
         val queueFile = project.findProperty("queue")?.toString() ?: "templates/books-queue.yaml"
         val bookId = project.findProperty("id")?.toString()
@@ -160,13 +144,7 @@ tasks.register<JavaExec>("initBooks") {
     }
 }
 
-tasks.register<JavaExec>("mergePrs") {
-    group = "book-manager"
-    description = "Batch merge Renovate PRs with passing CI"
-    dependsOn("classes")
-    classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.nplus.bookmanager.MainKt")
-
+registerCliTask("mergePrs", "Batch merge Renovate PRs with passing CI") {
     doFirst {
         val parentDir =
             project.findProperty("parentDir")?.toString()
@@ -180,13 +158,7 @@ tasks.register<JavaExec>("mergePrs") {
     }
 }
 
-tasks.register<JavaExec>("generatePrompt") {
-    group = "book-manager"
-    description = "Generate prompt templates for book project tasks"
-    dependsOn("classes")
-    classpath = sourceSets["main"].runtimeClasspath
-    mainClass.set("com.nplus.bookmanager.MainKt")
-
+registerCliTask("generatePrompt", "Generate prompt templates for book project tasks") {
     doFirst {
         val type = project.findProperty("type")?.toString()
         val output = project.findProperty("output")?.toString()

@@ -1,5 +1,6 @@
 package com.nplus.bookmanager.service
 
+import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.model.BatchBookInput
 import com.nplus.bookmanager.model.BatchMetadataRequest
 import com.nplus.bookmanager.model.BatchMetadataResponse
@@ -27,11 +28,11 @@ import java.io.File
  * 4. User re-runs the CLI command
  * 5. CLI reads the response and continues
  */
-class AiTaskService {
+class AiTaskService(
+    baseDir: String = AI_TASKS_DIR,
+) {
     companion object {
         private const val AI_TASKS_DIR = "ai-tasks"
-        private const val INPUT_DIR = "$AI_TASKS_DIR/input"
-        private const val OUTPUT_DIR = "$AI_TASKS_DIR/output"
 
         private const val METADATA_REQUEST_FILE = "metadata-request.json"
         private const val METADATA_RESPONSE_FILE = "metadata-response.json"
@@ -40,10 +41,12 @@ class AiTaskService {
         private const val BATCH_METADATA_REQUEST_FILE = "batch-metadata-request.json"
         private const val BATCH_METADATA_RESPONSE_FILE = "batch-metadata-response.json"
 
-        private const val PROMPTS_DIR = "templates/prompts"
         private const val METADATA_PROMPT_FILE = "book-metadata.txt"
         private const val STRUCTURE_PROMPT_FILE = "book-structure.txt"
     }
+
+    private val inputDir = "$baseDir/input"
+    private val outputDir = "$baseDir/output"
 
     private val json =
         Json {
@@ -61,7 +64,7 @@ class AiTaskService {
     fun writeMetadataRequest(input: com.nplus.bookmanager.model.BookInput): File {
         ensureDirectories()
 
-        val promptFile = File(PROMPTS_DIR, METADATA_PROMPT_FILE)
+        val promptFile = File(AppConfig.PROMPTS_DIR, METADATA_PROMPT_FILE)
         val request =
             MetadataRequest(
                 promptFile = promptFile.path,
@@ -72,7 +75,7 @@ class AiTaskService {
                     ),
             )
 
-        val requestFile = File(INPUT_DIR, METADATA_REQUEST_FILE)
+        val requestFile = File(inputDir, METADATA_REQUEST_FILE)
         requestFile.writeText(json.encodeToString(request))
 
         return requestFile
@@ -85,7 +88,7 @@ class AiTaskService {
     fun writeStructureRequest(tableOfContents: String): File {
         ensureDirectories()
 
-        val promptFile = File(PROMPTS_DIR, STRUCTURE_PROMPT_FILE)
+        val promptFile = File(AppConfig.PROMPTS_DIR, STRUCTURE_PROMPT_FILE)
         val request =
             StructureRequest(
                 promptFile = promptFile.path,
@@ -95,7 +98,7 @@ class AiTaskService {
                     ),
             )
 
-        val requestFile = File(INPUT_DIR, STRUCTURE_REQUEST_FILE)
+        val requestFile = File(inputDir, STRUCTURE_REQUEST_FILE)
         requestFile.writeText(json.encodeToString(request))
 
         return requestFile
@@ -110,14 +113,14 @@ class AiTaskService {
     fun writeBatchMetadataRequest(books: List<BatchBookInput>): File {
         ensureDirectories()
 
-        val promptFile = File(PROMPTS_DIR, METADATA_PROMPT_FILE)
+        val promptFile = File(AppConfig.PROMPTS_DIR, METADATA_PROMPT_FILE)
         val request =
             BatchMetadataRequest(
                 promptFile = promptFile.path,
                 books = books,
             )
 
-        val requestFile = File(INPUT_DIR, BATCH_METADATA_REQUEST_FILE)
+        val requestFile = File(inputDir, BATCH_METADATA_REQUEST_FILE)
         requestFile.writeText(json.encodeToString(request))
 
         return requestFile
@@ -129,50 +132,24 @@ class AiTaskService {
      * Read the metadata response file.
      * @return GeneratedMetadata if response exists and is valid, null otherwise
      */
-    fun readMetadataResponse(): GeneratedMetadata? {
-        val responseFile = File(OUTPUT_DIR, METADATA_RESPONSE_FILE)
-        if (!responseFile.exists()) return null
-
-        return try {
-            json.decodeFromString<GeneratedMetadata>(responseFile.readText())
-        } catch (e: Exception) {
-            println("Error parsing metadata response: ${e.message}")
-            null
-        }
-    }
+    fun readMetadataResponse(): GeneratedMetadata? = readJsonResponse(METADATA_RESPONSE_FILE, "metadata response")
 
     /**
      * Read the docs structure response file.
      * @return DocsStructure if response exists and is valid, null otherwise
      */
-    fun readStructureResponse(): DocsStructure? {
-        val responseFile = File(OUTPUT_DIR, STRUCTURE_RESPONSE_FILE)
-        if (!responseFile.exists()) return null
-
-        return try {
-            json.decodeFromString<DocsStructure>(responseFile.readText())
-        } catch (e: Exception) {
-            println("Error parsing structure response: ${e.message}")
-            null
-        }
-    }
+    fun readStructureResponse(): DocsStructure? = readJsonResponse(STRUCTURE_RESPONSE_FILE, "structure response")
 
     /**
      * Read the batch metadata response file.
      * @return Map of bookId to (GeneratedMetadata, DocsStructure) pairs
      */
     fun readBatchMetadataResponse(): Map<String, Pair<GeneratedMetadata, DocsStructure>>? {
-        val responseFile = File(OUTPUT_DIR, BATCH_METADATA_RESPONSE_FILE)
-        if (!responseFile.exists()) return null
-
-        return try {
-            val response = json.decodeFromString<BatchMetadataResponse>(responseFile.readText())
-            response.results.associate { result ->
-                result.bookId to Pair(result.metadata, result.structure)
-            }
-        } catch (e: Exception) {
-            println("Error parsing batch metadata response: ${e.message}")
-            null
+        val response =
+            readJsonResponse<BatchMetadataResponse>(BATCH_METADATA_RESPONSE_FILE, "batch metadata response")
+                ?: return null
+        return response.results.associate { result ->
+            result.bookId to Pair(result.metadata, result.structure)
         }
     }
 
@@ -183,71 +160,22 @@ class AiTaskService {
 
     // ==================== Task Status Methods ====================
 
-    /**
-     * Check if there's a pending metadata task (request exists, no response yet).
-     */
-    fun hasPendingMetadataTask(): Boolean {
-        val requestFile = File(INPUT_DIR, METADATA_REQUEST_FILE)
-        val responseFile = File(OUTPUT_DIR, METADATA_RESPONSE_FILE)
-        return requestFile.exists() && !responseFile.exists()
-    }
+    fun hasPendingMetadataTask(): Boolean = isTaskPending(METADATA_REQUEST_FILE, METADATA_RESPONSE_FILE)
 
-    /**
-     * Check if there's a completed metadata task (both request and response exist).
-     */
-    fun hasCompletedMetadataTask(): Boolean {
-        val responseFile = File(OUTPUT_DIR, METADATA_RESPONSE_FILE)
-        return responseFile.exists()
-    }
+    fun hasCompletedMetadataTask(): Boolean = isTaskCompleted(METADATA_RESPONSE_FILE)
 
-    /**
-     * Check if there's a pending structure task (request exists, no response yet).
-     */
-    fun hasPendingStructureTask(): Boolean {
-        val requestFile = File(INPUT_DIR, STRUCTURE_REQUEST_FILE)
-        val responseFile = File(OUTPUT_DIR, STRUCTURE_RESPONSE_FILE)
-        return requestFile.exists() && !responseFile.exists()
-    }
+    fun hasPendingStructureTask(): Boolean = isTaskPending(STRUCTURE_REQUEST_FILE, STRUCTURE_RESPONSE_FILE)
 
-    /**
-     * Check if there's a completed structure task (both request and response exist).
-     */
-    fun hasCompletedStructureTask(): Boolean {
-        val responseFile = File(OUTPUT_DIR, STRUCTURE_RESPONSE_FILE)
-        return responseFile.exists()
-    }
+    fun hasCompletedStructureTask(): Boolean = isTaskCompleted(STRUCTURE_RESPONSE_FILE)
 
-    /**
-     * Check if there's a pending batch metadata task.
-     */
-    fun hasPendingBatchMetadataTask(): Boolean {
-        val requestFile = File(INPUT_DIR, BATCH_METADATA_REQUEST_FILE)
-        val responseFile = File(OUTPUT_DIR, BATCH_METADATA_RESPONSE_FILE)
-        return requestFile.exists() && !responseFile.exists()
-    }
+    fun hasPendingBatchMetadataTask(): Boolean = isTaskPending(BATCH_METADATA_REQUEST_FILE, BATCH_METADATA_RESPONSE_FILE)
 
-    /**
-     * Check if there's a completed batch metadata task.
-     */
-    fun hasCompletedBatchMetadataTask(): Boolean {
-        val responseFile = File(OUTPUT_DIR, BATCH_METADATA_RESPONSE_FILE)
-        return responseFile.exists()
-    }
+    fun hasCompletedBatchMetadataTask(): Boolean = isTaskCompleted(BATCH_METADATA_RESPONSE_FILE)
 
     /**
      * Read the batch metadata request to see which books are being processed.
      */
-    fun readBatchMetadataRequest(): BatchMetadataRequest? {
-        val requestFile = File(INPUT_DIR, BATCH_METADATA_REQUEST_FILE)
-        if (!requestFile.exists()) return null
-
-        return try {
-            json.decodeFromString<BatchMetadataRequest>(requestFile.readText())
-        } catch (e: Exception) {
-            println("Error reading batch metadata request: ${e.message}")
-            null
-        }
-    }
+    fun readBatchMetadataRequest(): BatchMetadataRequest? = readJsonResponse(BATCH_METADATA_REQUEST_FILE, "batch metadata request")
 
     // ==================== Cleanup Methods ====================
 
@@ -260,34 +188,45 @@ class AiTaskService {
         clearBatchMetadataTasks()
     }
 
-    /**
-     * Clear metadata task files.
-     */
-    fun clearMetadataTasks() {
-        File(INPUT_DIR, METADATA_REQUEST_FILE).delete()
-        File(OUTPUT_DIR, METADATA_RESPONSE_FILE).delete()
+    fun clearMetadataTasks() = clearTaskFiles(METADATA_REQUEST_FILE, METADATA_RESPONSE_FILE)
+
+    fun clearStructureTasks() = clearTaskFiles(STRUCTURE_REQUEST_FILE, STRUCTURE_RESPONSE_FILE)
+
+    fun clearBatchMetadataTasks() = clearTaskFiles(BATCH_METADATA_REQUEST_FILE, BATCH_METADATA_RESPONSE_FILE)
+
+    // ==================== Private Helpers ====================
+
+    private fun isTaskPending(
+        requestFile: String,
+        responseFile: String,
+    ): Boolean = File(inputDir, requestFile).exists() && !File(outputDir, responseFile).exists()
+
+    private fun isTaskCompleted(responseFile: String): Boolean = File(outputDir, responseFile).exists()
+
+    private inline fun <reified T> readJsonResponse(
+        responseFile: String,
+        label: String,
+    ): T? {
+        val file = File(outputDir, responseFile)
+        if (!file.exists()) return null
+        return try {
+            json.decodeFromString<T>(file.readText())
+        } catch (e: Exception) {
+            println("Error parsing $label: ${e.message}")
+            null
+        }
     }
 
-    /**
-     * Clear structure task files.
-     */
-    fun clearStructureTasks() {
-        File(INPUT_DIR, STRUCTURE_REQUEST_FILE).delete()
-        File(OUTPUT_DIR, STRUCTURE_RESPONSE_FILE).delete()
+    private fun clearTaskFiles(
+        requestFile: String,
+        responseFile: String,
+    ) {
+        File(inputDir, requestFile).delete()
+        File(outputDir, responseFile).delete()
     }
-
-    /**
-     * Clear batch metadata task files.
-     */
-    fun clearBatchMetadataTasks() {
-        File(INPUT_DIR, BATCH_METADATA_REQUEST_FILE).delete()
-        File(OUTPUT_DIR, BATCH_METADATA_RESPONSE_FILE).delete()
-    }
-
-    // ==================== Helper Methods ====================
 
     private fun ensureDirectories() {
-        File(INPUT_DIR).mkdirs()
-        File(OUTPUT_DIR).mkdirs()
+        File(inputDir).mkdirs()
+        File(outputDir).mkdirs()
     }
 }

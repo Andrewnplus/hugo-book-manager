@@ -96,17 +96,8 @@ class BookRepoService(
 
         // Configure repository
         val homepageUrl = "${AppConfig.homepageBaseUrl}/${metadata.repoName}"
-        ghService.setHomepage(username, metadata.repoName, homepageUrl)
-        println("  Homepage set: $homepageUrl")
-
-        ghService.enableGitHubPages(username, metadata.repoName)
-        println("  GitHub Pages enabled")
-
-        val addedTopics = ghService.addTopics(username, metadata.repoName, metadata.topics)
-        println("  Added $addedTopics topics")
-
-        ghService.starRepo(username, metadata.repoName)
-        println("  Repository starred")
+        ghService.configureRepository(username, metadata.repoName, homepageUrl, metadata.topics)
+        println("  Repository configured (homepage, Pages, topics, starred)")
 
         return true
     }

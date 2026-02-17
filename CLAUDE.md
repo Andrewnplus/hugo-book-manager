@@ -206,15 +206,18 @@ hugo-book-manager/
     ├── book-input.yaml           # Template for init-book input
     ├── renovate.json             # Standard renovate config
     └── prompts/
+        ├── add-books-to-queue.txt        # Prompt for adding books to queue
         ├── book-metadata.txt             # Prompt for book metadata generation
         ├── book-structure.txt            # Prompt for docs structure generation
         ├── convert-list-to-table.txt     # Prompt for converting lists to tables
-        ├── simplify-table.txt            # Prompt for simplifying tables
-        ├── doc-convert.txt               # Prompt for document conversion
-        ├── restructure-folders.txt       # Prompt for renaming folders
         ├── enhance-markdown-katex.txt    # Prompt for KaTeX support
         ├── enhance-markdown-mermaid.txt  # Prompt for Mermaid support
-        └── review-markdown.txt           # Prompt for markdown review
+        ├── extract-insights.txt          # Prompt for extracting insights
+        ├── extract-pdf-figures.txt       # Prompt for extracting PDF figures
+        ├── refine-notes.txt              # Prompt for refining notes
+        ├── restructure-folders.txt       # Prompt for renaming folders
+        ├── review-markdown.txt           # Prompt for markdown review
+        └── simplify-table.txt            # Prompt for simplifying tables
 ```
 
 ### Key Services
@@ -313,6 +316,9 @@ Generate reusable prompt templates for book project maintenance:
 | `list-to-table` | Convert list items to markdown tables |
 | `simplify-table` | Simplify tables by removing redundant info |
 | `extract-insights` | Extract valuable insights from book notes |
+| `add-books-to-queue` | Add new books to the processing queue |
+| `refine-notes` | Improve structure and readability of book notes |
+| `extract-pdf-figures` | Extract figures from PDF and convert to Markdown |
 
 **Usage workflow:**
 1. Run `./gradlew generatePrompt -Ptype=<type>` to display prompt

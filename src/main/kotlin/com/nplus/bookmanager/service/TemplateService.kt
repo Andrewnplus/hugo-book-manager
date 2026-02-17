@@ -53,24 +53,7 @@ class TemplateService {
         repoName: String,
         chineseTitle: String,
     ): Boolean {
-        var allSuccess = true
-
-        // Update README.md
-        allSuccess = updateFile(
-            File(repoDir, README_PATH),
-            mapOf(
-                AppConfig.TEMPLATE_SLUG to repoName,
-                AppConfig.TEMPLATE_ZH_TITLE to chineseTitle,
-            ),
-        ) &&
-            allSuccess
-
-        // Update settings.gradle.kts
-        allSuccess = updateFile(
-            File(repoDir, SETTINGS_GRADLE_PATH),
-            mapOf(AppConfig.TEMPLATE_SLUG to repoName),
-        ) &&
-            allSuccess
+        var allSuccess = updateCommonTemplates(repoDir, repoName, chineseTitle)
 
         // Update site/hugo.toml
         allSuccess = updateFile(
@@ -90,16 +73,6 @@ class TemplateService {
         ) &&
             allSuccess
 
-        // Update site/go.mod
-        allSuccess = updateFile(
-            File(repoDir, GO_MOD_PATH),
-            mapOf(
-                "module github.com/${AppConfig.githubUsername}/${AppConfig.TEMPLATE_SLUG}" to
-                    "module github.com/${AppConfig.githubUsername}/$repoName",
-            ),
-        ) &&
-            allSuccess
-
         return allSuccess
     }
 
@@ -115,23 +88,14 @@ class TemplateService {
         metadata: GeneratedMetadata,
         bookInput: BookInput,
     ): Boolean {
-        var allSuccess = true
+        var allSuccess = updateCommonTemplates(repoDir, metadata.repoName, metadata.chineseTitle)
 
-        // Update README.md
+        // Additional README replacement for English title
         allSuccess = updateFile(
             File(repoDir, README_PATH),
-            mapOf(
-                AppConfig.TEMPLATE_SLUG to metadata.repoName,
-                AppConfig.TEMPLATE_EN_TITLE to metadata.englishTitle,
-                AppConfig.TEMPLATE_ZH_TITLE to metadata.chineseTitle,
-            ),
-        ) && allSuccess
-
-        // Update settings.gradle.kts
-        allSuccess = updateFile(
-            File(repoDir, SETTINGS_GRADLE_PATH),
-            mapOf(AppConfig.TEMPLATE_SLUG to metadata.repoName),
-        ) && allSuccess
+            mapOf(AppConfig.TEMPLATE_EN_TITLE to metadata.englishTitle),
+        ) &&
+            allSuccess
 
         // Update site/hugo.toml
         allSuccess = updateFile(
@@ -140,13 +104,44 @@ class TemplateService {
                 AppConfig.TEMPLATE_ZH_TITLE to metadata.chineseTitle,
                 AppConfig.TEMPLATE_SLUG to metadata.repoName,
             ),
-        ) && allSuccess
+        ) &&
+            allSuccess
 
         // Update site/content/_index.md with book info
         updateIndexFile(repoDir, metadata.chineseTitle, bookInput)
 
+        return allSuccess
+    }
+
+    /**
+     * Update common template files shared by both overloads: README, settings.gradle.kts, go.mod.
+     */
+    private fun updateCommonTemplates(
+        repoDir: File,
+        repoName: String,
+        chineseTitle: String,
+    ): Boolean {
+        var allSuccess = true
+
+        // Update README.md
+        allSuccess = updateFile(
+            File(repoDir, README_PATH),
+            mapOf(
+                AppConfig.TEMPLATE_SLUG to repoName,
+                AppConfig.TEMPLATE_ZH_TITLE to chineseTitle,
+            ),
+        ) &&
+            allSuccess
+
+        // Update settings.gradle.kts
+        allSuccess = updateFile(
+            File(repoDir, SETTINGS_GRADLE_PATH),
+            mapOf(AppConfig.TEMPLATE_SLUG to repoName),
+        ) &&
+            allSuccess
+
         // Update site/go.mod
-        updateGoMod(repoDir, metadata.repoName)
+        updateGoMod(repoDir, repoName)
 
         return allSuccess
     }
