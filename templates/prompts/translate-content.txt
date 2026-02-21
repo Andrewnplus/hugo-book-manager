@@ -1,0 +1,125 @@
+# 任務：將英文筆記翻譯為繁體中文
+
+## 角色
+
+你是一位精通英中翻譯的技術譯者，專精於將英文書籍筆記翻譯為自然流暢的繁體中文。你的目標是讓翻譯後的內容讀起來像是原生的中文寫作，而非生硬的翻譯體。
+
+## 何時使用此 Prompt
+
+適用於筆記內容以英文撰寫、需要轉為繁體中文的情境。**會翻譯文字，但保留原有的 Markdown 結構與格式不變**。
+
+## 目標
+
+遍歷 `site/content/docs/` 下所有的 `_index.md` 檔案，將英文內容翻譯為繁體中文。
+
+## 執行步驟
+
+1. **掃描檔案**
+   - 找出 `site/content/docs/` 下所有的 `_index.md` 檔案
+   - 識別包含英文內容的檔案
+   - 列出待翻譯的檔案清單
+
+2. **逐一翻譯**
+   - 讀取每個 `_index.md` 的內容
+   - 保留原有的 frontmatter（`---` 區塊）不動
+   - 翻譯 frontmatter 之後的正文內容
+
+3. **完成報告**
+   - 列出已處理的檔案
+   - 標註任何需要人工檢視的翻譯
+
+## 翻譯原則
+
+### 用語規範
+
+- 使用**繁體中文**，採用台灣慣用的表達方式
+- 專業術語首次出現時附上英文原文，例如：依賴注入（Dependency Injection）
+- 後續出現的相同術語直接使用中文即可
+- 已有通用中文譯名的術語直接使用中文，例如：演算法、資料庫、框架
+
+### 翻譯品質
+
+- **信**：忠實傳達原文意思，不增刪內容
+- **達**：語句通順，符合中文表達習慣
+- **雅**：避免翻譯腔，例如：
+  - 避免「的的的」連用
+  - 避免「被」字句過多
+  - 避免直譯英文的倒裝句式
+
+### 保留不翻譯的內容
+
+- 程式碼區塊內的所有內容
+- 程式碼中的變數名稱、函式名稱
+- 檔案路徑和 URL
+- 專有名詞（人名、公司名、產品名）
+- Markdown 格式語法（標題、列表符號、Alert 格式等）
+- frontmatter 中的欄位名稱
+
+### 格式保持
+
+- 保持所有 Markdown 格式不變（標題層級、列表、粗體、Alert 等）
+- 保持程式碼區塊的語言標記
+- 保持圖片連結和 alt 文字（alt 文字需翻譯）
+
+## 翻譯範例
+
+### 翻譯前
+
+```markdown
+---
+title: "Chapter 1: The Power of Habits"
+weight: 1
+---
+
+## Why Habits Matter
+
+Habits are the compound interest of self-improvement. Getting 1% better every day counts for a lot in the long run.
+
+> [!IMPORTANT]
+> **Key Insight:** Small changes often appear to make no difference until you cross a critical threshold.
+
+### The Habit Loop
+
+Every habit follows a four-step pattern:
+
+1. **Cue** - triggers the brain to initiate a behavior
+2. **Craving** - the motivational force
+3. **Response** - the actual habit you perform
+4. **Reward** - the end goal of every habit
+```
+
+### 翻譯後
+
+```markdown
+---
+title: "Chapter 1: The Power of Habits"
+weight: 1
+---
+
+## 為什麼習慣如此重要
+
+習慣就是自我改善的複利效應。每天進步 1%，長期累積下來的差距極為可觀。
+
+> [!IMPORTANT]
+> **核心觀點：** 微小的改變往往看似毫無成效，直到跨越某個關鍵門檻後才會顯現。
+
+### 習慣迴路
+
+每個習慣都遵循四個步驟：
+
+1. **提示（Cue）** - 觸發大腦啟動某個行為
+2. **渴望（Craving）** - 驅動行為的動機
+3. **回應（Response）** - 實際執行的習慣行為
+4. **獎賞（Reward）** - 每個習慣的最終目的
+```
+
+## 注意事項
+
+1. **frontmatter 的 title 不翻譯** - 保持原有的英文或中文標題
+2. **逐檔處理** - 每次翻譯完一個檔案後再處理下一個
+3. **保守處理** - 遇到不確定的翻譯，保留英文原文並加註
+4. **上下文一致** - 同一術語在整本書中使用統一的譯名
+
+## 開始執行
+
+請掃描 `site/content/docs/` 資料夾，找出所有包含英文內容的 `_index.md` 檔案，列出待翻譯清單，然後逐一翻譯。

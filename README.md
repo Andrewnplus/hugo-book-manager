@@ -68,13 +68,15 @@ gh auth login
 ./gradlew generatePrompt
 
 # 生成特定 Prompt
-./gradlew generatePrompt -Ptype=restructure-folders    # 重命名資料夾
+./gradlew generatePrompt -Ptype=build-structure        # 建立資料夾結構
 ./gradlew generatePrompt -Ptype=enhance-katex          # KaTeX 數學公式
 ./gradlew generatePrompt -Ptype=enhance-mermaid        # Mermaid 圖表
 ./gradlew generatePrompt -Ptype=review-markdown        # Markdown 審查
+./gradlew generatePrompt -Ptype=translate-content      # 翻譯為繁體中文
+./gradlew generatePrompt -Ptype=generate-glossary      # 產出詞彙表
 
 # 儲存到檔案
-./gradlew generatePrompt -Ptype=restructure-folders -Poutput=PROMPT.md
+./gradlew generatePrompt -Ptype=build-structure -Poutput=PROMPT.md
 ```
 
 ## 授權

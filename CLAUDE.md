@@ -118,16 +118,22 @@ When user says **"請處理 AI 任務"** (please process AI task):
 
 # Generate prompt templates for book project tasks
 ./gradlew generatePrompt                                      # List available prompts
-./gradlew generatePrompt -Ptype=restructure-folders           # Rename folders by _index.md title
+./gradlew generatePrompt -Ptype=build-structure               # Build folder structure from TOC
 ./gradlew generatePrompt -Ptype=enhance-katex                 # Add KaTeX math formula support
 ./gradlew generatePrompt -Ptype=enhance-mermaid               # Add Mermaid diagram support
 ./gradlew generatePrompt -Ptype=review-markdown               # Review and fix markdown issues
+./gradlew generatePrompt -Ptype=rewrite-content               # Rewrite content for better readability
 ./gradlew generatePrompt -Ptype=list-to-table                 # Convert lists to markdown tables
 ./gradlew generatePrompt -Ptype=simplify-table                # Simplify tables by removing redundant info
 ./gradlew generatePrompt -Ptype=extract-insights              # Extract insights from book notes
+./gradlew generatePrompt -Ptype=translate-content             # Translate English notes to Traditional Chinese
+./gradlew generatePrompt -Ptype=generate-summary              # Generate chapter summaries
+./gradlew generatePrompt -Ptype=check-links                   # Check internal links and image paths
+./gradlew generatePrompt -Ptype=generate-glossary             # Generate glossary from book terms
+./gradlew generatePrompt -Ptype=split-long-chapter            # Split long chapters into sub-sections
 
 # Save prompt to file (for use in other projects)
-./gradlew generatePrompt -Ptype=restructure-folders -Poutput=/path/to/book/PROMPT.md
+./gradlew generatePrompt -Ptype=build-structure -Poutput=/path/to/book/PROMPT.md
 ```
 
 ### CLI Usage (Alternative)
@@ -140,7 +146,7 @@ When user says **"請處理 AI 任務"** (please process AI task):
 ./gradlew run --args="init-book --input templates/book-input.yaml --dry-run"
 ./gradlew run --args="merge-prs --parent-dir /path/to/books"
 ./gradlew run --args="generate-prompt --list"
-./gradlew run --args="generate-prompt --type restructure-folders"
+./gradlew run --args="generate-prompt --type build-structure"
 ```
 
 ### Prerequisites Check
@@ -209,15 +215,21 @@ hugo-book-manager/
         ├── add-books-to-queue.txt        # Prompt for adding books to queue
         ├── book-metadata.txt             # Prompt for book metadata generation
         ├── book-structure.txt            # Prompt for docs structure generation
+        ├── build-structure.txt           # Prompt for building folder structure from TOC
+        ├── check-links.txt              # Prompt for checking links and paths
         ├── convert-list-to-table.txt     # Prompt for converting lists to tables
         ├── enhance-markdown-katex.txt    # Prompt for KaTeX support
         ├── enhance-markdown-mermaid.txt  # Prompt for Mermaid support
         ├── extract-insights.txt          # Prompt for extracting insights
         ├── extract-pdf-figures.txt       # Prompt for extracting PDF figures
+        ├── generate-glossary.txt         # Prompt for generating glossary
+        ├── generate-summary.txt          # Prompt for generating chapter summaries
         ├── refine-notes.txt              # Prompt for refining notes
-        ├── restructure-folders.txt       # Prompt for renaming folders
+        ├── rewrite-content.txt           # Prompt for rewriting content
         ├── review-markdown.txt           # Prompt for markdown review
-        └── simplify-table.txt            # Prompt for simplifying tables
+        ├── simplify-table.txt            # Prompt for simplifying tables
+        ├── split-long-chapter.txt        # Prompt for splitting long chapters
+        └── translate-content.txt         # Prompt for translating to Traditional Chinese
 ```
 
 ### Key Services
@@ -309,16 +321,22 @@ Generate reusable prompt templates for book project maintenance:
 
 | Type | Description |
 |------|-------------|
-| `restructure-folders` | Rename folders based on `_index.md` titles |
+| `build-structure` | Build folder structure from TOC |
 | `enhance-katex` | Add KaTeX math formula support |
 | `enhance-mermaid` | Add Mermaid diagram support |
 | `review-markdown` | Review and fix markdown quality issues |
+| `rewrite-content` | Rewrite content for better readability |
 | `list-to-table` | Convert list items to markdown tables |
 | `simplify-table` | Simplify tables by removing redundant info |
 | `extract-insights` | Extract valuable insights from book notes |
 | `add-books-to-queue` | Add new books to the processing queue |
 | `refine-notes` | Improve structure and readability of book notes |
 | `extract-pdf-figures` | Extract figures from PDF and convert to Markdown |
+| `translate-content` | Translate English notes to Traditional Chinese |
+| `generate-summary` | Generate chapter summaries |
+| `check-links` | Check internal links, image paths, and external URLs |
+| `generate-glossary` | Generate glossary from book terms |
+| `split-long-chapter` | Split long chapters into sub-sections |
 
 **Usage workflow:**
 1. Run `./gradlew generatePrompt -Ptype=<type>` to display prompt

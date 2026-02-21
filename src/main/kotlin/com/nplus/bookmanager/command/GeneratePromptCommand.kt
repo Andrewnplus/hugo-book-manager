@@ -23,8 +23,9 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
         "--type",
         "-t",
         help =
-            "Prompt type: restructure-folders, enhance-katex, enhance-mermaid, " +
-                "review-markdown, list-to-table, simplify-table, extract-insights",
+            "Prompt type: build-structure, enhance-katex, enhance-mermaid, " +
+                "review-markdown, list-to-table, simplify-table, extract-insights, rewrite-content, " +
+                "translate-content, generate-summary, check-links, generate-glossary, split-long-chapter",
     )
 
     private val outputFile by option(
@@ -42,9 +43,9 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
     companion object {
         private val PROMPT_TYPES =
             mapOf(
-                "restructure-folders" to
+                "build-structure" to
                     PromptInfo(
-                        file = "restructure-folders.txt",
+                        file = "build-structure.txt",
                         description = "建立資料夾結構：根據目錄建立 Hugo Book 資料夾和 _index.md 檔案",
                     ),
                 "enhance-katex" to
@@ -87,10 +88,40 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
                         file = "refine-notes.txt",
                         description = "精煉筆記：改善讀書筆記的結構與可讀性",
                     ),
+                "rewrite-content" to
+                    PromptInfo(
+                        file = "rewrite-content.txt",
+                        description = "改寫文案：將既有文案改寫為結構嚴謹、易讀的 Hugo Markdown 格式",
+                    ),
                 "extract-pdf-figures" to
                     PromptInfo(
                         file = "extract-pdf-figures.txt",
                         description = "擷取圖表：從 PDF 中擷取圖表並轉換為 Markdown",
+                    ),
+                "translate-content" to
+                    PromptInfo(
+                        file = "translate-content.txt",
+                        description = "翻譯內容：將英文筆記翻譯為繁體中文",
+                    ),
+                "generate-summary" to
+                    PromptInfo(
+                        file = "generate-summary.txt",
+                        description = "生成摘要：為每個章節生成導讀摘要",
+                    ),
+                "check-links" to
+                    PromptInfo(
+                        file = "check-links.txt",
+                        description = "檢查連結：檢查內部連結、圖片路徑、外部 URL",
+                    ),
+                "generate-glossary" to
+                    PromptInfo(
+                        file = "generate-glossary.txt",
+                        description = "產出詞彙表：從全書掃描專業術語並產出詞彙表",
+                    ),
+                "split-long-chapter" to
+                    PromptInfo(
+                        file = "split-long-chapter.txt",
+                        description = "拆分長章節：將過長的 _index.md 拆分為子章節",
                     ),
             )
 

@@ -14,14 +14,14 @@ weight: 9
 ./gradlew generatePrompt
 
 # 產生特定 prompt（輸出到終端）
-./gradlew generatePrompt -Ptype=restructure-folders
+./gradlew generatePrompt -Ptype=build-structure
 
 # 儲存到檔案
-./gradlew generatePrompt -Ptype=restructure-folders -Poutput=/path/to/book/PROMPT.md
+./gradlew generatePrompt -Ptype=build-structure -Poutput=/path/to/book/PROMPT.md
 
 # CLI 模式
 ./gradlew run --args="generate-prompt --list"
-./gradlew run --args="generate-prompt --type restructure-folders"
+./gradlew run --args="generate-prompt --type build-structure"
 ```
 
 ## 參數
@@ -36,11 +36,17 @@ weight: 9
 | 類型 | 說明 | 詳細文件 |
 |------|------|----------|
 | `doc-convert` | 轉換文件為 Hugo Book 格式 | [doc-convert]({{< relref "/docs/prompts/doc-convert" >}}) |
-| `restructure-folders` | 根據 `_index.md` 標題重新命名資料夾 | [restructure-folders]({{< relref "/docs/prompts/restructure-folders" >}}) |
+| `build-structure` | 根據目錄建立資料夾結構 | [build-structure]({{< relref "/docs/prompts/build-structure" >}}) |
 | `enhance-katex` | 加入 KaTeX 數學公式支援 | [enhance-katex]({{< relref "/docs/prompts/enhance-katex" >}}) |
 | `enhance-mermaid` | 加入 Mermaid 圖表支援 | [enhance-mermaid]({{< relref "/docs/prompts/enhance-mermaid" >}}) |
 | `review-markdown` | 審查並統一 Markdown 格式 | [review-markdown]({{< relref "/docs/prompts/review-markdown" >}}) |
+| `rewrite-content` | 改寫文案內容 | |
 | `list-to-table` | 將條列式轉換為表格 | [list-to-table]({{< relref "/docs/prompts/list-to-table" >}}) |
+| `translate-content` | 將英文筆記翻譯為繁體中文 | |
+| `generate-summary` | 為章節生成導讀摘要 | |
+| `check-links` | 檢查連結與路徑 | |
+| `generate-glossary` | 產出詞彙表 | |
+| `split-long-chapter` | 拆分過長章節 | |
 
 ## 使用流程
 
@@ -56,12 +62,14 @@ weight: 9
 ```
 Available prompt types:
 
+  build-structure      Build folder structure from TOC
   doc-convert          Convert documents to Hugo Book format
-  restructure-folders  Rename folders based on _index.md titles
   enhance-katex        Add KaTeX math formula support
   enhance-mermaid      Add Mermaid diagram support
   review-markdown      Review and fix markdown quality issues
   list-to-table        Convert list items to markdown tables
+  translate-content    Translate English notes to Traditional Chinese
+  ...and more
 
 Usage:
   ./gradlew generatePrompt -Ptype=<type>
@@ -71,7 +79,7 @@ Usage:
 ### 產生 prompt
 
 ```
-Generating prompt: restructure-folders
+Generating prompt: build-structure
 
 --- Prompt Start ---
 # 任務：根據目錄建立 Hugo Book 文件結構

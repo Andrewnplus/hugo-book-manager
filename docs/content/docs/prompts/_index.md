@@ -45,13 +45,34 @@ Hugo Book Manager 提供多種可重複使用的 Prompt 範本，用於書籍專
 | [enhance-katex]({{< relref "/docs/prompts/enhance-katex" >}}) | 加入 KaTeX 數學公式支援 |
 | [enhance-mermaid]({{< relref "/docs/prompts/enhance-mermaid" >}}) | 加入 Mermaid 圖表支援 |
 
-### 格式審查
+### 結構建立
 
 | Prompt | 說明 |
 |--------|------|
-| [review-markdown]({{< relref "/docs/prompts/review-markdown" >}}) | 審查並統一 Markdown 格式 |
-| [restructure-folders]({{< relref "/docs/prompts/restructure-folders" >}}) | 根據標題重新命名資料夾 |
+| [build-structure]({{< relref "/docs/prompts/build-structure" >}}) | 根據目錄建立資料夾結構 |
+
+### 格式審查與改寫
+
+| Prompt | 說明 |
+|--------|------|
+| [review-markdown]({{< relref "/docs/prompts/review-markdown" >}}) | 審查並統一 Markdown 格式（不動內容） |
+| rewrite-content | 改寫文案內容（改善可讀性） |
 | [list-to-table]({{< relref "/docs/prompts/list-to-table" >}}) | 將條列式轉換為表格 |
+
+### 翻譯與摘要
+
+| Prompt | 說明 |
+|--------|------|
+| translate-content | 將英文筆記翻譯為繁體中文 |
+| generate-summary | 為每個章節生成導讀摘要 |
+
+### 品質檢查
+
+| Prompt | 說明 |
+|--------|------|
+| check-links | 檢查內部連結、圖片路徑、外部 URL |
+| generate-glossary | 從全書掃描專業術語並產出詞彙表 |
+| split-long-chapter | 將過長的章節拆分為子章節 |
 
 ## Prompt 設計原則
 

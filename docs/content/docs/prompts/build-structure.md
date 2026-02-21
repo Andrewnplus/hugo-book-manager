@@ -1,26 +1,26 @@
 ---
-title: restructure-folders
+title: build-structure
 weight: 4
 ---
 
-# restructure-folders
+# build-structure
 
-根據 `_index.md` 檔案中的標題，重新命名資料夾為適當的 kebab-case 格式。
+根據提供的中文目錄，建立 Hugo Book 資料夾結構和 `_index.md` 檔案。
 
 ## 用途
 
-- 統一資料夾命名風格
-- 將中文資料夾名稱轉換為英文 kebab-case
-- 保持序號 + 有意義的名稱格式
+- 從書籍目錄建立對應的資料夾結構
+- 將中文標題轉換為英文 kebab-case 資料夾名稱
+- 自動建立含 frontmatter 的 `_index.md` 檔案
 
 ## 使用方式
 
 ```bash
 # 產生 prompt
-./gradlew generatePrompt -Ptype=restructure-folders
+./gradlew generatePrompt -Ptype=build-structure
 
 # 儲存到檔案
-./gradlew generatePrompt -Ptype=restructure-folders -Poutput=PROMPT.md
+./gradlew generatePrompt -Ptype=build-structure -Poutput=PROMPT.md
 ```
 
 ## 完整 Prompt
@@ -134,4 +134,3 @@ weight: 1
 ## 相關指令
 
 - [generate-prompt]({{< relref "/docs/commands/generate-prompt" >}}) - 產生此 prompt
-- [rebuild-docs]({{< relref "/docs/commands/rebuild-docs" >}}) - 相關功能的自動化版本
