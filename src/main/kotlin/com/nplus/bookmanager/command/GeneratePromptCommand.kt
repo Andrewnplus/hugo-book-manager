@@ -25,7 +25,8 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
         help =
             "Prompt type: build-structure, enhance-katex, enhance-mermaid, " +
                 "review-markdown, list-to-table, simplify-table, extract-insights, rewrite-content, " +
-                "translate-content, generate-summary, check-links, generate-glossary, split-long-chapter",
+                "translate-content, generate-summary, check-links, generate-glossary, split-long-chapter, " +
+                "generate-handout, generate-podcast-prep",
     )
 
     private val outputFile by option(
@@ -122,6 +123,16 @@ class GeneratePromptCommand : CliktCommand(name = "generate-prompt") {
                     PromptInfo(
                         file = "split-long-chapter.txt",
                         description = "拆分長章節：將過長的 _index.md 拆分為子章節",
+                    ),
+                "generate-handout" to
+                    PromptInfo(
+                        file = "generate-handout.txt",
+                        description = "生成填空講義：從指定章節生成填空式 Word 講義，用於複習與自我檢測",
+                    ),
+                "generate-podcast-prep" to
+                    PromptInfo(
+                        file = "generate-podcast-prep.txt",
+                        description = "生成 Podcast 準備稿：從指定章節整理討論重點與專家觀點，供錄製夥伴快速掌握",
                     ),
             )
 

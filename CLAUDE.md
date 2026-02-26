@@ -131,6 +131,8 @@ When user says **"請處理 AI 任務"** (please process AI task):
 ./gradlew generatePrompt -Ptype=check-links                   # Check internal links and image paths
 ./gradlew generatePrompt -Ptype=generate-glossary             # Generate glossary from book terms
 ./gradlew generatePrompt -Ptype=split-long-chapter            # Split long chapters into sub-sections
+./gradlew generatePrompt -Ptype=generate-handout              # Generate fill-in-the-blank Word handout
+./gradlew generatePrompt -Ptype=generate-podcast-prep         # Generate podcast preparation guide
 
 # Save prompt to file (for use in other projects)
 ./gradlew generatePrompt -Ptype=build-structure -Poutput=/path/to/book/PROMPT.md
@@ -223,6 +225,8 @@ hugo-book-manager/
         ├── extract-insights.txt          # Prompt for extracting insights
         ├── extract-pdf-figures.txt       # Prompt for extracting PDF figures
         ├── generate-glossary.txt         # Prompt for generating glossary
+        ├── generate-handout.txt          # Prompt for generating fill-in-the-blank Word handout
+        ├── generate-podcast-prep.txt     # Prompt for generating podcast preparation guide
         ├── generate-summary.txt          # Prompt for generating chapter summaries
         ├── refine-notes.txt              # Prompt for refining notes
         ├── rewrite-content.txt           # Prompt for rewriting content
@@ -337,6 +341,8 @@ Generate reusable prompt templates for book project maintenance:
 | `check-links` | Check internal links, image paths, and external URLs |
 | `generate-glossary` | Generate glossary from book terms |
 | `split-long-chapter` | Split long chapters into sub-sections |
+| `generate-handout` | Generate fill-in-the-blank Word handout from chapters |
+| `generate-podcast-prep` | Generate podcast preparation guide from chapters |
 
 **Usage workflow:**
 1. Run `./gradlew generatePrompt -Ptype=<type>` to display prompt

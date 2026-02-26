@@ -70,6 +70,8 @@ Hugo Book Manager 的 prompt 模板集合，用於書籍專案的各階段維護
 | `generate-summary` | generate-summary.txt | 為每個章節生成導讀摘要 | 幫助讀者快速了解章節範圍 |
 | `generate-glossary` | generate-glossary.txt | 從全書掃描專業術語並產出詞彙表 | 全書內容定稿後，幫助讀者理解專業術語 |
 | `check-links` | check-links.txt | 檢查內部連結、圖片路徑、外部 URL | 發布前的品質檢查 |
+| `generate-handout` | generate-handout.txt | 從指定章節生成填空式 Word 講義 | 備課、讀書會、自我檢測時 |
+| `generate-podcast-prep` | generate-podcast-prep.txt | 從指定章節生成 Podcast 錄製準備稿 | 準備 Podcast 錄製，讓夥伴快速掌握重點 |
 
 ---
 
