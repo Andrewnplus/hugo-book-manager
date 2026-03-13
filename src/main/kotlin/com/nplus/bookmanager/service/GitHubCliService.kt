@@ -216,7 +216,10 @@ class GitHubCliService {
         )
 
     /**
-     * Configure repository settings: homepage, GitHub Pages, topics, and star.
+     * Configure repository settings: homepage, topics, and star.
+     * Note: GitHub Pages is NOT enabled here because the gh-pages branch
+     * does not exist until after the first push triggers GitHub Actions.
+     * Use enableGitHubPages() separately after pushing and waiting for the branch.
      */
     fun configureRepository(
         username: String,
@@ -225,9 +228,38 @@ class GitHubCliService {
         topics: List<String>,
     ) {
         setHomepage(username, repoName, homepageUrl)
-        enableGitHubPages(username, repoName)
         addTopics(username, repoName, topics)
         starRepo(username, repoName)
+    }
+
+    /**
+     * Wait for a branch to appear on the remote repository.
+     * Useful for waiting for gh-pages branch after GitHub Actions build.
+     *
+     * @return true if the branch appeared within the timeout
+     */
+    fun waitForBranch(
+        username: String,
+        repoName: String,
+        branch: String,
+        maxWaitSeconds: Int = 120,
+        pollIntervalSeconds: Int = 10,
+    ): Boolean {
+        val maxAttempts = maxWaitSeconds / pollIntervalSeconds
+        for (i in 1..maxAttempts) {
+            val result =
+                ProcessRunner.execute(
+                    "gh api repos/$username/$repoName/branches/$branch --jq .name",
+                    description = "Checking for $branch branch (attempt $i/$maxAttempts)...",
+                )
+            if (result.success && result.stdout.trim() == branch) {
+                return true
+            }
+            if (i < maxAttempts) {
+                Thread.sleep(pollIntervalSeconds * 1000L)
+            }
+        }
+        return false
     }
 
     data class RepoInfo(

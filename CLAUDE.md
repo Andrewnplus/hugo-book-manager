@@ -311,6 +311,9 @@ hugo-book-manager/
 4. Update template files (README, hugo.toml, go.mod, _index.md)
 5. Download and resize cover image
 6. Create docs folder structure with _index.md files
+7. Commit and push initial content
+8. Wait for gh-pages branch (GitHub Actions build)
+9. Enable GitHub Pages (source: gh-pages branch)
 
 #### 4. Merge Pull Requests (`merge-prs`)
 1. Scan parent directory for git repositories

@@ -209,6 +209,9 @@ When user says "請處理 AI 任務" (please process AI task):
    - Updates template files
    - Downloads cover image
    - Creates docs structure
+   - Commits and pushes initial content
+   - Waits for gh-pages branch (GitHub Actions build)
+   - Enables GitHub Pages (source: gh-pages)
    - Auto-updates status to `completed`
 
 5. **Report final result** to user

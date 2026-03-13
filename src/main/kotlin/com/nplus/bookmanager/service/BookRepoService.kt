@@ -17,6 +17,7 @@ class BookRepoService(
     private val templateService: TemplateService = TemplateService(),
     private val imageService: ImageService = ImageService(),
     private val docsStructureService: DocsStructureService = DocsStructureService(),
+    private val gitService: GitService = GitService(),
 ) {
     data class CreateResult(
         val success: Boolean,
@@ -70,6 +71,27 @@ class BookRepoService(
         val createdCount = docsStructureService.createDocsStructure(repoDir, structure)
         println("  Created $createdCount items")
 
+        // Step: Commit and push initial content
+        println("\n  Committing and pushing initial content...")
+        if (!gitService.commitAndPush(repoDir, "feat: add initial book content")) {
+            println("  Warning: Failed to commit and push initial content")
+        } else {
+            println("  Pushed to remote")
+
+            // Step: Wait for gh-pages branch and enable GitHub Pages
+            println("\n  Waiting for gh-pages branch (GitHub Actions build)...")
+            if (ghService.waitForBranch(username, metadata.repoName, "gh-pages")) {
+                if (ghService.enableGitHubPages(username, metadata.repoName)) {
+                    println("  GitHub Pages enabled (source: gh-pages)")
+                } else {
+                    println("  Warning: Failed to enable GitHub Pages")
+                }
+            } else {
+                println("  Warning: gh-pages branch did not appear within timeout")
+                println("  You may need to enable GitHub Pages manually later")
+            }
+        }
+
         printSuccessSummary(username, metadata, repoDir)
 
         return CreateResult(true, repoDir)
@@ -97,7 +119,7 @@ class BookRepoService(
         // Configure repository
         val homepageUrl = "${AppConfig.homepageBaseUrl}/${metadata.repoName}"
         ghService.configureRepository(username, metadata.repoName, homepageUrl, metadata.topics)
-        println("  Repository configured (homepage, Pages, topics, starred)")
+        println("  Repository configured (homepage, topics, starred)")
 
         return true
     }
@@ -149,7 +171,6 @@ class BookRepoService(
         println("Next steps:")
         println("  1. cd ${repoDir.absolutePath}")
         println("  2. Review and edit the generated content")
-        println("  3. git add . && git commit -m 'Initial content' && git push")
         println()
     }
 }
