@@ -28,8 +28,8 @@ weight: 1
 
 ```csv
 chinese_title,english_title,author,repo_name,description,topics,category,category_topic,kindle_url,books_tw_url,publication_date,notes
-原子習慣,Atomic Habits,James Clear,atomic-habits,Atomic Habits | James Clear | Building good habits,habits self-improvement,growth-book-summary,growth-book-summary,https://amazon.com/...,https://books.com.tw/...,2019-06-01,暢銷書
-深度工作力,Deep Work,Cal Newport,deep-work,Deep Work | Cal Newport | Focus without distraction,productivity focus,growth-book-summary,growth-book-summary,,,2016-01-05,
+原子習慣,Atomic Habits,James Clear,atomic-habits,Atomic Habits | James Clear | Building good habits,book-summary growth-book-summary,growth-book-summary,growth-book-summary,https://amazon.com/...,https://books.com.tw/...,2019-06-01,暢銷書
+深度工作力,Deep Work,Cal Newport,deep-work,Deep Work | Cal Newport | Focus without distraction,book-summary growth-book-summary,growth-book-summary,growth-book-summary,,,2016-01-05,
 ```
 
 ## 欄位格式說明
@@ -50,9 +50,9 @@ chinese_title,english_title,author,repo_name,description,topics,category,categor
 ### topics
 
 - 使用空格分隔多個 topic
-- 必須包含 `book-summary`
-- 必須包含分類 topic（如 `growth-book-summary`）
-- 範例：`habits self-improvement book-summary growth-book-summary`
+- **只包含** `book-summary` + 一個分類 topic（如 `growth-book-summary`）
+- 不要加入關鍵字類 topic（如 `habits`、`psychology` 等）
+- 範例：`book-summary growth-book-summary`
 
 ### category
 
