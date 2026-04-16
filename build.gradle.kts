@@ -20,9 +20,6 @@ dependencies {
     // kotlinx-serialization for JSON
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 
-    // kotlin-csv for CSV reading
-    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.10.0")
-
     // Clikt for CLI
     implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
 
@@ -78,52 +75,6 @@ registerCliTask("checkEnv", "Check environment prerequisites (gh CLI, authentica
     args = listOf("check-env")
 }
 
-registerCliTask("createRepos", "Create GitHub repos from CSV file") {
-    doFirst {
-        val csvFile =
-            project.findProperty("csv")?.toString()
-                ?: throw GradleException("Please specify CSV file: -Pcsv=data/test.csv")
-        val dryRun = project.findProperty("dryRun")?.toString()?.toBoolean() ?: false
-        val startFrom = project.findProperty("startFrom")?.toString()?.toInt() ?: 1
-
-        val argList = mutableListOf("create-repos", "--csv", csvFile)
-        if (dryRun) argList.add("--dry-run")
-        if (startFrom > 1) {
-            argList.add("--start-from")
-            argList.add(startFrom.toString())
-        }
-        args = argList
-    }
-}
-
-registerCliTask("updateRenovate", "Batch update renovate.json in multiple repos") {
-    doFirst {
-        val parentDir =
-            project.findProperty("parentDir")?.toString()
-                ?: throw GradleException("Please specify parent directory: -PparentDir=/path/to/books")
-        val dryRun = project.findProperty("dryRun")?.toString()?.toBoolean() ?: false
-        val noPush = project.findProperty("noPush")?.toString()?.toBoolean() ?: false
-        val recursive = project.findProperty("recursive")?.toString()?.toBoolean() ?: false
-
-        val argList = mutableListOf("update-renovate", "--parent-dir", parentDir)
-        if (dryRun) argList.add("--dry-run")
-        if (noPush) argList.add("--no-push")
-        if (recursive) argList.add("--recursive")
-        args = argList
-    }
-}
-
-registerCliTask("initBook", "Initialize a new book repo from YAML input file") {
-    doFirst {
-        val inputFile = project.findProperty("input")?.toString() ?: "templates/book-input.yaml"
-        val dryRun = project.findProperty("dryRun")?.toString()?.toBoolean() ?: false
-
-        val argList = mutableListOf("init-book", "--input", inputFile)
-        if (dryRun) argList.add("--dry-run")
-        args = argList
-    }
-}
-
 registerCliTask("initBooks", "Initialize multiple book repos from a queue file") {
     doFirst {
         val queueFile = project.findProperty("queue")?.toString() ?: "templates/books-queue.yaml"
@@ -140,20 +91,6 @@ registerCliTask("initBooks", "Initialize multiple book repos from a queue file")
         if (status) argList.add("--status")
         if (reset) argList.add("--reset")
         if (dryRun) argList.add("--dry-run")
-        args = argList
-    }
-}
-
-registerCliTask("mergePrs", "Batch merge Renovate PRs with passing CI") {
-    doFirst {
-        val parentDir =
-            project.findProperty("parentDir")?.toString()
-                ?: throw GradleException("Please specify parent directory: -PparentDir=/path/to/books")
-        val mergeMethod = project.findProperty("mergeMethod")?.toString() ?: "merge"
-
-        val argList = mutableListOf("merge-prs", "--parent-dir", parentDir)
-        argList.add("--merge-method")
-        argList.add(mergeMethod)
         args = argList
     }
 }
@@ -177,35 +114,4 @@ registerCliTask("generatePrompt", "Generate prompt templates for book project ta
         }
         args = argList
     }
-}
-
-// Hugo documentation server tasks
-tasks.register<Exec>("hugoServer") {
-    group = "documentation"
-    description = "Start Hugo development server for docs site"
-    workingDir = file("docs")
-    commandLine("hugo", "server", "--buildDrafts", "--buildFuture")
-}
-
-tasks.register<Exec>("hugoBuild") {
-    group = "documentation"
-    description = "Build Hugo docs site"
-    workingDir = file("docs")
-    commandLine("hugo", "--gc", "--minify")
-}
-
-// Distribution task to create a fat jar
-tasks.register<Jar>("fatJar") {
-    group = "build"
-    description = "Creates a fat JAR with all dependencies"
-    archiveClassifier.set("all")
-
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-
-    manifest {
-        attributes["Main-Class"] = "com.nplus.bookmanager.MainKt"
-    }
-
-    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
-    with(tasks.jar.get())
 }

@@ -60,10 +60,14 @@ class BookRepoService(
         templateService.updateTemplateFiles(repoDir, metadata, bookInput)
 
         // Step: Download and resize cover image
-        println("\n  Processing cover image...")
-        val coverFile = File(repoDir, TemplateService.COVER_IMAGE_PATH)
-        if (!imageService.downloadAndResize(bookInput.coverUrl, coverFile)) {
-            println("  Warning: Failed to download cover image")
+        if (bookInput.coverUrl.isNotBlank()) {
+            println("\n  Processing cover image...")
+            val coverFile = File(repoDir, TemplateService.COVER_IMAGE_PATH)
+            if (!imageService.downloadAndResize(bookInput.coverUrl, coverFile)) {
+                println("  Warning: Failed to download cover image")
+            }
+        } else {
+            println("\n  Skipping cover image (no URL provided)")
         }
 
         // Step: Create docs structure
@@ -119,7 +123,7 @@ class BookRepoService(
         // Configure repository
         val homepageUrl = "${AppConfig.homepageBaseUrl}/${metadata.repoName}"
         ghService.configureRepository(username, metadata.repoName, homepageUrl, metadata.topics)
-        println("  Repository configured (homepage, topics, starred)")
+        println("  Repository configured (homepage, topics)")
 
         return true
     }

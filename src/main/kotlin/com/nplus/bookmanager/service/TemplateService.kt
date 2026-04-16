@@ -22,21 +22,7 @@ class TemplateService {
             """
 {
   "${'$'}schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-  "schedule": ["every 3 weeks on saturday"],
-  "automerge": true,
-  "automergeType": "pr",
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch"],
-      "enabled": false
-    },
-    {
-      "matchUpdateTypes": ["major"],
-      "groupName": "major updates",
-      "automerge": true
-    }
-  ]
+  "extends": ["github>Andrewnplus/renovate-config"]
 }
             """.trimIndent()
     }

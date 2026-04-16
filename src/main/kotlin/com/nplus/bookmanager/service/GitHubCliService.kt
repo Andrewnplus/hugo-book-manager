@@ -183,26 +183,6 @@ class GitHubCliService {
     }
 
     /**
-     * Check if repository is starred
-     */
-    fun isStarred(
-        username: String,
-        repoName: String,
-    ): Boolean = ProcessRunner.executeSuccessfully("gh api user/starred/$username/$repoName")
-
-    /**
-     * Star a repository
-     */
-    fun starRepo(
-        username: String,
-        repoName: String,
-    ): Boolean =
-        ProcessRunner.executeSuccessfully(
-            "gh api user/starred/$username/$repoName -X PUT",
-            description = "Starring repository...",
-        )
-
-    /**
      * Clone a repository
      */
     fun cloneRepo(
@@ -216,7 +196,7 @@ class GitHubCliService {
         )
 
     /**
-     * Configure repository settings: homepage, topics, and star.
+     * Configure repository settings: homepage and topics.
      * Note: GitHub Pages is NOT enabled here because the gh-pages branch
      * does not exist until after the first push triggers GitHub Actions.
      * Use enableGitHubPages() separately after pushing and waiting for the branch.
@@ -229,7 +209,6 @@ class GitHubCliService {
     ) {
         setHomepage(username, repoName, homepageUrl)
         addTopics(username, repoName, topics)
-        starRepo(username, repoName)
     }
 
     /**

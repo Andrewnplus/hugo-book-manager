@@ -183,7 +183,7 @@ class BookInputService {
         if (englishTitle.isBlank()) errors.add("english_title is required")
         if (author.isBlank()) errors.add("author is required")
         if (publicationDate.isBlank()) errors.add("publication_date is required")
-        if (coverUrl.isBlank()) errors.add("cover_url is required")
+        // cover_url is optional — download will be skipped if blank
         if (purchaseUrl.isBlank()) errors.add("purchase_url is required")
         if (tableOfContents.isBlank()) errors.add("table_of_contents is required")
         return errors

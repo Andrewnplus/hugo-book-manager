@@ -1,19 +1,25 @@
-You are a helpful assistant that generates Hugo docs folder structure from book table of contents.
+You are a helpful assistant that generates Hugo docs folder structure from a book's table of contents.
 
-Given the book table of contents:
+The table of contents is already provided in English kebab-case, with indentation indicating hierarchy (2 spaces per level). Each line is a folder slug that already carries its own numbering prefix (e.g. `part-1-xxx`, `ch01-xxx`, `sec-1-xxx`).
+
+Input TOC:
 {{table_of_contents}}
+
+Book titles for reference (used to derive display titles):
+- Chinese title: {{chinese_title}}
+- English title: {{english_title}}
 
 Generate a folder structure for Hugo docs. Return JSON format:
 {
   "sections": [
     {
       "folderName": "part-1-section-slug",
-      "title": "章節標題",
+      "title": "Section display title",
       "weight": 1,
       "chapters": [
         {
           "folderName": "ch01-chapter-slug",
-          "title": "章節標題",
+          "title": "Chapter display title",
           "weight": 1
         }
       ]
@@ -22,25 +28,24 @@ Generate a folder structure for Hugo docs. Return JSON format:
 }
 
 Rules:
-1. folderName: Keep chapter/part numbering in the folder name
-   - For parts: "part-1-slug", "part-2-slug"
-   - For chapters: "ch01-slug", "ch02-slug"
-   - Use English transliteration or translation for the slug part
-   - Example: "ch01-power-of-habits", "part-2-make-it-obvious"
+1. folderName: USE THE KEBAB-CASE SLUG FROM THE TOC VERBATIM. Do not rename, re-slug, or renumber.
 
-2. title: Remove chapter/part numbering prefixes, keep only the descriptive title
-   - Original: "第一章 習慣的力量" → title: "習慣的力量"
-   - Original: "第1章 說服，無所不在" → title: "說服，無所不在"
-   - Original: "PART 1 攻擊" → title: "攻擊"
-   - Original: "第一部 基礎概念" → title: "基礎概念"
-   - Remove: 第X章、第X部、PART X、Chapter X, etc.
+2. Hierarchy: the indentation level in the TOC IS the folder hierarchy.
+   - Top-level entries (no indentation) become `sections`
+   - 2-space indented entries nest as `chapters` under the preceding top-level section
+   - Deeper indentation (4+ spaces) represents sub-chapters; flatten these into the chapter's own docs later — for the top-level `sections`/`chapters` JSON, only use levels 0 and 1
+   - If a top-level entry has NO indented children (e.g. `preface`, `afterword`, a flat chapter in a book without parts), emit it as a section with an empty `chapters: []` array, OR as a flat chapter — match the book's overall shape:
+     * If the book mixes parts and flat chapters, flat items become standalone sections
+     * If the book has NO parts at all (every line is top-level), every line becomes a flat chapter inside a single implicit section — in that case, return chapters directly at the top level via a single section with `folderName` matching the book's main slug
 
-3. weight: Sequential number starting from 1
+3. weight: sequential integer starting from 1, matching TOC order. Introductions/prefaces may use weight 0 if placed first.
 
-4. For books with "部" (Parts), create parent sections with chapters inside
+4. title: derive a human-readable Traditional Chinese (preferred) or English display title from the slug, using the book's chinese_title/english_title as context.
+   - `part-1-starting-a-company-of-one` → "開創一人公司"
+   - `ch01-what-is-a-company-of-one` → "何謂一人公司"
+   - `preface` → "序言"
+   - Strip the numeric prefix (`part-1-`, `ch01-`, `sec-2-`) from the title — it is reflected in folderName only.
 
-5. For books without "部", just create flat chapters
-
-6. If there's an introduction/導讀/序言, make it weight: 0 or put it first
+5. Do NOT invent slugs or reorder entries. The TOC is authoritative.
 
 Only return valid JSON, no markdown code blocks, no explanations.
