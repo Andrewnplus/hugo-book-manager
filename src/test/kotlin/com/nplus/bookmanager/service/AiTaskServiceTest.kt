@@ -3,7 +3,6 @@ package com.nplus.bookmanager.service
 import com.nplus.bookmanager.model.BatchBookInput
 import com.nplus.bookmanager.model.BatchMetadataResponse
 import com.nplus.bookmanager.model.BatchMetadataResult
-import com.nplus.bookmanager.model.BookInput
 import com.nplus.bookmanager.model.DocsStructure
 import com.nplus.bookmanager.model.GeneratedMetadata
 import kotlinx.serialization.encodeToString
@@ -45,36 +44,13 @@ class AiTaskServiceTest {
     // ==================== Status Tests ====================
 
     @Test
-    fun `hasPendingMetadataTask returns false when no files exist`() {
-        assertFalse(service.hasPendingMetadataTask())
+    fun `hasPendingBatchMetadataTask returns false when no files exist`() {
+        assertFalse(service.hasPendingBatchMetadataTask())
     }
 
     @Test
-    fun `hasCompletedMetadataTask returns false when no files exist`() {
-        assertFalse(service.hasCompletedMetadataTask())
-    }
-
-    @Test
-    fun `hasPendingMetadataTask returns true when request exists without response`() {
-        inputDir.mkdirs()
-        File(inputDir, "metadata-request.json").writeText("{}")
-        assertTrue(service.hasPendingMetadataTask())
-    }
-
-    @Test
-    fun `hasPendingMetadataTask returns false when both request and response exist`() {
-        inputDir.mkdirs()
-        outputDir.mkdirs()
-        File(inputDir, "metadata-request.json").writeText("{}")
-        File(outputDir, "metadata-response.json").writeText("{}")
-        assertFalse(service.hasPendingMetadataTask())
-    }
-
-    @Test
-    fun `hasCompletedMetadataTask returns true when response exists`() {
-        outputDir.mkdirs()
-        File(outputDir, "metadata-response.json").writeText("{}")
-        assertTrue(service.hasCompletedMetadataTask())
+    fun `hasCompletedBatchMetadataTask returns false when no files exist`() {
+        assertFalse(service.hasCompletedBatchMetadataTask())
     }
 
     @Test
@@ -85,6 +61,15 @@ class AiTaskServiceTest {
     }
 
     @Test
+    fun `hasPendingBatchMetadataTask returns false when both request and response exist`() {
+        inputDir.mkdirs()
+        outputDir.mkdirs()
+        File(inputDir, "batch-metadata-request.json").writeText("{}")
+        File(outputDir, "batch-metadata-response.json").writeText("{}")
+        assertFalse(service.hasPendingBatchMetadataTask())
+    }
+
+    @Test
     fun `hasCompletedBatchMetadataTask returns true when response exists`() {
         outputDir.mkdirs()
         File(outputDir, "batch-metadata-response.json").writeText("{}")
@@ -92,30 +77,6 @@ class AiTaskServiceTest {
     }
 
     // ==================== Write/Read Round-Trip Tests ====================
-
-    @Test
-    fun `writeMetadataRequest creates request file`() {
-        val input =
-            BookInput(
-                chineseTitle = "測試書籍",
-                englishTitle = "Test Book",
-                author = "Author",
-                publicationDate = "2024-01-01",
-                coverUrl = "https://example.com/cover.png",
-                purchaseUrl = "https://example.com/buy",
-                tableOfContents = "Chapter 1",
-            )
-        val file = service.writeMetadataRequest(input)
-        assertTrue(file.exists())
-        assertTrue(file.readText().contains("測試書籍"))
-    }
-
-    @Test
-    fun `writeStructureRequest creates request file`() {
-        val file = service.writeStructureRequest("Chapter 1\nChapter 2")
-        assertTrue(file.exists())
-        assertTrue(file.readText().contains("Chapter 1"))
-    }
 
     @Test
     fun `writeBatchMetadataRequest creates request file`() {
@@ -134,50 +95,8 @@ class AiTaskServiceTest {
     }
 
     @Test
-    fun `readMetadataResponse returns null when no file exists`() {
-        assertNull(service.readMetadataResponse())
-    }
-
-    @Test
-    fun `readMetadataResponse parses valid JSON`() {
-        outputDir.mkdirs()
-        val metadata =
-            GeneratedMetadata(
-                repoName = "test-repo",
-                englishTitle = "Test Book",
-                chineseTitle = "測試書籍",
-                description = "A test book",
-                topics = listOf("test"),
-                category = "programming",
-            )
-        File(outputDir, "metadata-response.json").writeText(json.encodeToString(metadata))
-
-        val result = service.readMetadataResponse()
-        assertNotNull(result)
-        assertEquals("test-repo", result.repoName)
-        assertEquals("測試書籍", result.chineseTitle)
-    }
-
-    @Test
-    fun `readStructureResponse parses valid JSON`() {
-        outputDir.mkdirs()
-        val structure =
-            DocsStructure(
-                sections =
-                    listOf(
-                        DocsStructure.Section(
-                            folderName = "01-intro",
-                            title = "Introduction",
-                            weight = 1,
-                        ),
-                    ),
-            )
-        File(outputDir, "structure-response.json").writeText(json.encodeToString(structure))
-
-        val result = service.readStructureResponse()
-        assertNotNull(result)
-        assertEquals(1, result.sections.size)
-        assertEquals("01-intro", result.sections[0].folderName)
+    fun `readBatchMetadataResponse returns null when no file exists`() {
+        assertNull(service.readBatchMetadataResponse())
     }
 
     @Test
@@ -211,41 +130,48 @@ class AiTaskServiceTest {
     }
 
     @Test
-    fun `readMetadataResponse returns null for invalid JSON`() {
+    fun `getBatchResultForBook returns correct result`() {
         outputDir.mkdirs()
-        File(outputDir, "metadata-response.json").writeText("not valid json")
-        assertNull(service.readMetadataResponse())
+        val response =
+            BatchMetadataResponse(
+                results =
+                    listOf(
+                        BatchMetadataResult(
+                            bookId = "book-1",
+                            metadata =
+                                GeneratedMetadata(
+                                    repoName = "test-repo",
+                                    englishTitle = "Test",
+                                    chineseTitle = "測試",
+                                    description = "desc",
+                                    topics = listOf("test"),
+                                    category = "cat",
+                                ),
+                            structure = DocsStructure(sections = emptyList()),
+                        ),
+                    ),
+            )
+        File(outputDir, "batch-metadata-response.json").writeText(json.encodeToString(response))
+
+        val result = service.getBatchResultForBook("book-1")
+        assertNotNull(result)
+        assertEquals("test-repo", result.first.repoName)
+
+        assertNull(service.getBatchResultForBook("nonexistent"))
     }
 
     // ==================== Clear Tests ====================
 
     @Test
-    fun `clearMetadataTasks removes both request and response files`() {
+    fun `clearBatchMetadataTasks removes both request and response files`() {
         inputDir.mkdirs()
         outputDir.mkdirs()
-        val reqFile = File(inputDir, "metadata-request.json").also { it.writeText("{}") }
-        val resFile = File(outputDir, "metadata-response.json").also { it.writeText("{}") }
+        val reqFile = File(inputDir, "batch-metadata-request.json").also { it.writeText("{}") }
+        val resFile = File(outputDir, "batch-metadata-response.json").also { it.writeText("{}") }
 
-        service.clearMetadataTasks()
+        service.clearBatchMetadataTasks()
 
         assertFalse(reqFile.exists())
         assertFalse(resFile.exists())
-    }
-
-    @Test
-    fun `clearAllTasks removes all task files`() {
-        inputDir.mkdirs()
-        outputDir.mkdirs()
-        File(inputDir, "metadata-request.json").writeText("{}")
-        File(outputDir, "metadata-response.json").writeText("{}")
-        File(inputDir, "structure-request.json").writeText("{}")
-        File(outputDir, "structure-response.json").writeText("{}")
-        File(inputDir, "batch-metadata-request.json").writeText("{}")
-        File(outputDir, "batch-metadata-response.json").writeText("{}")
-
-        service.clearAllTasks()
-
-        assertEquals(0, inputDir.listFiles()?.size ?: 0)
-        assertEquals(0, outputDir.listFiles()?.size ?: 0)
     }
 }

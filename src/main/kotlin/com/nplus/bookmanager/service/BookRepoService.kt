@@ -9,8 +9,8 @@ import com.nplus.bookmanager.util.UserInput
 import java.io.File
 
 /**
- * Service that encapsulates the shared book-repository creation workflow
- * used by both InitBookCommand and InitBooksCommand.
+ * Service that encapsulates the book-repository creation workflow
+ * used by InitBooksCommand.
  */
 class BookRepoService(
     private val ghService: GitHubCliService = GitHubCliService(),

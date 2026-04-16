@@ -1,6 +1,5 @@
 package com.nplus.bookmanager.service
 
-import com.nplus.bookmanager.model.BookInput
 import com.nplus.bookmanager.model.BookStatus
 import com.nplus.bookmanager.model.QueuedBook
 import org.junit.jupiter.api.io.TempDir
@@ -16,42 +15,6 @@ class BookInputServiceTest {
     lateinit var tempDir: File
 
     private val service = BookInputService()
-
-    // ==================== validate() Tests ====================
-
-    @Test
-    fun `validate returns empty list for valid input`() {
-        val input = createValidBookInput()
-        val errors = service.validate(input)
-        assertTrue(errors.isEmpty())
-    }
-
-    @Test
-    fun `validate returns errors for blank fields`() {
-        val input =
-            BookInput(
-                chineseTitle = "",
-                englishTitle = "",
-                author = "",
-                publicationDate = "",
-                coverUrl = "",
-                purchaseUrl = "",
-                tableOfContents = "",
-            )
-        val errors = service.validate(input)
-        assertEquals(7, errors.size)
-        assertTrue(errors.any { it.contains("chinese_title") })
-        assertTrue(errors.any { it.contains("english_title") })
-        assertTrue(errors.any { it.contains("author") })
-    }
-
-    @Test
-    fun `validate detects single blank field`() {
-        val input = createValidBookInput().copy(chineseTitle = "")
-        val errors = service.validate(input)
-        assertEquals(1, errors.size)
-        assertTrue(errors[0].contains("chinese_title"))
-    }
 
     // ==================== validateQueuedBook() Tests ====================
 
@@ -83,56 +46,8 @@ class BookInputServiceTest {
                 tableOfContents = "",
             )
         val errors = service.validateQueuedBook(book)
-        assertEquals(8, errors.size) // 7 common + 1 id
-    }
-
-    // ==================== loadBookInput() Tests ====================
-
-    @Test
-    fun `loadBookInput returns null for non-existent file`() {
-        val result = service.loadBookInput(File(tempDir, "nonexistent.yaml"))
-        assertNull(result)
-    }
-
-    @Test
-    fun `loadBookInput parses valid YAML`() {
-        val yamlFile = File(tempDir, "book.yaml")
-        yamlFile.writeText(
-            """
-            chinese_title: "測試書籍"
-            english_title: "Test Book"
-            author: "Author Name"
-            publication_date: "2024-01-01"
-            cover_url: "https://example.com/cover.png"
-            purchase_url: "https://example.com/buy"
-            table_of_contents: |
-              Chapter 1: Introduction
-              Chapter 2: Basics
-            """.trimIndent(),
-        )
-
-        val result = service.loadBookInput(yamlFile)
-        assertNotNull(result)
-        assertEquals("測試書籍", result.chineseTitle)
-        assertEquals("Test Book", result.englishTitle)
-        assertEquals("Author Name", result.author)
-        assertEquals("2024-01-01", result.publicationDate)
-    }
-
-    @Test
-    fun `loadBookInput handles missing fields gracefully`() {
-        val yamlFile = File(tempDir, "partial.yaml")
-        yamlFile.writeText(
-            """
-            chinese_title: "測試"
-            english_title: "Test"
-            """.trimIndent(),
-        )
-
-        val result = service.loadBookInput(yamlFile)
-        assertNotNull(result)
-        assertEquals("測試", result.chineseTitle)
-        assertEquals("", result.author)
+        // 6 common fields (coverUrl is optional) + 1 id = 7
+        assertEquals(7, errors.size)
     }
 
     // ==================== loadBooksQueue() Tests ====================
@@ -203,17 +118,6 @@ class BookInputServiceTest {
     }
 
     // ==================== Helper Methods ====================
-
-    private fun createValidBookInput() =
-        BookInput(
-            chineseTitle = "測試書籍",
-            englishTitle = "Test Book",
-            author = "Author",
-            publicationDate = "2024-01-01",
-            coverUrl = "https://example.com/cover.png",
-            purchaseUrl = "https://example.com/buy",
-            tableOfContents = "Chapter 1",
-        )
 
     private fun createValidQueuedBook() =
         QueuedBook(

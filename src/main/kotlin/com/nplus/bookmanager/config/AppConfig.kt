@@ -8,9 +8,7 @@ import java.util.Properties
  */
 object AppConfig {
     // Rate limit delays (milliseconds)
-    const val REPO_CREATION_DELAY_MS = 3000L
     const val POST_CREATION_DELAY_MS = 2000L
-    const val API_CALL_DELAY_MS = 1000L
     const val TOPIC_API_DELAY_MS = 500L
 
     // Paths

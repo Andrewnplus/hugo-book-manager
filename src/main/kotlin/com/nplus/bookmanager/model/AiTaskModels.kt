@@ -2,33 +2,6 @@ package com.nplus.bookmanager.model
 
 import kotlinx.serialization.Serializable
 
-// ==================== Request Models ====================
-
-@Serializable
-data class MetadataRequest(
-    val taskType: String = "generateMetadata",
-    val promptFile: String,
-    val input: MetadataInput,
-)
-
-@Serializable
-data class MetadataInput(
-    val chineseTitle: String,
-    val englishTitle: String,
-)
-
-@Serializable
-data class StructureRequest(
-    val taskType: String = "generateDocsStructure",
-    val promptFile: String,
-    val input: StructureInput,
-)
-
-@Serializable
-data class StructureInput(
-    val tableOfContents: String,
-)
-
 // ==================== Batch Request Models ====================
 
 @Serializable

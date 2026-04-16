@@ -1,6 +1,5 @@
 package com.nplus.bookmanager.service
 
-import com.nplus.bookmanager.model.BookInput
 import com.nplus.bookmanager.model.BookStatus
 import com.nplus.bookmanager.model.BooksQueue
 import com.nplus.bookmanager.model.QueuedBook
@@ -8,37 +7,10 @@ import org.yaml.snakeyaml.Yaml
 import java.io.File
 
 /**
- * Service for reading book input from YAML files
+ * Service for reading and managing book queue YAML files
  */
 class BookInputService {
     private val yaml = Yaml()
-
-    /**
-     * Load book input from a YAML file
-     */
-    fun loadBookInput(inputFile: File): BookInput? {
-        if (!inputFile.exists()) {
-            println("Error: Input file not found: ${inputFile.absolutePath}")
-            return null
-        }
-
-        return try {
-            val data: Map<String, Any> = inputFile.inputStream().use { yaml.load(it) }
-
-            BookInput(
-                chineseTitle = data["chinese_title"]?.toString() ?: "",
-                englishTitle = data["english_title"]?.toString() ?: "",
-                author = data["author"]?.toString() ?: "",
-                publicationDate = data["publication_date"]?.toString() ?: "",
-                coverUrl = data["cover_url"]?.toString() ?: "",
-                purchaseUrl = data["purchase_url"]?.toString() ?: "",
-                tableOfContents = data["table_of_contents"]?.toString() ?: "",
-            )
-        } catch (e: Exception) {
-            println("Error reading YAML file: ${e.message}")
-            null
-        }
-    }
 
     /**
      * Load books queue from a YAML file
@@ -134,20 +106,6 @@ class BookInputService {
             "error" -> BookStatus.ERROR
             else -> BookStatus.PENDING
         }
-
-    /**
-     * Validate book input has all required fields
-     */
-    fun validate(input: BookInput): List<String> =
-        validateCommonFields(
-            chineseTitle = input.chineseTitle,
-            englishTitle = input.englishTitle,
-            author = input.author,
-            publicationDate = input.publicationDate,
-            coverUrl = input.coverUrl,
-            purchaseUrl = input.purchaseUrl,
-            tableOfContents = input.tableOfContents,
-        )
 
     /**
      * Validate a queued book has all required fields

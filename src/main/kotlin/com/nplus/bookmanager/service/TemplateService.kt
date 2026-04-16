@@ -17,71 +17,36 @@ class TemplateService {
         const val GO_MOD_PATH = "site/go.mod"
         const val INDEX_MD_PATH = "site/content/_index.md"
         const val COVER_IMAGE_PATH = "site/content/cover.png"
-
-        val STANDARD_RENOVATE_JSON =
-            """
-{
-  "${'$'}schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>Andrewnplus/renovate-config"]
-}
-            """.trimIndent()
     }
 
     /**
-     * Update all template files in a cloned repository (simple version for create-repos).
-     *
-     * @param repoDir The cloned repository directory
-     * @param repoName The new repository name
-     * @param chineseTitle The Chinese book title
-     */
-    fun updateTemplateFiles(
-        repoDir: File,
-        repoName: String,
-        chineseTitle: String,
-    ): Boolean {
-        var allSuccess = updateCommonTemplates(repoDir, repoName, chineseTitle)
-
-        // Update site/hugo.toml
-        allSuccess = updateFile(
-            File(repoDir, HUGO_TOML_PATH),
-            mapOf(
-                AppConfig.TEMPLATE_ZH_TITLE to chineseTitle,
-                "baseURL = \"${AppConfig.homepageBaseUrl}/${AppConfig.TEMPLATE_SLUG}/\"" to
-                    "baseURL = \"${AppConfig.homepageBaseUrl}/$repoName/\"",
-            ),
-        ) &&
-            allSuccess
-
-        // Update site/content/_index.md
-        allSuccess = updateFile(
-            File(repoDir, INDEX_MD_PATH),
-            mapOf(AppConfig.TEMPLATE_ZH_TITLE to chineseTitle),
-        ) &&
-            allSuccess
-
-        return allSuccess
-    }
-
-    /**
-     * Update all template files with full book metadata (for init-book / init-books).
-     *
-     * @param repoDir The cloned repository directory
-     * @param metadata AI-generated metadata
-     * @param bookInput Book input with author, date, purchase URL
+     * Update all template files with full book metadata (for init-books).
      */
     fun updateTemplateFiles(
         repoDir: File,
         metadata: GeneratedMetadata,
         bookInput: BookInput,
     ): Boolean {
-        var allSuccess = updateCommonTemplates(repoDir, metadata.repoName, metadata.chineseTitle)
+        var allSuccess = true
 
-        // Additional README replacement for English title
+        // Update README.md
         allSuccess = updateFile(
             File(repoDir, README_PATH),
-            mapOf(AppConfig.TEMPLATE_EN_TITLE to metadata.englishTitle),
-        ) &&
-            allSuccess
+            mapOf(
+                AppConfig.TEMPLATE_SLUG to metadata.repoName,
+                AppConfig.TEMPLATE_ZH_TITLE to metadata.chineseTitle,
+                AppConfig.TEMPLATE_EN_TITLE to metadata.englishTitle,
+            ),
+        ) && allSuccess
+
+        // Update settings.gradle.kts
+        allSuccess = updateFile(
+            File(repoDir, SETTINGS_GRADLE_PATH),
+            mapOf(AppConfig.TEMPLATE_SLUG to metadata.repoName),
+        ) && allSuccess
+
+        // Update site/go.mod
+        updateGoMod(repoDir, metadata.repoName)
 
         // Update site/hugo.toml
         allSuccess = updateFile(
@@ -90,44 +55,10 @@ class TemplateService {
                 AppConfig.TEMPLATE_ZH_TITLE to metadata.chineseTitle,
                 AppConfig.TEMPLATE_SLUG to metadata.repoName,
             ),
-        ) &&
-            allSuccess
+        ) && allSuccess
 
         // Update site/content/_index.md with book info
         updateIndexFile(repoDir, metadata.chineseTitle, bookInput)
-
-        return allSuccess
-    }
-
-    /**
-     * Update common template files shared by both overloads: README, settings.gradle.kts, go.mod.
-     */
-    private fun updateCommonTemplates(
-        repoDir: File,
-        repoName: String,
-        chineseTitle: String,
-    ): Boolean {
-        var allSuccess = true
-
-        // Update README.md
-        allSuccess = updateFile(
-            File(repoDir, README_PATH),
-            mapOf(
-                AppConfig.TEMPLATE_SLUG to repoName,
-                AppConfig.TEMPLATE_ZH_TITLE to chineseTitle,
-            ),
-        ) &&
-            allSuccess
-
-        // Update settings.gradle.kts
-        allSuccess = updateFile(
-            File(repoDir, SETTINGS_GRADLE_PATH),
-            mapOf(AppConfig.TEMPLATE_SLUG to repoName),
-        ) &&
-            allSuccess
-
-        // Update site/go.mod
-        updateGoMod(repoDir, repoName)
 
         return allSuccess
     }
@@ -200,26 +131,6 @@ class TemplateService {
             true
         } catch (e: Exception) {
             println("  Error updating ${file.name}: ${e.message}")
-            false
-        }
-    }
-
-    /**
-     * Create or update renovate.json with the standard configuration
-     */
-    fun updateRenovateJson(repoDir: File): Boolean {
-        val githubDir = File(repoDir, ".github")
-        if (!githubDir.exists()) {
-            githubDir.mkdirs()
-        }
-
-        val renovateFile = File(githubDir, "renovate.json")
-        return try {
-            renovateFile.writeText(STANDARD_RENOVATE_JSON)
-            println("  Updated: .github/renovate.json")
-            true
-        } catch (e: Exception) {
-            println("  Error updating renovate.json: ${e.message}")
             false
         }
     }

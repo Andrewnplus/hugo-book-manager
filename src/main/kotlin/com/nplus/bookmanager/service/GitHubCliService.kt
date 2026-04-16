@@ -4,11 +4,6 @@ import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.util.ProcessRunner
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonArray
-import kotlinx.serialization.json.contentOrNull
-import kotlinx.serialization.json.jsonArray
-import kotlinx.serialization.json.jsonObject
-import kotlinx.serialization.json.jsonPrimitive
 
 /**
  * Service for interacting with GitHub CLI (gh)
@@ -62,41 +57,6 @@ class GitHubCliService {
         username: String,
         repoName: String,
     ): Boolean = ProcessRunner.executeSuccessfully("gh repo view $username/$repoName --json name")
-
-    @Serializable
-    private data class GhRepoInfoResponse(
-        val homepageUrl: String = "",
-        val repositoryTopics: List<GhTopicNode> = emptyList(),
-    )
-
-    @Serializable
-    private data class GhTopicNode(
-        val name: String = "",
-    )
-
-    /**
-     * Get repository info (homepage, topics)
-     */
-    fun getRepoInfo(
-        username: String,
-        repoName: String,
-    ): RepoInfo? {
-        val output =
-            ProcessRunner.executeForOutput(
-                "gh repo view $username/$repoName --json homepageUrl,repositoryTopics",
-            ) ?: return null
-
-        return try {
-            val response = json.decodeFromString<GhRepoInfoResponse>(output)
-            RepoInfo(
-                homepageUrl = response.homepageUrl,
-                topics = response.repositoryTopics.map { it.name },
-            )
-        } catch (e: Exception) {
-            println("  Warning: Could not parse repo info: ${e.message}")
-            null
-        }
-    }
 
     /**
      * Create a new repository from template
@@ -239,127 +199,5 @@ class GitHubCliService {
             }
         }
         return false
-    }
-
-    data class RepoInfo(
-        val homepageUrl: String,
-        val topics: List<String>,
-    )
-
-    /**
-     * Data class representing a Pull Request
-     */
-    data class PullRequest(
-        val number: Int,
-        val title: String,
-        val author: String,
-        val repoFullName: String,
-        val checksStatus: ChecksStatus,
-    ) {
-        val isRenovate: Boolean
-            get() = author == "renovate[bot]" || author == "app/renovate"
-
-        val isCiPassing: Boolean
-            get() = checksStatus == ChecksStatus.PASSING
-    }
-
-    enum class ChecksStatus {
-        PASSING,
-        FAILING,
-        PENDING,
-        UNKNOWN,
-    }
-
-    /**
-     * Get repository full name (owner/repo) from a local git directory
-     */
-    fun getRepoFullName(repoDir: java.io.File): String? =
-        ProcessRunner
-            .executeForOutput(
-                "gh repo view --json nameWithOwner --jq '.nameWithOwner'",
-                workingDir = repoDir,
-            )?.trim()
-
-    /**
-     * List open Renovate PRs for a repository that have passing CI
-     */
-    fun listRenovatePrs(repoFullName: String): List<PullRequest> {
-        val output =
-            ProcessRunner.executeForOutput(
-                "gh pr list --repo $repoFullName --author app/renovate --state open --json number,title,author,statusCheckRollup",
-            ) ?: return emptyList()
-
-        return try {
-            val prs = json.parseToJsonElement(output).jsonArray
-            prs.mapNotNull { prElement ->
-                val pr = prElement.jsonObject
-                val number = pr["number"]?.jsonPrimitive?.content?.toIntOrNull() ?: return@mapNotNull null
-                val title = pr["title"]?.jsonPrimitive?.contentOrNull ?: ""
-                val author =
-                    pr["author"]
-                        ?.jsonObject
-                        ?.get("login")
-                        ?.jsonPrimitive
-                        ?.contentOrNull ?: ""
-
-                // Parse status checks
-                val statusChecks = pr["statusCheckRollup"]?.jsonArray ?: JsonArray(emptyList())
-                val checksStatus = parseChecksStatus(statusChecks)
-
-                PullRequest(
-                    number = number,
-                    title = title,
-                    author = author,
-                    repoFullName = repoFullName,
-                    checksStatus = checksStatus,
-                )
-            }
-        } catch (e: Exception) {
-            println("  Warning: Could not parse PR list: ${e.message}")
-            emptyList()
-        }
-    }
-
-    private fun parseChecksStatus(statusChecks: JsonArray): ChecksStatus {
-        if (statusChecks.isEmpty()) return ChecksStatus.UNKNOWN
-
-        var hasFailure = false
-        var hasPending = false
-
-        for (check in statusChecks) {
-            val conclusion = check.jsonObject["conclusion"]?.jsonPrimitive?.contentOrNull
-            val status = check.jsonObject["status"]?.jsonPrimitive?.contentOrNull
-
-            when {
-                conclusion == "FAILURE" || conclusion == "CANCELLED" || conclusion == "TIMED_OUT" -> hasFailure = true
-                status == "IN_PROGRESS" || status == "QUEUED" || status == "PENDING" -> hasPending = true
-            }
-        }
-
-        return when {
-            hasFailure -> ChecksStatus.FAILING
-            hasPending -> ChecksStatus.PENDING
-            else -> ChecksStatus.PASSING
-        }
-    }
-
-    /**
-     * Merge a pull request
-     */
-    fun mergePr(
-        repoFullName: String,
-        prNumber: Int,
-        mergeMethod: String = "merge",
-    ): Boolean {
-        val result =
-            ProcessRunner.execute(
-                "gh pr merge $prNumber --repo $repoFullName --$mergeMethod --delete-branch",
-                description = "Merging PR #$prNumber...",
-            )
-
-        if (!result.success) {
-            println("  Error merging PR #$prNumber: ${result.stderr}")
-        }
-        return result.success
     }
 }
