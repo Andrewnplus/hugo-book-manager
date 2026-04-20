@@ -2,7 +2,6 @@ package com.nplus.bookmanager.service
 
 import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.util.ProcessRunner
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 /**

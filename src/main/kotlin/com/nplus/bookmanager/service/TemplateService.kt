@@ -37,13 +37,15 @@ class TemplateService {
                 AppConfig.TEMPLATE_ZH_TITLE to metadata.chineseTitle,
                 AppConfig.TEMPLATE_EN_TITLE to metadata.englishTitle,
             ),
-        ) && allSuccess
+        ) &&
+            allSuccess
 
         // Update settings.gradle.kts
         allSuccess = updateFile(
             File(repoDir, SETTINGS_GRADLE_PATH),
             mapOf(AppConfig.TEMPLATE_SLUG to metadata.repoName),
-        ) && allSuccess
+        ) &&
+            allSuccess
 
         // Update site/go.mod
         updateGoMod(repoDir, metadata.repoName)
@@ -55,7 +57,8 @@ class TemplateService {
                 AppConfig.TEMPLATE_ZH_TITLE to metadata.chineseTitle,
                 AppConfig.TEMPLATE_SLUG to metadata.repoName,
             ),
-        ) && allSuccess
+        ) &&
+            allSuccess
 
         // Update site/content/_index.md with book info
         updateIndexFile(repoDir, metadata.chineseTitle, bookInput)
