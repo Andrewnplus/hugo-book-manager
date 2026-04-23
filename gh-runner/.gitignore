@@ -1,0 +1,4 @@
+.env
+!.env.example
+_work/
+*.log

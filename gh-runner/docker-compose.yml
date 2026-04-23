@@ -1,0 +1,45 @@
+# 4 ephemeral self-hosted runners for nplus-father org.
+# Resource budget: 60% of host (16c/62GB) → 4 × 2.4 cpu / 9GB ≈ 9.6c / 36GB.
+# Scale down: comment out a service. Scale up: copy a service block.
+
+x-runner-base: &runner-base
+  build:
+    context: .
+    dockerfile: Dockerfile.runner
+  image: nplus/hugobook-runner:latest
+  restart: unless-stopped
+  env_file: .env
+  deploy:
+    resources:
+      limits:
+        cpus: "2.4"
+        memory: 9g
+  security_opt:
+    - no-new-privileges:true
+  # Docker socket is intentionally NOT mounted — workflows that need Docker
+  # should use GitHub-hosted runners for that step.
+
+services:
+  runner-1:
+    <<: *runner-base
+    container_name: hugobook-runner-1
+    environment:
+      RUNNER_NAME: hugobook-runner-1
+
+  runner-2:
+    <<: *runner-base
+    container_name: hugobook-runner-2
+    environment:
+      RUNNER_NAME: hugobook-runner-2
+
+  runner-3:
+    <<: *runner-base
+    container_name: hugobook-runner-3
+    environment:
+      RUNNER_NAME: hugobook-runner-3
+
+  runner-4:
+    <<: *runner-base
+    container_name: hugobook-runner-4
+    environment:
+      RUNNER_NAME: hugobook-runner-4

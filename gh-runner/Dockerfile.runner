@@ -1,0 +1,61 @@
+# syntax=docker/dockerfile:1.7
+# Custom HugoBook runner: base myoung34 runner + Temurin JDK + Hugo + Go.
+# Pre-installing these tools lets reusable workflow skip setup-java/setup-hugo
+# on every job — saves ~90s per build.
+
+FROM myoung34/github-runner:2.334.0-ubuntu-noble
+
+ARG HUGO_VERSION=0.154.5
+ARG JAVA_VERSION=25
+ARG GO_VERSION=1.24.2
+ARG NODE_MAJOR=22
+
+USER root
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+      curl ca-certificates gnupg wget git && \
+    rm -rf /var/lib/apt/lists/*
+
+# Eclipse Temurin JDK (latest LTS per org decision: Java 25)
+RUN curl -fsSL https://packages.adoptium.net/artifactory/api/gpg/key/public \
+      | gpg --dearmor -o /usr/share/keyrings/adoptium.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb noble main" \
+      > /etc/apt/sources.list.d/adoptium.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends "temurin-${JAVA_VERSION}-jdk" && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV JAVA_HOME=/usr/lib/jvm/temurin-${JAVA_VERSION}-jdk-amd64
+ENV PATH=$JAVA_HOME/bin:$PATH
+
+# Hugo extended (static binary, matches peaceiris/actions-hugo behavior)
+RUN curl -fsSL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz" \
+      -o /tmp/hugo.tgz && \
+    tar -xzf /tmp/hugo.tgz -C /usr/local/bin hugo && \
+    rm /tmp/hugo.tgz && \
+    chmod +x /usr/local/bin/hugo && \
+    hugo version
+
+# Go (required for Hugo modules — go.sum present in book repos)
+RUN curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" \
+      -o /tmp/go.tgz && \
+    tar -xzf /tmp/go.tgz -C /usr/local && \
+    rm /tmp/go.tgz && \
+    ln -sf /usr/local/go/bin/go /usr/local/bin/go && \
+    ln -sf /usr/local/go/bin/gofmt /usr/local/bin/gofmt && \
+    go version
+
+# Node.js (required by Spotless → Prettier for markdown lint)
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
+      | gpg --dearmor -o /usr/share/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" \
+      > /etc/apt/sources.list.d/nodesource.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends nodejs && \
+    rm -rf /var/lib/apt/lists/*
+
+# Smoke test: fail build if any tool misbehaves
+RUN java -version && hugo version && go version && git --version && node --version && npm --version
+
+# Leave entrypoint + USER as set by base image (root → drops to runner internally)
