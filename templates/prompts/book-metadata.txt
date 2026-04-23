@@ -15,7 +15,11 @@ Please provide the following information in JSON format:
 }
 
 Rules:
-1. repoName: lowercase, kebab-case, derived from English title (e.g., "atomic-habits")
+1. repoName: lowercase, kebab-case, derived from English title (e.g., "atomic-habits").
+   - **Strip a leading "the " from the English title before slugifying.**
+     Example: "The Lean Startup" → repoName "lean-startup" (NOT "the-lean-startup").
+     Example: "The 48 Laws of Power" → repoName "48-laws-of-power".
+     This keeps the leading "The" out of repo names so they sort naturally.
 2. chineseTitle: Traditional Chinese (繁體中文)
 3. description: Format is "English Title | Author | Brief description" (max 100 chars total)
 4. topics: ONLY include "book-summary" + one category topic. Do NOT add keyword topics.

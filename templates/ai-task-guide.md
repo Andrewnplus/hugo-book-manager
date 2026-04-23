@@ -112,6 +112,9 @@ When user says "請處理 AI 任務" (please process AI task):
 
 - Always use Traditional Chinese (繁體中文) for Chinese text
 - For `repoName` and `folderName`, use lowercase kebab-case
+- **Strip a leading "The " from the English title before slugifying.**
+  Example: `The Lean Startup` → `lean-startup` (NOT `the-lean-startup`). This
+  applies to both `repoName` and `folderName`.
 - JSON output must be valid (no markdown code blocks)
 - The prompt templates contain detailed instructions - follow them carefully
 - topics 只包含 `book-summary` + 一個 category topic（如 `growth-book-summary`），不加關鍵字 topic
