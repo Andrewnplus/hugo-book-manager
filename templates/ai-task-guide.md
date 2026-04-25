@@ -43,7 +43,7 @@ When the user runs `init-books`, the CLI generates a batch task file in `ai-task
         "repoName": "atomic-habits",
         "englishTitle": "Atomic Habits",
         "chineseTitle": "原子習慣",
-        "description": "Atomic Habits | James Clear | Build good habits",
+        "description": "Atomic Habits | James Clear | A practical framework for building good habits and breaking bad ones through tiny, identity-driven changes that compound over time.",
         "topics": ["book-summary", "growth-book-summary"],
         "category": "growth-book-summary"
       },
