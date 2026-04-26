@@ -77,8 +77,19 @@ class AiTaskService(
             readJsonResponse<BatchMetadataResponse>(BATCH_METADATA_RESPONSE_FILE, "batch metadata response")
                 ?: return null
         return response.results.associate { result ->
-            result.bookId to Pair(result.metadata, result.structure)
+            val sanitized = sanitizeRepoName(result.bookId, result.metadata)
+            result.bookId to Pair(sanitized, result.structure)
         }
+    }
+
+    private fun sanitizeRepoName(
+        bookId: String,
+        metadata: GeneratedMetadata,
+    ): GeneratedMetadata {
+        val stripped = metadata.repoName.removePrefix("the-")
+        if (stripped == metadata.repoName) return metadata
+        println("  ⚠ Stripping leading 'the-' from repoName for $bookId: '${metadata.repoName}' → '$stripped'")
+        return metadata.copy(repoName = stripped)
     }
 
     /**
