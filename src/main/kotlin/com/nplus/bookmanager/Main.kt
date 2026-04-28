@@ -4,7 +4,6 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.core.subcommands
 import com.nplus.bookmanager.command.CheckEnvCommand
-import com.nplus.bookmanager.command.GeneratePromptCommand
 import com.nplus.bookmanager.command.InitBooksCommand
 
 /**
@@ -26,6 +25,5 @@ fun main(args: Array<String>) {
         .subcommands(
             CheckEnvCommand(),
             InitBooksCommand(),
-            GeneratePromptCommand(),
         ).main(args)
 }

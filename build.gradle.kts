@@ -95,23 +95,3 @@ registerCliTask("initBooks", "Initialize multiple book repos from a queue file")
     }
 }
 
-registerCliTask("generatePrompt", "Generate prompt templates for book project tasks") {
-    doFirst {
-        val type = project.findProperty("type")?.toString()
-        val output = project.findProperty("output")?.toString()
-        val list = project.findProperty("list")?.toString()?.toBoolean() ?: false
-
-        val argList = mutableListOf("generate-prompt")
-        if (list) {
-            argList.add("--list")
-        } else if (type != null) {
-            argList.add("--type")
-            argList.add(type)
-            if (output != null) {
-                argList.add("--output")
-                argList.add(output)
-            }
-        }
-        args = argList
-    }
-}

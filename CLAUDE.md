@@ -9,7 +9,6 @@ Hugo Book Manager is a Kotlin + Gradle CLI tool that creates GitHub repositories
 **Features:**
 - Interactive AI-powered book metadata and structure generation via Claude Code
 - One-stop book creation workflow (AI Task → GitHub → Clone → Update → Push)
-- Prompt generation for book project maintenance tasks
 
 ## AI Task Processing Workflow
 
@@ -49,34 +48,10 @@ See `templates/ai-task-guide.md` for detailed processing instructions.
 ./gradlew initBooks -Pid=<book-id>           # Process specific book
 ./gradlew initBooks -Pstatus=true            # Show queue status
 ./gradlew initBooks -Pid=<book-id> -Preset=true  # Reset book status
-
-# Generate prompt templates
-./gradlew generatePrompt                     # List available prompts
-./gradlew generatePrompt -Ptype=<type>       # Display prompt
-./gradlew generatePrompt -Ptype=<type> -Poutput=/path/to/file  # Save to file
 ```
 
-### Available Prompt Types
-
-| Type | Description |
-|------|-------------|
-| `build-structure` | Build folder structure from TOC |
-| `enhance-katex` | Add KaTeX math formula support |
-| `enhance-mermaid` | Add Mermaid diagram support |
-| `review-markdown` | Review and fix markdown quality issues |
-| `rewrite-content` | Rewrite content for better readability |
-| `list-to-table` | Convert list items to markdown tables |
-| `simplify-table` | Simplify tables by removing redundant info |
-| `extract-insights` | Extract valuable insights from book notes |
-| `refine-notes` | Improve structure and readability of book notes |
-| `extract-pdf-figures` | Extract figures from PDF and convert to Markdown |
-| `translate-content` | Translate English notes to Traditional Chinese |
-| `generate-summary` | Generate chapter summaries |
-| `check-links` | Check internal links, image paths, and external URLs |
-| `generate-glossary` | Generate glossary from book terms |
-| `split-long-chapter` | Split long chapters into sub-sections |
-| `generate-handout` | Generate fill-in-the-blank Word handout |
-| `generate-podcast-prep` | Generate podcast preparation guide |
+For book-project maintenance tasks (KaTeX, Mermaid, review-markdown, translate, etc.),
+use the global `/book-*` slash commands instead of in-repo prompt templates.
 
 ## Code Architecture
 
@@ -107,8 +82,7 @@ hugo-book-manager/
 │   │   └── TemplateService.kt    # Template file modifications
 │   ├── command/
 │   │   ├── CheckEnvCommand.kt    # Environment check
-│   │   ├── InitBooksCommand.kt   # Batch book initialization from queue
-│   │   └── GeneratePromptCommand.kt # Generate prompt templates
+│   │   └── InitBooksCommand.kt   # Batch book initialization from queue
 │   └── util/
 │       ├── CliFormatter.kt       # Console output formatting
 │       ├── ProcessRunner.kt      # Shell command execution
@@ -116,7 +90,8 @@ hugo-book-manager/
 └── templates/
     ├── ai-task-guide.md          # Guide for Claude to process AI tasks
     ├── book-input.yaml           # Template for queue entry format
-    └── prompts/                  # 20 prompt templates for book tasks
+    └── prompts/
+        └── book-metadata.txt     # Prompt used internally by init-books
 ```
 
 ### Key Services
