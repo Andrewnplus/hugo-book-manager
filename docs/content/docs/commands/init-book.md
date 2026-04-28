@@ -141,5 +141,4 @@ Done! Book initialized successfully.
 
 ## 相關指令
 
-- [rebuild-docs]({{< relref "/docs/commands/rebuild-docs" >}}) - 重建 docs 結構
-- [convert-docs]({{< relref "/docs/commands/convert-docs" >}}) - 轉換文件格式
+- [check-env]({{< relref "/docs/commands/check-env" >}}) - 檢查環境

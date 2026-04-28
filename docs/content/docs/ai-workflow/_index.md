@@ -13,8 +13,6 @@ Hugo Book Manager 的部分指令使用 **兩階段 AI 互動工作流程**，�
 | 指令 | AI 處理內容 |
 |------|-------------|
 | [init-book]({{< relref "/docs/commands/init-book" >}}) | 產生 metadata、docs 結構 |
-| [rebuild-docs]({{< relref "/docs/commands/rebuild-docs" >}}) | 產生 docs 結構 |
-| [convert-docs]({{< relref "/docs/commands/convert-docs" >}}) | 轉換文件格式 |
 
 ## 設計理念
 

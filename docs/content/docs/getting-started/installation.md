@@ -81,9 +81,8 @@ HOMEPAGE_BASE_URL=https://你的domain.com
 
 環境設定完成後，你可以：
 
-1. [建立 Repo]({{< relref "/docs/commands/create-repos" >}}) - 從 CSV 批次建立書籍 repo
-2. [初始化書籍]({{< relref "/docs/commands/init-book" >}}) - 使用 AI 互動式建立新書籍
-3. [了解 AI 工作流程]({{< relref "/docs/ai-workflow" >}}) - 學習 AI 任務處理機制
+1. [初始化書籍]({{< relref "/docs/commands/init-book" >}}) - 從 queue 批次使用 AI 互動式建立書籍
+2. [了解 AI 工作流程]({{< relref "/docs/ai-workflow" >}}) - 學習 AI 任務處理機制
 
 ## 相關依賴
 

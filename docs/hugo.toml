@@ -7,12 +7,6 @@ title = 'Hugo Book Manager'
 [[module.imports]]
   path = 'github.com/alex-shpak/hugo-book'
 
-# Mount shared prompt templates (from ../templates/prompts) as assets/prompts
-# so the include-prompt shortcode can load them via resources.Get.
-[[module.mounts]]
-  source = "../templates/prompts"
-  target = "assets/prompts"
-
 # Book configuration
 disablePathToLower = true
 enableGitInfo = true

@@ -46,5 +46,4 @@ Checking environment...
 
 ## 相關指令
 
-- [create-repos]({{< relref "/docs/commands/create-repos" >}}) - 需要 GitHub CLI 認證
 - [init-book]({{< relref "/docs/commands/init-book" >}}) - 需要 GitHub CLI 認證

@@ -5,7 +5,7 @@ weight: 2
 
 # AI 任務類型
 
-Hugo Book Manager 定義了三種 AI 任務類型，每種都有特定的輸入輸出格式。
+Hugo Book Manager 定義了兩種 AI 任務類型，每種都有特定的輸入輸出格式。
 
 ## 任務總覽
 
@@ -13,7 +13,6 @@ Hugo Book Manager 定義了三種 AI 任務類型，每種都有特定的輸入�
 |----------|------|------|
 | `metadata-request.json` | 從書名產生 repo metadata | `metadata-response.json` |
 | `structure-request.json` | 從目錄產生 docs 結構 | `structure-response.json` |
-| `convert-request.json` | 轉換 Markdown 格式 | 直接寫入指定路徑 |
 
 ---
 
@@ -136,47 +135,6 @@ Hugo Book Manager 定義了三種 AI 任務類型，每種都有特定的輸入�
 
 ---
 
-## Convert 任務
-
-將 Markdown 檔案轉換為 Hugo Book 格式。
-
-### 輸入格式
-
-```json
-{
-  "type": "convert",
-  "prompt": "templates/prompts/doc-convert.txt",
-  "files": [
-    {
-      "input": "/path/to/chapter01.md",
-      "output": "/path/to/site/content/docs/01-chapter/_index.md"
-    },
-    {
-      "input": "/path/to/chapter02.md",
-      "output": "/path/to/site/content/docs/02-chapter/_index.md"
-    }
-  ]
-}
-```
-
-### 輸出
-
-沒有 JSON 輸出檔案。Claude 會直接讀取每個輸入檔案，轉換後寫入指定的輸出路徑。
-
-### 轉換內容
-
-依照 prompt 規則，通常包含：
-
-- 保留 frontmatter
-- 使用適當的標題層級
-- 整理列表格式
-- 使用 Markdown Alert 格式標記重點
-- 潤飾文字使其通順
-
-詳細規則請參閱 [doc-convert Prompt]({{< relref "/docs/prompts/doc-convert" >}})。
-
----
-
 ## 處理 AI 任務
 
 當任務檔案建立後，對 Claude Code 說：
@@ -194,4 +152,3 @@ Claude 會自動：
 ## 相關文件
 
 - [運作方式]({{< relref "/docs/ai-workflow/how-it-works" >}}) - 兩階段工作流程詳解
-- [Prompt 範本]({{< relref "/docs/prompts" >}}) - 完整的 Prompt 說明

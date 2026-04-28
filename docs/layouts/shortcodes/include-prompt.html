@@ -1,5 +1,0 @@
-{{- $name := .Get 0 -}}
-{{- $res := resources.Get (printf "prompts/%s" $name) -}}
-````markdown
-{{ $res.Content | safeHTML }}
-````

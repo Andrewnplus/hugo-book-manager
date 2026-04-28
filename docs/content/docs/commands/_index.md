@@ -13,14 +13,7 @@ Hugo Book Manager 提供多個 CLI 指令，涵蓋從環境檢查到批次處理
 | 指令 | 說明 | AI 互動 |
 |------|------|:-------:|
 | [check-env]({{< relref "/docs/commands/check-env" >}}) | 檢查環境設定 | - |
-| [create-repos]({{< relref "/docs/commands/create-repos" >}}) | 從 CSV 批次建立 GitHub repo | - |
-| [init-book]({{< relref "/docs/commands/init-book" >}}) | 初始化新書籍專案 | ✓ |
-| [clean-docs]({{< relref "/docs/commands/clean-docs" >}}) | 清理 PDF/HTML/MHTML 為 Markdown | - |
-| [convert-docs]({{< relref "/docs/commands/convert-docs" >}}) | 轉換 Markdown 為 Hugo Book 格式 | ✓ |
-| [rebuild-docs]({{< relref "/docs/commands/rebuild-docs" >}}) | 重建 docs 資料夾結構 | ✓ |
-| [update-renovate]({{< relref "/docs/commands/update-renovate" >}}) | 批次更新 renovate.json | - |
-| [merge-prs]({{< relref "/docs/commands/merge-prs" >}}) | 批次合併 Renovate PR | - |
-| [generate-prompt]({{< relref "/docs/commands/generate-prompt" >}}) | 產生 Prompt 範本 | - |
+| [init-book]({{< relref "/docs/commands/init-book" >}}) | 從 queue 批次初始化新書籍專案 | ✓ |
 
 ## 使用方式
 
