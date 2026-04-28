@@ -89,7 +89,7 @@ hugo-book-manager/
 │       └── UserInput.kt          # Interactive user prompts
 └── templates/
     ├── ai-task-guide.md          # Guide for Claude to process AI tasks
-    ├── book-input.yaml           # Template for queue entry format
+    ├── books-queue.example.yaml  # Queue YAML template (copy to books-queue.yaml)
     └── prompts/
         └── book-metadata.txt     # Prompt used internally by init-books
 ```
