@@ -61,6 +61,7 @@ class GitHubCliService {
      * Create a new repository from template
      */
     fun createRepo(
+        owner: String,
         repoName: String,
         description: String,
         templateRepo: String = AppConfig.templateRepo,
@@ -68,7 +69,7 @@ class GitHubCliService {
     ): Boolean {
         val visibility = if (isPrivate) "--private" else "--public"
         val escapedDesc = description.replace("'", "'\\''")
-        val cmd = "gh repo create $repoName --template $templateRepo $visibility --description '$escapedDesc'"
+        val cmd = "gh repo create $owner/$repoName --template $templateRepo $visibility --description '$escapedDesc'"
 
         val result = ProcessRunner.execute(cmd, description = "Creating repository...")
         if (!result.success) {

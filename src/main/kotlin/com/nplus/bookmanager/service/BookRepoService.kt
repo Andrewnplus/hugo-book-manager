@@ -39,7 +39,9 @@ class BookRepoService(
         bookInput: BookInput,
         structure: DocsStructure,
     ): CreateResult {
-        val username = ghService.getUsername()
+        val username =
+            AppConfig.githubUsername.takeIf { it.isNotBlank() }
+                ?: ghService.getUsername()
         if (username == null) {
             println("Error: Could not get GitHub username")
             return CreateResult(false)
@@ -112,7 +114,7 @@ class BookRepoService(
                 return false
             }
         } else {
-            if (!ghService.createRepo(metadata.repoName, metadata.description)) {
+            if (!ghService.createRepo(username, metadata.repoName, metadata.description)) {
                 println("Error: Failed to create repository")
                 return false
             }
@@ -121,7 +123,7 @@ class BookRepoService(
         }
 
         // Configure repository
-        val homepageUrl = "${AppConfig.homepageBaseUrl}/${metadata.repoName}"
+        val homepageUrl = "${AppConfig.homepageBaseUrl}/${metadata.repoName}/"
         ghService.configureRepository(username, metadata.repoName, homepageUrl, metadata.topics)
         println("  Repository configured (homepage, topics)")
 
