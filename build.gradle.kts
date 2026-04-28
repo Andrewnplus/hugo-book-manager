@@ -75,6 +75,10 @@ registerCliTask("checkEnv", "Check environment prerequisites (gh CLI, authentica
     args = listOf("check-env")
 }
 
+registerCliTask("refreshRepoIndex", "Refresh the cached index of book repos for the configured owner") {
+    args = listOf("refresh-repo-index")
+}
+
 registerCliTask("initBooks", "Initialize multiple book repos from a queue file") {
     doFirst {
         val queueFile = project.findProperty("queue")?.toString() ?: "templates/books-queue.yaml"
@@ -94,4 +98,3 @@ registerCliTask("initBooks", "Initialize multiple book repos from a queue file")
         args = argList
     }
 }
-

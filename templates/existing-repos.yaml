@@ -1,0 +1,156 @@
+# Cached snapshot of book repos on the configured owner.
+# Refresh with: ./gradlew refreshRepoIndex
+last_updated: "2026-04-28T15:06:42.132185086+08:00"
+repos:
+  - name: art-of-asking-life-questions
+    description: The Art of Asking Life Questions | Rolf Dobelli | Probes 47 facets of human life — happiness, money, love, death, identity — through pointed questions designed to provoke clearer thinking about how to live.
+    url: https://github.com/nplus-father/art-of-asking-life-questions
+    topics: [book-summary, growth-book-summary]
+  - name: good-charts
+    description: Good Charts | Scott Berinato | A working visual literacy guide that teaches managers how to understand, create, refine, and present data charts that communicate clearly and persuade.
+    url: https://github.com/nplus-father/good-charts
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-ai-basics-for-managers
+    description: HBR Guide to AI Basics for Managers | Harvard Business Review | Plain-English fundamentals of AI and machine learning for managers, with practical advice on building teams, picking projects, and managing ethics.
+    url: https://github.com/nplus-father/hbr-guide-to-ai-basics-for-managers
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-beating-burnout
+    description: HBR Guide to Beating Burnout | Harvard Business Review | Diagnoses the workplace causes of burnout and offers practical strategies for individuals to recover and for managers and organizations to prevent it.
+    url: https://github.com/nplus-father/hbr-guide-to-beating-burnout
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-being-more-productive
+    description: HBR Guide to Being More Productive | Harvard Business Review | A toolkit for taking control of your time, planning days that match your goals, finding deep focus, and motivating yourself when the work feels heavy.
+    url: https://github.com/nplus-father/hbr-guide-to-being-more-productive
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-better-mental-health-at-work
+    description: HBR Guide to Better Mental Health at Work | Harvard Business Review | Practical advice on talking about mental health at work, supporting colleagues, leading inclusive teams, and reshaping company policy to reduce stigma.
+    url: https://github.com/nplus-father/hbr-guide-to-better-mental-health-at-work
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-better-recruiting-and-hiring
+    description: HBR Guide to Better Recruiting and Hiring | Harvard Business Review | A practical playbook for managers on attracting candidates, designing inclusive interviews, reducing bias, and making confident hiring decisions.
+    url: https://github.com/nplus-father/hbr-guide-to-better-recruiting-and-hiring
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-buying-a-small-business
+    description: "HBR Guide to Buying a Small Business | Richard S. Ruback & Royce Yudkoff | A step-by-step guide to entrepreneurship through acquisition: searching for, evaluating, financing, and closing on the purchase of a small business."
+    url: https://github.com/nplus-father/hbr-guide-to-buying-a-small-business
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-changing-your-career
+    description: HBR Guide to Changing Your Career | Harvard Business Review | Frameworks for evaluating, planning, and executing a career pivot, from clarifying your passions to test-driving new roles and reinventing your story.
+    url: https://github.com/nplus-father/hbr-guide-to-changing-your-career
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-coaching-employees
+    description: HBR Guide to Coaching Employees | Harvard Business Review | How managers can shift from telling to coaching, run effective sessions, give feedback that sticks, and tailor their approach to different employees.
+    url: https://github.com/nplus-father/hbr-guide-to-coaching-employees
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-critical-thinking
+    description: HBR Guide to Critical Thinking | Harvard Business Review | A workbook for sharpening how you observe, question, and analyze information at work, with techniques to overcome cognitive biases and group dysfunction.
+    url: https://github.com/nplus-father/hbr-guide-to-critical-thinking
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-data-analytics-basics-for-managers
+    description: "HBR Guide to Data Analytics Basics for Managers | Harvard Business Review | Data-literacy fundamentals for non-technical managers: how to ask better questions of your data team, interpret analysis, and communicate findings."
+    url: https://github.com/nplus-father/hbr-guide-to-data-analytics-basics-for-managers
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-dealing-with-conflict
+    description: HBR Guide to Dealing with Conflict | Amy Gallo | A four-step process — assess, prepare, converse, resolve — for handling workplace conflict productively, with playbooks for the most common situations.
+    url: https://github.com/nplus-father/hbr-guide-to-dealing-with-conflict
+    topics: [book-summary, relation-book-summary]
+  - name: hbr-guide-to-delivering-effective-feedback
+    description: HBR Guide to Delivering Effective Feedback | Harvard Business Review | How to give feedback that drives growth — covering ongoing coaching conversations, formal performance reviews, and the toughest underperformer talks.
+    url: https://github.com/nplus-father/hbr-guide-to-delivering-effective-feedback
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-designing-your-retirement
+    description: "HBR Guide to Designing Your Retirement | Harvard Business Review | Reframes retirement as a transition you design, with frameworks for finding purpose, choosing what to do next, and building the support network you'll need."
+    url: https://github.com/nplus-father/hbr-guide-to-designing-your-retirement
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-emotional-intelligence
+    description: HBR Guide to Emotional Intelligence | Harvard Business Review | Practical chapters on self-awareness, managing emotions, empathy, resilience, and developing emotional intelligence in yourself and your team.
+    url: https://github.com/nplus-father/hbr-guide-to-emotional-intelligence
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-generative-ai-for-managers
+    description: HBR Guide to Generative AI for Managers | Elisa Farri & Gabriele Rosani | A field manual for using generative AI as a co-pilot — boosting personal productivity, leading teams, and running business operations more strategically.
+    url: https://github.com/nplus-father/hbr-guide-to-generative-ai-for-managers
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-leading-through-change
+    description: HBR Guide to Leading Through Change | Harvard Business Review | How to plan, communicate, and execute organizational change while building team trust, overcoming resistance, and developing long-term agility.
+    url: https://github.com/nplus-father/hbr-guide-to-leading-through-change
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-making-better-decisions
+    description: HBR Guide to Making Better Decisions | Harvard Business Review | Tools for spotting cognitive traps, generating better options, evaluating trade-offs, committing to a choice, and recovering when a decision was wrong.
+    url: https://github.com/nplus-father/hbr-guide-to-making-better-decisions
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-making-every-meeting-matter
+    description: "HBR Guide to Making Every Meeting Matter | Harvard Business Review | How to design, run, participate in, and follow up on meetings that don't waste time — with playbooks for difficult dynamics and specific meeting types."
+    url: https://github.com/nplus-father/hbr-guide-to-making-every-meeting-matter
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-managing-strategic-initiatives
+    description: HBR Guide to Managing Strategic Initiatives | Harvard Business Review | A practical framework for taking a strategic project from idea to launch to execution, while keeping your portfolio aligned with company strategy.
+    url: https://github.com/nplus-father/hbr-guide-to-managing-strategic-initiatives
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-managing-stress
+    description: HBR Guide to Managing Stress | Harvard Business Review | A condensed collection of HBR essays on managing personal stress — from energy renewal to flexible work, sleep, and in-the-moment recovery techniques.
+    url: https://github.com/nplus-father/hbr-guide-to-managing-stress
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-managing-stress-at-work
+    description: HBR Guide to Managing Stress at Work | Harvard Business Review | Diagnoses the biology of overload and offers tools for renewing energy, restoring work-life balance, and finding the stress-management approach that fits you.
+    url: https://github.com/nplus-father/hbr-guide-to-managing-stress-at-work
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-managing-up-and-across
+    description: HBR Guide to Managing Up and Across | Harvard Business Review | How to win over your boss, manage difficult relationships above and beside you, and persuade peers to get things done across the organization.
+    url: https://github.com/nplus-father/hbr-guide-to-managing-up-and-across
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-navigating-the-toxic-workplace
+    description: HBR Guide to Navigating the Toxic Workplace | Harvard Business Review | How to recognize, survive, and recover from toxic work environments — covering toxic bosses, harmful cultures, and what leaders can do to fix them.
+    url: https://github.com/nplus-father/hbr-guide-to-navigating-the-toxic-workplace
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-negotiating
+    description: "HBR Guide to Negotiating | Jeff Weiss | A creative-not-compromise approach using the Seven Elements: prepare substance and process, negotiate with discipline, and adapt to common challenges."
+    url: https://github.com/nplus-father/hbr-guide-to-negotiating
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-office-politics
+    description: HBR Guide to Office Politics | Karen Dillon | Survival strategies for navigating difficult bosses, hypercompetitive peers, and political minefields without sacrificing your integrity.
+    url: https://github.com/nplus-father/hbr-guide-to-office-politics
+    topics: [book-summary, relation-book-summary]
+  - name: hbr-guide-to-persuasive-presentations
+    description: HBR Guide to Persuasive Presentations | Nancy Duarte | A complete presentation methodology from audience analysis to slide design, for crafting business communication that actually persuades.
+    url: https://github.com/nplus-father/hbr-guide-to-persuasive-presentations
+    topics: [hugobook, sub-communication, top-professional, nplus-portal, nplus-kind-book, book-summary, business-book-summary]
+  - name: hbr-guide-to-project-management
+    description: HBR Guide to Project Management | Harvard Business Review | A four-phase framework — plan, build-up, implement, close — with practical tools for keeping projects on schedule, on budget, and worth doing.
+    url: https://github.com/nplus-father/hbr-guide-to-project-management
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-remote-work
+    description: HBR Guide to Remote Work | Harvard Business Review | How to stay productive, connected, and healthy when working from home, plus how managers can lead virtual teams that perform and collaborate well.
+    url: https://github.com/nplus-father/hbr-guide-to-remote-work
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-retaining-your-best-people
+    description: "HBR Guide to Retaining Your Best People | Harvard Business Review | A manager's playbook for understanding why employees quit and using onboarding, recognition, development, and policy to retain top talent."
+    url: https://github.com/nplus-father/hbr-guide-to-retaining-your-best-people
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-smarter-networking
+    description: HBR Guide to Smarter Networking | Harvard Business Review | Reframes networking as relationship-building rather than self-promotion, with practical tactics for first impressions, conferences, and long-term connection.
+    url: https://github.com/nplus-father/hbr-guide-to-smarter-networking
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-thinking-strategically
+    description: HBR Guide to Thinking Strategically | Harvard Business Review | How to develop a big-picture perspective, align decisions and priorities with company strategy, and translate strategic thinking into team execution.
+    url: https://github.com/nplus-father/hbr-guide-to-thinking-strategically
+    topics: [book-summary, business-book-summary]
+  - name: hbr-guide-to-unlocking-creativity
+    description: HBR Guide to Unlocking Creativity | Harvard Business Review | Practical techniques for unleashing your own creativity, running better brainstorms, fostering team safety, and building cultures of original thinking.
+    url: https://github.com/nplus-father/hbr-guide-to-unlocking-creativity
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-your-job-search
+    description: HBR Guide to Your Job Search | Harvard Business Review | A complete framework for structuring a search — from informational interviews and résumés to interviewing well, negotiating, and starting the new role strong.
+    url: https://github.com/nplus-father/hbr-guide-to-your-job-search
+    topics: [book-summary, growth-book-summary]
+  - name: hbr-guide-to-your-professional-growth
+    description: "HBR Guide to Your Professional Growth | Harvard Business Review | How to take ownership of your career: set vision, gather honest feedback, learn continuously, gain skills, and create your own path forward."
+    url: https://github.com/nplus-father/hbr-guide-to-your-professional-growth
+    topics: [book-summary, growth-book-summary]
+  - name: how-finance-works
+    description: How Finance Works | Mihir Desai | An HBS-style intuitive walkthrough of corporate finance — from financial analysis and valuation to capital allocation — for managers without finance backgrounds.
+    url: https://github.com/nplus-father/how-finance-works
+    topics: [book-summary, business-book-summary]
+  - name: road-less-traveled-and-beyond
+    description: The Road Less Traveled and Beyond | M. Scott Peck | Extends the bestselling spiritual psychology classic with reflections on thinking, moral complexity, organizational life, and the search for God in an age of anxiety.
+    url: https://github.com/nplus-father/road-less-traveled-and-beyond
+    topics: [book-summary, growth-book-summary]

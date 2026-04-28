@@ -26,14 +26,18 @@ CLI 再次執行 → 讀取輸出 → 建立 GitHub repo → 完成
 
 When user says **"請處理 AI 任務"** (please process AI task):
 
-1. **🛑 PRE-CHECK:** Check if GitHub repo already exists → STOP if yes
-2. **Generate response** (metadata + structure) → `ai-tasks/output/batch-metadata-response.json`
-3. **🚀 Execute CLI:**
+1. **Generate response** (metadata + structure) → `ai-tasks/output/batch-metadata-response.json`
+2. **🚀 Execute CLI:**
    ```bash
    ./gradlew installDist --quiet
    echo -e "yes\nyes" | ./build/install/hugo-book-manager/bin/hugo-book-manager init-books
    ```
-4. **Report result** (repo URL, website URL, local path)
+3. **Report result** (repo URL, website URL, local path)
+
+> Duplicate detection is handled by the CLI: it loads
+> `templates/existing-repos.yaml` and matches against the queue book before
+> AI generation. Refresh that index with `./gradlew refreshRepoIndex` before
+> running `init-books`.
 
 See `templates/ai-task-guide.md` for detailed processing instructions.
 
@@ -42,6 +46,9 @@ See `templates/ai-task-guide.md` for detailed processing instructions.
 ```bash
 # Check environment prerequisites
 ./gradlew checkEnv
+
+# Refresh the cached index of existing book repos on the configured owner
+./gradlew refreshRepoIndex
 
 # Initialize books from queue (two-phase workflow)
 ./gradlew initBooks                          # Process next pending book
@@ -70,7 +77,8 @@ hugo-book-manager/
 │   │   └── AppConfig.kt          # Configuration from local.properties
 │   ├── model/
 │   │   ├── AiTaskModels.kt       # Batch request/response models
-│   │   └── BookInput.kt          # Queue, metadata & structure models
+│   │   ├── BookInput.kt          # Queue, metadata & structure models
+│   │   └── RepoIndex.kt          # Cached index of existing book repos
 │   ├── service/
 │   │   ├── AiTaskService.kt      # AI task file management (batch only)
 │   │   ├── BookInputService.kt   # Queue YAML parsing and validation
@@ -79,10 +87,12 @@ hugo-book-manager/
 │   │   ├── GitHubCliService.kt   # gh CLI wrapper
 │   │   ├── GitService.kt         # Git operations
 │   │   ├── ImageService.kt       # Cover image download/resize
+│   │   ├── RepoIndexService.kt   # Repo index load/save + duplicate matching
 │   │   └── TemplateService.kt    # Template file modifications
 │   ├── command/
 │   │   ├── CheckEnvCommand.kt    # Environment check
-│   │   └── InitBooksCommand.kt   # Batch book initialization from queue
+│   │   ├── InitBooksCommand.kt   # Batch book initialization from queue
+│   │   └── RefreshRepoIndexCommand.kt # Refresh cached repo index
 │   └── util/
 │       ├── CliFormatter.kt       # Console output formatting
 │       ├── ProcessRunner.kt      # Shell command execution
@@ -90,6 +100,7 @@ hugo-book-manager/
 └── templates/
     ├── ai-task-guide.md          # Guide for Claude to process AI tasks
     ├── books-queue.example.yaml  # Queue YAML template (copy to books-queue.yaml)
+    ├── existing-repos.yaml       # Cached index of repos on the owner
     └── prompts/
         └── book-metadata.txt     # Prompt used internally by init-books
 ```

@@ -5,6 +5,7 @@ import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.core.subcommands
 import com.nplus.bookmanager.command.CheckEnvCommand
 import com.nplus.bookmanager.command.InitBooksCommand
+import com.nplus.bookmanager.command.RefreshRepoIndexCommand
 
 /**
  * Main CLI application using Clikt
@@ -25,5 +26,6 @@ fun main(args: Array<String>) {
         .subcommands(
             CheckEnvCommand(),
             InitBooksCommand(),
+            RefreshRepoIndexCommand(),
         ).main(args)
 }

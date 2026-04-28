@@ -26,6 +26,9 @@ gh auth login
 # 檢查環境
 ./gradlew checkEnv
 
+# 更新 owner 上既有 book repo 的快照（建議在 initBooks 前先跑）
+./gradlew refreshRepoIndex
+
 # 從 queue 批次初始化書籍專案（兩階段 AI 互動）
 ./gradlew initBooks                          # 處理下一本待辦
 ./gradlew initBooks -Pid=<book-id>           # 處理指定 ID

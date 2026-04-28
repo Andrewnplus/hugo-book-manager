@@ -74,24 +74,19 @@ When user says "請處理 AI 任務" (please process AI task):
 
 ### 一條龍處理流程
 
-**完整流程：檢查 → 產生 response → 執行 CLI → 完成建立**
+**完整流程：產生 response → 執行 CLI → 完成建立**
 
-1. **🛑 PRE-CHECK: GitHub repo existence**
-   ```bash
-   gh repo view <username>/<repo-name> --json name 2>/dev/null
-   ```
-   - **If repo exists → STOP IMMEDIATELY** and report
+> Duplicate detection is handled by the CLI via `templates/existing-repos.yaml`
+> (refresh with `./gradlew refreshRepoIndex` before queueing). No need for
+> Claude to pre-check `gh repo view` anymore — if the book already exists on
+> the org, Phase 1 will catch it before the AI task even reaches you.
 
-2. **Check existing response**
-   - If response exists AND GitHub repo exists → STOP
-   - If response exists but no GitHub repo → Skip to step 4
-
-3. **Generate response** (if not exists)
+1. **Generate response**
    - Read task JSON and prompt template
    - Generate metadata + structure
    - Write to `ai-tasks/output/batch-metadata-response.json`
 
-4. **🚀 Execute CLI to complete (一條龍)**
+2. **🚀 Execute CLI to complete (一條龍)**
    ```bash
    ./gradlew installDist --quiet
    echo -e "yes\nyes" | ./build/install/hugo-book-manager/bin/hugo-book-manager init-books
@@ -106,7 +101,7 @@ When user says "請處理 AI 任務" (please process AI task):
    - Enables GitHub Pages (source: gh-pages)
    - Auto-updates queue status to `completed`
 
-5. **Report final result** to user
+3. **Report final result** to user
 
 ## Important Notes
 
@@ -122,23 +117,7 @@ When user says "請處理 AI 任務" (please process AI task):
 - The prompt templates contain detailed instructions - follow them carefully
 - topics 只包含 `book-summary` + 一個 category topic（如 `growth-book-summary`），不加關鍵字 topic
 
-## Duplicate Prevention (重複操作防範)
-
-### 🛑 CRITICAL: GitHub Repo Check (最重要)
-
-**Before processing ANY book-related AI task, MUST check if GitHub repo already exists:**
-
-```bash
-gh repo view <username>/<repo-name> --json name 2>/dev/null
-```
-
-**If repo exists → STOP IMMEDIATELY. Do NOT:**
-- ❌ Generate metadata response
-- ❌ Proceed with any GitHub operations
-
-**Instead, report and stop.**
-
-### Response Format Validation
+## Response Format Validation
 
 **Batch Metadata Response MUST include both `metadata` AND `structure`:**
 
@@ -160,7 +139,7 @@ gh repo view <username>/<repo-name> --json name 2>/dev/null
 - ❌ Using `books` instead of `results`
 - ❌ Flat structure without `metadata`/`structure` nesting
 
-### Error Recovery
+## Error Recovery
 
 If a task fails midway:
 1. Check `books-queue.yaml` status field

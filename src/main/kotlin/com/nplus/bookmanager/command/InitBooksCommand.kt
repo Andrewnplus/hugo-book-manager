@@ -12,10 +12,12 @@ import com.nplus.bookmanager.model.BooksQueue
 import com.nplus.bookmanager.model.DocsStructure
 import com.nplus.bookmanager.model.GeneratedMetadata
 import com.nplus.bookmanager.model.QueuedBook
+import com.nplus.bookmanager.model.RepoIndex
 import com.nplus.bookmanager.service.AiTaskService
 import com.nplus.bookmanager.service.BookInputService
 import com.nplus.bookmanager.service.BookRepoService
 import com.nplus.bookmanager.service.GitHubCliService
+import com.nplus.bookmanager.service.RepoIndexService
 import com.nplus.bookmanager.util.CliFormatter
 import com.nplus.bookmanager.util.UserInput
 import java.io.File
@@ -37,6 +39,7 @@ class InitBooksCommand(
     private val aiTaskService: AiTaskService = AiTaskService(),
     private val ghService: GitHubCliService = GitHubCliService(),
     private val bookRepoService: BookRepoService = BookRepoService(ghService = ghService),
+    private val repoIndexService: RepoIndexService = RepoIndexService(),
 ) : CliktCommand(name = "init-books") {
     override fun help(context: Context) = "Initialize multiple book repositories from a queue file"
 
@@ -174,6 +177,13 @@ class InitBooksCommand(
     ) {
         println("\n[Phase 1] Generating AI tasks...")
 
+        // Consult cached repo index before invoking AI; saves a round-trip
+        // to Claude when a matching repo already exists on the org.
+        val existing = lookupRepoIndex(book.englishTitle)
+        if (existing != null && handleExistingRepo(queue, book, existing)) {
+            return
+        }
+
         // Check if batch task already pending
         if (aiTaskService.hasPendingBatchMetadataTask()) {
             CliFormatter.printPendingTaskWarning(
@@ -237,6 +247,14 @@ class InitBooksCommand(
 
         val (metadata, structure) = result
 
+        // Re-check index against AI-generated repoName. Catches "the-" variants
+        // where the AI emitted (say) `power-of-habit` but the org already has
+        // `the-power-of-habit` (or vice versa).
+        val existing = lookupRepoIndex(book.englishTitle, metadata.repoName)
+        if (existing != null && handleExistingRepo(queue, book, existing)) {
+            return
+        }
+
         println("\n  Generated metadata:")
         println("    Repo Name: ${metadata.repoName}")
         println("    Description: ${metadata.description}")
@@ -280,6 +298,112 @@ class InitBooksCommand(
         } else {
             markAsError(queue, book, "Repository creation failed")
         }
+    }
+
+    /**
+     * Look up an existing repo in the cached index. Returns null on miss
+     * or if the index file is empty / never refreshed.
+     */
+    private fun lookupRepoIndex(
+        englishTitle: String,
+        aiRepoName: String? = null,
+    ): RepoIndex.RepoEntry? {
+        val index = repoIndexService.load()
+        if (index.repos.isEmpty()) return null
+        val candidates = RepoIndexService.candidatesFor(englishTitle, aiRepoName)
+        return repoIndexService.findExisting(index, candidates)
+    }
+
+    /**
+     * Prompt the user when a matching repo is found in the index.
+     *
+     * Returns true if the situation was handled (book skipped or claimed,
+     * caller should stop). Returns false if the user chose to ignore the
+     * index and proceed with normal creation.
+     */
+    private fun handleExistingRepo(
+        queue: BooksQueue,
+        book: QueuedBook,
+        entry: RepoIndex.RepoEntry,
+    ): Boolean {
+        println()
+        println("⚠ Found existing repo on owner: ${entry.name}")
+        println("    URL:    ${entry.url}")
+        println("    Topics: ${entry.topics.joinToString(", ")}")
+        println()
+        println("How to proceed?")
+        println("  1. skip   — mark this book completed, do nothing else")
+        println("  2. claim  — clone the existing repo locally + mark completed")
+        println("  3. force  — ignore index and create as a new repo")
+        print("Choice [1/2/3] (default 1): ")
+        val choice = readlnOrNull()?.trim().orEmpty().ifBlank { "1" }
+
+        return when (choice) {
+            "2", "claim" -> claimExistingRepo(queue, book, entry)
+            "3", "force" -> {
+                println("  Continuing with normal creation flow...")
+                false
+            }
+            else -> skipExistingRepo(queue, book, entry)
+        }
+    }
+
+    private fun skipExistingRepo(
+        queue: BooksQueue,
+        book: QueuedBook,
+        entry: RepoIndex.RepoEntry,
+    ): Boolean {
+        if (!dryRun) {
+            val updated = queue.updateStatus(book.id, BookStatus.COMPLETED)
+            bookInputService.saveBooksQueue(File(queueFile), updated)
+            aiTaskService.clearBatchMetadataTasks()
+        }
+        println("  ✅ Marked '${book.id}' as completed (existing repo: ${entry.name})")
+        return true
+    }
+
+    private fun claimExistingRepo(
+        queue: BooksQueue,
+        book: QueuedBook,
+        entry: RepoIndex.RepoEntry,
+    ): Boolean {
+        val category = entry.category
+        if (category == null) {
+            println("  ⚠ Could not infer category from topics: ${entry.topics.joinToString(", ")}")
+            println("  Skipping clone. Use option 1 (skip) or 3 (force) instead.")
+            return false
+        }
+
+        val owner =
+            AppConfig.githubUsername.takeIf { it.isNotBlank() }
+                ?: ghService.getUsername()
+        if (owner.isNullOrBlank()) {
+            println("  Error: cannot determine repo owner")
+            return false
+        }
+
+        val targetDir = File(File(AppConfig.defaultWorkDir, category), entry.name)
+        if (targetDir.exists()) {
+            println("  Local folder already exists: ${targetDir.absolutePath} (skipping clone)")
+        } else {
+            targetDir.parentFile?.mkdirs()
+            if (dryRun) {
+                println("  [DRY RUN] Would clone ${entry.name} to ${targetDir.absolutePath}")
+            } else if (!ghService.cloneRepo(owner, entry.name, targetDir.absolutePath)) {
+                println("  ❌ Clone failed.")
+                return false
+            } else {
+                println("  ✅ Cloned to: ${targetDir.absolutePath}")
+            }
+        }
+
+        if (!dryRun) {
+            val updated = queue.updateStatus(book.id, BookStatus.COMPLETED)
+            bookInputService.saveBooksQueue(File(queueFile), updated)
+            aiTaskService.clearBatchMetadataTasks()
+        }
+        println("  ✅ Marked '${book.id}' as completed (claimed existing repo)")
+        return true
     }
 
     private fun markAsError(
