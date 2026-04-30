@@ -1,11 +1,35 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-04-28T15:06:42.132185086+08:00"
+last_updated: "2026-04-29T12:20:33.424092497+08:00"
 repos:
+  - name: storynomics
+    description: "Storynomics | Robert McKee & Thomas Gerace | Story-craft framework for rebuilding brand, advertising, demand generation, and sales after the collapse of interruption-based advertising."
+    url: https://github.com/nplus-father/storynomics
+    topics: [book-summary, business-book-summary]
+  - name: talk-like-ted
+    description: "Talk Like TED | Carmine Gallo | Nine communication secrets distilled from TED talks for delivering persuasive, memorable ideas in any setting."
+    url: https://github.com/nplus-father/talk-like-ted
+    topics: [book-summary, growth-book-summary]
   - name: art-of-asking-life-questions
     description: The Art of Asking Life Questions | Rolf Dobelli | Probes 47 facets of human life — happiness, money, love, death, identity — through pointed questions designed to provoke clearer thinking about how to live.
     url: https://github.com/nplus-father/art-of-asking-life-questions
     topics: [book-summary, growth-book-summary]
+  - name: big-talk-design-patterns
+    description: 大話設計模式 | 程杰 | 用對話與生活故事帶讀者走過 23 個 GoF 設計模式以及 SOLID 等核心原則，把抽象的物件導向設計變得直覺易懂。
+    url: https://github.com/nplus-father/big-talk-design-patterns
+    topics: [book-summary, tech-book-summary]
+  - name: business-adventures
+    description: Business Adventures | John Brooks | Twelve classic case studies of corporate triumph and disaster from mid-20th-century America that distill timeless lessons about markets, leadership, and human nature.
+    url: https://github.com/nplus-father/business-adventures
+    topics: [book-summary, business-book-summary]
+  - name: chancing-it
+    description: "Chancing It | Robert Matthews | A field guide to probability and risk that shows how a few core ideas — the Law of Averages, Bayes' theorem, and the Normal curve — sharpen everyday judgment."
+    url: https://github.com/nplus-father/chancing-it
+    topics: [book-summary, growth-book-summary]
+  - name: finish-big
+    description: Finish Big | Bo Burlingham | Lessons from founders who sold or transitioned out of their companies on what makes an exit feel like a true success — the deal, the timing, and the life after.
+    url: https://github.com/nplus-father/finish-big
+    topics: [book-summary, business-book-summary]
   - name: good-charts
     description: Good Charts | Scott Berinato | A working visual literacy guide that teaches managers how to understand, create, refine, and present data charts that communicate clearly and persuade.
     url: https://github.com/nplus-father/good-charts
@@ -150,7 +174,63 @@ repos:
     description: How Finance Works | Mihir Desai | An HBS-style intuitive walkthrough of corporate finance — from financial analysis and valuation to capital allocation — for managers without finance backgrounds.
     url: https://github.com/nplus-father/how-finance-works
     topics: [book-summary, business-book-summary]
+  - name: invested
+    description: "Invested | Charles Schwab | The founder of Charles Schwab tells how he built America's first discount brokerage by relentlessly putting individual investors first."
+    url: https://github.com/nplus-father/invested
+    topics: [book-summary, business-book-summary]
+  - name: laws-of-simplicity
+    description: The Laws of Simplicity | John Maeda | Distills design, technology, and life into ten laws and three keys for cutting away the unnecessary so the meaningful stands out.
+    url: https://github.com/nplus-father/laws-of-simplicity
+    topics: [book-summary, growth-book-summary]
+  - name: leadership-gold
+    description: Leadership Gold | John C. Maxwell | Twenty-six hard-won lessons from a lifetime of leading and mentoring others, each one tested by experience and turned into a working principle.
+    url: https://github.com/nplus-father/leadership-gold
+    topics: [book-summary, business-book-summary]
+  - name: new-tao-of-warren-buffett
+    description: "The New Tao of Warren Buffett | Mary Buffett & David Clark | A curated collection of Warren Buffett's sayings on money, investing, and life — each quote unpacked into a short, practical lesson."
+    url: https://github.com/nplus-father/new-tao-of-warren-buffett
+    topics: [book-summary, business-book-summary]
+  - name: poor-economics
+    description: Poor Economics | Abhijit V. Banerjee & Esther Duflo | Two Nobel-laureate economists rebuild anti-poverty thinking from the ground up using randomized field trials of how poor people actually live, eat, save, learn, and borrow.
+    url: https://github.com/nplus-father/poor-economics
+    topics: [book-summary, growth-book-summary]
+  - name: power-radical-view
+    description: "Power: A Radical View | Steven Lukes | Argues that power has three dimensions — overt decisions, hidden agenda-setting, and the shaping of preferences — and that ignoring the third leaves the deepest forms of domination invisible."
+    url: https://github.com/nplus-father/power-radical-view
+    topics: [book-summary, growth-book-summary]
+  - name: real-world-bug-hunting
+    description: Real-World Bug Hunting | Peter Yaworski | A field guide to ethical web hacking that walks through the most common vulnerability classes using real disclosed bug bounty reports as case studies.
+    url: https://github.com/nplus-father/real-world-bug-hunting
+    topics: [book-summary, tech-book-summary]
   - name: road-less-traveled-and-beyond
     description: The Road Less Traveled and Beyond | M. Scott Peck | Extends the bestselling spiritual psychology classic with reflections on thinking, moral complexity, organizational life, and the search for God in an age of anxiety.
     url: https://github.com/nplus-father/road-less-traveled-and-beyond
+    topics: [book-summary, growth-book-summary]
+  - name: smartcuts
+    description: Smartcuts | Shane Snow | Studies how rapid achievers shorten learning curves, leverage platforms and waves, and amplify momentum to reach what looks like overnight success.
+    url: https://github.com/nplus-father/smartcuts
+    topics: [book-summary, growth-book-summary]
+  - name: sql-server-2025-query-performance-tuning
+    description: SQL Server 2025 Query Performance Tuning | Grant Fritchey | A complete methodology for diagnosing and fixing slow queries in SQL Server 2025 covering execution plans, statistics, indexes, blocking, recompilation, and intelligent query processing.
+    url: https://github.com/nplus-father/sql-server-2025-query-performance-tuning
+    topics: [book-summary, tech-book-summary]
+  - name: sql-server-2025-unveiled
+    description: SQL Server 2025 Unveiled | Bob Ward | A guided tour of SQL Server 2025 covering AI-built-in features, vector search, MCP integration, the redesigned engine, and Azure Arc / Microsoft Fabric integration.
+    url: https://github.com/nplus-father/sql-server-2025-unveiled
+    topics: [book-summary, tech-book-summary]
+  - name: thinking-in-systems
+    description: Thinking in Systems | Donella H. Meadows | A primer on seeing the world as interlocking systems — stocks, flows, feedback loops, traps, and leverage points — so we can act on causes instead of symptoms.
+    url: https://github.com/nplus-father/thinking-in-systems
+    topics: [book-summary, growth-book-summary]
+  - name: ultralearning
+    description: Ultralearning | Scott Young | Nine principles — metalearning, focus, directness, drill, retrieval, feedback, retention, intuition, experimentation — for self-directed projects that compress years of learning into months.
+    url: https://github.com/nplus-father/ultralearning
+    topics: [book-summary, growth-book-summary]
+  - name: undoing-project
+    description: The Undoing Project | Michael Lewis | Tells the story of Daniel Kahneman and Amos Tversky and how their friendship produced the work that overturned classical assumptions about how the human mind decides.
+    url: https://github.com/nplus-father/undoing-project
+    topics: [book-summary, growth-book-summary]
+  - name: wealth-of-humans
+    description: The Wealth of Humans | Ryan Avent | Argues that the digital revolution has created an abundance of labour that strains existing economic and political institutions, and asks how societies can re-share prosperity in this new world.
+    url: https://github.com/nplus-father/wealth-of-humans
     topics: [book-summary, growth-book-summary]
