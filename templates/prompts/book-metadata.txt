@@ -10,7 +10,7 @@ Please provide the following information in JSON format:
   "englishTitle": "English Book Title",
   "chineseTitle": "繁體中文書名",
   "description": "Title | Author | One-sentence summary of the book's core argument",
-  "topics": ["book-summary", "category-book-summary"],
+  "topics": ["hugobook", "nplus-portal", "nplus-kind-book", "sub-<X>", "top-<X>"],
   "category": "growth-book-summary"
 }
 
@@ -33,8 +33,32 @@ Rules:
      title and author are Chinese. No placeholder text, no marketing fluff, no trailing ellipsis.
    - Example (English book): "The Four | Scott Galloway | Decodes how Amazon, Apple, Facebook, and Google each hijacked a primal human instinct to amass unprecedented power."
    - Example (Chinese book): "薄薄的故鄉 | 王安憶 | 透過上海的弄堂、街角與家族記憶，重構一座城市與一個世代的精神原鄉。"
-4. topics: ONLY include "book-summary" + one category topic. Do NOT add keyword topics.
-5. category: Must be exactly ONE of these:
+4. topics: MUST be exactly 5 entries in this order:
+   - "hugobook" (constant — marks this as a Hugo book site)
+   - "nplus-portal" (constant — part of the nplus-portal network)
+   - "nplus-kind-book" (constant for book-summary repos; use "nplus-kind-notes" only for non-book topical notes repos)
+   - One "sub-<X>" entry — the book's narrow topic (see SUB list below)
+   - One "top-<X>" entry — the book's overarching cluster (see TOP list below)
+   Do NOT use "book-summary", "<category>-book-summary", or other ad-hoc keyword topics.
+5. Allowed TOP categories (pick exactly one based on the book's overall thrust):
+   - top-personal — personal growth, mindset, habits, wellness, relationships in life
+   - top-professional — career, leadership, business, finance, communication at work
+   - top-craft — engineering, design, writing, technical or creative craft
+   - top-wisdom — philosophy, history, science, theology, big-picture understanding
+6. Allowed SUB categories (pick exactly one — match the book's primary subject):
+   - sub-mindset, sub-habit, sub-wellness
+   - sub-philosophy, sub-theology, sub-science, sub-history
+   - sub-engineering, sub-design, sub-writing, sub-tools
+   - sub-communication, sub-leadership, sub-business, sub-finance
+   - sub-career, sub-education, sub-relationships
+   Common (sub → top) pairings observed in the existing index:
+     sub-theology → top-wisdom; sub-philosophy → top-wisdom; sub-history → top-wisdom;
+     sub-engineering → top-craft; sub-writing → top-craft; sub-design → top-craft; sub-tools → top-craft;
+     sub-business / sub-finance / sub-leadership / sub-communication / sub-career → top-professional;
+     sub-mindset / sub-habit / sub-wellness / sub-relationships → top-personal.
+   Pick the pairing that best fits the book; the lists above are guidance, not hard rules.
+7. category: keep the legacy folder-name field. Must be exactly ONE of these (used for the local
+   work-directory folder placement, not for GitHub topics):
    - growth-book-summary (self-improvement, habits, productivity, mindset)
    - business-book-summary (business, entrepreneurship, management, leadership)
    - tech-book-summary (technology, programming, software, AI)

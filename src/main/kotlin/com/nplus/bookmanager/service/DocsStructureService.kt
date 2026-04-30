@@ -77,6 +77,7 @@ class DocsStructureService {
             |weight: $weight
             |bookCollapseSection: true
             |---
+            |
             """.trimMargin(),
         )
     }
@@ -100,6 +101,7 @@ class DocsStructureService {
             |title: "$title"
             |weight: $weight
             |---
+            |
             """.trimMargin(),
         )
     }
