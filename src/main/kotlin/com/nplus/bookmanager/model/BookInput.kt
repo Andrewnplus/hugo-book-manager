@@ -10,6 +10,7 @@ enum class BookStatus {
     PROCESSING,
     COMPLETED,
     ERROR,
+    DUPLICATE,
 }
 
 /**

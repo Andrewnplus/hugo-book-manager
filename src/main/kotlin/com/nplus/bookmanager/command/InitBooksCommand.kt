@@ -142,6 +142,18 @@ class InitBooksCommand(
                 println("  This book previously had an error: ${targetBook.errorMessage}")
                 println("  Use --reset --id=${targetBook.id} to retry")
             }
+            BookStatus.DUPLICATE -> {
+                println("  This book is marked as duplicate (repo already exists). Skipping.")
+                if (bookId == null) {
+                    val next = queue.getNextPending()
+                    if (next != null) {
+                        println("\n  Moving to next pending book...")
+                        runPhase1(queue, next)
+                    } else {
+                        println("\n✅ All books in queue have been processed!")
+                    }
+                }
+            }
         }
     }
 
@@ -430,6 +442,7 @@ class InitBooksCommand(
         println("  Processing: ${summary[BookStatus.PROCESSING] ?: 0}")
         println("  Completed:  ${summary[BookStatus.COMPLETED] ?: 0}")
         println("  Error:      ${summary[BookStatus.ERROR] ?: 0}")
+        println("  Duplicate:  ${summary[BookStatus.DUPLICATE] ?: 0}")
 
         println("\n📚 Books:")
         queue.books.forEach { book ->
@@ -439,6 +452,7 @@ class InitBooksCommand(
                     BookStatus.PROCESSING -> "🔄"
                     BookStatus.COMPLETED -> "✅"
                     BookStatus.ERROR -> "❌"
+                    BookStatus.DUPLICATE -> "📂"
                 }
             println("  $statusIcon ${book.id}: ${book.chineseTitle}")
             if (book.errorMessage != null) {

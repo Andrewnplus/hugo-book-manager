@@ -104,6 +104,7 @@ class BookInputService {
             "processing" -> BookStatus.PROCESSING
             "completed" -> BookStatus.COMPLETED
             "error" -> BookStatus.ERROR
+            "duplicate" -> BookStatus.DUPLICATE
             else -> BookStatus.PENDING
         }
 
