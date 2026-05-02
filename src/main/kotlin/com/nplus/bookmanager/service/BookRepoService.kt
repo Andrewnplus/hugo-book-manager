@@ -83,19 +83,6 @@ class BookRepoService(
             println("  Warning: Failed to commit and push initial content")
         } else {
             println("  Pushed to remote")
-
-            // Step: Wait for gh-pages branch and enable GitHub Pages
-            println("\n  Waiting for gh-pages branch (GitHub Actions build)...")
-            if (ghService.waitForBranch(username, metadata.repoName, "gh-pages")) {
-                if (ghService.enableGitHubPages(username, metadata.repoName)) {
-                    println("  GitHub Pages enabled (source: gh-pages)")
-                } else {
-                    println("  Warning: Failed to enable GitHub Pages")
-                }
-            } else {
-                println("  Warning: gh-pages branch did not appear within timeout")
-                println("  You may need to enable GitHub Pages manually later")
-            }
         }
 
         printSuccessSummary(username, metadata, repoDir)
