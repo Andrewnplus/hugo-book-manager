@@ -75,19 +75,22 @@ class RepoIndexService(
     }
 
     /**
-     * Query GitHub for the owner's book repos via `gh repo list`. Filters to
-     * repos with the `book-summary` topic so non-book repos under the same
-     * org/user don't pollute the index.
+     * Query GitHub for the owner's book repos. Lists all repos under the
+     * owner via the paginated REST API and filters client-side to repos with
+     * the `hugobook` topic, so non-book repos under the same org don't
+     * pollute the index. Uses the API directly because `gh repo list` caps
+     * results at 1000 and the org has more than that.
      */
     fun fetchFromGitHub(owner: String): RepoIndex {
         // Unset GITHUB_TOKEN inside the subshell so gh falls back to the
         // keyring-stored OAuth token; an inherited limited PAT can't see
-        // org repos.
+        // org repos. `jq -s` slurps the per-page arrays that
+        // `gh api --paginate` emits into a single stream before filtering.
         val cmd =
             "unset GITHUB_TOKEN; " +
-                "gh repo list $owner --limit 1000 --topic book-summary " +
-                "--json name,description,url,repositoryTopics " +
-                "--jq '[.[] | {name, description, url, topics: [.repositoryTopics[].name]}]'"
+                "gh api --paginate '/orgs/$owner/repos?per_page=100' " +
+                "| jq -s '[.[][] | select(.topics | index(\"hugobook\")) " +
+                "| {name, description, url: .html_url, topics}]'"
         val output =
             ProcessRunner.executeForOutput(cmd, description = "Fetching repos from $owner...")
                 ?: throw IllegalStateException("gh repo list failed (auth issue? check gh auth status)")
