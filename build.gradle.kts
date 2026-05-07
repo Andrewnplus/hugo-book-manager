@@ -68,6 +68,10 @@ fun registerCliTask(
     dependsOn("classes")
     classpath = sourceSets["main"].runtimeClasspath
     mainClass.set("com.nplus.bookmanager.MainKt")
+    // CLI uses relative paths like `templates/existing-repos.yaml` and
+    // `ai-tasks/`; pin CWD to the project dir so they resolve regardless of
+    // where gradle was invoked from.
+    workingDir = projectDir
     configure()
 }
 
@@ -96,5 +100,38 @@ registerCliTask("initBooks", "Initialize multiple book repos from a queue file")
         if (reset) argList.add("--reset")
         if (dryRun) argList.add("--dry-run")
         args = argList
+    }
+}
+
+registerCliTask("migrateTopicTiers", "Migrate book repos from 2-tier (top/sub) to 3-tier (top/sub/leaf) topics + folders") {
+    doFirst {
+        val apply = project.findProperty("apply")?.toString()?.toBoolean() ?: false
+        val batch = project.findProperty("batch")?.toString()
+        val limit = project.findProperty("limit")?.toString()
+        // NOTE: do not use `name` here — `Project.name` shadows `-Pname=...`.
+        val repoName = project.findProperty("repoName")?.toString()
+        val extraWorkDir = project.findProperty("extraWorkDir")?.toString()
+
+        val argList = mutableListOf("migrate-topic-tiers")
+        if (apply) argList.add("--apply")
+        if (batch != null) {
+            argList.add("--batch")
+            argList.add(batch)
+        }
+        if (limit != null) {
+            argList.add("--limit")
+            argList.add(limit)
+        }
+        if (repoName != null) {
+            argList.add("--name")
+            argList.add(repoName)
+        }
+        if (extraWorkDir != null) {
+            argList.add("--extra-work-dir")
+            argList.add(extraWorkDir)
+        }
+        args = argList
+        // Apply phase prompts for batch confirmation; needs interactive stdin.
+        standardInput = System.`in`
     }
 }

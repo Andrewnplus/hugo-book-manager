@@ -1,0 +1,77 @@
+# Topic taxonomy whitelist for the three-tier book repo schema.
+#
+# Schema:
+#   top-X / sub-Y / leaf-Z   (each tier has its own prefix)
+#
+# Used by:
+#   - templates/prompts/book-metadata.txt   (init-books AI generation)
+#   - templates/prompts/migrate-leaf.txt    (migrate-topic-tiers AI generation)
+#
+# This file is SEED data — the leaf list is intentionally not exhaustive.
+# After running `./gradlew migrateTopicTiers` and reviewing Claude's proposed
+# triples, add any new leaf-Z values that survived the review back here so
+# init-books for the next book can reuse them.
+#
+# Naming conventions:
+#   - All values: lowercase kebab-case, no prefix duplication
+#   - leaf-Z names should be specific enough to host ~5–30 books each
+#   - Prefer noun phrases ("personal-finance") over verbs ("investing-in-x")
+
+top-personal:
+  description: "個人成長：心態、習慣、健康、人際"
+  subs:
+    sub-mindset:
+      [leaf-stoicism, leaf-growth, leaf-resilience, leaf-self-awareness, leaf-emotion]
+    sub-habit:
+      [leaf-productivity, leaf-routine, leaf-focus, leaf-discipline]
+    sub-wellness:
+      [leaf-sleep, leaf-nutrition, leaf-fitness, leaf-mental-health, leaf-aging]
+    sub-relationships:
+      [leaf-marriage, leaf-parenting, leaf-friendship, leaf-community, leaf-dating]
+
+top-professional:
+  description: "職涯與工作：商業、財務、領導、溝通"
+  subs:
+    sub-business:
+      [leaf-strategy, leaf-marketing, leaf-startup, leaf-management, leaf-sales, leaf-operations]
+    sub-finance:
+      [leaf-investing, leaf-personal-finance, leaf-economics, leaf-real-estate, leaf-crypto]
+    sub-leadership:
+      [leaf-team-building, leaf-decision-making, leaf-culture, leaf-coaching, leaf-vision]
+    sub-communication:
+      [leaf-public-speaking, leaf-negotiation, leaf-storytelling, leaf-persuasion]
+    sub-career:
+      [leaf-job-search, leaf-skill-building, leaf-side-hustle, leaf-career-change]
+    sub-education:
+      [leaf-pedagogy, leaf-self-learning, leaf-curriculum]
+
+top-craft:
+  description: "技術與創意手藝：工程、設計、寫作、工具"
+  subs:
+    sub-engineering:
+      [leaf-systems-design, leaf-coding-practice, leaf-language-c, leaf-language-rust,
+       leaf-ai-ml, leaf-devops, leaf-security, leaf-databases]
+    sub-tools:
+      [leaf-cli, leaf-editor, leaf-version-control, leaf-build-systems]
+    sub-design:
+      [leaf-ux, leaf-visual, leaf-typography, leaf-product-design]
+    sub-writing:
+      [leaf-fiction, leaf-non-fiction, leaf-screenwriting, leaf-poetry]
+
+top-wisdom:
+  description: "跨域大局觀：哲學、歷史、科學"
+  subs:
+    sub-philosophy:
+      [leaf-stoicism, leaf-eastern, leaf-existentialism, leaf-ethics, leaf-political-philosophy]
+    sub-history:
+      [leaf-modern, leaf-ancient, leaf-civilization, leaf-military, leaf-cultural]
+    sub-science:
+      [leaf-physics, leaf-biology, leaf-cognitive, leaf-cosmology, leaf-evolution]
+
+top-faith:
+  description: "信仰與靈修：神學、聖經、靈命塑造"
+  subs:
+    sub-theology:
+      [leaf-systematic, leaf-biblical-studies, leaf-historical, leaf-pastoral, leaf-apologetics]
+    sub-spiritual-formation:
+      [leaf-prayer, leaf-discipleship, leaf-devotional, leaf-contemplative]

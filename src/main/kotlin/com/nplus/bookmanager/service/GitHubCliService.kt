@@ -145,6 +145,18 @@ class GitHubCliService {
     }
 
     /**
+     * Remove a topic from repository
+     */
+    fun removeTopic(
+        username: String,
+        repoName: String,
+        topic: String,
+    ): Boolean =
+        ProcessRunner.executeSuccessfully(
+            "gh repo edit $username/$repoName --remove-topic $topic",
+        )
+
+    /**
      * Clone a repository
      */
     fun cloneRepo(

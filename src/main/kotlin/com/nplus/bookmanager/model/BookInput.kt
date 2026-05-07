@@ -88,7 +88,16 @@ data class BooksQueue(
 }
 
 /**
- * Data class representing AI-generated book metadata
+ * Data class representing AI-generated book metadata.
+ *
+ * Topic schema v2 (three-tier):
+ *  topics = [hugobook, nplus-portal, nplus-kind-book, leaf-<Z>, sub-<Y>, top-<X>]
+ *  topCategory  = "<X>"  (no prefix) — drives the first folder level
+ *  subCategory  = "<Y>"  (no prefix) — drives the second folder level
+ *  leafCategory = "<Z>"  (no prefix) — drives the third folder level
+ *
+ * The local clone path under DEFAULT_WORK_DIR is:
+ *   <topCategory>/<subCategory>/<leafCategory>/<repoName>
  */
 @Serializable
 data class GeneratedMetadata(
@@ -97,8 +106,12 @@ data class GeneratedMetadata(
     val chineseTitle: String,
     val description: String,
     val topics: List<String>,
-    val category: String,
-)
+    val topCategory: String,
+    val subCategory: String,
+    val leafCategory: String,
+) {
+    fun categoryPath(): String = "$topCategory/$subCategory/$leafCategory"
+}
 
 /**
  * Data class representing AI-generated docs structure

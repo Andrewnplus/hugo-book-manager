@@ -121,7 +121,7 @@ class BookRepoService(
         username: String,
         metadata: GeneratedMetadata,
     ): File? {
-        val categoryDir = File(AppConfig.defaultWorkDir, metadata.category)
+        val categoryDir = File(AppConfig.defaultWorkDir, metadata.categoryPath())
         if (!categoryDir.exists()) {
             categoryDir.mkdirs()
         }

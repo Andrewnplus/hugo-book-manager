@@ -5,6 +5,7 @@ import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.core.subcommands
 import com.nplus.bookmanager.command.CheckEnvCommand
 import com.nplus.bookmanager.command.InitBooksCommand
+import com.nplus.bookmanager.command.MigrateTopicTiersCommand
 import com.nplus.bookmanager.command.RefreshRepoIndexCommand
 
 /**
@@ -27,5 +28,6 @@ fun main(args: Array<String>) {
             CheckEnvCommand(),
             InitBooksCommand(),
             RefreshRepoIndexCommand(),
+            MigrateTopicTiersCommand(),
         ).main(args)
 }
