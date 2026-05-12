@@ -121,12 +121,15 @@ class BookRepoService(
         username: String,
         metadata: GeneratedMetadata,
     ): File? {
-        val categoryDir = File(AppConfig.defaultWorkDir, metadata.categoryPath())
-        if (!categoryDir.exists()) {
-            categoryDir.mkdirs()
+        // new-books is intentionally kept flat: <workDir>/<repoName>.
+        // The 3-tier (top/sub/leaf) layout only applies to books-done after
+        // migrate-topic-tiers, not to in-progress repos under new-books.
+        val workDir = File(AppConfig.defaultWorkDir)
+        if (!workDir.exists()) {
+            workDir.mkdirs()
         }
 
-        val repoDir = File(categoryDir, metadata.repoName)
+        val repoDir = File(workDir, metadata.repoName)
 
         if (repoDir.exists()) {
             println("  Directory already exists: ${repoDir.absolutePath}")

@@ -273,7 +273,7 @@ class InitBooksCommand(
         println("    Top:    ${metadata.topCategory}")
         println("    Sub:    ${metadata.subCategory}")
         println("    Leaf:   ${metadata.leafCategory}")
-        println("    Path:   ${metadata.categoryPath()}/${metadata.repoName}")
+        println("    Path:   ${metadata.repoName}")
         println("    Topics: ${metadata.topics.joinToString(", ")}")
 
         println("\n  Generated structure:")
@@ -382,15 +382,6 @@ class InitBooksCommand(
         book: QueuedBook,
         entry: RepoIndex.RepoEntry,
     ): Boolean {
-        // Prefer three-tier path; fall back to legacy `*-book-summary` folder
-        // for repos that haven't been migrated yet.
-        val categoryPath = entry.categoryPath ?: entry.legacyCategory
-        if (categoryPath == null) {
-            println("  ⚠ Could not infer category from topics: ${entry.topics.joinToString(", ")}")
-            println("  Skipping clone. Use option 1 (skip) or 3 (force) instead.")
-            return false
-        }
-
         val owner =
             AppConfig.githubUsername.takeIf { it.isNotBlank() }
                 ?: ghService.getUsername()
@@ -399,7 +390,9 @@ class InitBooksCommand(
             return false
         }
 
-        val targetDir = File(File(AppConfig.defaultWorkDir, categoryPath), entry.name)
+        // new-books is flat: <workDir>/<repoName>. Three-tier layout is only
+        // applied later by migrate-topic-tiers when moving to books-done.
+        val targetDir = File(AppConfig.defaultWorkDir, entry.name)
         if (targetDir.exists()) {
             println("  Local folder already exists: ${targetDir.absolutePath} (skipping clone)")
         } else {
@@ -473,7 +466,7 @@ class InitBooksCommand(
     ) {
         println("\n[DRY RUN] Would perform the following steps:")
         println("  1. Create GitHub repo: ${metadata.repoName}")
-        println("  2. Clone to: ${AppConfig.defaultWorkDir}/${metadata.categoryPath()}/${metadata.repoName}")
+        println("  2. Clone to: ${AppConfig.defaultWorkDir}/${metadata.repoName}")
         println("  3. Update template files")
         println("  4. Download cover from: ${book.coverUrl}")
         println("  5. Create ${structure.sections.size} doc sections")

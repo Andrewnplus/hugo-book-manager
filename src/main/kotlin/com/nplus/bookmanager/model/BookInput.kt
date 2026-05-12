@@ -92,12 +92,15 @@ data class BooksQueue(
  *
  * Topic schema v2 (three-tier):
  *  topics = [hugobook, nplus-portal, nplus-kind-book, leaf-<Z>, sub-<Y>, top-<X>]
- *  topCategory  = "<X>"  (no prefix) — drives the first folder level
- *  subCategory  = "<Y>"  (no prefix) — drives the second folder level
- *  leafCategory = "<Z>"  (no prefix) — drives the third folder level
+ *  topCategory  = "<X>"  (no prefix)
+ *  subCategory  = "<Y>"  (no prefix)
+ *  leafCategory = "<Z>"  (no prefix)
  *
- * The local clone path under DEFAULT_WORK_DIR is:
- *   <topCategory>/<subCategory>/<leafCategory>/<repoName>
+ * Local clone path under DEFAULT_WORK_DIR (new-books) is intentionally flat:
+ *   <repoName>
+ *
+ * The three-tier layout `<topCategory>/<subCategory>/<leafCategory>/<repoName>`
+ * is only applied later by migrate-topic-tiers when books move to books-done.
  */
 @Serializable
 data class GeneratedMetadata(
@@ -109,9 +112,7 @@ data class GeneratedMetadata(
     val topCategory: String,
     val subCategory: String,
     val leafCategory: String,
-) {
-    fun categoryPath(): String = "$topCategory/$subCategory/$leafCategory"
-}
+)
 
 /**
  * Data class representing AI-generated docs structure
