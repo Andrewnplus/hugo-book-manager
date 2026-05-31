@@ -15,6 +15,16 @@ class GitService {
             ProcessRunner.executeSuccessfully("git rev-parse --git-dir", dir)
 
     /**
+     * Point git hooks to the tracked .githooks directory, activating the
+     * Spotless pre-commit hook shipped in the template.
+     */
+    fun setHooksPath(
+        repoDir: File,
+        path: String = ".githooks",
+    ): Boolean =
+        ProcessRunner.executeSuccessfully("git config core.hooksPath $path", repoDir)
+
+    /**
      * Pull latest changes
      */
     fun pull(repoDir: File): Boolean =

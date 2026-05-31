@@ -57,6 +57,9 @@ class BookRepoService(
             return CreateResult(false)
         }
 
+        // Step: Activate the tracked Spotless pre-commit hook
+        gitService.setHooksPath(repoDir)
+
         // Step: Update template files
         println("\n  Updating template files...")
         templateService.updateTemplateFiles(repoDir, metadata, bookInput)
