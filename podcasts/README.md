@@ -44,5 +44,22 @@ scripts/transcribe.sh     edited.wav           # → edited.srt / edited.txt
 
 各腳本開頭都有可用環境變數說明（如 `TARGET_I=-19`、`MARGIN=0.3sec`、`LANG_CODE=en`）。
 
+## 卡頓錄音 → 通順講稿（逐字稿整理）
+
+錄的時候邊想邊講、卡卡的（卡頓重講、贅詞、繞圈、邏輯跳躍），想把它整理成一份**語句通順、邏輯銜接補強、可照著重講**的口語講稿時，用這條兩步流程（接在 `transcribe.sh` 之後）：
+
+```
+transcribe.sh        →  ① 外部 API 點評        →  ② Skill 整理
+（whisper 中文稿）       謄寫分段＋點評建議         /podcast-smooth-transcript
+edited.txt              （只診斷不改寫）            → edited.smooth.md（通順講稿）
+```
+
+- **① 外部 API**：把 whisper 轉出的中文逐字稿，連同 prompt 貼給外部 LLM 服務，產出「重新分段的逐字稿＋逐條點評與建議」（卡頓／贅詞／重複／邏輯跳躍／疑似 ASR 誤轉）。**只診斷、不改寫。**
+- **② Skill `/podcast-smooth-transcript`**：吃上一步的輸出，整理成通順口語講稿；補銜接但不新增講者沒講的內容，真缺的環節標 `〔需補〕`、疑似誤字標 `〔待確認〕`。
+
+> 外部 API 的 prompt 正本附在 skill 檔末附錄：`tool-boxes/claude-code-commands/podcast-smooth-transcript.md`（GitHub: `Andrewnplus/claude-code-commands`）。
+>
+> 區別：本流程出**口語講稿**（為重講／發布逐字稿）；要進一步寫成**書面文章**請改接 `/transcribe-to-article`。
+
 > 注意：院外門徒路的原始素材（封面 png、企劃 docx、計畫表 xlsx）仍在
 > `~/workspace/andrew/documents/podcasts/院外門徒路/`，未納入本 repo。
