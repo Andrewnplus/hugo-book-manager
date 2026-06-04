@@ -54,7 +54,7 @@ top-craft:
     sub-tools:
       [leaf-cli, leaf-editor, leaf-version-control, leaf-build-systems]
     sub-design:
-      [leaf-ux, leaf-visual, leaf-typography, leaf-product-design]
+      [leaf-ux, leaf-visual, leaf-typography, leaf-product-design, leaf-architecture]
     sub-writing:
       [leaf-fiction, leaf-non-fiction, leaf-screenwriting, leaf-poetry]
 
