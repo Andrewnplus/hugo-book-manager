@@ -52,7 +52,7 @@ top-craft:
       [leaf-systems-design, leaf-coding-practice, leaf-language-c, leaf-language-rust,
        leaf-ai-ml, leaf-devops, leaf-security, leaf-databases]
     sub-tools:
-      [leaf-cli, leaf-editor, leaf-version-control, leaf-build-systems]
+      [leaf-cli, leaf-editor, leaf-version-control, leaf-build-systems, leaf-coffee]
     sub-design:
       [leaf-ux, leaf-visual, leaf-typography, leaf-product-design, leaf-architecture]
     sub-writing:
