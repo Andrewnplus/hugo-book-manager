@@ -441,7 +441,7 @@ repos:
   - name: art-of-loving
     description: "The Art of Loving | Erich Fromm | Fromm's classic argument that love is not a feeling that simply happens but an art requiring discipline, concentration, and courage—the only mature solution to the problem of human separateness."
     url: https://github.com/nplus-father/art-of-loving
-    topics: [hugobook, leaf-dating, nplus-kind-book, nplus-portal, sub-relationships, tag-classic, tag-primer, top-personal]
+    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
   - name: art-of-seduction
     description: The Art of Seduction | Robert Greene | Through historical case studies and psychological analysis, Greene systematically dissects nine seducer archetypes and 24 strategies, revealing the mechanics of interpersonal attraction.
     url: https://github.com/nplus-father/art-of-seduction
@@ -1341,7 +1341,7 @@ repos:
   - name: effective-executive
     description: "The Effective Executive | Peter F. Drucker | The father of management's classic argument that effectiveness is a habit—and a habit anyone can learn."
     url: https://github.com/nplus-father/effective-executive
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, tag-primer, top-craft]
+    topics: [hugobook, leaf-skill-building, nplus-kind-book, nplus-portal, sub-career, tag-classic, tag-primer, top-professional]
   - name: effortless
     description: "Effortless | Greg McKeown | Following Essentialism, McKeown argues that essential work shouldn't have to be hard — and offers practices for an effortless state, effortless action, and effortless results that compound over time."
     url: https://github.com/nplus-father/effortless
@@ -3169,27 +3169,27 @@ repos:
   - name: message-of-1-corinthians
     description: The Message of 1 Corinthians | David Prior | Using the cross as the central lens, Prior dissects Corinthian factionalism, ethics, and worship disputes, modeling how to live a unified yet holy church life in plural contemporary contexts.
     url: https://github.com/nplus-father/message-of-1-corinthians
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-1-peter
     description: "The Message of 1 Peter | Edmund Clowney | Anchored in the identity theology of \"strangers and exiles,\" Clowney brings deep OT connections and a Reformed redemptive-history perspective to the ethics of suffering and Christian hope in a hostile world."
     url: https://github.com/nplus-father/message-of-1-peter
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-1-timothy-titus
     description: "The Message of 1 Timothy & Titus | John Stott | Stott's exposition of Paul's letters to young church leaders, focused on guarding sound doctrine, eldership qualifications, and the practice of godly life—biblical foundations for present-day ministry leaders."
     url: https://github.com/nplus-father/message-of-1-timothy-titus
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-2-corinthians
     description: "The Message of 2 Corinthians | Paul Barnett | Anchored on \"power in weakness,\" Barnett traces seven years of entanglement between Paul and Corinth—NT theology, apostolic apologetic, and the logic of the cross under one frame."
     url: https://github.com/nplus-father/message-of-2-corinthians
-    topics: [hugobook, leaf-apologetics, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-acts
     description: "The Message of Acts | John Stott | Using Acts 1:8 as the table of contents, Stott traces the gospel radiating from Jerusalem to Rome and applies the text squarely to the life of the contemporary church."
     url: https://github.com/nplus-father/message-of-acts
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-amos
     description: "The Message of Amos | Alec Motyer | Built around \"the Lord roars,\" Motyer reads Amos as a literary structure that funnels from judgment on the nations down onto the covenant people, finally pointing to the Messianic hope of the rebuilt tabernacle of David."
     url: https://github.com/nplus-father/message-of-amos
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-ecclesiastes
     description: "The Message of Ecclesiastes | Derek Kidner | The IVP Bible Speaks Today exposition reads Qoheleth as an apologist who stands inside the secularist's own footing, pressing from \"under the sun\" emptiness to the bedrock of fearing God."
     url: https://github.com/nplus-father/message-of-ecclesiastes
@@ -3201,11 +3201,11 @@ repos:
   - name: message-of-exodus
     description: "The Message of Exodus | Alec Motyer | Anchored on the covenant God and the Passover Lamb, Motyer unfolds Yahweh's redemptive self-revelation as Savior, Covenant Maker, and Indwelling Presence—the OT counterpart to Matthew."
     url: https://github.com/nplus-father/message-of-exodus
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-ezra-and-haggai
     description: "The Message of Ezra & Haggai | Robert Fyall | A twin-tracked exposition built around the rebuilding of the temple, pairing Ezra's historical narrative with Haggai's prophetic message to show God's post-exilic people restarting in covenant, worship, and hope."
     url: https://github.com/nplus-father/message-of-ezra-and-haggai
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-genesis-bst
     description: The Message of Genesis | David Atkinson & Joyce G. Baldwin | A two-volume Bible Speaks Today exposition of Genesis—Atkinson on chapters 1–11 (creation, fall, flood, Babel) and Baldwin on 12–50 (the patriarchs from Abraham to Joseph)—weaving theological reflection into the narrative.
     url: https://github.com/nplus-father/message-of-genesis-bst
@@ -3213,11 +3213,11 @@ repos:
   - name: message-of-james
     description: The Message of James | Alec Motyer | Reads James as the structure of a sermon, walking from new birth through growth to the fruit of faith, showing how the path of holiness gets lived out in the world and in human relationships.
     url: https://github.com/nplus-father/message-of-james
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-jeremiah
     description: "The Message of Jeremiah | Derek Kidner & Hywel R. Jones | Joining historical context with pastoral sensibility, the exposition holds Jeremiah's lament, declaration, and hope together, recovering a counter-current prophet against the backdrop of his turbulent end-times."
     url: https://github.com/nplus-father/message-of-jeremiah
-    topics: [hugobook, leaf-pastoral, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-joel-micah-habakkuk
     description: "The Message of Joel, Micah & Habakkuk | David Prior | A combined Bible Speaks Today exposition of three Minor Prophets, themed on \"listening to God in disaster, in rebellion, in destruction,\" using the tension between marketplace and sanctuary as the entry point."
     url: https://github.com/nplus-father/message-of-joel-micah-habakkuk
@@ -3225,7 +3225,7 @@ repos:
   - name: message-of-luke
     description: The Message of Luke | Michael Wilcock | 透過救主的降臨、作為、話語到走向十字架，闡釋路加福音的信息
     url: https://github.com/nplus-father/message-of-luke
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-malachi
     description: "The Message of Malachi | Peter Adam | The Bible Speaks Today exposition reads the Old Testament's last book as a dialogue—God speaking, his people answering back—addressing \"spiritual sloppiness,\" the church state that is neither zealous nor openly rebellious."
     url: https://github.com/nplus-father/message-of-malachi
@@ -3237,7 +3237,7 @@ repos:
   - name: message-of-romans
     description: "The Message of Romans | John Stott | Stott reads Romans as a preacher, walking from God's righteousness and justification by faith through indwelling Spirit to church ethics—presenting the gospel's full theological argument and contemporary import."
     url: https://github.com/nplus-father/message-of-romans
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-song-of-songs
     description: "The Message of the Song of Songs | Tom Gledhill | The Bible Speaks Today exposition deliberately swaps traditional allegorical readings for a naturalistic literary approach, celebrating human love, bodily beauty, and marital intimacy within the Bible's whole-cloth theology of creation."
     url: https://github.com/nplus-father/message-of-song-of-songs
