@@ -161,7 +161,7 @@ Book repos share configuration via two central repositories:
 |------|---------|
 | `Andrewnplus/book-gradle-conventions` | Gradle convention plugin (Hugo version, Spotless) — published to GitHub Packages |
 | `Andrewnplus/nplus-book-core` | Hugo theme (Go module) |
-| `Andrewnplus/renovate-config` | Shared Renovate preset (monthly updates, automerge) |
+| `nplus-father/workflows` (`//renovate`) | Shared Renovate preset (monthly updates, automerge) — consumed via `extends: ["github>nplus-father/workflows//renovate"]` |
 
 ## Dependencies
 
