@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "timezone": "Asia/Taipei",
+  "schedule": ["on the first day of the month"],
+  "dependencyDashboard": true,
+  "automerge": true,
+  "automergeType": "branch",
+  "ignoreTests": true,
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
+  "packageRules": [
+    {
+      "description": "Group ALL updates into a single PR and automerge",
+      "matchUpdateTypes": ["major", "minor", "patch", "digest", "pin"],
+      "groupName": "all dependencies",
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Hugo version baked into the self-hosted runner image (keep in sync with hugo-version in nplus-father/workflows)",
+      "fileMatch": ["(^|/)Dockerfile\\.runner$"],
+      "matchStrings": ["ARG HUGO_VERSION=(?<currentValue>[0-9.]+)"],
+      "depNameTemplate": "gohugoio/hugo",
+      "datasourceTemplate": "github-releases",
+      "extractVersionTemplate": "^v(?<version>.+)$"
+    }
+  ]
+}
