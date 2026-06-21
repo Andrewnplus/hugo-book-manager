@@ -25,13 +25,25 @@ WHISPER_BIN="$(command -v whisper-cli || command -v whisper-cpp || command -v ma
 command -v ffmpeg >/dev/null || { echo "需要 ffmpeg：brew install ffmpeg"; exit 1; }
 [ -n "$WHISPER_BIN" ] || { echo "需要 whisper.cpp：brew install whisper-cpp"; exit 1; }
 [ -f "$IN" ]    || { echo "找不到輸入檔：$IN"; exit 1; }
-[ -f "$MODEL" ] || { echo "找不到模型：$MODEL（請下載 ggml-large-v3.bin 放到該路徑）"; exit 1; }
+[ -f "$MODEL" ] || { echo "找不到模型：${MODEL}（請下載 ggml-large-v3.bin 放到該路徑）"; exit 1; }
 
 echo "[1/2] 轉 16k 單聲道 wav…"
 ffmpeg -hide_banner -y -i "$IN" -ar 16000 -ac 1 "$TMP"
 
-echo "[2/2] 轉錄（$LANG_CODE）…"
+echo "[2/2] 轉錄（${LANG_CODE}）…"
 "$WHISPER_BIN" -m "$MODEL" -l "$LANG_CODE" -osrt -otxt "$TMP" -of "${IN%.*}"
 
 rm -f "$TMP"
+
+# 簡→繁（台灣用詞）：whisper 對華語常吐簡體，預設用 opencc 轉成繁體。
+# 關閉：CONVERT_TW=0 ./transcribe.sh in.wav；指定設定：OPENCC_CONFIG=s2tw.json
+CONVERT_TW="${CONVERT_TW:-1}"
+OPENCC_CONFIG="${OPENCC_CONFIG:-s2twp.json}"
+if [ "$CONVERT_TW" = "1" ] && [ "$LANG_CODE" = "zh" ] && command -v opencc >/dev/null; then
+  echo "[3/3] 簡→繁（${OPENCC_CONFIG}）…"
+  for f in "${IN%.*}.srt" "${IN%.*}.txt"; do
+    [ -f "$f" ] && opencc -c "$OPENCC_CONFIG" -i "$f" -o "$f.tw" && mv "$f.tw" "$f"
+  done
+fi
+
 echo "完成：${IN%.*}.srt（字幕）/ ${IN%.*}.txt（文字稿）"
