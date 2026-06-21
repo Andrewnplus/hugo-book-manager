@@ -1,82 +1,38 @@
 # Podcasts
 
-恩普拉氏 與 院外門徒路 兩個 Podcast 頻道的規劃文件與音訊剪輯工具。
+恩普拉氏 與 院外門徒路 兩個 Podcast 頻道的**規劃文件**與**逐字稿工具**。
+
+> 音訊剪輯與母帶處理（去空白、降噪、響度）改在 **DaVinci Resolve 手動完成** ——
+> 腳本式自動處理對語音備忘錄這類來源容易越修越糟，故已移除。流程仍見
+> `planning/剪輯流程與工具指南.md`。本 repo 在音訊端只保留「逐字稿」這支離線工具。
 
 ## 目錄
 
 ```
 podcasts/
-├── planning/
-│   ├── 兩頻道規劃總結.md       # 頻道定位、模板台詞、SoundOn/上架流程、命名編號
-│   └── 剪輯流程與工具指南.md   # 剪輯三段式流程、工具、DaVinci 對應、Mac 指令
+├── planning/                   # 頻道規劃、書單系列地圖、錄製佇列、切分藍圖、剪輯指南…
 └── scripts/
-    ├── podcast-pipeline.sh     # Manager：掃描媒體根目錄、原地產出、發佈到 _published、冪等（推薦入口）
-    ├── podcast-master.sh       # 母帶處理：high-pass→去噪→壓縮→響度正規化（two-pass）
-    ├── trim-silence.sh         # 自動切死空氣（auto-editor 粗剪）
     └── transcribe.sh           # 產中文逐字稿/字幕（whisper.cpp + opencc 簡轉繁）
 ```
 
-## Manager：一鍵掃描媒體資料夾
-
-把錄音丟到 **`~/workspace/podcasts`**（可任意巢狀分頻道/系列/集），Manager 會逐檔按需要跑去空白→母帶→逐字稿→發佈，產出放在來源旁邊、用後綴標階段，狀態由「檔案是否存在」決定（冪等、重跑安全）。日常對話用 `/podcast-edit` skill 驅動。
+## macOS 安裝（逐字稿用）
 
 ```bash
-PIPE=scripts/podcast-pipeline.sh
-"$PIPE" status              # 看每個來源在哪一階段
-"$PIPE" trim               # 只去空白（剪輯前）
-"$PIPE" master             # 只母帶（有 -edited 用它，否則用 -trimmed）
-"$PIPE" transcribe         # 只逐字稿（對 -master）
-"$PIPE" publish            # 把母帶+字幕+逐字稿輸出到 _published（交付夾）
-"$PIPE" auto               # 一條龍 trim→master→transcribe→publish（略過人耳精修）
-# 可加路徑限定範圍：scripts/podcast-pipeline.sh auto "恩普拉氏/恩普拉氏 － EP0.m4a"
-```
-
-後綴約定：`foo.m4a`（來源）→ `foo-trimmed.wav`（去空白）→ `foo-edited.wav`（DaVinci 手動精修，選用）→ `foo-master.wav`（母帶）→ `foo-master.srt/.txt`（繁體逐字稿）。
-
-**中間檔 vs 交付物**：上面的 `-trimmed/-master` 等大 WAV 是**工作區中間檔**，留在來源旁邊、可重生可刪。`publish` 則把真正要發佈的**交付物**集中到 `_published/`（鏡像來源頻道結構、每集一夾、去掉 `-master` 後綴），方便整集抓走上架：
-
-```
-podcasts/
-├── 恩普拉氏/EP01.m4a            # 來源
-├── 恩普拉氏/EP01-master.wav     # 中間母帶（工作區，可刪）
-└── _published/恩普拉氏/EP01/
-    ├── EP01.m4a                 # 上架音檔（AAC，AUDIO_BR 預設 192k）
-    ├── EP01.srt                 # 字幕
-    └── EP01.txt                 # 逐字稿 / show notes
-```
-
-環境變數：`PODCAST_ROOT` 覆寫根目錄、`MASTER_FROM=trimmed|edited|auto` 指定母帶來源、`PUBLISH_DIR` 覆寫交付夾、`AUDIO_BR` 設上架位元率。
-
-## 剪輯三段式流程
-
-```
-① 自動粗剪          →  ② 人力精修（耳朵）   →  ③ 母帶處理
-   trim-silence.sh        DaVinci Fairlight       podcast-master.sh
-```
-
-詳見 `planning/剪輯流程與工具指南.md`。
-
-## macOS 安裝
-
-```bash
-brew install ffmpeg sox python whisper-cpp opencc pipx
-pipx install auto-editor
+brew install ffmpeg whisper-cpp opencc
 # whisper 模型：下載 ggml-large-v3.bin 放到 ~/.whisper-models/
 #   curl -L -o ~/.whisper-models/ggml-large-v3.bin \
 #     https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3.bin
 ```
 
-## 腳本用法
+## 逐字稿用法
 
 ```bash
-chmod +x scripts/*.sh        # 首次（git 已保留可執行權限，clone 後通常免）
+chmod +x scripts/transcribe.sh        # 首次（git 已保留可執行權限，clone 後通常免）
 
-scripts/trim-silence.sh   raw.wav              # → raw-trimmed.wav
-scripts/podcast-master.sh edited.wav           # → edited-master.wav（-16 LUFS / -1 dBTP）
-scripts/transcribe.sh     edited.wav           # → edited.srt / edited.txt
+scripts/transcribe.sh  edited.wav     # → edited.srt（字幕）/ edited.txt（文字稿，繁體）
 ```
 
-各腳本開頭都有可用環境變數說明（如 `TARGET_I=-19`、`MARGIN=0.3sec`、`LANG_CODE=en`）。
+腳本開頭有可用環境變數說明（如 `LANG_CODE=en`、`CONVERT_TW=0` 關閉簡轉繁、`OPENCC_CONFIG`、`MODEL`）。
 
 ## 卡頓錄音 → 通順講稿（逐字稿整理）
 
