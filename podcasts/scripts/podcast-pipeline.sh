@@ -17,17 +17,27 @@
 #   母帶:   foo-master.wav     （ffmpeg，-16 LUFS / -1 dBTP）
 #   逐字稿: foo-master.srt/.txt（whisper.cpp，對母帶轉錄）
 #
+# 中間檔（trimmed/master 的大 WAV）留在來源旁邊當工作區、可重生、可刪；
+# 真正要發佈的「交付物」由 publish 集中到 PUBLISH_DIR（預設 ROOT/_published），
+# 鏡像來源的頻道結構、每集一夾，drop 掉 -master 後綴：
+#   PUBLISH_DIR/<來源相對目錄>/<集名>/<集名>.m4a   上架音檔（AAC 壓縮自母帶）
+#                                       /<集名>.srt   字幕（複製自 -master.srt）
+#                                       /<集名>.txt   逐字稿（複製自 -master.txt）
+#
 # 用法：
 #   podcast-pipeline.sh status [路徑]          # 看每個來源在哪一階段
 #   podcast-pipeline.sh trim [路徑]            # 只跑去空白（剪輯前）
 #   podcast-pipeline.sh master [路徑]          # 只跑母帶（剪輯後；有 -edited 用它，否則用 -trimmed）
 #   podcast-pipeline.sh transcribe [路徑]      # 只跑逐字稿（對 -master）
-#   podcast-pipeline.sh auto [路徑]            # 一條龍：trim → master → transcribe（略過人耳精修）
+#   podcast-pipeline.sh publish [路徑]         # 把母帶+字幕+逐字稿輸出到 _published（交付夾）
+#   podcast-pipeline.sh auto [路徑]            # 一條龍：trim → master → transcribe → publish
 #
 #   [路徑] 可省略（=整個根目錄），或給某個子資料夾 / 單一檔案來限定範圍。
 #
 # 環境變數：
 #   PODCAST_ROOT   媒體根目錄（預設 ~/workspace/podcasts）
+#   PUBLISH_DIR    交付夾（預設 ROOT/_published）；掃描來源時會自動排除此夾
+#   AUDIO_BR       上架音檔位元率（預設 192k）
 #   MASTER_FROM    母帶來源：auto(預設,有edited用edited否則trimmed) | trimmed | edited
 #   其餘 trim/master/transcribe 各自的環境變數（MARGIN/THRESH/TARGET_I/MODEL/LANG_CODE…）
 #   會原樣傳遞給底層腳本。
@@ -36,6 +46,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT="${PODCAST_ROOT:-$HOME/workspace/podcasts}"
+PUBLISH_DIR="${PUBLISH_DIR:-$ROOT/_published}"
+AUDIO_BR="${AUDIO_BR:-192k}"
 MASTER_FROM="${MASTER_FROM:-auto}"
 
 TRIM="$SCRIPT_DIR/trim-silence.sh"
@@ -60,6 +72,7 @@ list_sources() {
   find "$target" -type f \
     \( -iname '*.wav' -o -iname '*.mp3' -o -iname '*.m4a' -o -iname '*.flac' -o -iname '*.aac' \) \
     -not -path '*/.*' \
+    ! -path "$PUBLISH_DIR/*" \
     ! -name '*-trimmed.*' ! -name '*-edited.*' ! -name '*-master.*' \
     -print0 | sort -z
 }
@@ -70,6 +83,16 @@ trimmed_of() { echo "$(base_of "$1")-trimmed.wav"; }
 edited_of()  { echo "$(base_of "$1")-edited.wav"; }
 master_of()  { echo "$(base_of "$1")-master.wav"; }
 srt_of()     { echo "$(base_of "$1")-master.srt"; }
+txt_of()     { echo "$(base_of "$1")-master.txt"; }
+
+# 交付夾：鏡像來源的相對目錄、每集一夾（去掉 -master 後綴）
+#   $ROOT/恩普拉氏/EP01.m4a → $PUBLISH_DIR/恩普拉氏/EP01
+published_dir_of() {
+  local f="$1" rd b
+  rd="$(dirname "$(rel "$f")")"; b="$(basename "$(base_of "$f")")"
+  if [ "$rd" = "." ]; then echo "$PUBLISH_DIR/$b"; else echo "$PUBLISH_DIR/$rd/$b"; fi
+}
+published_m4a_of() { local d; d="$(published_dir_of "$1")"; echo "$d/$(basename "$d").m4a"; }
 
 # 母帶的輸入來源（依 MASTER_FROM）
 master_src_of() {
@@ -86,16 +109,17 @@ rel() { local p="$1"; echo "${p#$ROOT/}"; }
 # ---- 各階段 ----
 do_status() {
   local f n=0
-  printf "%-7s %-7s %-7s %-7s  %s\n" "去空白" "精修" "母帶" "逐字稿" "來源"
-  printf "%-7s %-7s %-7s %-7s  %s\n" "------" "----" "----" "------" "----"
+  printf "%-7s %-7s %-7s %-7s %-7s  %s\n" "去空白" "精修" "母帶" "逐字稿" "發佈" "來源"
+  printf "%-7s %-7s %-7s %-7s %-7s  %s\n" "------" "----" "----" "------" "----" "----"
   while IFS= read -r -d '' f; do
     n=$((n+1))
-    local t e m s
-    [ -f "$(trimmed_of "$f")" ] && t="✓"   || t="·"
-    [ -f "$(edited_of  "$f")" ] && e="✓"   || e="·"
-    [ -f "$(master_of  "$f")" ] && m="✓"   || m="·"
-    [ -f "$(srt_of     "$f")" ] && s="✓"   || s="·"
-    printf "  %-5s   %-5s   %-5s   %-5s    %s\n" "$t" "$e" "$m" "$s" "$(rel "$f")"
+    local t e m s p
+    [ -f "$(trimmed_of   "$f")" ] && t="✓"   || t="·"
+    [ -f "$(edited_of    "$f")" ] && e="✓"   || e="·"
+    [ -f "$(master_of    "$f")" ] && m="✓"   || m="·"
+    [ -f "$(srt_of       "$f")" ] && s="✓"   || s="·"
+    [ -f "$(published_m4a_of "$f")" ] && p="✓" || p="·"
+    printf "  %-5s   %-5s   %-5s   %-5s   %-5s    %s\n" "$t" "$e" "$m" "$s" "$p" "$(rel "$f")"
   done < <(list_sources "$SCOPE")
   echo
   echo "共 $n 個來源音檔（根目錄：${ROOT}）"
@@ -142,11 +166,36 @@ do_transcribe() {
   echo "逐字稿完成：新處理 ${done}，略過(已存在) ${skip}，待處理(缺母帶) ${nosrc}"
 }
 
+do_publish() {
+  local f m srt txt outdir b m4a done=0 skip=0 nosrc=0
+  command -v ffmpeg >/dev/null || { echo "需要 ffmpeg：brew install ffmpeg"; exit 1; }
+  while IFS= read -r -d '' f; do
+    m="$(master_of "$f")"
+    if [ ! -f "$m" ]; then nosrc=$((nosrc+1)); continue; fi   # 沒母帶不能發佈
+    outdir="$(published_dir_of "$f")"; b="$(basename "$outdir")"; m4a="$outdir/$b.m4a"
+    mkdir -p "$outdir"
+    if [ -f "$m4a" ]; then
+      skip=$((skip+1))
+    else
+      echo "── 發佈音檔：$(rel "$m") → ${m4a#$ROOT/}"
+      ffmpeg -hide_banner -loglevel error -y -i "$m" -c:a aac -b:a "$AUDIO_BR" "$m4a"
+      done=$((done+1))
+    fi
+    # 字幕/逐字稿每次刷新（便宜，且 transcribe 可能重產），去掉 -master 後綴
+    srt="$(srt_of "$f")"; txt="$(txt_of "$f")"
+    [ -f "$srt" ] && cp -f "$srt" "$outdir/$b.srt"
+    [ -f "$txt" ] && cp -f "$txt" "$outdir/$b.txt"
+  done < <(list_sources "$SCOPE")
+  echo "發佈完成：新編碼 ${done}，略過(已存在) ${skip}，待處理(缺母帶) ${nosrc}"
+  echo "交付夾：${PUBLISH_DIR}"
+}
+
 case "$CMD" in
   status)     do_status ;;
   trim)       do_trim ;;
   master)     do_master ;;
   transcribe) do_transcribe ;;
-  auto)       do_trim; echo; do_master; echo; do_transcribe ;;
-  *) echo "未知指令：$CMD"; echo "用法：$0 {status|trim|master|transcribe|auto} [路徑]"; exit 1 ;;
+  publish)    do_publish ;;
+  auto)       do_trim; echo; do_master; echo; do_transcribe; echo; do_publish ;;
+  *) echo "未知指令：$CMD"; echo "用法：$0 {status|trim|master|transcribe|publish|auto} [路徑]"; exit 1 ;;
 esac
