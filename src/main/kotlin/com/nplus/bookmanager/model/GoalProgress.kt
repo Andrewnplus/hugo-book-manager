@@ -43,6 +43,8 @@ data class GoalProgress(
         val key: String,
         val done: Int,
         val total: Int,
+        /** Station URL segment the key lives under ("concepts"/"problems") — lets the portal deep-link it. */
+        val section: String? = null,
     )
 }
 

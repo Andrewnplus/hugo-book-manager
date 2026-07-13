@@ -105,7 +105,7 @@ class GoalProgressService(
         val contentDir = File(notesDir, "$station/src/content")
         require(contentDir.isDirectory) { "${goal.id}: station content dir not found: ${contentDir.path}" }
 
-        val byCategory = linkedMapOf<String, Pair<Int, Int>>() // key -> (done, total)
+        val byCategory = linkedMapOf<CatKey, Pair<Int, Int>>()
         for (sub in listOf("concepts", "problems")) {
             val base = File(contentDir, sub)
             if (!base.isDirectory) continue
@@ -117,8 +117,9 @@ class GoalProgressService(
                         .path
                         .ifEmpty { sub }
                 val done = fm["status"]?.toString() in goal.scope.statuses
-                val (d, t) = byCategory.getOrDefault(category, 0 to 0)
-                byCategory[category] = (d + if (done) 1 else 0) to (t + 1)
+                val key = CatKey(category, section = sub)
+                val (d, t) = byCategory.getOrDefault(key, 0 to 0)
+                byCategory[key] = (d + if (done) 1 else 0) to (t + 1)
 
                 val lastReviewed = parseDate(fm["lastReviewed"], file, goal.id)
                 if (lastReviewed != null && !lastReviewed.isBefore(since)) {
@@ -146,15 +147,16 @@ class GoalProgressService(
         val base = File(notesDir, "leetcode-note/src/content/problems")
         require(base.isDirectory) { "${goal.id}: leetcode problems dir not found: ${base.path}" }
 
-        val byCategory = linkedMapOf<String, Pair<Int, Int>>()
+        val byCategory = linkedMapOf<CatKey, Pair<Int, Int>>()
         for (file in contentFiles(base)) {
             val fm = frontmatter(file, goal.id)
             val category = fm["category"]?.toString() ?: file.parentFile.name
             if (goal.scope.categories.isNotEmpty() && category !in goal.scope.categories) continue
 
             val done = fm["status"]?.toString() in goal.scope.statuses
-            val (d, t) = byCategory.getOrDefault(category, 0 to 0)
-            byCategory[category] = (d + if (done) 1 else 0) to (t + 1)
+            val key = CatKey(category)
+            val (d, t) = byCategory.getOrDefault(key, 0 to 0)
+            byCategory[key] = (d + if (done) 1 else 0) to (t + 1)
 
             for (raw in stringList(fm["reviewedDates"])) {
                 val date = parseDate(raw, file, goal.id) ?: continue
@@ -182,7 +184,7 @@ class GoalProgressService(
         since: LocalDate,
     ): GoalProgress {
         val chapters = BookChapterService(booksDir)
-        val byChapter = linkedMapOf<String, Pair<Int, Int>>()
+        val byChapter = linkedMapOf<CatKey, Pair<Int, Int>>()
         for (repoName in goal.scope.repos) {
             val repoDir = chapters.findRepoDir(repoName)
             if (repoDir == null) {
@@ -194,7 +196,7 @@ class GoalProgressService(
             val prefix = if (goal.scope.repos.size > 1) "$repoName/" else ""
             for (file in files) {
                 val fm = frontmatter(file, goal.id)
-                val key = prefix + chapters.chapterKey(repoDir, file)
+                val key = CatKey(prefix + chapters.chapterKey(repoDir, file))
                 val read = fm["read"] == true || fm["read"]?.toString() == "true"
                 byChapter[key] = (if (read) 1 else 0) to 1
 
@@ -238,6 +240,7 @@ class GoalProgressService(
                                                         put("key", b.key)
                                                         put("done", b.done)
                                                         put("total", b.total)
+                                                        b.section?.let { put("section", it) }
                                                     },
                                                 )
                                             }
@@ -266,9 +269,15 @@ class GoalProgressService(
         progressFile.writeText(prettyJson.encodeToString(JsonObject.serializer(), root) + "\n")
     }
 
+    /** Breakdown grouping key: the display key plus the station URL segment it lives under. */
+    private data class CatKey(
+        val key: String,
+        val section: String? = null,
+    )
+
     private fun toProgress(
         goalId: String,
-        byCategory: Map<String, Pair<Int, Int>>,
+        byCategory: Map<CatKey, Pair<Int, Int>>,
         unit: String,
     ): GoalProgress {
         val done = byCategory.values.sumOf { it.first }
@@ -278,7 +287,7 @@ class GoalProgressService(
             done = done,
             total = total,
             unit = unit,
-            breakdown = byCategory.map { (k, v) -> GoalProgress.BreakdownEntry(k, v.first, v.second) },
+            breakdown = byCategory.map { (k, v) -> GoalProgress.BreakdownEntry(k.key, v.first, v.second, k.section) },
         )
     }
 
