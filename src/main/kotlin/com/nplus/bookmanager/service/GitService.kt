@@ -21,8 +21,7 @@ class GitService {
     fun setHooksPath(
         repoDir: File,
         path: String = ".githooks",
-    ): Boolean =
-        ProcessRunner.executeSuccessfully("git config core.hooksPath $path", repoDir)
+    ): Boolean = ProcessRunner.executeSuccessfully("git config core.hooksPath $path", repoDir)
 
     /**
      * Pull latest changes

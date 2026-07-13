@@ -50,6 +50,14 @@ object AppConfig {
     val homepageBaseUrl: String
         get() = getProperty("HOMEPAGE_BASE_URL") ?: "https://nplus.wiki"
 
+    /** Local clone of the nplus.wiki portal repo (goals.yaml + progress.json live there). */
+    val portalDir: String
+        get() = getProperty("PORTAL_DIR") ?: ""
+
+    /** Workspace directory holding the Astro note stations (incl. leetcode-note). */
+    val notesDir: String
+        get() = getProperty("NOTES_DIR") ?: ""
+
     private fun getProperty(key: String): String? = properties.getProperty(key)
 
     override fun toString(): String =

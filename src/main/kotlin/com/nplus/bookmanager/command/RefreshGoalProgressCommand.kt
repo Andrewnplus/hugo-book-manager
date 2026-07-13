@@ -1,0 +1,42 @@
+package com.nplus.bookmanager.command
+
+import com.github.ajalt.clikt.core.CliktCommand
+import com.github.ajalt.clikt.core.Context
+import com.nplus.bookmanager.config.AppConfig
+import com.nplus.bookmanager.service.GoalProgressService
+import java.io.File
+
+/**
+ * Scan local clones (notes stations, leetcode-note; book repos from M2) for
+ * goal progress and write the derived `src/data/progress.json` into the
+ * portal repo. Commit + push the portal repo afterwards to publish.
+ */
+class RefreshGoalProgressCommand : CliktCommand(name = "refresh-goal-progress") {
+    override fun help(context: Context) = "Scan local clones and refresh the portal's derived goal progress artifact"
+
+    override fun run() {
+        val portalDir = File(AppConfig.portalDir)
+        val notesDir = File(AppConfig.notesDir)
+        if (!portalDir.isDirectory) {
+            println("Error: PORTAL_DIR not found: ${portalDir.path} (set it in local.properties)")
+            return
+        }
+        if (!notesDir.isDirectory) {
+            println("Error: NOTES_DIR not found: ${notesDir.path} (set it in local.properties)")
+            return
+        }
+
+        val service = GoalProgressService(portalDir = portalDir, notesDir = notesDir)
+        val goals = service.loadGoals()
+        println("Loaded ${goals.size} goal(s) from ${service.goalsFile.path}")
+
+        val (progress, recent) = service.scan(goals)
+        service.save(progress, recent)
+
+        for (p in progress) {
+            println("  ${p.goalId}: ${p.done}/${p.total} ${p.unit}")
+        }
+        println("✅ Saved ${progress.size} goal(s), ${recent.size} recent item(s) to ${service.progressFile.path}")
+        println("→ Remember to commit + push the portal repo to publish the dashboard.")
+    }
+}

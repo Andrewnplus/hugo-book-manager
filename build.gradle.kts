@@ -83,6 +83,10 @@ registerCliTask("refreshRepoIndex", "Refresh the cached index of book repos for 
     args = listOf("refresh-repo-index")
 }
 
+registerCliTask("refreshGoalProgress", "Scan local clones and refresh the portal's derived goal progress artifact") {
+    args = listOf("refresh-goal-progress")
+}
+
 registerCliTask("initBooks", "Initialize multiple book repos from a queue file") {
     doFirst {
         val queueFile = project.findProperty("queue")?.toString() ?: "templates/books-queue.yaml"
