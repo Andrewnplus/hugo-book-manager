@@ -30,6 +30,7 @@ import java.time.format.DateTimeFormatter
 class GoalProgressService(
     private val portalDir: File,
     private val notesDir: File,
+    private val booksDir: File? = null,
 ) {
     private val yaml = Yaml()
 
@@ -76,8 +77,13 @@ class GoalProgressService(
                     }
                 }
                 GoalDefinition.METRIC_LEETCODE -> progress += scanLeetcode(goal, recent, since)
-                GoalDefinition.METRIC_REPO_COMPLETION ->
-                    println("ℹ ${goal.id}: repo-completion scanning lands in M2 — skipped")
+                GoalDefinition.METRIC_REPO_COMPLETION -> {
+                    if (booksDir == null || !booksDir.isDirectory) {
+                        println("⚠ ${goal.id}: BOOKS_DIR not configured — skipped")
+                    } else {
+                        progress += scanRepoCompletion(goal, booksDir, recent, since)
+                    }
+                }
                 GoalDefinition.METRIC_ARTICLES, GoalDefinition.METRIC_PODCAST ->
                     Unit // computed at portal build time, not by this scanner
                 else -> println("⚠ ${goal.id}: unknown metric '${goal.metric}' — skipped")
@@ -163,6 +169,42 @@ class GoalProgressService(
             }
         }
         return toProgress(goal.id, byCategory, unit = "problems")
+    }
+
+    /**
+     * Book repos in books-done: chapter `_index.md` frontmatter carries
+     * `read: true` + `readAt: YYYY-MM-DD` (see BookChapterService / markRead).
+     */
+    private fun scanRepoCompletion(
+        goal: GoalDefinition,
+        booksDir: File,
+        recent: MutableList<RecentActivity>,
+        since: LocalDate,
+    ): GoalProgress {
+        val chapters = BookChapterService(booksDir)
+        val byChapter = linkedMapOf<String, Pair<Int, Int>>()
+        for (repoName in goal.scope.repos) {
+            val repoDir = chapters.findRepoDir(repoName)
+            if (repoDir == null) {
+                println("⚠ ${goal.id}: repo '$repoName' not found under ${booksDir.path} — skipped")
+                continue
+            }
+            val files = chapters.chapterFiles(repoDir)
+            if (files.isEmpty()) println("⚠ ${goal.id}: repo '$repoName' has no chapters")
+            val prefix = if (goal.scope.repos.size > 1) "$repoName/" else ""
+            for (file in files) {
+                val fm = frontmatter(file, goal.id)
+                val key = prefix + chapters.chapterKey(repoDir, file)
+                val read = fm["read"] == true || fm["read"]?.toString() == "true"
+                byChapter[key] = (if (read) 1 else 0) to 1
+
+                val readAt = parseDate(fm["readAt"], file, goal.id)
+                if (read && readAt != null && !readAt.isBefore(since)) {
+                    recent += RecentActivity(date = readAt.toString(), goalId = goal.id, item = "$repoName/${file.parentFile.name}")
+                }
+            }
+        }
+        return toProgress(goal.id, byChapter, unit = "chapters")
     }
 
     /** Write the derived artifact with stable ordering for clean git diffs. */

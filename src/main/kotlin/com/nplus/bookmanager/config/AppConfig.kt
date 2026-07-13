@@ -58,6 +58,10 @@ object AppConfig {
     val notesDir: String
         get() = getProperty("NOTES_DIR") ?: ""
 
+    /** Root of the filed book repos (books-done, top/sub/leaf tree). */
+    val booksDir: String
+        get() = getProperty("BOOKS_DIR") ?: ""
+
     private fun getProperty(key: String): String? = properties.getProperty(key)
 
     override fun toString(): String =

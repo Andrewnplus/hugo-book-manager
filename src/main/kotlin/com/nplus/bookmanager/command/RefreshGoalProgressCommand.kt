@@ -26,7 +26,8 @@ class RefreshGoalProgressCommand : CliktCommand(name = "refresh-goal-progress") 
             return
         }
 
-        val service = GoalProgressService(portalDir = portalDir, notesDir = notesDir)
+        val booksDir = File(AppConfig.booksDir).takeIf { it.isDirectory }
+        val service = GoalProgressService(portalDir = portalDir, notesDir = notesDir, booksDir = booksDir)
         val goals = service.loadGoals()
         println("Loaded ${goals.size} goal(s) from ${service.goalsFile.path}")
 

@@ -87,6 +87,19 @@ registerCliTask("refreshGoalProgress", "Scan local clones and refresh the portal
     args = listOf("refresh-goal-progress")
 }
 
+registerCliTask("markRead", "Mark a book chapter as read (frontmatter read/readAt); omit chapter to list") {
+    doFirst {
+        val repo = project.findProperty("repo")?.toString() ?: error("usage: ./gradlew markRead -Prepo=<repo> [-Pchapter=<dir>]")
+        val chapter = project.findProperty("chapter")?.toString()
+        val argList = mutableListOf("mark-read", "--repo", repo)
+        if (chapter != null) {
+            argList.add("--chapter")
+            argList.add(chapter)
+        }
+        args = argList
+    }
+}
+
 registerCliTask("initBooks", "Initialize multiple book repos from a queue file") {
     doFirst {
         val queueFile = project.findProperty("queue")?.toString() ?: "templates/books-queue.yaml"
