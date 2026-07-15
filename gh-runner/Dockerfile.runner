@@ -1,14 +1,14 @@
-# syntax=docker/dockerfile:1.7
+# syntax=docker/dockerfile:1.25
 # Custom HugoBook runner: base myoung34 runner + Temurin JDK + Hugo + Go.
 # Pre-installing these tools lets reusable workflow skip setup-java/setup-hugo
 # on every job — saves ~90s per build.
 
-FROM myoung34/github-runner:2.334.0-ubuntu-noble
+FROM myoung34/github-runner:2.335.1-ubuntu-noble
 
 # renovate: datasource=github-releases depName=gohugoio/hugo
 # Keep in sync with hugo-version default in nplus-father/workflows
 # (hugobook-build-deploy.yml). Both track gohugoio/hugo via Renovate.
-ARG HUGO_VERSION=0.163.3
+ARG HUGO_VERSION=0.164.0
 ARG JAVA_VERSION=25
 ARG GO_VERSION=1.24.2
 ARG NODE_MAJOR=22
