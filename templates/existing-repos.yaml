@@ -626,9 +626,9 @@ repos:
     description: "Biased | Jennifer L. Eberhardt | A Stanford psychologist's research on implicit racial bias — how it shapes policing, schools, neighborhoods, and corporate decisions, and what we can do about it."
     url: https://github.com/nplus-father/biased
     topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
-  - name: bible-suspense-investigation
+  - name: sherlock-who-1-bible-suspense
     description: 胡爾摩斯品聖經懸疑 | 胡維華 | 以偵探式解經法，揭開舊約敘事中隱藏的懸疑與神學深意。
-    url: https://github.com/nplus-father/bible-suspense-investigation
+    url: https://github.com/nplus-father/sherlock-who-1-bible-suspense
     topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: biblical-critical-theory
     description: Biblical Critical Theory | Christopher Watkin | Using the biblical storyline as its frame, the book builds a Christian social theory for analyzing and critiquing contemporary culture.
