@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      # Must match the jvmToolchain(...) in build.gradle.kts.
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - uses: gradle/actions/setup-gradle@v5
+
+      - name: Check formatting
+        run: ./gradlew spotlessCheck
+
+      - name: Test
+        run: ./gradlew test
+
+      # Catches breakage in the CLI wiring that unit tests don't reach:
+      # Clikt subcommand registration, arg parsing, the distribution scripts.
+      - name: Smoke-test the CLI
+        run: |
+          ./gradlew installDist --quiet
+          ./build/install/hugo-book-manager/bin/hugo-book-manager --help
+
+      - name: Upload test report
+        if: failure()
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-report
+          path: build/reports/tests/test
