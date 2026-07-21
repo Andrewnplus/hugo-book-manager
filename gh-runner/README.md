@@ -8,13 +8,32 @@ host as Docker containers. Used by HugoBook reusable workflow
 
 | File | Purpose |
 |---|---|
-| `Dockerfile.runner` | Custom image: myoung34 runner + Temurin 25 JDK + Hugo 0.154.5 extended + Go |
+| `Dockerfile.runner` | Custom image: myoung34 runner + Temurin 25 JDK + Go + Node. **No Hugo** — see below |
 | `docker-compose.yml` | 4 runner services, CPU/mem capped to 60% of host |
 | `.env.example` | Env template — copy to `.env`, add PAT |
 | `.env` | **Gitignored.** Real secrets live here |
 | `scripts/health-check.sh` | Verify containers + print registration URL |
 
+## Hugo is deliberately not in the image
+
+`hugobook-build-deploy.yml` runs `peaceiris/actions-hugo` on **every** job
+(there is no `if:` on that step), and it installs into the Actions tool cache —
+which a binary in `/usr/local/bin` is not part of. So baking Hugo bought no
+speedup; it only risked shadowing the freshly installed one and tripping that
+workflow's `Verify Hugo version` guard.
+
+Keeping the version in exactly one place — the `hugo-version` default in the
+shared workflow — is what lets Renovate **automerge** Hugo bumps without a
+coordinated image rebuild. Re-adding Hugo here silently breaks that, so CI
+(`.github/workflows/ci.yml`) fails the build if this Dockerfile mentions Hugo,
+and `scripts/health-check.sh` flags any running container that still has one.
+
 ## First-time setup
+
+Runs on the deploy host, not the dev machine — the repo lives at a different
+path there and compose only ever uses relative paths, so the location does not
+matter. `.env` is gitignored, so a fresh clone has none: `docker compose up`
+fails with `env file ... not found` until step 2 is done.
 
 1. **Create a fine-grained PAT** on GitHub — see `.env.example` for exact scope.
 2. `cp .env.example .env` and paste the PAT into `ACCESS_TOKEN=`.
