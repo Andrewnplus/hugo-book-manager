@@ -12,9 +12,9 @@ repositories {
     mavenCentral()
 }
 
-val cliktVersion = "5.0.3"
-val serializationVersion = "1.8.0"
-val slf4jVersion = "2.0.17"
+val cliktVersion = "5.1.0"
+val serializationVersion = "1.11.0"
+val slf4jVersion = "2.0.18"
 
 dependencies {
     // kotlinx-serialization for JSON
@@ -24,7 +24,7 @@ dependencies {
     implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
 
     // YAML parsing
-    implementation("org.yaml:snakeyaml:2.3")
+    implementation("org.yaml:snakeyaml:2.6")
 
     // SLF4J Simple implementation (to suppress SLF4J warnings)
     implementation("org.slf4j:slf4j-simple:$slf4jVersion")
