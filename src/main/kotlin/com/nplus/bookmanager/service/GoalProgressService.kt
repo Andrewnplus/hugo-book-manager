@@ -91,7 +91,6 @@ class GoalProgressService(
 
                 GoalDefinition.METRIC_ARTICLES, GoalDefinition.METRIC_PODCAST -> {
                     // computed at portal build time, not by this scanner
-                    Unit
                 }
 
                 else -> {
