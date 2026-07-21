@@ -8,7 +8,7 @@ host as Docker containers. Used by HugoBook reusable workflow
 
 | File | Purpose |
 |---|---|
-| `Dockerfile.runner` | Custom image: myoung34 runner + Temurin 25 JDK + Go + Node. **No Hugo** — see below |
+| `Dockerfile.runner` | Custom image: myoung34 runner + Temurin 25 JDK + Go + Node 22. **No Hugo** — see below |
 | `docker-compose.yml` | 4 runner services, CPU/mem capped to 60% of host |
 | `.env.example` | Env template — copy to `.env`, add PAT |
 | `.env` | **Gitignored.** Real secrets live here |
@@ -27,6 +27,22 @@ shared workflow — is what lets Renovate **automerge** Hugo bumps without a
 coordinated image rebuild. Re-adding Hugo here silently breaks that, so CI
 (`.github/workflows/ci.yml`) fails the build if this Dockerfile mentions Hugo,
 and `scripts/health-check.sh` flags any running container that still has one.
+
+## ⚠️ This is not the only runner fleet on this host
+
+There are also **10 systemd runners** — `actions.runner.nplus-father.andrew-PC-1..10`,
+installed under `/home/andrew/actions-runner-{1..10}`, **not managed by this repo**.
+They carry the **same `hugobook` label** and the same org, so with all 4 containers up the
+org has **14 interchangeable runners** and a job lands on whichever is free — you cannot
+tell from the workflow which fleet ran it.
+
+Consequences to keep in mind:
+
+- The systemd ones are **not ephemeral** and reuse `_work/` (real book repos are cached there);
+  these containers are ephemeral and start clean every job. Same label, different guarantees.
+- Resource caps only bind the containers (2.4 cpu / 9 GB each). The systemd runners are
+  uncapped on a 16-core / 62 GB host, so "60% of host" is only true if the other fleet is idle.
+- If you want a job pinned to one fleet, they need **different labels** — today nothing separates them.
 
 ## First-time setup
 
@@ -67,6 +83,13 @@ docker compose build --no-cache # after Dockerfile changes (e.g. new Hugo versio
 
 ## Troubleshooting
 
+- **Containers stuck in `Restarting (1)`, log says `Invalid configuration provided for token`**
+  — `ACCESS_TOKEN` is empty or invalid. An empty value is the easy one to miss: `cp .env.example .env`
+  leaves `ACCESS_TOKEN=` blank, config fails, the container exits 1, `restart: unless-stopped`
+  brings it back, forever (~20s/loop) with no other symptom. Check without printing the secret:
+  `awk -F= '/^ACCESS_TOKEN=/{print length($2)}' .env` — 0 means blank. Verify the token itself with
+  `curl -s -o /dev/null -w '%{http_code}\n' -H "Authorization: Bearer $TOKEN" https://api.github.com/user`
+  (200 = good, 401 = bad).
 - **Runner shows offline** — `docker compose ps` says Up? If yes, check logs: `docker compose logs runner-1`. Most common cause: bad `ACCESS_TOKEN` scope.
 - **`permission denied` for docker** — your user isn't in `docker` group. Fix: `sudo usermod -aG docker $USER && newgrp docker`.
 - **Build fails on Temurin step** — Adoptium apt repo blip. Rerun `docker compose build`.
