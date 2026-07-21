@@ -322,6 +322,12 @@ class GoalProgressService(
         file: File,
         goalId: String,
     ): LocalDate? {
+        // An unquoted `readAt: 2026-07-21` is a YAML timestamp, which SnakeYAML
+        // hands back as a Date whose toString() ("Tue Jul 21 ...") would fail
+        // the text parse below and silently drop the activity.
+        if (raw is java.util.Date) {
+            return raw.toInstant().atZone(ZoneOffset.UTC).toLocalDate()
+        }
         val s = raw?.toString()?.trim().orEmpty()
         if (s.isEmpty()) return null
         return try {
