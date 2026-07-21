@@ -13,7 +13,9 @@ import com.nplus.bookmanager.model.MigrateLeafResponse
 import com.nplus.bookmanager.model.MigrateLeafResult
 import com.nplus.bookmanager.model.RepoIndex
 import com.nplus.bookmanager.service.GitHubCliService
+import com.nplus.bookmanager.service.MigrationPlanner
 import com.nplus.bookmanager.service.RepoIndexService
+import com.nplus.bookmanager.service.RepoPlan
 import com.nplus.bookmanager.util.CliFormatter
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -85,7 +87,7 @@ class MigrateTopicTiersCommand(
 
         val needingMigration =
             index.repos
-                .filter { needsMigration(it) }
+                .filter { MigrationPlanner.needsMigration(it) }
                 .let { list -> if (onlyName != null) list.filter { it.name == onlyName } else list }
         val pending = needingMigration.take(limit)
 
@@ -135,14 +137,6 @@ class MigrateTopicTiersCommand(
         println()
     }
 
-    private fun needsMigration(entry: RepoIndex.RepoEntry): Boolean {
-        val hasTop = entry.topics.any { it.startsWith("top-") }
-        val hasSub = entry.topics.any { it.startsWith("sub-") }
-        val hasLeaf = entry.topics.any { it.startsWith("leaf-") }
-        // Migrate anything that is missing leaf, OR is missing any of the 3 tiers.
-        return !(hasTop && hasSub && hasLeaf)
-    }
-
     // ==================== Apply phase ====================
 
     private fun runApply() {
@@ -176,7 +170,13 @@ class MigrateTopicTiersCommand(
                         println("  ⚠ Skipping ${result.name}: not in repo index")
                         null
                     } else {
-                        buildPlan(current, result, cloneIndex)
+                        MigrationPlanner.buildPlan(
+                            current,
+                            result,
+                            cloneIndex,
+                            workRoots(),
+                            File(AppConfig.defaultWorkDir),
+                        )
                     }
                 }
 
@@ -239,64 +239,6 @@ class MigrateTopicTiersCommand(
             println("Error parsing response: ${e.message}")
             null
         }
-    }
-
-    // ==================== Plan model ====================
-
-    private data class RepoPlan(
-        val name: String,
-        val topicsToAdd: List<String>,
-        val topicsToRemove: List<String>,
-        val moveFrom: File?,
-        val moveTo: File?,
-        val target: MigrateLeafResult,
-    ) {
-        fun isNoOp(): Boolean = topicsToAdd.isEmpty() && topicsToRemove.isEmpty() && moveFrom == null
-    }
-
-    private fun buildPlan(
-        current: RepoIndex.RepoEntry,
-        target: MigrateLeafResult,
-        cloneIndex: Map<String, File>,
-    ): RepoPlan {
-        val targetTriple =
-            listOf(
-                "top-${target.topCategory}",
-                "sub-${target.subCategory}",
-                "leaf-${target.leafCategory}",
-            )
-
-        // Topics: anything top-/sub-/leaf-/`*-book-summary` not in target → remove.
-        // Anything in target not in current → add.
-        val tieredCurrent =
-            current.topics.filter {
-                it.startsWith("top-") ||
-                    it.startsWith("sub-") ||
-                    it.startsWith("leaf-") ||
-                    (it.endsWith("-book-summary") && it != "book-summary")
-            }
-        val toAdd = targetTriple.filter { it !in current.topics }
-        val toRemove = tieredCurrent.filter { it !in targetTriple }
-
-        // Folder move: only if a local clone exists.
-        val moveFrom = cloneIndex[current.name]
-        val moveTo =
-            if (moveFrom != null) {
-                val workRoot = findWorkRoot(moveFrom)
-                File(workRoot, "${target.topCategory}/${target.subCategory}/${target.leafCategory}/${current.name}")
-            } else {
-                null
-            }
-        val needsMove = moveFrom != null && moveTo != null && moveFrom.absolutePath != moveTo.absolutePath
-
-        return RepoPlan(
-            name = current.name,
-            topicsToAdd = toAdd,
-            topicsToRemove = toRemove,
-            moveFrom = if (needsMove) moveFrom else null,
-            moveTo = if (needsMove) moveTo else null,
-            target = target,
-        )
     }
 
     private fun printPlan(plan: RepoPlan) {
@@ -408,18 +350,6 @@ class MigrateTopicTiersCommand(
             if (extra.isDirectory) roots.add(extra)
         }
         return roots
-    }
-
-    private fun findWorkRoot(file: File): File {
-        // Walk up until we hit one of the configured work roots.
-        val roots = workRoots().map { it.absoluteFile.canonicalFile }.toSet()
-        var cur: File? = file.absoluteFile.canonicalFile.parentFile
-        while (cur != null) {
-            if (cur in roots) return cur
-            cur = cur.parentFile
-        }
-        // Fallback: the configured default work dir.
-        return File(AppConfig.defaultWorkDir)
     }
 
     private fun nowStamp(): String =

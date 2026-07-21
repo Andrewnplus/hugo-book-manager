@@ -105,6 +105,7 @@ hugo-book-manager/
 │   │   ├── GitService.kt         # Git operations
 │   │   ├── GoalProgressService.kt # Frontmatter scan → portal progress.json
 │   │   ├── ImageService.kt       # Cover image download/resize
+│   │   ├── MigrationPlanner.kt   # 3-tier migration decisions (pure, unit-tested)
 │   │   ├── RepoIndexService.kt   # Repo index load/save + duplicate matching
 │   │   └── TemplateService.kt    # Template file modifications
 │   ├── command/
@@ -145,6 +146,12 @@ hugo-book-manager/
 
 **`GoalProgressService`** — Scans note/leetcode/book frontmatter into the portal's
 derived `src/data/progress.json` (never hand-edit that file)
+
+**`MigrationPlanner`** — The decision half of `migrate-topic-tiers`: which topics to
+add/remove and where a clone moves to. Work roots are passed in rather than read from
+AppConfig so the logic is testable — it decides folder moves for 1300+ repos, and a
+wrong root silently relocates the library. Keep new decision logic here, not in the
+command.
 
 **`ProcessRunner`** — Every shell call goes through here. Its `timeoutSeconds` is
 real: streams are drained on daemon threads so `waitFor` can actually fire, and a
