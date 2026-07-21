@@ -1,12 +1,21 @@
 package com.nplus.bookmanager.util
 
 import java.io.File
+import java.io.InputStream
 import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicReference
 
 /**
  * Utility for executing external shell commands
  */
 object ProcessRunner {
+    /**
+     * How long to wait for the stream readers to drain after the process has
+     * ended. A grandchild that inherited the pipe can hold it open past the
+     * child's exit, so the readers are never joined without a bound.
+     */
+    private const val DRAIN_GRACE_MS = 2_000L
+
     data class CommandResult(
         val success: Boolean,
         val stdout: String,
@@ -42,32 +51,39 @@ object ProcessRunner {
 
             val process = processBuilder.start()
 
-            // Read stdout and stderr in parallel to avoid deadlock
-            // when either buffer fills up
-            var stderr = ""
-            val stderrThread =
-                Thread {
-                    stderr = process.errorStream.bufferedReader().readText()
-                }
-            stderrThread.start()
-            val stdout = process.inputStream.bufferedReader().readText()
-            stderrThread.join()
+            // Drain both streams on their own threads. Neither may be read on
+            // the calling thread: readText() blocks until EOF, so reading here
+            // before waitFor() would put the timeout out of reach for exactly
+            // the processes it exists to kill (a `gh` call hung on the network
+            // or waiting for input). Separate threads also avoid the deadlock
+            // where one pipe buffer fills while we drain the other.
+            val stdout = AtomicReference("")
+            val stderr = AtomicReference("")
+            val stdoutThread = drain(process.inputStream, stdout)
+            val stderrThread = drain(process.errorStream, stderr)
 
             val completed = process.waitFor(timeoutSeconds, TimeUnit.SECONDS)
 
             if (!completed) {
+                // The readers only publish at EOF, so there is no partial
+                // output to salvage and nothing to wait for: kill the process
+                // and leave the daemon readers to be reaped. Joining here
+                // would stall for the full grace on exactly the case that
+                // causes it — a grandchild still holding the pipe open.
                 process.destroyForcibly()
                 CommandResult(
                     success = false,
-                    stdout = stdout,
+                    stdout = "",
                     stderr = "Process timed out after $timeoutSeconds seconds",
                     exitCode = -1,
                 )
             } else {
+                stdoutThread.join(DRAIN_GRACE_MS)
+                stderrThread.join(DRAIN_GRACE_MS)
                 CommandResult(
                     success = process.exitValue() == 0,
-                    stdout = stdout.trim(),
-                    stderr = stderr.trim(),
+                    stdout = stdout.get().trim(),
+                    stderr = stderr.get().trim(),
                     exitCode = process.exitValue(),
                 )
             }
@@ -80,6 +96,21 @@ object ProcessRunner {
             )
         }
     }
+
+    /**
+     * Consume a process stream to EOF on a daemon thread, so a reader left
+     * blocked on a pipe held open by a grandchild can never keep the JVM alive.
+     */
+    private fun drain(
+        stream: InputStream,
+        sink: AtomicReference<String>,
+    ): Thread =
+        Thread {
+            runCatching { sink.set(stream.bufferedReader().readText()) }
+        }.apply {
+            isDaemon = true
+            start()
+        }
 
     /**
      * Execute a command and return just the stdout if successful, null otherwise
