@@ -78,8 +78,15 @@ docker compose build --no-cache # after Dockerfile changes (e.g. new Hugo versio
 - Docker socket is **not** mounted — workflows can't touch the host's Docker.
 - `EPHEMERAL=true` — each job gets a fresh container; no state leaks between runs.
 - `no-new-privileges` — runner can't escalate via setuid binaries.
-- **Only use with private repos.** Public-repo forks can run arbitrary code on your runner.
-  Enforce in GitHub UI: org Settings → Actions → Runner groups → restrict to private repos.
+- **Only use with private repos.** Public-repo forks can run arbitrary code on your runner —
+  and this host also holds the production kubeconfig, so that is cluster admin, not just a build box.
+  Enforced in two independent places since 2026-07-21 (it used to be enforced in neither):
+  1. **Org level** — Default runner group has `allows_public_repositories=false`.
+     Check: `gh api orgs/nplus-father/actions/runner-groups --jq '.runner_groups[].allows_public_repositories'`
+  2. **Workflow level** — the shared workflows in `nplus-father/workflows` pick the pool from
+     `github.event.repository.private`, so a public caller lands on `ubuntu-latest` even if it
+     forgets to pass `runner-labels`. The old default was self-hosted-for-everyone, and
+     `hugo-book-template` (public) was silently using it.
 
 ## Troubleshooting
 
