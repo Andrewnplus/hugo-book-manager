@@ -55,7 +55,21 @@ See `templates/ai-task-guide.md` for detailed processing instructions.
 ./gradlew initBooks -Pid=<book-id>           # Process specific book
 ./gradlew initBooks -Pstatus=true            # Show queue status
 ./gradlew initBooks -Pid=<book-id> -Preset=true  # Reset book status
+
+# Refresh the portal's derived goal progress (src/data/progress.json)
+./gradlew refreshGoalProgress
+
+# Mark a book chapter as read; omit -Pchapter to list the repo's chapters
+./gradlew markRead -Prepo=<repo> -Pchapter=<dir>
+
+# Migrate book repos from 2-tier to 3-tier topics + folders (dry-run by default)
+./gradlew migrateTopicTiers -Papply=true -PrepoName=<repo>
 ```
+
+> `-Pname=` does not work — `Project.name` shadows it. Use `-PrepoName=`.
+
+Run `./gradlew test spotlessCheck` before committing; CI (`.github/workflows/ci.yml`)
+runs both plus a CLI smoke test on every push and PR.
 
 For book-project maintenance tasks (KaTeX, Mermaid, review-markdown, translate, etc.),
 use the global `/book-*` slash commands instead of in-repo prompt templates.
@@ -78,29 +92,38 @@ hugo-book-manager/
 │   ├── model/
 │   │   ├── AiTaskModels.kt       # Batch request/response models
 │   │   ├── BookInput.kt          # Queue, metadata & structure models
+│   │   ├── GoalProgress.kt       # Goal definition / progress / activity models
+│   │   ├── MigrateLeafModels.kt  # 3-tier topic migration models
 │   │   └── RepoIndex.kt          # Cached index of existing book repos
 │   ├── service/
 │   │   ├── AiTaskService.kt      # AI task file management (batch only)
+│   │   ├── BookChapterService.kt # Chapter discovery + read/readAt frontmatter
 │   │   ├── BookInputService.kt   # Queue YAML parsing and validation
 │   │   ├── BookRepoService.kt    # Book-repo creation workflow
 │   │   ├── DocsStructureService.kt # Hugo docs folder creation
 │   │   ├── GitHubCliService.kt   # gh CLI wrapper
 │   │   ├── GitService.kt         # Git operations
+│   │   ├── GoalProgressService.kt # Frontmatter scan → portal progress.json
 │   │   ├── ImageService.kt       # Cover image download/resize
 │   │   ├── RepoIndexService.kt   # Repo index load/save + duplicate matching
 │   │   └── TemplateService.kt    # Template file modifications
 │   ├── command/
 │   │   ├── CheckEnvCommand.kt    # Environment check
 │   │   ├── InitBooksCommand.kt   # Batch book initialization from queue
+│   │   ├── MarkReadCommand.kt    # Mark a chapter read / list chapters
+│   │   ├── MigrateTopicTiersCommand.kt # 2-tier → 3-tier topics + folders
+│   │   ├── RefreshGoalProgressCommand.kt # Rebuild the portal progress artifact
 │   │   └── RefreshRepoIndexCommand.kt # Refresh cached repo index
 │   └── util/
 │       ├── CliFormatter.kt       # Console output formatting
 │       ├── ProcessRunner.kt      # Shell command execution
 │       └── UserInput.kt          # Interactive user prompts
+├── src/test/kotlin/com/nplus/bookmanager/  # JUnit 5 + kotlin.test
 └── templates/
     ├── ai-task-guide.md          # Guide for Claude to process AI tasks
     ├── books-queue.example.yaml  # Queue YAML template (copy to books-queue.yaml)
     ├── existing-repos.yaml       # Cached index of repos on the owner
+    ├── topic-taxonomy.yaml       # Whitelist for the 3-tier topic scheme
     └── prompts/
         └── book-metadata.txt     # Prompt used internally by init-books
 ```
@@ -119,6 +142,15 @@ hugo-book-manager/
 
 **`BookInputService`** — Queue YAML I/O and validation
 - `loadBooksQueue()` / `saveBooksQueue()` / `validateQueuedBook()`
+
+**`GoalProgressService`** — Scans note/leetcode/book frontmatter into the portal's
+derived `src/data/progress.json` (never hand-edit that file)
+
+**`ProcessRunner`** — Every shell call goes through here. Its `timeoutSeconds` is
+real: streams are drained on daemon threads so `waitFor` can actually fire, and a
+timed-out process is killed and reported with `success = false`, `exitCode = -1`.
+Do not read a process stream on the calling thread — that puts the timeout out of
+reach for exactly the hung `gh` calls it exists to kill.
 
 ### Application Flow: Initialize Books (`init-books`)
 
