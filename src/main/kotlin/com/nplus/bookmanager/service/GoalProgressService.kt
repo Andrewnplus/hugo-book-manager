@@ -76,7 +76,11 @@ class GoalProgressService(
                         progress += scanNoteStation(goal, station, recent, since)
                     }
                 }
-                GoalDefinition.METRIC_LEETCODE -> progress += scanLeetcode(goal, recent, since)
+
+                GoalDefinition.METRIC_LEETCODE -> {
+                    progress += scanLeetcode(goal, recent, since)
+                }
+
                 GoalDefinition.METRIC_REPO_COMPLETION -> {
                     if (booksDir == null || !booksDir.isDirectory) {
                         println("⚠ ${goal.id}: BOOKS_DIR not configured — skipped")
@@ -84,9 +88,15 @@ class GoalProgressService(
                         progress += scanRepoCompletion(goal, booksDir, recent, since)
                     }
                 }
-                GoalDefinition.METRIC_ARTICLES, GoalDefinition.METRIC_PODCAST ->
-                    Unit // computed at portal build time, not by this scanner
-                else -> println("⚠ ${goal.id}: unknown metric '${goal.metric}' — skipped")
+
+                GoalDefinition.METRIC_ARTICLES, GoalDefinition.METRIC_PODCAST -> {
+                    // computed at portal build time, not by this scanner
+                    Unit
+                }
+
+                else -> {
+                    println("⚠ ${goal.id}: unknown metric '${goal.metric}' — skipped")
+                }
             }
         }
         return progress to recent.sortedByDescending { it.date }

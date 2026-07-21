@@ -211,6 +211,7 @@ class MigrateTopicTiersCommand(
                     println("Aborted by user.")
                     return
                 }
+
                 "s", "skip" -> {
                     println("Skipped batch ${batchIdx + 1}.")
                     return@forEachIndexed

@@ -93,6 +93,7 @@ class InitBooksCommand(
                     }
                     book
                 }
+
                 else -> {
                     // Check if there's a book being processed
                     val processingBook = queue.getProcessing()
@@ -123,8 +124,14 @@ class InitBooksCommand(
 
         // Check current status and proceed accordingly
         when (targetBook.status) {
-            BookStatus.PENDING -> runPhase1(queue, targetBook)
-            BookStatus.PROCESSING -> runPhase2(queue, targetBook)
+            BookStatus.PENDING -> {
+                runPhase1(queue, targetBook)
+            }
+
+            BookStatus.PROCESSING -> {
+                runPhase2(queue, targetBook)
+            }
+
             BookStatus.COMPLETED -> {
                 println("  This book is already completed.")
                 if (bookId == null) {
@@ -138,10 +145,12 @@ class InitBooksCommand(
                     }
                 }
             }
+
             BookStatus.ERROR -> {
                 println("  This book previously had an error: ${targetBook.errorMessage}")
                 println("  Use --reset --id=${targetBook.id} to retry")
             }
+
             BookStatus.DUPLICATE -> {
                 println("  This book is marked as duplicate (repo already exists). Skipping.")
                 if (bookId == null) {
@@ -354,12 +363,18 @@ class InitBooksCommand(
         val choice = readlnOrNull()?.trim().orEmpty().ifBlank { "1" }
 
         return when (choice) {
-            "2", "claim" -> claimExistingRepo(queue, book, entry)
+            "2", "claim" -> {
+                claimExistingRepo(queue, book, entry)
+            }
+
             "3", "force" -> {
                 println("  Continuing with normal creation flow...")
                 false
             }
-            else -> skipExistingRepo(queue, book, entry)
+
+            else -> {
+                skipExistingRepo(queue, book, entry)
+            }
         }
     }
 

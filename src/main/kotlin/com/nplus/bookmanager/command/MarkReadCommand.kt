@@ -54,9 +54,14 @@ class MarkReadCommand : CliktCommand(name = "mark-read") {
                 it.parentFile.name == target || it.parentFile.name.endsWith(target)
             }
         when {
-            matches.isEmpty() -> println("Error: no chapter matching '$target' in $repo")
-            matches.size > 1 ->
+            matches.isEmpty() -> {
+                println("Error: no chapter matching '$target' in $repo")
+            }
+
+            matches.size > 1 -> {
                 println("Error: '$target' is ambiguous: ${matches.joinToString { service.chapterKey(repoDir, it) }}")
+            }
+
             else -> {
                 service.markRead(matches.single(), LocalDate.now())
                 println("✅ Marked read: $repo/${service.chapterKey(repoDir, matches.single())}")
