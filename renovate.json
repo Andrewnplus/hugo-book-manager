@@ -1,15 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>nplus-father/workflows//renovate"],
-  "customManagers": [
-    {
-      "customType": "regex",
-      "description": "Hugo version baked into the self-hosted runner image (keep in sync with hugo-version in nplus-father/workflows)",
-      "managerFilePatterns": ["/(^|/)Dockerfile\\.runner$/"],
-      "matchStrings": ["ARG HUGO_VERSION=(?<currentValue>[0-9.]+)"],
-      "depNameTemplate": "gohugoio/hugo",
-      "datasourceTemplate": "github-releases",
-      "extractVersionTemplate": "^v(?<version>.+)$"
-    }
-  ]
+  "extends": ["github>nplus-father/workflows//renovate"]
 }

@@ -1,14 +1,16 @@
 # syntax=docker/dockerfile:1.25
-# Custom HugoBook runner: base myoung34 runner + Temurin JDK + Hugo + Go.
-# Pre-installing these tools lets reusable workflow skip setup-java/setup-hugo
-# on every job — saves ~90s per build.
+# Custom HugoBook runner: base myoung34 runner + Temurin JDK + Go + Node.
+#
+# Hugo is deliberately NOT baked in. hugobook-build-deploy.yml runs
+# peaceiris/actions-hugo on every job unconditionally, and a binary in
+# /usr/local/bin is not in the Actions tool cache, so a baked copy bought no
+# speedup — it only shadowed the freshly installed one and tripped that
+# workflow's "Verify Hugo version" guard. Keeping the version in exactly one
+# place (the hugo-version default in the shared workflow) is what lets Renovate
+# automerge Hugo bumps without a coordinated image rebuild.
 
 FROM myoung34/github-runner:2.335.1-ubuntu-noble
 
-# renovate: datasource=github-releases depName=gohugoio/hugo
-# Keep in sync with hugo-version default in nplus-father/workflows
-# (hugobook-build-deploy.yml). Both track gohugoio/hugo via Renovate.
-ARG HUGO_VERSION=0.163.3
 ARG JAVA_VERSION=25
 ARG GO_VERSION=1.24.2
 ARG NODE_MAJOR=22
@@ -32,14 +34,6 @@ RUN curl -fsSL https://packages.adoptium.net/artifactory/api/gpg/key/public \
 ENV JAVA_HOME=/usr/lib/jvm/temurin-${JAVA_VERSION}-jdk-amd64
 ENV PATH=$JAVA_HOME/bin:$PATH
 
-# Hugo extended (static binary, matches peaceiris/actions-hugo behavior)
-RUN curl -fsSL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz" \
-      -o /tmp/hugo.tgz && \
-    tar -xzf /tmp/hugo.tgz -C /usr/local/bin hugo && \
-    rm /tmp/hugo.tgz && \
-    chmod +x /usr/local/bin/hugo && \
-    hugo version
-
 # Go (required for Hugo modules — go.sum present in book repos)
 RUN curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz" \
       -o /tmp/go.tgz && \
@@ -58,7 +52,8 @@ RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
     apt-get install -y --no-install-recommends nodejs && \
     rm -rf /var/lib/apt/lists/*
 
-# Smoke test: fail build if any tool misbehaves
-RUN java -version && hugo version && go version && git --version && node --version && npm --version
+# Smoke test: fail build if any tool misbehaves.
+# No `hugo version` here — Hugo is installed per job by actions-hugo, not baked in.
+RUN java -version && go version && git --version && node --version && npm --version
 
 # Leave entrypoint + USER as set by base image (root → drops to runner internally)
