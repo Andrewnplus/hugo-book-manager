@@ -13,8 +13,11 @@ FROM myoung34/github-runner:2.335.1-ubuntu-noble
 
 ARG JAVA_VERSION=25
 # 落後於書 repo go.mod 的 go directive 就會炸：toolchain 自動下載在這些
-# container 裡拿不到（"toolchain not available"），所以 baked Go 必須 ≥
-# Renovate 推上去的版本。書的 go.mod 進 1.25.3 時 1.24.2 就翻車過一輪。
+# container 裡拿不到，所以 baked Go 必須 ≥ Renovate 推上去的版本。書的
+# go.mod 進 1.25.3 時 1.24.2 就翻車過一輪（2026-07-26 runner-2 實錄）。
+# 「拿不到」的根因是 HiNet DNS 把 proxy.golang.org 劫持到
+# safebrowsing.hinet.net（憑證錯誤）——compose 的 dns: 公共 DNS 是第二道
+# 防線，版本夠新（不觸發下載）是第一道。
 ARG GO_VERSION=1.26.5
 ARG NODE_MAJOR=22
 

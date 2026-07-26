@@ -42,7 +42,9 @@ Consequences to keep in mind:
   these containers are ephemeral and start clean every job. Same label, different guarantees.
 - Resource caps only bind the containers (2.4 cpu / 9 GB each). The systemd runners are
   uncapped on a 16-core / 62 GB host, so "60% of host" is only true if the other fleet is idle.
-- If you want a job pinned to one fleet, they need **different labels** — today nothing separates them.
+- To pin a job to one fleet, use the fleet-specific labels (2026-07-26): the systemd
+  runners carry an extra **`nplus-host`**, these containers carry **`hugobook-ephemeral`**
+  (set in `.env` `LABELS`). Plain `hugobook` still fans out to all 14.
 
 ## First-time setup
 

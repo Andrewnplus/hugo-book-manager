@@ -16,6 +16,13 @@ x-runner-base: &runner-base
         memory: 9g
   security_opt:
     - no-new-privileges:true
+  # Public DNS, not the host's: the host resolves via HiNet (ppp0), whose DNS
+  # hijacks flagged domains to safebrowsing.hinet.net — proxy.golang.org was
+  # one of them (2026-07-26), killing Go toolchain/module downloads mid-job
+  # with a bogus-cert TLS error.
+  dns:
+    - 1.1.1.1
+    - 8.8.8.8
   # Docker socket is intentionally NOT mounted — workflows that need Docker
   # should use GitHub-hosted runners for that step.
 
