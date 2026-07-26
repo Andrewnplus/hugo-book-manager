@@ -1,5 +1,16 @@
 # gh-runner
 
+> **🛑 RETIRED 2026-07-26** — this fleet is not running. Andrew consolidated to
+> a single fleet: the **10 systemd runners** (`nplus-infra/runners/`) now serve
+> all `hugobook` jobs. Rationale: ~3 jobs/day did not justify two fleets on an
+> 8-core host, and the systemd fleet has the exclusive `nplus-host` duty plus
+> shared caches. Containers were `docker compose down`ed (EPHEMERAL mode
+> deregistered them from GitHub automatically) and the image was removed.
+>
+> **To revive** (e.g. when a clean-environment `hugobook-ephemeral` pool is
+> needed again): `docker compose build && docker compose up -d` — `.env` with
+> the PAT is still in place, labels included. Everything below stays accurate.
+
 Self-hosted GitHub Actions runners for `nplus-father` org, running on this
 host as Docker containers. Used by HugoBook reusable workflow
 `nplus-father/workflows/.github/workflows/hugobook-build-deploy.yml`.
@@ -28,7 +39,7 @@ coordinated image rebuild. Re-adding Hugo here silently breaks that, so CI
 (`.github/workflows/ci.yml`) fails the build if this Dockerfile mentions Hugo,
 and `scripts/health-check.sh` flags any running container that still has one.
 
-## ⚠️ This is not the only runner fleet on this host
+## ⚠️ This is not the only runner fleet on this host (historical while retired)
 
 There are also **10 systemd runners** — `actions.runner.nplus-father.andrew-PC-1..10`,
 installed under `/home/andrew/actions-runner-{1..10}`, **not managed by this repo**.
