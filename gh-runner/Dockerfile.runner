@@ -12,7 +12,10 @@
 FROM myoung34/github-runner:2.335.1-ubuntu-noble
 
 ARG JAVA_VERSION=25
-ARG GO_VERSION=1.24.2
+# 落後於書 repo go.mod 的 go directive 就會炸：toolchain 自動下載在這些
+# container 裡拿不到（"toolchain not available"），所以 baked Go 必須 ≥
+# Renovate 推上去的版本。書的 go.mod 進 1.25.3 時 1.24.2 就翻車過一輪。
+ARG GO_VERSION=1.26.5
 ARG NODE_MAJOR=22
 
 USER root
