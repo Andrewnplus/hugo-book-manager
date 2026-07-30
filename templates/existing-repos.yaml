@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-07-30T17:45:29.757692257+08:00"
+last_updated: "2026-07-30T22:27:13.850024971+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -2169,7 +2169,7 @@ repos:
   - name: high-performance-mysql
     description: High Performance MySQL | Baron Schwartz, Peter Zaitsev & Vadim Tkachenko | The authoritative guide to MySQL performance optimization—from architectural foundations through hands-on tuning.
     url: https://github.com/nplus-father/high-performance-mysql
-    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
+    topics: [hugobook, leaf-databases, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: hire-and-keep-the-best-people
     description: Hire and Keep the Best People | Brian Tracy | 21 practical techniques for the most important business decision — from defining the job and casting a wide net to retention, recognition, and culture-building.
     url: https://github.com/nplus-father/hire-and-keep-the-best-people
@@ -4649,7 +4649,7 @@ repos:
   - name: sql-server-2025-unveiled
     description: SQL Server 2025 Unveiled | Bob Ward | A guided tour of SQL Server 2025 covering AI-built-in features, vector search, MCP integration, the redesigned engine, and Azure Arc / Microsoft Fabric integration.
     url: https://github.com/nplus-father/sql-server-2025-unveiled
-    topics: [hugobook, leaf-ai-ml, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
+    topics: [hugobook, leaf-databases, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: staff-engineer
     description: Staff Engineer | Will Larson | A field guide to the Staff-plus engineering career track — the archetypes, the work that matters, earning the title, and lessons from senior engineers at leading tech companies.
     url: https://github.com/nplus-father/staff-engineer
@@ -5125,11 +5125,11 @@ repos:
   - name: vbirds-linux-basic
     description: 鳥哥的 Linux 私房菜：基礎學習篇 | 鳥哥 | 繁體中文世界最經典的 Linux 入門教材，從計算機硬體原理、系統安裝、檔案管理、Shell 操作到系統管理，以 CentOS 為實作平台，建立完整的 Linux 知識體系。
     url: https://github.com/nplus-father/vbirds-linux-basic
-    topics: [hugobook, leaf-self-learning, nplus-kind-book, nplus-portal, sub-education, top-wisdom]
+    topics: [hugobook, leaf-devops, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: vbirds-linux-server
     description: 鳥哥的 Linux 私房菜：伺服器架設篇 | 鳥哥 | 鳥哥 Linux 系列的進階篇，從網路基礎理論、主機安全防護、區域網路服務到網際網路伺服器架設，系統性建構 Linux 伺服器管理的完整知識體系。
     url: https://github.com/nplus-father/vbirds-linux-server
-    topics: [hugobook, leaf-strategy, nplus-kind-book, nplus-portal, sub-business, top-professional]
+    topics: [hugobook, leaf-devops, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: victory-of-reason
     description: The Victory of Reason | Rodney Stark | How Christianity led to freedom and capitalism
     url: https://github.com/nplus-father/victory-of-reason
