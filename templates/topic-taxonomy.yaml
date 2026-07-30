@@ -41,11 +41,12 @@ top-professional:
     sub-leadership:
       [leaf-team-building, leaf-decision-making, leaf-culture, leaf-coaching, leaf-vision]
     sub-communication:
-      [leaf-public-speaking, leaf-negotiation, leaf-storytelling, leaf-persuasion]
+      # workplace-relations 收 HBR 職場人際類（office politics / managing up / networking）——
+      # 「職場中的人」歸 professional；家庭與私交才歸 personal/relationships。
+      [leaf-public-speaking, leaf-negotiation, leaf-storytelling, leaf-persuasion,
+       leaf-workplace-relations]
     sub-career:
       [leaf-job-search, leaf-skill-building, leaf-side-hustle, leaf-career-change]
-    sub-education:
-      [leaf-pedagogy, leaf-self-learning, leaf-curriculum]
 
 top-craft:
   description: "技術與創意手藝：工程、設計、寫作、工具"
@@ -61,19 +62,25 @@ top-craft:
       [leaf-fiction, leaf-non-fiction, leaf-screenwriting, leaf-poetry]
 
 top-wisdom:
-  description: "跨域大局觀：哲學、歷史、科學"
+  description: "跨域大局觀：哲學、歷史、科學、學習"
   subs:
     sub-philosophy:
       [leaf-stoicism, leaf-eastern, leaf-existentialism, leaf-ethics, leaf-political-philosophy]
     sub-history:
       [leaf-modern, leaf-ancient, leaf-civilization, leaf-military, leaf-cultural]
     sub-science:
-      [leaf-physics, leaf-biology, leaf-cognitive, leaf-cosmology, leaf-evolution]
+      [leaf-physics, leaf-biology, leaf-cognitive, leaf-cosmology, leaf-evolution,
+       leaf-pharmacology]
+    # education 原掛 top-professional；實際用法 23:4 與語意（學習/教育=跨域智慧）都指向
+    # wisdom，2026-07-31 正典化為 top-wisdom。
+    sub-education:
+      [leaf-pedagogy, leaf-self-learning, leaf-curriculum]
 
 top-faith:
   description: "信仰與靈修：神學、聖經、靈命塑造"
   subs:
     sub-theology:
-      [leaf-systematic, leaf-biblical-studies, leaf-historical, leaf-pastoral, leaf-apologetics]
+      [leaf-systematic, leaf-biblical-studies, leaf-historical, leaf-pastoral, leaf-apologetics,
+       leaf-spiritual-warfare]
     sub-spiritual-formation:
       [leaf-prayer, leaf-discipleship, leaf-devotional, leaf-contemplative]
