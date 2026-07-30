@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-07-12T01:52:46.602488165+08:00"
+last_updated: "2026-07-30T17:45:29.757692257+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -257,7 +257,7 @@ repos:
   - name: action-mckee
     description: "Action | Robert McKee & Bassim El-Wakil | The story master and his co-author dissect the deep structure of the action genre—core values, character triangle, scenes of compassion, and four sub-genres—turning \"hero versus villain to save the victim\" into an art creators can master beyond cliché."
     url: https://github.com/nplus-father/action-mckee
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, sub-writing, top-craft]
+    topics: [hugobook, leaf-screenwriting, nplus-kind-book, nplus-portal, sub-writing, top-craft]
   - name: adam
     description: ""
     url: https://github.com/nplus-father/adam
@@ -626,10 +626,6 @@ repos:
     description: "Biased | Jennifer L. Eberhardt | A Stanford psychologist's research on implicit racial bias — how it shapes policing, schools, neighborhoods, and corporate decisions, and what we can do about it."
     url: https://github.com/nplus-father/biased
     topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
-  - name: sherlock-who-1-bible-suspense
-    description: 胡爾摩斯品聖經懸疑 | 胡維華 | 以偵探式解經法，揭開舊約敘事中隱藏的懸疑與神學深意。
-    url: https://github.com/nplus-father/sherlock-who-1-bible-suspense
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: biblical-critical-theory
     description: Biblical Critical Theory | Christopher Watkin | Using the biblical storyline as its frame, the book builds a Christian social theory for analyzing and critiquing contemporary culture.
     url: https://github.com/nplus-father/biblical-critical-theory
@@ -769,7 +765,7 @@ repos:
   - name: built-to-last
     description: "Built to Last | Jim Collins & Jerry I. Porras | A six-year Stanford GSB study pairs 18 \"visionary\" companies against direct competitors to surface the underlying principle of century-spanning institutions: preserve the core, stimulate progress."
     url: https://github.com/nplus-father/built-to-last
-    topics: [hugobook, leaf-visual, nplus-kind-book, nplus-portal, sub-design, tag-classic, top-craft]
+    topics: [hugobook, leaf-vision, nplus-kind-book, nplus-portal, sub-leadership, tag-classic, top-professional]
   - name: bullet-journal-method
     description: The Bullet Journal Method | Ryder Carroll | The full guide from the inventor of bullet journaling—not just the rapid-logging and modular-organization system, but the deeper case for intentional writing as a way to reflect, focus, and live with meaning.
     url: https://github.com/nplus-father/bullet-journal-method
@@ -833,7 +829,7 @@ repos:
   - name: casket-empty-old-testament-study-guide
     description: CASKET EMPTY：Old Testament Study Guide | Carol Kaminski | ![overview.png](overview.png)
     url: https://github.com/nplus-father/casket-empty-old-testament-study-guide
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, sub-theology, tag-primer, tag-toolbox, top-wisdom]
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-primer, tag-toolbox, top-faith]
   - name: catalyst
     description: Catalyst | Jonah Berger | Reframes persuasion around removing barriers rather than adding pressure, using five forces — Reactance, Endowment, Distance, Uncertainty, Corroborating Evidence — that spell REDUCE.
     url: https://github.com/nplus-father/catalyst
@@ -1410,10 +1406,6 @@ repos:
     description: Escape from Freedom | Erich Fromm | A psychological analysis of why modern people, having gained freedom, paradoxically yearn to escape from it.
     url: https://github.com/nplus-father/escape-from-freedom
     topics: [hugobook, leaf-modern, nplus-kind-book, nplus-portal, sub-history, tag-classic, top-wisdom]
-  - name: escape-from-the-rat-race
-    description: "Rich Dad's Escape from the Rat Race | Robert T. Kiyosaki | A graphic-novel introduction to Rich Dad's core money lessons, aimed at younger and first-time readers."
-    url: https://github.com/nplus-father/escape-from-the-rat-race
-    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: essays-in-love
     description: Essays in Love | Alain de Botton | A philosopher dissects a complete love affair in novelistic form—from love at first sight to the broken parting—using philosophical reflection to take apart every psychological mechanism along the way.
     url: https://github.com/nplus-father/essays-in-love
@@ -1877,7 +1869,7 @@ repos:
   - name: great-omission
     description: "Great Omission | Dallas Willard | Rediscovering Jesus's teachings on discipleship"
     url: https://github.com/nplus-father/great-omission
-    topics: [hugobook, leaf-nutrition, nplus-kind-book, nplus-portal, sub-wellness, top-personal]
+    topics: [hugobook, leaf-discipleship, nplus-kind-book, nplus-portal, sub-spiritual-formation, top-faith]
   - name: great-people-decisions
     description: Great People Decisions | Claudio Fernández-Aráoz | Drawing on twenty years as an executive search consultant and extensive academic research, the author dissects the traps and best practices of hiring, promotion, and team-building, arguing that judgment about people is a disciplined craft, not a gift.
     url: https://github.com/nplus-father/great-people-decisions
@@ -2237,7 +2229,7 @@ repos:
   - name: how-linux-works
     description: How Linux Works | Brian Ward | A systematic walk through the inner workings of Linux from kernel to user space, covering boot, device management, networking, and virtualization.
     url: https://github.com/nplus-father/how-linux-works
-    topics: [hugobook, leaf-management, nplus-kind-book, nplus-portal, sub-business, top-professional]
+    topics: [hugobook, leaf-systems-design, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: how-successful-people-think
     description: How Successful People Think | John C. Maxwell | The leadership writer identifies eleven thinking patterns—from big-picture and focused to bottom-line thinking—offering a practical framework for upgrading the quality of your thinking, and your life.
     url: https://github.com/nplus-father/how-successful-people-think
@@ -2994,10 +2986,6 @@ repos:
     description: "Managing Oneself | Peter F. Drucker | Drucker's HBR classic on the questions every knowledge worker must answer about strengths, performance, values, and contribution in order to build a long, productive career."
     url: https://github.com/nplus-father/managing-oneself
     topics: [hugobook, leaf-skill-building, nplus-kind-book, nplus-portal, sub-career, tag-classic, tag-primer, top-professional]
-  - name: managing-your-money
-    description: Managing Your Money | Robert T. Kiyosaki | A short cash-flow booklet on breaking bad money habits, controlling spending, and handling secured versus unsecured debt.
-    url: https://github.com/nplus-father/managing-your-money
-    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: manias-panics-and-crashes
     description: "Manias, Panics, and Crashes | Charles P. Kindleberger & Robert Z. Aliber | The canonical history of financial crises, applying Minsky's framework—displacement, credit expansion, euphoria, distress, and revulsion—to four centuries of speculative episodes."
     url: https://github.com/nplus-father/manias-panics-and-crashes
@@ -4454,6 +4442,18 @@ repos:
     description: Shadowlands | Brian Sibley | Through letters, journals, and interviews, the book reconstructs the meeting, marriage, and parting of C. S. Lewis and Joy Davidman, showing how the rationalist scholar rediscovered the depth of his faith through real love and grief.
     url: https://github.com/nplus-father/shadowlands
     topics: [hugobook, leaf-apologetics, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+  - name: sherlock-who-1-bible-suspense
+    description: 胡爾摩斯品聖經懸疑 | 胡維華 | 以偵探式解經法，揭開舊約敘事中隱藏的懸疑與神學深意。
+    url: https://github.com/nplus-father/sherlock-who-1-bible-suspense
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+  - name: sherlock-who-2-biblical-world
+    description: 胡爾摩斯Ⅱ重返聖經現場 | 胡維華 | 以偵探解謎的視角重返舊約與福音書現場，逐一破解十四段看似矛盾或費解的經文，揭示敘事底層隱藏的神學深意。
+    url: https://github.com/nplus-father/sherlock-who-2-biblical-world
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+  - name: sherlock-who-3-new-light
+    description: 胡爾摩斯Ⅲ新世紀拉比探案 | 胡維華 | 延續偵探解經的路數，以拉比探案的巧思重新審視十三段舊約與新約經文，在熟悉的故事裡照見全新的亮光與神學洞見。
+    url: https://github.com/nplus-father/sherlock-who-3-new-light
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: shoe-dog-young-readers
     description: "Shoe Dog (Young Readers Edition) | Phil Knight | The Nike founder's young-readers memoir, telling year by year — from a 1962 'crazy idea' through 1980 — the gritty, almost-bankrupt origin story of one of the world's iconic brands."
     url: https://github.com/nplus-father/shoe-dog-young-readers
