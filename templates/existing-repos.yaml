@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-07-31T01:34:28.276365591+08:00"
+last_updated: "2026-07-31T02:26:12.535981834+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -745,7 +745,7 @@ repos:
   - name: browser-hackers-handbook
     description: "The Browser Hacker's Handbook | Wade Alcorn, Christian Frichot & Michele Orrù | A systematic attack methodology for browser security, covering same-origin-policy bypass, user attacks, extensions, and network-layer attacks."
     url: https://github.com/nplus-father/browser-hackers-handbook
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-security, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: brutal-simplicity-of-thought
     description: Brutal Simplicity of Thought | M&C Saatchi | Nearly fifty cross-disciplinary cases arguing that brutal simplicity—from writing and art to invention and institutions—is what changes the world.
     url: https://github.com/nplus-father/brutal-simplicity-of-thought
