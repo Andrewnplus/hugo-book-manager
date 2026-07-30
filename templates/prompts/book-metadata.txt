@@ -29,7 +29,11 @@ Rules:
      repoName drops them. For Chinese-only books (Chinese author writing in Chinese), keep the
      Chinese title here.
    - Author: English name if the author is non-Chinese; keep the original Chinese name otherwise.
-     Multiple authors → join with " & " (max 2 names, then " et al.").
+     Multiple authors → join with " & " (max 2 names, then " et al."), in cover order.
+     Canonical form ONLY: full name with spaced initials ("C. S. Lewis", "G. K. Chesterton"),
+     no Chinese translation alongside ("斯托得（John Stott）" ✗), no titles ("Dr." ✗), no
+     life dates. If the author already exists in templates/existing-repos.yaml descriptions,
+     reuse that exact spelling — one author, one spelling, library-wide.
    - Brief: ONE descriptive sentence (≤ ~200 chars) summarizing the book's core argument or what
      the reader will get from it. Default to English; use Traditional Chinese ONLY when both
      title and author are Chinese. No placeholder text, no marketing fluff, no trailing ellipsis.
