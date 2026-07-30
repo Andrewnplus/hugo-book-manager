@@ -46,14 +46,18 @@ top-professional:
       [leaf-public-speaking, leaf-negotiation, leaf-storytelling, leaf-persuasion,
        leaf-workplace-relations]
     sub-career:
-      [leaf-job-search, leaf-skill-building, leaf-side-hustle, leaf-career-change]
+      # problem-solving 收顧問式思考術（麥肯錫/BCG/零秒系列）——2026-07-31 自 craft/tools/cli 拆出。
+      [leaf-job-search, leaf-skill-building, leaf-side-hustle, leaf-career-change,
+       leaf-problem-solving]
 
 top-craft:
   description: "技術與創意手藝：工程、設計、寫作、工具"
   subs:
     sub-engineering:
+      # agile 與 engineering-management 於 2026-07-31 自 craft/tools/cli 拆出。
       [leaf-systems-design, leaf-coding-practice, leaf-language-c, leaf-language-rust,
-       leaf-ai-ml, leaf-devops, leaf-security, leaf-databases]
+       leaf-ai-ml, leaf-devops, leaf-security, leaf-databases, leaf-agile,
+       leaf-engineering-management]
     sub-tools:
       [leaf-cli, leaf-editor, leaf-version-control, leaf-build-systems, leaf-coffee]
     sub-design:

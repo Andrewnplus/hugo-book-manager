@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-07-31T01:26:00.988800988+08:00"
+last_updated: "2026-07-31T01:34:28.276365591+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -129,7 +129,7 @@ repos:
   - name: 4-hour-workweek
     description: "The 4-Hour Workweek | Tim Ferriss | Challenges the \"work until retirement\" plan, offering the four-step DEAL system—Define, Eliminate, Automate, Liberate—to redesign life and trade the least time for the most freedom."
     url: https://github.com/nplus-father/4-hour-workweek
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, tag-classic, top-personal]
   - name: 48-laws-of-power
     description: The 48 Laws of Power | Robert Greene | Distills three thousand years of historical and philosophical material into 48 transferable laws of power, modeled on the courtly games of seduction, charm, and indirect maneuver that survive—now in business and politics.
     url: https://github.com/nplus-father/48-laws-of-power
@@ -149,7 +149,7 @@ repos:
   - name: 5-min-mba-tools
     description: 5分鐘商學院 工具篇 | 劉潤 | 《5 分鐘商學院》系列總結，系統整理戰略、博弈、決策、管理、思考、溝通與效率七大類近百種商業工具，協助讀者把「道」轉化為可執行的「術」。
     url: https://github.com/nplus-father/5-min-mba-tools
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-management, nplus-kind-book, nplus-portal, sub-business, top-professional]
   - name: 5-types-of-wealth
     description: The 5 Types of Wealth | Sahil Bloom | A reframing of true wealth across time, social, mental, physical, and financial dimensions, with systems for designing a richer life.
     url: https://github.com/nplus-father/5-types-of-wealth
@@ -217,7 +217,7 @@ repos:
   - name: 97-things-every-project-manager-should-know
     description: 97 Things Every Project Manager Should Know | Barbee Davis | A collective playbook of practical wisdom from veteran project managers worldwide, organized into 97 short, actionable lessons.
     url: https://github.com/nplus-father/97-things-every-project-manager-should-know
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: 97-things-every-software-architect-should-know
     description: 97 Things Every Software Architect Should Know | Richard Monson-Haefel | Field wisdom from 97 working software architects, focused on architectural decisions, communication, and trade-offs.
     url: https://github.com/nplus-father/97-things-every-software-architect-should-know
@@ -241,7 +241,7 @@ repos:
   - name: a-world-without-email
     description: "A World Without Email | Cal Newport | Dissects how email's \"hyperactive hivemind\" workflow destroys knowledge-worker productivity and mental health, and proposes attention-capital-based alternative workflows."
     url: https://github.com/nplus-father/a-world-without-email
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, tag-classic, top-personal]
   - name: abolition-of-man
     description: The Abolition of Man | C. S. Lewis | Argues that rejecting the universal moral law — the Tao — empties humanity of the moral substance that makes us human and hands us over to power without reason.
     url: https://github.com/nplus-father/abolition-of-man
@@ -289,7 +289,7 @@ repos:
   - name: agile-product-management-with-scrum
     description: Agile Product Management with Scrum | Roman Pichler | A complete guide to the Product Owner role within the Scrum framework—covering responsibilities, practical methods, and organizational transformation strategies.
     url: https://github.com/nplus-father/agile-product-management-with-scrum
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: agile-retrospectives
     description: Agile Retrospectives | Esther Derby & Diana Larsen | A practical handbook for running retrospectives in five phases — set the stage, gather data, generate insights, decide what to do, and close — with dozens of facilitator-tested activities.
     url: https://github.com/nplus-father/agile-retrospectives
@@ -393,7 +393,7 @@ repos:
   - name: apprenticeship-patterns
     description: Apprenticeship Patterns | Dave Hoover & Adewale Oshineye | A pattern language for the growing software apprentice—a practical guide to walking the path from beginner to craftsman.
     url: https://github.com/nplus-father/apprenticeship-patterns
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-coding-practice, nplus-kind-book, nplus-portal, sub-engineering, tag-classic, top-craft]
   - name: archetypes-and-collective-unconscious
     description: "The Archetypes and the Collective Unconscious | C. G. Jung | Volume 9.i of the Collected Works—the canonical essays in which Jung defines the collective unconscious and surveys its key archetypes: mother, child, kore, rebirth, spirit, trickster, individuation, and the mandala."
     url: https://github.com/nplus-father/archetypes-and-collective-unconscious
@@ -477,7 +477,7 @@ repos:
   - name: art-of-work-and-life
     description: 工作與生活的技術 | 王永福 | 福哥以親身經歷示範如何透過目標管理、生產力方法與成長心態，在繁忙的工作與家庭生活中持續累積成果，打造屬於自己的高效人生。
     url: https://github.com/nplus-father/art-of-work-and-life
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: ascent-of-money
     description: The Ascent of Money | Niall Ferguson | A sweeping financial history of the world organized around six pillars—money, bonds, stocks, insurance, real estate, and international finance—and the recurring booms and busts they produce.
     url: https://github.com/nplus-father/ascent-of-money
@@ -545,11 +545,11 @@ repos:
   - name: bcg-problem-solving-power
     description: BCG問題解決力 | 徐瑞廷、黃菁媺 | 以 BCG 顧問方法論為基礎，系統化傳授策略思考與問題解決的實戰技能。
     url: https://github.com/nplus-father/bcg-problem-solving-power
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: bdd-in-action
     description: BDD in Action | John Ferguson Smart | A complete guide to behavior-driven development, from requirements discovery through executable specifications—covering collaborative feature definition, automated acceptance testing, and living documentation.
     url: https://github.com/nplus-father/bdd-in-action
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-coding-practice, nplus-kind-book, nplus-portal, sub-engineering, tag-toolbox, top-craft]
   - name: be-2-0
     description: "BE 2.0 | Jim Collins & William Lazier | The updated edition of Jim Collins's first book on leadership style, vision, strategy, innovation, and the flywheel that turns good companies into enduring great ones."
     url: https://github.com/nplus-father/be-2-0
@@ -589,7 +589,7 @@ repos:
   - name: become-an-effective-software-engineering-manager
     description: Become an Effective Software Engineering Manager | James Stanier | A practical, end-to-end handbook for software engineering managers covering everything from day one on the job to long-term career planning.
     url: https://github.com/nplus-father/become-an-effective-software-engineering-manager
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-brick, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-engineering-management, nplus-kind-book, nplus-portal, sub-engineering, tag-brick, tag-toolbox, top-craft]
   - name: becoming-bulletproof
     description: "Becoming Bulletproof | Evy Poumpouras | A former Secret Service agent's life lessons on harnessing fear, building mental resilience, and reading people accurately under pressure."
     url: https://github.com/nplus-father/becoming-bulletproof
@@ -769,7 +769,7 @@ repos:
   - name: bullet-journal-method
     description: The Bullet Journal Method | Ryder Carroll | The full guide from the inventor of bullet journaling—not just the rapid-logging and modular-organization system, but the deeper case for intentional writing as a way to reflect, focus, and live with meaning.
     url: https://github.com/nplus-father/bullet-journal-method
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, tag-classic, tag-toolbox, top-personal]
   - name: business-adventures
     description: Business Adventures | John Brooks | Twelve classic case studies of corporate triumph and disaster from mid-20th-century America that distill timeless lessons about markets, leadership, and human nature.
     url: https://github.com/nplus-father/business-adventures
@@ -1041,7 +1041,7 @@ repos:
   - name: cracking-the-pm-interview
     description: Cracking the PM Interview | Gayle Laakmann McDowell & Jackie Bavaro | A systematic guide to product manager interviews, covering the role itself, question-type frameworks, and broader career strategy.
     url: https://github.com/nplus-father/cracking-the-pm-interview
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-brick, tag-classic, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-job-search, nplus-kind-book, nplus-portal, sub-career, tag-brick, tag-classic, tag-toolbox, top-professional]
   - name: cracking-the-tech-career
     description: Cracking the Tech Career | Gayle Laakmann McDowell | A complete strategy guide for breaking into and growing within tech careers—covering positioning, interviewing, and long-term career management.
     url: https://github.com/nplus-father/cracking-the-tech-career
@@ -1169,7 +1169,7 @@ repos:
   - name: designing-your-life
     description: Designing Your Life | Bill Burnett & Dave Evans | Applies Stanford design thinking to life and career planning, framing life as an iterable design problem rather than a puzzle waiting to be solved.
     url: https://github.com/nplus-father/designing-your-life
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-career-change, nplus-kind-book, nplus-portal, sub-career, tag-classic, top-professional]
   - name: desiring-god
     description: "Desiring God | John Piper | Argues that God is most glorified in us when we are most satisfied in him, and traces this 'Christian Hedonism' through worship, scripture, prayer, money, marriage, missions, and suffering."
     url: https://github.com/nplus-father/desiring-god
@@ -1193,7 +1193,7 @@ repos:
   - name: devops-handbook
     description: "The DevOps Handbook | Gene Kim, Jez Humble, Patrick Debois & John Willis | Anchored on \"The Three Ways,\" the book systematically lays out DevOps principles, technical practices, and the path to organizational and cultural transformation."
     url: https://github.com/nplus-father/devops-handbook
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-brick, tag-classic, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-devops, nplus-kind-book, nplus-portal, sub-engineering, tag-brick, tag-classic, tag-toolbox, top-craft]
   - name: dhandho-investor
     description: "The Dhandho Investor | Mohnish Pabrai | Drawing on real business stories—Patel motels, Manilal, Virgin, Mittal—the value investor distills \"low-risk, high-return\" decision logic into nine Dhandho principles, all running on one mantra: Heads, I win; tails, I don't lose much."
     url: https://github.com/nplus-father/dhandho-investor
@@ -1201,7 +1201,7 @@ repos:
   - name: diagrams-book
     description: The Diagrams Book | Kevin Duncan | A pocket reference of 50 visual problem-solving tools — pyramids, wedges, triangles, matrices, axes — that help structure thinking and communicate clearly.
     url: https://github.com/nplus-father/diagrams-book
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-primer, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, tag-primer, tag-toolbox, top-professional]
   - name: dialogue-the-art-of-verbal-action
     description: "Dialogue: The Art of Verbal Action for Page, Stage, and Screen | Robert McKee | McKee systematically dissects the theory and craft of writing dialogue—from definition and function to diagnosis and design—across the three media of fiction, theater, and screen."
     url: https://github.com/nplus-father/dialogue-the-art-of-verbal-action
@@ -1229,7 +1229,7 @@ repos:
   - name: die-empty
     description: "Die Empty | Todd Henry | An exploration of how to convert inner potential into meaningful contribution—so your best work doesn't follow you to the grave."
     url: https://github.com/nplus-father/die-empty
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: difference-maker
     description: The Difference Maker | John C. Maxwell | Argues that attitude is not everything but is the one differentiator you control, then walks through five attitude-killers — discouragement, change, problems, fear, failure — and how to beat each.
     url: https://github.com/nplus-father/difference-maker
@@ -1273,7 +1273,7 @@ repos:
   - name: do-it-tomorrow
     description: "Do It Tomorrow | Mark Forster | A time-management system built on closed lists, the mañana principle, and current initiative — designed to finish today's work without prioritising."
     url: https://github.com/nplus-father/do-it-tomorrow
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: do-over
     description: Do Over | Jon Acuff | Acuff offers a Career Savings Account formula—relationships, skills, character, and hustle—as four investments that help readers actively navigate every kind of career transition.
     url: https://github.com/nplus-father/do-over
@@ -1317,7 +1317,7 @@ repos:
   - name: effective-engineer
     description: "The Effective Engineer | Edmond Lau | Centers software career growth on leverage—choosing what to invest your finite hours in—and translates that lens into concrete habits across personal time, team workflow, and a company's overall direction."
     url: https://github.com/nplus-father/effective-engineer
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-engineering-management, nplus-kind-book, nplus-portal, sub-engineering, tag-classic, top-craft]
   - name: effective-executive
     description: "The Effective Executive | Peter F. Drucker | The father of management's classic argument that effectiveness is a habit—and a habit anyone can learn."
     url: https://github.com/nplus-father/effective-executive
@@ -1425,11 +1425,11 @@ repos:
   - name: essential-scrum
     description: "Essential Scrum | Kenneth S. Rubin | A comprehensive practitioner's reference to the Scrum framework, from core concepts through team-level operation."
     url: https://github.com/nplus-father/essential-scrum
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-brick, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, tag-brick, tag-toolbox, top-craft]
   - name: essentialism
     description: Essentialism | Greg McKeown | A disciplined-pursuit-of-less framework, arguing that intentional selection—and the elimination of the trivial many—lets you focus energy on the vital few that actually matter.
     url: https://github.com/nplus-father/essentialism
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, tag-primer, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, tag-classic, tag-primer, top-personal]
   - name: every-good-endeavor
     description: Every Good Endeavor | Timothy Keller & Katherine Leary Alsdorf | Builds a fully integrated Christian theology of work and the practice of faith in the workplace, grounded in biblical theology.
     url: https://github.com/nplus-father/every-good-endeavor
@@ -1481,7 +1481,7 @@ repos:
   - name: extreme-productivity
     description: Extreme Productivity | Robert C. Pozen | An outcome-driven productivity framework spanning goal setting, daily routines, career planning, and work-life balance.
     url: https://github.com/nplus-father/extreme-productivity
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: extreme-sales
     description: 極限銷售 | 謝文憲 & 劉子寧 | 主張「銷售就是做人」，從底層思維、專業、溫暖到影響力四個面向，用行為經濟學與信任護城河打造一輩子的成交。
     url: https://github.com/nplus-father/extreme-sales
@@ -1525,7 +1525,7 @@ repos:
   - name: fengtang-gold-line
     description: 金線：麥肯錫真正在用的管理工具 | 馮唐 | 以成事四公理與結構化思考、表達的「金線原理」解決問題
     url: https://github.com/nplus-father/fengtang-gold-line
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: fengtang-have-capability
     description: 有本事 | 馮唐 | 談財務自由、分享、把握當下與經營美好人際的人生智慧
     url: https://github.com/nplus-father/fengtang-have-capability
@@ -1617,7 +1617,7 @@ repos:
   - name: focal-point
     description: Focal Point | Brian Tracy | Uses the 80/20 rule and personal strategic planning to identify high-leverage points across seven life domains—career, finances, health, family—producing maximum results with minimum input.
     url: https://github.com/nplus-father/focal-point
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: fool-and-his-money
     description: A Fool and His Money | John Rothchild | A self-deprecating, on-the-ground tour through Wall Street where a journalist tries every popular investing strategy and chronicles, with humor, why ordinary investors keep losing.
     url: https://github.com/nplus-father/fool-and-his-money
@@ -1745,7 +1745,7 @@ repos:
   - name: get-it-done-now
     description: Get It Done Now! | Brian Tracy | 21 actionable techniques to own your time and beat procrastination — including ABCDE, eat-that-frog, single-handling, and the 80/20 rule.
     url: https://github.com/nplus-father/get-it-done-now
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: get-rich-now
     description: Get Rich Now | Brian Tracy | Ten chapters on earning more money faster — covering wealth psychology, money goals, the millionaire habit, self-discipline, multiple income streams, and giving back.
     url: https://github.com/nplus-father/get-rich-now
@@ -1761,7 +1761,7 @@ repos:
   - name: getting-organized-in-the-google-era
     description: "Getting Organized in the Google Era | Douglas C. Merrill & James A. Martin | Combining cognitive science with cloud tools, the former Google CIO offers 21 organizing principles: stop filing, lean on search, the cloud, and story-based encoding to live with the brain's limits in an information-saturated world."
     url: https://github.com/nplus-father/getting-organized-in-the-google-era
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: getting-past-no
     description: Getting Past No | William Ury | A five-step breakthrough strategy from the Harvard Negotiation Project for turning hostile counterparts into partners — go to the balcony, step to their side, reframe, build a bridge, and bring them to their senses.
     url: https://github.com/nplus-father/getting-past-no
@@ -1777,7 +1777,7 @@ repos:
   - name: getting-things-done
     description: Getting Things Done | David Allen | A systematic introduction to the GTD methodology, using a five-step workflow—capture, clarify, organize, reflect, engage—to help knowledge workers stay relaxed and in control under heavy task loads.
     url: https://github.com/nplus-father/getting-things-done
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, tag-classic, tag-toolbox, top-personal]
   - name: getting-to-yes
     description: "Getting to Yes | Roger Fisher, William Ury & Bruce Patton | The Harvard Negotiation Project's principled negotiation method: separate people from problem, focus on interests, invent options, use objective criteria."
     url: https://github.com/nplus-father/getting-to-yes
@@ -1849,7 +1849,7 @@ repos:
   - name: great-at-work
     description: "Great at Work | Morten T. Hansen | Built on a 5,000-person study, the book identifies the seven \"do less, then obsess\" work practices that explain why top performers outpace their peers without working longer hours."
     url: https://github.com/nplus-father/great-at-work
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, tag-classic, top-personal]
   - name: great-crash-1929
     description: The Great Crash 1929 | John Kenneth Galbraith | A short, witty account of the 1929 Wall Street collapse and its aftermath, showing how speculative euphoria, leverage, and policy denial combined to set off the Great Depression.
     url: https://github.com/nplus-father/great-crash-1929
@@ -1937,7 +1937,7 @@ repos:
   - name: hacking-growth
     description: "Hacking Growth | Sean Ellis & Morgan Brown | The man who coined \"growth hacking\" and his co-author lay out how cross-functional teams use rapid experimentation cycles to drive breakout growth across acquisition, activation, retention, and revenue."
     url: https://github.com/nplus-father/hacking-growth
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-marketing, nplus-kind-book, nplus-portal, sub-business, tag-classic, tag-toolbox, top-professional]
   - name: happier
     description: "Happier | Tal Ben-Shahar | Defines happiness as the simultaneous experience of pleasure and meaning, using frameworks like the \"ultimate currency,\" the four-burger model, and calling to translate positive-psychology research into daily practice."
     url: https://github.com/nplus-father/happier
@@ -1965,7 +1965,7 @@ repos:
   - name: hbr-10-must-reads-on-managing-yourself
     description: "HBR's 10 Must Reads on Managing Yourself | Harvard Business Review | Ten classic HBR pieces curated into a self-management handbook, covering Drucker, Christensen, Goleman, and other thinkers on time, energy, resilience, emotion, and personal leadership."
     url: https://github.com/nplus-father/hbr-10-must-reads-on-managing-yourself
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, tag-toolbox, top-personal]
   - name: hbr-10-must-reads-on-trust
     description: "HBR's 10 Must Reads on Trust | Harvard Business Review | Ten classic HBR pieces on trust—covering the leadership trust triangle, the neuroscience of trust, integrity in negotiation, organizational apologies, and operational transparency—forming a complete map for building and repairing trust."
     url: https://github.com/nplus-father/hbr-10-must-reads-on-trust
@@ -2157,7 +2157,7 @@ repos:
   - name: high-output-management
     description: "High Output Management | Andrew S. Grove | Intel's legendary CEO redefines management as a production activity, using a breakfast-factory metaphor to lay out production principles, managerial leverage, organizational design, and motivation—anchored on: output equals your organization plus the neighbors you influence."
     url: https://github.com/nplus-father/high-output-management
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-brick, tag-classic, top-craft]
+    topics: [hugobook, leaf-management, nplus-kind-book, nplus-portal, sub-business, tag-brick, tag-classic, top-professional]
   - name: high-performance-habits
     description: High Performance Habits | Brendon Burchard | 非凡之人養成的六個高成效習慣
     url: https://github.com/nplus-father/high-performance-habits
@@ -2257,7 +2257,7 @@ repos:
   - name: how-to-calm-your-mind
     description: "How to Calm Your Mind | Chris Bailey | Drawing on the productivity expert's own anxiety burnout, the book explores how calm and high performance can coexist rather than fight each other."
     url: https://github.com/nplus-father/how-to-calm-your-mind
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-focus, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: how-to-change
     description: "How to Change | Katy Milkman | A behavioral scientist's evidence-based playbook for closing the intention-action gap — addressing impulsivity, procrastination, forgetfulness, laziness, and conformity."
     url: https://github.com/nplus-father/how-to-change
@@ -2269,7 +2269,7 @@ repos:
   - name: how-to-get-control-of-your-time-and-your-life
     description: How to Get Control of Your Time and Your Life | Alan Lakein | A foundational time-management classic offering tools like the ABC priority system, life-goal statements, and the Swiss-cheese method for moving from controlling time to controlling life.
     url: https://github.com/nplus-father/how-to-get-control-of-your-time-and-your-life
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: how-to-have-a-good-day
     description: How to Have a Good Day | Caroline Webb | A behavioural-science toolkit covering priorities, productivity, relationships, thinking, influence, resilience, and energy — practical levers for a better workday.
     url: https://github.com/nplus-father/how-to-have-a-good-day
@@ -2317,7 +2317,7 @@ repos:
   - name: how-to-take-smart-notes
     description: "How to Take Smart Notes | Sönke Ahrens | A systematic introduction to Niklas Luhmann's Zettelkasten note-taking method, arguing that writing is thinking, with four principles and a six-step workflow that turns note-taking into a repeatable knowledge-production process."
     url: https://github.com/nplus-father/how-to-take-smart-notes
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-self-learning, nplus-kind-book, nplus-portal, sub-education, tag-classic, tag-toolbox, top-wisdom]
   - name: how-to-talk-to-anyone
     description: How to Talk to Anyone | Leil Lowndes | Ninety-two practical social tactics—from body language to the art of compliments—for building deep human connection in any setting.
     url: https://github.com/nplus-father/how-to-talk-to-anyone
@@ -2529,7 +2529,7 @@ repos:
   - name: issue-driven
     description: 麥肯錫教我的思考武器：從邏輯思考到真正解決問題 | 安宅和人 | 前麥肯錫顧問結合腦科學與顧問方法論，教你從議題出發真正解決問題。
     url: https://github.com/nplus-father/issue-driven
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, tag-toolbox, top-professional]
   - name: issue-driven-thinking
     description: "論點思考：找到問題的源頭，才能解決正確的問題 | Kazunari Uchida | A BCG consultant's framework for pinpointing the right question to answer before rushing to solve a problem."
     url: https://github.com/nplus-father/issue-driven-thinking
@@ -2609,7 +2609,7 @@ repos:
   - name: just-shut-up-and-do-it
     description: Just Shut Up and Do It | Brian Tracy | A seven-step formula to conquer your goals — decide, write down, set deadlines, list, organize, take action, and do something every day.
     url: https://github.com/nplus-father/just-shut-up-and-do-it
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: justice-whats-the-right-thing-to-do
     description: "Justice: What's the Right Thing to Do? | Michael J. Sandel | Through real cases and thought experiments, Sandel walks through utilitarianism, libertarianism, Kantian ethics, and Rawlsian justice, arguing that justice must finally include substantive reasoning about the common good and the good life."
     url: https://github.com/nplus-father/justice-whats-the-right-thing-to-do
@@ -2617,7 +2617,7 @@ repos:
   - name: kanban-in-action
     description: "Kanban in Action | Marcus Hammarberg & Joakim Sundén | A complete introduction to the Kanban method—principles, practices, and advanced techniques—conveyed through a fictional team's story alongside real-world cases."
     url: https://github.com/nplus-father/kanban-in-action
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, tag-toolbox, top-craft]
   - name: keep-your-love-on
     description: Keep Your Love On | Danny Silk | Explores how the three pillars of connection, communication, and boundaries equip us to keep choosing love over fear and to build relationships that last.
     url: https://github.com/nplus-father/keep-your-love-on
@@ -2773,7 +2773,7 @@ repos:
   - name: life-leverage
     description: Life Leverage | Rob Moore | Reframes the relationship between time and money through leverage thinking—getting maximum output from minimal input, escaping the conventional gospel of working harder.
     url: https://github.com/nplus-father/life-leverage
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: life-together-prayerbook-of-the-bible
     description: Life Together and Prayerbook of the Bible | Dietrich Bonhoeffer | Two short classics in one volume — a vision of Christian community grounded in Christ, paired with an introduction to the Psalms as the prayerbook of the church.
     url: https://github.com/nplus-father/life-together-prayerbook-of-the-bible
@@ -2801,7 +2801,7 @@ repos:
   - name: little-book-of-investing-like-the-pros
     description: The Little Book of Investing Like the Pros | Joshua Pearl & Joshua Rosenbaum | Two Wall Street practitioners systematize the institutional stock-picking process into a five-step framework spanning idea generation, due diligence, valuation, and portfolio management, demonstrated end-to-end on the Delphi Automotive case.
     url: https://github.com/nplus-father/little-book-of-investing-like-the-pros
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: little-book-of-market-myths
     description: The Little Book of Market Myths | Kenneth L. Fisher & Lara Hoffmans | Investor Ken Fisher dismantles seventeen widely held but data-defying market beliefs — bonds-are-safe, stop-losses-stop-losses, GDP-equals-stocks — to keep readers from costly errors.
     url: https://github.com/nplus-father/little-book-of-market-myths
@@ -2861,7 +2861,7 @@ repos:
   - name: living-documentation
     description: Living Documentation | Cyrille Martraire | A code-centric methodology for software knowledge that keeps documentation in sync with the system as it evolves, ending the vicious cycle of out-of-date documents.
     url: https://github.com/nplus-father/living-documentation
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-coding-practice, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: living-gently-in-a-violent-world
     description: "Living Gently in a Violent World | Stanley Hauerwas & Jean Vanier | A dialogue between the theologian and the founder of L'Arche around what L'Arche reveals to the church—placing the disabled at the center of discipleship and political theology in a world driven by speed and violence."
     url: https://github.com/nplus-father/living-gently-in-a-violent-world
@@ -2965,7 +2965,7 @@ repos:
   - name: management-memos-of-a-high-performance-manager
     description: 高效經理人的管理備忘錄 | 蔡恩全 | 從生涯起步、管理工具箱到終極心法，帶出高效高士氣團隊
     url: https://github.com/nplus-father/management-memos-of-a-high-performance-manager
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-management, nplus-kind-book, nplus-portal, sub-business, top-professional]
   - name: managers-handbook
     description: "The Manager's Handbook | David M. Dodson | Five simple steps — build a team, master time, take advice, set priorities, obsess over quality — distilled from 25 years of running and advising businesses."
     url: https://github.com/nplus-father/managers-handbook
@@ -3065,7 +3065,7 @@ repos:
   - name: mckinsey-39-work-habits
     description: 麥肯錫菁英最重視的39個工作習慣 | 大嶋祥譽 | 前麥肯錫顧問以 39 個具體習慣，系統化拆解頂尖顧問的工作方法論。
     url: https://github.com/nplus-father/mckinsey-39-work-habits
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: mckinsey-elite-reading-method
     description: 麥肯錫精英高效閱讀法 | 赤羽雄二 | 主張主動閱讀，提升速度、萃取書中價值並養成閱讀習慣
     url: https://github.com/nplus-father/mckinsey-elite-reading-method
@@ -3073,11 +3073,11 @@ repos:
   - name: mckinsey-new-employee-training-7-lessons
     description: 麥肯錫新人培訓7堂課 | 大嶋祥譽 | 從麥肯錫日本分公司新人培訓的實務經驗出發，整理七堂課：專業風範、問題解決流程、情報處理、思考力提升、自我修煉、團隊成果與簡報技巧，說明畢業生如何在三到五年內建立獨立解決未知問題的能力。
     url: https://github.com/nplus-father/mckinsey-new-employee-training-7-lessons
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: mckinsey-note-taking-method
     description: 麥肯錫的筆記術 | 大嶋祥譽 | 前麥肯錫顧問揭示頂尖顧問的筆記思考法，將筆記從被動記錄轉化為主動解決問題的工具。
     url: https://github.com/nplus-father/mckinsey-note-taking-method
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: mckinsey-problem-solving
     description: 麥肯錫問題分析與解決技巧 | 高杉尚孝 | 結合麥肯錫顧問實戰與華頓商學院邏輯訓練，系統化呈現問題解決五步驟流程、情境分析，以及邏輯思考與心理素質——一套橫跨個人決策與企業策略的商務思考框架。
     url: https://github.com/nplus-father/mckinsey-problem-solving
@@ -3085,7 +3085,7 @@ repos:
   - name: mckinsey-work-method
     description: 麥肯錫教我的工作方法 | 中村誠一 | 以麥肯錫入職訓練與實戰為藍本，將資訊處理、問題思考、MECE 分析、團隊合作、簡報交付等九個面向，拆解為可反覆演練的通用工作法則。
     url: https://github.com/nplus-father/mckinsey-work-method
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: mckinsey-writing-technique
     description: 麥肯錫寫作技術與邏輯思考 | 高杉尚孝 | 以麥肯錫方法論為基礎，系統化教授商業寫作的邏輯思考與表達技術。
     url: https://github.com/nplus-father/mckinsey-writing-technique
@@ -3093,11 +3093,11 @@ repos:
   - name: mckinsey-zero-second-execution
     description: 麥肯錫零秒執行力：當機立斷、立即行動 | 赤羽雄二 | 以選項、工作框架與即決即行工具，培養當機立斷的執行力
     url: https://github.com/nplus-father/mckinsey-zero-second-execution
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: mckinsey-zero-second-logical-thinking
     description: 麥肯錫の零秒邏輯思考 | 赤羽雄二 | 透過 A4 筆記術訓練邏輯思考，達成「零秒思考」的實踐指南。
     url: https://github.com/nplus-father/mckinsey-zero-second-logical-thinking
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: me-myself-and-us
     description: Me, Myself, and Us | Brian R. Little | Drawing on personality science, an exploration of how traits, free traits, and personal projects shape a flourishing life.
     url: https://github.com/nplus-father/me-myself-and-us
@@ -3109,7 +3109,7 @@ repos:
   - name: measure-what-matters
     description: Measure What Matters | John Doerr | Through cases at Google, Intel, and beyond, a comprehensive walkthrough of the OKR goal-setting system in practice.
     url: https://github.com/nplus-father/measure-what-matters
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-management, nplus-kind-book, nplus-portal, sub-business, tag-classic, top-professional]
   - name: meditations
     description: 沉思錄 | Marcus Aurelius | 羅馬皇帝奧理略的斯多噶哲學箚記，十二卷關於德性、理性與生命的自省
     url: https://github.com/nplus-father/meditations
@@ -3553,7 +3553,7 @@ repos:
   - name: noise-living-and-leading-when-nobody-can-focus
     description: "Noise | Joseph McCormack | In an age of \"infobesity,\" the book exposes how noise erodes attention and human connection, then offers two frameworks—conscious management and attention management—to reclaim focus when nobody else can."
     url: https://github.com/nplus-father/noise-living-and-leading-when-nobody-can-focus
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-focus, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: non-designers-design-book
     description: "The Non-Designer's Design Book | Robin Williams | A classic primer on graphic design for non-designers, organized around four principles—contrast, repetition, alignment, proximity—plus type and color basics, lifting layout from intuition to a describable, repeatable craft."
     url: https://github.com/nplus-father/non-designers-design-book
@@ -3629,7 +3629,7 @@ repos:
   - name: one-thing
     description: The ONE Thing | Gary Keller & Jay Papasan | Uses the Focusing Question framework to dismantle six common myths about multitasking and balance, arguing that extreme focus on one critical action is what triggers a domino effect of extraordinary results.
     url: https://github.com/nplus-father/one-thing
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, tag-primer, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, tag-classic, tag-primer, top-personal]
   - name: one-up-on-wall-street
     description: One Up on Wall Street | Peter Lynch | The legendary Magellan fund manager teaches retail investors how to turn everyday observations into a stock-picking edge.
     url: https://github.com/nplus-father/one-up-on-wall-street
@@ -3729,7 +3729,7 @@ repos:
   - name: peak-performance
     description: Peak Performance | Sharon Ferrett | A systematic guide to college and life success covering learning methods, habit formation, emotional intelligence, time management, critical thinking, and career exploration.
     url: https://github.com/nplus-father/peak-performance
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: peak-secrets-from-the-new-science-of-expertise
     description: Peak | Anders Ericsson & Robert Pool | The capstone of deliberate-practice research—expert-level performance is not born of talent but produced by a systematic method of practice.
     url: https://github.com/nplus-father/peak-secrets-from-the-new-science-of-expertise
@@ -3741,7 +3741,7 @@ repos:
   - name: peopleware
     description: Peopleware | Tom DeMarco & Timothy Lister | Examines how the human factor decides software project outcomes, marshaling data and cases to show how environment, team cohesion, and culture shape knowledge-worker productivity.
     url: https://github.com/nplus-father/peopleware
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-engineering-management, nplus-kind-book, nplus-portal, sub-engineering, tag-classic, top-craft]
   - name: perfect-software
     description: Perfect Software | Gerald M. Weinberg | A psychology-focused look at why we test software, exposing the fallacies, emotions, and organizational games behind testing, and what it actually means to gather and act on quality information.
     url: https://github.com/nplus-father/perfect-software
@@ -3765,7 +3765,7 @@ repos:
   - name: peter-drucker-cafe
     description: 在咖啡廳遇見彼得．杜拉克 | 藤屋伸二 | 以虛構故事形式，將杜拉克的管理思想提煉為五個高效能習慣，讓讀者在輕鬆的咖啡廳對話中掌握管理學的核心精髓。
     url: https://github.com/nplus-father/peter-drucker-cafe
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-management, nplus-kind-book, nplus-portal, sub-business, top-professional]
   - name: pharmacotherapy-casebook
     description: "Pharmacotherapy Casebook: A Patient-Focused Approach | Terry L. Schwinghammer & Julia M. Koehler | A collection of patient case studies that build clinical problem-solving skills across the full range of disease states."
     url: https://github.com/nplus-father/pharmacotherapy-casebook
@@ -3957,7 +3957,7 @@ repos:
   - name: principles
     description: "Principles: Life and Work | Ray Dalio | The Bridgewater founder distills decades of investing and management into a system of life and work principles, anchored by knowing how to handle what you don't know, believability-weighted decision-making, and systematized thinking."
     url: https://github.com/nplus-father/principles
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-brick, tag-classic, top-craft]
+    topics: [hugobook, leaf-management, nplus-kind-book, nplus-portal, sub-business, tag-brick, tag-classic, top-professional]
   - name: problem-of-pain
     description: The Problem of Pain | C. S. Lewis | A philosophical and theological treatment of why a good and omnipotent God allows suffering — covering omnipotence, goodness, human wickedness, the Fall, hell, animal pain, and heaven.
     url: https://github.com/nplus-father/problem-of-pain
@@ -3973,7 +3973,7 @@ repos:
   - name: productivity-project
     description: "The Productivity Project | Chris Bailey | A year-long self-experiment testing thousands of productivity techniques, distilled into 25 evidence-based strategies organized around three resources: time, attention, and energy."
     url: https://github.com/nplus-father/productivity-project
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: professional-ohmae
     description: 專業 | 大前研一 | 以麥肯錫顧問生涯為底，剖析 21 世紀「看不見的新大陸」中專家的真正條件，並以先見力、構思力、議論力、矛盾適應力四項能力為骨幹，闡述如何在無既定答案的時代為顧客創造價值。
     url: https://github.com/nplus-father/professional-ohmae
@@ -4173,7 +4173,7 @@ repos:
   - name: rework
     description: Rework | Jason Fried & David Heinemeier Hansson | A counter-conventional manifesto from 37signals that dismantles workaholism, long-range planning, and growth-at-all-costs, and redefines what modern entrepreneurship, product, team, and culture look like.
     url: https://github.com/nplus-father/rework
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, tag-primer, top-craft]
+    topics: [hugobook, leaf-startup, nplus-kind-book, nplus-portal, sub-business, tag-classic, tag-primer, top-professional]
   - name: rich-brother-rich-sister
     description: "Rich Brother, Rich Sister | Robert T. Kiyosaki & Emi Kiyosaki | Two siblings' divergent paths — one to business wealth, one to Buddhist monastic life — explore money, God, and happiness."
     url: https://github.com/nplus-father/rich-brother-rich-sister
@@ -4349,7 +4349,7 @@ repos:
   - name: scrum-the-art-of-doing-twice-the-work-in-half-the-time
     description: "Scrum: The Art of Doing Twice the Work in Half the Time | Jeff Sutherland & J. J. Sutherland | Scrum's co-creator draws on his own experiences to lay out the core principles and practical wisdom of the agile framework."
     url: https://github.com/nplus-father/scrum-the-art-of-doing-twice-the-work-in-half-the-time
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, tag-classic, top-craft]
   - name: second-chance
     description: "Second Chance | Robert T. Kiyosaki | Draws on Buckminster Fuller's ideas to reframe money's past, present, and future, urging readers to seize a second chance through financial education."
     url: https://github.com/nplus-father/second-chance
@@ -4501,7 +4501,7 @@ repos:
   - name: site-reliability-workbook
     description: "The Site Reliability Workbook | Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne | Google's SRE practitioner's companion, using concrete cases to demonstrate how site-reliability engineering actually lands."
     url: https://github.com/nplus-father/site-reliability-workbook
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-brick, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-devops, nplus-kind-book, nplus-portal, sub-engineering, tag-brick, tag-toolbox, top-craft]
   - name: sizing-people-up
     description: "Sizing People Up | Robin Dreeke | The former FBI behavioral analyst draws on field experience to build a six-signal system for predicting other people's behavior, redefining trust as predictability."
     url: https://github.com/nplus-father/sizing-people-up
@@ -4517,7 +4517,7 @@ repos:
   - name: slow-productivity
     description: "Slow Productivity | Cal Newport | Modeled on the work patterns of history's outstanding knowledge workers, Newport offers three principles of \"slow productivity\" to replace the pseudo-productivity culture that measures success by visible busyness."
     url: https://github.com/nplus-father/slow-productivity
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, tag-classic, top-personal]
   - name: small-giants
     description: "Small Giants | Bo Burlingham | Profiles of fourteen privately held companies that chose to be great instead of big — and the 'mojo' that comes from intentionally limiting growth."
     url: https://github.com/nplus-father/small-giants
@@ -4629,7 +4629,7 @@ repos:
   - name: specification-by-example
     description: Specification by Example | Gojko Adzic | Drawing on interviews with about 50 agile teams, Adzic identifies seven process patterns showing how collaborative specifications and executable examples can replace traditional requirements documents and deliver correct, defect-free software in short cycles.
     url: https://github.com/nplus-father/specification-by-example
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-coding-practice, nplus-kind-book, nplus-portal, sub-engineering, tag-classic, top-craft]
   - name: speculator-confession-practice
     description: 一個投機者的告白實戰書 | 安納金 | 以科斯托蘭尼的投機智慧為根基，結合近 20 年全球金融市場實證，從雞蛋理論、狗與主人比喻到「行情=貨幣+心理」公式，打造一本道技雙備的實戰版演繹之作。
     url: https://github.com/nplus-father/speculator-confession-practice
@@ -4641,7 +4641,7 @@ repos:
   - name: sprint
     description: Sprint | Jake Knapp, John Zeratsky & Braden Kowitz | The five-day Design Sprint methodology born at Google Ventures, compressing problem definition, ideation, prototyping, and user testing into a single structured week.
     url: https://github.com/nplus-father/sprint
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, tag-classic, top-craft]
   - name: sql-server-2025-query-performance-tuning
     description: SQL Server 2025 Query Performance Tuning | Grant Fritchey | A complete methodology for diagnosing and fixing slow queries in SQL Server 2025 covering execution plans, statistics, indexes, blocking, recompilation, and intelligent query processing.
     url: https://github.com/nplus-father/sql-server-2025-query-performance-tuning
@@ -4657,7 +4657,7 @@ repos:
   - name: staff-engineers-path
     description: "The Staff Engineer's Path | Tanya Reilly | A systematic career guide for Staff+ individual contributors covering big-picture thinking, cross-team project execution, and how to raise the engineering bar through role-modeling and scaled influence."
     url: https://github.com/nplus-father/staff-engineers-path
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, top-craft]
+    topics: [hugobook, leaf-engineering-management, nplus-kind-book, nplus-portal, sub-engineering, tag-classic, top-craft]
   - name: stage-presentation-skills
     description: 上台的技術 | 王永福 | 台灣頂尖企業講師的簡報實戰心法，從內容準備、投影片設計到上台演練，系統化拆解專業簡報的每個環節。
     url: https://github.com/nplus-father/stage-presentation-skills
@@ -4673,7 +4673,7 @@ repos:
   - name: start-now-get-perfect-later
     description: Start Now. Get Perfect Later. | Rob Moore | An action playbook against procrastination and perfectionism, offering decision frameworks and mental tools that help readers move past hesitation, ship now, and improve in flight.
     url: https://github.com/nplus-father/start-now-get-perfect-later
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: start-up-of-you
     description: The Start-Up of You | Reid Hoffman & Ben Casnocha | Applies entrepreneurial thinking to personal career management, offering six core strategies anchored on adaptability, network, and risk assessment.
     url: https://github.com/nplus-father/start-up-of-you
@@ -4749,7 +4749,7 @@ repos:
   - name: strategic-thinking
     description: 策略思考 | 御立尚資 | 以 BCG 顧問實戰經驗，系統化拆解策略思考的核心要素——Insight（洞見）——並提出速度與視角兩大維度的具體鍛鍊方法。
     url: https://github.com/nplus-father/strategic-thinking
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: strong-product-people
     description: Strong Product People | Petra Wille | Written for Heads of Product, focused on hiring, evaluating, coaching, and developing PMs—using the PMwheel competency framework and coaching practice to help product leaders grow PMs into people they can genuinely empower.
     url: https://github.com/nplus-father/strong-product-people
@@ -4769,7 +4769,7 @@ repos:
   - name: succeeding-with-agile
     description: Succeeding with Agile | Mike Cohn | A field-tested playbook for adopting Scrum, systematically addressing the challenges of agile transformation at the individual, team, and organizational levels.
     url: https://github.com/nplus-father/succeeding-with-agile
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-brick, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, tag-brick, tag-toolbox, top-craft]
   - name: super-founders
     description: Super Founders | Ali Tamaseb | A data-driven analysis of every billion-dollar US startup of the past decade that debunks myths about founders, products, markets, timing, and fundraising — paired with interviews of unicorn CEOs.
     url: https://github.com/nplus-father/super-founders
@@ -4985,7 +4985,7 @@ repos:
   - name: time-management
     description: Time Management | Brian Tracy | 21 essential techniques for managing time — from clarifying values and setting priorities to overcoming procrastination, batching tasks, and balancing work and life.
     url: https://github.com/nplus-father/time-management
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: time-smart
     description: Time Smart | Ashley Whillans | Research-backed framework from a Harvard happiness scholar that reframes time poverty, finds and funds your hours, and builds time-affluent habits for a happier life.
     url: https://github.com/nplus-father/time-smart
@@ -5117,7 +5117,7 @@ repos:
   - name: user-stories-applied
     description: User Stories Applied | Mike Cohn | A complete practical introduction to agile requirements management built around the user story, covering writing, estimation, planning, and acceptance testing.
     url: https://github.com/nplus-father/user-stories-applied
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, tag-classic, tag-toolbox, top-craft]
+    topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, tag-classic, tag-toolbox, top-craft]
   - name: value-proposition-design
     description: Value Proposition Design | Alexander Osterwalder & Yves Pigneur | A visual playbook of canvases, patterns, and tested experiments for building products and services customers actually want, paired with the Business Model Canvas.
     url: https://github.com/nplus-father/value-proposition-design
@@ -5325,7 +5325,7 @@ repos:
   - name: where-do-top-performers-draw-the-line-when-reading
     description: 一流的人讀書，都在哪裡畫線？ | 土井英司 | 日本亞馬遜前王牌買手分享如何透過商業閱讀提煉可行動的洞見與因果思維。
     url: https://github.com/nplus-father/where-do-top-performers-draw-the-line-when-reading
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-self-learning, nplus-kind-book, nplus-portal, sub-education, top-wisdom]
   - name: where-the-conflict-really-lies
     description: Where the Conflict Really Lies | Alvin Plantinga | Argues that the real conflict is not between science and theism but between science and philosophical naturalism.
     url: https://github.com/nplus-father/where-the-conflict-really-lies
@@ -5365,11 +5365,11 @@ repos:
   - name: why-elites-are-checklist-masters
     description: Listful Thinking | Paula Rizzo | The Emmy-winning TV producer shares Listful Thinking, demonstrating how lists manage work, family, social life, and life-outsourcing—freeing time and attention from trivia.
     url: https://github.com/nplus-father/why-elites-are-checklist-masters
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: why-elites-are-time-masters
     description: 為什麼精英都是時間控 | 樺澤紫苑 | 日本精神科醫師結合腦科學與精神醫學，提出順應大腦節律的時間管理術，讓同樣時間產出加倍，並把省下的時間投入自我投資與幸福。
     url: https://github.com/nplus-father/why-elites-are-time-masters
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: why-nations-fail
     description: Why Nations Fail | Daron Acemoglu & James A. Robinson | A sweeping argument that nations succeed or fail because of inclusive vs. extractive political and economic institutions, not geography, culture, or ignorance.
     url: https://github.com/nplus-father/why-nations-fail
@@ -5601,15 +5601,15 @@ repos:
   - name: zen-programmer
     description: The Zen Programmer | Christian Grobmeier | Brings Zen philosophy into programming practice, helping developers reclaim focus, balance, and equanimity in a high-pressure profession.
     url: https://github.com/nplus-father/zen-programmer
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-coding-practice, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: zero-second-thinking
     description: 零秒思考力 | 赤羽雄二 | 透過一套簡單的筆記方法論訓練快速思考與決策能力——每日寫十頁 A4 筆記，幫助讀者在三週內達到「零秒思考」的狀態，瞬間認清現狀、整理問題並決定行動。
     url: https://github.com/nplus-father/zero-second-thinking
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: zero-second-thinking-practice
     description: 零秒思考力[實踐篇] | 赤羽雄二 | 以麥肯錫式 A4 筆記法為基礎，延伸出八項工作原則與假設性思考、零基礎思考等具體技巧，系統化地訓練工作速度與效率。
     url: https://github.com/nplus-father/zero-second-thinking-practice
-    topics: [hugobook, leaf-cli, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: zero-to-one
     description: Zero to One | Peter Thiel | Argues from first-principles thinking that real progress comes from creating something genuinely new and building a lasting monopoly, rather than competing inside existing markets.
     url: https://github.com/nplus-father/zero-to-one
