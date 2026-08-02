@@ -10,6 +10,29 @@ import kotlinx.serialization.json.Json
 class GitHubCliService {
     private val json = Json { ignoreUnknownKeys = true }
 
+    companion object {
+        /**
+         * Build the `gh repo create` command line.
+         *
+         * Kept pure and separate from execution so the two things that have
+         * actually regressed here can be tested without touching the network:
+         * the explicit `owner/` prefix (dropping it once sent repos to the
+         * wrong account) and the single-quote escaping of the description
+         * (book titles contain apostrophes).
+         */
+        internal fun buildCreateRepoCommand(
+            owner: String,
+            repoName: String,
+            description: String,
+            templateRepo: String,
+            isPrivate: Boolean,
+        ): String {
+            val visibility = if (isPrivate) "--private" else "--public"
+            val escapedDesc = description.replace("'", "'\\''")
+            return "gh repo create $owner/$repoName --template $templateRepo $visibility --description '$escapedDesc'"
+        }
+    }
+
     /**
      * Check if GitHub CLI is installed
      */
@@ -67,9 +90,7 @@ class GitHubCliService {
         templateRepo: String = AppConfig.templateRepo,
         isPrivate: Boolean = true,
     ): Boolean {
-        val visibility = if (isPrivate) "--private" else "--public"
-        val escapedDesc = description.replace("'", "'\\''")
-        val cmd = "gh repo create $owner/$repoName --template $templateRepo $visibility --description '$escapedDesc'"
+        val cmd = buildCreateRepoCommand(owner, repoName, description, templateRepo, isPrivate)
 
         val result = ProcessRunner.execute(cmd, description = "Creating repository...")
         if (!result.success) {
