@@ -13,11 +13,13 @@ import java.io.File
  * used by InitBooksCommand.
  */
 class BookRepoService(
-    private val ghService: GitHubCliService = GitHubCliService(),
-    private val templateService: TemplateService = TemplateService(),
-    private val imageService: ImageService = ImageService(),
-    private val docsStructureService: DocsStructureService = DocsStructureService(),
-    private val gitService: GitService = GitService(),
+    private val ghService: GitHubClient = GitHubCliService(),
+    private val templateService: TemplateWriter = TemplateService(),
+    private val imageService: CoverImageFetcher = ImageService(),
+    private val docsStructureService: DocsStructureWriter = DocsStructureService(),
+    private val gitService: GitOperations = GitService(),
+    private val config: BookRepoConfig = BookRepoConfig(),
+    private val confirm: (String) -> Boolean = UserInput::confirm,
 ) {
     data class CreateResult(
         val success: Boolean,
@@ -40,7 +42,7 @@ class BookRepoService(
         structure: DocsStructure,
     ): CreateResult {
         val username =
-            AppConfig.githubUsername.takeIf { it.isNotBlank() }
+            config.githubUsername.takeIf { it.isNotBlank() }
                 ?: ghService.getUsername()
         if (username == null) {
             println("Error: Could not get GitHub username")
@@ -99,7 +101,7 @@ class BookRepoService(
     ): Boolean {
         if (ghService.repoExists(username, metadata.repoName)) {
             println("  Repository already exists: ${metadata.repoName}")
-            if (!UserInput.confirm("  Continue with cloning and updating?")) {
+            if (!confirm("  Continue with cloning and updating?")) {
                 println("Cancelled")
                 return false
             }
@@ -113,7 +115,7 @@ class BookRepoService(
         }
 
         // Configure repository
-        val homepageUrl = "${AppConfig.homepageBaseUrl}/${metadata.repoName}/"
+        val homepageUrl = "${config.homepageBaseUrl}/${metadata.repoName}/"
         ghService.configureRepository(username, metadata.repoName, homepageUrl, metadata.topics)
         println("  Repository configured (homepage, topics)")
 
@@ -127,7 +129,7 @@ class BookRepoService(
         // new-books is intentionally kept flat: <workDir>/<repoName>.
         // The 3-tier (top/sub/leaf) layout only applies to books-done after
         // migrate-topic-tiers, not to in-progress repos under new-books.
-        val workDir = File(AppConfig.defaultWorkDir)
+        val workDir = config.workDir
         if (!workDir.exists()) {
             workDir.mkdirs()
         }
@@ -164,7 +166,7 @@ class BookRepoService(
         println()
         println("  Book: ${metadata.chineseTitle}")
         println("  Repository: https://github.com/$username/${metadata.repoName}")
-        println("  Website: ${AppConfig.homepageBaseUrl}/${metadata.repoName}")
+        println("  Website: ${config.homepageBaseUrl}/${metadata.repoName}")
         println("  Local Path: ${repoDir.absolutePath}")
         println()
         println("Next steps:")

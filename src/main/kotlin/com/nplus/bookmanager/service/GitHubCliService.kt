@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 /**
  * Service for interacting with GitHub CLI (gh)
  */
-class GitHubCliService {
+class GitHubCliService : GitHubClient {
     private val json = Json { ignoreUnknownKeys = true }
 
     companion object {
@@ -70,12 +70,12 @@ class GitHubCliService {
     /**
      * Get the current authenticated GitHub username
      */
-    fun getUsername(): String? = ProcessRunner.executeForOutput("gh api user --jq '.login'")?.trim()
+    override fun getUsername(): String? = ProcessRunner.executeForOutput("gh api user --jq '.login'")?.trim()
 
     /**
      * Check if a repository exists
      */
-    fun repoExists(
+    override fun repoExists(
         username: String,
         repoName: String,
     ): Boolean = ProcessRunner.executeSuccessfully("gh repo view $username/$repoName --json name")
@@ -83,12 +83,12 @@ class GitHubCliService {
     /**
      * Create a new repository from template
      */
-    fun createRepo(
+    override fun createRepo(
         owner: String,
         repoName: String,
         description: String,
-        templateRepo: String = AppConfig.templateRepo,
-        isPrivate: Boolean = true,
+        templateRepo: String,
+        isPrivate: Boolean,
     ): Boolean {
         val cmd = buildCreateRepoCommand(owner, repoName, description, templateRepo, isPrivate)
 
@@ -180,7 +180,7 @@ class GitHubCliService {
     /**
      * Clone a repository
      */
-    fun cloneRepo(
+    override fun cloneRepo(
         username: String,
         repoName: String,
         targetDir: String,
@@ -195,7 +195,7 @@ class GitHubCliService {
      * Pages is enabled with `build_type=workflow` so the first push to main
      * can deploy via `actions/deploy-pages` without a 404.
      */
-    fun configureRepository(
+    override fun configureRepository(
         username: String,
         repoName: String,
         homepageUrl: String,

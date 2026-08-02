@@ -9,7 +9,7 @@ import javax.imageio.ImageIO
 /**
  * Service for downloading and processing cover images
  */
-class ImageService {
+class ImageService : CoverImageFetcher {
     companion object {
         const val TARGET_WIDTH = 500
     }
@@ -21,7 +21,7 @@ class ImageService {
      * @param outputFile Target file to save (will be PNG format)
      * @return true if successful
      */
-    fun downloadAndResize(
+    override fun downloadAndResize(
         imageUrl: String,
         outputFile: File,
     ): Boolean {

@@ -8,7 +8,7 @@ import java.io.File
 /**
  * Service for modifying template files in cloned book repositories
  */
-class TemplateService {
+class TemplateService : TemplateWriter {
     companion object {
         // Hugo Book repo file paths
         const val README_PATH = "README.md"
@@ -22,7 +22,7 @@ class TemplateService {
     /**
      * Update all template files with full book metadata (for init-books).
      */
-    fun updateTemplateFiles(
+    override fun updateTemplateFiles(
         repoDir: File,
         metadata: GeneratedMetadata,
         bookInput: BookInput,

@@ -9,7 +9,7 @@ import java.io.File
  * Creates the docs directory structure based on AI-generated DocsStructure,
  * including section folders and _index.md files.
  */
-class DocsStructureService {
+class DocsStructureService : DocsStructureWriter {
     /**
      * Create docs folder structure in the given repo directory.
      *
@@ -18,10 +18,10 @@ class DocsStructureService {
      * @param clearExisting If true, remove existing folders before creating new ones
      * @return Number of items created
      */
-    fun createDocsStructure(
+    override fun createDocsStructure(
         repoDir: File,
         structure: DocsStructure,
-        clearExisting: Boolean = true,
+        clearExisting: Boolean,
     ): Int {
         val docsDir = File(repoDir, "site/content/docs")
 
@@ -109,7 +109,7 @@ class DocsStructureService {
     /**
      * Print the docs structure to console.
      */
-    fun printDocsStructure(structure: DocsStructure) {
+    override fun printDocsStructure(structure: DocsStructure) {
         println("  Docs structure:")
         structure.sections.forEach { section ->
             if (section.chapters.isEmpty()) {

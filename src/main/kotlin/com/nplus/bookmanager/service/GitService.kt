@@ -6,7 +6,7 @@ import java.io.File
 /**
  * Service for Git operations
  */
-class GitService {
+class GitService : GitOperations {
     /**
      * Check if a directory is a Git repository
      */
@@ -18,9 +18,9 @@ class GitService {
      * Point git hooks to the tracked .githooks directory, activating the
      * Spotless pre-commit hook shipped in the template.
      */
-    fun setHooksPath(
+    override fun setHooksPath(
         repoDir: File,
-        path: String = ".githooks",
+        path: String,
     ): Boolean = ProcessRunner.executeSuccessfully("git config core.hooksPath $path", repoDir)
 
     /**
@@ -89,7 +89,7 @@ class GitService {
     /**
      * Full git workflow: add, commit, push
      */
-    fun commitAndPush(
+    override fun commitAndPush(
         repoDir: File,
         message: String,
         vararg files: String,
