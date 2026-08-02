@@ -47,7 +47,7 @@ class GitHubCliService : GitHubClient {
      * Check GitHub CLI and authentication prerequisites.
      * Prints status messages and returns false if any check fails.
      */
-    fun checkPrerequisites(): Boolean {
+    override fun checkPrerequisites(): Boolean {
         println("\nChecking prerequisites...")
 
         print("  GitHub CLI... ")

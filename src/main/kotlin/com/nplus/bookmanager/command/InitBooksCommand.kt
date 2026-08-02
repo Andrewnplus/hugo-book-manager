@@ -17,6 +17,7 @@ import com.nplus.bookmanager.service.AiTaskService
 import com.nplus.bookmanager.service.BookInputService
 import com.nplus.bookmanager.service.BookRepoService
 import com.nplus.bookmanager.service.GitHubCliService
+import com.nplus.bookmanager.service.GitHubClient
 import com.nplus.bookmanager.service.RepoIndexService
 import com.nplus.bookmanager.util.CliFormatter
 import com.nplus.bookmanager.util.UserInput
@@ -37,7 +38,7 @@ import java.io.File
 class InitBooksCommand(
     private val bookInputService: BookInputService = BookInputService(),
     private val aiTaskService: AiTaskService = AiTaskService(),
-    private val ghService: GitHubCliService = GitHubCliService(),
+    private val ghService: GitHubClient = GitHubCliService(),
     private val bookRepoService: BookRepoService = BookRepoService(ghService = ghService),
     private val repoIndexService: RepoIndexService = RepoIndexService(),
 ) : CliktCommand(name = "init-books") {

@@ -48,6 +48,11 @@ class BookRepoServiceTest {
         var homepageUrl: String? = null
         var topics: List<String> = emptyList()
 
+        override fun checkPrerequisites(): Boolean {
+            calls += "checkPrerequisites"
+            return true
+        }
+
         override fun getUsername(): String? {
             calls += "getUsername"
             return username

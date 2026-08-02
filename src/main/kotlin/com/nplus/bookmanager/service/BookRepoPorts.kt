@@ -10,6 +10,8 @@ import java.io.File
  * The collaborators [BookRepoService] talks to, narrowed to just the calls it
  * makes.
  *
+ * (`GitHubClient` is also what InitBooksCommand drives the flow through.)
+ *
  * BookRepoService already took its collaborators through the constructor, but
  * the concrete services are final classes, so no test could ever supply a
  * stand-in — the seam looked real and was not. Each port below is the slice of
@@ -18,6 +20,9 @@ import java.io.File
  * directly.
  */
 interface GitHubClient {
+    /** `gh` present and authenticated. The gate every write-side call sits behind. */
+    fun checkPrerequisites(): Boolean
+
     fun getUsername(): String?
 
     fun repoExists(
