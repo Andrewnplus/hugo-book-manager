@@ -4,7 +4,9 @@ import com.nplus.bookmanager.model.BookInput
 import com.nplus.bookmanager.model.DocsStructure
 import com.nplus.bookmanager.model.GeneratedMetadata
 import org.junit.jupiter.api.io.TempDir
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.PrintStream
 import kotlin.test.Test
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
@@ -24,10 +26,24 @@ class BookRepoServiceTest {
     /** Records the call order across every port so the flow can be asserted as a sequence. */
     private val calls = mutableListOf<String>()
 
+    /** The configuration report only reaches the user as console output. */
+    private fun capturingStdout(block: () -> Unit): String {
+        val buffer = ByteArrayOutputStream()
+        val original = System.out
+        System.setOut(PrintStream(buffer))
+        try {
+            block()
+        } finally {
+            System.setOut(original)
+        }
+        return buffer.toString()
+    }
+
     private inner class FakeGitHub(
         private val username: String? = "tester",
         private val exists: Boolean = false,
         private val cloneSucceeds: Boolean = true,
+        private val topicsApplied: Int? = null,
     ) : GitHubClient {
         var homepageUrl: String? = null
         var topics: List<String> = emptyList()
@@ -71,10 +87,16 @@ class BookRepoServiceTest {
             repoName: String,
             homepageUrl: String,
             topics: List<String>,
-        ) {
+        ): ConfigureResult {
             calls += "configureRepository"
             this.homepageUrl = homepageUrl
             this.topics = topics
+            return ConfigureResult(
+                homepageSet = true,
+                topicsSet = topicsApplied ?: topics.size,
+                topicsRequested = topics.size,
+                pagesEnabled = true,
+            )
         }
     }
 
@@ -257,6 +279,22 @@ class BookRepoServiceTest {
         assertEquals(null, result.repoDir)
         // Nothing was written into a directory that does not exist.
         assertFalse(calls.contains("updateTemplateFiles"))
+    }
+
+    @Test
+    fun `says so when only some topics were applied instead of reporting success`() {
+        // Topics decide which portal category the book files under, so a
+        // partial apply that prints "configured" hides the book, not a detail.
+        val gh = FakeGitHub(topicsApplied = 1)
+
+        val output =
+            capturingStdout {
+                service(gh, username = "nplus-father").createBookRepository(metadata, bookInput(), structure)
+            }
+
+        assertContains(output, "only partly configured")
+        assertContains(output, "only 1 of 3 applied")
+        assertFalse(output.contains("Repository configured"))
     }
 
     @Test

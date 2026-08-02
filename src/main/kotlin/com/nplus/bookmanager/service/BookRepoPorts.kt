@@ -44,7 +44,24 @@ interface GitHubClient {
         repoName: String,
         homepageUrl: String,
         topics: List<String>,
-    )
+    ): ConfigureResult
+}
+
+/**
+ * What post-creation configuration actually managed to apply.
+ *
+ * Returned rather than discarded because topics are how the portal files a
+ * book: `addTopics` already counted its successes, but the count went nowhere,
+ * so a repo that got 2 of its 6 topics still printed "configured" and then
+ * quietly failed to appear under its category.
+ */
+data class ConfigureResult(
+    val homepageSet: Boolean,
+    val topicsSet: Int,
+    val topicsRequested: Int,
+    val pagesEnabled: Boolean,
+) {
+    val allSucceeded: Boolean get() = homepageSet && topicsSet == topicsRequested && pagesEnabled
 }
 
 interface TemplateWriter {

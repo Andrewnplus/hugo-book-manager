@@ -116,10 +116,28 @@ class BookRepoService(
 
         // Configure repository
         val homepageUrl = "${config.homepageBaseUrl}/${metadata.repoName}/"
-        ghService.configureRepository(username, metadata.repoName, homepageUrl, metadata.topics)
-        println("  Repository configured (homepage, topics)")
+        reportConfiguration(ghService.configureRepository(username, metadata.repoName, homepageUrl, metadata.topics))
 
         return true
+    }
+
+    /**
+     * Name what did not apply. Configuration failures are not fatal — the repo
+     * exists and the settings can be re-applied — but a missing topic decides
+     * whether the book shows up in the portal at all, so it must not pass for
+     * success.
+     */
+    private fun reportConfiguration(result: ConfigureResult) {
+        if (result.allSucceeded) {
+            println("  Repository configured (homepage, topics, pages)")
+            return
+        }
+        println("  Warning: repository only partly configured")
+        if (!result.homepageSet) println("    - homepage not set")
+        if (result.topicsSet < result.topicsRequested) {
+            println("    - topics: only ${result.topicsSet} of ${result.topicsRequested} applied")
+        }
+        if (!result.pagesEnabled) println("    - GitHub Pages not enabled")
     }
 
     private fun cloneRepository(

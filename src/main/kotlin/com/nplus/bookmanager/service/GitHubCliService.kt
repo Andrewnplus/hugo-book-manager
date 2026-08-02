@@ -200,9 +200,11 @@ class GitHubCliService : GitHubClient {
         repoName: String,
         homepageUrl: String,
         topics: List<String>,
-    ) {
-        setHomepage(username, repoName, homepageUrl)
-        addTopics(username, repoName, topics)
-        enableGitHubPages(username, repoName)
-    }
+    ): ConfigureResult =
+        ConfigureResult(
+            homepageSet = setHomepage(username, repoName, homepageUrl),
+            topicsSet = addTopics(username, repoName, topics),
+            topicsRequested = topics.size,
+            pagesEnabled = enableGitHubPages(username, repoName),
+        )
 }
