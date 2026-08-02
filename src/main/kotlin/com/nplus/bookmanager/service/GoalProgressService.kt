@@ -325,15 +325,30 @@ class GoalProgressService(
             .sortedBy { it.path }
             .toList()
 
-    /** Parse the YAML frontmatter block between the leading `---` fences. */
+    /**
+     * Parse the YAML frontmatter block between the leading `---` fences.
+     *
+     * A file whose frontmatter is skipped still counts toward `total` but can
+     * never count toward `done`, so every path out of here that returns
+     * nothing has to say so — a silent skip shows up as a progress regression
+     * with nothing pointing at the file that caused it. A BOM or a stray
+     * leading newline is not a broken file, so those are stripped rather than
+     * reported.
+     */
     private fun frontmatter(
         file: File,
         goalId: String,
     ): Map<String, Any> {
-        val text = file.readText()
-        if (!text.startsWith("---")) return emptyMap()
+        val text = file.readText().removePrefix("﻿").trimStart('\n', '\r')
+        if (!text.startsWith("---")) {
+            println("⚠ $goalId: no frontmatter fence in ${file.path} — treated as empty")
+            return emptyMap()
+        }
         val end = text.indexOf("\n---", startIndex = 3)
-        if (end < 0) return emptyMap()
+        if (end < 0) {
+            println("⚠ $goalId: unterminated frontmatter in ${file.path} — treated as empty")
+            return emptyMap()
+        }
         return try {
             @Suppress("UNCHECKED_CAST")
             (yaml.load(text.substring(3, end)) as? Map<String, Any>) ?: emptyMap()

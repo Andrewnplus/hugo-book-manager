@@ -7,7 +7,9 @@ import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import org.junit.jupiter.api.io.TempDir
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.PrintStream
 import java.time.LocalDate
 import kotlin.test.Test
 import kotlin.test.assertContains
@@ -44,6 +46,19 @@ class GoalProgressServiceTest {
     }
 
     private fun daysAgo(n: Long) = LocalDate.now().minusDays(n).toString()
+
+    /** Warnings are the only signal a skipped file gives, so tests assert on them. */
+    private fun capturingStdout(block: () -> Unit): String {
+        val buffer = ByteArrayOutputStream()
+        val original = System.out
+        System.setOut(PrintStream(buffer))
+        try {
+            block()
+        } finally {
+            System.setOut(original)
+        }
+        return buffer.toString()
+    }
 
     // ==================== loadGoals() ====================
 
@@ -154,6 +169,55 @@ class GoalProgressServiceTest {
         // _index.md excluded; broken.md counted as not-done rather than crashing.
         assertEquals(1, p.done)
         assertEquals(2, p.total)
+    }
+
+    /**
+     * A BOM or a leading blank line used to make the fence check fail, so the
+     * file counted toward total but never toward done — the same shape of
+     * silent progress loss as the unquoted-date bug, with no warning at all.
+     */
+    @Test
+    fun `scan reads frontmatter behind a BOM or a leading blank line`() {
+        val base = "writing-note/src/content/concepts"
+        File(notesDir, base).mkdirs()
+        File(notesDir, "$base/bom.md").writeText("﻿---\nstatus: reviewed\n---\n\nbody\n")
+        File(notesDir, "$base/blank-first.md").writeText("\n---\nstatus: reviewed\n---\n\nbody\n")
+
+        val goal =
+            GoalDefinition(
+                "writing",
+                GoalDefinition.METRIC_NOTE_STATUS,
+                GoalScope(station = "writing-note", statuses = listOf("reviewed")),
+            )
+        val p = service().scan(listOf(goal)).first.single()
+
+        assertEquals(2, p.done)
+        assertEquals(2, p.total)
+    }
+
+    @Test
+    fun `scan warns instead of silently skipping a file whose frontmatter never closes`() {
+        val base = "writing-note/src/content/concepts"
+        File(notesDir, base).mkdirs()
+        File(notesDir, "$base/no-close.md").writeText("---\nstatus: reviewed\n\nbody\n")
+        File(notesDir, "$base/no-fence.md").writeText("just a body, no frontmatter at all\n")
+
+        val goal =
+            GoalDefinition(
+                "writing",
+                GoalDefinition.METRIC_NOTE_STATUS,
+                GoalScope(station = "writing-note", statuses = listOf("reviewed")),
+            )
+        var p: com.nplus.bookmanager.model.GoalProgress? = null
+        val warnings = capturingStdout { p = service().scan(listOf(goal)).first.single() }
+
+        // Still counted as not-done, but no longer invisible.
+        assertEquals(0, p!!.done)
+        assertEquals(2, p!!.total)
+        assertContains(warnings, "unterminated frontmatter")
+        assertContains(warnings, "no-close.md")
+        assertContains(warnings, "no frontmatter fence")
+        assertContains(warnings, "no-fence.md")
     }
 
     // ==================== leetcode-count ====================
