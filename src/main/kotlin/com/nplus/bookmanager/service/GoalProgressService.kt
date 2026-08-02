@@ -22,10 +22,11 @@ import java.time.format.DateTimeFormatter
  * `src/data/progress.json` in the portal repo; it must never be hand-edited
  * (the portal dashboard and nplus-backend both consume it read-only).
  *
- * M1 scope: `note-status-count` (Astro note stations, notes-core schema) and
- * `leetcode-count` (leetcode-note problems). `repo-completion` lands in M2
- * once book repos carry read/readAt frontmatter; `article-count` and
- * `podcast-episodes` are computed elsewhere (portal build) and skipped here.
+ * Scans three metrics: `note-status-count` (Astro note stations, notes-core
+ * schema), `leetcode-count` (leetcode-note problems) and `repo-completion`
+ * (books-done chapters carrying read/readAt frontmatter — needs BOOKS_DIR).
+ * `article-count` and `podcast-episodes` are computed at portal build time
+ * and are deliberately skipped here.
  */
 class GoalProgressService(
     private val portalDir: File,
@@ -73,19 +74,25 @@ class GoalProgressService(
                     if (station == null) {
                         println("⚠ ${goal.id}: note-status-count without scope.station — skipped")
                     } else {
-                        progress += scanNoteStation(goal, station, recent, since)
+                        val result = scanNoteStation(goal, station, since)
+                        progress += result.progress
+                        recent += result.recent
                     }
                 }
 
                 GoalDefinition.METRIC_LEETCODE -> {
-                    progress += scanLeetcode(goal, recent, since)
+                    val result = scanLeetcode(goal, since)
+                    progress += result.progress
+                    recent += result.recent
                 }
 
                 GoalDefinition.METRIC_REPO_COMPLETION -> {
                     if (booksDir == null || !booksDir.isDirectory) {
                         println("⚠ ${goal.id}: BOOKS_DIR not configured — skipped")
                     } else {
-                        progress += scanRepoCompletion(goal, booksDir, recent, since)
+                        val result = scanRepoCompletion(goal, booksDir, since)
+                        progress += result.progress
+                        recent += result.recent
                     }
                 }
 
@@ -108,13 +115,13 @@ class GoalProgressService(
     private fun scanNoteStation(
         goal: GoalDefinition,
         station: String,
-        recent: MutableList<RecentActivity>,
         since: LocalDate,
-    ): GoalProgress {
+    ): ScanResult {
+        val recent = mutableListOf<RecentActivity>()
         val contentDir = File(notesDir, "$station/src/content")
         require(contentDir.isDirectory) { "${goal.id}: station content dir not found: ${contentDir.path}" }
 
-        val byCategory = linkedMapOf<CatKey, Pair<Int, Int>>()
+        val byCategory = linkedMapOf<CatKey, Tally>()
         for (sub in listOf("concepts", "problems")) {
             val base = File(contentDir, sub)
             if (!base.isDirectory) continue
@@ -126,9 +133,7 @@ class GoalProgressService(
                         .path
                         .ifEmpty { sub }
                 val done = fm["status"]?.toString() in goal.scope.statuses
-                val key = CatKey(category, section = sub)
-                val (d, t) = byCategory.getOrDefault(key, 0 to 0)
-                byCategory[key] = (d + if (done) 1 else 0) to (t + 1)
+                byCategory.tally(CatKey(category, section = sub), done)
 
                 val lastReviewed = parseDate(fm["lastReviewed"], file, goal.id)
                 if (lastReviewed != null && !lastReviewed.isBefore(since)) {
@@ -141,7 +146,7 @@ class GoalProgressService(
                 }
             }
         }
-        return toProgress(goal.id, byCategory, unit = "notes")
+        return ScanResult(toProgress(goal.id, byCategory, unit = "notes"), recent)
     }
 
     /**
@@ -150,22 +155,20 @@ class GoalProgressService(
      */
     private fun scanLeetcode(
         goal: GoalDefinition,
-        recent: MutableList<RecentActivity>,
         since: LocalDate,
-    ): GoalProgress {
+    ): ScanResult {
+        val recent = mutableListOf<RecentActivity>()
         val base = File(notesDir, "leetcode-note/src/content/problems")
         require(base.isDirectory) { "${goal.id}: leetcode problems dir not found: ${base.path}" }
 
-        val byCategory = linkedMapOf<CatKey, Pair<Int, Int>>()
+        val byCategory = linkedMapOf<CatKey, Tally>()
         for (file in contentFiles(base)) {
             val fm = frontmatter(file, goal.id)
             val category = fm["category"]?.toString() ?: file.parentFile.name
             if (goal.scope.categories.isNotEmpty() && category !in goal.scope.categories) continue
 
             val done = fm["status"]?.toString() in goal.scope.statuses
-            val key = CatKey(category)
-            val (d, t) = byCategory.getOrDefault(key, 0 to 0)
-            byCategory[key] = (d + if (done) 1 else 0) to (t + 1)
+            byCategory.tally(CatKey(category), done)
 
             for (raw in stringList(fm["reviewedDates"])) {
                 val date = parseDate(raw, file, goal.id) ?: continue
@@ -179,7 +182,7 @@ class GoalProgressService(
                 }
             }
         }
-        return toProgress(goal.id, byCategory, unit = "problems")
+        return ScanResult(toProgress(goal.id, byCategory, unit = "problems"), recent)
     }
 
     /**
@@ -189,11 +192,11 @@ class GoalProgressService(
     private fun scanRepoCompletion(
         goal: GoalDefinition,
         booksDir: File,
-        recent: MutableList<RecentActivity>,
         since: LocalDate,
-    ): GoalProgress {
+    ): ScanResult {
+        val recent = mutableListOf<RecentActivity>()
         val chapters = BookChapterService(booksDir)
-        val byChapter = linkedMapOf<CatKey, Pair<Int, Int>>()
+        val byChapter = linkedMapOf<CatKey, Tally>()
         for (repoName in goal.scope.repos) {
             val repoDir = chapters.findRepoDir(repoName)
             if (repoDir == null) {
@@ -207,7 +210,9 @@ class GoalProgressService(
                 val fm = frontmatter(file, goal.id)
                 val key = CatKey(prefix + chapters.chapterKey(repoDir, file))
                 val read = fm["read"] == true || fm["read"]?.toString() == "true"
-                byChapter[key] = (if (read) 1 else 0) to 1
+                // Assigned, not tallied: every chapter is its own key, so a
+                // second visit would be a duplicate rather than a second unit.
+                byChapter[key] = Tally(done = if (read) 1 else 0, total = 1)
 
                 val readAt = parseDate(fm["readAt"], file, goal.id)
                 if (read && readAt != null && !readAt.isBefore(since)) {
@@ -215,7 +220,7 @@ class GoalProgressService(
                 }
             }
         }
-        return toProgress(goal.id, byChapter, unit = "chapters")
+        return ScanResult(toProgress(goal.id, byChapter, unit = "chapters"), recent)
     }
 
     /** Write the derived artifact with stable ordering for clean git diffs. */
@@ -230,73 +235,86 @@ class GoalProgressService(
                     "DERIVED — generated by hugo-book-manager `./gradlew refreshGoalProgress`. Do not edit by hand.",
                 )
                 put("generatedAt", OffsetDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME))
-                put(
-                    "goals",
-                    buildJsonObject {
-                        for (p in progress) {
-                            put(
-                                p.goalId,
-                                buildJsonObject {
-                                    put("done", p.done)
-                                    put("total", p.total)
-                                    put("unit", p.unit)
-                                    put(
-                                        "breakdown",
-                                        buildJsonArray {
-                                            for (b in p.breakdown.sortedBy { it.key }) {
-                                                add(
-                                                    buildJsonObject {
-                                                        put("key", b.key)
-                                                        put("done", b.done)
-                                                        put("total", b.total)
-                                                        b.section?.let { put("section", it) }
-                                                    },
-                                                )
-                                            }
-                                        },
-                                    )
-                                },
-                            )
-                        }
-                    },
-                )
-                put(
-                    "recent",
-                    buildJsonArray {
-                        for (r in recent.take(MAX_RECENT)) {
-                            add(
-                                buildJsonObject {
-                                    put("date", r.date)
-                                    put("goalId", r.goalId)
-                                    put("item", r.item)
-                                },
-                            )
-                        }
-                    },
-                )
+                put("goals", buildJsonObject { for (p in progress) put(p.goalId, goalJson(p)) })
+                put("recent", buildJsonArray { for (r in recent.take(MAX_RECENT)) add(recentJson(r)) })
             }
         progressFile.writeText(prettyJson.encodeToString(JsonObject.serializer(), root) + "\n")
     }
 
+    private fun goalJson(progress: GoalProgress): JsonObject =
+        buildJsonObject {
+            put("done", progress.done)
+            put("total", progress.total)
+            put("unit", progress.unit)
+            put(
+                "breakdown",
+                buildJsonArray { for (b in progress.breakdown.sortedBy { it.key }) add(breakdownJson(b)) },
+            )
+        }
+
+    private fun breakdownJson(entry: GoalProgress.BreakdownEntry): JsonObject =
+        buildJsonObject {
+            put("key", entry.key)
+            put("done", entry.done)
+            put("total", entry.total)
+            entry.section?.let { put("section", it) }
+        }
+
+    private fun recentJson(activity: RecentActivity): JsonObject =
+        buildJsonObject {
+            put("date", activity.date)
+            put("goalId", activity.goalId)
+            put("item", activity.item)
+        }
+
+    /**
+     * What one metric scan produced. Returned rather than appended to a list
+     * the caller owns: the recent-activity side output used to be invisible at
+     * the call site, so a new metric could silently forget to emit it.
+     */
+    private data class ScanResult(
+        val progress: GoalProgress,
+        val recent: List<RecentActivity>,
+    )
+
     /** Breakdown grouping key: the display key plus the station URL segment it lives under. */
     private data class CatKey(
-        val key: String,
+        val displayKey: String,
         val section: String? = null,
     )
 
+    /**
+     * Running done/total for one breakdown row. Named rather than a
+     * `Pair<Int, Int>`, because the two are interchangeable at the type level
+     * and the whole portal dashboard reads whichever way round they end up.
+     */
+    private data class Tally(
+        val done: Int,
+        val total: Int,
+    )
+
+    /** Fold one scanned file into the running tally for its category. */
+    private fun MutableMap<CatKey, Tally>.tally(
+        key: CatKey,
+        done: Boolean,
+    ) {
+        val current = getOrDefault(key, Tally(0, 0))
+        put(key, Tally(current.done + if (done) 1 else 0, current.total + 1))
+    }
+
     private fun toProgress(
         goalId: String,
-        byCategory: Map<CatKey, Pair<Int, Int>>,
+        byCategory: Map<CatKey, Tally>,
         unit: String,
     ): GoalProgress {
-        val done = byCategory.values.sumOf { it.first }
-        val total = byCategory.values.sumOf { it.second }
+        val done = byCategory.values.sumOf { it.done }
+        val total = byCategory.values.sumOf { it.total }
         return GoalProgress(
             goalId = goalId,
             done = done,
             total = total,
             unit = unit,
-            breakdown = byCategory.map { (k, v) -> GoalProgress.BreakdownEntry(k.key, v.first, v.second, k.section) },
+            breakdown = byCategory.map { (k, v) -> GoalProgress.BreakdownEntry(k.displayKey, v.done, v.total, k.section) },
         )
     }
 

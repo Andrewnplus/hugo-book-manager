@@ -2,6 +2,10 @@ package com.nplus.bookmanager.service
 
 import com.nplus.bookmanager.model.GoalDefinition
 import com.nplus.bookmanager.model.GoalScope
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
+import kotlinx.serialization.json.jsonPrimitive
 import org.junit.jupiter.api.io.TempDir
 import java.io.File
 import java.time.LocalDate
@@ -259,4 +263,56 @@ class GoalProgressServiceTest {
         assertTrue(json.indexOf("\"alpha\"") < json.indexOf("\"zebra\""))
         assertTrue(json.endsWith("\n"))
     }
+
+    @Test
+    fun `save nests done total unit and breakdown under each goal id`() {
+        // progress.json is a contract read by the portal and nplus-backend, so
+        // the shape matters, not just which strings appear. Asserting on text
+        // alone lets a field land at the wrong nesting level unnoticed.
+        writeNote("writing-note/src/content/concepts/zebra/z.md", "status: reviewed\nlastReviewed: ${daysAgo(1)}")
+        writeNote("writing-note/src/content/concepts/alpha/a.md", "status: draft")
+        File(portalDir, "src/data").mkdirs()
+
+        val goal =
+            GoalDefinition(
+                "writing",
+                GoalDefinition.METRIC_NOTE_STATUS,
+                GoalScope(station = "writing-note", statuses = listOf("reviewed")),
+            )
+        val service = service()
+        val (progress, recent) = service.scan(listOf(goal))
+        service.save(progress, recent)
+
+        val root = Json.parseToJsonElement(service.progressFile.readText()).jsonObject
+        assertEquals(setOf("\$comment", "generatedAt", "goals", "recent"), root.keys)
+
+        val writing =
+            root
+                .getValue("goals")
+                .jsonObject
+                .getValue("writing")
+                .jsonObject
+        assertEquals(1, writing.getValue("done").jsonPrimitive.int())
+        assertEquals(2, writing.getValue("total").jsonPrimitive.int())
+        assertEquals("notes", writing.getValue("unit").jsonPrimitive.content)
+
+        val breakdown = writing.getValue("breakdown").jsonArray
+        assertEquals(2, breakdown.size)
+        val alpha = breakdown[0].jsonObject
+        assertEquals("alpha", alpha.getValue("key").jsonPrimitive.content)
+        assertEquals(0, alpha.getValue("done").jsonPrimitive.int())
+        assertEquals(1, alpha.getValue("total").jsonPrimitive.int())
+        assertEquals("concepts", alpha.getValue("section").jsonPrimitive.content)
+
+        val recentEntry =
+            root
+                .getValue("recent")
+                .jsonArray
+                .single()
+                .jsonObject
+        assertEquals(setOf("date", "goalId", "item"), recentEntry.keys)
+        assertEquals("writing", recentEntry.getValue("goalId").jsonPrimitive.content)
+    }
+
+    private fun kotlinx.serialization.json.JsonPrimitive.int() = content.toInt()
 }
