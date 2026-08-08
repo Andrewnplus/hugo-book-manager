@@ -29,9 +29,9 @@ class DocsStructureService : DocsStructureWriter {
             docsDir.mkdirs()
         }
 
-        // Remove existing placeholder folders (keep only _index.md in docs root)
+        // Wipe the docs root so the structure is regenerated from scratch
         if (clearExisting) {
-            docsDir.listFiles()?.filter { it.isDirectory }?.forEach { it.deleteRecursively() }
+            docsDir.listFiles()?.forEach { it.deleteRecursively() }
         }
 
         var createdCount = 0

@@ -67,7 +67,7 @@ class DocsStructureServiceTest {
     }
 
     @Test
-    fun `clearExisting removes template placeholder folders but keeps the docs root index`() {
+    fun `clearExisting wipes the docs root, stray index file included`() {
         val docs = docsDir()
         File(docs, "99-placeholder").mkdirs()
         File(docs, "_index.md").writeText("root")
@@ -75,7 +75,7 @@ class DocsStructureServiceTest {
         service.createDocsStructure(tempDir, DocsStructure(listOf(DocsStructure.Section("01-intro", "導論", 1))))
 
         assertFalse(File(docs, "99-placeholder").exists())
-        assertEquals("root", File(docs, "_index.md").readText())
+        assertFalse(File(docs, "_index.md").exists(), "the docs root must not keep a section index")
         assertTrue(File(docs, "01-intro").exists())
     }
 
