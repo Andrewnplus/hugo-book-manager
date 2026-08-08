@@ -69,12 +69,17 @@ top-wisdom:
   description: "跨域大局觀：哲學、歷史、科學、學習"
   subs:
     sub-philosophy:
-      [leaf-stoicism, leaf-eastern, leaf-existentialism, leaf-ethics, leaf-political-philosophy]
+      # philosophy-of-science 於 2026-08-07 自 leaf-ethics 拆出（leaf-ethics 實際是哲學總匯）。
+      # 目前只有 Kuhn 一本，刻意留作種子：Popper / Feyerabend / Hacking 一類進來就歸這裡。
+      [leaf-stoicism, leaf-eastern, leaf-existentialism, leaf-ethics, leaf-political-philosophy,
+       leaf-philosophy-of-science]
     sub-history:
       [leaf-modern, leaf-ancient, leaf-civilization, leaf-military, leaf-cultural]
     sub-science:
+      # statistics 於 2026-08-07 新增：Taleb 的 Technical Incerto 這類機率／統計專論，
+      # 既非 cognitive 也非 physics；leaf-ethics（其餘 Incerto 的歸處）對數學專書明顯不對。
       [leaf-physics, leaf-biology, leaf-cognitive, leaf-cosmology, leaf-evolution,
-       leaf-pharmacology]
+       leaf-pharmacology, leaf-statistics]
     # education 原掛 top-professional；實際用法 23:4 與語意（學習/教育=跨域智慧）都指向
     # wisdom，2026-07-31 正典化為 top-wisdom。
     sub-education:
