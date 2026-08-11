@@ -3,6 +3,7 @@ package com.nplus.bookmanager.service
 import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.model.BookInput
 import com.nplus.bookmanager.model.GeneratedMetadata
+import com.nplus.bookmanager.util.escapeQuoted
 import java.io.File
 
 /**
@@ -50,11 +51,12 @@ class TemplateService : TemplateWriter {
         // Update site/go.mod
         updateGoMod(repoDir, metadata.repoName)
 
-        // Update site/hugo.toml
+        // Update site/hugo.toml. The title lands inside a TOML basic string, so
+        // it needs escaping; the slug only appears in baseURL and is kebab-case.
         allSuccess = updateFile(
             File(repoDir, HUGO_TOML_PATH),
             mapOf(
-                AppConfig.TEMPLATE_ZH_TITLE to metadata.chineseTitle,
+                AppConfig.TEMPLATE_ZH_TITLE to escapeQuoted(metadata.chineseTitle),
                 AppConfig.TEMPLATE_SLUG to metadata.repoName,
             ),
         ) &&
@@ -77,14 +79,24 @@ class TemplateService : TemplateWriter {
             return
         }
 
+        // Every target here is a double-quoted value — YAML frontmatter on the
+        // first line, Hugo shortcode parameters below it — so each replacement
+        // is escaped. Titles like `Think "Win-Win"` otherwise break the parse.
         var content = indexFile.readText()
         content =
             content
-                .replace("title: \"${AppConfig.TEMPLATE_ZH_TITLE}\"", "title: \"$chineseTitle\"")
-                .replace("title=\"${AppConfig.TEMPLATE_ZH_TITLE}\"", "title=\"$chineseTitle\"")
-                .replace("author=\"${AppConfig.TEMPLATE_AUTHOR_PLACEHOLDER}\"", "author=\"${bookInput.author}\"")
-                .replace("date=\"${AppConfig.TEMPLATE_DATE_PLACEHOLDER}\"", "date=\"${bookInput.publicationDate}\"")
-                .replace("link=\"${AppConfig.TEMPLATE_PURCHASE_URL_PLACEHOLDER}\"", "link=\"${bookInput.purchaseUrl}\"")
+                .replace("title: \"${AppConfig.TEMPLATE_ZH_TITLE}\"", "title: \"${escapeQuoted(chineseTitle)}\"")
+                .replace("title=\"${AppConfig.TEMPLATE_ZH_TITLE}\"", "title=\"${escapeQuoted(chineseTitle)}\"")
+                .replace(
+                    "author=\"${AppConfig.TEMPLATE_AUTHOR_PLACEHOLDER}\"",
+                    "author=\"${escapeQuoted(bookInput.author)}\"",
+                ).replace(
+                    "date=\"${AppConfig.TEMPLATE_DATE_PLACEHOLDER}\"",
+                    "date=\"${escapeQuoted(bookInput.publicationDate)}\"",
+                ).replace(
+                    "link=\"${AppConfig.TEMPLATE_PURCHASE_URL_PLACEHOLDER}\"",
+                    "link=\"${escapeQuoted(bookInput.purchaseUrl)}\"",
+                )
 
         indexFile.writeText(content)
         println("  Updated: _index.md")

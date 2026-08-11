@@ -1,6 +1,7 @@
 package com.nplus.bookmanager.service
 
 import com.nplus.bookmanager.model.DocsStructure
+import com.nplus.bookmanager.util.escapeQuoted
 import java.io.File
 
 /**
@@ -73,7 +74,7 @@ class DocsStructureService : DocsStructureWriter {
         indexFile.writeText(
             """
             |---
-            |title: "$title"
+            |title: "${escapeQuoted(title)}"
             |weight: $weight
             |bookCollapseSection: true
             |---
@@ -98,7 +99,7 @@ class DocsStructureService : DocsStructureWriter {
         indexFile.writeText(
             """
             |---
-            |title: "$title"
+            |title: "${escapeQuoted(title)}"
             |weight: $weight
             |---
             |
