@@ -61,6 +61,7 @@ After Claude Code completes, run this command again to continue.
 5. 將結果寫入 `ai-tasks/output/`（或直接寫入指定路徑）
 
 > [!TIP]
+>
 > Claude Code 會自動識別任務類型並載入對應的 prompt。你不需要手動指定。
 
 ## Phase 2: CLI 繼續執行
@@ -88,6 +89,7 @@ hugo-book-manager/
 ```
 
 > [!NOTE]
+>
 > `ai-tasks/` 目錄已加入 `.gitignore`，任務檔案不會被提交到版本控制。
 
 ## 錯誤處理

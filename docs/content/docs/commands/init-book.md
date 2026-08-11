@@ -10,6 +10,7 @@ weight: 3
 最後建立 GitHub repo 並 push 初始內容。
 
 > [!NOTE]
+>
 > 此指令使用 **兩階段 AI 互動工作流程**，需要 Claude Code 處理任務。
 > 詳見 [AI 工作流程]({{< relref "/docs/ai-workflow" >}})。
 
