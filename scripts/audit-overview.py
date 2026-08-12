@@ -59,8 +59,18 @@ YEAR_RE = re.compile(
     r"|\d{1,2}\s*世紀"   # 9 世紀 / 19 世紀
 )
 
+# 「點名可查證的東西」。舊版只認拉丁字母（英文原名、斜體英文書名），結果全中文
+# 的書必定不合格——《29 張當票 2》這種台灣行業見聞錄根本沒有英文專有名詞可寫，
+# 逼人硬塞只會為了過關而扭曲內容。這條的本意是「有沒有點名具體、可查證的對象」，
+# 而中文書名《…》與人名同樣可查證，所以一併認列。
+REF_RE = re.compile(
+    r"（[A-Z][A-Za-z .\-']{3,}）"   # 中文名後接英文原名：柏拉圖（Plato）
+    r"|_[A-Za-z][^_]{4,}_"          # 斜體英文書名：_The Republic_
+    r"|《[^》]{2,}》"                # 中文書名：《做工的人》
+)
+
 MIN_YEARS = 2
-MIN_LATIN = 3
+MIN_REFS = 3
 MIN_LIMIT_SENTENCES = 3
 
 
@@ -130,8 +140,9 @@ def check(repo):
     years = YEAR_RE.findall(txt)
     checks.append(("引用年份", len(years) >= MIN_YEARS, "%d 處（需 ≥%d）" % (len(years), MIN_YEARS)))
 
-    latin = re.findall(r"（[A-Z][A-Za-z .\-']{3,}）|_[A-Za-z][^_]{4,}_", txt)
-    checks.append(("英文原名", len(latin) >= MIN_LATIN, "%d 處（需 ≥%d）" % (len(latin), MIN_LATIN)))
+    refs = REF_RE.findall(txt)
+    checks.append(("點名可查證的作品／人名", len(refs) >= MIN_REFS,
+                   "%d 處（需 ≥%d）" % (len(refs), MIN_REFS)))
 
     hits = [f for f in FILLER if f in txt]
     checks.append(("無空洞讚美", not hits, "、".join(hits) if hits else "無"))
@@ -148,7 +159,7 @@ def check(repo):
         legacy=legacy,
         total=zh_len(txt),
         sections={n: zh_len(secs.get(n, "")) for n in SECTIONS},
-        years=len(years), latin=len(latin), filler=len(hits),
+        years=len(years), latin=len(refs), filler=len(hits),
     )
     return checks, meta
 
