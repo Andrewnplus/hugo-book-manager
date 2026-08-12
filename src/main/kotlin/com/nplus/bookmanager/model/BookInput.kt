@@ -24,6 +24,15 @@ data class BookInput(
     val coverUrl: String,
     val purchaseUrl: String,
     val tableOfContents: String,
+    /**
+     * ISBN-10 of the edition the other fields describe, read off the book's own
+     * copyright page. Optional, and deliberately not written into the book repo:
+     * it is kept in the queue as the provenance anchor. Resolving metadata from a
+     * title-and-author search silently picks the wrong edition — a hardback date
+     * against a paperback link — whereas the ISBN identifies exactly one printing,
+     * so it is what any later re-verification has to key on.
+     */
+    val isbn: String = "",
 )
 
 /**
@@ -39,6 +48,7 @@ data class QueuedBook(
     val coverUrl: String,
     val purchaseUrl: String,
     val tableOfContents: String,
+    val isbn: String = "",
     val errorMessage: String? = null,
 ) {
     /**
@@ -53,6 +63,7 @@ data class QueuedBook(
             coverUrl = coverUrl,
             purchaseUrl = purchaseUrl,
             tableOfContents = tableOfContents,
+            isbn = isbn,
         )
 }
 

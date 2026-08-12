@@ -39,6 +39,7 @@ class BookInputService {
                         coverUrl = bookData["cover_url"]?.toString() ?: "",
                         purchaseUrl = bookData["purchase_url"]?.toString() ?: "",
                         tableOfContents = bookData["table_of_contents"]?.toString() ?: "",
+                        isbn = bookData["isbn"]?.toString() ?: "",
                         errorMessage = bookData["error_message"]?.toString(),
                     )
                 }

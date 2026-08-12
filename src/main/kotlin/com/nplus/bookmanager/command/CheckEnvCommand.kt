@@ -75,6 +75,16 @@ class CheckEnvCommand(
             println("   Will be created when needed")
         }
 
+        // 6. Check ImageMagick — optional, only shrinks the downloaded cover
+        print("6. ImageMagick (convert)... ")
+        val convertVersion = ProcessRunner.executeForOutput("convert --version")?.lines()?.firstOrNull()
+        if (convertVersion != null) {
+            println("OK ($convertVersion)")
+        } else {
+            println("NOT FOUND (optional)")
+            println("   Covers will be ~3x larger without it: apt install imagemagick")
+        }
+
         // Summary
         println()
         val message = if (allOk) "All checks passed! Ready to use." else "Some checks failed. Please fix the issues above."

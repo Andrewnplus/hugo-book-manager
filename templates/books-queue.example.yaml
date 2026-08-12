@@ -26,6 +26,10 @@ books:
     chinese_title: "範例書名"
     english_title: "Example Book Title"
     author: "Author Name"
+    # 版權頁上的 ISBN-10。填了它，下面三欄就由 /book-import-to-queue 從
+    # https://www.amazon.com/dp/<isbn> 抓，不必自己找；紙本書的 ISBN-10 即 ASIN。
+    # 留空則三欄要自己填，或維持 "TODO"。
+    isbn: "1234567890"
     publication_date: "January 1, 2025"
     cover_url: "https://example.com/cover.jpg"
     purchase_url: "https://www.amazon.com/example"
