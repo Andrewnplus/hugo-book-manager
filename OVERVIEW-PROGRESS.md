@@ -28,6 +28,7 @@
 | 引用年份 | 1419 | 88% |
 | 點名可查證的作品／人名 | 1055 | 65% |
 | 完整摘要 長度 | 535 | 33% |
+| 粗體都收得起來 | 50 | 3% |
 | 無空洞讚美 | 48 | 3% |
 
 ## 待改寫（依 slug 排序）
@@ -45,7 +46,7 @@
 | 7 | `craft/design/visual/judge-this` | 6 | 663 | 83k |
 | 8 | `craft/design/visual/laws-of-simplicity` | 7 | 1018 | 69k |
 | 9 | `craft/design/visual/non-designers-design-book` | 7 | 953 | 134k |
-| 10 | `craft/design/visual/non-designers-presentation` | 6 | 764 | 41k |
+| 10 | `craft/design/visual/non-designers-presentation` | 7 | 764 | 41k |
 | 11 | `craft/design/visual/only-sales-guide` | 6 | 842 | 107k |
 | 12 | `craft/design/visual/refactoring-ui` | 7 | 725 | 125k |
 | 13 | `craft/design/visual/say-it-with-charts` | 7 | 1640 | 126k |
@@ -59,7 +60,7 @@
 | 21 | `craft/engineering/agile/extreme-programming-explained` | 7 | 1309 | 258k |
 | 22 | `craft/engineering/agile/kanban` | 7 | 666 | 381k |
 | 23 | `craft/engineering/agile/kanban-in-action` | 7 | 371 | 309k |
-| 24 | `craft/engineering/agile/planning-extreme-programming` | 8 | 2317 | 174k |
+| 24 | `craft/engineering/agile/planning-extreme-programming` | 9 | 2317 | 174k |
 | 25 | `craft/engineering/agile/scrum-the-art-of-doing-twice-the-work-in-half-the-time` | 8 | 410 | 33k |
 | 26 | `craft/engineering/agile/sprint` | 7 | 819 | 63k |
 | 27 | `craft/engineering/agile/succeeding-with-agile` | 7 | 492 | 250k |
@@ -124,7 +125,7 @@
 | 86 | `craft/engineering/coding-practice/rules-of-programming` | 7 | 848 | 139k |
 | 87 | `craft/engineering/coding-practice/running-on-empty` | 6 | 1290 | 77k |
 | 88 | `craft/engineering/coding-practice/seriously-good-software` | 8 | 453 | 76k |
-| 89 | `craft/engineering/coding-practice/smalltalk-best-practice-patterns` | 8 | 2137 | 288k |
+| 89 | `craft/engineering/coding-practice/smalltalk-best-practice-patterns` | 9 | 2137 | 288k |
 | 90 | `craft/engineering/coding-practice/software-architect-12-disciplines` | 6 | 745 | 188k |
 | 91 | `craft/engineering/coding-practice/software-architect-elevator` | 6 | 926 | 340k |
 | 92 | `craft/engineering/coding-practice/software-engineering-at-google` | 7 | 427 | 632k |
@@ -254,7 +255,7 @@ docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完�
 ## 已完成
 
 - `craft/engineering/coding-practice/are-your-lights-on` — 2654 字
-- `craft/engineering/coding-practice/software-developers-career-guide` — 2632 字
+- `craft/engineering/coding-practice/software-developers-career-guide` — 2637 字
 - `craft/engineering/coding-practice/wujun-math-general-course` — 3433 字
 - `faith/theology/apologetics/shadowlands` — 3228 字
 - `faith/theology/biblical-studies/sherlock-who-3-new-light` — 2314 字
@@ -264,8 +265,8 @@ docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完�
 - `personal/mindset/self-awareness/scout-mindset` — 2833 字
 - `personal/relationships/dating/home-tonight` — 2588 字
 - `personal/relationships/dating/how-to-make-anyone-fall-in-love-with-you` — 2453 字
-- `professional/career/skill-building/so-good-they-cant-ignore-you` — 2778 字
-- `professional/communication/persuasion/mba-confidential` — 3196 字
+- `professional/career/skill-building/so-good-they-cant-ignore-you` — 2782 字
+- `professional/communication/persuasion/mba-confidential` — 3199 字
 - `professional/communication/public-speaking/slideology` — 2678 字
 - `professional/leadership/team-building/hbr-guide-to-leading-through-change` — 2592 字
 - `professional/leadership/vision/innovators-prescription` — 3668 字
@@ -273,9 +274,9 @@ docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完�
 - `wisdom/education/pedagogy/why-dont-students-like-school` — 2958 字
 - `wisdom/education/self-learning/online-teaching-technique` — 2477 字
 - `wisdom/philosophy/eastern/how-the-world-thinks` — 2529 字
-- `wisdom/philosophy/ethics/12-rules-for-life` — 2628 字
+- `wisdom/philosophy/ethics/12-rules-for-life` — 2637 字
 - `wisdom/philosophy/ethics/intuition-pumps` — 3021 字
 - `wisdom/philosophy/ethics/reading-as-a-wilderness` — 2414 字
-- `wisdom/science/pharmacology/applied-therapeutics` — 3425 字
-- `wisdom/science/pharmacology/basic-clinical-pharmacology` — 3422 字
-- `wisdom/science/pharmacology/pharmacotherapy-principles-and-practice` — 3599 字
+- `wisdom/science/pharmacology/applied-therapeutics` — 3426 字
+- `wisdom/science/pharmacology/basic-clinical-pharmacology` — 3426 字
+- `wisdom/science/pharmacology/pharmacotherapy-principles-and-practice` — 3600 字

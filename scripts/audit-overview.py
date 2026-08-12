@@ -19,6 +19,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 
 # 路徑相對於本腳本自己（scripts/ 在 hugo-book-manager 內），這樣 repo 被 clone
 # 到別處也不會壞；books-done 與 hugo-book-manager 是 books-management 下的兄弟目錄。
@@ -81,6 +82,28 @@ MIN_NOTES = 8000
 
 def zh_len(t):
     return len(re.sub(r"\s+", "", t))
+
+
+# CommonMark 的 right-flanking 規則：收尾的 ** 若「前面是標點、後面又不是空白或
+# 標點」，就不算合法的收尾符號，整段粗體會原封不動印出星號。中文特別容易踩到，
+# 因為 `**第一部〈基本原理〉**建立…` 的前面正好是 〉、後面正好是「建」。
+# 2026-08-13 實測：26 本已完成的概覽裡有 8 本中招、共 31 處，線上全是裸星號。
+# 兩種改法都可以：句號移到粗體外（`**…推進**。心`），或收尾後補一個全形冒號
+# （`**第一部〈基本原理〉**：建立`）。goldmark 的 CJK 選項救不了這個，試過了。
+_BOLD_RE = re.compile(r"\*\*([^*\n]{1,120}?)\*\*(.)")
+
+
+def _is_punct(ch):
+    return unicodedata.category(ch)[0] in "PS"
+
+
+def dead_bold(txt):
+    out = []
+    for m in _BOLD_RE.finditer(txt):
+        inner, nxt = m.group(1), m.group(2)
+        if inner and _is_punct(inner[-1]) and not nxt.isspace() and not _is_punct(nxt):
+            out.append(m.group(0))
+    return out
 
 
 def read_overview(repo):
@@ -151,6 +174,10 @@ def check(repo):
 
     hits = [f for f in FILLER if f in txt]
     checks.append(("無空洞讚美", not hits, "、".join(hits) if hits else "無"))
+
+    dead = dead_bold(txt)
+    checks.append(("粗體都收得起來", not dead,
+                   "、".join(d[:18] for d in dead[:3]) if dead else "無"))
 
     # 「限制」段最容易被寫成一句客套話帶過，所以單獨看它的實質內容
     lim = secs.get("這本書的限制", "")
