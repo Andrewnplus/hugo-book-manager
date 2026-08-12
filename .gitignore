@@ -41,3 +41,6 @@ output/
 
 # Working queue file (use books-queue.example.yaml as template)
 templates/books-queue.yaml
+
+# Python
+__pycache__/
