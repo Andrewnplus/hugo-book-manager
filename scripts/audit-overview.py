@@ -36,7 +36,29 @@ FILLER = [
     "經典之作", "必讀", "震撼人心", "淋漓盡致", "鞭辟入裡", "字字珠璣",
 ]
 
-MIN_SECTION_CHARS = 250
+# 每段的下限與上限。分段設定是因為四段的工作量本來就不同：
+#   作者的位置   要交代「從哪說話／跟誰吵／什麼經歷逼他這樣主張／怎麼吵贏他」四件事
+#   定位         要點名書與作者，中英並列很吃字
+#   完整摘要     長度由「書裡有幾條獨立的線」決定，而不是由筆記量決定
+#   這本書的限制 三項可被檢驗的限制，每項寫到能被驗證大約各要 150 字
+# 上限刻意寬鬆：它要擋的是灌水，不是替密度高的書設天花板。
+SECTION_CHARS = {
+    "作者的位置": (250, 800),
+    "完整摘要": (600, 1700),
+    "定位": (250, 800),
+    "這本書的限制": (300, 900),
+}
+
+# 時間錨點。舊版只認 19xx/20xx，於是寫古典作品時「公元前 5 世紀」「1545 年」
+# 「9 世紀」全都不算，逼人繞路去引現代版本或學者的年份，反而背離了這條檢查的
+# 本意——有時間錨點 ≈ 真的讀過筆記，而不是「必須談到二十世紀」。
+YEAR_RE = re.compile(
+    r"公元前\s*\d+"      # 公元前 490 年 / 公元前 5 世紀
+    r"|(?:19|20)\d{2}"   # 1894 / 2016，可不接「年」
+    r"|\d{3,4}\s*年"     # 1545 年 / 800 年
+    r"|\d{1,2}\s*世紀"   # 9 世紀 / 19 世紀
+)
+
 MIN_YEARS = 2
 MIN_LATIN = 3
 MIN_LIMIT_SENTENCES = 3
@@ -90,15 +112,22 @@ def check(repo):
 
     for n in SECTIONS:
         body = secs.get(n)
+        lo, hi = SECTION_CHARS[n]
         if body is None:
             checks.append(("%s 長度" % n, False, "缺這一段"))
         else:
             L = zh_len(body)
-            checks.append(("%s 長度" % n, L >= MIN_SECTION_CHARS, "%d 字（需 ≥%d）" % (L, MIN_SECTION_CHARS)))
+            if L < lo:
+                detail = "%d 字（需 %d–%d，太短）" % (L, lo, hi)
+            elif L > hi:
+                detail = "%d 字（需 %d–%d，灌水了）" % (L, lo, hi)
+            else:
+                detail = "%d 字（需 %d–%d）" % (L, lo, hi)
+            checks.append(("%s 長度" % n, lo <= L <= hi, detail))
 
     txt = "".join(secs.get(n, "") for n in SECTIONS) or "".join(secs.values())
 
-    years = re.findall(r"(?:19|20)\d{2}|公元前\s*\d+", txt)
+    years = YEAR_RE.findall(txt)
     checks.append(("引用年份", len(years) >= MIN_YEARS, "%d 處（需 ≥%d）" % (len(years), MIN_YEARS)))
 
     latin = re.findall(r"（[A-Z][A-Za-z .\-']{3,}）|_[A-Za-z][^_]{4,}_", txt)
