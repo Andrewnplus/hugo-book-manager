@@ -1,0 +1,314 @@
+#!/usr/bin/env python3
+"""深度概覽品檢。
+
+存在的理由：2026-08-12 掃過全庫 1613 本既有概覽，78% 的「貢獻與定位」段完全
+沒有任何限制／批評字眼、30% 全文沒引用年份、11% 出現空洞讚美詞。撰寫原則早就
+寫著「避免行銷式誇大」，但沒有任何機制檢查，所以沒有被遵守。原則不會自己生效。
+
+這支腳本是 /book-generate-deep-overview 步驟 5 的強制關卡，也是全庫盤點的工具。
+
+用法:
+    audit-overview.py <repo 路徑>          單本，人可讀的結果，FAIL 時 exit 1
+    audit-overview.py --all [根目錄]        全庫掃描，輸出統計與最該重做的清單
+    audit-overview.py --all --json         全庫掃描，輸出 JSON 供其他工具消費
+"""
+
+import argparse
+import io
+import json
+import os
+import re
+import sys
+
+# 路徑相對於本腳本自己（scripts/ 在 hugo-book-manager 內），這樣 repo 被 clone
+# 到別處也不會壞；books-done 與 hugo-book-manager 是 books-management 下的兄弟目錄。
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_BOOKS_MGMT = os.path.dirname(os.path.dirname(_HERE))
+DEFAULT_ROOT = os.path.join(_BOOKS_MGMT, "books-done")
+DEFAULT_OUT = os.path.join(os.path.dirname(_HERE), "OVERVIEW-PROGRESS.md")
+
+SECTIONS = ["作者的位置", "完整摘要", "定位", "這本書的限制"]
+LEGACY = ["作者背景", "完整摘要", "本書的貢獻與定位"]
+
+# 空洞讚美：說了等於沒說，而且擋住了真正的判斷
+FILLER = [
+    "深刻", "精彩", "值得一讀", "發人深省", "令人震撼", "不可多得",
+    "經典之作", "必讀", "震撼人心", "淋漓盡致", "鞭辟入裡", "字字珠璣",
+]
+
+MIN_SECTION_CHARS = 250
+MIN_YEARS = 2
+MIN_LATIN = 3
+MIN_LIMIT_SENTENCES = 3
+
+
+def zh_len(t):
+    return len(re.sub(r"\s+", "", t))
+
+
+def read_overview(repo):
+    """回傳 (四段 dict, 是否為舊格式, 原始區塊)。找不到就全 None。"""
+    p = os.path.join(repo, "site", "content", "_index.md")
+    if not os.path.exists(p):
+        return None, False, ""
+    s = io.open(p, encoding="utf-8").read()
+
+    legacy = "{{% details" in s and "深度概覽" in s
+    start = s.find("{{% book-overview %}}")
+    if start < 0:
+        start = s.find("{{% details")
+        if start < 0:
+            return None, legacy, ""
+    end = s.find("{{% /book-overview %}}")
+    if end < 0:
+        end = s.find("{{% /details %}}")
+    blk = s[start:end] if end > start else s[start:]
+
+    out = {}
+    for name in SECTIONS + LEGACY:
+        m = re.search(r"^##\s*%s\s*\n(.*?)(?=^##\s|\Z)" % re.escape(name), blk, re.S | re.M)
+        if m:
+            out[name] = m.group(1).strip()
+    return out, legacy, blk
+
+
+def check(repo):
+    """回傳 (checks, meta)。checks 是 [(名稱, 通過?, 說明)]。"""
+    secs, legacy, blk = read_overview(repo)
+    checks = []
+    if secs is None:
+        return [("有深度概覽", False, "找不到 book-overview 或 details 區塊")], {}
+    if not secs:
+        return [("有深度概覽", False, "區塊存在但抓不到任何 ## 段落")], {}
+
+    present = [n for n in SECTIONS if n in secs]
+    checks.append((
+        "四段齊全", len(present) == 4,
+        "有 %d/4：%s%s" % (len(present), "、".join(present) or "無",
+                          "（舊三段格式，需改寫）" if legacy and len(present) < 4 else ""),
+    ))
+
+    for n in SECTIONS:
+        body = secs.get(n)
+        if body is None:
+            checks.append(("%s 長度" % n, False, "缺這一段"))
+        else:
+            L = zh_len(body)
+            checks.append(("%s 長度" % n, L >= MIN_SECTION_CHARS, "%d 字（需 ≥%d）" % (L, MIN_SECTION_CHARS)))
+
+    txt = "".join(secs.get(n, "") for n in SECTIONS) or "".join(secs.values())
+
+    years = re.findall(r"(?:19|20)\d{2}|公元前\s*\d+", txt)
+    checks.append(("引用年份", len(years) >= MIN_YEARS, "%d 處（需 ≥%d）" % (len(years), MIN_YEARS)))
+
+    latin = re.findall(r"（[A-Z][A-Za-z .\-']{3,}）|_[A-Za-z][^_]{4,}_", txt)
+    checks.append(("英文原名", len(latin) >= MIN_LATIN, "%d 處（需 ≥%d）" % (len(latin), MIN_LATIN)))
+
+    hits = [f for f in FILLER if f in txt]
+    checks.append(("無空洞讚美", not hits, "、".join(hits) if hits else "無"))
+
+    # 「限制」段最容易被寫成一句客套話帶過，所以單獨看它的實質內容
+    lim = secs.get("這本書的限制", "")
+    n_sent = len(re.findall(r"[。！？]", lim))
+    checks.append((
+        "限制段有實質內容", n_sent >= MIN_LIMIT_SENTENCES,
+        "%d 個句子（需 ≥%d）" % (n_sent, MIN_LIMIT_SENTENCES),
+    ))
+
+    meta = dict(
+        legacy=legacy,
+        total=zh_len(txt),
+        sections={n: zh_len(secs.get(n, "")) for n in SECTIONS},
+        years=len(years), latin=len(latin), filler=len(hits),
+    )
+    return checks, meta
+
+
+def note_volume(repo):
+    """筆記總量（bytes）。只拿來排序，所以用檔案大小就夠——不必把 1618 本、
+    數百 MB 的 markdown 讀進記憶體，那原本是全庫掃描最慢的一步。"""
+    total = 0
+    d = os.path.join(repo, "site", "content", "docs")
+    for r, _, fs in os.walk(d):
+        for f in fs:
+            if f.endswith(".md"):
+                try:
+                    total += os.path.getsize(os.path.join(r, f))
+                except OSError:
+                    pass
+    return total
+
+
+def find_books(root):
+    out = []
+    for r, dirs, fs in os.walk(root):
+        if "/build/" in r or "hugo-book-template" in r or "/.git" in r:
+            dirs[:] = [d for d in dirs if d != ".git"]
+            continue
+        if r.endswith("/site/content") and "_index.md" in fs:
+            out.append(os.path.dirname(os.path.dirname(r)))
+    return sorted(out)
+
+
+def run_one(repo, verbose=True):
+    checks, meta = check(repo)
+    failed = [c for c in checks if not c[1]]
+    if verbose:
+        print("%s" % os.path.basename(repo))
+        for name, ok, detail in checks:
+            print("  %-4s %-16s %s" % ("PASS" if ok else "FAIL", name, detail))
+        print("  → %s" % ("全部通過" if not failed else "%d 項未通過，回去重寫" % len(failed)))
+    return len(failed), meta
+
+
+def run_all(root, as_json):
+    books = find_books(root)
+    rows = []
+    for b in books:
+        checks, meta = check(b)
+        nfail = sum(1 for c in checks if not c[1])
+        rows.append(dict(
+            slug=os.path.relpath(b, root), fails=nfail,
+            failed=[c[0] for c in checks if not c[1]],
+            notes=note_volume(b), **meta,
+        ))
+    if as_json:
+        json.dump(rows, sys.stdout, ensure_ascii=False, indent=2)
+        return 0
+
+    n = len(rows)
+    clean = sum(1 for r in rows if r["fails"] == 0)
+    print("掃描 %d 本，全數通過 %d 本（%.0f%%）\n" % (n, clean, clean * 100.0 / max(n, 1)))
+    agg = {}
+    for r in rows:
+        for f in r["failed"]:
+            agg[f] = agg.get(f, 0) + 1
+    print("各項未通過數：")
+    for k, v in sorted(agg.items(), key=lambda x: -x[1]):
+        print("  %-20s %5d 本  (%.0f%%)" % (k, v, v * 100.0 / n))
+
+    # 筆記厚但概覽薄 = 素材就在那裡沒被用上，重做的投報率最高
+    worst = sorted(rows, key=lambda r: (-r["fails"], -r.get("notes", 0)))
+    print("\n最該重做的 30 本（未通過項數 → 筆記量）：")
+    for r in worst[:30]:
+        print("  [%d 項] %-46s 概覽 %5d 字 / 筆記 %6dk" % (
+            r["fails"], r["slug"].split("/")[-1], r.get("total", 0), r.get("notes", 0) // 1000))
+    return 0
+
+
+def write_report(root, out_path, stamp):
+    """產生 OVERVIEW-PROGRESS.md：改寫進度的單一真相。
+
+    刻意寫成 markdown 而不是 JSON——這份是給人看的、要能在 GitHub 上直接讀，
+    而且 diff 出來就是進度。機器要吃的話用 --json。
+    """
+    books = find_books(root)
+    rows = []
+    for b in books:
+        checks, meta = check(b)
+        nfail = sum(1 for c in checks if not c[1])
+        rows.append(dict(slug=os.path.relpath(b, root), fails=nfail,
+                         failed=[c[0] for c in checks if not c[1]],
+                         notes=note_volume(b), **meta))
+    n = len(rows)
+    done = [r for r in rows if r["fails"] == 0]
+    legacy = [r for r in rows if r.get("legacy")]
+    pct = len(done) * 100.0 / max(n, 1)
+
+    L = []
+    L.append("# 深度概覽改寫進度\n")
+    L.append("> 衍生檔，勿手改。重新產生：`python3 scripts/audit-overview.py --report`\n")
+    L.append("最後更新：%s\n" % stamp)
+    L.append("## 總覽\n")
+    L.append("| | 數量 | 佔比 |")
+    L.append("|---|---:|---:|")
+    L.append("| 全庫 | %d | 100%% |" % n)
+    L.append("| **已改寫並通過品檢** | **%d** | **%.1f%%** |" % (len(done), pct))
+    L.append("| 仍是舊三段格式 | %d | %.1f%% |" % (len(legacy), len(legacy) * 100.0 / max(n, 1)))
+    L.append("")
+    bar = int(pct / 2)
+    L.append("```\n[%s%s] %.1f%%\n```\n" % ("█" * bar, "·" * (50 - bar), pct))
+
+    agg = {}
+    for r in rows:
+        for f in r["failed"]:
+            agg[f] = agg.get(f, 0) + 1
+    L.append("## 各項未通過\n")
+    L.append("| 檢查 | 未通過 | 佔比 |")
+    L.append("|---|---:|---:|")
+    for k, v in sorted(agg.items(), key=lambda x: -x[1]):
+        L.append("| %s | %d | %.0f%% |" % (k, v, v * 100.0 / n))
+    L.append("")
+
+    todo = sorted([r for r in rows if r["fails"]], key=lambda r: (-r["fails"], -r["notes"]))
+    L.append("## 待改寫（依未通過項數 → 筆記量排序）\n")
+    L.append("筆記量是排序依據：筆記厚而概覽薄，代表素材就在那裡沒被用上，重做的投報率最高。\n")
+    L.append("| # | 書 | 未通過 | 概覽字數 | 筆記 |")
+    L.append("|---:|---|---:|---:|---:|")
+    for i, r in enumerate(todo[:200], 1):
+        L.append("| %d | `%s` | %d | %d | %dk |" % (
+            i, r["slug"], r["fails"], r.get("total", 0), r["notes"] // 1000))
+    if len(todo) > 200:
+        L.append("")
+        L.append("_（只列前 200 本，另有 %d 本未列出）_" % (len(todo) - 200))
+    L.append("")
+
+    if done:
+        L.append("## 已完成\n")
+        for r in sorted(done, key=lambda r: r["slug"]):
+            L.append("- `%s` — %d 字" % (r["slug"], r.get("total", 0)))
+        L.append("")
+
+    io.open(out_path, "w", encoding="utf-8").write("\n".join(L))
+    print("寫入 %s（%d 本，已完成 %d）" % (out_path, n, len(done)))
+    return 0
+
+
+def run_todo(root, n):
+    """印出接下來該做的 n 本 repo 路徑，一行一個。
+
+    這是「中斷後續作」的入口：進度不存在任何狀態檔裡，而是每次重新從書本內容
+    算出來——書本自己就是真相，而它們各自有 git remote。所以重開機、換機器、
+    或把 OVERVIEW-PROGRESS.md 刪掉，都不會弄丟進度；重跑一次就回來了。
+
+    整個掃描是純檔案讀取，不經過 LLM，全庫 1618 本約數秒，可以隨便重跑。
+    """
+    rows = []
+    for b in find_books(root):
+        checks, meta = check(b)
+        nfail = sum(1 for c in checks if not c[1])
+        if nfail:
+            rows.append((nfail, note_volume(b), b))
+    rows.sort(key=lambda x: (-x[0], -x[1]))
+    for _, _, b in rows[:n]:
+        print(b)
+    return 0
+
+
+def main():
+    ap = argparse.ArgumentParser(description="深度概覽品檢")
+    ap.add_argument("repo", nargs="?", help="單一書本 repo 路徑")
+    ap.add_argument("--all", action="store_true", help="掃描整個 books-done")
+    ap.add_argument("--todo", type=int, metavar="N",
+                    help="印出接下來該做的 N 本 repo 路徑（續作用）")
+    ap.add_argument("--report", action="store_true", help="產生 OVERVIEW-PROGRESS.md")
+    ap.add_argument("--stamp", default="", help="報告的時間戳（呼叫端給，腳本不取系統時間）")
+    ap.add_argument("--out", default=DEFAULT_OUT)
+    ap.add_argument("--root", default=DEFAULT_ROOT)
+    ap.add_argument("--json", action="store_true", help="與 --all 併用，輸出 JSON")
+    a = ap.parse_args()
+
+    if a.todo:
+        return run_todo(a.root, a.todo)
+    if a.report:
+        return write_report(a.root, a.out, a.stamp or "（未提供）")
+    if a.all:
+        return run_all(a.root, a.json)
+    if not a.repo:
+        ap.error("給一個 repo 路徑，或用 --all")
+    nfail, _ = run_one(os.path.abspath(a.repo))
+    return 1 if nfail else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
