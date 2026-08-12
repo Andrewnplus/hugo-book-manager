@@ -73,6 +73,11 @@ MIN_YEARS = 2
 MIN_REFS = 3
 MIN_LIMIT_SENTENCES = 3
 
+# 筆記量低於此值的書，docs/ 底下通常只有章節 frontmatter、沒有任何內文。
+# 這種書寫不出概覽——「完整摘要」規定只能取材自筆記，硬寫等於編造。
+# 2026-08-13 實測：空殼書 21 個檔案合計約 1.5 KB，有內容的書最少也有數十 KB。
+MIN_NOTES = 8000
+
 
 def zh_len(t):
     return len(re.sub(r"\s+", "", t))
@@ -280,9 +285,11 @@ def write_report(root, out_path, stamp):
         L.append("| %s | %d | %.0f%% |" % (k, v, v * 100.0 / n))
     L.append("")
 
-    todo = sorted([r for r in rows if r["fails"]], key=lambda r: (-r["fails"], -r["notes"]))
-    L.append("## 待改寫（依未通過項數 → 筆記量排序）\n")
-    L.append("筆記量是排序依據：筆記厚而概覽薄，代表素材就在那裡沒被用上，重做的投報率最高。\n")
+    pending = [r for r in rows if r["fails"]]
+    hollow = sorted([r for r in pending if r["notes"] < MIN_NOTES], key=lambda r: r["slug"])
+    todo = sorted([r for r in pending if r["notes"] >= MIN_NOTES], key=lambda r: r["slug"])
+    L.append("## 待改寫（依 slug 排序）\n")
+    L.append("刻意不按筆記量或未通過項數排序——挑書的順序由人決定，這裡只負責把還沒做的列全。\n")
     L.append("| # | 書 | 未通過 | 概覽字數 | 筆記 |")
     L.append("|---:|---|---:|---:|---:|")
     for i, r in enumerate(todo[:200], 1):
@@ -292,6 +299,14 @@ def write_report(root, out_path, stamp):
         L.append("")
         L.append("_（只列前 200 本，另有 %d 本未列出）_" % (len(todo) - 200))
     L.append("")
+
+    if hollow:
+        L.append("## 筆記是空的，寫不了（%d 本）\n" % len(hollow))
+        L.append("docs/ 底下只有章節 frontmatter、沒有內文（< %d bytes）。"
+                 "「完整摘要」規定只能取材自筆記，硬寫等於編造——先補筆記再回來。\n" % MIN_NOTES)
+        for r in hollow:
+            L.append("- `%s` — 筆記 %d bytes" % (r["slug"], r["notes"]))
+        L.append("")
 
     if done:
         L.append("## 已完成\n")
@@ -312,6 +327,10 @@ def run_todo(root, n):
     或把 OVERVIEW-PROGRESS.md 刪掉，都不會弄丟進度；重跑一次就回來了。
 
     整個掃描是純檔案讀取，不經過 LLM，全庫 1618 本約數秒，可以隨便重跑。
+
+    排序刻意用 slug（而非未通過項數或筆記量）：挑書的順序是人的判斷，腳本只負責
+    把還沒做的列全、而且每次列的順序一樣。筆記是空殼的書會被移到 stderr，因為
+    它們不是「還沒做」而是「做不了」。
     """
     rows = []
     for b in find_books(root):
@@ -319,9 +338,16 @@ def run_todo(root, n):
         nfail = sum(1 for c in checks if not c[1])
         if nfail:
             rows.append((nfail, note_volume(b), b))
-    rows.sort(key=lambda x: (-x[0], -x[1]))
-    for _, _, b in rows[:n]:
+    hollow = sorted(b for _, vol, b in rows if vol < MIN_NOTES)
+    rows = sorted(b for _, vol, b in rows if vol >= MIN_NOTES)
+    for b in rows[:n]:
         print(b)
+    if hollow:
+        sys.stderr.write(
+            "\n略過 %d 本筆記是空殼的書（docs/ 只有 frontmatter，< %d bytes）。"
+            "完整摘要只能取材自筆記，硬寫等於編造：\n" % (len(hollow), MIN_NOTES))
+        for b in hollow:
+            sys.stderr.write("  %s\n" % b)
     return 0
 
 

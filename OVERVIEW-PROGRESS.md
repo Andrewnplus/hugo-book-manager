@@ -9,241 +9,254 @@
 | | 數量 | 佔比 |
 |---|---:|---:|
 | 全庫 | 1618 | 100% |
-| **已改寫並通過品檢** | **20** | **1.2%** |
-| 仍是舊三段格式 | 1598 | 98.8% |
+| **已改寫並通過品檢** | **26** | **1.6%** |
+| 仍是舊三段格式 | 1592 | 98.4% |
 
 ```
-[··················································] 1.2%
+[··················································] 1.6%
 ```
 
 ## 各項未通過
 
 | 檢查 | 未通過 | 佔比 |
 |---|---:|---:|
-| 四段齊全 | 1598 | 99% |
-| 作者的位置 長度 | 1598 | 99% |
-| 定位 長度 | 1598 | 99% |
-| 這本書的限制 長度 | 1598 | 99% |
-| 限制段有實質內容 | 1598 | 99% |
-| 引用年份 | 1425 | 88% |
-| 點名可查證的作品／人名 | 1061 | 66% |
-| 完整摘要 長度 | 541 | 33% |
-| 無空洞讚美 | 51 | 3% |
+| 四段齊全 | 1592 | 98% |
+| 作者的位置 長度 | 1592 | 98% |
+| 定位 長度 | 1592 | 98% |
+| 這本書的限制 長度 | 1592 | 98% |
+| 限制段有實質內容 | 1592 | 98% |
+| 引用年份 | 1419 | 88% |
+| 點名可查證的作品／人名 | 1055 | 65% |
+| 完整摘要 長度 | 535 | 33% |
+| 無空洞讚美 | 48 | 3% |
 
-## 待改寫（依未通過項數 → 筆記量排序）
+## 待改寫（依 slug 排序）
 
-筆記量是排序依據：筆記厚而概覽薄，代表素材就在那裡沒被用上，重做的投報率最高。
+刻意不按筆記量或未通過項數排序——挑書的順序由人決定，這裡只負責把還沒做的列全。
 
 | # | 書 | 未通過 | 概覽字數 | 筆記 |
 |---:|---|---:|---:|---:|
-| 1 | `wisdom/philosophy/ethics/reading-as-a-wilderness` | 9 | 322 | 16k |
-| 2 | `professional/communication/persuasion/mba-confidential` | 9 | 414 | 11k |
-| 3 | `faith/theology/apologetics/shadowlands` | 9 | 519 | 11k |
-| 4 | `personal/relationships/parenting/financial-boundaries-with-family` | 9 | 409 | 1k |
-| 5 | `personal/relationships/community/life-is-a-long-term-accumulation` | 9 | 590 | 1k |
-| 6 | `wisdom/science/pharmacology/pharmacotherapy-principles-and-practice` | 8 | 538 | 1247k |
-| 7 | `wisdom/science/pharmacology/basic-clinical-pharmacology` | 8 | 555 | 900k |
-| 8 | `wisdom/science/pharmacology/applied-therapeutics` | 8 | 518 | 832k |
-| 9 | `craft/engineering/systems-design/enterprise-integration-patterns` | 8 | 1783 | 813k |
-| 10 | `craft/engineering/systems-design/system-design-interview` | 8 | 431 | 784k |
-| 11 | `wisdom/science/evolution/origin-of-species` | 8 | 1454 | 778k |
-| 12 | `craft/engineering/devops/kubernetes-in-action` | 8 | 3971 | 683k |
-| 13 | `faith/theology/apologetics/god-in-the-dock` | 8 | 2692 | 637k |
-| 14 | `professional/finance/investing/dynamic-hedging` | 8 | 4167 | 601k |
-| 15 | `faith/theology/systematic/systematic-theology` | 8 | 355 | 578k |
-| 16 | `faith/theology/biblical-studies/message-of-psalms-73-150` | 8 | 581 | 575k |
-| 17 | `professional/finance/real-estate/real-book-of-real-estate` | 8 | 552 | 563k |
-| 18 | `personal/relationships/community/emily-posts-etiquette-19th-edition` | 8 | 516 | 532k |
-| 19 | `faith/theology/biblical-studies/prophets-heschel` | 8 | 538 | 509k |
-| 20 | `professional/finance/economics/wealth-of-nations` | 8 | 3910 | 508k |
-| 21 | `professional/communication/persuasion/48-laws-of-power` | 8 | 431 | 504k |
-| 22 | `professional/business/management/high-growth-handbook` | 8 | 1930 | 503k |
-| 23 | `wisdom/science/statistics/statistical-consequences-of-fat-tails` | 8 | 4535 | 489k |
-| 24 | `wisdom/education/self-learning/teaching-technique` | 8 | 415 | 481k |
-| 25 | `faith/theology/systematic/moses-in-the-clinic` | 8 | 595 | 471k |
-| 26 | `professional/finance/economics/general-theory-of-employment-interest-and-money` | 8 | 4277 | 448k |
-| 27 | `professional/career/job-search/what-color-is-your-parachute` | 8 | 1168 | 447k |
-| 28 | `faith/theology/biblical-studies/message-of-mark` | 8 | 567 | 417k |
-| 29 | `professional/finance/personal-finance/retire-young-retire-rich` | 8 | 583 | 411k |
-| 30 | `faith/spiritual-formation/discipleship/soul-of-shame` | 8 | 2586 | 406k |
-| 31 | `faith/theology/biblical-studies/gods-wisdom-for-navigating-life` | 8 | 338 | 402k |
-| 32 | `faith/theology/pastoral/story-of-christian-theology` | 8 | 536 | 393k |
-| 33 | `faith/theology/biblical-studies/message-of-ezekiel` | 8 | 602 | 390k |
-| 34 | `professional/finance/personal-finance/fake-money-fake-teachers-fake-assets` | 8 | 550 | 383k |
-| 35 | `faith/spiritual-formation/discipleship/life-without-lack` | 8 | 2011 | 382k |
-| 36 | `faith/theology/systematic/we-who-wrestle-with-god` | 8 | 599 | 367k |
-| 37 | `faith/theology/systematic/along-with-moses` | 8 | 560 | 366k |
-| 38 | `professional/leadership/team-building/extreme-ownership` | 8 | 2006 | 365k |
-| 39 | `personal/lifestyle/style/how-to-be-a-man` | 8 | 408 | 361k |
-| 40 | `faith/theology/biblical-studies/dictionary-of-the-later-new-testament` | 8 | 375 | 360k |
-| 41 | `personal/mindset/growth/change-your-thinking-change-your-life-tracy` | 8 | 4109 | 359k |
-| 42 | `personal/relationships/marriage/boundaries-in-marriage` | 8 | 1896 | 357k |
-| 43 | `professional/finance/investing/50-questions-retail-investors` | 8 | 487 | 348k |
-| 44 | `faith/theology/biblical-studies/message-of-samuel` | 8 | 519 | 347k |
-| 45 | `professional/leadership/decision-making/breaking-roberts-rules` | 8 | 504 | 341k |
-| 46 | `professional/career/job-search/cracking-the-tech-career` | 8 | 486 | 339k |
-| 47 | `professional/career/skill-building/myself-and-other-more-important-matters` | 8 | 375 | 336k |
-| 48 | `professional/career/side-hustle/100-startup` | 8 | 1803 | 335k |
-| 49 | `professional/leadership/vision/managers-path` | 8 | 387 | 335k |
-| 50 | `faith/theology/pastoral/when-people-are-big-and-god-is-small` | 8 | 2078 | 333k |
-| 51 | `faith/theology/biblical-studies/according-to-plan` | 8 | 523 | 323k |
-| 52 | `professional/communication/persuasion/5-min-mba-personal` | 8 | 476 | 320k |
-| 53 | `professional/leadership/culture/dare-to-lead` | 8 | 5757 | 319k |
-| 54 | `faith/theology/biblical-studies/mission-of-god` | 8 | 538 | 312k |
-| 55 | `faith/spiritual-formation/discipleship/attached-to-god` | 8 | 1660 | 308k |
-| 56 | `faith/theology/biblical-studies/message-of-genesis-bst` | 8 | 575 | 290k |
-| 57 | `professional/finance/economics/economics-in-one-lesson` | 8 | 3864 | 290k |
-| 58 | `professional/business/management/management-challenges-for-21st-century` | 8 | 1758 | 290k |
-| 59 | `faith/theology/biblical-studies/message-of-job` | 8 | 577 | 289k |
-| 60 | `craft/engineering/coding-practice/smalltalk-best-practice-patterns` | 8 | 2137 | 288k |
-| 61 | `wisdom/philosophy/ethics/revolution-of-hope` | 8 | 1773 | 287k |
-| 62 | `personal/relationships/community/wujun-attitude` | 8 | 393 | 286k |
-| 63 | `craft/tools/coffee/uncommon-grounds` | 8 | 590 | 282k |
-| 64 | `wisdom/philosophy/ethics/wujun-realm` | 8 | 481 | 277k |
-| 65 | `faith/theology/systematic/hearing-god` | 8 | 551 | 276k |
-| 66 | `professional/leadership/team-building/leading-change` | 8 | 3635 | 274k |
-| 67 | `professional/career/job-search/60-seconds-and-youre-hired` | 8 | 1952 | 269k |
-| 68 | `professional/communication/storytelling/resonate-visual-stories-transform-audiences` | 8 | 575 | 267k |
-| 69 | `faith/theology/systematic/twentieth-century-theologians` | 8 | 775 | 264k |
-| 70 | `faith/theology/biblical-studies/message-of-joshua` | 8 | 595 | 264k |
-| 71 | `personal/relationships/parenting/rules-of-life` | 8 | 449 | 263k |
-| 72 | `faith/theology/biblical-studies/old-testament-theology-waltke` | 8 | 593 | 263k |
-| 73 | `professional/leadership/vision/360-degree-leader` | 8 | 472 | 263k |
-| 74 | `faith/theology/biblical-studies/message-of-1-2-thessalonians` | 8 | 553 | 260k |
-| 75 | `professional/finance/personal-finance/cashflow-quadrant` | 8 | 541 | 260k |
-| 76 | `wisdom/history/civilization/wujun-context` | 8 | 404 | 252k |
-| 77 | `faith/theology/biblical-studies/new-testament-in-its-world` | 8 | 473 | 252k |
-| 78 | `faith/theology/systematic/if-you-want-to-walk-on-water-you-have-got-to-get-out-of-the` | 8 | 562 | 244k |
-| 79 | `craft/engineering/coding-practice/clean-code-principles-and-patterns` | 8 | 525 | 243k |
-| 80 | `craft/engineering/agile/97-things-every-project-manager-should-know` | 8 | 384 | 243k |
-| 81 | `wisdom/science/cognitive/synthesizing-mind` | 8 | 583 | 242k |
-| 82 | `personal/relationships/marriage/secret-of-loving` | 8 | 301 | 241k |
-| 83 | `professional/communication/storytelling/33-strategies-of-war` | 8 | 422 | 239k |
-| 84 | `personal/habit/discipline/power-of-action` | 8 | 588 | 239k |
-| 85 | `craft/engineering/coding-practice/coders-at-work` | 8 | 523 | 238k |
-| 86 | `faith/theology/biblical-studies/old-testament-ethics-for-the-people-of-god` | 8 | 448 | 237k |
-| 87 | `personal/relationships/community/reading-people` | 8 | 535 | 236k |
-| 88 | `professional/communication/persuasion/winning` | 8 | 533 | 234k |
-| 89 | `personal/wellness/fitness/4-hour-body` | 8 | 521 | 234k |
-| 90 | `faith/theology/systematic/uncommon-ground` | 8 | 706 | 233k |
-| 91 | `professional/finance/economics/rich-dads-conspiracy-of-the-rich` | 8 | 499 | 228k |
-| 92 | `craft/engineering/coding-practice/designing-web-apis` | 8 | 471 | 228k |
-| 93 | `professional/career/job-search/first-break-all-the-rules` | 8 | 575 | 226k |
-| 94 | `personal/wellness/mental-health/fengtang-have-capability` | 8 | 503 | 225k |
-| 95 | `craft/engineering/coding-practice/pragmatic-programmer` | 8 | 361 | 223k |
-| 96 | `faith/spiritual-formation/contemplative/reaching-out` | 8 | 4130 | 221k |
-| 97 | `craft/engineering/coding-practice/97-things-every-programmer-should-know` | 8 | 336 | 220k |
-| 98 | `wisdom/philosophy/ethics/fallen-leaves` | 8 | 501 | 215k |
-| 99 | `professional/business/startup/your-next-five-moves` | 8 | 426 | 215k |
-| 100 | `professional/business/management/managing-for-results` | 8 | 587 | 214k |
-| 101 | `wisdom/philosophy/ethics/wujun-meta-wisdom` | 8 | 587 | 213k |
-| 102 | `professional/career/job-search/decode-and-conquer` | 8 | 1990 | 211k |
-| 103 | `professional/finance/investing/essays-of-warren-buffett` | 8 | 526 | 210k |
-| 104 | `craft/engineering/systems-design/uml-distilled` | 8 | 2033 | 208k |
-| 105 | `faith/theology/biblical-studies/message-of-romans` | 8 | 469 | 206k |
-| 106 | `professional/finance/investing/disciplined-trader` | 8 | 593 | 206k |
-| 107 | `professional/finance/investing/trend-following-masters-volume-2` | 8 | 598 | 206k |
-| 108 | `professional/finance/investing/debunkery` | 8 | 554 | 202k |
-| 109 | `personal/mindset/growth/wan-weigang-intellectuals` | 8 | 478 | 202k |
-| 110 | `personal/habit/productivity/mindset-for-wealth` | 8 | 495 | 201k |
-| 111 | `wisdom/education/self-learning/4-hour-chef` | 8 | 587 | 201k |
-| 112 | `personal/relationships/community/different-drum` | 8 | 499 | 200k |
-| 113 | `personal/mindset/growth/welcome-to-your-brain` | 8 | 458 | 198k |
-| 114 | `craft/engineering/coding-practice/97-things-every-software-architect-should-know` | 8 | 358 | 197k |
-| 115 | `personal/mindset/growth/self-esteem-a-proven-program-of-cognitive-techniques-for` | 8 | 435 | 196k |
-| 116 | `faith/theology/biblical-studies/biblical-critical-theory` | 8 | 469 | 195k |
-| 117 | `professional/leadership/team-building/8-lessons-in-military-leadership` | 8 | 495 | 195k |
-| 118 | `craft/engineering/coding-practice/exploring-requirements` | 8 | 835 | 195k |
-| 119 | `professional/business/marketing/30-day-mba` | 8 | 392 | 193k |
-| 120 | `professional/business/sales/extreme-sales` | 8 | 553 | 192k |
-| 121 | `professional/communication/persuasion/thats-not-what-i-meant` | 8 | 671 | 192k |
-| 122 | `faith/spiritual-formation/prayer/letters-to-malcolm` | 8 | 428 | 188k |
-| 123 | `professional/business/startup/knack` | 8 | 549 | 187k |
-| 124 | `faith/theology/biblical-studies/message-of-exodus` | 8 | 439 | 186k |
-| 125 | `wisdom/history/cultural/sapiens` | 8 | 587 | 186k |
-| 126 | `faith/theology/biblical-studies/new-testament-and-the-people-of-god` | 8 | 475 | 185k |
-| 127 | `craft/engineering/coding-practice/effective-debugging` | 8 | 499 | 185k |
-| 128 | `personal/relationships/community/how-to-say-it` | 8 | 387 | 185k |
-| 129 | `personal/habit/productivity/why-elites-are-checklist-masters` | 8 | 539 | 185k |
-| 130 | `faith/theology/biblical-studies/ivp-bible-background-commentary-nt` | 8 | 533 | 182k |
-| 131 | `faith/theology/systematic/jesus-the-king` | 8 | 284 | 181k |
-| 132 | `wisdom/science/cognitive/righteous-mind` | 8 | 511 | 181k |
-| 133 | `professional/business/startup/entrepreneur-mind` | 8 | 352 | 181k |
-| 134 | `personal/habit/productivity/laws-of-winners` | 8 | 461 | 181k |
-| 135 | `professional/finance/investing/first-book-for-retail-investors` | 8 | 408 | 181k |
-| 136 | `professional/communication/persuasion/communication-methods` | 8 | 597 | 181k |
-| 137 | `craft/engineering/coding-practice/test-driven-development` | 8 | 403 | 180k |
-| 138 | `craft/engineering/coding-practice/big-talk-design-patterns` | 8 | 522 | 179k |
-| 139 | `professional/finance/investing/complete-guide-to-futures-markets` | 8 | 586 | 179k |
-| 140 | `professional/communication/persuasion/laws-of-human-nature` | 8 | 470 | 179k |
-| 141 | `professional/business/strategy/hbr-guide-to-thinking-strategically` | 8 | 405 | 177k |
-| 142 | `professional/finance/investing/most-important-thing` | 8 | 367 | 177k |
-| 143 | `craft/engineering/coding-practice/joel-on-software` | 8 | 402 | 175k |
-| 144 | `craft/writing/fiction/on-writing-well` | 8 | 520 | 175k |
-| 145 | `professional/business/startup/art-of-the-start` | 8 | 310 | 174k |
-| 146 | `craft/engineering/agile/planning-extreme-programming` | 8 | 2317 | 174k |
-| 147 | `professional/communication/persuasion/16-undeniable-laws-of-communication` | 8 | 479 | 173k |
-| 148 | `professional/communication/negotiation/how-to-win-friends-and-influence-people` | 8 | 391 | 173k |
-| 149 | `professional/business/startup/innovation-and-entrepreneurship` | 8 | 407 | 172k |
-| 150 | `personal/relationships/community/25-ways-to-win-with-people` | 8 | 550 | 171k |
-| 151 | `professional/finance/personal-finance/playing-with-fire` | 8 | 552 | 170k |
-| 152 | `faith/theology/pastoral/bonhoeffer-spiritual-care-in-a-religionless-age` | 8 | 364 | 170k |
-| 153 | `faith/theology/biblical-studies/sherlock-who-2-biblical-world` | 8 | 549 | 169k |
-| 154 | `professional/career/skill-building/hbr-guide-to-remote-work` | 8 | 571 | 169k |
-| 155 | `professional/career/skill-building/how-to-win-in-a-winner-take-all-world` | 8 | 348 | 168k |
-| 156 | `personal/mindset/growth/be-obsessed-or-be-average` | 8 | 524 | 168k |
-| 157 | `professional/finance/investing/money-rob-moore` | 8 | 562 | 166k |
-| 158 | `craft/engineering/coding-practice/art-of-doing-science-and-engineering` | 8 | 808 | 166k |
-| 159 | `professional/finance/economics/mastering-the-market-cycle` | 8 | 446 | 165k |
-| 160 | `faith/theology/biblical-studies/sherlock-who-1-bible-suspense` | 8 | 315 | 164k |
-| 161 | `personal/mindset/growth/maps-of-meaning` | 8 | 876 | 164k |
-| 162 | `wisdom/philosophy/ethics/anatomy-of-human-destructiveness` | 8 | 412 | 164k |
-| 163 | `personal/mindset/growth/grey-thinking` | 8 | 561 | 161k |
-| 164 | `professional/finance/personal-finance/rich-dad-poor-dad` | 8 | 500 | 160k |
-| 165 | `professional/communication/storytelling/story-factor` | 8 | 486 | 156k |
-| 166 | `professional/career/problem-solving/strategic-thinking` | 8 | 488 | 155k |
-| 167 | `professional/career/skill-building/effective-executive` | 8 | 591 | 155k |
-| 168 | `professional/career/skill-building/great-work-great-career` | 8 | 368 | 155k |
-| 169 | `personal/mindset/resilience/becoming-bulletproof` | 8 | 521 | 154k |
-| 170 | `wisdom/philosophy/ethics/essays-of-francis-bacon` | 8 | 312 | 154k |
-| 171 | `faith/theology/systematic/introduction-to-nt-research` | 8 | 447 | 153k |
-| 172 | `faith/theology/biblical-studies/message-of-1-peter` | 8 | 439 | 153k |
-| 173 | `personal/mindset/growth/bottom-logic` | 8 | 450 | 151k |
-| 174 | `personal/mindset/resilience/rules-of-thinking` | 8 | 554 | 149k |
-| 175 | `professional/communication/persuasion/how-to-use-power-phrases` | 8 | 553 | 148k |
-| 176 | `professional/finance/investing/im-worth-more` | 8 | 541 | 148k |
-| 177 | `professional/business/strategy/hbr-guide-to-managing-strategic-initiatives` | 8 | 564 | 148k |
-| 178 | `professional/finance/economics/how-economy-grows` | 8 | 391 | 147k |
-| 179 | `professional/communication/persuasion/ask-more-the-power-of-questions` | 8 | 538 | 146k |
-| 180 | `professional/business/startup/built-to-sell` | 8 | 2125 | 144k |
-| 181 | `professional/leadership/team-building/boundaries-for-leaders` | 8 | 587 | 144k |
-| 182 | `personal/mindset/growth/rich-brother-rich-sister` | 8 | 561 | 143k |
-| 183 | `personal/habit/productivity/world-only-readers-can-reach` | 8 | 752 | 143k |
-| 184 | `faith/theology/biblical-studies/message-of-hosea` | 8 | 546 | 143k |
-| 185 | `professional/finance/investing/market-wizards` | 8 | 502 | 140k |
-| 186 | `professional/communication/persuasion/louder-than-words` | 8 | 597 | 140k |
-| 187 | `professional/business/startup/hbr-on-entrepreneurship` | 8 | 404 | 139k |
-| 188 | `personal/relationships/marriage/course-of-love` | 8 | 754 | 139k |
-| 189 | `faith/theology/biblical-studies/ancient-near-eastern-thought` | 8 | 574 | 138k |
-| 190 | `craft/tools/coffee/world-atlas-of-coffee` | 8 | 573 | 138k |
-| 191 | `faith/theology/biblical-studies/message-of-2-corinthians` | 8 | 501 | 138k |
-| 192 | `craft/writing/non-fiction/sense-of-style` | 8 | 507 | 134k |
-| 193 | `wisdom/science/cognitive/beast-gentleman` | 8 | 542 | 133k |
-| 194 | `wisdom/history/modern/escape-from-freedom` | 8 | 453 | 133k |
-| 195 | `wisdom/education/self-learning/learning-how-to-learn` | 8 | 546 | 131k |
-| 196 | `craft/engineering/coding-practice/big-refactoring` | 8 | 534 | 131k |
-| 197 | `professional/career/skill-building/do-over` | 8 | 345 | 130k |
-| 198 | `professional/leadership/team-building/being-the-boss` | 8 | 580 | 129k |
-| 199 | `professional/communication/negotiation/rules-of-people` | 8 | 582 | 129k |
-| 200 | `wisdom/philosophy/ethics/art-of-asking-life-questions` | 8 | 553 | 129k |
+| 1 | `craft/design/architecture/timeless-way-of-building` | 7 | 662 | 176k |
+| 2 | `craft/design/ux/design-of-everyday-things` | 7 | 1337 | 517k |
+| 3 | `craft/design/visual/architecture-of-happiness` | 8 | 545 | 109k |
+| 4 | `craft/design/visual/back-of-the-napkin` | 7 | 964 | 258k |
+| 5 | `craft/design/visual/brutal-simplicity-of-thought` | 8 | 625 | 44k |
+| 6 | `craft/design/visual/change-by-design` | 6 | 759 | 122k |
+| 7 | `craft/design/visual/judge-this` | 6 | 663 | 83k |
+| 8 | `craft/design/visual/laws-of-simplicity` | 7 | 1018 | 69k |
+| 9 | `craft/design/visual/non-designers-design-book` | 7 | 953 | 134k |
+| 10 | `craft/design/visual/non-designers-presentation` | 6 | 764 | 41k |
+| 11 | `craft/design/visual/only-sales-guide` | 6 | 842 | 107k |
+| 12 | `craft/design/visual/refactoring-ui` | 7 | 725 | 125k |
+| 13 | `craft/design/visual/say-it-with-charts` | 7 | 1640 | 126k |
+| 14 | `craft/design/visual/simplicity-cycle` | 7 | 966 | 102k |
+| 15 | `craft/design/visual/steal-like-an-artist` | 8 | 319 | 47k |
+| 16 | `craft/design/visual/web-designers-idea-book` | 7 | 500 | 36k |
+| 17 | `craft/design/visual/wtf-what-is-the-future` | 8 | 399 | 39k |
+| 18 | `craft/engineering/agile/97-things-every-project-manager-should-know` | 8 | 384 | 243k |
+| 19 | `craft/engineering/agile/agile-product-management-with-scrum` | 6 | 930 | 51k |
+| 20 | `craft/engineering/agile/essential-scrum` | 7 | 532 | 290k |
+| 21 | `craft/engineering/agile/extreme-programming-explained` | 7 | 1309 | 258k |
+| 22 | `craft/engineering/agile/kanban` | 7 | 666 | 381k |
+| 23 | `craft/engineering/agile/kanban-in-action` | 7 | 371 | 309k |
+| 24 | `craft/engineering/agile/planning-extreme-programming` | 8 | 2317 | 174k |
+| 25 | `craft/engineering/agile/scrum-the-art-of-doing-twice-the-work-in-half-the-time` | 8 | 410 | 33k |
+| 26 | `craft/engineering/agile/sprint` | 7 | 819 | 63k |
+| 27 | `craft/engineering/agile/succeeding-with-agile` | 7 | 492 | 250k |
+| 28 | `craft/engineering/agile/user-stories-applied` | 6 | 1012 | 60k |
+| 29 | `craft/engineering/ai-ml/genai-system-design-interview` | 7 | 782 | 305k |
+| 30 | `craft/engineering/ai-ml/machine-learning-system-design-interview` | 7 | 797 | 250k |
+| 31 | `craft/engineering/ai-ml/mastering-ai-survival-guide` | 7 | 766 | 196k |
+| 32 | `craft/engineering/ai-ml/wujun-age-of-intelligence` | 7 | 670 | 390k |
+| 33 | `craft/engineering/coding-practice/97-things-every-programmer-should-know` | 8 | 336 | 220k |
+| 34 | `craft/engineering/coding-practice/97-things-every-software-architect-should-know` | 8 | 358 | 197k |
+| 35 | `craft/engineering/coding-practice/agile-principles-patterns-practices-csharp` | 6 | 1064 | 222k |
+| 36 | `craft/engineering/coding-practice/agile-retrospectives` | 7 | 699 | 103k |
+| 37 | `craft/engineering/coding-practice/algorithms-to-live-by` | 6 | 764 | 133k |
+| 38 | `craft/engineering/coding-practice/apprenticeship-patterns` | 8 | 488 | 112k |
+| 39 | `craft/engineering/coding-practice/art-of-clean-code` | 6 | 709 | 70k |
+| 40 | `craft/engineering/coding-practice/art-of-doing-science-and-engineering` | 8 | 808 | 166k |
+| 41 | `craft/engineering/coding-practice/art-of-unit-testing` | 7 | 418 | 174k |
+| 42 | `craft/engineering/coding-practice/balancing-coupling` | 6 | 819 | 172k |
+| 43 | `craft/engineering/coding-practice/balancing-coupling-in-software-design` | 6 | 1230 | 143k |
+| 44 | `craft/engineering/coding-practice/bdd-in-action` | 7 | 994 | 98k |
+| 45 | `craft/engineering/coding-practice/big-refactoring` | 8 | 534 | 131k |
+| 46 | `craft/engineering/coding-practice/big-talk-design-patterns` | 8 | 522 | 179k |
+| 47 | `craft/engineering/coding-practice/clean-agile` | 7 | 432 | 93k |
+| 48 | `craft/engineering/coding-practice/clean-code-principles-and-patterns` | 8 | 525 | 243k |
+| 49 | `craft/engineering/coding-practice/clean-coder` | 8 | 462 | 58k |
+| 50 | `craft/engineering/coding-practice/clean-craftsmanship` | 7 | 478 | 172k |
+| 51 | `craft/engineering/coding-practice/code-complete` | 7 | 467 | 350k |
+| 52 | `craft/engineering/coding-practice/code-that-fits-in-your-head` | 7 | 462 | 108k |
+| 53 | `craft/engineering/coding-practice/coders-at-work` | 8 | 523 | 238k |
+| 54 | `craft/engineering/coding-practice/coding-interview-patterns` | 7 | 709 | 812k |
+| 55 | `craft/engineering/coding-practice/cracking-the-coding-interview` | 6 | 948 | 235k |
+| 56 | `craft/engineering/coding-practice/dependency-injection` | 6 | 1176 | 87k |
+| 57 | `craft/engineering/coding-practice/design-patterns` | 6 | 998 | 182k |
+| 58 | `craft/engineering/coding-practice/design-patterns-explained` | 6 | 946 | 140k |
+| 59 | `craft/engineering/coding-practice/designing-web-apis` | 8 | 471 | 228k |
+| 60 | `craft/engineering/coding-practice/domain-driven-design` | 7 | 1445 | 275k |
+| 61 | `craft/engineering/coding-practice/effective-debugging` | 8 | 499 | 185k |
+| 62 | `craft/engineering/coding-practice/exploring-requirements` | 8 | 835 | 195k |
+| 63 | `craft/engineering/coding-practice/five-lines-of-code` | 7 | 550 | 116k |
+| 64 | `craft/engineering/coding-practice/functional-design-principles-patterns-practices` | 7 | 770 | 176k |
+| 65 | `craft/engineering/coding-practice/good-code-bad-code` | 7 | 569 | 173k |
+| 66 | `craft/engineering/coding-practice/grokking-system-design-interview` | 6 | 665 | 181k |
+| 67 | `craft/engineering/coding-practice/hackers-and-painters` | 7 | 499 | 103k |
+| 68 | `craft/engineering/coding-practice/high-performance-java-persistence` | 6 | 1280 | 176k |
+| 69 | `craft/engineering/coding-practice/joel-on-software` | 8 | 402 | 175k |
+| 70 | `craft/engineering/coding-practice/living-documentation` | 6 | 940 | 160k |
+| 71 | `craft/engineering/coding-practice/mis-network-82` | 8 | 288 | 127k |
+| 72 | `craft/engineering/coding-practice/mobile-system-design-interview` | 7 | 621 | 355k |
+| 73 | `craft/engineering/coding-practice/more-joel-on-software` | 8 | 385 | 114k |
+| 74 | `craft/engineering/coding-practice/mythical-man-month` | 8 | 408 | 105k |
+| 75 | `craft/engineering/coding-practice/nine-algorithms-that-changed-the-future` | 7 | 778 | 104k |
+| 76 | `craft/engineering/coding-practice/object-oriented-design-interview` | 7 | 718 | 285k |
+| 77 | `craft/engineering/coding-practice/observability-beginners-guide` | 7 | 1041 | 187k |
+| 78 | `craft/engineering/coding-practice/perfect-software` | 7 | 848 | 140k |
+| 79 | `craft/engineering/coding-practice/pragmatic-programmer` | 8 | 361 | 223k |
+| 80 | `craft/engineering/coding-practice/prefactoring` | 6 | 725 | 92k |
+| 81 | `craft/engineering/coding-practice/programmer-self-cultivation` | 6 | 663 | 145k |
+| 82 | `craft/engineering/coding-practice/programming-pearls` | 7 | 812 | 50k |
+| 83 | `craft/engineering/coding-practice/refactoring` | 8 | 409 | 86k |
+| 84 | `craft/engineering/coding-practice/refactoring-for-software-design-smells` | 7 | 743 | 164k |
+| 85 | `craft/engineering/coding-practice/refactoring-to-patterns` | 7 | 1238 | 496k |
+| 86 | `craft/engineering/coding-practice/rules-of-programming` | 7 | 848 | 139k |
+| 87 | `craft/engineering/coding-practice/running-on-empty` | 6 | 1290 | 77k |
+| 88 | `craft/engineering/coding-practice/seriously-good-software` | 8 | 453 | 76k |
+| 89 | `craft/engineering/coding-practice/smalltalk-best-practice-patterns` | 8 | 2137 | 288k |
+| 90 | `craft/engineering/coding-practice/software-architect-12-disciplines` | 6 | 745 | 188k |
+| 91 | `craft/engineering/coding-practice/software-architect-elevator` | 6 | 926 | 340k |
+| 92 | `craft/engineering/coding-practice/software-engineering-at-google` | 7 | 427 | 632k |
+| 93 | `craft/engineering/coding-practice/specification-by-example` | 6 | 786 | 177k |
+| 94 | `craft/engineering/coding-practice/test-driven-development` | 8 | 403 | 180k |
+| 95 | `craft/engineering/coding-practice/thinking-in-programming-paradigms-and-oop` | 8 | 375 | 42k |
+| 96 | `craft/engineering/coding-practice/tidy-first` | 7 | 1497 | 109k |
+| 97 | `craft/engineering/coding-practice/working-effectively-with-legacy-code` | 7 | 468 | 176k |
+| 98 | `craft/engineering/coding-practice/wujun-beauty-of-math` | 8 | 516 | 119k |
+| 99 | `craft/engineering/coding-practice/wujun-soul-of-computing` | 7 | 773 | 111k |
+| 100 | `craft/engineering/coding-practice/zen-programmer` | 8 | 559 | 8k |
+| 101 | `craft/engineering/databases/art-of-postgresql` | 6 | 977 | 433k |
+| 102 | `craft/engineering/databases/cqrs-command-query-responsibility-segregation` | 7 | 922 | 94k |
+| 103 | `craft/engineering/databases/data-warehouse-toolkit` | 7 | 934 | 679k |
+| 104 | `craft/engineering/databases/database-internals` | 7 | 900 | 239k |
+| 105 | `craft/engineering/databases/high-performance-mysql` | 7 | 523 | 348k |
+| 106 | `craft/engineering/databases/nosql-distilled` | 7 | 1022 | 261k |
+| 107 | `craft/engineering/databases/postgresql-14-internals` | 7 | 1308 | 600k |
+| 108 | `craft/engineering/databases/sql-performance-explained` | 7 | 1370 | 228k |
+| 109 | `craft/engineering/databases/sql-server-2025-query-performance-tuning` | 7 | 769 | 223k |
+| 110 | `craft/engineering/databases/sql-server-2025-unveiled` | 5 | 1096 | 143k |
+| 111 | `craft/engineering/devops/30-days-of-gitlab` | 8 | 490 | 20k |
+| 112 | `craft/engineering/devops/accelerate` | 7 | 1095 | 235k |
+| 113 | `craft/engineering/devops/devops-handbook` | 6 | 984 | 178k |
+| 114 | `craft/engineering/devops/kubernetes-in-action` | 8 | 3971 | 683k |
+| 115 | `craft/engineering/devops/kubernetes-patterns` | 6 | 1442 | 313k |
+| 116 | `craft/engineering/devops/phoenix-project` | 7 | 1119 | 425k |
+| 117 | `craft/engineering/devops/seeking-sre` | 7 | 972 | 942k |
+| 118 | `craft/engineering/devops/site-reliability-engineering` | 6 | 871 | 227k |
+| 119 | `craft/engineering/devops/site-reliability-engineering-handbook` | 6 | 1251 | 170k |
+| 120 | `craft/engineering/devops/site-reliability-workbook` | 7 | 443 | 247k |
+| 121 | `craft/engineering/devops/vbirds-linux-basic` | 6 | 991 | 116k |
+| 122 | `craft/engineering/devops/vbirds-linux-server` | 7 | 948 | 69k |
+| 123 | `craft/engineering/engineering-management/become-an-effective-software-engineering-manager` | 7 | 758 | 138k |
+| 124 | `craft/engineering/engineering-management/effective-engineer` | 7 | 407 | 89k |
+| 125 | `craft/engineering/engineering-management/peopleware` | 7 | 695 | 182k |
+| 126 | `craft/engineering/engineering-management/staff-engineers-path` | 6 | 907 | 128k |
+| 127 | `craft/engineering/engineering-management/team-topologies` | 7 | 1191 | 308k |
+| 128 | `craft/engineering/language-rust/team-geek` | 7 | 819 | 54k |
+| 129 | `craft/engineering/security/attacking-network-protocols` | 7 | 1011 | 422k |
+| 130 | `craft/engineering/security/browser-hackers-handbook` | 6 | 1265 | 244k |
+| 131 | `craft/engineering/security/building-secure-and-reliable-systems` | 7 | 1140 | 862k |
+| 132 | `craft/engineering/security/hacking-art-of-exploitation` | 7 | 1151 | 297k |
+| 133 | `craft/engineering/security/real-world-bug-hunting` | 6 | 675 | 167k |
+| 134 | `craft/engineering/security/security-engineering` | 6 | 1264 | 1719k |
+| 135 | `craft/engineering/security/serious-cryptography` | 6 | 1218 | 528k |
+| 136 | `craft/engineering/security/web-security-for-developers` | 6 | 1134 | 155k |
+| 137 | `craft/engineering/systems-design/analysis-patterns` | 7 | 1011 | 547k |
+| 138 | `craft/engineering/systems-design/beautiful-architecture` | 7 | 1154 | 145k |
+| 139 | `craft/engineering/systems-design/building-microservices` | 5 | 1477 | 197k |
+| 140 | `craft/engineering/systems-design/clean-architecture` | 7 | 494 | 113k |
+| 141 | `craft/engineering/systems-design/clean-code` | 8 | 419 | 79k |
+| 142 | `craft/engineering/systems-design/designing-data-intensive-applications` | 6 | 819 | 292k |
+| 143 | `craft/engineering/systems-design/designing-distributed-systems` | 7 | 1183 | 151k |
+| 144 | `craft/engineering/systems-design/distributed-systems-principles-and-paradigms` | 7 | 1602 | 870k |
+| 145 | `craft/engineering/systems-design/enterprise-integration-patterns` | 8 | 1783 | 813k |
+| 146 | `craft/engineering/systems-design/fundamentals-of-software-architecture` | 7 | 571 | 193k |
+| 147 | `craft/engineering/systems-design/get-your-hands-dirty-clean-architecture` | 7 | 728 | 153k |
+| 148 | `craft/engineering/systems-design/grokking-advanced-system-design-interview` | 6 | 602 | 307k |
+| 149 | `craft/engineering/systems-design/how-linux-works` | 6 | 1183 | 242k |
+| 150 | `craft/engineering/systems-design/implementation-patterns` | 7 | 364 | 195k |
+| 151 | `craft/engineering/systems-design/microservices-patterns` | 7 | 1039 | 177k |
+| 152 | `craft/engineering/systems-design/patterns-of-enterprise-application-architecture` | 7 | 451 | 169k |
+| 153 | `craft/engineering/systems-design/philosophy-of-software-design` | 6 | 1210 | 211k |
+| 154 | `craft/engineering/systems-design/release-it` | 7 | 877 | 539k |
+| 155 | `craft/engineering/systems-design/software-architecture-for-developers-vol1` | 8 | 426 | 76k |
+| 156 | `craft/engineering/systems-design/software-architecture-for-developers-vol2` | 7 | 490 | 92k |
+| 157 | `craft/engineering/systems-design/software-architecture-in-practice` | 7 | 402 | 365k |
+| 158 | `craft/engineering/systems-design/software-architecture-the-hard-parts` | 7 | 1138 | 166k |
+| 159 | `craft/engineering/systems-design/system-architecture-design` | 6 | 663 | 135k |
+| 160 | `craft/engineering/systems-design/system-design-interview` | 8 | 431 | 784k |
+| 161 | `craft/engineering/systems-design/uml-distilled` | 8 | 2033 | 208k |
+| 162 | `craft/engineering/systems-design/understanding-distributed-systems` | 7 | 1167 | 261k |
+| 163 | `craft/tools/build-systems/manage-your-day-to-day` | 6 | 1045 | 50k |
+| 164 | `craft/tools/coffee/uncommon-grounds` | 8 | 590 | 282k |
+| 165 | `craft/tools/coffee/world-atlas-of-coffee` | 8 | 573 | 138k |
+| 166 | `craft/tools/version-control/building-a-second-brain` | 6 | 1380 | 152k |
+| 167 | `craft/tools/version-control/continuous-delivery` | 6 | 718 | 287k |
+| 168 | `craft/tools/version-control/deep-work` | 8 | 351 | 54k |
+| 169 | `craft/tools/version-control/digital-minimalism` | 6 | 1064 | 47k |
+| 170 | `craft/tools/version-control/make-time` | 6 | 776 | 185k |
+| 171 | `craft/writing/fiction/bird-by-bird` | 6 | 1279 | 140k |
+| 172 | `craft/writing/fiction/brothers-karamazov` | 8 | 512 | 86k |
+| 173 | `craft/writing/fiction/chronicles-of-narnia` | 6 | 1075 | 1605k |
+| 174 | `craft/writing/fiction/crime-and-punishment` | 7 | 644 | 65k |
+| 175 | `craft/writing/fiction/dialogue-the-art-of-verbal-action` | 7 | 529 | 124k |
+| 176 | `craft/writing/fiction/on-writing-well` | 8 | 520 | 175k |
+| 177 | `craft/writing/fiction/steering-the-craft` | 7 | 596 | 42k |
+| 178 | `craft/writing/non-fiction/anatomy-of-story` | 7 | 984 | 120k |
+| 179 | `craft/writing/non-fiction/art-of-listening` | 7 | 661 | 39k |
+| 180 | `craft/writing/non-fiction/brysons-dictionary-of-troublesome-words` | 7 | 615 | 177k |
+| 181 | `craft/writing/non-fiction/copywriters-handbook` | 6 | 778 | 230k |
+| 182 | `craft/writing/non-fiction/elements-of-style` | 8 | 263 | 62k |
+| 183 | `craft/writing/non-fiction/how-to-read-a-book` | 7 | 949 | 212k |
+| 184 | `craft/writing/non-fiction/if-you-want-to-write` | 7 | 639 | 43k |
+| 185 | `craft/writing/non-fiction/little-history-of-philosophy` | 6 | 662 | 187k |
+| 186 | `craft/writing/non-fiction/on-writing` | 7 | 743 | 61k |
+| 187 | `craft/writing/non-fiction/reading-like-a-writer` | 7 | 730 | 44k |
+| 188 | `craft/writing/non-fiction/sense-of-style` | 8 | 507 | 134k |
+| 189 | `craft/writing/non-fiction/show-your-work` | 8 | 535 | 78k |
+| 190 | `craft/writing/non-fiction/storynomics` | 7 | 859 | 133k |
+| 191 | `craft/writing/non-fiction/style-lessons-in-clarity-and-grace` | 6 | 621 | 60k |
+| 192 | `craft/writing/non-fiction/talking-to-strangers` | 6 | 1077 | 120k |
+| 193 | `craft/writing/non-fiction/wild-at-heart` | 7 | 549 | 197k |
+| 194 | `craft/writing/non-fiction/working-poor` | 8 | 548 | 67k |
+| 195 | `craft/writing/non-fiction/writing-down-the-bones` | 7 | 623 | 178k |
+| 196 | `craft/writing/non-fiction/writing-life` | 8 | 573 | 43k |
+| 197 | `craft/writing/screenwriting/action-mckee` | 6 | 944 | 143k |
+| 198 | `craft/writing/screenwriting/story-mckee` | 6 | 814 | 292k |
+| 199 | `faith/spiritual-formation/contemplative/50-spiritual-classics` | 7 | 584 | 408k |
+| 200 | `faith/spiritual-formation/contemplative/augustine-confessions` | 7 | 811 | 609k |
 
-_（只列前 200 本，另有 1398 本未列出）_
+_（只列前 200 本，另有 1385 本未列出）_
+
+## 筆記是空的，寫不了（7 本）
+
+docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完整摘要」規定只能取材自筆記，硬寫等於編造——先補筆記再回來。
+
+- `personal/mindset/growth/29-pawn-tickets-3` — 筆記 3070 bytes
+- `personal/relationships/community/life-is-a-long-term-accumulation` — 筆記 1461 bytes
+- `personal/relationships/parenting/financial-boundaries-with-family` — 筆記 1509 bytes
+- `professional/career/skill-building/whats-left-without-your-business-card` — 筆記 7688 bytes
+- `professional/communication/persuasion/reinforcements-how-to-get-people-to-help-you` — 筆記 819 bytes
+- `professional/finance/investing/attitude-of-the-rich` — 筆記 400 bytes
+- `wisdom/philosophy/ethics/live-your-best-life` — 筆記 1100 bytes
 
 ## 已完成
 
 - `craft/engineering/coding-practice/are-your-lights-on` — 2654 字
 - `craft/engineering/coding-practice/software-developers-career-guide` — 2632 字
 - `craft/engineering/coding-practice/wujun-math-general-course` — 3433 字
+- `faith/theology/apologetics/shadowlands` — 3228 字
 - `faith/theology/biblical-studies/sherlock-who-3-new-light` — 2314 字
 - `faith/theology/systematic/allure-of-gentleness` — 2790 字
 - `personal/mindset/growth/29-pawn-tickets-2` — 2494 字
@@ -252,6 +265,7 @@ _（只列前 200 本，另有 1398 本未列出）_
 - `personal/relationships/dating/home-tonight` — 2588 字
 - `personal/relationships/dating/how-to-make-anyone-fall-in-love-with-you` — 2453 字
 - `professional/career/skill-building/so-good-they-cant-ignore-you` — 2778 字
+- `professional/communication/persuasion/mba-confidential` — 3196 字
 - `professional/communication/public-speaking/slideology` — 2678 字
 - `professional/leadership/team-building/hbr-guide-to-leading-through-change` — 2592 字
 - `professional/leadership/vision/innovators-prescription` — 3668 字
@@ -261,3 +275,7 @@ _（只列前 200 本，另有 1398 本未列出）_
 - `wisdom/philosophy/eastern/how-the-world-thinks` — 2529 字
 - `wisdom/philosophy/ethics/12-rules-for-life` — 2628 字
 - `wisdom/philosophy/ethics/intuition-pumps` — 3021 字
+- `wisdom/philosophy/ethics/reading-as-a-wilderness` — 2414 字
+- `wisdom/science/pharmacology/applied-therapeutics` — 3425 字
+- `wisdom/science/pharmacology/basic-clinical-pharmacology` — 3422 字
+- `wisdom/science/pharmacology/pharmacotherapy-principles-and-practice` — 3599 字
