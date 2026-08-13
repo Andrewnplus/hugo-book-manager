@@ -2,18 +2,18 @@
 
 > 衍生檔，勿手改。重新產生：`python3 scripts/audit-overview.py --report`
 
-最後更新：2026-08-13
+最後更新：（未提供）
 
 ## 總覽
 
 | | 數量 | 佔比 |
 |---|---:|---:|
-| 全庫 | 1638 | 100% |
-| **已改寫並通過品檢** | **124** | **7.6%** |
-| 仍是舊三段格式 | 1512 | 92.3% |
+| 全庫 | 1637 | 100% |
+| **已改寫並通過品檢** | **123** | **7.5%** |
+| 仍是舊三段格式 | 1512 | 92.4% |
 
 ```
-[███···············································] 7.6%
+[███···············································] 7.5%
 ```
 
 ## 各項未通過
@@ -306,7 +306,6 @@ docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完�
 - `craft/engineering/coding-practice/art-of-readable-code` — 3901 字
 - `craft/engineering/coding-practice/art-of-unit-testing` — 2907 字
 - `craft/engineering/coding-practice/balancing-coupling` — 3162 字
-- `craft/engineering/coding-practice/balancing-coupling-in-software-design` — 3162 字
 - `craft/engineering/coding-practice/bdd-in-action` — 2849 字
 - `craft/engineering/coding-practice/big-refactoring` — 2863 字
 - `craft/engineering/coding-practice/big-talk-design-patterns` — 2583 字
