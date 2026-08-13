@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-08-13T02:10:57.938020929+08:00"
+last_updated: "2026-08-13T22:50:29.24010899+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -645,10 +645,6 @@ repos:
   - name: balancing-coupling
     description: 平衡軟體設計中的耦合：模組化系統的通用設計原則 | Vlad Khononov | 從整合強度、距離與易變性，建立模組化系統的耦合設計原則與檢查清單
     url: https://github.com/nplus-father/balancing-coupling
-    topics: [hugobook, leaf-coding-practice, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
-  - name: balancing-coupling-in-software-design
-    description: Balancing Coupling in Software Design | Vlad Khononov | Unifies decades of coupling theory — from structured design to connascence — into a model for architecting modular, evolvable systems.
-    url: https://github.com/nplus-father/balancing-coupling-in-software-design
     topics: [hugobook, leaf-coding-practice, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: bargaining-for-advantage
     description: "Bargaining for Advantage: Negotiation Strategies for Reasonable People | G. Richard Shell | Builds negotiation on six foundations — style, goals, standards, relationships, the other side's interests, and leverage — then walks the four steps of the bargaining process."
