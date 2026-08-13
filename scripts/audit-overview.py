@@ -66,9 +66,12 @@ YEAR_RE = re.compile(
 # 而中文書名《…》與人名同樣可查證，所以一併認列。
 REF_RE = re.compile(
     r"（[A-Z][A-Za-z .\-']{3,}）"   # 中文名後接英文原名：柏拉圖（Plato）
-    r"|_[A-Za-z][^_]{4,}_"          # 斜體英文書名：_The Republic_
+    r"|_[A-Za-z][^_\n]{4,}_"        # 斜體英文書名：_The Republic_（不得跨行）
     r"|《[^》]{2,}》"                # 中文書名：《做工的人》
 )
+
+# 行內程式碼。底線在識別字裡很常見（`pg_visibility`），不先剝掉會讓斜體規則失控。
+CODE_SPAN_RE = re.compile(r"`[^`\n]+`")
 
 MIN_YEARS = 2
 MIN_REFS = 3
@@ -173,7 +176,11 @@ def check(repo):
     checks.append(("引用年份", len(years) >= MIN_YEARS,
                    "%d 個相異（需 ≥%d）" % (len(years), MIN_YEARS)))
 
-    refs = set(REF_RE.findall(txt))
+    # 先把行內程式碼拿掉再找 refs。`pg_visibility`、`full_page_writes` 這類識別字
+    # 帶底線，會被 `_斜體英文書名_` 那條規則當成斜體的起訖，把中間整段文字（連同
+    # 其他所有 refs）吞成一個 match——去重後只剩 1 個，整份概覽就此判不合格。
+    # 2026-08-13 實測：postgresql-14-internals 寫了 4 個人名加 2 本書名，卻被算成 2。
+    refs = set(REF_RE.findall(CODE_SPAN_RE.sub(" ", txt)))
     checks.append(("點名可查證的作品／人名", len(refs) >= MIN_REFS,
                    "%d 個相異（需 ≥%d）" % (len(refs), MIN_REFS)))
 
