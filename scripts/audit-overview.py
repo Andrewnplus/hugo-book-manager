@@ -204,8 +204,40 @@ def check(repo):
         total=zh_len(txt),
         sections={n: zh_len(secs.get(n, "")) for n in SECTIONS},
         years=len(years), latin=len(refs), filler=len(hits),
+        limit_sentences=n_sent,
     )
     return checks, meta
+
+
+# ── 「過了但很勉強」 ────────────────────────────────────────────────
+# 品檢是二元關卡，只能回答合不合格；而合格的書之間差距很大，報告上卻看不出來
+# ——一本各段剛好踩線、年份與引用恰好碰到門檻的概覽，與一本厚實的概覽都是 PASS。
+# 下面這組判準把那個差距顯示出來，讓補強有優先順序可循。
+#
+# 判準刻意只看「離下限多遠」，不另立一套分數：門檻本來就是照「寫到能被驗證大約
+# 要幾字」訂的，貼著下限就代表剛好只寫到能被驗證，沒有餘裕。
+THIN_MARGIN = 0.15   # 落在區間下緣 15% 以內 = 貼著下限
+THIN_YEARS = 2       # 年份恰好卡在門檻
+THIN_REFS = 4        # 引用只比門檻多一個
+THIN_SENT = 5        # 限制段句子數只比門檻多兩句
+
+
+def thin_flags(meta):
+    """列出這份概覽貼著下限的維度，回傳 [(維度, 說明)]。"""
+    flags = []
+    for n in SECTIONS:
+        L = meta.get("sections", {}).get(n, 0)
+        lo, hi = SECTION_CHARS[n]
+        if L and L <= lo + (hi - lo) * THIN_MARGIN:
+            flags.append((n, "%d 字（下限 %d）" % (L, lo)))
+    if meta.get("years", 0) <= THIN_YEARS:
+        flags.append(("引用年份", "%d 個（門檻 %d）" % (meta.get("years", 0), MIN_YEARS)))
+    if meta.get("latin", 0) <= THIN_REFS:
+        flags.append(("點名對象", "%d 個（門檻 %d）" % (meta.get("latin", 0), MIN_REFS)))
+    if meta.get("limit_sentences", 0) <= THIN_SENT:
+        flags.append(("限制段", "%d 句（門檻 %d）"
+                      % (meta.get("limit_sentences", 0), MIN_LIMIT_SENTENCES)))
+    return flags
 
 
 def note_volume(repo):
@@ -389,6 +421,31 @@ def write_report(root, out_path, stamp):
             L.append("- `%s` — %s" % (r["slug"], "、".join(r["failed"])))
         L.append("")
 
+    # 通過品檢不等於寫得好。這一節把「剛好踩線」的書挑出來，因為報告的其餘部分
+    # 只分得出合格與不合格，看不出合格者之間的差距。
+    weak = []
+    for r in done:
+        f = thin_flags(r)
+        if f:
+            weak.append((len(f), r["notes"], r, f))
+    weak.sort(key=lambda x: (-x[0], -x[1]))
+    if weak:
+        L.append("## 過了，但貼著下限（%d 本）\n" % len(weak))
+        L.append("品檢是二元關卡，只能回答合不合格；這一節顯示合格者之間的差距。"
+                 "依（貼線維度數 → 筆記量）排序——筆記厚而概覽薄，代表素材就在那裡"
+                 "沒被用上，補強的投報率最高。要補的只是貼線的那幾項，"
+                 "不是整段重寫。查詢：`--weak N`。\n")
+        L.append("| # | 書 | 貼線 | 概覽字數 | 筆記 | 貼線的維度 |")
+        L.append("|---:|---|---:|---:|---:|---|")
+        for i, (cnt, notes, r, f) in enumerate(weak[:60], 1):
+            L.append("| %d | `%s` | %d | %d | %dk | %s |" % (
+                i, r["slug"], cnt, r.get("total", 0), notes // 1000,
+                "；".join("%s %s" % (a, b) for a, b in f)))
+        if len(weak) > 60:
+            L.append("")
+            L.append("_（只列前 60 本，另有 %d 本未列出）_" % (len(weak) - 60))
+        L.append("")
+
     if done:
         L.append("## 已完成\n")
         for r in sorted(done, key=lambda r: r["slug"]):
@@ -445,12 +502,47 @@ def run_todo(root, n):
     return 0
 
 
+def run_weak(root, n):
+    """列出「已寫過、品檢全過，但內容貼著下限」的書，依補強投報率排序。
+
+    這是 --todo 的補集。--todo 回答「還沒做的是哪些」，這個回答「做過但做得
+    勉強的是哪些」——兩者處置方式不同：前者要整段寫，後者只需要把貼線的那一兩
+    個維度補厚。
+
+    排序是（貼線的維度數 → 筆記量）。筆記厚而概覽薄代表素材就在那裡沒被用上，
+    補強的投報率最高；這與 --all 的「最該重做」用同一個直覺，只是對象換成已經
+    做過的書。
+
+    輸出刻意逐項列出貼線的維度而不給一個總分：總分會讓人去優化那個數字，而
+    列出維度才知道要補什麼。
+    """
+    rows = []
+    for b in find_books(root):
+        checks, meta = check(b)
+        if any(not c[1] for c in checks) or not is_written(b):
+            continue
+        flags = thin_flags(meta)
+        if flags:
+            rows.append((len(flags), note_volume(b), b, meta, flags))
+    rows.sort(key=lambda r: (-r[0], -r[1]))
+    print("已寫過且全過品檢的書中，有 %d 本至少一個維度貼著下限。" % len(rows))
+    print("依（貼線維度數 → 筆記量）排序，前 %d 本：\n" % min(n, len(rows)))
+    for cnt, notes, b, meta, flags in rows[:n]:
+        print("[%d 項貼線] %s" % (cnt, b))
+        print("           概覽 %d 字 / 筆記 %dk" % (meta.get("total", 0), notes // 1000))
+        for name, detail in flags:
+            print("           · %s — %s" % (name, detail))
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="深度概覽品檢")
     ap.add_argument("repo", nargs="?", help="單一書本 repo 路徑")
     ap.add_argument("--all", action="store_true", help="掃描整個 books-done")
     ap.add_argument("--todo", type=int, metavar="N",
                     help="印出接下來該做的 N 本 repo 路徑（續作用）")
+    ap.add_argument("--weak", type=int, metavar="N",
+                    help="列出已寫過、品檢全過、但內容貼著下限的前 N 本")
     ap.add_argument("--report", action="store_true", help="產生 OVERVIEW-PROGRESS.md")
     ap.add_argument("--stamp", default="", help="報告的時間戳（呼叫端給，腳本不取系統時間）")
     ap.add_argument("--out", default=DEFAULT_OUT)
@@ -460,6 +552,8 @@ def main():
 
     if a.todo is not None:
         return run_todo(a.root, a.todo)
+    if a.weak is not None:
+        return run_weak(a.root, a.weak)
     if a.report:
         return write_report(a.root, a.out, a.stamp or "（未提供）")
     if a.all:

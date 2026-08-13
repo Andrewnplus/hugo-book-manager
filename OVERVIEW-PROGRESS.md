@@ -8,28 +8,29 @@
 
 | | 數量 | 佔比 |
 |---|---:|---:|
-| 全庫 | 1637 | 100% |
-| **已改寫並通過品檢** | **173** | **10.6%** |
-| 仍是舊三段格式 | 1462 | 89.3% |
+| 全庫 | 1646 | 100% |
+| **已改寫並通過品檢** | **211** | **12.8%** |
+| 仍是舊三段格式 | 1427 | 86.7% |
 
 ```
-[█████·············································] 10.6%
+[██████············································] 12.8%
 ```
 
 ## 各項未通過
 
 | 檢查 | 未通過 | 佔比 |
 |---|---:|---:|
-| 四段齊全 | 1462 | 89% |
-| 作者的位置 長度 | 1462 | 89% |
-| 定位 長度 | 1462 | 89% |
-| 這本書的限制 長度 | 1462 | 89% |
-| 限制段有實質內容 | 1462 | 89% |
-| 引用年份 | 1300 | 79% |
-| 點名可查證的作品／人名 | 972 | 59% |
-| 完整摘要 長度 | 488 | 30% |
+| 四段齊全 | 1427 | 87% |
+| 作者的位置 長度 | 1427 | 87% |
+| 定位 長度 | 1427 | 87% |
+| 這本書的限制 長度 | 1427 | 87% |
+| 限制段有實質內容 | 1427 | 87% |
+| 引用年份 | 1267 | 77% |
+| 點名可查證的作品／人名 | 952 | 58% |
+| 完整摘要 長度 | 475 | 29% |
 | 粗體都收得起來 | 47 | 3% |
 | 無空洞讚美 | 45 | 3% |
+| 有深度概覽 | 6 | 0% |
 
 ## 待改寫（依 slug 排序）
 
@@ -37,208 +38,208 @@
 
 | # | 書 | 未通過 | 概覽字數 | 筆記 |
 |---:|---|---:|---:|---:|
-| 1 | `craft/engineering/security/building-secure-and-reliable-systems` | 7 | 1140 | 862k |
-| 2 | `craft/engineering/security/hacking-art-of-exploitation` | 7 | 1151 | 297k |
-| 3 | `craft/engineering/security/real-world-bug-hunting` | 6 | 675 | 167k |
-| 4 | `craft/engineering/security/security-engineering` | 7 | 1264 | 1719k |
-| 5 | `craft/engineering/security/serious-cryptography` | 6 | 1218 | 528k |
-| 6 | `craft/engineering/security/web-security-for-developers` | 6 | 1134 | 155k |
-| 7 | `craft/engineering/systems-design/analysis-patterns` | 7 | 1011 | 547k |
-| 8 | `craft/engineering/systems-design/beautiful-architecture` | 7 | 1154 | 145k |
-| 9 | `craft/engineering/systems-design/building-microservices` | 5 | 1477 | 197k |
-| 10 | `craft/engineering/systems-design/clean-architecture` | 7 | 494 | 113k |
-| 11 | `craft/engineering/systems-design/clean-code` | 8 | 419 | 79k |
-| 12 | `craft/engineering/systems-design/designing-data-intensive-applications` | 6 | 819 | 292k |
-| 13 | `craft/engineering/systems-design/designing-distributed-systems` | 7 | 1183 | 151k |
-| 14 | `craft/engineering/systems-design/distributed-systems-principles-and-paradigms` | 7 | 1602 | 870k |
-| 15 | `craft/engineering/systems-design/enterprise-integration-patterns` | 8 | 1783 | 813k |
-| 16 | `craft/engineering/systems-design/fundamentals-of-software-architecture` | 7 | 571 | 193k |
-| 17 | `craft/engineering/systems-design/get-your-hands-dirty-clean-architecture` | 7 | 728 | 153k |
-| 18 | `craft/engineering/systems-design/grokking-advanced-system-design-interview` | 6 | 602 | 307k |
-| 19 | `craft/engineering/systems-design/how-linux-works` | 6 | 1183 | 242k |
-| 20 | `craft/engineering/systems-design/implementation-patterns` | 7 | 364 | 195k |
-| 21 | `craft/engineering/systems-design/microservices-patterns` | 7 | 1039 | 177k |
-| 22 | `craft/engineering/systems-design/patterns-of-enterprise-application-architecture` | 7 | 451 | 169k |
-| 23 | `craft/engineering/systems-design/philosophy-of-software-design` | 6 | 1210 | 211k |
-| 24 | `craft/engineering/systems-design/release-it` | 7 | 877 | 539k |
-| 25 | `craft/engineering/systems-design/software-architecture-for-developers-vol1` | 8 | 426 | 76k |
-| 26 | `craft/engineering/systems-design/software-architecture-for-developers-vol2` | 7 | 490 | 92k |
-| 27 | `craft/engineering/systems-design/software-architecture-in-practice` | 7 | 402 | 365k |
-| 28 | `craft/engineering/systems-design/software-architecture-the-hard-parts` | 7 | 1138 | 166k |
-| 29 | `craft/engineering/systems-design/system-architecture-design` | 6 | 663 | 135k |
-| 30 | `craft/engineering/systems-design/system-design-interview` | 8 | 431 | 784k |
-| 31 | `craft/engineering/systems-design/uml-distilled` | 8 | 2033 | 208k |
-| 32 | `craft/engineering/systems-design/understanding-distributed-systems` | 7 | 1167 | 261k |
-| 33 | `craft/tools/build-systems/manage-your-day-to-day` | 6 | 1045 | 50k |
-| 34 | `craft/tools/coffee/uncommon-grounds` | 8 | 590 | 282k |
-| 35 | `craft/tools/coffee/world-atlas-of-coffee` | 8 | 573 | 138k |
-| 36 | `craft/tools/version-control/building-a-second-brain` | 6 | 1380 | 152k |
-| 37 | `craft/tools/version-control/continuous-delivery` | 6 | 718 | 287k |
-| 38 | `craft/tools/version-control/deep-work` | 8 | 351 | 54k |
-| 39 | `craft/tools/version-control/digital-minimalism` | 6 | 1064 | 47k |
-| 40 | `craft/tools/version-control/make-time` | 6 | 776 | 185k |
-| 41 | `craft/writing/fiction/bird-by-bird` | 6 | 1279 | 140k |
-| 42 | `craft/writing/fiction/brothers-karamazov` | 8 | 512 | 86k |
-| 43 | `craft/writing/fiction/chronicles-of-narnia` | 6 | 1075 | 1605k |
-| 44 | `craft/writing/fiction/crime-and-punishment` | 7 | 644 | 65k |
-| 45 | `craft/writing/fiction/dialogue-the-art-of-verbal-action` | 7 | 529 | 124k |
-| 46 | `craft/writing/fiction/on-writing-well` | 8 | 520 | 175k |
-| 47 | `craft/writing/fiction/steering-the-craft` | 7 | 596 | 42k |
-| 48 | `craft/writing/non-fiction/anatomy-of-story` | 7 | 984 | 120k |
-| 49 | `craft/writing/non-fiction/art-of-listening` | 7 | 661 | 39k |
-| 50 | `craft/writing/non-fiction/brysons-dictionary-of-troublesome-words` | 7 | 615 | 177k |
-| 51 | `craft/writing/non-fiction/copywriters-handbook` | 6 | 778 | 230k |
-| 52 | `craft/writing/non-fiction/elements-of-style` | 8 | 263 | 62k |
-| 53 | `craft/writing/non-fiction/how-to-read-a-book` | 7 | 949 | 212k |
-| 54 | `craft/writing/non-fiction/if-you-want-to-write` | 7 | 639 | 43k |
-| 55 | `craft/writing/non-fiction/little-history-of-philosophy` | 6 | 662 | 187k |
-| 56 | `craft/writing/non-fiction/on-writing` | 7 | 743 | 61k |
-| 57 | `craft/writing/non-fiction/reading-like-a-writer` | 7 | 730 | 44k |
-| 58 | `craft/writing/non-fiction/sense-of-style` | 8 | 507 | 134k |
-| 59 | `craft/writing/non-fiction/show-your-work` | 8 | 535 | 78k |
-| 60 | `craft/writing/non-fiction/storynomics` | 7 | 859 | 133k |
-| 61 | `craft/writing/non-fiction/style-lessons-in-clarity-and-grace` | 6 | 621 | 60k |
-| 62 | `craft/writing/non-fiction/talking-to-strangers` | 6 | 1077 | 120k |
-| 63 | `craft/writing/non-fiction/wild-at-heart` | 7 | 549 | 197k |
-| 64 | `craft/writing/non-fiction/working-poor` | 8 | 548 | 67k |
-| 65 | `craft/writing/non-fiction/writing-down-the-bones` | 7 | 623 | 178k |
-| 66 | `craft/writing/non-fiction/writing-life` | 8 | 573 | 43k |
-| 67 | `craft/writing/screenwriting/action-mckee` | 6 | 944 | 143k |
-| 68 | `craft/writing/screenwriting/story-mckee` | 6 | 814 | 292k |
-| 69 | `faith/spiritual-formation/contemplative/50-spiritual-classics` | 7 | 584 | 408k |
-| 70 | `faith/spiritual-formation/contemplative/augustine-confessions` | 7 | 811 | 609k |
-| 71 | `faith/spiritual-formation/contemplative/genesee-diary` | 7 | 1398 | 275k |
-| 72 | `faith/spiritual-formation/contemplative/inner-voice-of-love` | 6 | 1056 | 111k |
-| 73 | `faith/spiritual-formation/contemplative/reaching-out` | 8 | 4130 | 221k |
-| 74 | `faith/spiritual-formation/contemplative/road-to-daybreak` | 6 | 2081 | 371k |
-| 75 | `faith/spiritual-formation/devotional/adam-gods-beloved` | 7 | 717 | 146k |
-| 76 | `faith/spiritual-formation/devotional/can-you-drink-the-cup` | 6 | 1302 | 97k |
-| 77 | `faith/spiritual-formation/devotional/four-loves` | 7 | 1453 | 172k |
-| 78 | `faith/spiritual-formation/devotional/friendly-snowflake` | 7 | 451 | 31k |
-| 79 | `faith/spiritual-formation/devotional/great-divorce` | 7 | 569 | 128k |
-| 80 | `faith/spiritual-formation/devotional/grief-observed` | 6 | 916 | 90k |
-| 81 | `faith/spiritual-formation/devotional/imitation-of-christ` | 7 | 621 | 337k |
-| 82 | `faith/spiritual-formation/devotional/life-of-the-beloved` | 7 | 1368 | 130k |
-| 83 | `faith/spiritual-formation/devotional/surprised-by-joy` | 5 | 1181 | 250k |
-| 84 | `faith/spiritual-formation/devotional/till-we-have-faces` | 8 | 2792 | 386k |
-| 85 | `faith/spiritual-formation/devotional/weight-of-glory` | 5 | 766 | 76k |
-| 86 | `faith/spiritual-formation/discipleship/after-you-believe` | 7 | 829 | 469k |
-| 87 | `faith/spiritual-formation/discipleship/attached-to-god` | 8 | 1660 | 308k |
-| 88 | `faith/spiritual-formation/discipleship/cost-of-discipleship` | 7 | 903 | 161k |
-| 89 | `faith/spiritual-formation/discipleship/effective-bible-teaching` | 6 | 820 | 260k |
-| 90 | `faith/spiritual-formation/discipleship/great-omission` | 6 | 1253 | 331k |
-| 91 | `faith/spiritual-formation/discipleship/life-without-lack` | 9 | 2011 | 382k |
-| 92 | `faith/spiritual-formation/discipleship/long-obedience-in-the-same-direction` | 7 | 1150 | 175k |
-| 93 | `faith/spiritual-formation/discipleship/pilgrims-progress` | 7 | 575 | 181k |
-| 94 | `faith/spiritual-formation/discipleship/renovation-of-the-heart` | 7 | 1132 | 566k |
-| 95 | `faith/spiritual-formation/discipleship/ruthless-elimination-of-hurry` | 7 | 3903 | 281k |
-| 96 | `faith/spiritual-formation/discipleship/soul-of-shame` | 9 | 2586 | 406k |
-| 97 | `faith/spiritual-formation/discipleship/spirit-of-the-disciplines` | 7 | 1115 | 500k |
-| 98 | `faith/spiritual-formation/prayer/letters-to-malcolm` | 8 | 428 | 188k |
-| 99 | `faith/spiritual-formation/prayer/life-together-prayerbook-of-the-bible` | 6 | 789 | 106k |
-| 100 | `faith/theology/apologetics/everlasting-man` | 7 | 811 | 539k |
-| 101 | `faith/theology/apologetics/god-in-the-dock` | 8 | 2692 | 637k |
-| 102 | `faith/theology/apologetics/mere-christianity` | 6 | 1138 | 251k |
-| 103 | `faith/theology/apologetics/miracles` | 7 | 1294 | 352k |
-| 104 | `faith/theology/apologetics/problem-of-pain` | 7 | 731 | 137k |
-| 105 | `faith/theology/apologetics/screwtape-letters` | 7 | 648 | 56k |
-| 106 | `faith/theology/apologetics/simply-christian` | 7 | 546 | 329k |
-| 107 | `faith/theology/apologetics/where-the-conflict-really-lies` | 7 | 1028 | 172k |
-| 108 | `faith/theology/biblical-studies/21st-century-biblical-homiletics` | 6 | 659 | 267k |
-| 109 | `faith/theology/biblical-studies/a-new-testament-biblical-theology` | 7 | 623 | 316k |
-| 110 | `faith/theology/biblical-studies/according-to-plan` | 8 | 523 | 323k |
-| 111 | `faith/theology/biblical-studies/an-introduction-to-the-new-testament` | 6 | 613 | 1419k |
-| 112 | `faith/theology/biblical-studies/an-introduction-to-the-old-testament` | 6 | 602 | 253k |
-| 113 | `faith/theology/biblical-studies/ancient-near-eastern-texts` | 6 | 1036 | 164k |
-| 114 | `faith/theology/biblical-studies/ancient-near-eastern-thought` | 8 | 574 | 138k |
-| 115 | `faith/theology/biblical-studies/basic-christianity` | 6 | 787 | 41k |
-| 116 | `faith/theology/biblical-studies/biblical-critical-theory` | 8 | 469 | 195k |
-| 117 | `faith/theology/biblical-studies/biblical-theology-goldingay` | 7 | 636 | 874k |
-| 118 | `faith/theology/biblical-studies/biblical-theology-vos` | 7 | 1002 | 834k |
-| 119 | `faith/theology/biblical-studies/books-of-the-pentateuch` | 8 | 592 | 94k |
-| 120 | `faith/theology/biblical-studies/carson-intro-new-testament` | 7 | 606 | 238k |
-| 121 | `faith/theology/biblical-studies/casket-empty-old-testament-study-guide` | 5 | 665 | 227k |
-| 122 | `faith/theology/biblical-studies/cross-and-the-prodigal` | 7 | 771 | 115k |
-| 123 | `faith/theology/biblical-studies/dictionary-of-the-later-new-testament` | 8 | 375 | 360k |
-| 124 | `faith/theology/biblical-studies/eat-this-book` | 7 | 399 | 194k |
-| 125 | `faith/theology/biblical-studies/every-good-endeavor` | 8 | 424 | 53k |
-| 126 | `faith/theology/biblical-studies/evil-and-the-justice-of-god` | 7 | 886 | 90k |
-| 127 | `faith/theology/biblical-studies/exegetical-fallacies` | 7 | 3997 | 218k |
-| 128 | `faith/theology/biblical-studies/ezra-nehemiah-esther-for-everyone` | 5 | 630 | 275k |
-| 129 | `faith/theology/biblical-studies/forgive` | 8 | 414 | 46k |
-| 130 | `faith/theology/biblical-studies/from-eden-to-the-new-jerusalem` | 8 | 479 | 89k |
-| 131 | `faith/theology/biblical-studies/genesis-waltke` | 7 | 609 | 120k |
-| 132 | `faith/theology/biblical-studies/gods-wisdom-for-navigating-life` | 8 | 338 | 402k |
-| 133 | `faith/theology/biblical-studies/hard-sayings-of-the-bible` | 7 | 615 | 146k |
-| 134 | `faith/theology/biblical-studies/hermeneutical-spiral` | 7 | 942 | 637k |
-| 135 | `faith/theology/biblical-studies/hidden-christmas` | 7 | 4252 | 175k |
-| 136 | `faith/theology/biblical-studies/how-to-read-the-bible-book-by-book` | 7 | 738 | 285k |
-| 137 | `faith/theology/biblical-studies/how-to-read-the-bible-for-all-its-worth` | 8 | 328 | 63k |
-| 138 | `faith/theology/biblical-studies/is-there-a-meaning-in-this-text` | 6 | 1161 | 154k |
-| 139 | `faith/theology/biblical-studies/issues-facing-christians-today` | 7 | 564 | 116k |
-| 140 | `faith/theology/biblical-studies/ivp-bible-background-commentary-nt` | 8 | 533 | 182k |
-| 141 | `faith/theology/biblical-studies/ivp-bible-background-commentary-ot` | 6 | 785 | 141k |
-| 142 | `faith/theology/biblical-studies/jesus-and-the-victory-of-god` | 7 | 615 | 129k |
-| 143 | `faith/theology/biblical-studies/jesus-through-middle-eastern-eyes` | 7 | 644 | 312k |
-| 144 | `faith/theology/biblical-studies/lost-world-of-adam-and-eve` | 7 | 731 | 184k |
-| 145 | `faith/theology/biblical-studies/lost-world-of-genesis-one` | 7 | 600 | 170k |
-| 146 | `faith/theology/biblical-studies/meaning-of-marriage` | 8 | 498 | 46k |
-| 147 | `faith/theology/biblical-studies/message-of-1-2-thessalonians` | 8 | 553 | 260k |
-| 148 | `faith/theology/biblical-studies/message-of-1-corinthians` | 8 | 458 | 124k |
-| 149 | `faith/theology/biblical-studies/message-of-1-peter` | 8 | 439 | 153k |
-| 150 | `faith/theology/biblical-studies/message-of-1-timothy-titus` | 8 | 457 | 109k |
-| 151 | `faith/theology/biblical-studies/message-of-2-corinthians` | 8 | 501 | 138k |
-| 152 | `faith/theology/biblical-studies/message-of-2-peter-jude` | 7 | 625 | 335k |
-| 153 | `faith/theology/biblical-studies/message-of-acts` | 6 | 623 | 200k |
-| 154 | `faith/theology/biblical-studies/message-of-amos` | 8 | 438 | 113k |
-| 155 | `faith/theology/biblical-studies/message-of-chronicles` | 6 | 698 | 332k |
-| 156 | `faith/theology/biblical-studies/message-of-colossians-philemon` | 6 | 696 | 227k |
-| 157 | `faith/theology/biblical-studies/message-of-daniel` | 7 | 593 | 282k |
-| 158 | `faith/theology/biblical-studies/message-of-deuteronomy` | 6 | 640 | 561k |
-| 159 | `faith/theology/biblical-studies/message-of-ecclesiastes` | 6 | 770 | 127k |
-| 160 | `faith/theology/biblical-studies/message-of-ephesians` | 7 | 1233 | 187k |
-| 161 | `faith/theology/biblical-studies/message-of-esther` | 7 | 562 | 169k |
-| 162 | `faith/theology/biblical-studies/message-of-exodus` | 8 | 439 | 186k |
-| 163 | `faith/theology/biblical-studies/message-of-ezekiel` | 8 | 602 | 390k |
-| 164 | `faith/theology/biblical-studies/message-of-ezra-and-haggai` | 7 | 444 | 105k |
-| 165 | `faith/theology/biblical-studies/message-of-galatians` | 7 | 584 | 276k |
-| 166 | `faith/theology/biblical-studies/message-of-genesis-bst` | 8 | 575 | 290k |
-| 167 | `faith/theology/biblical-studies/message-of-hebrews` | 7 | 680 | 345k |
-| 168 | `faith/theology/biblical-studies/message-of-hosea` | 8 | 546 | 143k |
-| 169 | `faith/theology/biblical-studies/message-of-isaiah` | 7 | 634 | 352k |
-| 170 | `faith/theology/biblical-studies/message-of-james` | 7 | 688 | 88k |
-| 171 | `faith/theology/biblical-studies/message-of-jeremiah` | 5 | 604 | 170k |
-| 172 | `faith/theology/biblical-studies/message-of-job` | 8 | 577 | 289k |
-| 173 | `faith/theology/biblical-studies/message-of-joel-micah-habakkuk` | 7 | 963 | 106k |
-| 174 | `faith/theology/biblical-studies/message-of-john` | 6 | 617 | 702k |
-| 175 | `faith/theology/biblical-studies/message-of-johns-letters` | 7 | 628 | 266k |
-| 176 | `faith/theology/biblical-studies/message-of-jonah` | 7 | 726 | 187k |
-| 177 | `faith/theology/biblical-studies/message-of-joshua` | 8 | 595 | 264k |
-| 178 | `faith/theology/biblical-studies/message-of-judges` | 7 | 692 | 268k |
-| 179 | `faith/theology/biblical-studies/message-of-kings` | 6 | 693 | 559k |
-| 180 | `faith/theology/biblical-studies/message-of-lamentations` | 6 | 657 | 218k |
-| 181 | `faith/theology/biblical-studies/message-of-leviticus` | 6 | 746 | 433k |
-| 182 | `faith/theology/biblical-studies/message-of-luke` | 7 | 618 | 146k |
-| 183 | `faith/theology/biblical-studies/message-of-malachi` | 7 | 1149 | 96k |
-| 184 | `faith/theology/biblical-studies/message-of-mark` | 8 | 567 | 417k |
-| 185 | `faith/theology/biblical-studies/message-of-matthew` | 7 | 609 | 519k |
-| 186 | `faith/theology/biblical-studies/message-of-nehemiah` | 7 | 674 | 444k |
-| 187 | `faith/theology/biblical-studies/message-of-numbers` | 6 | 758 | 426k |
-| 188 | `faith/theology/biblical-studies/message-of-obadiah-nahum-zephaniah` | 6 | 609 | 286k |
-| 189 | `faith/theology/biblical-studies/message-of-philippians` | 7 | 1195 | 349k |
-| 190 | `faith/theology/biblical-studies/message-of-proverbs` | 7 | 673 | 281k |
-| 191 | `faith/theology/biblical-studies/message-of-psalms-1-72` | 7 | 707 | 527k |
-| 192 | `faith/theology/biblical-studies/message-of-psalms-73-150` | 8 | 581 | 575k |
-| 193 | `faith/theology/biblical-studies/message-of-revelation` | 7 | 685 | 312k |
-| 194 | `faith/theology/biblical-studies/message-of-romans` | 8 | 469 | 206k |
-| 195 | `faith/theology/biblical-studies/message-of-ruth` | 6 | 650 | 167k |
-| 196 | `faith/theology/biblical-studies/message-of-samuel` | 8 | 519 | 347k |
-| 197 | `faith/theology/biblical-studies/message-of-song-of-songs` | 6 | 705 | 267k |
-| 198 | `faith/theology/biblical-studies/message-of-zechariah` | 7 | 1123 | 161k |
-| 199 | `faith/theology/biblical-studies/misquoting-jesus` | 7 | 827 | 91k |
-| 200 | `faith/theology/biblical-studies/mission-of-god` | 8 | 538 | 312k |
+| 1 | `craft/tools/version-control/building-a-second-brain` | 6 | 1380 | 152k |
+| 2 | `craft/tools/version-control/continuous-delivery` | 6 | 718 | 287k |
+| 3 | `craft/tools/version-control/deep-work` | 8 | 351 | 54k |
+| 4 | `craft/tools/version-control/digital-minimalism` | 6 | 1064 | 47k |
+| 5 | `craft/tools/version-control/make-time` | 6 | 776 | 185k |
+| 6 | `craft/writing/fiction/bird-by-bird` | 6 | 1279 | 140k |
+| 7 | `craft/writing/fiction/brothers-karamazov` | 8 | 512 | 86k |
+| 8 | `craft/writing/fiction/chronicles-of-narnia` | 6 | 1075 | 1605k |
+| 9 | `craft/writing/fiction/crime-and-punishment` | 7 | 644 | 65k |
+| 10 | `craft/writing/fiction/dialogue-the-art-of-verbal-action` | 7 | 529 | 124k |
+| 11 | `craft/writing/fiction/on-writing-well` | 8 | 520 | 175k |
+| 12 | `craft/writing/fiction/steering-the-craft` | 7 | 596 | 42k |
+| 13 | `craft/writing/non-fiction/anatomy-of-story` | 7 | 984 | 120k |
+| 14 | `craft/writing/non-fiction/art-of-listening` | 7 | 661 | 39k |
+| 15 | `craft/writing/non-fiction/brysons-dictionary-of-troublesome-words` | 7 | 615 | 177k |
+| 16 | `craft/writing/non-fiction/copywriters-handbook` | 6 | 778 | 230k |
+| 17 | `craft/writing/non-fiction/elements-of-style` | 8 | 263 | 62k |
+| 18 | `craft/writing/non-fiction/how-to-read-a-book` | 7 | 949 | 212k |
+| 19 | `craft/writing/non-fiction/if-you-want-to-write` | 7 | 639 | 43k |
+| 20 | `craft/writing/non-fiction/little-history-of-philosophy` | 6 | 662 | 187k |
+| 21 | `craft/writing/non-fiction/on-writing` | 7 | 743 | 61k |
+| 22 | `craft/writing/non-fiction/reading-like-a-writer` | 7 | 730 | 44k |
+| 23 | `craft/writing/non-fiction/sense-of-style` | 8 | 507 | 134k |
+| 24 | `craft/writing/non-fiction/show-your-work` | 8 | 535 | 78k |
+| 25 | `craft/writing/non-fiction/storynomics` | 7 | 859 | 133k |
+| 26 | `craft/writing/non-fiction/style-lessons-in-clarity-and-grace` | 6 | 621 | 60k |
+| 27 | `craft/writing/non-fiction/talking-to-strangers` | 6 | 1077 | 120k |
+| 28 | `craft/writing/non-fiction/wild-at-heart` | 7 | 549 | 197k |
+| 29 | `craft/writing/non-fiction/working-poor` | 8 | 548 | 67k |
+| 30 | `craft/writing/non-fiction/writing-down-the-bones` | 7 | 623 | 178k |
+| 31 | `craft/writing/non-fiction/writing-life` | 8 | 573 | 43k |
+| 32 | `craft/writing/screenwriting/action-mckee` | 6 | 944 | 143k |
+| 33 | `craft/writing/screenwriting/story-mckee` | 6 | 814 | 292k |
+| 34 | `faith/spiritual-formation/contemplative/50-spiritual-classics` | 7 | 584 | 408k |
+| 35 | `faith/spiritual-formation/contemplative/augustine-confessions` | 7 | 811 | 609k |
+| 36 | `faith/spiritual-formation/contemplative/genesee-diary` | 7 | 1398 | 275k |
+| 37 | `faith/spiritual-formation/contemplative/inner-voice-of-love` | 6 | 1056 | 111k |
+| 38 | `faith/spiritual-formation/contemplative/reaching-out` | 8 | 4130 | 221k |
+| 39 | `faith/spiritual-formation/contemplative/road-to-daybreak` | 6 | 2081 | 371k |
+| 40 | `faith/spiritual-formation/devotional/adam-gods-beloved` | 7 | 717 | 146k |
+| 41 | `faith/spiritual-formation/devotional/can-you-drink-the-cup` | 6 | 1302 | 97k |
+| 42 | `faith/spiritual-formation/devotional/four-loves` | 7 | 1453 | 172k |
+| 43 | `faith/spiritual-formation/devotional/friendly-snowflake` | 7 | 451 | 31k |
+| 44 | `faith/spiritual-formation/devotional/great-divorce` | 7 | 569 | 128k |
+| 45 | `faith/spiritual-formation/devotional/grief-observed` | 6 | 916 | 90k |
+| 46 | `faith/spiritual-formation/devotional/imitation-of-christ` | 7 | 621 | 337k |
+| 47 | `faith/spiritual-formation/devotional/life-of-the-beloved` | 7 | 1368 | 130k |
+| 48 | `faith/spiritual-formation/devotional/surprised-by-joy` | 5 | 1181 | 250k |
+| 49 | `faith/spiritual-formation/devotional/till-we-have-faces` | 8 | 2792 | 386k |
+| 50 | `faith/spiritual-formation/devotional/weight-of-glory` | 5 | 766 | 76k |
+| 51 | `faith/spiritual-formation/discipleship/after-you-believe` | 7 | 829 | 469k |
+| 52 | `faith/spiritual-formation/discipleship/attached-to-god` | 8 | 1660 | 308k |
+| 53 | `faith/spiritual-formation/discipleship/cost-of-discipleship` | 7 | 903 | 161k |
+| 54 | `faith/spiritual-formation/discipleship/effective-bible-teaching` | 6 | 820 | 260k |
+| 55 | `faith/spiritual-formation/discipleship/great-omission` | 6 | 1253 | 331k |
+| 56 | `faith/spiritual-formation/discipleship/life-without-lack` | 9 | 2011 | 382k |
+| 57 | `faith/spiritual-formation/discipleship/long-obedience-in-the-same-direction` | 7 | 1150 | 175k |
+| 58 | `faith/spiritual-formation/discipleship/pilgrims-progress` | 7 | 575 | 181k |
+| 59 | `faith/spiritual-formation/discipleship/renovation-of-the-heart` | 7 | 1132 | 566k |
+| 60 | `faith/spiritual-formation/discipleship/ruthless-elimination-of-hurry` | 7 | 3903 | 281k |
+| 61 | `faith/spiritual-formation/discipleship/soul-of-shame` | 9 | 2586 | 406k |
+| 62 | `faith/spiritual-formation/discipleship/spirit-of-the-disciplines` | 7 | 1115 | 500k |
+| 63 | `faith/spiritual-formation/prayer/letters-to-malcolm` | 8 | 428 | 188k |
+| 64 | `faith/spiritual-formation/prayer/life-together-prayerbook-of-the-bible` | 6 | 789 | 106k |
+| 65 | `faith/theology/apologetics/everlasting-man` | 7 | 811 | 539k |
+| 66 | `faith/theology/apologetics/god-in-the-dock` | 8 | 2692 | 637k |
+| 67 | `faith/theology/apologetics/mere-christianity` | 6 | 1138 | 251k |
+| 68 | `faith/theology/apologetics/miracles` | 7 | 1294 | 352k |
+| 69 | `faith/theology/apologetics/problem-of-pain` | 7 | 731 | 137k |
+| 70 | `faith/theology/apologetics/screwtape-letters` | 7 | 648 | 56k |
+| 71 | `faith/theology/apologetics/simply-christian` | 7 | 546 | 329k |
+| 72 | `faith/theology/apologetics/where-the-conflict-really-lies` | 7 | 1028 | 172k |
+| 73 | `faith/theology/biblical-studies/21st-century-biblical-homiletics` | 6 | 659 | 267k |
+| 74 | `faith/theology/biblical-studies/a-new-testament-biblical-theology` | 7 | 623 | 316k |
+| 75 | `faith/theology/biblical-studies/according-to-plan` | 8 | 523 | 323k |
+| 76 | `faith/theology/biblical-studies/an-introduction-to-the-new-testament` | 6 | 613 | 1419k |
+| 77 | `faith/theology/biblical-studies/an-introduction-to-the-old-testament` | 6 | 602 | 253k |
+| 78 | `faith/theology/biblical-studies/ancient-near-eastern-texts` | 6 | 1036 | 164k |
+| 79 | `faith/theology/biblical-studies/ancient-near-eastern-thought` | 8 | 574 | 138k |
+| 80 | `faith/theology/biblical-studies/basic-christianity` | 6 | 787 | 41k |
+| 81 | `faith/theology/biblical-studies/biblical-critical-theory` | 8 | 469 | 195k |
+| 82 | `faith/theology/biblical-studies/biblical-theology-goldingay` | 7 | 636 | 874k |
+| 83 | `faith/theology/biblical-studies/biblical-theology-vos` | 7 | 1002 | 834k |
+| 84 | `faith/theology/biblical-studies/books-of-the-pentateuch` | 8 | 592 | 94k |
+| 85 | `faith/theology/biblical-studies/carson-intro-new-testament` | 7 | 606 | 238k |
+| 86 | `faith/theology/biblical-studies/casket-empty-old-testament-study-guide` | 5 | 665 | 227k |
+| 87 | `faith/theology/biblical-studies/cross-and-the-prodigal` | 7 | 771 | 115k |
+| 88 | `faith/theology/biblical-studies/dictionary-of-the-later-new-testament` | 8 | 375 | 360k |
+| 89 | `faith/theology/biblical-studies/eat-this-book` | 7 | 399 | 194k |
+| 90 | `faith/theology/biblical-studies/every-good-endeavor` | 8 | 424 | 53k |
+| 91 | `faith/theology/biblical-studies/evil-and-the-justice-of-god` | 7 | 886 | 90k |
+| 92 | `faith/theology/biblical-studies/exegetical-fallacies` | 7 | 3997 | 218k |
+| 93 | `faith/theology/biblical-studies/ezra-nehemiah-esther-for-everyone` | 5 | 630 | 275k |
+| 94 | `faith/theology/biblical-studies/forgive` | 8 | 414 | 46k |
+| 95 | `faith/theology/biblical-studies/from-eden-to-the-new-jerusalem` | 8 | 479 | 89k |
+| 96 | `faith/theology/biblical-studies/genesis-waltke` | 7 | 609 | 120k |
+| 97 | `faith/theology/biblical-studies/gods-wisdom-for-navigating-life` | 8 | 338 | 402k |
+| 98 | `faith/theology/biblical-studies/hard-sayings-of-the-bible` | 7 | 615 | 146k |
+| 99 | `faith/theology/biblical-studies/hermeneutical-spiral` | 7 | 942 | 637k |
+| 100 | `faith/theology/biblical-studies/hidden-christmas` | 7 | 4252 | 175k |
+| 101 | `faith/theology/biblical-studies/how-to-read-the-bible-book-by-book` | 7 | 738 | 285k |
+| 102 | `faith/theology/biblical-studies/how-to-read-the-bible-for-all-its-worth` | 8 | 328 | 63k |
+| 103 | `faith/theology/biblical-studies/is-there-a-meaning-in-this-text` | 6 | 1161 | 154k |
+| 104 | `faith/theology/biblical-studies/issues-facing-christians-today` | 7 | 564 | 116k |
+| 105 | `faith/theology/biblical-studies/ivp-bible-background-commentary-nt` | 8 | 533 | 182k |
+| 106 | `faith/theology/biblical-studies/ivp-bible-background-commentary-ot` | 6 | 785 | 141k |
+| 107 | `faith/theology/biblical-studies/jesus-and-the-victory-of-god` | 7 | 615 | 129k |
+| 108 | `faith/theology/biblical-studies/jesus-through-middle-eastern-eyes` | 7 | 644 | 312k |
+| 109 | `faith/theology/biblical-studies/lost-world-of-adam-and-eve` | 7 | 731 | 184k |
+| 110 | `faith/theology/biblical-studies/lost-world-of-genesis-one` | 7 | 600 | 170k |
+| 111 | `faith/theology/biblical-studies/meaning-of-marriage` | 8 | 498 | 46k |
+| 112 | `faith/theology/biblical-studies/message-of-1-2-thessalonians` | 8 | 553 | 260k |
+| 113 | `faith/theology/biblical-studies/message-of-1-corinthians` | 8 | 458 | 124k |
+| 114 | `faith/theology/biblical-studies/message-of-1-peter` | 8 | 439 | 153k |
+| 115 | `faith/theology/biblical-studies/message-of-1-timothy-titus` | 8 | 457 | 109k |
+| 116 | `faith/theology/biblical-studies/message-of-2-corinthians` | 8 | 501 | 138k |
+| 117 | `faith/theology/biblical-studies/message-of-2-peter-jude` | 7 | 625 | 335k |
+| 118 | `faith/theology/biblical-studies/message-of-acts` | 6 | 623 | 200k |
+| 119 | `faith/theology/biblical-studies/message-of-amos` | 8 | 438 | 113k |
+| 120 | `faith/theology/biblical-studies/message-of-chronicles` | 6 | 698 | 332k |
+| 121 | `faith/theology/biblical-studies/message-of-colossians-philemon` | 6 | 696 | 227k |
+| 122 | `faith/theology/biblical-studies/message-of-daniel` | 7 | 593 | 282k |
+| 123 | `faith/theology/biblical-studies/message-of-deuteronomy` | 6 | 640 | 561k |
+| 124 | `faith/theology/biblical-studies/message-of-ecclesiastes` | 6 | 770 | 127k |
+| 125 | `faith/theology/biblical-studies/message-of-ephesians` | 7 | 1233 | 187k |
+| 126 | `faith/theology/biblical-studies/message-of-esther` | 7 | 562 | 169k |
+| 127 | `faith/theology/biblical-studies/message-of-exodus` | 8 | 439 | 186k |
+| 128 | `faith/theology/biblical-studies/message-of-ezekiel` | 8 | 602 | 390k |
+| 129 | `faith/theology/biblical-studies/message-of-ezra-and-haggai` | 7 | 444 | 105k |
+| 130 | `faith/theology/biblical-studies/message-of-galatians` | 7 | 584 | 276k |
+| 131 | `faith/theology/biblical-studies/message-of-genesis-bst` | 8 | 575 | 290k |
+| 132 | `faith/theology/biblical-studies/message-of-hebrews` | 7 | 680 | 345k |
+| 133 | `faith/theology/biblical-studies/message-of-hosea` | 8 | 546 | 143k |
+| 134 | `faith/theology/biblical-studies/message-of-isaiah` | 7 | 634 | 352k |
+| 135 | `faith/theology/biblical-studies/message-of-james` | 7 | 688 | 88k |
+| 136 | `faith/theology/biblical-studies/message-of-jeremiah` | 5 | 604 | 170k |
+| 137 | `faith/theology/biblical-studies/message-of-job` | 8 | 577 | 289k |
+| 138 | `faith/theology/biblical-studies/message-of-joel-micah-habakkuk` | 7 | 963 | 106k |
+| 139 | `faith/theology/biblical-studies/message-of-john` | 6 | 617 | 702k |
+| 140 | `faith/theology/biblical-studies/message-of-johns-letters` | 7 | 628 | 266k |
+| 141 | `faith/theology/biblical-studies/message-of-jonah` | 7 | 726 | 187k |
+| 142 | `faith/theology/biblical-studies/message-of-joshua` | 8 | 595 | 264k |
+| 143 | `faith/theology/biblical-studies/message-of-judges` | 7 | 692 | 268k |
+| 144 | `faith/theology/biblical-studies/message-of-kings` | 6 | 693 | 559k |
+| 145 | `faith/theology/biblical-studies/message-of-lamentations` | 6 | 657 | 218k |
+| 146 | `faith/theology/biblical-studies/message-of-leviticus` | 6 | 746 | 433k |
+| 147 | `faith/theology/biblical-studies/message-of-luke` | 7 | 618 | 146k |
+| 148 | `faith/theology/biblical-studies/message-of-malachi` | 7 | 1149 | 96k |
+| 149 | `faith/theology/biblical-studies/message-of-mark` | 8 | 567 | 417k |
+| 150 | `faith/theology/biblical-studies/message-of-matthew` | 7 | 609 | 519k |
+| 151 | `faith/theology/biblical-studies/message-of-nehemiah` | 7 | 674 | 444k |
+| 152 | `faith/theology/biblical-studies/message-of-numbers` | 6 | 758 | 426k |
+| 153 | `faith/theology/biblical-studies/message-of-obadiah-nahum-zephaniah` | 6 | 609 | 286k |
+| 154 | `faith/theology/biblical-studies/message-of-philippians` | 7 | 1195 | 349k |
+| 155 | `faith/theology/biblical-studies/message-of-proverbs` | 7 | 673 | 281k |
+| 156 | `faith/theology/biblical-studies/message-of-psalms-1-72` | 7 | 707 | 527k |
+| 157 | `faith/theology/biblical-studies/message-of-psalms-73-150` | 8 | 581 | 575k |
+| 158 | `faith/theology/biblical-studies/message-of-revelation` | 7 | 685 | 312k |
+| 159 | `faith/theology/biblical-studies/message-of-romans` | 8 | 469 | 206k |
+| 160 | `faith/theology/biblical-studies/message-of-ruth` | 6 | 650 | 167k |
+| 161 | `faith/theology/biblical-studies/message-of-samuel` | 8 | 519 | 347k |
+| 162 | `faith/theology/biblical-studies/message-of-song-of-songs` | 6 | 705 | 267k |
+| 163 | `faith/theology/biblical-studies/message-of-zechariah` | 7 | 1123 | 161k |
+| 164 | `faith/theology/biblical-studies/misquoting-jesus` | 7 | 827 | 91k |
+| 165 | `faith/theology/biblical-studies/mission-of-god` | 8 | 538 | 312k |
+| 166 | `faith/theology/biblical-studies/moral-vision-of-the-new-testament` | 6 | 788 | 255k |
+| 167 | `faith/theology/biblical-studies/new-testament-and-the-people-of-god` | 8 | 475 | 185k |
+| 168 | `faith/theology/biblical-studies/new-testament-in-its-world` | 8 | 473 | 252k |
+| 169 | `faith/theology/biblical-studies/nt-use-of-ot-commentary` | 7 | 675 | 153k |
+| 170 | `faith/theology/biblical-studies/old-testament-ethics-for-the-people-of-god` | 8 | 448 | 237k |
+| 171 | `faith/theology/biblical-studies/old-testament-theology-waltke` | 8 | 593 | 263k |
+| 172 | `faith/theology/biblical-studies/on-the-holy-spirit` | 6 | 813 | 92k |
+| 173 | `faith/theology/biblical-studies/paul-a-biography` | 8 | 2610 | 762k |
+| 174 | `faith/theology/biblical-studies/paul-and-the-faithfulness-of-god` | 7 | 1189 | 1022k |
+| 175 | `faith/theology/biblical-studies/poet-and-peasant` | 8 | 566 | 126k |
+| 176 | `faith/theology/biblical-studies/prayer-experiencing-awe-and-intimacy-with-god` | 8 | 350 | 90k |
+| 177 | `faith/theology/biblical-studies/prophets-heschel` | 8 | 538 | 509k |
+| 178 | `faith/theology/biblical-studies/reflections-on-the-psalms` | 7 | 1611 | 229k |
+| 179 | `faith/theology/biblical-studies/resurrection-of-the-son-of-god` | 6 | 742 | 156k |
+| 180 | `faith/theology/biblical-studies/sherlock-who-1-bible-suspense` | 8 | 315 | 164k |
+| 181 | `faith/theology/biblical-studies/sherlock-who-2-biblical-world` | 8 | 549 | 169k |
+| 182 | `faith/theology/biblical-studies/songs-of-jesus` | 8 | 401 | 69k |
+| 183 | `faith/theology/biblical-studies/state-of-new-testament-studies` | 6 | 673 | 147k |
+| 184 | `faith/theology/biblical-studies/tdnt-abridged` | 6 | 521 | 247k |
+| 185 | `faith/theology/biblical-studies/understanding-the-bible` | 8 | 1697 | 217k |
+| 186 | `faith/theology/biblical-studies/when-good-men-are-tempted` | 7 | 606 | 41k |
+| 187 | `faith/theology/biblical-studies/work-matters` | 7 | 788 | 183k |
+| 188 | `faith/theology/historical/incomparable-christ` | 6 | 789 | 285k |
+| 189 | `faith/theology/historical/mortification-of-sin` | 7 | 617 | 61k |
+| 190 | `faith/theology/historical/overcoming-sin-and-temptation` | 7 | 415 | 195k |
+| 191 | `faith/theology/historical/story-of-christianity-vol-1` | 5 | 725 | 235k |
+| 192 | `faith/theology/historical/story-of-christianity-vol-2` | 6 | 851 | 335k |
+| 193 | `faith/theology/historical/victory-of-reason` | 8 | 575 | 108k |
+| 194 | `faith/theology/pastoral/bonhoeffer-spiritual-care-in-a-religionless-age` | 8 | 364 | 170k |
+| 195 | `faith/theology/pastoral/center-church` | 7 | 400 | 93k |
+| 196 | `faith/theology/pastoral/dictionary-of-paul-and-his-letters` | 7 | 641 | 4691k |
+| 197 | `faith/theology/pastoral/i-believe-in-preaching` | 7 | 1186 | 565k |
+| 198 | `faith/theology/pastoral/living-reminder` | 8 | 314 | 35k |
+| 199 | `faith/theology/pastoral/preaching` | 8 | 485 | 105k |
+| 200 | `faith/theology/pastoral/preaching-and-preachers` | 7 | 807 | 29k |
 
-_（只列前 200 本，另有 1255 本未列出）_
+_（只列前 200 本，另有 1226 本未列出）_
 
 ## 筆記是空的，寫不了（7 本）
 
@@ -258,6 +259,75 @@ docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完�
 
 - `faith/theology/systematic/allure-of-gentleness` — 引用年份
 - `personal/mindset/growth/29-pawn-tickets-2` — 引用年份
+
+## 過了，但貼著下限（82 本）
+
+品檢是二元關卡，只能回答合不合格；這一節顯示合格者之間的差距。依（貼線維度數 → 筆記量）排序——筆記厚而概覽薄，代表素材就在那裡沒被用上，補強的投報率最高。要補的只是貼線的那幾項，不是整段重寫。查詢：`--weak N`。
+
+| # | 書 | 貼線 | 概覽字數 | 筆記 | 貼線的維度 |
+|---:|---|---:|---:|---:|---|
+| 1 | `craft/engineering/coding-practice/mobile-system-design-interview` | 3 | 2560 | 355k | 完整摘要 660 字（下限 600）；引用年份 2 個（門檻 2）；點名對象 3 個（門檻 3） |
+| 2 | `craft/engineering/systems-design/uml-distilled` | 3 | 2324 | 208k | 完整摘要 686 字（下限 600）；定位 306 字（下限 250）；引用年份 2 個（門檻 2） |
+| 3 | `craft/engineering/systems-design/system-design-interview` | 2 | 2236 | 784k | 完整摘要 601 字（下限 600）；引用年份 2 個（門檻 2） |
+| 4 | `craft/engineering/databases/data-warehouse-toolkit` | 2 | 2705 | 679k | 完整摘要 694 字（下限 600）；引用年份 2 個（門檻 2） |
+| 5 | `craft/engineering/security/attacking-network-protocols` | 2 | 2460 | 422k | 完整摘要 653 字（下限 600）；引用年份 2 個（門檻 2） |
+| 6 | `craft/engineering/systems-design/software-architecture-in-practice` | 2 | 2288 | 365k | 完整摘要 657 字（下限 600）；引用年份 2 個（門檻 2） |
+| 7 | `craft/engineering/systems-design/designing-data-intensive-applications` | 2 | 2412 | 292k | 完整摘要 668 字（下限 600）；引用年份 2 個（門檻 2） |
+| 8 | `craft/engineering/devops/site-reliability-workbook` | 2 | 2489 | 247k | 完整摘要 685 字（下限 600）；引用年份 2 個（門檻 2） |
+| 9 | `craft/engineering/systems-design/how-linux-works` | 2 | 2348 | 242k | 完整摘要 711 字（下限 600）；引用年份 2 個（門檻 2） |
+| 10 | `faith/theology/biblical-studies/sherlock-who-3-new-light` | 2 | 2314 | 143k | 完整摘要 730 字（下限 600）；引用年份 2 個（門檻 2） |
+| 11 | `craft/tools/coffee/world-atlas-of-coffee` | 2 | 2217 | 138k | 完整摘要 647 字（下限 600）；引用年份 2 個（門檻 2） |
+| 12 | `craft/engineering/systems-design/software-architecture-for-developers-vol2` | 2 | 2242 | 92k | 完整摘要 658 字（下限 600）；引用年份 2 個（門檻 2） |
+| 13 | `craft/engineering/systems-design/software-architecture-for-developers-vol1` | 2 | 2208 | 76k | 完整摘要 640 字（下限 600）；引用年份 2 個（門檻 2） |
+| 14 | `craft/tools/build-systems/manage-your-day-to-day` | 2 | 2227 | 50k | 完整摘要 646 字（下限 600）；定位 325 字（下限 250） |
+| 15 | `craft/engineering/security/security-engineering` | 1 | 2489 | 1719k | 完整摘要 711 字（下限 600） |
+| 16 | `craft/engineering/devops/seeking-sre` | 1 | 2771 | 942k | 引用年份 2 個（門檻 2） |
+| 17 | `wisdom/science/pharmacology/basic-clinical-pharmacology` | 1 | 3426 | 900k | 引用年份 2 個（門檻 2） |
+| 18 | `craft/engineering/systems-design/distributed-systems-principles-and-paradigms` | 1 | 2588 | 870k | 完整摘要 650 字（下限 600） |
+| 19 | `craft/engineering/systems-design/enterprise-integration-patterns` | 1 | 2623 | 813k | 完整摘要 710 字（下限 600） |
+| 20 | `craft/engineering/databases/postgresql-14-internals` | 1 | 2858 | 600k | 引用年份 2 個（門檻 2） |
+| 21 | `craft/engineering/systems-design/api-design-patterns` | 1 | 3750 | 573k | 引用年份 2 個（門檻 2） |
+| 22 | `craft/engineering/systems-design/analysis-patterns` | 1 | 2448 | 547k | 完整摘要 681 字（下限 600） |
+| 23 | `craft/engineering/systems-design/release-it` | 1 | 2307 | 539k | 完整摘要 637 字（下限 600） |
+| 24 | `craft/engineering/security/serious-cryptography` | 1 | 2495 | 528k | 完整摘要 689 字（下限 600） |
+| 25 | `craft/engineering/databases/high-performance-mysql` | 1 | 2613 | 348k | 完整摘要 689 字（下限 600） |
+| 26 | `craft/engineering/devops/kubernetes-patterns` | 1 | 2772 | 313k | 完整摘要 753 字（下限 600） |
+| 27 | `craft/engineering/engineering-management/team-topologies` | 1 | 2614 | 308k | 完整摘要 749 字（下限 600） |
+| 28 | `craft/engineering/systems-design/grokking-advanced-system-design-interview` | 1 | 2411 | 307k | 完整摘要 716 字（下限 600） |
+| 29 | `craft/engineering/systems-design/acing-the-system-design-interview` | 1 | 3897 | 302k | 引用年份 2 個（門檻 2） |
+| 30 | `craft/engineering/security/hacking-art-of-exploitation` | 1 | 2491 | 297k | 完整摘要 615 字（下限 600） |
+| 31 | `craft/engineering/coding-practice/object-oriented-design-interview` | 1 | 2431 | 285k | 完整摘要 630 字（下限 600） |
+| 32 | `craft/tools/coffee/uncommon-grounds` | 1 | 2205 | 282k | 完整摘要 677 字（下限 600） |
+| 33 | `craft/engineering/systems-design/understanding-distributed-systems` | 1 | 2377 | 261k | 完整摘要 729 字（下限 600） |
+| 34 | `wisdom/education/pedagogy/why-dont-students-like-school` | 1 | 2958 | 260k | 引用年份 2 個（門檻 2） |
+| 35 | `craft/engineering/security/browser-hackers-handbook` | 1 | 2389 | 244k | 完整摘要 686 字（下限 600） |
+| 36 | `craft/engineering/databases/database-internals` | 1 | 2681 | 239k | 完整摘要 708 字（下限 600） |
+| 37 | `craft/engineering/coding-practice/designing-web-apis` | 1 | 2455 | 228k | 完整摘要 729 字（下限 600） |
+| 38 | `craft/engineering/devops/site-reliability-engineering` | 1 | 2598 | 227k | 完整摘要 650 字（下限 600） |
+| 39 | `craft/engineering/databases/sql-server-2025-query-performance-tuning` | 1 | 2631 | 223k | 完整摘要 747 字（下限 600） |
+| 40 | `craft/engineering/coding-practice/software-developers-career-guide` | 1 | 2637 | 213k | 引用年份 2 個（門檻 2） |
+| 41 | `craft/engineering/systems-design/philosophy-of-software-design` | 1 | 2421 | 211k | 完整摘要 683 字（下限 600） |
+| 42 | `craft/engineering/systems-design/building-microservices` | 1 | 2593 | 197k | 完整摘要 719 字（下限 600） |
+| 43 | `craft/engineering/systems-design/implementation-patterns` | 1 | 2344 | 195k | 完整摘要 600 字（下限 600） |
+| 44 | `craft/engineering/systems-design/fundamentals-of-software-architecture` | 1 | 2494 | 193k | 完整摘要 645 字（下限 600） |
+| 45 | `craft/engineering/coding-practice/grokking-system-design-interview` | 1 | 2439 | 181k | 完整摘要 677 字（下限 600） |
+| 46 | `craft/engineering/coding-practice/big-talk-design-patterns` | 1 | 2583 | 179k | 完整摘要 699 字（下限 600） |
+| 47 | `craft/engineering/devops/devops-handbook` | 1 | 2447 | 178k | 完整摘要 606 字（下限 600） |
+| 48 | `craft/engineering/systems-design/microservices-patterns` | 1 | 2525 | 177k | 完整摘要 673 字（下限 600） |
+| 49 | `craft/engineering/coding-practice/functional-design-principles-patterns-practices` | 1 | 2767 | 176k | 完整摘要 668 字（下限 600） |
+| 50 | `craft/engineering/devops/site-reliability-engineering-handbook` | 1 | 2371 | 170k | 完整摘要 698 字（下限 600） |
+| 51 | `craft/engineering/systems-design/patterns-of-enterprise-application-architecture` | 1 | 2325 | 169k | 完整摘要 655 字（下限 600） |
+| 52 | `craft/engineering/security/real-world-bug-hunting` | 1 | 2351 | 167k | 完整摘要 621 字（下限 600） |
+| 53 | `craft/engineering/coding-practice/living-documentation` | 1 | 2790 | 160k | 完整摘要 763 字（下限 600） |
+| 54 | `craft/engineering/security/web-security-for-developers` | 1 | 2403 | 155k | 完整摘要 682 字（下限 600） |
+| 55 | `craft/engineering/systems-design/get-your-hands-dirty-clean-architecture` | 1 | 2344 | 153k | 完整摘要 668 字（下限 600） |
+| 56 | `craft/engineering/systems-design/designing-distributed-systems` | 1 | 2460 | 151k | 完整摘要 730 字（下限 600） |
+| 57 | `wisdom/philosophy/eastern/how-the-world-thinks` | 1 | 2529 | 149k | 引用年份 2 個（門檻 2） |
+| 58 | `craft/engineering/systems-design/beautiful-architecture` | 1 | 2538 | 145k | 完整摘要 703 字（下限 600） |
+| 59 | `craft/engineering/databases/sql-server-2025-unveiled` | 1 | 2663 | 143k | 完整摘要 721 字（下限 600） |
+| 60 | `craft/engineering/engineering-management/become-an-effective-software-engineering-manager` | 1 | 2546 | 138k | 完整摘要 717 字（下限 600） |
+
+_（只列前 60 本，另有 22 本未列出）_
 
 ## 已完成
 
@@ -395,9 +465,44 @@ docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完�
 - `craft/engineering/language-rust/team-geek` — 2596 字
 - `craft/engineering/security/attacking-network-protocols` — 2460 字
 - `craft/engineering/security/browser-hackers-handbook` — 2389 字
+- `craft/engineering/security/building-secure-and-reliable-systems` — 2848 字
+- `craft/engineering/security/hacking-art-of-exploitation` — 2491 字
+- `craft/engineering/security/real-world-bug-hunting` — 2351 字
+- `craft/engineering/security/security-engineering` — 2489 字
+- `craft/engineering/security/serious-cryptography` — 2495 字
+- `craft/engineering/security/web-security-for-developers` — 2403 字
 - `craft/engineering/systems-design/acing-the-system-design-interview` — 3897 字
+- `craft/engineering/systems-design/analysis-patterns` — 2448 字
 - `craft/engineering/systems-design/api-design-patterns` — 3750 字
 - `craft/engineering/systems-design/art-of-scalability` — 3796 字
+- `craft/engineering/systems-design/beautiful-architecture` — 2538 字
+- `craft/engineering/systems-design/building-microservices` — 2593 字
+- `craft/engineering/systems-design/clean-architecture` — 2543 字
+- `craft/engineering/systems-design/clean-code` — 2421 字
+- `craft/engineering/systems-design/designing-data-intensive-applications` — 2412 字
+- `craft/engineering/systems-design/designing-distributed-systems` — 2460 字
+- `craft/engineering/systems-design/distributed-systems-principles-and-paradigms` — 2588 字
+- `craft/engineering/systems-design/enterprise-integration-patterns` — 2623 字
+- `craft/engineering/systems-design/fundamentals-of-software-architecture` — 2494 字
+- `craft/engineering/systems-design/get-your-hands-dirty-clean-architecture` — 2344 字
+- `craft/engineering/systems-design/grokking-advanced-system-design-interview` — 2411 字
+- `craft/engineering/systems-design/how-linux-works` — 2348 字
+- `craft/engineering/systems-design/implementation-patterns` — 2344 字
+- `craft/engineering/systems-design/microservices-patterns` — 2525 字
+- `craft/engineering/systems-design/patterns-of-enterprise-application-architecture` — 2325 字
+- `craft/engineering/systems-design/philosophy-of-software-design` — 2421 字
+- `craft/engineering/systems-design/release-it` — 2307 字
+- `craft/engineering/systems-design/software-architecture-for-developers-vol1` — 2208 字
+- `craft/engineering/systems-design/software-architecture-for-developers-vol2` — 2242 字
+- `craft/engineering/systems-design/software-architecture-in-practice` — 2288 字
+- `craft/engineering/systems-design/software-architecture-the-hard-parts` — 2420 字
+- `craft/engineering/systems-design/system-architecture-design` — 2155 字
+- `craft/engineering/systems-design/system-design-interview` — 2236 字
+- `craft/engineering/systems-design/uml-distilled` — 2324 字
+- `craft/engineering/systems-design/understanding-distributed-systems` — 2377 字
+- `craft/tools/build-systems/manage-your-day-to-day` — 2227 字
+- `craft/tools/coffee/uncommon-grounds` — 2205 字
+- `craft/tools/coffee/world-atlas-of-coffee` — 2217 字
 - `craft/writing/fiction/2nd-iteration` — 4030 字
 - `faith/spiritual-formation/devotional/lament-for-a-son` — 4177 字
 - `faith/theology/apologetics/shadowlands` — 3228 字
@@ -421,6 +526,9 @@ docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完�
 - `professional/leadership/team-building/hbr-guide-to-leading-through-change` — 2592 字
 - `professional/leadership/vision/innovators-prescription` — 3668 字
 - `professional/leadership/vision/its-your-ship` — 2649 字
+- `tmp/pleasures-and-sorrows-of-work` — 3648 字
+- `tmp/practice-of-the-presence-of-god` — 3647 字
+- `tmp/principles-of-product-development-flow` — 4070 字
 - `wisdom/education/pedagogy/why-dont-students-like-school` — 2958 字
 - `wisdom/education/self-learning/online-teaching-technique` — 2477 字
 - `wisdom/history/military/art-of-war` — 3485 字
