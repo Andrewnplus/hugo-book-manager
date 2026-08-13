@@ -165,12 +165,17 @@ def check(repo):
 
     txt = "".join(secs.get(n, "") for n in SECTIONS) or "".join(secs.values())
 
-    years = YEAR_RE.findall(txt)
-    checks.append(("引用年份", len(years) >= MIN_YEARS, "%d 處（需 ≥%d）" % (len(years), MIN_YEARS)))
+    # 去重後才算數。舊版用 len()，於是同一本書名重複點名三次、或同一個年份出現
+    # 兩次就過門檻——那不是「點名了三個可查證的對象」，是同一個對象講三遍。
+    # 2026-08-13 實測：37 本已通過的概覽裡有 2 本靠重複刷過（allure-of-gentleness
+    # 的 16 處 refs 只對應 1 個相異年份；29-pawn-tickets-2 去重後 refs 剛好剩 3）。
+    years = set(YEAR_RE.findall(txt))
+    checks.append(("引用年份", len(years) >= MIN_YEARS,
+                   "%d 個相異（需 ≥%d）" % (len(years), MIN_YEARS)))
 
-    refs = REF_RE.findall(txt)
+    refs = set(REF_RE.findall(txt))
     checks.append(("點名可查證的作品／人名", len(refs) >= MIN_REFS,
-                   "%d 處（需 ≥%d）" % (len(refs), MIN_REFS)))
+                   "%d 個相異（需 ≥%d）" % (len(refs), MIN_REFS)))
 
     hits = [f for f in FILLER if f in txt]
     checks.append(("無空洞讚美", not hits, "、".join(hits) if hits else "無"))
@@ -212,17 +217,49 @@ def note_volume(repo):
 
 
 def find_books(root):
+    """找出 root 底下所有 Hugo book（含 site/content/_index.md 的目錄）。
+
+    剪枝必須無條件做。舊版把 `dirs[:] = ...` 寫在過濾條件的 if 內，於是只有「已經
+    走進 .git」的那一層才剪——換句話說每一個 repo 的整個物件庫都被走過一遍。
+    註解宣稱全庫 6 秒，實測 32 秒，差的就是這裡。
+    """
+    skip = {".git", "build", "node_modules", "public", "resources"}
     out = []
     for r, dirs, fs in os.walk(root):
-        if "/build/" in r or "hugo-book-template" in r or "/.git" in r:
-            dirs[:] = [d for d in dirs if d != ".git"]
+        dirs[:] = [d for d in dirs if d not in skip]
+        if "hugo-book-template" in r:
             continue
         if r.endswith("/site/content") and "_index.md" in fs:
             out.append(os.path.dirname(os.path.dirname(r)))
     return sorted(out)
 
 
+def is_written(repo):
+    """這本書有沒有被 /book-generate-deep-overview 做過。
+
+    這是「做過」的**正向標記**，而不是從「零 FAIL」反推。兩者平常看起來一樣，
+    但在調整品檢標準的那一刻會分岔：判準若是「有沒有 FAIL」，每次把門檻調緊，
+    做過的書就整批掉回待辦，然後被當成沒寫過的書整段重寫——而它們其實只差一個
+    年份或一句話。做過但沒過品檢的書該進「待補修」，不是「待改寫」。
+
+    標記取新格式區塊 + 四段齊全：舊的 details 三段格式永遠不滿足（段名不同），
+    所以不會有舊書混進來。
+    """
+    p = os.path.join(repo, "site", "content", "_index.md")
+    if not os.path.exists(p):
+        return False
+    if "{{% book-overview %}}" not in io.open(p, encoding="utf-8").read():
+        return False
+    secs, _, _ = read_overview(repo)
+    return bool(secs) and all(n in secs for n in SECTIONS)
+
+
 def run_one(repo, verbose=True):
+    # 打錯路徑會走進 check() 然後報「找不到 book-overview 區塊」——聽起來像書有問題，
+    # 其實是路徑有問題。永遠是 FAIL 所以不會放行壞概覽，但會浪費一輪追查。
+    if not os.path.isdir(repo):
+        print("路徑不存在：%s" % repo)
+        return 1, {}
     checks, meta = check(repo)
     failed = [c for c in checks if not c[1]]
     if verbose:
@@ -281,7 +318,7 @@ def write_report(root, out_path, stamp):
         nfail = sum(1 for c in checks if not c[1])
         rows.append(dict(slug=os.path.relpath(b, root), fails=nfail,
                          failed=[c[0] for c in checks if not c[1]],
-                         notes=note_volume(b), **meta))
+                         notes=note_volume(b), written=is_written(b), **meta))
     n = len(rows)
     done = [r for r in rows if r["fails"] == 0]
     legacy = [r for r in rows if r.get("legacy")]
@@ -313,6 +350,8 @@ def write_report(root, out_path, stamp):
     L.append("")
 
     pending = [r for r in rows if r["fails"]]
+    patch = sorted([r for r in pending if r["written"]], key=lambda r: r["slug"])
+    pending = [r for r in pending if not r["written"]]
     hollow = sorted([r for r in pending if r["notes"] < MIN_NOTES], key=lambda r: r["slug"])
     todo = sorted([r for r in pending if r["notes"] >= MIN_NOTES], key=lambda r: r["slug"])
     L.append("## 待改寫（依 slug 排序）\n")
@@ -333,6 +372,14 @@ def write_report(root, out_path, stamp):
                  "「完整摘要」規定只能取材自筆記，硬寫等於編造——先補筆記再回來。\n" % MIN_NOTES)
         for r in hollow:
             L.append("- `%s` — 筆記 %d bytes" % (r["slug"], r["notes"]))
+        L.append("")
+
+    if patch:
+        L.append("## 已寫過、但有項目未過（%d 本）\n" % len(patch))
+        L.append("四段都在，缺的是個別項目——補那一項就好，不要當成沒寫過整段重寫。"
+                 "`--todo` 不會挑到這些書。\n")
+        for r in patch:
+            L.append("- `%s` — %s" % (r["slug"], "、".join(r["failed"])))
         L.append("")
 
     if done:
@@ -356,25 +403,38 @@ def run_todo(root, n):
     整個掃描是純檔案讀取，不經過 LLM，全庫 1618 本約數秒，可以隨便重跑。
 
     排序刻意用 slug（而非未通過項數或筆記量）：挑書的順序是人的判斷，腳本只負責
-    把還沒做的列全、而且每次列的順序一樣。筆記是空殼的書會被移到 stderr，因為
-    它們不是「還沒做」而是「做不了」。
+    把還沒做的列全、而且每次列的順序一樣。
+
+    stdout 只放「沒寫過的書」。另外兩類移到 stderr，因為它們的處置方式不同：
+      - 筆記是空殼的：不是「還沒做」而是「做不了」，先補筆記。
+      - 寫過但沒過品檢的：該補的是那一項，不是整段重寫（見 is_written）。
     """
-    rows = []
+    todo, hollow, patch = [], [], []
     for b in find_books(root):
-        checks, meta = check(b)
+        checks, _ = check(b)
         nfail = sum(1 for c in checks if not c[1])
-        if nfail:
-            rows.append((nfail, note_volume(b), b))
-    hollow = sorted(b for _, vol, b in rows if vol < MIN_NOTES)
-    rows = sorted(b for _, vol, b in rows if vol >= MIN_NOTES)
-    for b in rows[:n]:
+        if not nfail:
+            continue
+        if is_written(b):
+            patch.append((b, [c[0] for c in checks if not c[1]]))
+        elif note_volume(b) < MIN_NOTES:
+            hollow.append(b)
+        else:
+            todo.append(b)
+    for b in sorted(todo)[:n]:
         print(b)
     if hollow:
         sys.stderr.write(
             "\n略過 %d 本筆記是空殼的書（docs/ 只有 frontmatter，< %d bytes）。"
             "完整摘要只能取材自筆記，硬寫等於編造：\n" % (len(hollow), MIN_NOTES))
-        for b in hollow:
+        for b in sorted(hollow):
             sys.stderr.write("  %s\n" % b)
+    if patch:
+        sys.stderr.write(
+            "\n略過 %d 本已寫過、但品檢有項目未過的書。這些要補的是個別項目，"
+            "不要整段重寫：\n" % len(patch))
+        for b, f in sorted(patch):
+            sys.stderr.write("  %s — %s\n" % (b, "、".join(f)))
     return 0
 
 
@@ -391,7 +451,7 @@ def main():
     ap.add_argument("--json", action="store_true", help="與 --all 併用，輸出 JSON")
     a = ap.parse_args()
 
-    if a.todo:
+    if a.todo is not None:
         return run_todo(a.root, a.todo)
     if a.report:
         return write_report(a.root, a.out, a.stamp or "（未提供）")
