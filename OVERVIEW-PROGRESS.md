@@ -9,26 +9,26 @@
 | | 數量 | 佔比 |
 |---|---:|---:|
 | 全庫 | 1637 | 100% |
-| **已改寫並通過品檢** | **123** | **7.5%** |
-| 仍是舊三段格式 | 1512 | 92.4% |
+| **已改寫並通過品檢** | **173** | **10.6%** |
+| 仍是舊三段格式 | 1462 | 89.3% |
 
 ```
-[███···············································] 7.5%
+[█████·············································] 10.6%
 ```
 
 ## 各項未通過
 
 | 檢查 | 未通過 | 佔比 |
 |---|---:|---:|
-| 四段齊全 | 1512 | 92% |
-| 作者的位置 長度 | 1512 | 92% |
-| 定位 長度 | 1512 | 92% |
-| 這本書的限制 長度 | 1512 | 92% |
-| 限制段有實質內容 | 1512 | 92% |
-| 引用年份 | 1349 | 82% |
-| 點名可查證的作品／人名 | 1003 | 61% |
-| 完整摘要 長度 | 502 | 31% |
-| 粗體都收得起來 | 48 | 3% |
+| 四段齊全 | 1462 | 89% |
+| 作者的位置 長度 | 1462 | 89% |
+| 定位 長度 | 1462 | 89% |
+| 這本書的限制 長度 | 1462 | 89% |
+| 限制段有實質內容 | 1462 | 89% |
+| 引用年份 | 1300 | 79% |
+| 點名可查證的作品／人名 | 972 | 59% |
+| 完整摘要 長度 | 488 | 30% |
+| 粗體都收得起來 | 47 | 3% |
 | 無空洞讚美 | 45 | 3% |
 
 ## 待改寫（依 slug 排序）
@@ -37,208 +37,208 @@
 
 | # | 書 | 未通過 | 概覽字數 | 筆記 |
 |---:|---|---:|---:|---:|
-| 1 | `craft/engineering/coding-practice/programmer-self-cultivation` | 6 | 663 | 145k |
-| 2 | `craft/engineering/coding-practice/programming-pearls` | 7 | 812 | 50k |
-| 3 | `craft/engineering/coding-practice/refactoring` | 8 | 409 | 86k |
-| 4 | `craft/engineering/coding-practice/refactoring-for-software-design-smells` | 7 | 743 | 164k |
-| 5 | `craft/engineering/coding-practice/refactoring-to-patterns` | 7 | 1238 | 496k |
-| 6 | `craft/engineering/coding-practice/rules-of-programming` | 7 | 848 | 139k |
-| 7 | `craft/engineering/coding-practice/running-on-empty` | 6 | 1290 | 77k |
-| 8 | `craft/engineering/coding-practice/seriously-good-software` | 8 | 453 | 76k |
-| 9 | `craft/engineering/coding-practice/smalltalk-best-practice-patterns` | 9 | 2137 | 288k |
-| 10 | `craft/engineering/coding-practice/software-architect-12-disciplines` | 6 | 745 | 188k |
-| 11 | `craft/engineering/coding-practice/software-architect-elevator` | 6 | 926 | 340k |
-| 12 | `craft/engineering/coding-practice/software-engineering-at-google` | 7 | 427 | 632k |
-| 13 | `craft/engineering/coding-practice/specification-by-example` | 6 | 786 | 177k |
-| 14 | `craft/engineering/coding-practice/test-driven-development` | 8 | 403 | 180k |
-| 15 | `craft/engineering/coding-practice/thinking-in-programming-paradigms-and-oop` | 8 | 375 | 42k |
-| 16 | `craft/engineering/coding-practice/tidy-first` | 7 | 1497 | 109k |
-| 17 | `craft/engineering/coding-practice/working-effectively-with-legacy-code` | 7 | 468 | 176k |
-| 18 | `craft/engineering/coding-practice/wujun-beauty-of-math` | 8 | 516 | 119k |
-| 19 | `craft/engineering/coding-practice/wujun-soul-of-computing` | 7 | 773 | 111k |
-| 20 | `craft/engineering/coding-practice/zen-programmer` | 8 | 559 | 8k |
-| 21 | `craft/engineering/databases/art-of-postgresql` | 6 | 977 | 433k |
-| 22 | `craft/engineering/databases/cqrs-command-query-responsibility-segregation` | 7 | 922 | 94k |
-| 23 | `craft/engineering/databases/data-warehouse-toolkit` | 7 | 934 | 679k |
-| 24 | `craft/engineering/databases/database-internals` | 7 | 900 | 239k |
-| 25 | `craft/engineering/databases/high-performance-mysql` | 7 | 523 | 348k |
-| 26 | `craft/engineering/databases/nosql-distilled` | 7 | 1022 | 261k |
-| 27 | `craft/engineering/databases/postgresql-14-internals` | 7 | 1308 | 600k |
-| 28 | `craft/engineering/databases/sql-performance-explained` | 7 | 1370 | 228k |
-| 29 | `craft/engineering/databases/sql-server-2025-query-performance-tuning` | 7 | 769 | 223k |
-| 30 | `craft/engineering/databases/sql-server-2025-unveiled` | 5 | 1096 | 143k |
-| 31 | `craft/engineering/devops/30-days-of-gitlab` | 8 | 490 | 20k |
-| 32 | `craft/engineering/devops/accelerate` | 7 | 1095 | 235k |
-| 33 | `craft/engineering/devops/devops-handbook` | 6 | 984 | 178k |
-| 34 | `craft/engineering/devops/kubernetes-in-action` | 8 | 3971 | 683k |
-| 35 | `craft/engineering/devops/kubernetes-patterns` | 6 | 1442 | 313k |
-| 36 | `craft/engineering/devops/phoenix-project` | 7 | 1119 | 425k |
-| 37 | `craft/engineering/devops/seeking-sre` | 7 | 972 | 942k |
-| 38 | `craft/engineering/devops/site-reliability-engineering` | 6 | 871 | 227k |
-| 39 | `craft/engineering/devops/site-reliability-engineering-handbook` | 6 | 1251 | 170k |
-| 40 | `craft/engineering/devops/site-reliability-workbook` | 7 | 443 | 247k |
-| 41 | `craft/engineering/devops/vbirds-linux-basic` | 6 | 991 | 116k |
-| 42 | `craft/engineering/devops/vbirds-linux-server` | 7 | 948 | 69k |
-| 43 | `craft/engineering/engineering-management/become-an-effective-software-engineering-manager` | 7 | 758 | 138k |
-| 44 | `craft/engineering/engineering-management/effective-engineer` | 7 | 407 | 89k |
-| 45 | `craft/engineering/engineering-management/peopleware` | 7 | 695 | 182k |
-| 46 | `craft/engineering/engineering-management/staff-engineers-path` | 6 | 907 | 128k |
-| 47 | `craft/engineering/engineering-management/team-topologies` | 7 | 1191 | 308k |
-| 48 | `craft/engineering/language-rust/team-geek` | 7 | 819 | 54k |
-| 49 | `craft/engineering/security/attacking-network-protocols` | 7 | 1011 | 422k |
-| 50 | `craft/engineering/security/browser-hackers-handbook` | 6 | 1265 | 244k |
-| 51 | `craft/engineering/security/building-secure-and-reliable-systems` | 7 | 1140 | 862k |
-| 52 | `craft/engineering/security/hacking-art-of-exploitation` | 7 | 1151 | 297k |
-| 53 | `craft/engineering/security/real-world-bug-hunting` | 6 | 675 | 167k |
-| 54 | `craft/engineering/security/security-engineering` | 7 | 1264 | 1719k |
-| 55 | `craft/engineering/security/serious-cryptography` | 6 | 1218 | 528k |
-| 56 | `craft/engineering/security/web-security-for-developers` | 6 | 1134 | 155k |
-| 57 | `craft/engineering/systems-design/analysis-patterns` | 7 | 1011 | 547k |
-| 58 | `craft/engineering/systems-design/beautiful-architecture` | 7 | 1154 | 145k |
-| 59 | `craft/engineering/systems-design/building-microservices` | 5 | 1477 | 197k |
-| 60 | `craft/engineering/systems-design/clean-architecture` | 7 | 494 | 113k |
-| 61 | `craft/engineering/systems-design/clean-code` | 8 | 419 | 79k |
-| 62 | `craft/engineering/systems-design/designing-data-intensive-applications` | 6 | 819 | 292k |
-| 63 | `craft/engineering/systems-design/designing-distributed-systems` | 7 | 1183 | 151k |
-| 64 | `craft/engineering/systems-design/distributed-systems-principles-and-paradigms` | 7 | 1602 | 870k |
-| 65 | `craft/engineering/systems-design/enterprise-integration-patterns` | 8 | 1783 | 813k |
-| 66 | `craft/engineering/systems-design/fundamentals-of-software-architecture` | 7 | 571 | 193k |
-| 67 | `craft/engineering/systems-design/get-your-hands-dirty-clean-architecture` | 7 | 728 | 153k |
-| 68 | `craft/engineering/systems-design/grokking-advanced-system-design-interview` | 6 | 602 | 307k |
-| 69 | `craft/engineering/systems-design/how-linux-works` | 6 | 1183 | 242k |
-| 70 | `craft/engineering/systems-design/implementation-patterns` | 7 | 364 | 195k |
-| 71 | `craft/engineering/systems-design/microservices-patterns` | 7 | 1039 | 177k |
-| 72 | `craft/engineering/systems-design/patterns-of-enterprise-application-architecture` | 7 | 451 | 169k |
-| 73 | `craft/engineering/systems-design/philosophy-of-software-design` | 6 | 1210 | 211k |
-| 74 | `craft/engineering/systems-design/release-it` | 7 | 877 | 539k |
-| 75 | `craft/engineering/systems-design/software-architecture-for-developers-vol1` | 8 | 426 | 76k |
-| 76 | `craft/engineering/systems-design/software-architecture-for-developers-vol2` | 7 | 490 | 92k |
-| 77 | `craft/engineering/systems-design/software-architecture-in-practice` | 7 | 402 | 365k |
-| 78 | `craft/engineering/systems-design/software-architecture-the-hard-parts` | 7 | 1138 | 166k |
-| 79 | `craft/engineering/systems-design/system-architecture-design` | 6 | 663 | 135k |
-| 80 | `craft/engineering/systems-design/system-design-interview` | 8 | 431 | 784k |
-| 81 | `craft/engineering/systems-design/uml-distilled` | 8 | 2033 | 208k |
-| 82 | `craft/engineering/systems-design/understanding-distributed-systems` | 7 | 1167 | 261k |
-| 83 | `craft/tools/build-systems/manage-your-day-to-day` | 6 | 1045 | 50k |
-| 84 | `craft/tools/coffee/uncommon-grounds` | 8 | 590 | 282k |
-| 85 | `craft/tools/coffee/world-atlas-of-coffee` | 8 | 573 | 138k |
-| 86 | `craft/tools/version-control/building-a-second-brain` | 6 | 1380 | 152k |
-| 87 | `craft/tools/version-control/continuous-delivery` | 6 | 718 | 287k |
-| 88 | `craft/tools/version-control/deep-work` | 8 | 351 | 54k |
-| 89 | `craft/tools/version-control/digital-minimalism` | 6 | 1064 | 47k |
-| 90 | `craft/tools/version-control/make-time` | 6 | 776 | 185k |
-| 91 | `craft/writing/fiction/bird-by-bird` | 6 | 1279 | 140k |
-| 92 | `craft/writing/fiction/brothers-karamazov` | 8 | 512 | 86k |
-| 93 | `craft/writing/fiction/chronicles-of-narnia` | 6 | 1075 | 1605k |
-| 94 | `craft/writing/fiction/crime-and-punishment` | 7 | 644 | 65k |
-| 95 | `craft/writing/fiction/dialogue-the-art-of-verbal-action` | 7 | 529 | 124k |
-| 96 | `craft/writing/fiction/on-writing-well` | 8 | 520 | 175k |
-| 97 | `craft/writing/fiction/steering-the-craft` | 7 | 596 | 42k |
-| 98 | `craft/writing/non-fiction/anatomy-of-story` | 7 | 984 | 120k |
-| 99 | `craft/writing/non-fiction/art-of-listening` | 7 | 661 | 39k |
-| 100 | `craft/writing/non-fiction/brysons-dictionary-of-troublesome-words` | 7 | 615 | 177k |
-| 101 | `craft/writing/non-fiction/copywriters-handbook` | 6 | 778 | 230k |
-| 102 | `craft/writing/non-fiction/elements-of-style` | 8 | 263 | 62k |
-| 103 | `craft/writing/non-fiction/how-to-read-a-book` | 7 | 949 | 212k |
-| 104 | `craft/writing/non-fiction/if-you-want-to-write` | 7 | 639 | 43k |
-| 105 | `craft/writing/non-fiction/little-history-of-philosophy` | 6 | 662 | 187k |
-| 106 | `craft/writing/non-fiction/on-writing` | 7 | 743 | 61k |
-| 107 | `craft/writing/non-fiction/reading-like-a-writer` | 7 | 730 | 44k |
-| 108 | `craft/writing/non-fiction/sense-of-style` | 8 | 507 | 134k |
-| 109 | `craft/writing/non-fiction/show-your-work` | 8 | 535 | 78k |
-| 110 | `craft/writing/non-fiction/storynomics` | 7 | 859 | 133k |
-| 111 | `craft/writing/non-fiction/style-lessons-in-clarity-and-grace` | 6 | 621 | 60k |
-| 112 | `craft/writing/non-fiction/talking-to-strangers` | 6 | 1077 | 120k |
-| 113 | `craft/writing/non-fiction/wild-at-heart` | 7 | 549 | 197k |
-| 114 | `craft/writing/non-fiction/working-poor` | 8 | 548 | 67k |
-| 115 | `craft/writing/non-fiction/writing-down-the-bones` | 7 | 623 | 178k |
-| 116 | `craft/writing/non-fiction/writing-life` | 8 | 573 | 43k |
-| 117 | `craft/writing/screenwriting/action-mckee` | 6 | 944 | 143k |
-| 118 | `craft/writing/screenwriting/story-mckee` | 6 | 814 | 292k |
-| 119 | `faith/spiritual-formation/contemplative/50-spiritual-classics` | 7 | 584 | 408k |
-| 120 | `faith/spiritual-formation/contemplative/augustine-confessions` | 7 | 811 | 609k |
-| 121 | `faith/spiritual-formation/contemplative/genesee-diary` | 7 | 1398 | 275k |
-| 122 | `faith/spiritual-formation/contemplative/inner-voice-of-love` | 6 | 1056 | 111k |
-| 123 | `faith/spiritual-formation/contemplative/reaching-out` | 8 | 4130 | 221k |
-| 124 | `faith/spiritual-formation/contemplative/road-to-daybreak` | 6 | 2081 | 371k |
-| 125 | `faith/spiritual-formation/devotional/adam-gods-beloved` | 7 | 717 | 146k |
-| 126 | `faith/spiritual-formation/devotional/can-you-drink-the-cup` | 6 | 1302 | 97k |
-| 127 | `faith/spiritual-formation/devotional/four-loves` | 7 | 1453 | 172k |
-| 128 | `faith/spiritual-formation/devotional/friendly-snowflake` | 7 | 451 | 31k |
-| 129 | `faith/spiritual-formation/devotional/great-divorce` | 7 | 569 | 128k |
-| 130 | `faith/spiritual-formation/devotional/grief-observed` | 6 | 916 | 90k |
-| 131 | `faith/spiritual-formation/devotional/imitation-of-christ` | 7 | 621 | 337k |
-| 132 | `faith/spiritual-formation/devotional/life-of-the-beloved` | 7 | 1368 | 130k |
-| 133 | `faith/spiritual-formation/devotional/surprised-by-joy` | 5 | 1181 | 250k |
-| 134 | `faith/spiritual-formation/devotional/till-we-have-faces` | 8 | 2792 | 386k |
-| 135 | `faith/spiritual-formation/devotional/weight-of-glory` | 5 | 766 | 76k |
-| 136 | `faith/spiritual-formation/discipleship/after-you-believe` | 7 | 829 | 469k |
-| 137 | `faith/spiritual-formation/discipleship/attached-to-god` | 8 | 1660 | 308k |
-| 138 | `faith/spiritual-formation/discipleship/cost-of-discipleship` | 7 | 903 | 161k |
-| 139 | `faith/spiritual-formation/discipleship/effective-bible-teaching` | 6 | 820 | 260k |
-| 140 | `faith/spiritual-formation/discipleship/great-omission` | 6 | 1253 | 331k |
-| 141 | `faith/spiritual-formation/discipleship/life-without-lack` | 9 | 2011 | 382k |
-| 142 | `faith/spiritual-formation/discipleship/long-obedience-in-the-same-direction` | 7 | 1150 | 175k |
-| 143 | `faith/spiritual-formation/discipleship/pilgrims-progress` | 7 | 575 | 181k |
-| 144 | `faith/spiritual-formation/discipleship/renovation-of-the-heart` | 7 | 1132 | 566k |
-| 145 | `faith/spiritual-formation/discipleship/ruthless-elimination-of-hurry` | 7 | 3903 | 281k |
-| 146 | `faith/spiritual-formation/discipleship/soul-of-shame` | 9 | 2586 | 406k |
-| 147 | `faith/spiritual-formation/discipleship/spirit-of-the-disciplines` | 7 | 1115 | 500k |
-| 148 | `faith/spiritual-formation/prayer/letters-to-malcolm` | 8 | 428 | 188k |
-| 149 | `faith/spiritual-formation/prayer/life-together-prayerbook-of-the-bible` | 6 | 789 | 106k |
-| 150 | `faith/theology/apologetics/everlasting-man` | 7 | 811 | 539k |
-| 151 | `faith/theology/apologetics/god-in-the-dock` | 8 | 2692 | 637k |
-| 152 | `faith/theology/apologetics/mere-christianity` | 6 | 1138 | 251k |
-| 153 | `faith/theology/apologetics/miracles` | 7 | 1294 | 352k |
-| 154 | `faith/theology/apologetics/problem-of-pain` | 7 | 731 | 137k |
-| 155 | `faith/theology/apologetics/screwtape-letters` | 7 | 648 | 56k |
-| 156 | `faith/theology/apologetics/simply-christian` | 7 | 546 | 329k |
-| 157 | `faith/theology/apologetics/where-the-conflict-really-lies` | 7 | 1028 | 172k |
-| 158 | `faith/theology/biblical-studies/21st-century-biblical-homiletics` | 6 | 659 | 267k |
-| 159 | `faith/theology/biblical-studies/a-new-testament-biblical-theology` | 7 | 623 | 316k |
-| 160 | `faith/theology/biblical-studies/according-to-plan` | 8 | 523 | 323k |
-| 161 | `faith/theology/biblical-studies/an-introduction-to-the-new-testament` | 6 | 613 | 1419k |
-| 162 | `faith/theology/biblical-studies/an-introduction-to-the-old-testament` | 6 | 602 | 253k |
-| 163 | `faith/theology/biblical-studies/ancient-near-eastern-texts` | 6 | 1036 | 164k |
-| 164 | `faith/theology/biblical-studies/ancient-near-eastern-thought` | 8 | 574 | 138k |
-| 165 | `faith/theology/biblical-studies/basic-christianity` | 6 | 787 | 41k |
-| 166 | `faith/theology/biblical-studies/biblical-critical-theory` | 8 | 469 | 195k |
-| 167 | `faith/theology/biblical-studies/biblical-theology-goldingay` | 7 | 636 | 874k |
-| 168 | `faith/theology/biblical-studies/biblical-theology-vos` | 7 | 1002 | 834k |
-| 169 | `faith/theology/biblical-studies/books-of-the-pentateuch` | 8 | 592 | 94k |
-| 170 | `faith/theology/biblical-studies/carson-intro-new-testament` | 7 | 606 | 238k |
-| 171 | `faith/theology/biblical-studies/casket-empty-old-testament-study-guide` | 5 | 665 | 227k |
-| 172 | `faith/theology/biblical-studies/cross-and-the-prodigal` | 7 | 771 | 115k |
-| 173 | `faith/theology/biblical-studies/dictionary-of-the-later-new-testament` | 8 | 375 | 360k |
-| 174 | `faith/theology/biblical-studies/eat-this-book` | 7 | 399 | 194k |
-| 175 | `faith/theology/biblical-studies/every-good-endeavor` | 8 | 424 | 53k |
-| 176 | `faith/theology/biblical-studies/evil-and-the-justice-of-god` | 7 | 886 | 90k |
-| 177 | `faith/theology/biblical-studies/exegetical-fallacies` | 7 | 3997 | 218k |
-| 178 | `faith/theology/biblical-studies/ezra-nehemiah-esther-for-everyone` | 5 | 630 | 275k |
-| 179 | `faith/theology/biblical-studies/forgive` | 8 | 414 | 46k |
-| 180 | `faith/theology/biblical-studies/from-eden-to-the-new-jerusalem` | 8 | 479 | 89k |
-| 181 | `faith/theology/biblical-studies/genesis-waltke` | 7 | 609 | 120k |
-| 182 | `faith/theology/biblical-studies/gods-wisdom-for-navigating-life` | 8 | 338 | 402k |
-| 183 | `faith/theology/biblical-studies/hard-sayings-of-the-bible` | 7 | 615 | 146k |
-| 184 | `faith/theology/biblical-studies/hermeneutical-spiral` | 7 | 942 | 637k |
-| 185 | `faith/theology/biblical-studies/hidden-christmas` | 7 | 4252 | 175k |
-| 186 | `faith/theology/biblical-studies/how-to-read-the-bible-book-by-book` | 7 | 738 | 285k |
-| 187 | `faith/theology/biblical-studies/how-to-read-the-bible-for-all-its-worth` | 8 | 328 | 63k |
-| 188 | `faith/theology/biblical-studies/is-there-a-meaning-in-this-text` | 6 | 1161 | 154k |
-| 189 | `faith/theology/biblical-studies/issues-facing-christians-today` | 7 | 564 | 116k |
-| 190 | `faith/theology/biblical-studies/ivp-bible-background-commentary-nt` | 8 | 533 | 182k |
-| 191 | `faith/theology/biblical-studies/ivp-bible-background-commentary-ot` | 6 | 785 | 141k |
-| 192 | `faith/theology/biblical-studies/jesus-and-the-victory-of-god` | 7 | 615 | 129k |
-| 193 | `faith/theology/biblical-studies/jesus-through-middle-eastern-eyes` | 7 | 644 | 312k |
-| 194 | `faith/theology/biblical-studies/lost-world-of-adam-and-eve` | 7 | 731 | 184k |
-| 195 | `faith/theology/biblical-studies/lost-world-of-genesis-one` | 7 | 600 | 170k |
-| 196 | `faith/theology/biblical-studies/meaning-of-marriage` | 8 | 498 | 46k |
-| 197 | `faith/theology/biblical-studies/message-of-1-2-thessalonians` | 8 | 553 | 260k |
-| 198 | `faith/theology/biblical-studies/message-of-1-corinthians` | 8 | 458 | 124k |
-| 199 | `faith/theology/biblical-studies/message-of-1-peter` | 8 | 439 | 153k |
-| 200 | `faith/theology/biblical-studies/message-of-1-timothy-titus` | 8 | 457 | 109k |
+| 1 | `craft/engineering/security/building-secure-and-reliable-systems` | 7 | 1140 | 862k |
+| 2 | `craft/engineering/security/hacking-art-of-exploitation` | 7 | 1151 | 297k |
+| 3 | `craft/engineering/security/real-world-bug-hunting` | 6 | 675 | 167k |
+| 4 | `craft/engineering/security/security-engineering` | 7 | 1264 | 1719k |
+| 5 | `craft/engineering/security/serious-cryptography` | 6 | 1218 | 528k |
+| 6 | `craft/engineering/security/web-security-for-developers` | 6 | 1134 | 155k |
+| 7 | `craft/engineering/systems-design/analysis-patterns` | 7 | 1011 | 547k |
+| 8 | `craft/engineering/systems-design/beautiful-architecture` | 7 | 1154 | 145k |
+| 9 | `craft/engineering/systems-design/building-microservices` | 5 | 1477 | 197k |
+| 10 | `craft/engineering/systems-design/clean-architecture` | 7 | 494 | 113k |
+| 11 | `craft/engineering/systems-design/clean-code` | 8 | 419 | 79k |
+| 12 | `craft/engineering/systems-design/designing-data-intensive-applications` | 6 | 819 | 292k |
+| 13 | `craft/engineering/systems-design/designing-distributed-systems` | 7 | 1183 | 151k |
+| 14 | `craft/engineering/systems-design/distributed-systems-principles-and-paradigms` | 7 | 1602 | 870k |
+| 15 | `craft/engineering/systems-design/enterprise-integration-patterns` | 8 | 1783 | 813k |
+| 16 | `craft/engineering/systems-design/fundamentals-of-software-architecture` | 7 | 571 | 193k |
+| 17 | `craft/engineering/systems-design/get-your-hands-dirty-clean-architecture` | 7 | 728 | 153k |
+| 18 | `craft/engineering/systems-design/grokking-advanced-system-design-interview` | 6 | 602 | 307k |
+| 19 | `craft/engineering/systems-design/how-linux-works` | 6 | 1183 | 242k |
+| 20 | `craft/engineering/systems-design/implementation-patterns` | 7 | 364 | 195k |
+| 21 | `craft/engineering/systems-design/microservices-patterns` | 7 | 1039 | 177k |
+| 22 | `craft/engineering/systems-design/patterns-of-enterprise-application-architecture` | 7 | 451 | 169k |
+| 23 | `craft/engineering/systems-design/philosophy-of-software-design` | 6 | 1210 | 211k |
+| 24 | `craft/engineering/systems-design/release-it` | 7 | 877 | 539k |
+| 25 | `craft/engineering/systems-design/software-architecture-for-developers-vol1` | 8 | 426 | 76k |
+| 26 | `craft/engineering/systems-design/software-architecture-for-developers-vol2` | 7 | 490 | 92k |
+| 27 | `craft/engineering/systems-design/software-architecture-in-practice` | 7 | 402 | 365k |
+| 28 | `craft/engineering/systems-design/software-architecture-the-hard-parts` | 7 | 1138 | 166k |
+| 29 | `craft/engineering/systems-design/system-architecture-design` | 6 | 663 | 135k |
+| 30 | `craft/engineering/systems-design/system-design-interview` | 8 | 431 | 784k |
+| 31 | `craft/engineering/systems-design/uml-distilled` | 8 | 2033 | 208k |
+| 32 | `craft/engineering/systems-design/understanding-distributed-systems` | 7 | 1167 | 261k |
+| 33 | `craft/tools/build-systems/manage-your-day-to-day` | 6 | 1045 | 50k |
+| 34 | `craft/tools/coffee/uncommon-grounds` | 8 | 590 | 282k |
+| 35 | `craft/tools/coffee/world-atlas-of-coffee` | 8 | 573 | 138k |
+| 36 | `craft/tools/version-control/building-a-second-brain` | 6 | 1380 | 152k |
+| 37 | `craft/tools/version-control/continuous-delivery` | 6 | 718 | 287k |
+| 38 | `craft/tools/version-control/deep-work` | 8 | 351 | 54k |
+| 39 | `craft/tools/version-control/digital-minimalism` | 6 | 1064 | 47k |
+| 40 | `craft/tools/version-control/make-time` | 6 | 776 | 185k |
+| 41 | `craft/writing/fiction/bird-by-bird` | 6 | 1279 | 140k |
+| 42 | `craft/writing/fiction/brothers-karamazov` | 8 | 512 | 86k |
+| 43 | `craft/writing/fiction/chronicles-of-narnia` | 6 | 1075 | 1605k |
+| 44 | `craft/writing/fiction/crime-and-punishment` | 7 | 644 | 65k |
+| 45 | `craft/writing/fiction/dialogue-the-art-of-verbal-action` | 7 | 529 | 124k |
+| 46 | `craft/writing/fiction/on-writing-well` | 8 | 520 | 175k |
+| 47 | `craft/writing/fiction/steering-the-craft` | 7 | 596 | 42k |
+| 48 | `craft/writing/non-fiction/anatomy-of-story` | 7 | 984 | 120k |
+| 49 | `craft/writing/non-fiction/art-of-listening` | 7 | 661 | 39k |
+| 50 | `craft/writing/non-fiction/brysons-dictionary-of-troublesome-words` | 7 | 615 | 177k |
+| 51 | `craft/writing/non-fiction/copywriters-handbook` | 6 | 778 | 230k |
+| 52 | `craft/writing/non-fiction/elements-of-style` | 8 | 263 | 62k |
+| 53 | `craft/writing/non-fiction/how-to-read-a-book` | 7 | 949 | 212k |
+| 54 | `craft/writing/non-fiction/if-you-want-to-write` | 7 | 639 | 43k |
+| 55 | `craft/writing/non-fiction/little-history-of-philosophy` | 6 | 662 | 187k |
+| 56 | `craft/writing/non-fiction/on-writing` | 7 | 743 | 61k |
+| 57 | `craft/writing/non-fiction/reading-like-a-writer` | 7 | 730 | 44k |
+| 58 | `craft/writing/non-fiction/sense-of-style` | 8 | 507 | 134k |
+| 59 | `craft/writing/non-fiction/show-your-work` | 8 | 535 | 78k |
+| 60 | `craft/writing/non-fiction/storynomics` | 7 | 859 | 133k |
+| 61 | `craft/writing/non-fiction/style-lessons-in-clarity-and-grace` | 6 | 621 | 60k |
+| 62 | `craft/writing/non-fiction/talking-to-strangers` | 6 | 1077 | 120k |
+| 63 | `craft/writing/non-fiction/wild-at-heart` | 7 | 549 | 197k |
+| 64 | `craft/writing/non-fiction/working-poor` | 8 | 548 | 67k |
+| 65 | `craft/writing/non-fiction/writing-down-the-bones` | 7 | 623 | 178k |
+| 66 | `craft/writing/non-fiction/writing-life` | 8 | 573 | 43k |
+| 67 | `craft/writing/screenwriting/action-mckee` | 6 | 944 | 143k |
+| 68 | `craft/writing/screenwriting/story-mckee` | 6 | 814 | 292k |
+| 69 | `faith/spiritual-formation/contemplative/50-spiritual-classics` | 7 | 584 | 408k |
+| 70 | `faith/spiritual-formation/contemplative/augustine-confessions` | 7 | 811 | 609k |
+| 71 | `faith/spiritual-formation/contemplative/genesee-diary` | 7 | 1398 | 275k |
+| 72 | `faith/spiritual-formation/contemplative/inner-voice-of-love` | 6 | 1056 | 111k |
+| 73 | `faith/spiritual-formation/contemplative/reaching-out` | 8 | 4130 | 221k |
+| 74 | `faith/spiritual-formation/contemplative/road-to-daybreak` | 6 | 2081 | 371k |
+| 75 | `faith/spiritual-formation/devotional/adam-gods-beloved` | 7 | 717 | 146k |
+| 76 | `faith/spiritual-formation/devotional/can-you-drink-the-cup` | 6 | 1302 | 97k |
+| 77 | `faith/spiritual-formation/devotional/four-loves` | 7 | 1453 | 172k |
+| 78 | `faith/spiritual-formation/devotional/friendly-snowflake` | 7 | 451 | 31k |
+| 79 | `faith/spiritual-formation/devotional/great-divorce` | 7 | 569 | 128k |
+| 80 | `faith/spiritual-formation/devotional/grief-observed` | 6 | 916 | 90k |
+| 81 | `faith/spiritual-formation/devotional/imitation-of-christ` | 7 | 621 | 337k |
+| 82 | `faith/spiritual-formation/devotional/life-of-the-beloved` | 7 | 1368 | 130k |
+| 83 | `faith/spiritual-formation/devotional/surprised-by-joy` | 5 | 1181 | 250k |
+| 84 | `faith/spiritual-formation/devotional/till-we-have-faces` | 8 | 2792 | 386k |
+| 85 | `faith/spiritual-formation/devotional/weight-of-glory` | 5 | 766 | 76k |
+| 86 | `faith/spiritual-formation/discipleship/after-you-believe` | 7 | 829 | 469k |
+| 87 | `faith/spiritual-formation/discipleship/attached-to-god` | 8 | 1660 | 308k |
+| 88 | `faith/spiritual-formation/discipleship/cost-of-discipleship` | 7 | 903 | 161k |
+| 89 | `faith/spiritual-formation/discipleship/effective-bible-teaching` | 6 | 820 | 260k |
+| 90 | `faith/spiritual-formation/discipleship/great-omission` | 6 | 1253 | 331k |
+| 91 | `faith/spiritual-formation/discipleship/life-without-lack` | 9 | 2011 | 382k |
+| 92 | `faith/spiritual-formation/discipleship/long-obedience-in-the-same-direction` | 7 | 1150 | 175k |
+| 93 | `faith/spiritual-formation/discipleship/pilgrims-progress` | 7 | 575 | 181k |
+| 94 | `faith/spiritual-formation/discipleship/renovation-of-the-heart` | 7 | 1132 | 566k |
+| 95 | `faith/spiritual-formation/discipleship/ruthless-elimination-of-hurry` | 7 | 3903 | 281k |
+| 96 | `faith/spiritual-formation/discipleship/soul-of-shame` | 9 | 2586 | 406k |
+| 97 | `faith/spiritual-formation/discipleship/spirit-of-the-disciplines` | 7 | 1115 | 500k |
+| 98 | `faith/spiritual-formation/prayer/letters-to-malcolm` | 8 | 428 | 188k |
+| 99 | `faith/spiritual-formation/prayer/life-together-prayerbook-of-the-bible` | 6 | 789 | 106k |
+| 100 | `faith/theology/apologetics/everlasting-man` | 7 | 811 | 539k |
+| 101 | `faith/theology/apologetics/god-in-the-dock` | 8 | 2692 | 637k |
+| 102 | `faith/theology/apologetics/mere-christianity` | 6 | 1138 | 251k |
+| 103 | `faith/theology/apologetics/miracles` | 7 | 1294 | 352k |
+| 104 | `faith/theology/apologetics/problem-of-pain` | 7 | 731 | 137k |
+| 105 | `faith/theology/apologetics/screwtape-letters` | 7 | 648 | 56k |
+| 106 | `faith/theology/apologetics/simply-christian` | 7 | 546 | 329k |
+| 107 | `faith/theology/apologetics/where-the-conflict-really-lies` | 7 | 1028 | 172k |
+| 108 | `faith/theology/biblical-studies/21st-century-biblical-homiletics` | 6 | 659 | 267k |
+| 109 | `faith/theology/biblical-studies/a-new-testament-biblical-theology` | 7 | 623 | 316k |
+| 110 | `faith/theology/biblical-studies/according-to-plan` | 8 | 523 | 323k |
+| 111 | `faith/theology/biblical-studies/an-introduction-to-the-new-testament` | 6 | 613 | 1419k |
+| 112 | `faith/theology/biblical-studies/an-introduction-to-the-old-testament` | 6 | 602 | 253k |
+| 113 | `faith/theology/biblical-studies/ancient-near-eastern-texts` | 6 | 1036 | 164k |
+| 114 | `faith/theology/biblical-studies/ancient-near-eastern-thought` | 8 | 574 | 138k |
+| 115 | `faith/theology/biblical-studies/basic-christianity` | 6 | 787 | 41k |
+| 116 | `faith/theology/biblical-studies/biblical-critical-theory` | 8 | 469 | 195k |
+| 117 | `faith/theology/biblical-studies/biblical-theology-goldingay` | 7 | 636 | 874k |
+| 118 | `faith/theology/biblical-studies/biblical-theology-vos` | 7 | 1002 | 834k |
+| 119 | `faith/theology/biblical-studies/books-of-the-pentateuch` | 8 | 592 | 94k |
+| 120 | `faith/theology/biblical-studies/carson-intro-new-testament` | 7 | 606 | 238k |
+| 121 | `faith/theology/biblical-studies/casket-empty-old-testament-study-guide` | 5 | 665 | 227k |
+| 122 | `faith/theology/biblical-studies/cross-and-the-prodigal` | 7 | 771 | 115k |
+| 123 | `faith/theology/biblical-studies/dictionary-of-the-later-new-testament` | 8 | 375 | 360k |
+| 124 | `faith/theology/biblical-studies/eat-this-book` | 7 | 399 | 194k |
+| 125 | `faith/theology/biblical-studies/every-good-endeavor` | 8 | 424 | 53k |
+| 126 | `faith/theology/biblical-studies/evil-and-the-justice-of-god` | 7 | 886 | 90k |
+| 127 | `faith/theology/biblical-studies/exegetical-fallacies` | 7 | 3997 | 218k |
+| 128 | `faith/theology/biblical-studies/ezra-nehemiah-esther-for-everyone` | 5 | 630 | 275k |
+| 129 | `faith/theology/biblical-studies/forgive` | 8 | 414 | 46k |
+| 130 | `faith/theology/biblical-studies/from-eden-to-the-new-jerusalem` | 8 | 479 | 89k |
+| 131 | `faith/theology/biblical-studies/genesis-waltke` | 7 | 609 | 120k |
+| 132 | `faith/theology/biblical-studies/gods-wisdom-for-navigating-life` | 8 | 338 | 402k |
+| 133 | `faith/theology/biblical-studies/hard-sayings-of-the-bible` | 7 | 615 | 146k |
+| 134 | `faith/theology/biblical-studies/hermeneutical-spiral` | 7 | 942 | 637k |
+| 135 | `faith/theology/biblical-studies/hidden-christmas` | 7 | 4252 | 175k |
+| 136 | `faith/theology/biblical-studies/how-to-read-the-bible-book-by-book` | 7 | 738 | 285k |
+| 137 | `faith/theology/biblical-studies/how-to-read-the-bible-for-all-its-worth` | 8 | 328 | 63k |
+| 138 | `faith/theology/biblical-studies/is-there-a-meaning-in-this-text` | 6 | 1161 | 154k |
+| 139 | `faith/theology/biblical-studies/issues-facing-christians-today` | 7 | 564 | 116k |
+| 140 | `faith/theology/biblical-studies/ivp-bible-background-commentary-nt` | 8 | 533 | 182k |
+| 141 | `faith/theology/biblical-studies/ivp-bible-background-commentary-ot` | 6 | 785 | 141k |
+| 142 | `faith/theology/biblical-studies/jesus-and-the-victory-of-god` | 7 | 615 | 129k |
+| 143 | `faith/theology/biblical-studies/jesus-through-middle-eastern-eyes` | 7 | 644 | 312k |
+| 144 | `faith/theology/biblical-studies/lost-world-of-adam-and-eve` | 7 | 731 | 184k |
+| 145 | `faith/theology/biblical-studies/lost-world-of-genesis-one` | 7 | 600 | 170k |
+| 146 | `faith/theology/biblical-studies/meaning-of-marriage` | 8 | 498 | 46k |
+| 147 | `faith/theology/biblical-studies/message-of-1-2-thessalonians` | 8 | 553 | 260k |
+| 148 | `faith/theology/biblical-studies/message-of-1-corinthians` | 8 | 458 | 124k |
+| 149 | `faith/theology/biblical-studies/message-of-1-peter` | 8 | 439 | 153k |
+| 150 | `faith/theology/biblical-studies/message-of-1-timothy-titus` | 8 | 457 | 109k |
+| 151 | `faith/theology/biblical-studies/message-of-2-corinthians` | 8 | 501 | 138k |
+| 152 | `faith/theology/biblical-studies/message-of-2-peter-jude` | 7 | 625 | 335k |
+| 153 | `faith/theology/biblical-studies/message-of-acts` | 6 | 623 | 200k |
+| 154 | `faith/theology/biblical-studies/message-of-amos` | 8 | 438 | 113k |
+| 155 | `faith/theology/biblical-studies/message-of-chronicles` | 6 | 698 | 332k |
+| 156 | `faith/theology/biblical-studies/message-of-colossians-philemon` | 6 | 696 | 227k |
+| 157 | `faith/theology/biblical-studies/message-of-daniel` | 7 | 593 | 282k |
+| 158 | `faith/theology/biblical-studies/message-of-deuteronomy` | 6 | 640 | 561k |
+| 159 | `faith/theology/biblical-studies/message-of-ecclesiastes` | 6 | 770 | 127k |
+| 160 | `faith/theology/biblical-studies/message-of-ephesians` | 7 | 1233 | 187k |
+| 161 | `faith/theology/biblical-studies/message-of-esther` | 7 | 562 | 169k |
+| 162 | `faith/theology/biblical-studies/message-of-exodus` | 8 | 439 | 186k |
+| 163 | `faith/theology/biblical-studies/message-of-ezekiel` | 8 | 602 | 390k |
+| 164 | `faith/theology/biblical-studies/message-of-ezra-and-haggai` | 7 | 444 | 105k |
+| 165 | `faith/theology/biblical-studies/message-of-galatians` | 7 | 584 | 276k |
+| 166 | `faith/theology/biblical-studies/message-of-genesis-bst` | 8 | 575 | 290k |
+| 167 | `faith/theology/biblical-studies/message-of-hebrews` | 7 | 680 | 345k |
+| 168 | `faith/theology/biblical-studies/message-of-hosea` | 8 | 546 | 143k |
+| 169 | `faith/theology/biblical-studies/message-of-isaiah` | 7 | 634 | 352k |
+| 170 | `faith/theology/biblical-studies/message-of-james` | 7 | 688 | 88k |
+| 171 | `faith/theology/biblical-studies/message-of-jeremiah` | 5 | 604 | 170k |
+| 172 | `faith/theology/biblical-studies/message-of-job` | 8 | 577 | 289k |
+| 173 | `faith/theology/biblical-studies/message-of-joel-micah-habakkuk` | 7 | 963 | 106k |
+| 174 | `faith/theology/biblical-studies/message-of-john` | 6 | 617 | 702k |
+| 175 | `faith/theology/biblical-studies/message-of-johns-letters` | 7 | 628 | 266k |
+| 176 | `faith/theology/biblical-studies/message-of-jonah` | 7 | 726 | 187k |
+| 177 | `faith/theology/biblical-studies/message-of-joshua` | 8 | 595 | 264k |
+| 178 | `faith/theology/biblical-studies/message-of-judges` | 7 | 692 | 268k |
+| 179 | `faith/theology/biblical-studies/message-of-kings` | 6 | 693 | 559k |
+| 180 | `faith/theology/biblical-studies/message-of-lamentations` | 6 | 657 | 218k |
+| 181 | `faith/theology/biblical-studies/message-of-leviticus` | 6 | 746 | 433k |
+| 182 | `faith/theology/biblical-studies/message-of-luke` | 7 | 618 | 146k |
+| 183 | `faith/theology/biblical-studies/message-of-malachi` | 7 | 1149 | 96k |
+| 184 | `faith/theology/biblical-studies/message-of-mark` | 8 | 567 | 417k |
+| 185 | `faith/theology/biblical-studies/message-of-matthew` | 7 | 609 | 519k |
+| 186 | `faith/theology/biblical-studies/message-of-nehemiah` | 7 | 674 | 444k |
+| 187 | `faith/theology/biblical-studies/message-of-numbers` | 6 | 758 | 426k |
+| 188 | `faith/theology/biblical-studies/message-of-obadiah-nahum-zephaniah` | 6 | 609 | 286k |
+| 189 | `faith/theology/biblical-studies/message-of-philippians` | 7 | 1195 | 349k |
+| 190 | `faith/theology/biblical-studies/message-of-proverbs` | 7 | 673 | 281k |
+| 191 | `faith/theology/biblical-studies/message-of-psalms-1-72` | 7 | 707 | 527k |
+| 192 | `faith/theology/biblical-studies/message-of-psalms-73-150` | 8 | 581 | 575k |
+| 193 | `faith/theology/biblical-studies/message-of-revelation` | 7 | 685 | 312k |
+| 194 | `faith/theology/biblical-studies/message-of-romans` | 8 | 469 | 206k |
+| 195 | `faith/theology/biblical-studies/message-of-ruth` | 6 | 650 | 167k |
+| 196 | `faith/theology/biblical-studies/message-of-samuel` | 8 | 519 | 347k |
+| 197 | `faith/theology/biblical-studies/message-of-song-of-songs` | 6 | 705 | 267k |
+| 198 | `faith/theology/biblical-studies/message-of-zechariah` | 7 | 1123 | 161k |
+| 199 | `faith/theology/biblical-studies/misquoting-jesus` | 7 | 827 | 91k |
+| 200 | `faith/theology/biblical-studies/mission-of-god` | 8 | 538 | 312k |
 
-_（只列前 200 本，另有 1305 本未列出）_
+_（只列前 200 本，另有 1255 本未列出）_
 
 ## 筆記是空的，寫不了（7 本）
 
@@ -343,8 +343,58 @@ docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完�
 - `craft/engineering/coding-practice/perfect-software` — 2758 字
 - `craft/engineering/coding-practice/pragmatic-programmer` — 2896 字
 - `craft/engineering/coding-practice/prefactoring` — 3027 字
+- `craft/engineering/coding-practice/programmer-self-cultivation` — 3467 字
+- `craft/engineering/coding-practice/programming-pearls` — 2976 字
+- `craft/engineering/coding-practice/refactoring` — 3160 字
+- `craft/engineering/coding-practice/refactoring-for-software-design-smells` — 3063 字
+- `craft/engineering/coding-practice/refactoring-to-patterns` — 3297 字
+- `craft/engineering/coding-practice/rules-of-programming` — 3226 字
+- `craft/engineering/coding-practice/running-on-empty` — 2995 字
+- `craft/engineering/coding-practice/seriously-good-software` — 2949 字
+- `craft/engineering/coding-practice/smalltalk-best-practice-patterns` — 3394 字
+- `craft/engineering/coding-practice/software-architect-12-disciplines` — 2729 字
+- `craft/engineering/coding-practice/software-architect-elevator` — 2988 字
 - `craft/engineering/coding-practice/software-developers-career-guide` — 2637 字
+- `craft/engineering/coding-practice/software-engineering-at-google` — 3306 字
+- `craft/engineering/coding-practice/specification-by-example` — 2966 字
+- `craft/engineering/coding-practice/test-driven-development` — 2816 字
+- `craft/engineering/coding-practice/thinking-in-programming-paradigms-and-oop` — 2704 字
+- `craft/engineering/coding-practice/tidy-first` — 3295 字
+- `craft/engineering/coding-practice/working-effectively-with-legacy-code` — 2940 字
+- `craft/engineering/coding-practice/wujun-beauty-of-math` — 2829 字
 - `craft/engineering/coding-practice/wujun-math-general-course` — 3433 字
+- `craft/engineering/coding-practice/wujun-soul-of-computing` — 2673 字
+- `craft/engineering/coding-practice/zen-programmer` — 2679 字
+- `craft/engineering/databases/art-of-postgresql` — 3105 字
+- `craft/engineering/databases/cqrs-command-query-responsibility-segregation` — 2613 字
+- `craft/engineering/databases/data-warehouse-toolkit` — 2705 字
+- `craft/engineering/databases/database-internals` — 2681 字
+- `craft/engineering/databases/high-performance-mysql` — 2613 字
+- `craft/engineering/databases/nosql-distilled` — 2785 字
+- `craft/engineering/databases/postgresql-14-internals` — 2858 字
+- `craft/engineering/databases/sql-performance-explained` — 2818 字
+- `craft/engineering/databases/sql-server-2025-query-performance-tuning` — 2631 字
+- `craft/engineering/databases/sql-server-2025-unveiled` — 2663 字
+- `craft/engineering/devops/30-days-of-gitlab` — 2470 字
+- `craft/engineering/devops/accelerate` — 2863 字
+- `craft/engineering/devops/devops-handbook` — 2447 字
+- `craft/engineering/devops/kubernetes-in-action` — 3465 字
+- `craft/engineering/devops/kubernetes-patterns` — 2772 字
+- `craft/engineering/devops/phoenix-project` — 2825 字
+- `craft/engineering/devops/seeking-sre` — 2771 字
+- `craft/engineering/devops/site-reliability-engineering` — 2598 字
+- `craft/engineering/devops/site-reliability-engineering-handbook` — 2371 字
+- `craft/engineering/devops/site-reliability-workbook` — 2489 字
+- `craft/engineering/devops/vbirds-linux-basic` — 2497 字
+- `craft/engineering/devops/vbirds-linux-server` — 2430 字
+- `craft/engineering/engineering-management/become-an-effective-software-engineering-manager` — 2546 字
+- `craft/engineering/engineering-management/effective-engineer` — 2481 字
+- `craft/engineering/engineering-management/peopleware` — 2652 字
+- `craft/engineering/engineering-management/staff-engineers-path` — 2460 字
+- `craft/engineering/engineering-management/team-topologies` — 2614 字
+- `craft/engineering/language-rust/team-geek` — 2596 字
+- `craft/engineering/security/attacking-network-protocols` — 2460 字
+- `craft/engineering/security/browser-hackers-handbook` — 2389 字
 - `craft/engineering/systems-design/acing-the-system-design-interview` — 3897 字
 - `craft/engineering/systems-design/api-design-patterns` — 3750 字
 - `craft/engineering/systems-design/art-of-scalability` — 3796 字
