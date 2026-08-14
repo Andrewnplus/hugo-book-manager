@@ -1,33 +1,32 @@
-寫入 /home/andrew/workspace/andrew/books-management/hugo-book-manager/OVERVIEW-PROGRESS.md（1673 本，已完成 409）
+寫入 /home/andrew/workspace/andrew/books-management/hugo-book-manager/OVERVIEW-PROGRESS.md（1680 本，已完成 468）
 �新：（未提供）
 
 ## 總覽
 
 | | 數量 | 佔比 |
 |---|---:|---:|
-| 全庫 | 1673 | 100% |
-| **已改寫並通過品檢** | **409** | **24.4%** |
-| 仍是舊三段格式 | 1262 | 75.4% |
+| 全庫 | 1680 | 100% |
+| **已改寫並通過品檢** | **468** | **27.9%** |
+| 仍是舊三段格式 | 1212 | 72.1% |
 
 ```
-[████████████······································] 24.4%
+[█████████████·····································] 27.9%
 ```
 
 ## 各項未通過
 
 | 檢查 | 未通過 | 佔比 |
 |---|---:|---:|
-| 四段齊全 | 1262 | 75% |
-| 作者的位置 長度 | 1262 | 75% |
-| 定位 長度 | 1262 | 75% |
-| 這本書的限制 長度 | 1262 | 75% |
-| 限制段有實質內容 | 1262 | 75% |
-| 引用年份 | 1109 | 66% |
-| 點名可查證的作品／人名 | 849 | 51% |
-| 完整摘要 長度 | 415 | 25% |
-| 粗體都收得起來 | 44 | 3% |
-| 無空洞讚美 | 41 | 2% |
-| 有深度概覽 | 2 | 0% |
+| 四段齊全 | 1212 | 72% |
+| 作者的位置 長度 | 1212 | 72% |
+| 定位 長度 | 1212 | 72% |
+| 這本書的限制 長度 | 1212 | 72% |
+| 限制段有實質內容 | 1212 | 72% |
+| 引用年份 | 1062 | 63% |
+| 點名可查證的作品／人名 | 817 | 49% |
+| 完整摘要 長度 | 389 | 23% |
+| 無空洞讚美 | 40 | 2% |
+| 粗體都收得起來 | 39 | 2% |
 
 ## 待改寫（依 slug 排序）
 
@@ -35,208 +34,208 @@
 
 | # | 書 | 未通過 | 概覽字數 | 筆記 |
 |---:|---|---:|---:|---:|
-| 1 | `faith/theology/biblical-studies/moral-vision-of-the-new-testament` | 6 | 788 | 255k |
-| 2 | `faith/theology/biblical-studies/new-testament-and-the-people-of-god` | 8 | 475 | 185k |
-| 3 | `faith/theology/biblical-studies/new-testament-in-its-world` | 8 | 473 | 252k |
-| 4 | `faith/theology/biblical-studies/nt-use-of-ot-commentary` | 7 | 675 | 153k |
-| 5 | `faith/theology/biblical-studies/old-testament-ethics-for-the-people-of-god` | 8 | 448 | 237k |
-| 6 | `faith/theology/biblical-studies/old-testament-theology-waltke` | 8 | 593 | 263k |
-| 7 | `faith/theology/biblical-studies/on-the-holy-spirit` | 6 | 813 | 92k |
-| 8 | `faith/theology/biblical-studies/paul-a-biography` | 8 | 2610 | 762k |
-| 9 | `faith/theology/biblical-studies/paul-and-the-faithfulness-of-god` | 7 | 1189 | 1022k |
-| 10 | `faith/theology/biblical-studies/poet-and-peasant` | 8 | 566 | 126k |
-| 11 | `faith/theology/biblical-studies/prayer-experiencing-awe-and-intimacy-with-god` | 8 | 350 | 90k |
-| 12 | `faith/theology/biblical-studies/prophets-heschel` | 8 | 538 | 509k |
-| 13 | `faith/theology/biblical-studies/reflections-on-the-psalms` | 7 | 1611 | 229k |
-| 14 | `faith/theology/biblical-studies/resurrection-of-the-son-of-god` | 6 | 742 | 156k |
-| 15 | `faith/theology/biblical-studies/sherlock-who-1-bible-suspense` | 8 | 315 | 164k |
-| 16 | `faith/theology/biblical-studies/sherlock-who-2-biblical-world` | 8 | 549 | 169k |
-| 17 | `faith/theology/biblical-studies/songs-of-jesus` | 8 | 401 | 69k |
-| 18 | `faith/theology/biblical-studies/state-of-new-testament-studies` | 6 | 673 | 147k |
-| 19 | `faith/theology/biblical-studies/tdnt-abridged` | 6 | 521 | 247k |
-| 20 | `faith/theology/biblical-studies/understanding-the-bible` | 8 | 1697 | 217k |
-| 21 | `faith/theology/biblical-studies/when-good-men-are-tempted` | 7 | 606 | 41k |
-| 22 | `faith/theology/biblical-studies/work-matters` | 7 | 788 | 183k |
-| 23 | `faith/theology/historical/incomparable-christ` | 6 | 789 | 285k |
-| 24 | `faith/theology/historical/mortification-of-sin` | 7 | 617 | 61k |
-| 25 | `faith/theology/historical/overcoming-sin-and-temptation` | 7 | 415 | 195k |
-| 26 | `faith/theology/historical/story-of-christianity-vol-1` | 5 | 725 | 235k |
-| 27 | `faith/theology/historical/story-of-christianity-vol-2` | 6 | 851 | 335k |
-| 28 | `faith/theology/historical/victory-of-reason` | 8 | 575 | 108k |
-| 29 | `faith/theology/pastoral/bonhoeffer-spiritual-care-in-a-religionless-age` | 8 | 364 | 170k |
-| 30 | `faith/theology/pastoral/center-church` | 7 | 400 | 93k |
-| 31 | `faith/theology/pastoral/dictionary-of-paul-and-his-letters` | 7 | 641 | 4691k |
-| 32 | `faith/theology/pastoral/i-believe-in-preaching` | 7 | 1186 | 565k |
-| 33 | `faith/theology/pastoral/living-reminder` | 8 | 314 | 35k |
-| 34 | `faith/theology/pastoral/preaching` | 8 | 485 | 105k |
-| 35 | `faith/theology/pastoral/preaching-and-preachers` | 7 | 807 | 29k |
-| 36 | `faith/theology/pastoral/psychology-theology-and-spirituality-in-christian-counseling` | 7 | 2498 | 515k |
-| 37 | `faith/theology/pastoral/seeing-with-new-eyes` | 8 | 2754 | 462k |
-| 38 | `faith/theology/pastoral/story-of-christian-theology` | 8 | 536 | 393k |
-| 39 | `faith/theology/pastoral/war-of-words` | 8 | 562 | 102k |
-| 40 | `faith/theology/pastoral/when-helping-hurts` | 7 | 760 | 169k |
-| 41 | `faith/theology/pastoral/when-people-are-big-and-god-is-small` | 9 | 2078 | 333k |
-| 42 | `faith/theology/pastoral/wounded-healer` | 8 | 640 | 82k |
-| 43 | `faith/theology/spiritual-warfare/glimpses-of-the-devil` | 6 | 621 | 148k |
-| 44 | `faith/theology/spiritual-warfare/hostage-to-the-devil` | 7 | 529 | 117k |
-| 45 | `faith/theology/systematic/21st-century-theology-casebook` | 6 | 610 | 236k |
-| 46 | `faith/theology/systematic/a-public-faith` | 6 | 637 | 87k |
-| 47 | `faith/theology/systematic/along-with-moses` | 8 | 560 | 366k |
-| 48 | `faith/theology/systematic/anti-intellectualism-chinese-church` | 6 | 752 | 345k |
-| 49 | `faith/theology/systematic/call` | 8 | 345 | 109k |
-| 50 | `faith/theology/systematic/casket-empty-new-testament-study-guide-god-s-plan-of` | 7 | 622 | 850k |
-| 51 | `faith/theology/systematic/changes-that-heal` | 7 | 372 | 72k |
-| 52 | `faith/theology/systematic/counterfeit-gods` | 8 | 341 | 68k |
-| 53 | `faith/theology/systematic/cross-of-christ` | 7 | 949 | 198k |
-| 54 | `faith/theology/systematic/culture-making` | 6 | 656 | 20k |
-| 55 | `faith/theology/systematic/desiring-god` | 6 | 770 | 170k |
-| 56 | `faith/theology/systematic/divine-conspiracy` | 7 | 1154 | 99k |
-| 57 | `faith/theology/systematic/encounters-with-jesus` | 7 | 985 | 111k |
-| 58 | `faith/theology/systematic/erickson-christian-theology` | 7 | 707 | 290k |
-| 59 | `faith/theology/systematic/exclusion-and-embrace` | 6 | 856 | 159k |
-| 60 | `faith/theology/systematic/finding-sanctuary-monastic-steps-for-everyday-life` | 6 | 838 | 39k |
-| 61 | `faith/theology/systematic/flying-together-a-christian-marriage-guide` | 8 | 522 | 20k |
-| 62 | `faith/theology/systematic/freedom-of-self-forgetfulness` | 7 | 1151 | 26k |
-| 63 | `faith/theology/systematic/generous-justice` | 6 | 686 | 138k |
-| 64 | `faith/theology/systematic/god-is-closer-than-you-think` | 7 | 772 | 186k |
-| 65 | `faith/theology/systematic/grudem-systematic-theology` | 7 | 733 | 304k |
-| 66 | `faith/theology/systematic/hearing-god` | 8 | 551 | 276k |
-| 67 | `faith/theology/systematic/hope-in-times-of-fear` | 6 | 1296 | 422k |
-| 68 | `faith/theology/systematic/ichabod-toward-home` | 8 | 484 | 13k |
-| 69 | `faith/theology/systematic/if-you-want-to-walk-on-water-you-have-got-to-get-out-of-the` | 8 | 562 | 244k |
-| 70 | `faith/theology/systematic/institutes-of-christian-religion` | 6 | 765 | 127k |
-| 71 | `faith/theology/systematic/introduction-to-nt-research` | 8 | 447 | 153k |
-| 72 | `faith/theology/systematic/is-hell-for-real` | 6 | 651 | 84k |
-| 73 | `faith/theology/systematic/j-i-packer-his-life-and-thought` | 5 | 656 | 85k |
-| 74 | `faith/theology/systematic/jesus-i-never-knew` | 8 | 543 | 59k |
-| 75 | `faith/theology/systematic/jesus-the-king` | 8 | 284 | 181k |
-| 76 | `faith/theology/systematic/journey-of-modern-theology` | 6 | 751 | 117k |
-| 77 | `faith/theology/systematic/knowing-christ-today` | 7 | 1448 | 137k |
-| 78 | `faith/theology/systematic/knowing-god` | 7 | 1189 | 560k |
-| 79 | `faith/theology/systematic/life-worth-living` | 7 | 850 | 157k |
-| 80 | `faith/theology/systematic/lifesigns` | 7 | 367 | 33k |
-| 81 | `faith/theology/systematic/living-church` | 7 | 700 | 109k |
-| 82 | `faith/theology/systematic/living-gently-in-a-violent-world` | 7 | 676 | 59k |
-| 83 | `faith/theology/systematic/making-sense-of-god` | 7 | 1127 | 172k |
-| 84 | `faith/theology/systematic/moses-in-the-clinic` | 8 | 595 | 471k |
-| 85 | `faith/theology/systematic/new-dictionary-of-theology` | 5 | 622 | 5157k |
-| 86 | `faith/theology/systematic/nine-adventures-in-knowing-god-and-people` | 7 | 539 | 128k |
-| 87 | `faith/theology/systematic/obedient-master` | 8 | 509 | 29k |
-| 88 | `faith/theology/systematic/orthodoxy` | 6 | 791 | 175k |
-| 89 | `faith/theology/systematic/peaceable-kingdom` | 8 | 450 | 39k |
-| 90 | `faith/theology/systematic/prodigal-god` | 8 | 431 | 68k |
-| 91 | `faith/theology/systematic/prodigal-prophet` | 8 | 410 | 34k |
-| 92 | `faith/theology/systematic/pursuit-of-god` | 7 | 768 | 106k |
-| 93 | `faith/theology/systematic/pursuit-of-holiness` | 8 | 543 | 61k |
-| 94 | `faith/theology/systematic/question-of-god` | 7 | 510 | 123k |
-| 95 | `faith/theology/systematic/radical-disciple` | 6 | 691 | 33k |
-| 96 | `faith/theology/systematic/reason-for-god` | 6 | 638 | 220k |
-| 97 | `faith/theology/systematic/resident-aliens-life-in-the-christian-colony` | 8 | 338 | 30k |
-| 98 | `faith/theology/systematic/return-of-the-prodigal-son` | 5 | 654 | 56k |
-| 99 | `faith/theology/systematic/sabbath` | 7 | 621 | 93k |
-| 100 | `faith/theology/systematic/sacred-marriage` | 7 | 581 | 138k |
-| 101 | `faith/theology/systematic/selfless-way-of-christ` | 8 | 401 | 12k |
-| 102 | `faith/theology/systematic/surprised-by-hope` | 7 | 1369 | 172k |
-| 103 | `faith/theology/systematic/systematic-theology` | 8 | 355 | 578k |
-| 104 | `faith/theology/systematic/telling-the-truth` | 6 | 637 | 62k |
-| 105 | `faith/theology/systematic/theology-of-jurgen-moltmann` | 5 | 777 | 369k |
-| 106 | `faith/theology/systematic/toward-a-christian-moral-imagination` | 7 | 852 | 24k |
-| 107 | `faith/theology/systematic/transforming-mission` | 6 | 837 | 214k |
-| 108 | `faith/theology/systematic/twentieth-century-theologians` | 8 | 775 | 264k |
-| 109 | `faith/theology/systematic/uncommon-ground` | 8 | 706 | 233k |
-| 110 | `faith/theology/systematic/walking-with-god-through-pain-and-suffering` | 5 | 742 | 174k |
-| 111 | `faith/theology/systematic/way-of-the-heart` | 7 | 419 | 29k |
-| 112 | `faith/theology/systematic/we-who-wrestle-with-god` | 8 | 599 | 367k |
-| 113 | `faith/theology/systematic/when-god-interrupts` | 8 | 564 | 16k |
-| 114 | `faith/theology/systematic/who-is-this-man` | 6 | 856 | 170k |
-| 115 | `faith/theology/systematic/who-says-the-letter-kills` | 6 | 535 | 203k |
-| 116 | `faith/theology/systematic/witness-to-jesus-as-christ` | 8 | 527 | 59k |
-| 117 | `faith/theology/systematic/wound-of-knowledge` | 8 | 551 | 81k |
-| 118 | `faith/theology/systematic/written-in-stone` | 8 | 437 | 36k |
-| 119 | `faith/theology/systematic/you-are-what-you-love` | 8 | 591 | 113k |
-| 120 | `personal/habit/discipline/365-days-with-self-discipline` | 6 | 662 | 411k |
-| 121 | `personal/habit/discipline/million-dollar-habits` | 7 | 1160 | 322k |
-| 122 | `personal/habit/discipline/one-life-solution` | 8 | 483 | 110k |
-| 123 | `personal/habit/discipline/positive-discipline` | 7 | 1350 | 111k |
-| 124 | `personal/habit/discipline/power-of-action` | 8 | 588 | 239k |
-| 125 | `personal/habit/discipline/war-of-art` | 8 | 1317 | 135k |
-| 126 | `personal/habit/focus/how-to-calm-your-mind` | 7 | 894 | 68k |
-| 127 | `personal/habit/focus/hyperfocus` | 7 | 1210 | 260k |
-| 128 | `personal/habit/focus/indistractable` | 7 | 1015 | 176k |
-| 129 | `personal/habit/focus/noise-living-and-leading-when-nobody-can-focus` | 7 | 613 | 43k |
-| 130 | `personal/habit/productivity/168-hours` | 7 | 832 | 141k |
-| 131 | `personal/habit/productivity/18-minutes` | 7 | 647 | 210k |
-| 132 | `personal/habit/productivity/4-disciplines-of-execution` | 6 | 906 | 134k |
-| 133 | `personal/habit/productivity/4-hour-workweek` | 6 | 695 | 83k |
-| 134 | `personal/habit/productivity/a-world-without-email` | 7 | 718 | 68k |
-| 135 | `personal/habit/productivity/art-of-work-and-life` | 7 | 784 | 35k |
-| 136 | `personal/habit/productivity/atomic-habits` | 8 | 356 | 71k |
-| 137 | `personal/habit/productivity/bullet-journal-method` | 6 | 761 | 62k |
-| 138 | `personal/habit/productivity/compound-effect` | 8 | 593 | 75k |
-| 139 | `personal/habit/productivity/daily-laws` | 6 | 645 | 92k |
-| 140 | `personal/habit/productivity/dangerous-personalities` | 7 | 457 | 53k |
-| 141 | `personal/habit/productivity/do-it-tomorrow` | 7 | 888 | 75k |
-| 142 | `personal/habit/productivity/dont-sweat-the-small-stuff-at-work` | 6 | 809 | 135k |
-| 143 | `personal/habit/productivity/eat-that-frog` | 6 | 749 | 88k |
-| 144 | `personal/habit/productivity/effortless` | 7 | 1101 | 165k |
-| 145 | `personal/habit/productivity/essentialism` | 7 | 446 | 60k |
-| 146 | `personal/habit/productivity/extreme-productivity` | 8 | 409 | 110k |
-| 147 | `personal/habit/productivity/first-things-first` | 6 | 1454 | 72k |
-| 148 | `personal/habit/productivity/focal-point` | 7 | 804 | 73k |
-| 149 | `personal/habit/productivity/four-thousand-weeks` | 7 | 736 | 190k |
-| 150 | `personal/habit/productivity/get-it-done-now` | 6 | 734 | 109k |
-| 151 | `personal/habit/productivity/getting-organized-in-the-google-era` | 7 | 676 | 68k |
-| 152 | `personal/habit/productivity/getting-things-done` | 7 | 548 | 104k |
-| 153 | `personal/habit/productivity/great-at-work` | 8 | 360 | 70k |
-| 154 | `personal/habit/productivity/hbr-10-must-reads-on-managing-yourself` | 7 | 707 | 30k |
-| 155 | `personal/habit/productivity/hbr-guide-to-being-more-productive` | 7 | 679 | 137k |
-| 156 | `personal/habit/productivity/high-performance-habits` | 8 | 532 | 95k |
-| 157 | `personal/habit/productivity/how-to-get-control-of-your-time-and-your-life` | 7 | 848 | 78k |
-| 158 | `personal/habit/productivity/how-to-have-a-good-day` | 7 | 1189 | 151k |
-| 159 | `personal/habit/productivity/just-shut-up-and-do-it` | 7 | 730 | 29k |
-| 160 | `personal/habit/productivity/laws-of-winners` | 8 | 461 | 181k |
-| 161 | `personal/habit/productivity/learning-to-be-deceived` | 7 | 723 | 11k |
-| 162 | `personal/habit/productivity/life-leverage` | 6 | 778 | 71k |
-| 163 | `personal/habit/productivity/mindset-for-wealth` | 8 | 495 | 201k |
-| 164 | `personal/habit/productivity/one-thing` | 6 | 662 | 66k |
-| 165 | `personal/habit/productivity/outliers` | 6 | 828 | 122k |
-| 166 | `personal/habit/productivity/productivity-project` | 6 | 791 | 86k |
-| 167 | `personal/habit/productivity/qbq-question-behind-question` | 8 | 504 | 40k |
-| 168 | `personal/habit/productivity/quit` | 7 | 720 | 112k |
-| 169 | `personal/habit/productivity/rich-habits-corley` | 8 | 594 | 47k |
-| 170 | `personal/habit/productivity/rich-habits-practice` | 8 | 327 | 128k |
-| 171 | `personal/habit/productivity/rich-kids` | 8 | 334 | 18k |
-| 172 | `personal/habit/productivity/road-to-character` | 7 | 731 | 110k |
-| 173 | `personal/habit/productivity/slow-productivity` | 6 | 828 | 39k |
-| 174 | `personal/habit/productivity/smarter-faster-better` | 5 | 1591 | 133k |
-| 175 | `personal/habit/productivity/start-now-get-perfect-later` | 6 | 625 | 105k |
-| 176 | `personal/habit/productivity/time-management` | 7 | 683 | 81k |
-| 177 | `personal/habit/productivity/time-smart` | 6 | 733 | 94k |
-| 178 | `personal/habit/productivity/when-daniel-pink` | 7 | 1191 | 90k |
-| 179 | `personal/habit/productivity/why-elites-are-checklist-masters` | 8 | 539 | 185k |
-| 180 | `personal/habit/productivity/why-elites-are-time-masters` | 7 | 614 | 96k |
-| 181 | `personal/habit/productivity/world-only-readers-can-reach` | 8 | 752 | 143k |
-| 182 | `personal/habit/productivity/worries-are-all-in-your-head` | 7 | 616 | 20k |
-| 183 | `personal/habit/routine/celebration-of-discipline` | 7 | 1084 | 149k |
-| 184 | `personal/habit/routine/power-of-full-engagement` | 7 | 873 | 209k |
-| 185 | `personal/habit/routine/power-of-habit` | 7 | 1318 | 438k |
-| 186 | `personal/habit/routine/tiny-habits` | 6 | 755 | 145k |
-| 187 | `personal/habit/routine/workbook-for-atomic-habits` | 6 | 614 | 83k |
-| 188 | `personal/lifestyle/style/dressing-the-man` | 7 | 535 | 89k |
-| 189 | `personal/lifestyle/style/gentleman-timeless-guide-to-fashion` | 7 | 615 | 253k |
-| 190 | `personal/lifestyle/style/how-to-be-a-man` | 8 | 408 | 361k |
-| 191 | `personal/lifestyle/style/style-and-the-man` | 7 | 673 | 498k |
-| 192 | `personal/lifestyle/style/ultimate-guide-to-mens-style` | 8 | 495 | 60k |
-| 193 | `personal/mindset/emotion/algebra-of-happiness` | 8 | 658 | 51k |
-| 194 | `personal/mindset/emotion/difference-maker` | 6 | 890 | 105k |
-| 195 | `personal/mindset/emotion/emotional-intelligence` | 7 | 700 | 741k |
-| 196 | `personal/mindset/emotion/gift-of-fear` | 7 | 816 | 198k |
-| 197 | `personal/mindset/emotion/hope-for-cynics` | 6 | 657 | 143k |
-| 198 | `personal/mindset/emotion/inner-excellence` | 7 | 827 | 127k |
-| 199 | `personal/mindset/emotion/let-them-theory` | 7 | 732 | 184k |
-| 200 | `personal/mindset/emotion/paradox-of-choice` | 7 | 1157 | 135k |
+| 1 | `faith/theology/systematic/changes-that-heal` | 7 | 372 | 72k |
+| 2 | `faith/theology/systematic/counterfeit-gods` | 8 | 341 | 68k |
+| 3 | `faith/theology/systematic/cross-of-christ` | 7 | 949 | 198k |
+| 4 | `faith/theology/systematic/culture-making` | 6 | 656 | 20k |
+| 5 | `faith/theology/systematic/desiring-god` | 6 | 770 | 170k |
+| 6 | `faith/theology/systematic/divine-conspiracy` | 7 | 1154 | 99k |
+| 7 | `faith/theology/systematic/encounters-with-jesus` | 7 | 985 | 111k |
+| 8 | `faith/theology/systematic/erickson-christian-theology` | 7 | 707 | 290k |
+| 9 | `faith/theology/systematic/exclusion-and-embrace` | 6 | 856 | 159k |
+| 10 | `faith/theology/systematic/finding-sanctuary-monastic-steps-for-everyday-life` | 6 | 838 | 39k |
+| 11 | `faith/theology/systematic/flying-together-a-christian-marriage-guide` | 8 | 522 | 20k |
+| 12 | `faith/theology/systematic/freedom-of-self-forgetfulness` | 7 | 1151 | 26k |
+| 13 | `faith/theology/systematic/generous-justice` | 6 | 686 | 138k |
+| 14 | `faith/theology/systematic/god-is-closer-than-you-think` | 7 | 772 | 186k |
+| 15 | `faith/theology/systematic/grudem-systematic-theology` | 7 | 733 | 304k |
+| 16 | `faith/theology/systematic/hearing-god` | 8 | 551 | 276k |
+| 17 | `faith/theology/systematic/hope-in-times-of-fear` | 6 | 1296 | 422k |
+| 18 | `faith/theology/systematic/ichabod-toward-home` | 8 | 484 | 13k |
+| 19 | `faith/theology/systematic/if-you-want-to-walk-on-water-you-have-got-to-get-out-of-the` | 8 | 562 | 244k |
+| 20 | `faith/theology/systematic/institutes-of-christian-religion` | 6 | 765 | 127k |
+| 21 | `faith/theology/systematic/introduction-to-nt-research` | 8 | 447 | 153k |
+| 22 | `faith/theology/systematic/is-hell-for-real` | 6 | 651 | 84k |
+| 23 | `faith/theology/systematic/j-i-packer-his-life-and-thought` | 5 | 656 | 85k |
+| 24 | `faith/theology/systematic/jesus-i-never-knew` | 8 | 543 | 59k |
+| 25 | `faith/theology/systematic/jesus-the-king` | 8 | 284 | 181k |
+| 26 | `faith/theology/systematic/journey-of-modern-theology` | 6 | 751 | 117k |
+| 27 | `faith/theology/systematic/knowing-christ-today` | 7 | 1448 | 137k |
+| 28 | `faith/theology/systematic/knowing-god` | 7 | 1189 | 560k |
+| 29 | `faith/theology/systematic/life-worth-living` | 7 | 850 | 157k |
+| 30 | `faith/theology/systematic/lifesigns` | 7 | 367 | 33k |
+| 31 | `faith/theology/systematic/living-church` | 7 | 700 | 109k |
+| 32 | `faith/theology/systematic/living-gently-in-a-violent-world` | 7 | 676 | 59k |
+| 33 | `faith/theology/systematic/making-sense-of-god` | 7 | 1127 | 172k |
+| 34 | `faith/theology/systematic/moses-in-the-clinic` | 8 | 595 | 471k |
+| 35 | `faith/theology/systematic/new-dictionary-of-theology` | 5 | 622 | 5157k |
+| 36 | `faith/theology/systematic/nine-adventures-in-knowing-god-and-people` | 7 | 539 | 128k |
+| 37 | `faith/theology/systematic/obedient-master` | 8 | 509 | 29k |
+| 38 | `faith/theology/systematic/orthodoxy` | 6 | 791 | 175k |
+| 39 | `faith/theology/systematic/peaceable-kingdom` | 8 | 450 | 39k |
+| 40 | `faith/theology/systematic/prodigal-god` | 8 | 431 | 68k |
+| 41 | `faith/theology/systematic/prodigal-prophet` | 8 | 410 | 34k |
+| 42 | `faith/theology/systematic/pursuit-of-god` | 7 | 768 | 106k |
+| 43 | `faith/theology/systematic/pursuit-of-holiness` | 8 | 543 | 61k |
+| 44 | `faith/theology/systematic/question-of-god` | 7 | 510 | 123k |
+| 45 | `faith/theology/systematic/radical-disciple` | 6 | 691 | 33k |
+| 46 | `faith/theology/systematic/reason-for-god` | 6 | 638 | 220k |
+| 47 | `faith/theology/systematic/resident-aliens-life-in-the-christian-colony` | 8 | 338 | 30k |
+| 48 | `faith/theology/systematic/return-of-the-prodigal-son` | 5 | 654 | 56k |
+| 49 | `faith/theology/systematic/sabbath` | 7 | 621 | 93k |
+| 50 | `faith/theology/systematic/sacred-marriage` | 7 | 581 | 138k |
+| 51 | `faith/theology/systematic/selfless-way-of-christ` | 8 | 401 | 12k |
+| 52 | `faith/theology/systematic/surprised-by-hope` | 7 | 1369 | 172k |
+| 53 | `faith/theology/systematic/systematic-theology` | 8 | 355 | 578k |
+| 54 | `faith/theology/systematic/telling-the-truth` | 6 | 637 | 62k |
+| 55 | `faith/theology/systematic/theology-of-jurgen-moltmann` | 5 | 777 | 369k |
+| 56 | `faith/theology/systematic/toward-a-christian-moral-imagination` | 7 | 852 | 24k |
+| 57 | `faith/theology/systematic/transforming-mission` | 6 | 837 | 214k |
+| 58 | `faith/theology/systematic/twentieth-century-theologians` | 8 | 775 | 264k |
+| 59 | `faith/theology/systematic/uncommon-ground` | 8 | 706 | 233k |
+| 60 | `faith/theology/systematic/walking-with-god-through-pain-and-suffering` | 5 | 742 | 174k |
+| 61 | `faith/theology/systematic/way-of-the-heart` | 7 | 419 | 29k |
+| 62 | `faith/theology/systematic/we-who-wrestle-with-god` | 8 | 599 | 367k |
+| 63 | `faith/theology/systematic/when-god-interrupts` | 8 | 564 | 16k |
+| 64 | `faith/theology/systematic/who-is-this-man` | 6 | 856 | 170k |
+| 65 | `faith/theology/systematic/who-says-the-letter-kills` | 6 | 535 | 203k |
+| 66 | `faith/theology/systematic/witness-to-jesus-as-christ` | 8 | 527 | 59k |
+| 67 | `faith/theology/systematic/wound-of-knowledge` | 8 | 551 | 81k |
+| 68 | `faith/theology/systematic/written-in-stone` | 8 | 437 | 36k |
+| 69 | `faith/theology/systematic/you-are-what-you-love` | 8 | 591 | 113k |
+| 70 | `personal/habit/discipline/365-days-with-self-discipline` | 6 | 662 | 411k |
+| 71 | `personal/habit/discipline/million-dollar-habits` | 7 | 1160 | 322k |
+| 72 | `personal/habit/discipline/one-life-solution` | 8 | 483 | 110k |
+| 73 | `personal/habit/discipline/positive-discipline` | 7 | 1350 | 111k |
+| 74 | `personal/habit/discipline/power-of-action` | 8 | 588 | 239k |
+| 75 | `personal/habit/discipline/war-of-art` | 8 | 1317 | 135k |
+| 76 | `personal/habit/focus/how-to-calm-your-mind` | 7 | 894 | 68k |
+| 77 | `personal/habit/focus/hyperfocus` | 7 | 1210 | 260k |
+| 78 | `personal/habit/focus/indistractable` | 7 | 1015 | 176k |
+| 79 | `personal/habit/focus/noise-living-and-leading-when-nobody-can-focus` | 7 | 613 | 43k |
+| 80 | `personal/habit/productivity/168-hours` | 7 | 832 | 141k |
+| 81 | `personal/habit/productivity/18-minutes` | 7 | 647 | 210k |
+| 82 | `personal/habit/productivity/4-disciplines-of-execution` | 6 | 906 | 134k |
+| 83 | `personal/habit/productivity/4-hour-workweek` | 6 | 695 | 83k |
+| 84 | `personal/habit/productivity/a-world-without-email` | 7 | 718 | 68k |
+| 85 | `personal/habit/productivity/art-of-work-and-life` | 7 | 784 | 35k |
+| 86 | `personal/habit/productivity/atomic-habits` | 8 | 356 | 71k |
+| 87 | `personal/habit/productivity/bullet-journal-method` | 6 | 761 | 62k |
+| 88 | `personal/habit/productivity/compound-effect` | 8 | 593 | 75k |
+| 89 | `personal/habit/productivity/daily-laws` | 6 | 645 | 92k |
+| 90 | `personal/habit/productivity/dangerous-personalities` | 7 | 457 | 53k |
+| 91 | `personal/habit/productivity/do-it-tomorrow` | 7 | 888 | 75k |
+| 92 | `personal/habit/productivity/dont-sweat-the-small-stuff-at-work` | 6 | 809 | 135k |
+| 93 | `personal/habit/productivity/eat-that-frog` | 6 | 749 | 88k |
+| 94 | `personal/habit/productivity/effortless` | 7 | 1101 | 165k |
+| 95 | `personal/habit/productivity/essentialism` | 7 | 446 | 60k |
+| 96 | `personal/habit/productivity/extreme-productivity` | 8 | 409 | 110k |
+| 97 | `personal/habit/productivity/first-things-first` | 6 | 1454 | 72k |
+| 98 | `personal/habit/productivity/focal-point` | 7 | 804 | 73k |
+| 99 | `personal/habit/productivity/four-thousand-weeks` | 7 | 736 | 190k |
+| 100 | `personal/habit/productivity/get-it-done-now` | 6 | 734 | 109k |
+| 101 | `personal/habit/productivity/getting-organized-in-the-google-era` | 7 | 676 | 68k |
+| 102 | `personal/habit/productivity/getting-things-done` | 7 | 548 | 104k |
+| 103 | `personal/habit/productivity/great-at-work` | 8 | 360 | 70k |
+| 104 | `personal/habit/productivity/hbr-10-must-reads-on-managing-yourself` | 7 | 707 | 30k |
+| 105 | `personal/habit/productivity/hbr-guide-to-being-more-productive` | 7 | 679 | 137k |
+| 106 | `personal/habit/productivity/high-performance-habits` | 8 | 532 | 95k |
+| 107 | `personal/habit/productivity/how-to-get-control-of-your-time-and-your-life` | 7 | 848 | 78k |
+| 108 | `personal/habit/productivity/how-to-have-a-good-day` | 7 | 1189 | 151k |
+| 109 | `personal/habit/productivity/just-shut-up-and-do-it` | 7 | 730 | 29k |
+| 110 | `personal/habit/productivity/laws-of-winners` | 8 | 461 | 181k |
+| 111 | `personal/habit/productivity/learning-to-be-deceived` | 7 | 723 | 11k |
+| 112 | `personal/habit/productivity/life-leverage` | 6 | 778 | 71k |
+| 113 | `personal/habit/productivity/mindset-for-wealth` | 8 | 495 | 201k |
+| 114 | `personal/habit/productivity/one-thing` | 6 | 662 | 66k |
+| 115 | `personal/habit/productivity/outliers` | 6 | 828 | 122k |
+| 116 | `personal/habit/productivity/productivity-project` | 6 | 791 | 86k |
+| 117 | `personal/habit/productivity/qbq-question-behind-question` | 8 | 504 | 40k |
+| 118 | `personal/habit/productivity/quit` | 7 | 720 | 112k |
+| 119 | `personal/habit/productivity/rich-habits-corley` | 8 | 594 | 47k |
+| 120 | `personal/habit/productivity/rich-habits-practice` | 8 | 327 | 128k |
+| 121 | `personal/habit/productivity/rich-kids` | 8 | 334 | 18k |
+| 122 | `personal/habit/productivity/road-to-character` | 7 | 731 | 110k |
+| 123 | `personal/habit/productivity/slow-productivity` | 6 | 828 | 39k |
+| 124 | `personal/habit/productivity/smarter-faster-better` | 5 | 1591 | 133k |
+| 125 | `personal/habit/productivity/start-now-get-perfect-later` | 6 | 625 | 105k |
+| 126 | `personal/habit/productivity/time-management` | 7 | 683 | 81k |
+| 127 | `personal/habit/productivity/time-smart` | 6 | 733 | 94k |
+| 128 | `personal/habit/productivity/when-daniel-pink` | 7 | 1191 | 90k |
+| 129 | `personal/habit/productivity/why-elites-are-checklist-masters` | 8 | 539 | 185k |
+| 130 | `personal/habit/productivity/why-elites-are-time-masters` | 7 | 614 | 96k |
+| 131 | `personal/habit/productivity/world-only-readers-can-reach` | 8 | 752 | 143k |
+| 132 | `personal/habit/productivity/worries-are-all-in-your-head` | 7 | 616 | 20k |
+| 133 | `personal/habit/routine/celebration-of-discipline` | 7 | 1084 | 149k |
+| 134 | `personal/habit/routine/power-of-full-engagement` | 7 | 873 | 209k |
+| 135 | `personal/habit/routine/power-of-habit` | 7 | 1318 | 438k |
+| 136 | `personal/habit/routine/tiny-habits` | 6 | 755 | 145k |
+| 137 | `personal/habit/routine/workbook-for-atomic-habits` | 6 | 614 | 83k |
+| 138 | `personal/lifestyle/style/dressing-the-man` | 7 | 535 | 89k |
+| 139 | `personal/lifestyle/style/gentleman-timeless-guide-to-fashion` | 7 | 615 | 253k |
+| 140 | `personal/lifestyle/style/how-to-be-a-man` | 8 | 408 | 361k |
+| 141 | `personal/lifestyle/style/style-and-the-man` | 7 | 673 | 498k |
+| 142 | `personal/lifestyle/style/ultimate-guide-to-mens-style` | 8 | 495 | 60k |
+| 143 | `personal/mindset/emotion/algebra-of-happiness` | 8 | 658 | 51k |
+| 144 | `personal/mindset/emotion/difference-maker` | 6 | 890 | 105k |
+| 145 | `personal/mindset/emotion/emotional-intelligence` | 7 | 700 | 741k |
+| 146 | `personal/mindset/emotion/gift-of-fear` | 7 | 816 | 198k |
+| 147 | `personal/mindset/emotion/hope-for-cynics` | 6 | 657 | 143k |
+| 148 | `personal/mindset/emotion/inner-excellence` | 7 | 827 | 127k |
+| 149 | `personal/mindset/emotion/let-them-theory` | 7 | 732 | 184k |
+| 150 | `personal/mindset/emotion/paradox-of-choice` | 7 | 1157 | 135k |
+| 151 | `personal/mindset/emotion/permission-to-feel` | 5 | 1232 | 156k |
+| 152 | `personal/mindset/emotion/social-animal` | 6 | 915 | 118k |
+| 153 | `personal/mindset/emotion/wisest-one-in-the-room` | 7 | 810 | 90k |
+| 154 | `personal/mindset/emotion/your-mind-an-owners-manual-for-a-better-life` | 8 | 423 | 28k |
+| 155 | `personal/mindset/growth/11-rules-for-life` | 6 | 975 | 71k |
+| 156 | `personal/mindset/growth/15-invaluable-laws-of-growth` | 7 | 471 | 151k |
+| 157 | `personal/mindset/growth/21-success-secrets-of-self-made` | 7 | 619 | 56k |
+| 158 | `personal/mindset/growth/5-types-of-wealth` | 7 | 759 | 200k |
+| 159 | `personal/mindset/growth/50-erfolgsmodelle` | 7 | 493 | 80k |
+| 160 | `personal/mindset/growth/achievement-habit` | 7 | 716 | 152k |
+| 161 | `personal/mindset/growth/anlegerpsychologie` | 7 | 837 | 119k |
+| 162 | `personal/mindset/growth/art-of-action` | 7 | 1585 | 155k |
+| 163 | `personal/mindset/growth/art-of-adult-decision-making` | 7 | 715 | 24k |
+| 164 | `personal/mindset/growth/art-of-selfishness` | 6 | 1051 | 283k |
+| 165 | `personal/mindset/growth/art-of-thinking-clearly` | 6 | 625 | 298k |
+| 166 | `personal/mindset/growth/asking-the-right-questions` | 7 | 610 | 104k |
+| 167 | `personal/mindset/growth/awaken-the-giant-within` | 8 | 713 | 827k |
+| 168 | `personal/mindset/growth/be-obsessed-or-be-average` | 8 | 524 | 168k |
+| 169 | `personal/mindset/growth/biased` | 6 | 784 | 114k |
+| 170 | `personal/mindset/growth/biggest-bluff` | 7 | 895 | 170k |
+| 171 | `personal/mindset/growth/bottom-logic` | 8 | 450 | 151k |
+| 172 | `personal/mindset/growth/bright-sided` | 6 | 629 | 68k |
+| 173 | `personal/mindset/growth/chancing-it` | 5 | 1289 | 146k |
+| 174 | `personal/mindset/growth/change-your-questions-change-your-life` | 7 | 474 | 64k |
+| 175 | `personal/mindset/growth/change-your-thinking-change-your-life` | 7 | 721 | 101k |
+| 176 | `personal/mindset/growth/change-your-thinking-change-your-life-tracy` | 9 | 4109 | 359k |
+| 177 | `personal/mindset/growth/clear-thinking` | 6 | 647 | 100k |
+| 178 | `personal/mindset/growth/confidence-game` | 7 | 857 | 103k |
+| 179 | `personal/mindset/growth/courage-to-be-happy` | 7 | 732 | 131k |
+| 180 | `personal/mindset/growth/creativity-and-problem-solving` | 7 | 844 | 72k |
+| 181 | `personal/mindset/growth/critical-thinking-concepts-and-tools` | 6 | 1137 | 36k |
+| 182 | `personal/mindset/growth/daring-greatly` | 7 | 852 | 121k |
+| 183 | `personal/mindset/growth/dark-horse` | 6 | 1494 | 142k |
+| 184 | `personal/mindset/growth/die-empty` | 6 | 647 | 38k |
+| 185 | `personal/mindset/growth/difference-that-makes-the-difference` | 7 | 678 | 97k |
+| 186 | `personal/mindset/growth/everyone-can-succeed` | 7 | 761 | 188k |
+| 187 | `personal/mindset/growth/factfulness` | 8 | 371 | 88k |
+| 188 | `personal/mindset/growth/fei-style-thinking` | 8 | 489 | 102k |
+| 189 | `personal/mindset/growth/fengtang-buer` | 8 | 590 | 47k |
+| 190 | `personal/mindset/growth/flight-plan` | 6 | 907 | 79k |
+| 191 | `personal/mindset/growth/flow-psychology-of-happiness` | 7 | 1601 | 586k |
+| 192 | `personal/mindset/growth/fooled-by-randomness` | 7 | 530 | 48k |
+| 193 | `personal/mindset/growth/formula` | 7 | 886 | 62k |
+| 194 | `personal/mindset/growth/gap-and-the-gain` | 6 | 1017 | 69k |
+| 195 | `personal/mindset/growth/giant-trader-thinking` | 7 | 808 | 107k |
+| 196 | `personal/mindset/growth/goals` | 7 | 759 | 190k |
+| 197 | `personal/mindset/growth/grey-thinking` | 8 | 561 | 161k |
+| 198 | `personal/mindset/growth/hbr-guide-to-critical-thinking` | 7 | 729 | 138k |
+| 199 | `personal/mindset/growth/hbr-guide-to-unlocking-creativity` | 7 | 676 | 140k |
+| 200 | `personal/mindset/growth/hidden-potential` | 6 | 802 | 136k |
 
-_（只列前 200 本，另有 1057 本未列出）_
+_（只列前 200 本，另有 1005 本未列出）_
 
 ## 筆記是空的，寫不了（7 本）
 
@@ -669,12 +668,62 @@ _（只列前 60 本，另有 6 本未列出）_
 - `faith/theology/biblical-studies/message-of-zechariah` — 3123 字
 - `faith/theology/biblical-studies/misquoting-jesus` — 3025 字
 - `faith/theology/biblical-studies/mission-of-god` — 3075 字
+- `faith/theology/biblical-studies/moral-vision-of-the-new-testament` — 3185 字
+- `faith/theology/biblical-studies/new-testament-and-the-people-of-god` — 3134 字
+- `faith/theology/biblical-studies/new-testament-in-its-world` — 2792 字
+- `faith/theology/biblical-studies/nt-use-of-ot-commentary` — 2904 字
 - `faith/theology/biblical-studies/nt-wright-and-the-revolutionary-cross` — 4109 字
+- `faith/theology/biblical-studies/old-testament-ethics-for-the-people-of-god` — 3082 字
+- `faith/theology/biblical-studies/old-testament-theology-waltke` — 2993 字
+- `faith/theology/biblical-studies/on-the-holy-spirit` — 2806 字
+- `faith/theology/biblical-studies/paul-a-biography` — 3719 字
+- `faith/theology/biblical-studies/paul-and-the-faithfulness-of-god` — 3378 字
+- `faith/theology/biblical-studies/poet-and-peasant` — 3154 字
+- `faith/theology/biblical-studies/prayer-experiencing-awe-and-intimacy-with-god` — 2952 字
+- `faith/theology/biblical-studies/prophets-heschel` — 3245 字
+- `faith/theology/biblical-studies/reflections-on-the-psalms` — 3407 字
+- `faith/theology/biblical-studies/resurrection-of-the-son-of-god` — 3246 字
+- `faith/theology/biblical-studies/sherlock-who-1-bible-suspense` — 3177 字
+- `faith/theology/biblical-studies/sherlock-who-2-biblical-world` — 3075 字
 - `faith/theology/biblical-studies/sherlock-who-3-new-light` — 2880 字
 - `faith/theology/biblical-studies/simply-jesus` — 4089 字
+- `faith/theology/biblical-studies/songs-of-jesus` — 2699 字
+- `faith/theology/biblical-studies/state-of-new-testament-studies` — 2886 字
 - `faith/theology/biblical-studies/stott-understanding-the-bible` — 3971 字
+- `faith/theology/biblical-studies/tdnt-abridged` — 3032 字
+- `faith/theology/biblical-studies/understanding-the-bible` — 3371 字
+- `faith/theology/biblical-studies/when-good-men-are-tempted` — 3088 字
+- `faith/theology/biblical-studies/work-matters` — 3135 字
+- `faith/theology/historical/incomparable-christ` — 3093 字
+- `faith/theology/historical/mortification-of-sin` — 3052 字
+- `faith/theology/historical/overcoming-sin-and-temptation` — 2919 字
+- `faith/theology/historical/story-of-christianity-vol-1` — 2918 字
+- `faith/theology/historical/story-of-christianity-vol-2` — 2649 字
+- `faith/theology/historical/victory-of-reason` — 2954 字
+- `faith/theology/pastoral/bonhoeffer-spiritual-care-in-a-religionless-age` — 2973 字
+- `faith/theology/pastoral/center-church` — 2848 字
+- `faith/theology/pastoral/dictionary-of-paul-and-his-letters` — 2796 字
 - `faith/theology/pastoral/emotionally-healthy-leader` — 3777 字
+- `faith/theology/pastoral/i-believe-in-preaching` — 3058 字
+- `faith/theology/pastoral/living-reminder` — 2800 字
+- `faith/theology/pastoral/preaching` — 2853 字
+- `faith/theology/pastoral/preaching-and-preachers` — 2754 字
+- `faith/theology/pastoral/psychology-theology-and-spirituality-in-christian-counseling` — 3334 字
+- `faith/theology/pastoral/seeing-with-new-eyes` — 3579 字
+- `faith/theology/pastoral/story-of-christian-theology` — 2795 字
+- `faith/theology/pastoral/war-of-words` — 2707 字
+- `faith/theology/pastoral/when-helping-hurts` — 2886 字
+- `faith/theology/pastoral/when-people-are-big-and-god-is-small` — 3660 字
+- `faith/theology/pastoral/wounded-healer` — 2940 字
+- `faith/theology/spiritual-warfare/glimpses-of-the-devil` — 2698 字
+- `faith/theology/spiritual-warfare/hostage-to-the-devil` — 2957 字
+- `faith/theology/systematic/21st-century-theology-casebook` — 2969 字
+- `faith/theology/systematic/a-public-faith` — 2939 字
 - `faith/theology/systematic/allure-of-gentleness` — 2940 字
+- `faith/theology/systematic/along-with-moses` — 2783 字
+- `faith/theology/systematic/anti-intellectualism-chinese-church` — 3028 字
+- `faith/theology/systematic/call` — 2719 字
+- `faith/theology/systematic/casket-empty-new-testament-study-guide-god-s-plan-of` — 3086 字
 - `personal/habit/routine/today-matters` — 4064 字
 - `personal/lifestyle/style/take-ivy` — 3930 字
 - `personal/mindset/emotion/school-of-life-emotional-education` — 3956 字
@@ -685,14 +734,17 @@ _（只列前 60 本，另有 6 本未列出）_
 - `personal/relationships/community/bowling-alone` — 4150 字
 - `personal/relationships/dating/home-tonight` — 2588 字
 - `personal/relationships/dating/how-to-make-anyone-fall-in-love-with-you` — 2453 字
+- `personal/relationships/parenting/boundaries-with-kids` — 3136 字
 - `personal/relationships/parenting/whole-brain-child` — 4027 字
 - `personal/wellness/mental-health/running-on-empty` — 2995 字
 - `professional/business/management/hbr-10-must-reads-the-essentials` — 4095 字
 - `professional/business/operations/principles-of-product-development-flow` — 4070 字
 - `professional/business/sales/spin-selling` — 4166 字
 - `professional/business/startup/hbr-10-must-reads-on-innovation` — 4098 字
+- `professional/business/startup/running-lean` — 3255 字
 - `professional/business/strategy/good-strategy-bad-strategy` — 4040 字
 - `professional/business/strategy/hbr-10-must-reads-on-strategy` — 4149 字
+- `professional/business/strategy/playing-to-win` — 3446 字
 - `professional/career/skill-building/so-good-they-cant-ignore-you` — 2782 字
 - `professional/communication/negotiation/bargaining-for-advantage` — 4012 字
 - `professional/communication/persuasion/becoming-a-person-of-influence` — 3844 字
@@ -704,6 +756,7 @@ _（只列前 60 本，另有 6 本未列出）_
 - `professional/communication/workplace-relations/fierce-conversations` — 3808 字
 - `professional/finance/economics/freakonomics` — 4028 字
 - `professional/finance/economics/undercover-economist` — 4141 字
+- `professional/finance/investing/dark-side-of-valuation` — 3525 字
 - `professional/finance/investing/investment-philosophies` — 3996 字
 - `professional/leadership/team-building/17-indisputable-laws-of-teamwork` — 4186 字
 - `professional/leadership/team-building/hbr-10-must-reads-on-managing-people` — 4041 字
@@ -723,10 +776,15 @@ _（只列前 60 本，另有 6 本未列出）_
 - `wisdom/philosophy/ethics/intuition-pumps` — 3021 字
 - `wisdom/philosophy/ethics/pleasures-and-sorrows-of-work` — 3648 字
 - `wisdom/philosophy/ethics/reading-as-a-wilderness` — 2414 字
+- `wisdom/philosophy/philosophy-of-science/conjectures-and-refutations` — 3570 字
 - `wisdom/philosophy/political-philosophy/on-disobedience` — 4086 字
 - `wisdom/philosophy/political-philosophy/theory-of-justice` — 4170 字
+- `wisdom/science/cognitive/app-generation` — 3243 字
+- `wisdom/science/cognitive/brain-rules` — 3211 字
 - `wisdom/science/cognitive/forgotten-language` — 3931 字
 - `wisdom/science/cognitive/games-people-play` — 3872 字
+- `wisdom/science/cosmology/cosmos` — 3445 字
+- `wisdom/science/evolution/blind-watchmaker` — 3117 字
 - `wisdom/science/pharmacology/applied-therapeutics` — 3426 字
 - `wisdom/science/pharmacology/basic-clinical-pharmacology` — 3426 字
 - `wisdom/science/pharmacology/pharmacotherapy-principles-and-practice` — 3600 字
