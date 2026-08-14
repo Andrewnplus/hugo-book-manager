@@ -259,74 +259,74 @@ docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完�
 - `faith/theology/systematic/allure-of-gentleness` — 引用年份
 - `personal/mindset/growth/29-pawn-tickets-2` — 引用年份
 
-## 過了，但貼著下限（82 本）
+## 過了，但貼著下限（66 本）
 
 品檢是二元關卡，只能回答合不合格；這一節顯示合格者之間的差距。依（貼線維度數 → 筆記量）排序——筆記厚而概覽薄，代表素材就在那裡沒被用上，補強的投報率最高。要補的只是貼線的那幾項，不是整段重寫。查詢：`--weak N`。
 
 | # | 書 | 貼線 | 概覽字數 | 筆記 | 貼線的維度 |
 |---:|---|---:|---:|---:|---|
-| 1 | `craft/engineering/coding-practice/mobile-system-design-interview` | 3 | 2560 | 355k | 完整摘要 660 字（下限 600）；引用年份 2 個（門檻 2）；點名對象 3 個（門檻 3） |
-| 2 | `craft/engineering/systems-design/uml-distilled` | 3 | 2324 | 208k | 完整摘要 686 字（下限 600）；定位 306 字（下限 250）；引用年份 2 個（門檻 2） |
-| 3 | `craft/engineering/systems-design/system-design-interview` | 2 | 2236 | 784k | 完整摘要 601 字（下限 600）；引用年份 2 個（門檻 2） |
-| 4 | `craft/engineering/databases/data-warehouse-toolkit` | 2 | 2705 | 679k | 完整摘要 694 字（下限 600）；引用年份 2 個（門檻 2） |
-| 5 | `craft/engineering/security/attacking-network-protocols` | 2 | 2460 | 422k | 完整摘要 653 字（下限 600）；引用年份 2 個（門檻 2） |
-| 6 | `craft/engineering/systems-design/software-architecture-in-practice` | 2 | 2288 | 365k | 完整摘要 657 字（下限 600）；引用年份 2 個（門檻 2） |
-| 7 | `craft/engineering/systems-design/designing-data-intensive-applications` | 2 | 2412 | 292k | 完整摘要 668 字（下限 600）；引用年份 2 個（門檻 2） |
-| 8 | `craft/engineering/devops/site-reliability-workbook` | 2 | 2489 | 247k | 完整摘要 685 字（下限 600）；引用年份 2 個（門檻 2） |
-| 9 | `craft/engineering/systems-design/how-linux-works` | 2 | 2348 | 242k | 完整摘要 711 字（下限 600）；引用年份 2 個（門檻 2） |
-| 10 | `faith/theology/biblical-studies/sherlock-who-3-new-light` | 2 | 2314 | 143k | 完整摘要 730 字（下限 600）；引用年份 2 個（門檻 2） |
-| 11 | `craft/tools/coffee/world-atlas-of-coffee` | 2 | 2217 | 138k | 完整摘要 647 字（下限 600）；引用年份 2 個（門檻 2） |
-| 12 | `craft/engineering/systems-design/software-architecture-for-developers-vol2` | 2 | 2242 | 92k | 完整摘要 658 字（下限 600）；引用年份 2 個（門檻 2） |
-| 13 | `craft/engineering/systems-design/software-architecture-for-developers-vol1` | 2 | 2208 | 76k | 完整摘要 640 字（下限 600）；引用年份 2 個（門檻 2） |
-| 14 | `craft/tools/build-systems/manage-your-day-to-day` | 2 | 2227 | 50k | 完整摘要 646 字（下限 600）；定位 325 字（下限 250） |
-| 15 | `craft/engineering/security/security-engineering` | 1 | 2489 | 1719k | 完整摘要 711 字（下限 600） |
-| 16 | `craft/engineering/devops/seeking-sre` | 1 | 2771 | 942k | 引用年份 2 個（門檻 2） |
-| 17 | `wisdom/science/pharmacology/basic-clinical-pharmacology` | 1 | 3426 | 900k | 引用年份 2 個（門檻 2） |
-| 18 | `craft/engineering/systems-design/distributed-systems-principles-and-paradigms` | 1 | 2588 | 870k | 完整摘要 650 字（下限 600） |
-| 19 | `craft/engineering/systems-design/enterprise-integration-patterns` | 1 | 2623 | 813k | 完整摘要 710 字（下限 600） |
-| 20 | `craft/engineering/databases/postgresql-14-internals` | 1 | 2858 | 600k | 引用年份 2 個（門檻 2） |
-| 21 | `craft/engineering/systems-design/api-design-patterns` | 1 | 3750 | 573k | 引用年份 2 個（門檻 2） |
-| 22 | `craft/engineering/systems-design/analysis-patterns` | 1 | 2448 | 547k | 完整摘要 681 字（下限 600） |
-| 23 | `craft/engineering/systems-design/release-it` | 1 | 2307 | 539k | 完整摘要 637 字（下限 600） |
-| 24 | `craft/engineering/security/serious-cryptography` | 1 | 2495 | 528k | 完整摘要 689 字（下限 600） |
-| 25 | `craft/engineering/databases/high-performance-mysql` | 1 | 2613 | 348k | 完整摘要 689 字（下限 600） |
-| 26 | `craft/engineering/devops/kubernetes-patterns` | 1 | 2772 | 313k | 完整摘要 753 字（下限 600） |
-| 27 | `craft/engineering/engineering-management/team-topologies` | 1 | 2614 | 308k | 完整摘要 749 字（下限 600） |
-| 28 | `craft/engineering/systems-design/grokking-advanced-system-design-interview` | 1 | 2411 | 307k | 完整摘要 716 字（下限 600） |
-| 29 | `craft/engineering/systems-design/acing-the-system-design-interview` | 1 | 3897 | 302k | 引用年份 2 個（門檻 2） |
-| 30 | `craft/engineering/security/hacking-art-of-exploitation` | 1 | 2491 | 297k | 完整摘要 615 字（下限 600） |
-| 31 | `craft/engineering/coding-practice/object-oriented-design-interview` | 1 | 2431 | 285k | 完整摘要 630 字（下限 600） |
-| 32 | `craft/tools/coffee/uncommon-grounds` | 1 | 2205 | 282k | 完整摘要 677 字（下限 600） |
-| 33 | `craft/engineering/systems-design/understanding-distributed-systems` | 1 | 2377 | 261k | 完整摘要 729 字（下限 600） |
-| 34 | `wisdom/education/pedagogy/why-dont-students-like-school` | 1 | 2958 | 260k | 引用年份 2 個（門檻 2） |
-| 35 | `craft/engineering/security/browser-hackers-handbook` | 1 | 2389 | 244k | 完整摘要 686 字（下限 600） |
-| 36 | `craft/engineering/databases/database-internals` | 1 | 2681 | 239k | 完整摘要 708 字（下限 600） |
-| 37 | `craft/engineering/coding-practice/designing-web-apis` | 1 | 2455 | 228k | 完整摘要 729 字（下限 600） |
-| 38 | `craft/engineering/devops/site-reliability-engineering` | 1 | 2598 | 227k | 完整摘要 650 字（下限 600） |
-| 39 | `craft/engineering/databases/sql-server-2025-query-performance-tuning` | 1 | 2631 | 223k | 完整摘要 747 字（下限 600） |
-| 40 | `craft/engineering/coding-practice/software-developers-career-guide` | 1 | 2637 | 213k | 引用年份 2 個（門檻 2） |
-| 41 | `craft/engineering/systems-design/philosophy-of-software-design` | 1 | 2421 | 211k | 完整摘要 683 字（下限 600） |
-| 42 | `craft/engineering/systems-design/building-microservices` | 1 | 2593 | 197k | 完整摘要 719 字（下限 600） |
-| 43 | `craft/engineering/systems-design/implementation-patterns` | 1 | 2344 | 195k | 完整摘要 600 字（下限 600） |
-| 44 | `craft/engineering/systems-design/fundamentals-of-software-architecture` | 1 | 2494 | 193k | 完整摘要 645 字（下限 600） |
-| 45 | `craft/engineering/coding-practice/grokking-system-design-interview` | 1 | 2439 | 181k | 完整摘要 677 字（下限 600） |
-| 46 | `craft/engineering/coding-practice/big-talk-design-patterns` | 1 | 2583 | 179k | 完整摘要 699 字（下限 600） |
-| 47 | `craft/engineering/devops/devops-handbook` | 1 | 2447 | 178k | 完整摘要 606 字（下限 600） |
-| 48 | `craft/engineering/systems-design/microservices-patterns` | 1 | 2525 | 177k | 完整摘要 673 字（下限 600） |
-| 49 | `craft/engineering/coding-practice/functional-design-principles-patterns-practices` | 1 | 2767 | 176k | 完整摘要 668 字（下限 600） |
-| 50 | `craft/engineering/devops/site-reliability-engineering-handbook` | 1 | 2371 | 170k | 完整摘要 698 字（下限 600） |
-| 51 | `craft/engineering/systems-design/patterns-of-enterprise-application-architecture` | 1 | 2325 | 169k | 完整摘要 655 字（下限 600） |
-| 52 | `craft/engineering/security/real-world-bug-hunting` | 1 | 2351 | 167k | 完整摘要 621 字（下限 600） |
-| 53 | `craft/engineering/coding-practice/living-documentation` | 1 | 2790 | 160k | 完整摘要 763 字（下限 600） |
-| 54 | `craft/engineering/security/web-security-for-developers` | 1 | 2403 | 155k | 完整摘要 682 字（下限 600） |
-| 55 | `craft/engineering/systems-design/get-your-hands-dirty-clean-architecture` | 1 | 2344 | 153k | 完整摘要 668 字（下限 600） |
-| 56 | `craft/engineering/systems-design/designing-distributed-systems` | 1 | 2460 | 151k | 完整摘要 730 字（下限 600） |
-| 57 | `wisdom/philosophy/eastern/how-the-world-thinks` | 1 | 2529 | 149k | 引用年份 2 個（門檻 2） |
-| 58 | `craft/engineering/systems-design/beautiful-architecture` | 1 | 2538 | 145k | 完整摘要 703 字（下限 600） |
-| 59 | `craft/engineering/databases/sql-server-2025-unveiled` | 1 | 2663 | 143k | 完整摘要 721 字（下限 600） |
-| 60 | `craft/engineering/engineering-management/become-an-effective-software-engineering-manager` | 1 | 2546 | 138k | 完整摘要 717 字（下限 600） |
+| 1 | `wisdom/science/pharmacology/basic-clinical-pharmacology` | 1 | 3426 | 900k | 引用年份 2 個（門檻 2） |
+| 2 | `craft/engineering/systems-design/distributed-systems-principles-and-paradigms` | 1 | 2588 | 870k | 完整摘要 650 字（下限 600） |
+| 3 | `craft/engineering/systems-design/enterprise-integration-patterns` | 1 | 2623 | 813k | 完整摘要 710 字（下限 600） |
+| 4 | `craft/engineering/databases/postgresql-14-internals` | 1 | 2858 | 600k | 引用年份 2 個（門檻 2） |
+| 5 | `craft/engineering/systems-design/api-design-patterns` | 1 | 3750 | 573k | 引用年份 2 個（門檻 2） |
+| 6 | `craft/engineering/systems-design/analysis-patterns` | 1 | 2448 | 547k | 完整摘要 681 字（下限 600） |
+| 7 | `craft/engineering/systems-design/release-it` | 1 | 2307 | 539k | 完整摘要 637 字（下限 600） |
+| 8 | `craft/engineering/security/serious-cryptography` | 1 | 2495 | 528k | 完整摘要 689 字（下限 600） |
+| 9 | `craft/engineering/databases/high-performance-mysql` | 1 | 2613 | 348k | 完整摘要 689 字（下限 600） |
+| 10 | `craft/engineering/devops/kubernetes-patterns` | 1 | 2772 | 313k | 完整摘要 753 字（下限 600） |
+| 11 | `craft/engineering/engineering-management/team-topologies` | 1 | 2614 | 308k | 完整摘要 749 字（下限 600） |
+| 12 | `craft/engineering/systems-design/grokking-advanced-system-design-interview` | 1 | 2411 | 307k | 完整摘要 716 字（下限 600） |
+| 13 | `craft/engineering/systems-design/acing-the-system-design-interview` | 1 | 3897 | 302k | 引用年份 2 個（門檻 2） |
+| 14 | `craft/engineering/security/hacking-art-of-exploitation` | 1 | 2491 | 297k | 完整摘要 615 字（下限 600） |
+| 15 | `craft/engineering/coding-practice/object-oriented-design-interview` | 1 | 2431 | 285k | 完整摘要 630 字（下限 600） |
+| 16 | `craft/tools/coffee/uncommon-grounds` | 1 | 2205 | 282k | 完整摘要 677 字（下限 600） |
+| 17 | `craft/engineering/systems-design/understanding-distributed-systems` | 1 | 2377 | 261k | 完整摘要 729 字（下限 600） |
+| 18 | `wisdom/education/pedagogy/why-dont-students-like-school` | 1 | 2958 | 260k | 引用年份 2 個（門檻 2） |
+| 19 | `craft/engineering/security/browser-hackers-handbook` | 1 | 2389 | 244k | 完整摘要 686 字（下限 600） |
+| 20 | `craft/engineering/databases/database-internals` | 1 | 2681 | 239k | 完整摘要 708 字（下限 600） |
+| 21 | `craft/engineering/coding-practice/designing-web-apis` | 1 | 2455 | 228k | 完整摘要 729 字（下限 600） |
+| 22 | `craft/engineering/devops/site-reliability-engineering` | 1 | 2598 | 227k | 完整摘要 650 字（下限 600） |
+| 23 | `craft/engineering/databases/sql-server-2025-query-performance-tuning` | 1 | 2631 | 223k | 完整摘要 747 字（下限 600） |
+| 24 | `craft/engineering/coding-practice/software-developers-career-guide` | 1 | 2637 | 213k | 引用年份 2 個（門檻 2） |
+| 25 | `craft/engineering/systems-design/philosophy-of-software-design` | 1 | 2421 | 211k | 完整摘要 683 字（下限 600） |
+| 26 | `craft/engineering/systems-design/building-microservices` | 1 | 2593 | 197k | 完整摘要 719 字（下限 600） |
+| 27 | `craft/engineering/systems-design/implementation-patterns` | 1 | 2344 | 195k | 完整摘要 600 字（下限 600） |
+| 28 | `craft/engineering/systems-design/fundamentals-of-software-architecture` | 1 | 2494 | 193k | 完整摘要 645 字（下限 600） |
+| 29 | `craft/engineering/coding-practice/grokking-system-design-interview` | 1 | 2439 | 181k | 完整摘要 677 字（下限 600） |
+| 30 | `craft/engineering/coding-practice/big-talk-design-patterns` | 1 | 2583 | 179k | 完整摘要 699 字（下限 600） |
+| 31 | `craft/engineering/devops/devops-handbook` | 1 | 2447 | 178k | 完整摘要 606 字（下限 600） |
+| 32 | `craft/engineering/systems-design/microservices-patterns` | 1 | 2525 | 177k | 完整摘要 673 字（下限 600） |
+| 33 | `craft/engineering/coding-practice/functional-design-principles-patterns-practices` | 1 | 2767 | 176k | 完整摘要 668 字（下限 600） |
+| 34 | `craft/engineering/devops/site-reliability-engineering-handbook` | 1 | 2371 | 170k | 完整摘要 698 字（下限 600） |
+| 35 | `craft/engineering/systems-design/patterns-of-enterprise-application-architecture` | 1 | 2325 | 169k | 完整摘要 655 字（下限 600） |
+| 36 | `craft/engineering/security/real-world-bug-hunting` | 1 | 2351 | 167k | 完整摘要 621 字（下限 600） |
+| 37 | `craft/engineering/coding-practice/living-documentation` | 1 | 2790 | 160k | 完整摘要 763 字（下限 600） |
+| 38 | `craft/engineering/security/web-security-for-developers` | 1 | 2403 | 155k | 完整摘要 682 字（下限 600） |
+| 39 | `craft/engineering/systems-design/get-your-hands-dirty-clean-architecture` | 1 | 2344 | 153k | 完整摘要 668 字（下限 600） |
+| 40 | `craft/engineering/systems-design/designing-distributed-systems` | 1 | 2460 | 151k | 完整摘要 730 字（下限 600） |
+| 41 | `wisdom/philosophy/eastern/how-the-world-thinks` | 1 | 2529 | 149k | 引用年份 2 個（門檻 2） |
+| 42 | `craft/engineering/systems-design/beautiful-architecture` | 1 | 2538 | 145k | 完整摘要 703 字（下限 600） |
+| 43 | `craft/engineering/databases/sql-server-2025-unveiled` | 1 | 2663 | 143k | 完整摘要 721 字（下限 600） |
+| 44 | `craft/engineering/engineering-management/become-an-effective-software-engineering-manager` | 1 | 2546 | 138k | 完整摘要 717 字（下限 600） |
+| 45 | `craft/engineering/systems-design/system-architecture-design` | 1 | 2155 | 135k | 完整摘要 613 字（下限 600） |
+| 46 | `craft/engineering/engineering-management/staff-engineers-path` | 1 | 2460 | 128k | 完整摘要 721 字（下限 600） |
+| 47 | `personal/relationships/dating/how-to-make-anyone-fall-in-love-with-you` | 1 | 2453 | 128k | 完整摘要 709 字（下限 600） |
+| 48 | `craft/engineering/coding-practice/mis-network-82` | 1 | 2551 | 127k | 完整摘要 760 字（下限 600） |
+| 49 | `craft/engineering/systems-design/clean-architecture` | 1 | 2543 | 113k | 完整摘要 705 字（下限 600） |
+| 50 | `craft/engineering/coding-practice/wujun-soul-of-computing` | 1 | 2673 | 111k | 完整摘要 755 字（下限 600） |
+| 51 | `craft/engineering/coding-practice/nine-algorithms-that-changed-the-future` | 1 | 2563 | 104k | 完整摘要 751 字（下限 600） |
+| 52 | `craft/engineering/coding-practice/agile-retrospectives` | 1 | 2782 | 103k | 完整摘要 718 字（下限 600） |
+| 53 | `professional/communication/public-speaking/slideology` | 1 | 2678 | 97k | 引用年份 2 個（門檻 2） |
+| 54 | `craft/engineering/databases/cqrs-command-query-responsibility-segregation` | 1 | 2613 | 94k | 完整摘要 719 字（下限 600） |
+| 55 | `craft/engineering/coding-practice/clean-agile` | 1 | 2730 | 93k | 完整摘要 707 字（下限 600） |
+| 56 | `craft/engineering/engineering-management/effective-engineer` | 1 | 2481 | 89k | 完整摘要 661 字（下限 600） |
+| 57 | `craft/engineering/systems-design/clean-code` | 1 | 2421 | 79k | 完整摘要 645 字（下限 600） |
+| 58 | `craft/engineering/coding-practice/art-of-clean-code` | 1 | 2783 | 70k | 完整摘要 712 字（下限 600） |
+| 59 | `craft/engineering/devops/vbirds-linux-server` | 1 | 2430 | 69k | 完整摘要 749 字（下限 600） |
+| 60 | `wisdom/education/self-learning/online-teaching-technique` | 1 | 2477 | 65k | 引用年份 2 個（門檻 2） |
 
-_（只列前 60 本，另有 22 本未列出）_
+_（只列前 60 本，另有 6 本未列出）_
 
 ## 已完成
 
@@ -403,7 +403,7 @@ _（只列前 60 本，另有 22 本未列出）_
 - `craft/engineering/coding-practice/joel-on-software` — 2669 字
 - `craft/engineering/coding-practice/living-documentation` — 2790 字
 - `craft/engineering/coding-practice/mis-network-82` — 2551 字
-- `craft/engineering/coding-practice/mobile-system-design-interview` — 2560 字
+- `craft/engineering/coding-practice/mobile-system-design-interview` — 3193 字
 - `craft/engineering/coding-practice/more-joel-on-software` — 2741 字
 - `craft/engineering/coding-practice/mythical-man-month` — 2879 字
 - `craft/engineering/coding-practice/nine-algorithms-that-changed-the-future` — 2563 字
@@ -436,7 +436,7 @@ _（只列前 60 本，另有 22 本未列出）_
 - `craft/engineering/coding-practice/zen-programmer` — 2679 字
 - `craft/engineering/databases/art-of-postgresql` — 3105 字
 - `craft/engineering/databases/cqrs-command-query-responsibility-segregation` — 2613 字
-- `craft/engineering/databases/data-warehouse-toolkit` — 2705 字
+- `craft/engineering/databases/data-warehouse-toolkit` — 3329 字
 - `craft/engineering/databases/database-internals` — 2681 字
 - `craft/engineering/databases/high-performance-mysql` — 2613 字
 - `craft/engineering/databases/nosql-distilled` — 2785 字
@@ -450,10 +450,10 @@ _（只列前 60 本，另有 22 本未列出）_
 - `craft/engineering/devops/kubernetes-in-action` — 3465 字
 - `craft/engineering/devops/kubernetes-patterns` — 2772 字
 - `craft/engineering/devops/phoenix-project` — 2825 字
-- `craft/engineering/devops/seeking-sre` — 2771 字
+- `craft/engineering/devops/seeking-sre` — 3051 字
 - `craft/engineering/devops/site-reliability-engineering` — 2598 字
 - `craft/engineering/devops/site-reliability-engineering-handbook` — 2371 字
-- `craft/engineering/devops/site-reliability-workbook` — 2489 字
+- `craft/engineering/devops/site-reliability-workbook` — 3179 字
 - `craft/engineering/devops/vbirds-linux-basic` — 2497 字
 - `craft/engineering/devops/vbirds-linux-server` — 2430 字
 - `craft/engineering/engineering-management/become-an-effective-software-engineering-manager` — 2546 字
@@ -462,12 +462,12 @@ _（只列前 60 本，另有 22 本未列出）_
 - `craft/engineering/engineering-management/staff-engineers-path` — 2460 字
 - `craft/engineering/engineering-management/team-topologies` — 2614 字
 - `craft/engineering/language-rust/team-geek` — 2596 字
-- `craft/engineering/security/attacking-network-protocols` — 2460 字
+- `craft/engineering/security/attacking-network-protocols` — 3329 字
 - `craft/engineering/security/browser-hackers-handbook` — 2389 字
 - `craft/engineering/security/building-secure-and-reliable-systems` — 2848 字
 - `craft/engineering/security/hacking-art-of-exploitation` — 2491 字
 - `craft/engineering/security/real-world-bug-hunting` — 2351 字
-- `craft/engineering/security/security-engineering` — 2489 字
+- `craft/engineering/security/security-engineering` — 2958 字
 - `craft/engineering/security/serious-cryptography` — 2495 字
 - `craft/engineering/security/web-security-for-developers` — 2403 字
 - `craft/engineering/systems-design/acing-the-system-design-interview` — 3897 字
@@ -478,30 +478,30 @@ _（只列前 60 本，另有 22 本未列出）_
 - `craft/engineering/systems-design/building-microservices` — 2593 字
 - `craft/engineering/systems-design/clean-architecture` — 2543 字
 - `craft/engineering/systems-design/clean-code` — 2421 字
-- `craft/engineering/systems-design/designing-data-intensive-applications` — 2412 字
+- `craft/engineering/systems-design/designing-data-intensive-applications` — 3094 字
 - `craft/engineering/systems-design/designing-distributed-systems` — 2460 字
 - `craft/engineering/systems-design/distributed-systems-principles-and-paradigms` — 2588 字
 - `craft/engineering/systems-design/enterprise-integration-patterns` — 2623 字
 - `craft/engineering/systems-design/fundamentals-of-software-architecture` — 2494 字
 - `craft/engineering/systems-design/get-your-hands-dirty-clean-architecture` — 2344 字
 - `craft/engineering/systems-design/grokking-advanced-system-design-interview` — 2411 字
-- `craft/engineering/systems-design/how-linux-works` — 2348 字
+- `craft/engineering/systems-design/how-linux-works` — 3042 字
 - `craft/engineering/systems-design/implementation-patterns` — 2344 字
 - `craft/engineering/systems-design/microservices-patterns` — 2525 字
 - `craft/engineering/systems-design/patterns-of-enterprise-application-architecture` — 2325 字
 - `craft/engineering/systems-design/philosophy-of-software-design` — 2421 字
 - `craft/engineering/systems-design/release-it` — 2307 字
-- `craft/engineering/systems-design/software-architecture-for-developers-vol1` — 2208 字
-- `craft/engineering/systems-design/software-architecture-for-developers-vol2` — 2242 字
-- `craft/engineering/systems-design/software-architecture-in-practice` — 2288 字
+- `craft/engineering/systems-design/software-architecture-for-developers-vol1` — 2936 字
+- `craft/engineering/systems-design/software-architecture-for-developers-vol2` — 2994 字
+- `craft/engineering/systems-design/software-architecture-in-practice` — 3020 字
 - `craft/engineering/systems-design/software-architecture-the-hard-parts` — 2420 字
 - `craft/engineering/systems-design/system-architecture-design` — 2155 字
-- `craft/engineering/systems-design/system-design-interview` — 2236 字
-- `craft/engineering/systems-design/uml-distilled` — 2324 字
+- `craft/engineering/systems-design/system-design-interview` — 3039 字
+- `craft/engineering/systems-design/uml-distilled` — 3202 字
 - `craft/engineering/systems-design/understanding-distributed-systems` — 2377 字
-- `craft/tools/build-systems/manage-your-day-to-day` — 2227 字
+- `craft/tools/build-systems/manage-your-day-to-day` — 3303 字
 - `craft/tools/coffee/uncommon-grounds` — 2205 字
-- `craft/tools/coffee/world-atlas-of-coffee` — 2217 字
+- `craft/tools/coffee/world-atlas-of-coffee` — 2716 字
 - `craft/tools/version-control/building-a-second-brain` — 3566 字
 - `craft/tools/version-control/continuous-delivery` — 3528 字
 - `craft/tools/version-control/deep-work` — 3459 字
@@ -524,7 +524,7 @@ _（只列前 60 本，另有 22 本未列出）_
 - `faith/spiritual-formation/devotional/lament-for-a-son` — 4177 字
 - `faith/spiritual-formation/prayer/with-christ-in-the-school-of-prayer` — 3680 字
 - `faith/theology/apologetics/shadowlands` — 3228 字
-- `faith/theology/biblical-studies/sherlock-who-3-new-light` — 2314 字
+- `faith/theology/biblical-studies/sherlock-who-3-new-light` — 2880 字
 - `personal/mindset/emotion/school-of-life-emotional-education` — 3956 字
 - `personal/mindset/growth/artists-way` — 3785 字
 - `personal/mindset/growth/tuesdays-with-morrie` — 2847 字
