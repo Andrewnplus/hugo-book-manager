@@ -5,6 +5,7 @@
 #   pending    - 等待處理
 #   processing - AI 任務已產生，等待 Claude 處理
 #   completed  - 已完成建立
+#   duplicate  - repo 已存在，跳過建立
 #   error      - 處理失敗
 #
 # 使用方式:
@@ -15,10 +16,12 @@
 #   5. 再次執行 ./gradlew initBooks 完成建立
 #   6. 系統會自動處理下一本 pending 的書
 #
-# 進階用法:
-#   ./gradlew initBooks --status              # 顯示佇列狀態
-#   ./gradlew initBooks -Pid=book-id          # 只處理指定書籍
-#   ./gradlew initBooks -Pid=book-id --reset  # 重設狀態為 pending
+# 進階用法（Gradle 不吃裸旗標，一律用 -P<key>=<value>）:
+#   ./gradlew initBooks -Pstatus=true                # 顯示佇列狀態
+#   ./gradlew initBooks -Pid=book-id                 # 只處理指定書籍
+#   ./gradlew initBooks -Pid=book-id -Preset=true    # 重設狀態為 pending
+#   ./gradlew initBooks -PdryRun=true                # 模擬不落地
+#   ./gradlew initBooks -Pqueue=path/to/queue.yaml   # 指定其他 queue 檔
 
 books:
 -   id: example-book
