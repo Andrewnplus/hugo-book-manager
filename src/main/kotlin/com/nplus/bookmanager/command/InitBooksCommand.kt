@@ -135,16 +135,7 @@ class InitBooksCommand(
 
             BookStatus.COMPLETED -> {
                 println("  This book is already completed.")
-                if (bookId == null) {
-                    // Find next pending
-                    val next = queue.getNextPending()
-                    if (next != null) {
-                        println("\n  Moving to next pending book...")
-                        runPhase1(queue, next)
-                    } else {
-                        println("\n✅ All books in queue have been processed!")
-                    }
-                }
+                advanceToNextPending(queue)
             }
 
             BookStatus.ERROR -> {
@@ -154,18 +145,29 @@ class InitBooksCommand(
 
             BookStatus.DUPLICATE -> {
                 println("  This book is marked as duplicate (repo already exists). Skipping.")
-                if (bookId == null) {
-                    val next = queue.getNextPending()
-                    if (next != null) {
-                        println("\n  Moving to next pending book...")
-                        runPhase1(queue, next)
-                    } else {
-                        println("\n✅ All books in queue have been processed!")
-                    }
-                }
+                advanceToNextPending(queue)
             }
         }
     }
+
+    /**
+     * After landing on a book that needs no work, roll forward to the next
+     * pending one — but only in "process the whole queue" mode. An explicit
+     * `--id` means the caller asked about that book and nothing else.
+     */
+    private fun advanceToNextPending(queue: BooksQueue) {
+        if (bookId != null) return
+        val next = queue.getNextPending()
+        if (next == null) {
+            println("\n✅ All books in queue have been processed!")
+            return
+        }
+        println("\n  Moving to next pending book...")
+        runPhase1(queue, next)
+    }
+
+    /** Persist the queue back to [queueFile]. Every status change goes through here. */
+    private fun persist(queue: BooksQueue) = bookInputService.saveBooksQueue(File(queueFile), queue)
 
     private fun handleStatusCommand(queue: BooksQueue) {
         printQueueStatus(queue)
@@ -182,7 +184,7 @@ class InitBooksCommand(
         }
 
         val updatedQueue = queue.updateStatus(id, BookStatus.PENDING)
-        bookInputService.saveBooksQueue(File(queueFile), updatedQueue)
+        persist(updatedQueue)
 
         // Also clear any pending AI tasks
         aiTaskService.clearBatchMetadataTasks()
@@ -229,7 +231,7 @@ class InitBooksCommand(
         // Update status to processing
         if (!dryRun) {
             val updatedQueue = queue.updateStatus(book.id, BookStatus.PROCESSING)
-            bookInputService.saveBooksQueue(File(queueFile), updatedQueue)
+            persist(updatedQueue)
             println("  Updated status: ${book.id} → processing")
         }
 
@@ -306,7 +308,7 @@ class InitBooksCommand(
         if (createResult.success) {
             // Update status to completed
             val updatedQueue = queue.updateStatus(book.id, BookStatus.COMPLETED)
-            bookInputService.saveBooksQueue(File(queueFile), updatedQueue)
+            persist(updatedQueue)
             println("\n✅ Book '${book.id}' completed!")
 
             // Clean up AI task files
@@ -386,7 +388,7 @@ class InitBooksCommand(
     ): Boolean {
         if (!dryRun) {
             val updated = queue.updateStatus(book.id, BookStatus.COMPLETED)
-            bookInputService.saveBooksQueue(File(queueFile), updated)
+            persist(updated)
             aiTaskService.clearBatchMetadataTasks()
         }
         println("  ✅ Marked '${book.id}' as completed (existing repo: ${entry.name})")
@@ -425,7 +427,7 @@ class InitBooksCommand(
 
         if (!dryRun) {
             val updated = queue.updateStatus(book.id, BookStatus.COMPLETED)
-            bookInputService.saveBooksQueue(File(queueFile), updated)
+            persist(updated)
             aiTaskService.clearBatchMetadataTasks()
         }
         println("  ✅ Marked '${book.id}' as completed (claimed existing repo)")
@@ -438,7 +440,7 @@ class InitBooksCommand(
         message: String,
     ) {
         val updatedQueue = queue.updateStatus(book.id, BookStatus.ERROR, message)
-        bookInputService.saveBooksQueue(File(queueFile), updatedQueue)
+        persist(updatedQueue)
         println("  Marked as error: $message")
     }
 
@@ -458,8 +460,18 @@ class InitBooksCommand(
         println("  Error:      ${summary[BookStatus.ERROR] ?: 0}")
         println("  Duplicate:  ${summary[BookStatus.DUPLICATE] ?: 0}")
 
-        println("\n📚 Books:")
-        queue.books.forEach { book ->
+        // The queue is append-only and now holds hundreds of finished books;
+        // listing every one buries the handful that still need attention.
+        val actionable = queue.books.filterNot { it.status == BookStatus.COMPLETED }
+        val done = queue.books.size - actionable.size
+
+        if (actionable.isEmpty()) {
+            println("\n📚 Nothing outstanding — all $done book(s) completed.")
+            return
+        }
+
+        println("\n📚 Books needing attention:")
+        actionable.forEach { book ->
             val statusIcon =
                 when (book.status) {
                     BookStatus.PENDING -> "⏳"
@@ -472,6 +484,9 @@ class InitBooksCommand(
             if (book.errorMessage != null) {
                 println("     Error: ${book.errorMessage}")
             }
+        }
+        if (done > 0) {
+            println("  … plus $done completed book(s), hidden.")
         }
     }
 
