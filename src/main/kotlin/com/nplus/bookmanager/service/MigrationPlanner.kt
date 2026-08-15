@@ -56,6 +56,19 @@ object MigrationPlanner {
     }
 
     /**
+     * True when [candidate] resolves to a path underneath [ancestor]. Moving a
+     * directory into its own subtree is never a valid migration.
+     */
+    fun isNestedUnder(
+        candidate: File,
+        ancestor: File,
+    ): Boolean {
+        val root = ancestor.absoluteFile.normalize().path
+        val target = candidate.absoluteFile.normalize().path
+        return target.startsWith(root + File.separator)
+    }
+
+    /**
      * Build the plan for one repo.
      *
      * Topics: the three target tiers are added when missing; existing
@@ -98,7 +111,17 @@ object MigrationPlanner {
             } else {
                 null
             }
-        val needsMove = moveFrom != null && moveTo != null && moveFrom.absolutePath != moveTo.absolutePath
+        // Two ways a move is bogus and must be dropped:
+        //   1. src == dst — already filed correctly, so re-running is idempotent.
+        //   2. dst sits *inside* src — happens when a category directory gets
+        //      mistaken for a clone (`…/finance/investing` → `…/investing/investing`).
+        //      2026-05-07 emitted exactly this for `investing` and `marketing`;
+        //      only `mv` returning EINVAL stopped it from eating the tree.
+        val needsMove =
+            moveFrom != null &&
+                moveTo != null &&
+                moveFrom.absolutePath != moveTo.absolutePath &&
+                !isNestedUnder(moveTo, moveFrom)
 
         return RepoPlan(
             name = current.name,

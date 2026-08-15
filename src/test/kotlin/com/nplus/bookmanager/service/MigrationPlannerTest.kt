@@ -167,6 +167,40 @@ class MigrationPlannerTest {
         )
     }
 
+    @Test
+    fun `buildPlan refuses to move a directory into its own subtree`() {
+        // Reproduces 2026-05-07: the category directory `…/finance/investing`
+        // was indexed as a clone named "investing", so the plan resolved to
+        // `…/finance/investing/investing`. Only mv's EINVAL stopped it.
+        val booksDone = File(root, "books-done")
+        val from = File(booksDone, "professional/finance/investing").apply { mkdirs() }
+
+        val plan =
+            MigrationPlanner.buildPlan(
+                current = entry("investing"),
+                target = target("investing"),
+                cloneIndex = mapOf("investing" to from),
+                workRoots = listOf(booksDone),
+                fallbackRoot = File(root, "new-books"),
+            )
+
+        assertNull(plan.moveFrom, "a move whose destination is inside the source must be dropped")
+        assertNull(plan.moveTo)
+    }
+
+    @Test
+    fun `isNestedUnder only flags real descendants`() {
+        val base = File(root, "books-done/professional/finance/investing")
+
+        assertTrue(MigrationPlanner.isNestedUnder(File(base, "investing"), base))
+        assertFalse(MigrationPlanner.isNestedUnder(base, base), "a path is not nested under itself")
+        assertFalse(
+            MigrationPlanner.isNestedUnder(File(root, "books-done/professional/finance/investing-notes"), base),
+            "a sibling sharing a name prefix is not a descendant",
+        )
+        assertFalse(MigrationPlanner.isNestedUnder(File(root, "new-books/deep-work"), base))
+    }
+
     // ==================== findWorkRoot() ====================
 
     @Test
