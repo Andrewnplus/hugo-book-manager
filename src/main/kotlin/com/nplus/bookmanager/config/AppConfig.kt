@@ -22,6 +22,18 @@ object AppConfig {
     const val TEMPLATE_DATE_PLACEHOLDER = "待填寫日期"
     const val TEMPLATE_PURCHASE_URL_PLACEHOLDER = "https://www.amazon.com/"
 
+    /** The only keys this app reads. Anything else in the environment is ignored. */
+    private val configKeys =
+        listOf(
+            "GITHUB_USERNAME",
+            "DEFAULT_WORK_DIR",
+            "TEMPLATE_REPO",
+            "HOMEPAGE_BASE_URL",
+            "PORTAL_DIR",
+            "NOTES_DIR",
+            "BOOKS_DIR",
+        )
+
     private val properties by lazy {
         Properties().also { props ->
             val localPropertiesFile = File("local.properties")
@@ -29,10 +41,13 @@ object AppConfig {
                 localPropertiesFile.inputStream().use { props.load(it) }
             }
 
-            // Also check environment variables as fallback
-            System.getenv().forEach { (key, value) ->
+            // Environment variables are a fallback, but only for the keys above.
+            // Copying the whole environment in used to park unrelated secrets
+            // (GITHUB_TOKEN, AWS_*, …) inside a Properties object that anything
+            // holding AppConfig could dump.
+            configKeys.forEach { key ->
                 if (!props.containsKey(key)) {
-                    props.setProperty(key, value)
+                    System.getenv(key)?.let { props.setProperty(key, it) }
                 }
             }
         }
@@ -45,7 +60,7 @@ object AppConfig {
         get() = getProperty("DEFAULT_WORK_DIR") ?: System.getProperty("user.home")
 
     val templateRepo: String
-        get() = getProperty("TEMPLATE_REPO") ?: "Andrewnplus/hugo-book-template"
+        get() = getProperty("TEMPLATE_REPO") ?: "nplus-father/hugo-book-template"
 
     val homepageBaseUrl: String
         get() = getProperty("HOMEPAGE_BASE_URL") ?: "https://nplus.wiki"
