@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-08-17T20:43:15.661596319+08:00"
+last_updated: "2026-08-17T21:51:00.12754933+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -387,7 +387,7 @@ repos:
     url: https://github.com/nplus-father/alliance
     topics: [hugobook, leaf-team-building, nplus-kind-book, nplus-portal, sub-leadership, top-professional]
   - name: allure-of-gentleness
-    description: Allure of Gentleness | Dallas Willard | Defending the faith in manner of Jesus
+    description: "Allure of Gentleness | Dallas Willard | 魏樂德回到彼得前書 3:15「以溫柔、敬畏的心」之傳統，主張護教學不是辯論競賽，而是以耶穌的方式進行的助人事奉。"
     url: https://github.com/nplus-father/allure-of-gentleness
     topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: almanack-of-naval-ravikant
@@ -643,7 +643,7 @@ repos:
     url: https://github.com/nplus-father/autobiography-of-benjamin-franklin
     topics: [hugobook, leaf-civilization, nplus-kind-book, nplus-portal, sub-history, tag-classic, top-wisdom]
   - name: automatic-millionaire
-    description: "The Automatic Millionaire | David Bach | Argues that budgets fail and automation works: find your Latte Factor, pay yourself first, and set every transfer on autopilot so wealth accrues without willpower."
+    description: The Automatic Millionaire | David Bach | 主張致富的關鍵不是預算紀律而是自動化：先付錢給自己、把儲蓄與投資設成自動扣款，讓財富在不依賴意志力的情況下累積。
     url: https://github.com/nplus-father/automatic-millionaire
     topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: awaken-the-giant-within
@@ -1063,7 +1063,7 @@ repos:
     url: https://github.com/nplus-father/casket-empty-new-testament-study-guide-god-s-plan-of
     topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: casket-empty-old-testament-study-guide
-    description: CASKET EMPTY：Old Testament Study Guide | Carol Kaminski | ![overview.png](overview.png)
+    description: CASKET EMPTY：Old Testament Study Guide | Carol Kaminski | 以「GASKET」六時期記憶框架，把舊約三十九卷重組為一條從創世走向「空墳墓」（CASKET EMPTY）的連貫救贖故事，是一套以救贖歷史為主軸的舊約導覽。
     url: https://github.com/nplus-father/casket-empty-old-testament-study-guide
     topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-primer, tag-toolbox, top-faith]
   - name: catalyst
@@ -1287,7 +1287,7 @@ repos:
     url: https://github.com/nplus-father/contagious
     topics: [hugobook, leaf-marketing, nplus-kind-book, nplus-portal, sub-business, top-professional]
   - name: contemplative-pastor
-    description: The Contemplative Pastor | Eugene H. Peterson | Redefines the pastor as unbusy, subversive, and apocalyptic, recovering spiritual direction and the curing of souls from the managerial job description.
+    description: The Contemplative Pastor | Eugene H. Peterson | 畢德生重新定義牧職，主張牧者應當是「不忙碌、顛覆性、啟示性」的，抵抗把教會職事化約為行政效率與活動業績的時代壓力。
     url: https://github.com/nplus-father/contemplative-pastor
     topics: [hugobook, leaf-pastoral, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: continuous-delivery
@@ -2211,7 +2211,7 @@ repos:
     url: https://github.com/nplus-father/fundamentals-of-software-architecture
     topics: [hugobook, leaf-systems-design, nplus-kind-book, nplus-portal, sub-engineering, tag-brick, tag-toolbox, top-craft]
   - name: further-along-the-road-less-traveled
-    description: 心靈地圖2 | M. Scott Peck M.D. | 從成長、探索到信仰，延續心靈成熟與靈性議題的探討
+    description: 心靈地圖2 | M. Scott Peck | 《心靈地圖》續篇，以演講稿形式延伸探討成癮、責怪、寬恕與靈性成熟，主張心靈成長是一條必須持續行走、無法抄捷徑的路。
     url: https://github.com/nplus-father/further-along-the-road-less-traveled
     topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: future-of-illusion
@@ -2243,7 +2243,7 @@ repos:
     url: https://github.com/nplus-father/general-theory-of-employment-interest-and-money
     topics: [hugobook, leaf-economics, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: generous-justice
-    description: "Generous Justice | Timothy Keller | How God's grace makes us just"
+    description: Generous Justice | Timothy Keller | 凱勒從聖經內部論證：真實領受基督恩典的人，必然會在世界中為貧者與邊緣人尋求公義；福音與行義不可分割。
     url: https://github.com/nplus-father/generous-justice
     topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: genesee-diary
@@ -2431,7 +2431,7 @@ repos:
     url: https://github.com/nplus-father/great-mental-models-general-thinking
     topics: [hugobook, leaf-decision-making, nplus-kind-book, nplus-portal, sub-leadership, top-professional]
   - name: great-omission
-    description: "Great Omission | Dallas Willard | Rediscovering Jesus's teachings on discipleship"
+    description: Great Omission | Dallas Willard | 威拉德對現代教會的核心診斷：在執行**大使命**（**Great Commission**）時遺漏了「**使人作門徒**」這一步，造就無數「不作門徒的『門徒』」；本書呼籲重拾**作耶穌學徒**（**apprenticeship**）的屬靈塑造傳統。
     url: https://github.com/nplus-father/great-omission
     topics: [hugobook, leaf-discipleship, nplus-kind-book, nplus-portal, sub-spiritual-formation, top-faith]
   - name: great-people-decisions
@@ -2727,7 +2727,7 @@ repos:
     url: https://github.com/nplus-father/head-first-design-patterns
     topics: [hugobook, leaf-coding-practice, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: hearing-god
-    description: Hearing God | Dallas Willard | Developing a conversational relationship with God
+    description: Hearing God | Dallas Willard | 威拉德從聖經、教會歷史與哲學脈絡，論證基督徒生命的根基是與神「對話式的關係」（conversational relationship），把「聽神」從少數人的神祕經驗還原為門徒成熟生命的日常質地。
     url: https://github.com/nplus-father/hearing-god
     topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: heart-of-man
@@ -2763,7 +2763,7 @@ repos:
     url: https://github.com/nplus-father/high-output-management
     topics: [hugobook, leaf-management, nplus-kind-book, nplus-portal, sub-business, tag-brick, tag-classic, top-professional]
   - name: high-performance-habits
-    description: High Performance Habits | Brendon Burchard | 非凡之人養成的六個高成效習慣
+    description: High Performance Habits | Brendon Burchard | 本書整合二十年研究與十年精英教練實務，從全球三萬多人的「高績效指標」資料中萃取出 HP6 六項可訓練、可複製的元習慣，回答「為什麼有些人能不斷攀升而非停在某個高度後崩潰」這個核心問題。
     url: https://github.com/nplus-father/high-performance-habits
     topics: [hugobook, leaf-productivity, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: high-performance-java-persistence
@@ -3015,7 +3015,7 @@ repos:
     url: https://github.com/nplus-father/hyperfocus
     topics: [hugobook, leaf-focus, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: hypothesis-driven-thinking
-    description: 假說思考：培養邊做邊學的能力，讓你迅速解決問題 | Kazunari Uchida | A BCG consultant shows how starting from an early hypothesis and refining it through testing lets you solve problems faster and with higher quality.
+    description: 假說思考：培養邊做邊學的能力，讓你迅速解決問題 | 內田和成 | 《假說思考》（仮説思考）主張在資訊有限的階段就先提出「暫時性答案」，再透過驗證使其進化，藉以擺脫資訊洪流、大幅加快解決問題的速度與決策品質。
     url: https://github.com/nplus-father/hypothesis-driven-thinking
     topics: [hugobook, leaf-decision-making, nplus-kind-book, nplus-portal, sub-leadership, top-professional]
   - name: i-believe-in-preaching
@@ -3047,7 +3047,7 @@ repos:
     url: https://github.com/nplus-father/if-youre-not-first-youre-last
     topics: [hugobook, leaf-sales, nplus-kind-book, nplus-portal, sub-business, top-professional]
   - name: ignore-everybody
-    description: Ignore Everybody | Hugh MacLeod | 40 keys to creativity
+    description: Ignore Everybody | Hugh MacLeod | 作者以紐約酒吧名片背面塗鴉十多年的實作經驗，整理出 40 條給創意工作者的逆耳真話，核心在於主權、紅線與長期默默累積。
     url: https://github.com/nplus-father/ignore-everybody
     topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: illness-narratives
@@ -3115,7 +3115,7 @@ repos:
     url: https://github.com/nplus-father/infrastructure-architecture
     topics: [hugobook, leaf-systems-design, nplus-kind-handbook, nplus-portal, sub-engineering, top-craft]
   - name: infrastructure-as-code
-    description: "Infrastructure as Code | Kief Morris | Reframes cloud infrastructure as software: define everything as code, keep stacks small and composable, and continuously validate every change in progress."
+    description: Infrastructure as Code | Kief Morris | 把雲端基礎設施當程式碼管理的系統性指南，涵蓋不可變伺服器、管線化交付與測試策略，處理規模化後的設定漂移與變更風險。
     url: https://github.com/nplus-father/infrastructure-as-code
     topics: [hugobook, leaf-devops, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: inner-excellence
@@ -3227,7 +3227,7 @@ repos:
     url: https://github.com/nplus-father/irrational-exuberance
     topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: is-hell-for-real
-    description: Is Hell for Real | Morgan Peterson eds | Five theologians on hell and heaven
+    description: Is Hell for Real | Christopher W. Morgan & Robert A. Peterson (eds.) | 回應 2011 年福音派內部關於地獄與普救論的激烈爭議，多位神學家聯合從歷史、聖經、神學三層面論證教會傳統地獄教義不可放棄。
     url: https://github.com/nplus-father/is-hell-for-real
     topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: is-there-a-meaning-in-this-text
@@ -3239,7 +3239,7 @@ repos:
     url: https://github.com/nplus-father/issue-driven
     topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, tag-toolbox, top-professional]
   - name: issue-driven-thinking
-    description: "論點思考：找到問題的源頭，才能解決正確的問題 | Kazunari Uchida | A BCG consultant's framework for pinpointing the right question to answer before rushing to solve a problem."
+    description: 論點思考：找到問題的源頭，才能解決正確的問題 | 內田和成 | 本書闡述位於問題解決最上游的「論點思考」——在動手解題前，先從眾多表象中正確設定「真正該解答的問題」，避免把力氣耗在錯誤的問題上。
     url: https://github.com/nplus-father/issue-driven-thinking
     topics: [hugobook, leaf-decision-making, nplus-kind-book, nplus-portal, sub-leadership, top-professional]
   - name: issues-facing-christians-today
@@ -3359,7 +3359,7 @@ repos:
     url: https://github.com/nplus-father/know-thyself
     topics: [hugobook, leaf-cognitive, nplus-kind-book, nplus-portal, sub-science, top-wisdom]
   - name: knowing-christ-today
-    description: Knowing Christ Today | Dallas Willard | Why we can trust spiritual knowledge
+    description: Knowing Christ Today | Dallas Willard | 威拉德從哲學家立場提出的護教學專著：在後現代「個人意見/感受」文化中，**重新主張基督教信仰是 knowledge（知識）而非 belief（信念）或 commitment（委身）** ── 否則教會將失去對公共生活發言的權利。
     url: https://github.com/nplus-father/knowing-christ-today
     topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: knowing-doing-gap
@@ -3467,7 +3467,7 @@ repos:
     url: https://github.com/nplus-father/lean-startup
     topics: [hugobook, leaf-startup, nplus-kind-book, nplus-portal, sub-business, tag-classic, top-professional]
   - name: learn-better
-    description: Learn Better | Ulrich Boser | Mastering skills for success in life and school
+    description: Learn Better | Ulrich Boser | 從學業困難的孩子蛻變為教育研究者的作者，把過去二十年認知科學的精華提煉為「價值-目標-發展-延伸-連結-反思」六階段方法論。
     url: https://github.com/nplus-father/learn-better
     topics: [hugobook, leaf-self-learning, nplus-kind-book, nplus-portal, sub-education, tag-classic, tag-primer, top-wisdom]
   - name: learned-excellence
@@ -3523,7 +3523,7 @@ repos:
     url: https://github.com/nplus-father/liars-poker
     topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: life-in-three-dimensions
-    description: 心理富足的人生：好奇、探索與體驗如何成就更完整的生活 | Shigehiro Oishi | 跳脫快樂與意義框架，談探索與體驗構成的心理富足人生
+    description: 心理富足的人生：好奇、探索與體驗如何成就更完整的生活 | 大石繁宏 | 為「好生活」加上獨立於快樂與意義的第三條路——心理豐富，主張一段充滿好奇、探索與視角轉換的人生，本身就是值得追求的維度。
     url: https://github.com/nplus-father/life-in-three-dimensions
     topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: life-is-a-long-term-accumulation
@@ -3611,7 +3611,7 @@ repos:
     url: https://github.com/nplus-father/little-history-of-literature
     topics: [hugobook, leaf-cultural, nplus-kind-book, nplus-portal, sub-history, tag-primer, top-wisdom]
   - name: little-history-of-philosophy
-    description: Little History of Philosophy | Nigel Warburton | Journey through 40 thinkers
+    description: Little History of Philosophy | Nigel Warburton | 從蘇格拉底到彼得·辛格，以四十章串起兩千四百年西方哲學史，每章聚焦一位思想家的核心提問與論證，把哲學還原為「學會發問」的長河。
     url: https://github.com/nplus-father/little-history-of-philosophy
     topics: [hugobook, leaf-non-fiction, nplus-kind-book, nplus-portal, sub-writing, tag-primer, top-craft]
   - name: little-history-of-the-world
@@ -3707,7 +3707,7 @@ repos:
     url: https://github.com/nplus-father/lost-world-of-genesis-one
     topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: louder-than-words
-    description: Louder Than Words | Joe Navarro | Hidden power of nonverbal intelligence
+    description: Louder Than Words | Joe Navarro | 前 FBI 反情報專家 Joe Navarro 把非語言行為的觀察與運用提煉為「非語言智慧」（nonverbal intelligence），並聚焦於商業職場的應用場景。
     url: https://github.com/nplus-father/louder-than-words
     topics: [hugobook, leaf-persuasion, nplus-kind-book, nplus-portal, sub-communication, tag-toolbox, top-professional]
   - name: machine-learning-system-design-interview
@@ -3819,7 +3819,7 @@ repos:
     url: https://github.com/nplus-father/market-wizards
     topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: marketing-made-simple
-    description: Marketing Made Simple | Donald Miller | A step-by-step StoryBrand sales funnel guide
+    description: Marketing Made Simple | Donald Miller | StoryBrand 創辦人提出的**五步驟銷售漏斗**操作手冊：以「一句話定位、線框稿網站、名單磁鐵、培養型郵件、銷售型郵件」為核心，將行銷從創意工程降階為可重複執行的關係流程。
     url: https://github.com/nplus-father/marketing-made-simple
     topics: [hugobook, leaf-marketing, nplus-kind-book, nplus-portal, sub-business, tag-primer, tag-toolbox, top-professional]
   - name: marketing-management
@@ -3831,7 +3831,7 @@ repos:
     url: https://github.com/nplus-father/marketing-tracy
     topics: [hugobook, leaf-marketing, nplus-kind-book, nplus-portal, sub-business, top-professional]
   - name: martin-luthers-catechisms-forming-the-faith
-    description: 馬丁路德的門徒培育班 | Timothy J. Wengert | 透過路德信仰問答——十誡、使徒信經、主禱文、洗禮與聖餐——談門徒培育
+    description: 馬丁路德的門徒培育班 | Timothy J. Wengert | 路德宗學者逐一解讀十誡、使徒信經、主禱文與洗禮聖餐，說明路德的信仰問答不是教義清單，而是塑造日常信仰生活的操練架構。
     url: https://github.com/nplus-father/martin-luthers-catechisms-forming-the-faith
     topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: marx-capital-and-the-madness-of-economic
@@ -4343,7 +4343,7 @@ repos:
     url: https://github.com/nplus-father/never-enough
     topics: [hugobook, leaf-startup, nplus-kind-book, nplus-portal, sub-business, top-professional]
   - name: never-finished
-    description: Never Finished | David Goggins | Unshackle your mind and win the war within
+    description: Never Finished | David Goggins | 《我，刀槍不入》續作，以「心智實驗室」為核心隱喻，將紀律、信念、一秒決策等心智操練拆解為九場 Evolution，回應自助書留下的「成功之後如何避免軟化」這道難題。
     url: https://github.com/nplus-father/never-finished
     topics: [hugobook, leaf-resilience, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
   - name: never-split-the-difference
@@ -4467,7 +4467,7 @@ repos:
     url: https://github.com/nplus-father/nudge
     topics: [hugobook, leaf-economics, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: obedient-master
-    description: "The Obedient Master | Timothy Keller | Short excerpt on Jesus's obedience"
+    description: The Obedient Master | Timothy Keller | 凱勒以客西馬尼園為焦點，重新詮釋耶穌「順服至死」的內在意義，揭示主動順服與被動順服的雙重救贖如何成為信徒「炸不毀的愛」之根基。
     url: https://github.com/nplus-father/obedient-master
     topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: object-oriented-design-interview
@@ -4511,7 +4511,7 @@ repos:
     url: https://github.com/nplus-father/old-testament-theology-israels-faith
     topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: old-testament-theology-waltke
-    description: An Old Testament Theology Vol 2 | Bruce K. Waltke | Exegetical canonical thematic approach
+    description: An Old Testament Theology Vol 2 | Bruce K. Waltke with Charles Yu | 華爾基以「神國向歷史闖入」為統合主題，融合釋經、正典與主題進路，把整部舊約的多元聲音編織為救恩歷史推進到彌賽亞的單一見證。
     url: https://github.com/nplus-father/old-testament-theology-waltke
     topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-brick, top-faith]
   - name: on-becoming-a-leader
@@ -4851,7 +4851,7 @@ repos:
     url: https://github.com/nplus-father/power-of-charm
     topics: [hugobook, leaf-community, nplus-kind-book, nplus-portal, sub-relationships, top-personal]
   - name: power-of-computational-thinking
-    description: Power of Computational Thinking | Curzon McOwan | Games magic puzzles for problem solving
+    description: Power of Computational Thinking | Paul Curzon & Peter W. McOwan | 透過魔術、遊戲與謎題，將演算法思維、拆解、抽象、一般化等運算思維（Computational Thinking）核心元素轉化為人人可上手的問題解決能力。
     url: https://github.com/nplus-father/power-of-computational-thinking
     topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: power-of-eye-contact
@@ -4939,7 +4939,7 @@ repos:
     url: https://github.com/nplus-father/pre-suasion
     topics: [hugobook, leaf-persuasion, nplus-kind-book, nplus-portal, sub-communication, tag-classic, top-professional]
   - name: preaching
-    description: Preaching | Timothy Keller | Communicating faith in an age of skepticism
+    description: Preaching | Timothy Keller | 凱勒以哥林多前書 1–2 章為架構，將講道濃縮為三項任務——服事聖言、接觸人群、聖靈與能力的彰顯，並回應晚期現代懷疑世代的處境。
     url: https://github.com/nplus-father/preaching
     topics: [hugobook, leaf-pastoral, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: preaching-and-preachers
@@ -5139,7 +5139,7 @@ repos:
     url: https://github.com/nplus-father/real-world-bug-hunting
     topics: [hugobook, leaf-security, nplus-kind-book, nplus-portal, sub-engineering, tag-toolbox, top-craft]
   - name: reason-for-god
-    description: Reason for God | Timothy Keller | Belief in an age of skepticism
+    description: Reason for God | Timothy Keller | 凱勒以曼哈頓二十年牧會經驗，回應當代懷疑論者最常拋出的七個反對意見，再以「批判理性」進路正面陳述基督信仰的線索與依據，引導讀者「懷疑自己的懷疑」。
     url: https://github.com/nplus-father/reason-for-god
     topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
   - name: recommendation-system
@@ -5167,11 +5167,11 @@ repos:
     url: https://github.com/nplus-father/reflections-on-the-psalms
     topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: reformed-dogmatics
-    description: "Reformed Dogmatics: Abridged in One Volume | Herman Bavinck | John Bolt's single-volume abridgement of Bavinck's four-volume dogmatics, running from prolegomena and revelation through God, creation, sin, Christ, salvation, church, and last things."
+    description: "Reformed Dogmatics: Abridged in One Volume | Herman Bavinck | 巴文克四卷本荷蘭改革宗教義學的單卷精縮版，涵蓋神論、人論、基督論、救恩論與末世論，是新加爾文主義神學的集大成之作。"
     url: https://github.com/nplus-father/reformed-dogmatics
     topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: reformed-pastor
-    description: "The Reformed Pastor | Richard Baxter | The 1656 Puritan classic on pastoral duty: watch over yourself first, then know and catechise every family in the flock personally."
+    description: The Reformed Pastor | Richard Baxter | 1656 年的牧養經典，巴克斯特從逐家探訪與要理問答的實務出發，力陳牧者首要之務是認識並照顧每一位羊群成員的靈魂。
     url: https://github.com/nplus-father/reformed-pastor
     topics: [hugobook, leaf-pastoral, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: reinforcements-how-to-get-people-to-help-you
@@ -5247,7 +5247,7 @@ repos:
     url: https://github.com/nplus-father/resonate-visual-stories-transform-audiences
     topics: [hugobook, leaf-storytelling, nplus-kind-book, nplus-portal, sub-communication, tag-classic, tag-toolbox, top-professional]
   - name: rest
-    description: Rest | Alex Soojung-Kim Pang | Marshals the science and the routines of prolific figures to argue that deliberate rest — four focused hours, walks, naps, deep play, sabbaticals — is a skill that sustains creative work.
+    description: Rest | Alex Soojung-Kim Pang | 主張休息是可鍛鍊的技能而非工作的剩餘，透過歷史人物與科學研究說明刻意休息如何支撐長期的創造力與高強度產出。
     url: https://github.com/nplus-father/rest
     topics: [hugobook, leaf-routine, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: resurrection-of-the-son-of-god
@@ -5491,7 +5491,7 @@ repos:
     url: https://github.com/nplus-father/science-of-storytelling
     topics: [hugobook, leaf-storytelling, nplus-kind-book, nplus-portal, sub-communication, tag-classic, top-professional]
   - name: scientific-advertising
-    description: Scientific Advertising | Claude C. Hopkins | The 1923 classic that recast advertising as salesmanship in print, measured by keyed coupons and test campaigns rather than opinion or artistry.
+    description: Scientific Advertising | Claude C. Hopkins | 1923 年的廣告經典，主張廣告應如科學般可測試：以追蹤、對照與郵購回應率驗證每一則文案，而非仰賴主觀品味。
     url: https://github.com/nplus-father/scientific-advertising
     topics: [hugobook, leaf-marketing, nplus-kind-book, nplus-portal, sub-business, top-professional]
   - name: scout-mindset
@@ -5611,7 +5611,7 @@ repos:
     url: https://github.com/nplus-father/setting-the-table
     topics: [hugobook, leaf-startup, nplus-kind-book, nplus-portal, sub-business, top-professional]
   - name: seven-databases-in-seven-weeks
-    description: Seven Databases in Seven Weeks | Eric Redmond & Jim R. Wilson | A hands-on tour of PostgreSQL, Riak, HBase, MongoDB, CouchDB, Neo4J, and Redis, comparing the data models and trade-offs behind the NoSQL movement.
+    description: Seven Databases in Seven Weeks | Eric Redmond & Jim R. Wilson | 以每週一種資料庫的節奏帶讀者實作關聯式、鍵值、欄族、文件與圖形等模型，重點在理解各自的資料模型取捨而非語法。
     url: https://github.com/nplus-father/seven-databases-in-seven-weeks
     topics: [hugobook, leaf-databases, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: seven-powers-foundations-business-strategy
@@ -5631,7 +5631,7 @@ repos:
     url: https://github.com/nplus-father/shadowlands
     topics: [hugobook, leaf-apologetics, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: shellcoders-handbook
-    description: "The Shellcoder's Handbook | Chris Anley, John Heasman et al. | A hands-on treatment of memory-corruption exploitation across Linux, Windows, Solaris, OS X, and Cisco IOS, plus the fuzzing and auditing techniques that find the bugs in the first place."
+    description: "The Shellcoder's Handbook | Chris Anley, John Heasman, Felix Lindner & Gerardo Richarte | 從緩衝區溢位、格式化字串到堆積利用，系統性拆解漏洞的發現與利用手法，是理解記憶體安全攻防的實作教材。"
     url: https://github.com/nplus-father/shellcoders-handbook
     topics: [hugobook, leaf-security, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: sherlock-who-1-bible-suspense
@@ -5775,7 +5775,7 @@ repos:
     url: https://github.com/nplus-father/sociopath-next-door
     topics: [hugobook, leaf-community, nplus-kind-book, nplus-portal, sub-relationships, tag-primer, top-personal]
   - name: soft-skills-developers-life-manual
-    description: "Soft Skills: The Software Developer's Life Manual | John Sonmez | Everything a developer's career depends on outside the code — marketing yourself, learning fast, productivity systems, money, fitness, and mindset."
+    description: "Soft Skills: The Software Developer's Life Manual | John Sonmez | 把軟體開發者的職涯當成一門事業來經營，涵蓋自我行銷、學習方法、理財、健身與心態，補足純技術書不談的那一半。"
     url: https://github.com/nplus-father/soft-skills-developers-life-manual
     topics: [hugobook, leaf-skill-building, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: soft-skills-thirty-letters
@@ -5823,7 +5823,7 @@ repos:
     url: https://github.com/nplus-father/software-engineering-practice
     topics: [hugobook, leaf-coding-practice, nplus-kind-handbook, nplus-portal, sub-engineering, top-craft]
   - name: software-engineers-guidebook
-    description: "The Software Engineer's Guidebook | Gergely Orosz | Maps the ladder from competent developer to staff and principal engineer, laying out what changes at each level across getting things done, collaboration, architecture, and business judgement."
+    description: "The Software Engineer's Guidebook | Gergely Orosz | 以大廠內部視角描繪軟體工程師從新手到 Staff/Principal 的成長路徑，說明各層級真正被期待的產出與影響力形態。"
     url: https://github.com/nplus-father/software-engineers-guidebook
     topics: [hugobook, leaf-skill-building, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: songs-of-jesus
@@ -5887,7 +5887,7 @@ repos:
     url: https://github.com/nplus-father/sprint
     topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, tag-classic, top-craft]
   - name: sql-antipatterns-volume-1
-    description: SQL Antipatterns, Volume 1 | Bill Karwin | Catalogues the recurring mistakes of database programming — jaywalking, naive trees, EAV, index shotgun, SQL injection — each with the legitimate uses and the better solution.
+    description: SQL Antipatterns, Volume 1 | Bill Karwin | 蒐集資料庫設計與查詢中反覆出現的錯誤模式，逐一說明它們為何看似合理卻會累積技術債，並給出可行的替代做法。
     url: https://github.com/nplus-father/sql-antipatterns-volume-1
     topics: [hugobook, leaf-databases, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: sql-performance-explained
@@ -5971,7 +5971,7 @@ repos:
     url: https://github.com/nplus-father/stocks-for-the-long-run
     topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
   - name: stolen-focus
-    description: Stolen Focus | Johann Hari | Traces twelve external causes of collapsing attention — speed and switching, broken flow, exhaustion, surveillance capitalism, diet, confinement of children — and argues the fix is collective, not personal.
+    description: Stolen Focus | Johann Hari | 哈里走訪各國研究者，論證專注力崩壞不是個人意志問題而是結構問題，指出從飲食、睡眠到科技商業模式的十二個成因。
     url: https://github.com/nplus-father/stolen-focus
     topics: [hugobook, leaf-focus, nplus-kind-book, nplus-portal, sub-habit, top-personal]
   - name: stories-that-stick
@@ -6023,7 +6023,7 @@ repos:
     url: https://github.com/nplus-father/strategic-thinking
     topics: [hugobook, leaf-problem-solving, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: streaming-systems
-    description: Streaming Systems | Tyler Akidau, Slava Chernyak & Reuven Lax | Rebuilds stream processing from first principles — event time versus processing time, windowing, watermarks, triggers — and shows that streams and tables are two views of the same thing.
+    description: Streaming Systems | Tyler Akidau, Slava Chernyak & Reuven Lax | 以視窗、水位線與觸發器三個核心概念建立串流資料處理的思考框架，說明批次與串流本質上是同一套模型的不同取捨。
     url: https://github.com/nplus-father/streaming-systems
     topics: [hugobook, leaf-databases, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: strong-product-people
@@ -6051,7 +6051,7 @@ repos:
     url: https://github.com/nplus-father/succeeding-with-agile
     topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, tag-brick, tag-toolbox, top-craft]
   - name: summa-theologica
-    description: "Summa Theologica | Thomas Aquinas | The complete Dominican Fathers translation of Aquinas's summation of Christian doctrine, working question by question from God and creation through human action and virtue to Christ and the sacraments."
+    description: Summa Theologica | Thomas Aquinas | 阿奎那以問答體系統整合亞里斯多德哲學與基督教神學，從神論、倫理學到基督論，是中世紀經院哲學的巔峰之作。
     url: https://github.com/nplus-father/summa-theologica
     topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: super-founders
@@ -6107,7 +6107,7 @@ repos:
     url: https://github.com/nplus-father/systematic-theology
     topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-brick, top-faith]
   - name: systems-performance
-    description: Systems Performance | Brendan Gregg | A methodology-first treatment of performance analysis — USE, workload characterisation, latency analysis — applied to CPUs, memory, file systems, disks, network, and the cloud, with perf, Ftrace, and BPF.
+    description: Systems Performance | Brendan Gregg | 建立作業系統與雲端環境的效能分析方法論，以 USE 方法貫穿 CPU、記憶體、檔案系統與網路，強調先量測再優化。
     url: https://github.com/nplus-father/systems-performance
     topics: [hugobook, leaf-systems-design, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: take-charge-of-your-life
@@ -6207,7 +6207,7 @@ repos:
     url: https://github.com/nplus-father/telling-the-truth
     topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: telling-true-stories
-    description: Telling True Stories | Kramer Call eds | Nonfiction writers guide from Nieman Foundation
+    description: Telling True Stories | Mark Kramer & Wendy Call | 哈佛尼曼基金會策劃，由五十一位敘事非虛構作者親述創作心法，從靈感發想到作品出版的完整工藝指南。
     url: https://github.com/nplus-father/telling-true-stories
     topics: [hugobook, leaf-persuasion, nplus-kind-book, nplus-portal, sub-communication, top-professional]
   - name: temple-and-churchs-mission
@@ -6283,7 +6283,7 @@ repos:
     url: https://github.com/nplus-father/theory-of-justice
     topics: [hugobook, leaf-political-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: think-again
-    description: Think Again | Adam Grant | 知道自己不知道的強大力量
+    description: Think Again | Adam Grant | 本書主張在動盪時代裡，「重新思考（rethink）」與「卸下舊知（unlearn）」的能力比聰明才智更關鍵；以個人、人際、集體三個層次，示範如何用科學家心態檢驗自身信念、打開他人心智，並建立終身學習的文化。
     url: https://github.com/nplus-father/think-again
     topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
   - name: think-and-grow-rich
@@ -6495,7 +6495,7 @@ repos:
     url: https://github.com/nplus-father/uml-distilled
     topics: [hugobook, leaf-systems-design, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: uncommon-ground
-    description: Uncommon Ground | Timothy Keller John Inazu | Living faithfully in a world of difference
+    description: Uncommon Ground | Timothy Keller & John Inazu | 在失去宗教共識的多元社會中，基督徒如何既保持信仰確信、又跨越深刻分歧與他人共處？凱勒與伊納祖以十二種職業「聲音」展示忠心同在的可能。
     url: https://github.com/nplus-father/uncommon-ground
     topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: uncommon-grounds
@@ -6563,7 +6563,7 @@ repos:
     url: https://github.com/nplus-father/user-stories-applied
     topics: [hugobook, leaf-agile, nplus-kind-book, nplus-portal, sub-engineering, tag-classic, tag-toolbox, top-craft]
   - name: valuation-measuring-and-managing-value-of-companies
-    description: "Valuation: Measuring and Managing the Value of Companies | Tim Koller & Marc Goedhart et al. | McKinsey's standard text on value creation, taking DCF from reorganised financial statements through cost of capital to special situations like LBOs, banks, and high-growth firms."
+    description: "Valuation: Measuring and Managing the Value of Companies | Tim Koller, Marc Goedhart & David Wessels | 麥肯錫的企業評價標準教材，以現金流折現為核心貫穿財報分析、資本成本估算與情境模擬，兼顧理論嚴謹與實務操作。"
     url: https://github.com/nplus-father/valuation-measuring-and-managing-value-of-companies
     topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: value-proposition-design
@@ -6583,11 +6583,11 @@ repos:
     url: https://github.com/nplus-father/venture-deals
     topics: [hugobook, leaf-startup, nplus-kind-book, nplus-portal, sub-business, top-professional]
   - name: versioning-in-an-event-sourced-system
-    description: Versioning in an Event Sourced System | Gregory Young | Field-tested strategies for evolving immutable event streams — weak schema, negotiation, copy-and-replace, compensating actions, and the internal/external model split.
+    description: Versioning in an Event Sourced System | Gregory Young | 處理事件溯源系統最棘手的問題：事件結構一旦改變，既有的歷史事件如何演進，涵蓋弱結構、複製轉換與版本共存等策略。
     url: https://github.com/nplus-father/versioning-in-an-event-sourced-system
     topics: [hugobook, leaf-systems-design, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: victory-of-reason
-    description: The Victory of Reason | Rodney Stark | How Christianity led to freedom and capitalism
+    description: The Victory of Reason | Rodney Stark | 史塔克以社會學-歷史方法挑戰啟蒙以來「宗教 vs 理性」的敘事，論證科學、資本主義與西方自由並非脫離基督教而生，而是基督教理性神學的直接產物。
     url: https://github.com/nplus-father/victory-of-reason
     topics: [hugobook, leaf-historical, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: wait-what-book
@@ -6671,7 +6671,7 @@ repos:
     url: https://github.com/nplus-father/way-of-the-turtle
     topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: way-of-wisdom
-    description: Way of Wisdom | Timothy Kathy Keller | A year of daily devotions in Proverbs
+    description: Way of Wisdom | Timothy Keller & Kathy Keller | 以主題式而非逐節式架構帶領讀者一年走完《箴言》，凱勒夫婦把希伯來智慧文學重新織入當代生活，並指向基督——「真正的智慧本身」。
     url: https://github.com/nplus-father/way-of-wisdom
     topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: way-to-wealth
@@ -6747,7 +6747,7 @@ repos:
     url: https://github.com/nplus-father/what-i-wish-i-knew-when-i-was-20
     topics: [hugobook, leaf-skill-building, nplus-kind-book, nplus-portal, sub-career, tag-primer, top-professional]
   - name: what-life-should-mean-to-you
-    description: What Life Should Mean to You | Alfred Adler | Individual psychology classic
+    description: What Life Should Mean to You | Alfred Adler | 個體心理學創始人阿德勒晚年面向大眾的代表作，主張生命的意義在於合作與貢獻——所有自卑、神經症與犯罪，本質上都是社會興趣的失敗。
     url: https://github.com/nplus-father/what-life-should-mean-to-you
     topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: what-the-dog-saw
@@ -6875,7 +6875,7 @@ repos:
     url: https://github.com/nplus-father/why-nations-fail
     topics: [hugobook, leaf-cultural, nplus-kind-book, nplus-portal, sub-history, tag-brick, tag-classic, top-wisdom]
   - name: why-study-the-past
-    description: Why Study the Past | Rowan Williams | The quest for the historical church
+    description: Why Study the Past | Rowan Williams | 威廉斯以 Sarum 神學講座為基礎，主張教會史是一場神學操練——讓信徒在跨時空的「基督身體」中被陌生的過去質問與滋養，藉此重新發現教會在當下的呼召。
     url: https://github.com/nplus-father/why-study-the-past
     topics: [hugobook, leaf-self-learning, nplus-kind-book, nplus-portal, sub-education, top-wisdom]
   - name: why-the-rich-are-getting-richer
