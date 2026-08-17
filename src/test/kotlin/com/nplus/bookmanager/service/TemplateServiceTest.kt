@@ -72,18 +72,43 @@ class TemplateServiceTest {
             |title: "${AppConfig.TEMPLATE_ZH_TITLE}"
             |date: 2025-01-01
             |bookCollapseSection: true
+            |book:
+            |  title: "${AppConfig.TEMPLATE_ZH_TITLE}"
+            |  author: "${AppConfig.TEMPLATE_AUTHOR_PLACEHOLDER}"
+            |  published: "${AppConfig.TEMPLATE_DATE_PLACEHOLDER}"
+            |  link: "${AppConfig.TEMPLATE_PURCHASE_URL_PLACEHOLDER}"
+            |  cover: "cover.png"
+            |  blurb: "${AppConfig.TEMPLATE_BLURB_PLACEHOLDER}"
             |---
             |
-            |{{< book-cover
-            |title="${AppConfig.TEMPLATE_ZH_TITLE}"
-            |src="cover.png"
-            |author="${AppConfig.TEMPLATE_AUTHOR_PLACEHOLDER}"
-            |date="${AppConfig.TEMPLATE_DATE_PLACEHOLDER}"
-            |link="${AppConfig.TEMPLATE_PURCHASE_URL_PLACEHOLDER}" >}}
-            |這裡填寫書籍的簡介...
-            |{{< /book-cover >}}
+            |{{< book-cover />}}
             """.trimMargin(),
         )
+    }
+
+    @Test
+    fun `the blurb is lifted out of the packed description into frontmatter`() {
+        // The generated description packs `Title | Author | Blurb`; only the
+        // third segment describes the book, and until now nothing wrote it back
+        // into the repo — every new book shipped with the template's placeholder.
+        val repo = File(root, "atomic-habits").apply { mkdirs() }
+        seedTemplate(repo)
+
+        service.updateTemplateFiles(repo, metadata(), bookInput())
+
+        val index = File(repo, TemplateService.INDEX_MD_PATH).readText()
+        assertTrue(index.contains("""blurb: "Tiny changes, remarkable results."""))
+        assertFalse(index.contains(AppConfig.TEMPLATE_BLURB_PLACEHOLDER))
+    }
+
+    @Test
+    fun `a description without the packed form still reaches the blurb`() {
+        val repo = File(root, "atomic-habits").apply { mkdirs() }
+        seedTemplate(repo)
+
+        service.updateTemplateFiles(repo, metadata().copy(description = "只有一句話的簡介"), bookInput())
+
+        assertTrue(File(repo, TemplateService.INDEX_MD_PATH).readText().contains("""blurb: "只有一句話的簡介""""))
     }
 
     @Test
@@ -109,9 +134,9 @@ class TemplateServiceTest {
 
         val index = File(repo, TemplateService.INDEX_MD_PATH).readText()
         assertTrue(index.contains("title: \"原子習慣\""))
-        assertTrue(index.contains("author=\"James Clear\""))
-        assertTrue(index.contains("date=\"October 16, 2018\""))
-        assertTrue(index.contains("link=\"https://www.amazon.com/dp/0735211299\""))
+        assertTrue(index.contains("author: \"James Clear\""))
+        assertTrue(index.contains("published: \"October 16, 2018\""))
+        assertTrue(index.contains("link: \"https://www.amazon.com/dp/0735211299\""))
         assertFalse(
             index.contains(AppConfig.TEMPLATE_AUTHOR_PLACEHOLDER),
             "no placeholder may survive into a published book site",
@@ -148,7 +173,7 @@ class TemplateServiceTest {
 
         val index = File(repo, TemplateService.INDEX_MD_PATH).readText()
         assertTrue(index.contains("""title: "想著「Win-Win\"」""""))
-        assertTrue(index.contains("""author="Stephen R. \"Covey\""""))
+        assertTrue(index.contains("""author: "Stephen R. \"Covey\""""))
 
         val hugoToml = File(repo, TemplateService.HUGO_TOML_PATH).readText()
         assertTrue(hugoToml.contains("""title = "想著「Win-Win\"」""""))

@@ -21,6 +21,7 @@ object AppConfig {
     const val TEMPLATE_AUTHOR_PLACEHOLDER = "待填寫作者"
     const val TEMPLATE_DATE_PLACEHOLDER = "待填寫日期"
     const val TEMPLATE_PURCHASE_URL_PLACEHOLDER = "https://www.amazon.com/"
+    const val TEMPLATE_BLURB_PLACEHOLDER = "這裡填寫書籍的簡介..."
 
     /** The only keys this app reads. Anything else in the environment is ignored. */
     private val configKeys =

@@ -63,14 +63,14 @@ class TemplateService : TemplateWriter {
             allSuccess
 
         // Update site/content/_index.md with book info
-        updateIndexFile(repoDir, metadata.chineseTitle, bookInput)
+        updateIndexFile(repoDir, metadata, bookInput)
 
         return allSuccess
     }
 
     private fun updateIndexFile(
         repoDir: File,
-        chineseTitle: String,
+        metadata: GeneratedMetadata,
         bookInput: BookInput,
     ) {
         val indexFile = File(repoDir, INDEX_MD_PATH)
@@ -79,27 +79,42 @@ class TemplateService : TemplateWriter {
             return
         }
 
-        // Every target here is a double-quoted value — YAML frontmatter on the
-        // first line, Hugo shortcode parameters below it — so each replacement
-        // is escaped. Titles like `Think "Win-Win"` otherwise break the parse.
+        // The book's own metadata lives in the `book:` frontmatter map rather
+        // than in shortcode arguments, so `layouts/index.json` can publish it —
+        // shortcode arguments are invisible to other templates. Every target is
+        // a double-quoted YAML value, so each replacement is escaped; titles
+        // like `Think "Win-Win"` otherwise break the parse.
         var content = indexFile.readText()
         content =
             content
-                .replace("title: \"${AppConfig.TEMPLATE_ZH_TITLE}\"", "title: \"${escapeQuoted(chineseTitle)}\"")
-                .replace("title=\"${AppConfig.TEMPLATE_ZH_TITLE}\"", "title=\"${escapeQuoted(chineseTitle)}\"")
+                .replace("title: \"${AppConfig.TEMPLATE_ZH_TITLE}\"", "title: \"${escapeQuoted(metadata.chineseTitle)}\"")
                 .replace(
-                    "author=\"${AppConfig.TEMPLATE_AUTHOR_PLACEHOLDER}\"",
-                    "author=\"${escapeQuoted(bookInput.author)}\"",
+                    "author: \"${AppConfig.TEMPLATE_AUTHOR_PLACEHOLDER}\"",
+                    "author: \"${escapeQuoted(bookInput.author)}\"",
                 ).replace(
-                    "date=\"${AppConfig.TEMPLATE_DATE_PLACEHOLDER}\"",
-                    "date=\"${escapeQuoted(bookInput.publicationDate)}\"",
+                    "published: \"${AppConfig.TEMPLATE_DATE_PLACEHOLDER}\"",
+                    "published: \"${escapeQuoted(bookInput.publicationDate)}\"",
                 ).replace(
-                    "link=\"${AppConfig.TEMPLATE_PURCHASE_URL_PLACEHOLDER}\"",
-                    "link=\"${escapeQuoted(bookInput.purchaseUrl)}\"",
+                    "link: \"${AppConfig.TEMPLATE_PURCHASE_URL_PLACEHOLDER}\"",
+                    "link: \"${escapeQuoted(bookInput.purchaseUrl)}\"",
+                ).replace(
+                    "blurb: \"${AppConfig.TEMPLATE_BLURB_PLACEHOLDER}\"",
+                    "blurb: \"${escapeQuoted(blurbOf(metadata.description))}\"",
                 )
 
         indexFile.writeText(content)
         println("  Updated: _index.md")
+    }
+
+    /**
+     * The generated repo description packs three values as `Title | Author |
+     * Blurb`; only the blurb belongs in the book's own frontmatter. Falls back
+     * to the whole string when the description is not in the packed form, so a
+     * hand-written one still reaches the page instead of being dropped.
+     */
+    private fun blurbOf(description: String): String {
+        val parts = description.split('|', '｜').map { it.trim() }.filter { it.isNotEmpty() }
+        return if (parts.size >= 3) parts.drop(2).joinToString(" ") else description.trim()
     }
 
     private fun updateGoMod(
