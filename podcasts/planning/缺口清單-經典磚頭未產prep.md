@@ -5,7 +5,6 @@
 ## professional（164）
 
 ### finance（69）
-- [磚頭] A Complete Guide to the Futures Market — Jack D. Schwager & Mark Etzkorn  `complete-guide-to-futures-market`
 - [磚頭] A Complete Guide to the Futures Market — Jack D. Schwager  `complete-guide-to-futures-markets`
 - [經典] A Random Walk Down Wall Street — Burton G. Malkiel  `a-random-walk-down-wall-street`
 - [經典+磚頭] Basic Economics — Thomas Sowell  `basic-economics`
@@ -87,7 +86,6 @@
 - [經典] How to Win Friends and Influence People — Dale Carnegie  `how-to-win-friends-and-influence-people`
 - [經典] Humble Inquiry — Edgar H. Schein  `humble-inquiry`
 - [經典] Influence: The Psychology of Persuasion — Robert B. Cialdini  `influence-cialdini`
-- [經典] Influence: The Psychology of Persuasion — Robert B. Cialdini  `influence-the-psychology-of-persuasion`
 - [經典] Made to Stick — Chip Heath & Dan Heath  `made-to-stick`
 - [經典] Never Split the Difference — Chris Voss  `never-split-the-difference`
 - [經典] Nonviolent Communication — Marshall B. Rosenberg  `nonviolent-communication`

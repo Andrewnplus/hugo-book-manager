@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-08-17T20:01:52.63489649+08:00"
+last_updated: "2026-08-17T20:07:28.702364161+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -1250,10 +1250,6 @@ repos:
     description: "Competitive Strategy: Techniques for Analyzing Industries and Competitors | Michael E. Porter | Introduces the five competitive forces, the three generic strategies, and a competitor-analysis toolkit that turn industry structure into a systematic basis for positioning a firm."
     url: https://github.com/nplus-father/competitive-strategy
     topics: [hugobook, leaf-strategy, nplus-kind-book, nplus-portal, sub-business, top-professional]
-  - name: complete-guide-to-futures-market
-    description: A Complete Guide to the Futures Market | Jack D. Schwager & Mark Etzkorn | The definitive reference on futures trading — covering charts, patterns, indicators, fundamental and quantitative systems, options, spreads, and risk management.
-    url: https://github.com/nplus-father/complete-guide-to-futures-market
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-toolbox, top-professional]
   - name: complete-guide-to-futures-markets
     description: A Complete Guide to the Futures Market | Jack D. Schwager | Schwager combines thirty years of interviewing top traders with his own research-director experience to build a complete analytical and disciplinary framework for futures speculators across technicals, systems, fundamentals, options, spreads, and trading principles.
     url: https://github.com/nplus-father/complete-guide-to-futures-markets
@@ -3114,10 +3110,6 @@ repos:
     description: "Influence: The Psychology of Persuasion | Robert B. Cialdini | The classic distilled from three years undercover in sales and fundraising, reducing countless compliance tactics to six core principles—reciprocity, commitment, social proof, liking, authority, and scarcity."
     url: https://github.com/nplus-father/influence-cialdini
     topics: [hugobook, leaf-persuasion, nplus-kind-book, nplus-portal, sub-communication, tag-classic, top-professional]
-  - name: influence-the-psychology-of-persuasion
-    description: "Influence: The Psychology of Persuasion | Robert B. Cialdini | The social psychologist combines academic research with three years of undercover fieldwork to derive six principles of persuasion—reciprocity, commitment, social proof, liking, authority, and scarcity—exposing the automatic mental machinery behind compliance."
-    url: https://github.com/nplus-father/influence-the-psychology-of-persuasion
-    topics: [hugobook, leaf-persuasion, nplus-kind-book, nplus-portal, sub-communication, tag-classic, top-professional]
   - name: infrastructure-architecture
     description: 架構、網絡與存儲
     url: https://github.com/nplus-father/infrastructure-architecture
@@ -3385,10 +3377,6 @@ repos:
   - name: kostolany-confessions
     description: "Die Kunst, über Geld nachzudenken | André Kostolany | The legendary European speculator's final book at age 93, distilling 20th-century markets and his investing philosophy into a confession on independent thinking, psychological strength, and patience as the obstinate investor's real capital."
     url: https://github.com/nplus-father/kostolany-confessions
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
-  - name: kostolany-practical
-    description: 一個投機者的告白實戰書 | 安納金 | 台灣資深投資人重讀科斯托蘭尼三部曲後寫成的現代演繹版，把「狗和主人」、「行情=貨幣+心理」、「科斯托蘭尼雞蛋」等核心觀念對應到二十年實戰經驗與當代金融市場案例。
-    url: https://github.com/nplus-father/kostolany-practical
     topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: kubernetes-in-action
     description: Kubernetes in Action, Second Edition | Marko Luksa | A ground-up rebuild of the Kubernetes classic, walking from containers and the API object model through Pods, storage, Services, Ingress, and the controllers that keep workloads alive.
@@ -5961,10 +5949,6 @@ repos:
   - name: status-anxiety
     description: Status Anxiety | Alain de Botton | Diagnoses the modern roots of status anxiety and seeks remedies across philosophy, art, politics, religion, and the bohemian tradition.
     url: https://github.com/nplus-father/status-anxiety
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
-  - name: status-anxiety-book
-    description: Status Anxiety | Alain de Botton | A humanistic reflection on the causes of status anxiety in modern society and the possibilities of dissolving it, blending philosophy, art, and cultural critique.
-    url: https://github.com/nplus-father/status-anxiety-book
     topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: stay-the-course
     description: "Stay the Course: The Story of Vanguard and the Index Revolution | John C. Bogle | Vanguard's founder recounts how a mutual ownership structure and the first index fund reshaped the fund industry, and why low costs and staying invested remain the individual investor's most dependable edge."
