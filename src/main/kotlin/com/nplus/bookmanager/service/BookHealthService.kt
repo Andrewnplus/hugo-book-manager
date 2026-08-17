@@ -1,5 +1,6 @@
 package com.nplus.bookmanager.service
 
+import com.nplus.bookmanager.util.ProcessRunner
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonArray
@@ -39,6 +40,8 @@ class BookHealthService(
         const val THIN_CHARS = 8_000
         const val WATCH_CHARS = 15_000
 
+        private val ISO_DATE = Regex("""\d{4}-\d{2}-\d{2}""")
+
         /**
          * Frontmatter runs to the second `---` line. A `---` inside the body
          * (a horizontal rule) still increments the counter and is itself never
@@ -65,6 +68,8 @@ class BookHealthService(
         val leaf: String,
         val chars: Int,
         val pages: Int,
+        /** ISO date of the last commit touching the chapters; null if unknown. */
+        val lastWritten: String? = null,
     ) {
         val density: Int get() = if (pages == 0) 0 else (chars + pages / 2) / pages
 
@@ -107,6 +112,7 @@ class BookHealthService(
                                 leaf = leaf.name,
                                 chars = pages.sumOf { bodyChars(it) },
                                 pages = pages.size,
+                                lastWritten = lastWritten(repo),
                             )
                     }
                 }
@@ -117,6 +123,34 @@ class BookHealthService(
 
     private fun File.listDirs(): List<File> =
         listFiles()?.filter { it.isDirectory && !it.name.startsWith(".") }?.sortedBy { it.name } ?: emptyList()
+
+    /**
+     * Date of the last commit that touched the chapters, so a thin book that is
+     * being actively written can be told apart from one abandoned two years ago
+     * — the dashboard treats those identically on character count alone.
+     *
+     * Scoped to `site/content/docs` on purpose: fleet-wide chores (dependency
+     * bumps, the frontmatter migration, cover re-encoding) touch every repo and
+     * would otherwise make every book look freshly worked on. File mtimes are
+     * useless here for the same reason.
+     *
+     * Author date, not committer date: a rebase rewrites the latter, and these
+     * repos do get rebased onto their remote, which would date a book to the
+     * rebase rather than to when it was written.
+     */
+    private fun lastWritten(repoDir: File): String? {
+        val result =
+            ProcessRunner.execute(
+                "git log -1 --format=%aI -- site/content/docs",
+                workingDir = repoDir,
+                timeoutSeconds = 15,
+            )
+        if (!result.success) return null
+        return result.stdout
+            .trim()
+            .take(10)
+            .takeIf { it.matches(ISO_DATE) }
+    }
 
     /** Write the derived artifact with stable ordering for clean git diffs. */
     fun save(books: List<Book>) {
@@ -151,6 +185,7 @@ class BookHealthService(
             put("pages", b.pages)
             put("density", b.density)
             put("tier", b.tier)
+            b.lastWritten?.let { put("lastWritten", it) }
         }
 
     private val prettyJson = Json { prettyPrint = true }

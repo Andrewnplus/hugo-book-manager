@@ -101,6 +101,49 @@ class BookHealthServiceTest {
         assertEquals("ok", tierOf(15_000))
     }
 
+    // ==================== lastWritten ====================
+
+    @Test
+    fun `lastWritten reflects the last commit touching chapters, not the repo`() {
+        book("dated", "01/_index.md" to "aaa")
+        val repo = File(books, "craft/engineering/coding-practice/dated")
+
+        fun git(vararg args: String) =
+            ProcessBuilder(listOf("git") + args)
+                .directory(repo)
+                .redirectErrorStream(true)
+                .start()
+                .waitFor()
+
+        git("init", "-q")
+        git("config", "user.email", "t@example.com")
+        git("config", "user.name", "t")
+        git("config", "commit.gpgsign", "false")
+        git("add", "-A")
+        git(
+            "-c",
+            "core.hooksPath=/dev/null",
+            "commit",
+            "-q",
+            "-m",
+            "chapters",
+            "--date",
+            "2024-03-05T10:00:00+08:00",
+        )
+        // A later commit that leaves the chapters alone must not count as writing.
+        File(repo, "README.md").writeText("fleet-wide chore\n")
+        git("add", "-A")
+        git("-c", "core.hooksPath=/dev/null", "commit", "-q", "-m", "chore")
+
+        assertEquals("2024-03-05", service().scan().single().lastWritten)
+    }
+
+    @Test
+    fun `a repo without git history reports no lastWritten`() {
+        book("no-git", "01/_index.md" to "aaa")
+        assertEquals(null, service().scan().single().lastWritten)
+    }
+
     // ==================== save() ====================
 
     @Test
