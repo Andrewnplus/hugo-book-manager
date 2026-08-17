@@ -3362,10 +3362,6 @@ repos:
     description: Keep Your Love On | Danny Silk | Explores how the three pillars of connection, communication, and boundaries equip us to keep choosing love over fear and to build relationships that last.
     url: https://github.com/nplus-father/keep-your-love-on
     topics: [hugobook, leaf-dating, nplus-kind-book, nplus-portal, sub-relationships, top-personal]
-  - name: kiss-your-but-good-bye
-    description: "Kiss Your But Good-Bye | Joseph Azelby & Robert Azelby | Identifies the hidden \"but\" that stalls careers—the personal flaw that follows compliments—and offers a ten-step program to surface it, own it, and shed it with help from honest peers and managers."
-    url: https://github.com/nplus-father/kiss-your-but-good-bye
-    topics: [hugobook, leaf-skill-building, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: knack
     description: "The Knack | Norm Brodsky & Bo Burlingham | A serial entrepreneur's street-smart playbook using real cases to teach the practical mechanics of cash flow, negotiation, and culture for handling whatever a business throws at you."
     url: https://github.com/nplus-father/knack

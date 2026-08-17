@@ -32,7 +32,6 @@
 
 | 書名 | Repo 路徑 | 總字元 | 每頁均 | 找書連結 |
 |---|---|---:|---:|---|
-| Kiss Your BUT Good-Bye | `professional/career/skill-building/kiss-your-but-good-bye` | 6,521 | 116 | [kiss+your+but+good-bye](https://oceanofpdf.com/?s=kiss+your+but+good-bye) |
 | 說話的品格 | `professional/communication/persuasion/dignity-of-speaking` | 6,648 | 229 | [Readmoo](https://readmoo.com/book/210330713000101) ·韓 |
 
 ### 第二優先｜內容稀薄（總字元 < 8,000）
@@ -149,6 +148,16 @@
 `qbq-question-behind-question`, `steal-like-an-artist`, `adversity-quotient`, `deep-work`, `when-breath-becomes-air`, `aging`, `charisma-myth`, `mckinsey-writing-technique`, `so-good-they-cant-ignore-you`, `theory-and-practice-of-counseling-and-psychotherapy`, `29-pawn-tickets`, `grid-notebook`, `humble-inquiry`, `end-of-average`, `do-over`, `how-to-make-anyone-fall-in-love-with-you`, `course-of-love`, `own-your-tech-career`, `keep-your-love-on`, `bonhoeffer-spiritual-care-in-a-religionless-age`, `what-every-body-is-saying`, `orthodoxy`, `how-to-win-in-a-winner-take-all-world`, `god-is-closer-than-you-think`, `eat-this-book`, `thats-not-what-i-meant`, `power-of-the-other`, `speed-of-trust`, `home-tonight`, `if-you-want-to-walk-on-water-you-have-got-to-get-out-of-the`, `living-loving-and-learning`, `myself-and-other-more-important-matters`, `intuition-pumps`
 
 ---
+
+## 🗑️ 已刪 repo 紀錄（2026-08-17，remote `nplus-father` ＋ local 一併刪，不重做）
+
+| 書名 | slug | 總字元 | 每頁均 | 刪除原因 |
+|---|---|---:|---:|---|
+| Kiss Your BUT Good-Bye | `kiss-your-but-good-bye` | 6,521 | 116 | 找不到資料、無法重做 |
+
+> 原分類 `professional/career/skill-building/`。內容並非空殼——首頁有完整「改善行動十步驟」，
+> 內文為 47 個職場隱形缺點條目（分 admit／discover／fight／observe／persist 五章，每條 130–500 字元）。
+> 每頁均 116 偏低是**書本形式本來就是短條目**所致，不是骨架化。刪除前已備份內文與封面。
 
 ## 🗑️ 已刪 repo 紀錄（2026-07-11，remote `nplus-father` ＋ local 一併刪，不重做）
 
