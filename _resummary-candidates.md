@@ -1,5 +1,15 @@
 # Bookstown 摘要重做候選清單
 
+> [!IMPORTANT]
+>
+> **數字不再由這份檔案維護。** 哪些書太薄、薄多少，改看 <https://nplus.wiki/health/>；
+> 門檻的唯一正本是 `BookHealthService`（`NEAR_EMPTY_DENSITY` / `THIN_CHARS` / `WATCH_CHARS`），
+> 由 `./gradlew refreshBookHealth` 產生 portal 的 `src/data/health.json`。
+>
+> 這份檔案保留的是**儀表板算不出來的人工判斷**：找書連結、`📄` PDF 是否到位、
+> 🗑️ 刪除／換源的裁決、以及已刪 repo 的歷史紀錄。下方表格中的字數欄位是
+> 2026-08-17 的快照，僅供對照，不要據以更新。
+
 > 重新盤點 2026-08-17・掃描 `books-done` 下 **1,758** 個 repo（已排除 build 產物、template、tmp）。
 > 判準：**總字元**（整本 MD body 量）＋**每頁均**（總字元÷章節頁數）。全庫中位數：總字元 66,916、每頁均 3,512；p10：總字元 24,255、每頁均 1,277。
 > 本輪 vs 2026-07-12：**11 本通過門檻移出**、**1 本新入榜**（🆕）、**1 本已刪**（`kiss-your-but-good-bye`）。目前待處理 **74 本**。
