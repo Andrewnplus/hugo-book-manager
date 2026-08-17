@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-08-17T20:07:28.702364161+08:00"
+last_updated: "2026-08-17T20:17:49.975093112+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -561,7 +561,7 @@ repos:
   - name: art-of-the-good-life
     description: The Art of the Good Life | Rolf Dobelli | The Swiss writer fuses Stoicism, behavioral economics, and practical wisdom into 52 mental tools for making better judgments and living more lightly in an uncertain world.
     url: https://github.com/nplus-father/art-of-the-good-life
-    topics: [hugobook, leaf-stoicism, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
+    topics: [hugobook, leaf-stoicism, nplus-kind-book, nplus-portal, sub-philosophy, tag-primer, top-wisdom]
   - name: art-of-the-start
     description: "The Art of the Start | Guy Kawasaki | A hands-on guide to the entire startup arc, beginning from the act of \"making meaning\" and walking through every key phase of building a new venture."
     url: https://github.com/nplus-father/art-of-the-start
@@ -1581,7 +1581,7 @@ repos:
   - name: dictionary-of-the-later-new-testament
     description: Dictionary of the Later New Testament & Its Developments | Ralph P. Martin & Peter H. Davids (eds.) | An IVP encyclopedic dictionary covering Acts through Revelation and the Apostolic Fathers, organizing the theological themes and historical context of the later New Testament.
     url: https://github.com/nplus-father/dictionary-of-the-later-new-testament
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
   - name: die-empty
     description: "Die Empty | Todd Henry | An exploration of how to convert inner potential into meaningful contribution—so your best work doesn't follow you to the grave."
     url: https://github.com/nplus-father/die-empty
@@ -1737,7 +1737,7 @@ repos:
   - name: ego-is-the-enemy
     description: Ego Is the Enemy | Ryan Holiday | A Stoicism-flavored field manual that traces how unchecked ego sabotages people in the three phases of any career — aspiration, success, and failure — and what to do instead.
     url: https://github.com/nplus-father/ego-is-the-enemy
-    topics: [hugobook, leaf-stoicism, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, tag-primer, top-personal]
+    topics: [hugobook, leaf-stoicism, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
   - name: elements-of-investing
     description: The Elements of Investing | Burton G. Malkiel & Charles D. Ellis | Two investing veterans distill a lifetime of saving and investing principles into the leanest possible primer.
     url: https://github.com/nplus-father/elements-of-investing
@@ -1937,7 +1937,7 @@ repos:
   - name: ezra-nehemiah-esther-for-everyone
     description: "Ezra, Nehemiah, and Esther for Everyone | John Goldingay | A pastoral, passage-by-passage walkthrough of the post-exilic books, drawing out how God's people rebuild faith, community, and identity under foreign rule."
     url: https://github.com/nplus-father/ezra-nehemiah-esther-for-everyone
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-primer, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-primer, tag-toolbox, top-faith]
   - name: factfulness
     description: Factfulness | Hans Rosling | Uses data to dismantle ten dramatized instincts and reveal that the world is far better than we tend to imagine.
     url: https://github.com/nplus-father/factfulness
@@ -2253,7 +2253,7 @@ repos:
   - name: genesis-waltke
     description: "Genesis: A Commentary | Bruce K. Waltke | A literary-theological commentary that structures Genesis around its ten ʿaccountsʾ (toledot), unfolding creation, fall, election, and covenant as the inaugural drama of redemptive history."
     url: https://github.com/nplus-father/genesis-waltke
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
   - name: gentleman-timeless-guide-to-fashion
     description: "Gentleman: A Timeless Guide to Fashion | Bernhard Roetzel | A comprehensive reference to classic menswear — shirts, suits, shoes, ties, and accessories — teaching men the enduring principles of dressing well for any occasion."
     url: https://github.com/nplus-father/gentleman-timeless-guide-to-fashion
@@ -3253,11 +3253,11 @@ repos:
   - name: ivp-bible-background-commentary-nt
     description: IVP 聖經背景註釋：新約 | Craig S. Keener | 逐卷提供新約福音書、使徒行傳、書信至啟示錄的文化歷史背景註釋
     url: https://github.com/nplus-father/ivp-bible-background-commentary-nt
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
   - name: ivp-bible-background-commentary-ot
     description: "The IVP Bible Background Commentary: Old Testament | John H. Walton, Victor H. Matthews & Mark W. Chavalas | A verse-by-verse reference that illuminates the Old Testament against its ancient Near Eastern historical, cultural, and religious background."
     url: https://github.com/nplus-father/ivp-bible-background-commentary-ot
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
   - name: j-i-packer-his-life-and-thought
     description: 全民神學家巴刻：從認識神到事奉神 | Alister McGrath | 透過巴刻求學與任教歷程，刻劃這位牧者學人的生命與神學思想
     url: https://github.com/nplus-father/j-i-packer-his-life-and-thought
@@ -3957,211 +3957,211 @@ repos:
   - name: message-of-1-2-thessalonians
     description: "The Message of 1 & 2 Thessalonians | John Stott | Stott expounds the gospel and the church in 1 Thessalonians and a Christian view of history — Christ's return and Christian responsibility — in 2 Thessalonians."
     url: https://github.com/nplus-father/message-of-1-2-thessalonians
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-1-corinthians
     description: The Message of 1 Corinthians | David Prior | Using the cross as the central lens, Prior dissects Corinthian factionalism, ethics, and worship disputes, modeling how to live a unified yet holy church life in plural contemporary contexts.
     url: https://github.com/nplus-father/message-of-1-corinthians
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-1-peter
     description: "The Message of 1 Peter | Edmund Clowney | Anchored in the identity theology of \"strangers and exiles,\" Clowney brings deep OT connections and a Reformed redemptive-history perspective to the ethics of suffering and Christian hope in a hostile world."
     url: https://github.com/nplus-father/message-of-1-peter
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-1-timothy-titus
     description: "The Message of 1 Timothy & Titus | John Stott | Stott's exposition of Paul's letters to young church leaders, focused on guarding sound doctrine, eldership qualifications, and the practice of godly life—biblical foundations for present-day ministry leaders."
     url: https://github.com/nplus-father/message-of-1-timothy-titus
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-2-corinthians
     description: "The Message of 2 Corinthians | Paul Barnett | Anchored on \"power in weakness,\" Barnett traces seven years of entanglement between Paul and Corinth—NT theology, apostolic apologetic, and the logic of the cross under one frame."
     url: https://github.com/nplus-father/message-of-2-corinthians
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-2-peter-jude
     description: The Message of 2 Peter & Jude | Dick Lucas & Christopher Green | Defends authentic Christian truth against false teaching, urging believers to remember the apostolic message and contend for the faith.
     url: https://github.com/nplus-father/message-of-2-peter-jude
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-acts
     description: "The Message of Acts | John Stott | Using Acts 1:8 as the table of contents, Stott traces the gospel radiating from Jerusalem to Rome and applies the text squarely to the life of the contemporary church."
     url: https://github.com/nplus-father/message-of-acts
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-amos
     description: "The Message of Amos | Alec Motyer | Built around \"the Lord roars,\" Motyer reads Amos as a literary structure that funnels from judgment on the nations down onto the covenant people, finally pointing to the Messianic hope of the rebuilt tabernacle of David."
     url: https://github.com/nplus-father/message-of-amos
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-chronicles
     description: "The Message of Chronicles | Michael Wilcock | Presents Chronicles as the Chronicler's pastoral retelling — David the warrior, Solomon the peacemaker and the kings — calling a restored people to worship and continuity."
     url: https://github.com/nplus-father/message-of-chronicles
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-colossians-philemon
     description: The Message of Colossians & Philemon | Dick Lucas | Sets out the supremacy and sufficiency of Christ against every rival, then shows the gospel reshaping relationships in Philemon.
     url: https://github.com/nplus-father/message-of-colossians-philemon
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-daniel
     description: "The Message of Daniel | Ronald S. Wallace | Reads Daniel's narratives and visions as the proclamation that, amid pagan empires, the Lord is King and his kingdom will finally prevail."
     url: https://github.com/nplus-father/message-of-daniel
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-deuteronomy
     description: "The Message of Deuteronomy | Raymond Brown | Expounds Moses' covenant sermons — introducing, expounding, applying, confirming and sharing the covenant — as a call to wholehearted love and obedience to God."
     url: https://github.com/nplus-father/message-of-deuteronomy
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-ecclesiastes
     description: "The Message of Ecclesiastes | Derek Kidner | The IVP Bible Speaks Today exposition reads Qoheleth as an apologist who stands inside the secularist's own footing, pressing from \"under the sun\" emptiness to the bedrock of fearing God."
     url: https://github.com/nplus-father/message-of-ecclesiastes
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-ephesians
     description: The Message of Ephesians | John Stott | The Bible Speaks Today exposition by its New Testament editor, reading Ephesians as God building a new community through Christ in the old world—from new life and new society to new standards and new relationships.
     url: https://github.com/nplus-father/message-of-ephesians
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-esther
     description: "The Message of Esther | David G. Firth | Reads Esther's reversals and hidden providence — God in the passive voice — as a drama of deliverance for his people in a hostile empire."
     url: https://github.com/nplus-father/message-of-esther
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-exodus
     description: "The Message of Exodus | Alec Motyer | Anchored on the covenant God and the Passover Lamb, Motyer unfolds Yahweh's redemptive self-revelation as Savior, Covenant Maker, and Indwelling Presence—the OT counterpart to Matthew."
     url: https://github.com/nplus-father/message-of-exodus
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-ezekiel
     description: "The Message of Ezekiel | Christopher J. H. Wright | Traces Ezekiel from the departing glory through judgment to the gospel of new hearts and a restored people, ending with God's glory returning."
     url: https://github.com/nplus-father/message-of-ezekiel
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-ezra-and-haggai
     description: "The Message of Ezra & Haggai | Robert Fyall | A twin-tracked exposition built around the rebuilding of the temple, pairing Ezra's historical narrative with Haggai's prophetic message to show God's post-exilic people restarting in covenant, worship, and hope."
     url: https://github.com/nplus-father/message-of-ezra-and-haggai
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-galatians
     description: "The Message of Galatians | John Stott | Stott's classic exposition of justification by faith alone and Christian freedom, defending the one true gospel against legalism."
     url: https://github.com/nplus-father/message-of-galatians
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-genesis-bst
     description: The Message of Genesis | David Atkinson & Joyce G. Baldwin | A two-volume Bible Speaks Today exposition of Genesis—Atkinson on chapters 1–11 (creation, fall, flood, Babel) and Baldwin on 12–50 (the patriarchs from Abraham to Joseph)—weaving theological reflection into the narrative.
     url: https://github.com/nplus-father/message-of-genesis-bst
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-hebrews
     description: The Message of Hebrews | Raymond Brown | Presents Christ as the supreme Son and great High Priest whose finished work calls believers to persevere in faith, hope and love.
     url: https://github.com/nplus-father/message-of-hebrews
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-hosea
     description: "The Message of Hosea | Derek Kidner | Hears in Hosea's broken marriage God's wounded, relentless love — how can I give you up? — calling a faithless people home."
     url: https://github.com/nplus-father/message-of-hosea
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-isaiah
     description: The Message of Isaiah | Barry G. Webb | Reads Isaiah as a unified vision of the Holy One — the Lord as King, Lord of the nations and the triumph of grace — moving from judgment to new creation.
     url: https://github.com/nplus-father/message-of-isaiah
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-james
     description: The Message of James | Alec Motyer | Reads James as the structure of a sermon, walking from new birth through growth to the fruit of faith, showing how the path of holiness gets lived out in the world and in human relationships.
     url: https://github.com/nplus-father/message-of-james
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-jeremiah
     description: "The Message of Jeremiah | Derek Kidner & Hywel R. Jones | Joining historical context with pastoral sensibility, the exposition holds Jeremiah's lament, declaration, and hope together, recovering a counter-current prophet against the backdrop of his turbulent end-times."
     url: https://github.com/nplus-father/message-of-jeremiah
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-job
     description: "The Message of Job | David J. Atkinson | Walks through Job's wager, the friends' speeches and the Lord's answer, wrestling honestly with innocent suffering and the wisdom of God."
     url: https://github.com/nplus-father/message-of-job
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-joel-micah-habakkuk
     description: "The Message of Joel, Micah & Habakkuk | David Prior | A combined Bible Speaks Today exposition of three Minor Prophets, themed on \"listening to God in disaster, in rebellion, in destruction,\" using the tension between marketplace and sanctuary as the entry point."
     url: https://github.com/nplus-father/message-of-joel-micah-habakkuk
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-john
     description: "The Message of John | Bruce Milne | Expounds John's gospel of the incarnate King — his pre-incarnate, incarnate and risen ministry — calling readers to believe and have life."
     url: https://github.com/nplus-father/message-of-john
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-johns-letters
     description: "The Message of John's Letters | David Jackman | Expounds John's letters around the tests of life — truth, love and obedience — giving assurance of eternal life to God's children."
     url: https://github.com/nplus-father/message-of-johns-letters
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-jonah
     description: The Message of Jonah | Rosemary Nixon | Reads Jonah as a probing story of the reluctant prophet and the consistent, merciful God whose compassion reaches even Nineveh.
     url: https://github.com/nplus-father/message-of-jonah
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-joshua
     description: The Message of Joshua | David G. Firth | Shows how Yahweh gives the land and shapes a people, weaving conquest, covenant and the inclusion of outsiders into a theology of faithful obedience.
     url: https://github.com/nplus-father/message-of-joshua
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-judges
     description: "The Message of Judges | Michael Wilcock | Follows the downward spiral of the judges — from Ehud to Samson — exposing Israel's recurring apostasy and Yahweh's persistent grace amid moral chaos."
     url: https://github.com/nplus-father/message-of-judges
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-kings
     description: "The Message of Kings | John W. Olley | Reads Kings from Solomon's glory to exile as a theological history of leadership, prophecy and covenant — judgment tempered by a glimmer of hope in Babylon."
     url: https://github.com/nplus-father/message-of-kings
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-lamentations
     description: "The Message of Lamentations | Christopher J. H. Wright | Enters the raw grief of Lamentations as prayers in the dark, holding honest lament and stubborn hope together after Jerusalem's fall."
     url: https://github.com/nplus-father/message-of-lamentations
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-leviticus
     description: "The Message of Leviticus | Derek Tidball | Reads Leviticus as six handbooks on living in God's presence — sacrifice, priesthood, purity, atonement, holiness and devotion — recovering its gospel logic for today."
     url: https://github.com/nplus-father/message-of-leviticus
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-luke
     description: The Message of Luke | Michael Wilcock | 透過救主的降臨、作為、話語到走向十字架，闡釋路加福音的信息
     url: https://github.com/nplus-father/message-of-luke
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-malachi
     description: "The Message of Malachi | Peter Adam | The Bible Speaks Today exposition reads the Old Testament's last book as a dialogue—God speaking, his people answering back—addressing \"spiritual sloppiness,\" the church state that is neither zealous nor openly rebellious."
     url: https://github.com/nplus-father/message-of-malachi
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-mark
     description: "The Message of Mark | Donald English | Reads Mark's fast-moving gospel of the suffering Son of God, pressing the question of who Jesus is and what discipleship costs."
     url: https://github.com/nplus-father/message-of-mark
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-matthew
     description: "The Message of Matthew | Michael Green | Follows Matthew's portrait of Jesus the King and his kingdom from Galilee to Jerusalem, structured around the five great discourses."
     url: https://github.com/nplus-father/message-of-matthew
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-nehemiah
     description: The Message of Nehemiah | Raymond Brown | Studies Nehemiah the servant-leader rebuilding both wall and community, modelling prayer, strategy and covenant renewal under opposition.
     url: https://github.com/nplus-father/message-of-nehemiah
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-numbers
     description: "The Message of Numbers | Raymond Brown | Traces Israel's wilderness journey through five movements — preparation, setting out, shrinking back, wavering and pressing on — as a study in faith, leadership and obedience."
     url: https://github.com/nplus-father/message-of-numbers
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-obadiah-nahum-zephaniah
     description: "The Message of Obadiah, Nahum and Zephaniah | Gordon Bridger | Expounds three prophets of judgment and hope, asking who rules history and how God's justice and mercy meet the nations and his people."
     url: https://github.com/nplus-father/message-of-obadiah-nahum-zephaniah
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-philippians
     description: "The Message of Philippians | Alec Motyer | The Bible Speaks Today exposition by its New Testament editor, with the subtitle \"Jesus Our Joy\" capturing the book's center—gathering unity, ministry, attack, and return into the fullness of Christ himself."
     url: https://github.com/nplus-father/message-of-philippians
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-proverbs
     description: The Message of Proverbs | David J. Atkinson | Frames Proverbs around the wisdom of God — its portrait, teachers, methods, foundations and practice — showing how the fear of the Lord shapes daily life.
     url: https://github.com/nplus-father/message-of-proverbs
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-psalms-1-72
     description: The Message of Psalms 1-72 | Michael Wilcock | Expounds Books I-II of the Psalter, tracing its shape and the journey of praise, lament and trust through the Davidic and Korahite collections.
     url: https://github.com/nplus-father/message-of-psalms-1-72
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-psalms-73-150
     description: "The Message of Psalms 73-150 | Michael Wilcock | Completes the Psalter (Books III-V), following Israel's worship from exile's questions to the final crescendo of unbroken praise."
     url: https://github.com/nplus-father/message-of-psalms-73-150
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-revelation
     description: "The Message of Revelation | Michael Wilcock | Reads Revelation as a drama in eight scenes, unveiling Christ's victory over evil and the hope of the new Jerusalem for the suffering church."
     url: https://github.com/nplus-father/message-of-revelation
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-romans
     description: "The Message of Romans | John Stott | Stott reads Romans as a preacher, walking from God's righteousness and justification by faith through indwelling Spirit to church ethics—presenting the gospel's full theological argument and contemporary import."
     url: https://github.com/nplus-father/message-of-romans
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-ruth
     description: The Message of Ruth | David J. Atkinson | Unfolds Ruth in four movements — tears, refuge, redemption and joy — as a quiet drama of covenant love, providence and the kinsman-redeemer.
     url: https://github.com/nplus-father/message-of-ruth
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-samuel
     description: "The Message of Samuel | Mary J. Evans | Charts the rise of kingship through Hannah, Samuel, Saul and David, probing leadership, power and life lived within God's covenant."
     url: https://github.com/nplus-father/message-of-samuel
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: message-of-song-of-songs
     description: "The Message of the Song of Songs | Tom Gledhill | The Bible Speaks Today exposition deliberately swaps traditional allegorical readings for a naturalistic literary approach, celebrating human love, bodily beauty, and marital intimacy within the Bible's whole-cloth theology of creation."
     url: https://github.com/nplus-father/message-of-song-of-songs
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: message-of-zechariah
     description: "The Message of Zechariah | Barry Webb | The Bible Speaks Today exposition reads the post-exilic \"day of small things\" in Persian-era Yehud as a prelude to the kingdom's arrival, with \"thy kingdom come\" running through all fourteen chapters of vision and oracle."
     url: https://github.com/nplus-father/message-of-zechariah
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
   - name: metaphors-we-live-by
     description: Metaphors We Live By | George Lakoff & Mark Johnson | Shows that metaphor is not decorative language but the structure of thought itself, grounding our concepts, reasoning, and everyday experience in the body.
     url: https://github.com/nplus-father/metaphors-we-live-by
@@ -4457,7 +4457,7 @@ repos:
   - name: nt-use-of-ot-commentary
     description: Commentary on the New Testament Use of the Old Testament | G. K. Beale & D. A. Carson (eds.) | A book-by-book commentary on every NT quotation or allusion to the OT, examining the original context, NT usage, theological function, and hermeneutical method.
     url: https://github.com/nplus-father/nt-use-of-ot-commentary
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
   - name: nt-wright-and-the-revolutionary-cross
     description: "N.T. Wright and the Revolutionary Cross: A Reader's Guide to The Day the Revolution Began | Derek Vreeland | A reader's guide walking through N. T. Wright's The Day the Revolution Began, unpacking his covenantal reading of the cross chapter by chapter."
     url: https://github.com/nplus-father/nt-wright-and-the-revolutionary-cross
@@ -6165,7 +6165,7 @@ repos:
   - name: tdnt-abridged
     description: "Theological Dictionary of the New Testament (Abridged) | Gerhard Kittel & Gerhard Friedrich (eds.), abridged by Geoffrey W. Bromiley | A single-volume condensation of Kittel and Friedrich's ten-volume TDNT, tracing each Greek keyword's semantic arc from classical Greek through the LXX, Jewish literature, the New Testament, and the early Fathers."
     url: https://github.com/nplus-father/tdnt-abridged
-    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-commentary, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-toolbox, top-faith]
   - name: teaching-technique
     description: 教學的技術 | 福哥（王永福） | 從觀念到實戰，系統化拆解把課「教好」的職業級教學技術。
     url: https://github.com/nplus-father/teaching-technique
@@ -6501,7 +6501,7 @@ repos:
   - name: uncommon-grounds
     description: Uncommon Grounds | Mark Pendergrast | A sweeping social and economic history of coffee, tracing how the bean shaped empires, labor, commerce, and culture from its origins to the modern specialty revolution.
     url: https://github.com/nplus-father/uncommon-grounds
-    topics: [hugobook, leaf-coffee, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-food-drink, nplus-kind-book, nplus-portal, sub-lifestyle, top-personal]
   - name: unconventional-success
     description: "Unconventional Success | David F. Swensen | The Yale CIO's contrarian guide to personal investing — favoring core diversified asset classes and indexing over the broken mutual fund industry."
     url: https://github.com/nplus-father/unconventional-success
@@ -6977,7 +6977,7 @@ repos:
   - name: world-atlas-of-coffee
     description: "The World Atlas of Coffee | James Hoffmann | A definitive illustrated guide to coffee—from growing, processing, and trading to roasting, grinding, and brewing—plus a country-by-country tour of the world's coffee origins."
     url: https://github.com/nplus-father/world-atlas-of-coffee
-    topics: [hugobook, leaf-coffee, nplus-kind-book, nplus-portal, sub-tools, top-craft]
+    topics: [hugobook, leaf-food-drink, nplus-kind-book, nplus-portal, sub-lifestyle, top-personal]
   - name: world-class-work-methods-compiled
     description: 將世界菁英的工作方式整理成冊 | 金武貴 | 作者歷任投資銀行、企管顧問、資產管理與私募基金四大金融業界，將世界頂尖菁英的共通特質與十五個工作奧義彙整成冊，並延伸討論菁英的人際、愛情與生涯抉擇。
     url: https://github.com/nplus-father/world-class-work-methods-compiled
