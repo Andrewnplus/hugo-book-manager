@@ -87,6 +87,10 @@ registerCliTask("refreshGoalProgress", "Scan local clones and refresh the portal
     args = listOf("refresh-goal-progress")
 }
 
+registerCliTask("refreshBookHealth", "Scan local book clones and refresh the portal's content-health artifact") {
+    args = listOf("refresh-book-health")
+}
+
 registerCliTask("markRead", "Mark a book chapter as read (frontmatter read/readAt); omit chapter to list") {
     doFirst {
         val repo = project.findProperty("repo")?.toString() ?: error("usage: ./gradlew markRead -Prepo=<repo> [-Pchapter=<dir>]")

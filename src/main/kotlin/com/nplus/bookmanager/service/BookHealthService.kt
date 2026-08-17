@@ -1,0 +1,157 @@
+package com.nplus.bookmanager.service
+
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.buildJsonArray
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
+import java.io.File
+import java.time.OffsetDateTime
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
+
+/**
+ * Measures how much has actually been written in each book repo, and publishes
+ * the result as `src/data/health.json` in the portal (same derived-artifact
+ * pattern as `refreshGoalProgress`).
+ *
+ * The two metrics are the ones the library's own re-summary list has always
+ * used, and this implementation is calibrated to reproduce that list's numbers
+ * exactly — verified against dignity-of-speaking (6,648/29/229), zen-programmer,
+ * whats-left-without-your-business-card and learning-to-be-deceived:
+ *
+ *  - chars: every markdown file anywhere under `site/content/docs`, frontmatter
+ *    removed, whitespace KEPT. Stripping whitespace or folding in the home page
+ *    both break the correspondence with the thresholds below.
+ *  - pages: how many such files there are — the home `_index.md` is excluded.
+ *  - density = chars / pages, rounded. Total alone hides a book with many empty
+ *    chapters; density alone punishes books whose chapters are meant to be short.
+ */
+class BookHealthService(
+    private val booksDir: File,
+    private val portalDir: File,
+) {
+    val healthFile: File get() = File(portalDir, "src/data/health.json")
+
+    /** Tier thresholds carried over from `_resummary-candidates.md`. */
+    companion object {
+        const val NEAR_EMPTY_DENSITY = 250
+        const val THIN_CHARS = 8_000
+        const val WATCH_CHARS = 15_000
+
+        /**
+         * Frontmatter runs to the second `---` line. A `---` inside the body
+         * (a horizontal rule) still increments the counter and is itself never
+         * counted, which is what the reference implementation did.
+         */
+        fun bodyChars(file: File): Int {
+            var fence = 0
+            var total = 0
+            file.forEachLine { line ->
+                if (line.trim() == "---") {
+                    fence++
+                } else if (fence >= 2) {
+                    total += line.length + 1
+                }
+            }
+            return total
+        }
+    }
+
+    data class Book(
+        val slug: String,
+        val top: String,
+        val sub: String,
+        val leaf: String,
+        val chars: Int,
+        val pages: Int,
+    ) {
+        val density: Int get() = if (pages == 0) 0 else (chars + pages / 2) / pages
+
+        /** Which bucket of the re-summary queue this book falls in. */
+        val tier: String
+            get() =
+                when {
+                    density < NEAR_EMPTY_DENSITY -> "near-empty"
+                    chars < THIN_CHARS -> "thin"
+                    chars < WATCH_CHARS -> "watch"
+                    else -> "ok"
+                }
+    }
+
+    /**
+     * Walk `<booksDir>/<top>/<sub>/<leaf>/<slug>`. The depth is fixed rather
+     * than discovered: a shallower walk would sweep in the category folders
+     * themselves, and `migrate-topic-tiers` guarantees this shape.
+     */
+    fun scan(): List<Book> {
+        if (!booksDir.isDirectory) return emptyList()
+        val books = mutableListOf<Book>()
+        for (top in booksDir.listDirs()) {
+            for (sub in top.listDirs()) {
+                for (leaf in sub.listDirs()) {
+                    for (repo in leaf.listDirs()) {
+                        val docs = File(repo, "site/content/docs")
+                        if (!docs.isDirectory) continue
+                        val pages =
+                            docs
+                                .walkTopDown()
+                                .filter { it.isFile && it.extension == "md" }
+                                .toList()
+                        if (pages.isEmpty()) continue
+                        books +=
+                            Book(
+                                slug = repo.name,
+                                top = top.name,
+                                sub = sub.name,
+                                leaf = leaf.name,
+                                chars = pages.sumOf { bodyChars(it) },
+                                pages = pages.size,
+                            )
+                    }
+                }
+            }
+        }
+        return books.sortedBy { it.slug }
+    }
+
+    private fun File.listDirs(): List<File> =
+        listFiles()?.filter { it.isDirectory && !it.name.startsWith(".") }?.sortedBy { it.name } ?: emptyList()
+
+    /** Write the derived artifact with stable ordering for clean git diffs. */
+    fun save(books: List<Book>) {
+        val root =
+            buildJsonObject {
+                put(
+                    "\$comment",
+                    "DERIVED — generated by hugo-book-manager `./gradlew refreshBookHealth`. Do not edit by hand.",
+                )
+                put("generatedAt", OffsetDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+                put(
+                    "thresholds",
+                    buildJsonObject {
+                        put("nearEmptyDensity", NEAR_EMPTY_DENSITY)
+                        put("thinChars", THIN_CHARS)
+                        put("watchChars", WATCH_CHARS)
+                    },
+                )
+                put("books", buildJsonArray { for (b in books) add(bookJson(b)) })
+            }
+        healthFile.parentFile?.mkdirs()
+        healthFile.writeText(prettyJson.encodeToString(JsonObject.serializer(), root) + "\n")
+    }
+
+    private fun bookJson(b: Book): JsonObject =
+        buildJsonObject {
+            put("slug", b.slug)
+            put("top", b.top)
+            put("sub", b.sub)
+            put("leaf", b.leaf)
+            put("chars", b.chars)
+            put("pages", b.pages)
+            put("density", b.density)
+            put("tier", b.tier)
+        }
+
+    private val prettyJson = Json { prettyPrint = true }
+}
