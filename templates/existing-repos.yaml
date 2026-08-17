@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-08-17T20:17:49.975093112+08:00"
+last_updated: "2026-08-17T20:43:15.661596319+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -13,7 +13,7 @@ repos:
   - name: 100-baggers
     description: 100 Baggers | Christopher W. Mayer | Studies 365 stocks that returned 100-to-1 to extract the traits they shared — high returns on capital, long runways, owner-operators — and the patience required to hold them.
     url: https://github.com/nplus-father/100-baggers
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: 100-startup
     description: The $100 Startup | Chris Guillebeau | Case studies of microbusinesses launched on almost no capital, distilled into a one-page business plan, a compelling offer and a launch sequence anyone can copy.
     url: https://github.com/nplus-father/100-startup
@@ -81,7 +81,7 @@ repos:
   - name: 21-success-secrets-of-self-made
     description: The 21 Success Secrets of Self-Made Millionaires | Brian Tracy | Twenty-one habits and disciplines — dream big, see yourself self-employed, commit to excellence, lifelong learning — practiced by self-made wealthy.
     url: https://github.com/nplus-father/21-success-secrets-of-self-made
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: 21st-century-biblical-homiletics
     description: 21世紀聖經講道學 | 孫寶玲 | 為華人教會補上長期缺席的宣講學論述——從神學思考、釋經流程到十五篇完整講章示範，涵蓋宣講的整個生命路徑。
     url: https://github.com/nplus-father/21st-century-biblical-homiletics
@@ -193,7 +193,7 @@ repos:
   - name: 50-erfolgsmodelle
     description: The Decision Book | Mikael Krogerus & Roman Tschappeler | Fifty classic thinking models compiled into a pocket guide for finding direction in strategic decisions.
     url: https://github.com/nplus-father/50-erfolgsmodelle
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, tag-toolbox, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, tag-toolbox, top-personal]
   - name: 50-politics-classics
     description: 50 Politics Classics | Tom Butler-Bowdon | Surveys fifty seminal works of political thought, from Aristotle and Machiavelli to Hayek, Arendt, and Fukuyama, mapping the big ideas about power, freedom, and the state.
     url: https://github.com/nplus-father/50-politics-classics
@@ -353,7 +353,7 @@ repos:
   - name: aging
     description: Aging | Henri J. M. Nouwen & Walter J. Gaffney | A meditation on the meaning of growing old and the way of caring for the aging, transforming decline into a spiritual journey toward the light.
     url: https://github.com/nplus-father/aging
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-primer, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, tag-primer, top-wisdom]
   - name: alchemy-of-finance
     description: "The Alchemy of Finance | George Soros | Sets out the theory of reflexivity — that participants' biased views change the fundamentals they are judging — and tests it in a real-time trading experiment."
     url: https://github.com/nplus-father/alchemy-of-finance
@@ -389,7 +389,7 @@ repos:
   - name: allure-of-gentleness
     description: Allure of Gentleness | Dallas Willard | Defending the faith in manner of Jesus
     url: https://github.com/nplus-father/allure-of-gentleness
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: almanack-of-naval-ravikant
     description: "The Almanack of Naval Ravikant | Eric Jorgenson | A distillation of the Silicon Valley philosopher's thinking on wealth and happiness, covering leverage, specific knowledge, building judgment, and the inner work of arriving at peace and freedom."
     url: https://github.com/nplus-father/almanack-of-naval-ravikant
@@ -469,7 +469,7 @@ repos:
   - name: applied-therapeutics
     description: "Applied Therapeutics: The Clinical Use of Drugs | Caroline S. Zeind & Michael G. Carvalho | A case-based reference on rational drug therapy, integrating pathophysiology, assessment and clinical decision-making across all therapeutic areas."
     url: https://github.com/nplus-father/applied-therapeutics
-    topics: [hugobook, leaf-pharmacology, nplus-kind-book, nplus-portal, sub-science, top-wisdom]
+    topics: [hugobook, leaf-pharmacology, nplus-kind-reference, nplus-portal, sub-science, top-wisdom]
   - name: apprenticeship-patterns
     description: Apprenticeship Patterns | Dave Hoover & Adewale Oshineye | A pattern language for the growing software apprentice—a practical guide to walking the path from beginner to craftsman.
     url: https://github.com/nplus-father/apprenticeship-patterns
@@ -489,11 +489,11 @@ repos:
   - name: art-as-therapy
     description: "Art as Therapy | Alain de Botton & John Armstrong | Proposes that art is a tool for the mind's frailties, identifying seven functions art performs and applying them to love, nature, money, and politics."
     url: https://github.com/nplus-father/art-as-therapy
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: art-of-action
     description: "The Art of Thinking Clearly: Acting Wisely | Rolf Dobelli | The follow-up to The Art of Thinking Clearly: 52 common decision traps and action biases drawn from behavioral economics and cognitive psychology, each delivered with experiment, case, and practical advice."
     url: https://github.com/nplus-father/art-of-action
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
   - name: art-of-adult-decision-making
     description: 大人學選擇 | 姚詩豪、張國洋 | 透過理性思維框架拆解職涯、理財、創業、伴侶等人生重大選擇，幫助讀者建立系統性決策能力，學會在不確定中負責任地前行。
     url: https://github.com/nplus-father/art-of-adult-decision-making
@@ -573,11 +573,11 @@ repos:
   - name: art-of-thinking-clearly
     description: The Art of Thinking Clearly | Rolf Dobelli | Catalogs nearly a hundred cognitive biases in short, self-contained chapters with vivid real-world examples, helping readers spot and avoid the systematic errors that recur in everyday thinking.
     url: https://github.com/nplus-father/art-of-thinking-clearly
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
   - name: art-of-travel
     description: The Art of Travel | Alain de Botton | Pairs philosophers, painters, and poets with the stages of a journey to ask what we are really seeking when we travel, and why arrival so rarely matches anticipation.
     url: https://github.com/nplus-father/art-of-travel
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: art-of-unit-testing
     description: The Art of Unit Testing | Roy Osherove | A systematic command of unit testing—from definition to practice—and the strategies for introducing it across an organization.
     url: https://github.com/nplus-father/art-of-unit-testing
@@ -605,7 +605,7 @@ repos:
   - name: asking-the-right-questions
     description: Asking the Right Questions | M. Neil Browne & Stuart M. Keeley | A step-by-step framework of critical-thinking questions for evaluating issues, evidence, assumptions, and reasoning fallacies.
     url: https://github.com/nplus-father/asking-the-right-questions
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, tag-toolbox, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, tag-toolbox, top-personal]
   - name: asshole-survival-guide
     description: "The Asshole Survival Guide | Robert I. Sutton | Stanford organizational researcher's field guide to assessing, escaping, neutralizing, and counter-attacking workplace bullies — and to making sure you don't become one yourself."
     url: https://github.com/nplus-father/asshole-survival-guide
@@ -677,7 +677,7 @@ repos:
   - name: basic-clinical-pharmacology
     description: Basic & Clinical Pharmacology | Bertram G. Katzung & Todd W. Vanderah | A comprehensive, systems-based survey of drug action from basic principles through autonomic, cardiovascular, CNS, endocrine and chemotherapeutic agents.
     url: https://github.com/nplus-father/basic-clinical-pharmacology
-    topics: [hugobook, leaf-pharmacology, nplus-kind-book, nplus-portal, sub-science, top-wisdom]
+    topics: [hugobook, leaf-pharmacology, nplus-kind-reference, nplus-portal, sub-science, top-wisdom]
   - name: basic-economics
     description: Basic Economics | Thomas Sowell | A bestselling, jargon-free introduction that explains scarcity, prices, incentives, and the core logic of economics through real-world cases rather than equations or charts.
     url: https://github.com/nplus-father/basic-economics
@@ -725,7 +725,7 @@ repos:
   - name: beating-the-street
     description: "Beating the Street | Peter Lynch & John Rothchild | Lynch's case studies from running Fidelity Magellan—how to find undervalued companies in retail, real estate, S&Ls, cyclicals, and other ordinary corners of the market."
     url: https://github.com/nplus-father/beating-the-street
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: beautiful-architecture
     description: Beautiful Architecture | Diomidis Spinellis & Georgios Gousios | A collection of real-world cases from leading practitioners, ranging from enterprise applications to systems-level work, exploring what makes a software architecture truly beautiful.
     url: https://github.com/nplus-father/beautiful-architecture
@@ -793,7 +793,7 @@ repos:
   - name: biased
     description: "Biased | Jennifer L. Eberhardt | A Stanford psychologist's research on implicit racial bias — how it shapes policing, schools, neighborhoods, and corporate decisions, and what we can do about it."
     url: https://github.com/nplus-father/biased
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: biblical-critical-theory
     description: Biblical Critical Theory | Christopher Watkin | Using the biblical storyline as its frame, the book builds a Christian social theory for analyzing and critiquing contemporary culture.
     url: https://github.com/nplus-father/biblical-critical-theory
@@ -1021,7 +1021,7 @@ repos:
   - name: call
     description: "The Call | Os Guinness | An exploration of vocation, arguing that only by responding to the Creator's call do we find our deepest self and life's purpose—a question that goes far beyond work to the meaning of existence itself."
     url: https://github.com/nplus-father/call
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: call-sign-chaos
     description: Call Sign Chaos | Jim Mattis & Bing West | The 26th U.S. Secretary of Defense traces forty years in the Marine Corps across three stages—direct, executive, and strategic leadership—from company commander to combatant commander, distilling lessons on leading and learning.
     url: https://github.com/nplus-father/call-sign-chaos
@@ -1097,7 +1097,7 @@ repos:
   - name: chancing-it
     description: "Chancing It | Robert Matthews | A field guide to probability and risk that shows how a few core ideas — the Law of Averages, Bayes' theorem, and the Normal curve — sharpen everyday judgment."
     url: https://github.com/nplus-father/chancing-it
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
   - name: change-by-design
     description: "Change by Design | Tim Brown | The IDEO CEO's full account of design thinking, showing how human-centered creative methods solve business and social problems."
     url: https://github.com/nplus-father/change-by-design
@@ -1117,7 +1117,7 @@ repos:
   - name: changes-that-heal
     description: Changes That Heal | Henry Cloud | Examines four core developmental tasks—bonding, separating, sorting good and bad, and becoming an adult—as the path to inner growth and emotional healing.
     url: https://github.com/nplus-father/changes-that-heal
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-pastoral, nplus-kind-book, nplus-portal, sub-theology, tag-primer, tag-toolbox, top-faith]
   - name: changing-minds
     description: "Changing Minds: The Art and Science of Changing Our Own and Other People's Minds | Howard Gardner | Analyzes the mental levers—reason, research, resonance, representational redescription, and more—that shift how we and others think, and why some minds change while others resist."
     url: https://github.com/nplus-father/changing-minds
@@ -1189,7 +1189,7 @@ repos:
   - name: clear-thinking
     description: "Clear Thinking | Shane Parrish | Decomposes \"clear thinking\" into operational tools—seeing through default behaviors, building inner strengths, managing weaknesses, improving decision processes—and asks whether the destinations we're heading toward are worth reaching."
     url: https://github.com/nplus-father/clear-thinking
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
   - name: coaching-habit
     description: "The Coaching Habit: Say Less, Ask More & Change the Way You Lead Forever | Michael Bungay Stanier | Turns coaching into a daily managerial habit built on seven questions that keep the manager curious a little longer and slower to reach for advice."
     url: https://github.com/nplus-father/coaching-habit
@@ -1225,7 +1225,7 @@ repos:
   - name: common-stocks-and-uncommon-profits
     description: Common Stocks and Uncommon Profits | Philip Fisher | The classic methodology from the father of growth investing, distilling fifteen evaluation points for identifying truly outstanding businesses worth holding for the long run.
     url: https://github.com/nplus-father/common-stocks-and-uncommon-profits
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: communication-methods
     description: 溝通的方法 | 脫不花 | 以「得到」溝通訓練營三萬名同學的共創經驗為底，將溝通視為自我塑造的「無限遊戲」，拆解 18 個高頻場景並提供可即時調用的話術工具箱。
     url: https://github.com/nplus-father/communication-methods
@@ -1253,7 +1253,7 @@ repos:
   - name: complete-guide-to-futures-markets
     description: A Complete Guide to the Futures Market | Jack D. Schwager | Schwager combines thirty years of interviewing top traders with his own research-director experience to build a complete analytical and disciplinary framework for futures speculators across technicals, systems, fundamentals, options, spreads, and trading principles.
     url: https://github.com/nplus-father/complete-guide-to-futures-markets
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-toolbox, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-toolbox, top-professional]
   - name: compound-effect
     description: "The Compound Effect | Darren Hardy | Built on the principle that a series of small, smart choices accumulating over time produces outsized returns, the book debunks shortcut myths and returns to five fundamentals: choices, habits, momentum, influences, and acceleration."
     url: https://github.com/nplus-father/compound-effect
@@ -1281,7 +1281,7 @@ repos:
   - name: consolations-of-philosophy
     description: The Consolations of Philosophy | Alain de Botton | Six Western philosophers paired with six modern miseries—unpopularity, lack of money, frustration, inadequacy, heartbreak, difficulty—restoring philosophy as a practical balm for everyday life.
     url: https://github.com/nplus-father/consolations-of-philosophy
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
   - name: contagious
     description: Contagious | Jonah Berger | Distils six principles — social currency, triggers, emotion, public, practical value, and stories — that explain why some ideas and products spread while others die quietly.
     url: https://github.com/nplus-father/contagious
@@ -1313,11 +1313,11 @@ repos:
   - name: counterfeit-gods
     description: Counterfeit Gods | Timothy Keller | Surfaces the hidden idols of the modern heart and points back to the only God who can actually satisfy.
     url: https://github.com/nplus-father/counterfeit-gods
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
   - name: courage-to-be-disliked
     description: The Courage to Be Disliked | Ichiro Kishimi & Fumitake Koga | A Socratic dialogue that brings Adlerian psychology to life, exploring how separating tasks and cultivating community feeling lead to genuine freedom and happiness.
     url: https://github.com/nplus-father/courage-to-be-disliked
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
   - name: courage-to-be-happy
     description: The Courage to Be Happy | Ichiro Kishimi & Fumitake Koga | Continues the Adlerian dialogue, focused on the practical struggles of education, and ends with love as the final task of self-reliance and happiness.
     url: https://github.com/nplus-father/courage-to-be-happy
@@ -1357,7 +1357,7 @@ repos:
   - name: critical-thinking-concepts-and-tools
     description: "Critical Thinking: Concepts and Tools | Richard Paul & Linda Elder | Systematically dissects the structure of thought, offering a complete framework and practical tools for analyzing and evaluating reasoning."
     url: https://github.com/nplus-father/critical-thinking-concepts-and-tools
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-toolbox, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-toolbox, top-personal]
   - name: cross-and-the-prodigal
     description: The Cross and the Prodigal | Kenneth E. Bailey | Reads Luke 15 through the eyes of Middle Eastern peasants, opening the parable of the prodigal son as a drama of costly fatherly love and the cross.
     url: https://github.com/nplus-father/cross-and-the-prodigal
@@ -1365,7 +1365,7 @@ repos:
   - name: cross-of-christ
     description: "The Cross of Christ | John Stott | A magisterial defence of substitutionary atonement that walks from the centrality of the cross through forgiveness, satisfaction, salvation, and life under the cross — Stott's most beloved theological work."
     url: https://github.com/nplus-father/cross-of-christ
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-classic, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-brick, tag-classic, top-faith]
   - name: crossing-the-chasm
     description: "Crossing the Chasm | Geoffrey A. Moore | Silicon Valley's marketing classic, exposing the chasm disruptive innovations face when moving from early to mainstream markets and laying out a complete D-Day-style concentrated strategy for crossing it."
     url: https://github.com/nplus-father/crossing-the-chasm
@@ -1453,7 +1453,7 @@ repos:
   - name: death
     description: Death | Shelly Kagan | An accessible philosophical investigation into the nature, badness, and ethics of death — defending physicalism, denying the soul, and asking how mortality should change how we live.
     url: https://github.com/nplus-father/death
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: debunkery
     description: "Debunkery | Ken Fisher | Fifty common investing myths — from 'bonds are safer than stocks' to 'sell in May' — dismantled with data so investors can avoid costly mistakes."
     url: https://github.com/nplus-father/debunkery
@@ -1485,7 +1485,7 @@ repos:
   - name: denial-of-the-soul
     description: Denial of the Soul | M. Scott Peck | A psychiatric and spiritual case against euthanasia, examining physical and emotional pain, secularism, and the meaning of dying well.
     url: https://github.com/nplus-father/denial-of-the-soul
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: dependency-injection
     description: "Dependency Injection: Principles, Practices, and Patterns | Steven van Deursen & Mark Seemann | The most comprehensive reference on dependency injection: core principles, a catalog of patterns and anti-patterns, Pure DI practice, and DI container comparisons—using the .NET ecosystem as the example for loosely coupled software design."
     url: https://github.com/nplus-father/dependency-injection
@@ -1529,7 +1529,7 @@ repos:
   - name: desiring-god
     description: "Desiring God | John Piper | Argues that God is most glorified in us when we are most satisfied in him, and traces this 'Christian Hedonism' through worship, scripture, prayer, money, marriage, missions, and suffering."
     url: https://github.com/nplus-father/desiring-god
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
   - name: developing-leader-within-and-around-you
     description: "Developing the Leader Within You & Developing the Leaders Around You | John C. Maxwell | Two-volume bundle that pairs Maxwell's foundational ten leadership qualities with the harder downstream task of identifying, equipping, and reproducing leaders on your team."
     url: https://github.com/nplus-father/developing-leader-within-and-around-you
@@ -1553,7 +1553,7 @@ repos:
   - name: dhandho-investor
     description: "The Dhandho Investor | Mohnish Pabrai | Drawing on real business stories—Patel motels, Manilal, Virgin, Mittal—the value investor distills \"low-risk, high-return\" decision logic into nine Dhandho principles, all running on one mantra: Heads, I win; tails, I don't lose much."
     url: https://github.com/nplus-father/dhandho-investor
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: diagrams-book
     description: The Diagrams Book | Kevin Duncan | A pocket reference of 50 visual problem-solving tools — pyramids, wedges, triangles, matrices, axes — that help structure thinking and communicate clearly.
     url: https://github.com/nplus-father/diagrams-book
@@ -1629,7 +1629,7 @@ repos:
   - name: disciplined-trader
     description: "The Disciplined Trader | Mark Douglas | Systematically uncovers the psychological roots of trading failure, arguing that success requires a mental shift to match the market's unique terrain, and offers seven mental disciplines for moving past fear and self-doubt into trust and rule-following."
     url: https://github.com/nplus-father/disciplined-trader
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: discourses-on-livy
     description: "The Discourses | Niccolo Machiavelli | Reads Livy's history of Rome as a manual for republics, arguing that class conflict, citizen armies, religion, and periodic renewal are what keep liberty alive."
     url: https://github.com/nplus-father/discourses-on-livy
@@ -1645,7 +1645,7 @@ repos:
   - name: divine-conspiracy
     description: "The Divine Conspiracy | Dallas Willard | The USC philosopher's signature work casts discipleship as the heart of the gospel: eternal life as a present quality of life, the kingdom as an operable reality now, and the Sermon on the Mount unpacked chapter by chapter as a curriculum for life with God."
     url: https://github.com/nplus-father/divine-conspiracy
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
   - name: do-it-tomorrow
     description: "Do It Tomorrow | Mark Forster | A time-management system built on closed lists, the mañana principle, and current initiative — designed to finish today's work without prioritising."
     url: https://github.com/nplus-father/do-it-tomorrow
@@ -1713,7 +1713,7 @@ repos:
   - name: education-of-a-value-investor
     description: "The Education of a Value Investor | Guy Spier | A hedge fund manager's transformative journey from elite arrogance to humility — and the investing checklist learned from Buffett, Munger, and Pabrai."
     url: https://github.com/nplus-father/education-of-a-value-investor
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
   - name: effective-bible-teaching
     description: "Effective Bible Teaching | James C. Wilhoit & Leland Ryken | A practical guide to teaching Scripture that joins inductive method with sensitivity to genre, helping teachers bridge the text to today's listeners."
     url: https://github.com/nplus-father/effective-bible-teaching
@@ -1741,7 +1741,7 @@ repos:
   - name: elements-of-investing
     description: The Elements of Investing | Burton G. Malkiel & Charles D. Ellis | Two investing veterans distill a lifetime of saving and investing principles into the leanest possible primer.
     url: https://github.com/nplus-father/elements-of-investing
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
   - name: elements-of-style
     description: The Elements of Style | William Strunk Jr. & E. B. White | The most enduring style guide in English, laying down concise, vigorous rules that form the bedrock of clear writing.
     url: https://github.com/nplus-father/elements-of-style
@@ -1785,7 +1785,7 @@ repos:
   - name: encounters-with-jesus
     description: "Encounters with Jesus | Timothy Keller | Two sets of talks—one to Oxford skeptics at the town hall, one to senior Harvard Club professionals—use John's Gospel to walk Jesus's personal encounters into life's biggest questions and the redemption they point toward."
     url: https://github.com/nplus-father/encounters-with-jesus
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: end-of-average
     description: "The End of Average | Todd Rose | Nobody is \"average.\" The book challenges average-ism with three principles of individuality, redefining education, work, and equal opportunity."
     url: https://github.com/nplus-father/end-of-average
@@ -1837,7 +1837,7 @@ repos:
   - name: essays-in-love
     description: Essays in Love | Alain de Botton | A philosopher dissects a complete love affair in novelistic form—from love at first sight to the broken parting—using philosophical reflection to take apart every psychological mechanism along the way.
     url: https://github.com/nplus-father/essays-in-love
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: essays-of-francis-bacon
     description: The Essays | Francis Bacon | The founding text of the Western essay form, an aphoristic body of wisdom on human nature, power, and the conduct of life.
     url: https://github.com/nplus-father/essays-of-francis-bacon
@@ -1845,7 +1845,7 @@ repos:
   - name: essays-of-warren-buffett
     description: "The Essays of Warren Buffett | Warren Buffett & Lawrence A. Cunningham | A curated anthology of Buffett's shareholder letters, organizing his core wisdom on corporate governance, investment philosophy, and business valuation."
     url: https://github.com/nplus-father/essays-of-warren-buffett
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
   - name: essential-drucker
     description: "The Essential Drucker | Peter F. Drucker | Drucker's own selection of the 26 most important chapters from sixty years of his writing, organized around management, the individual, and society — a one-volume map of his thinking."
     url: https://github.com/nplus-father/essential-drucker
@@ -1941,7 +1941,7 @@ repos:
   - name: factfulness
     description: Factfulness | Hans Rosling | Uses data to dismantle ten dramatized instincts and reveal that the world is far better than we tend to imagine.
     url: https://github.com/nplus-father/factfulness
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
   - name: fail-safe-startup
     description: "Why Startups Fail | Tom Eisenmann | A Harvard Business School professor's diagnosis of common startup failure patterns — from 'good idea, bad bedfellows' to false starts, speed traps, and bad execution."
     url: https://github.com/nplus-father/fail-safe-startup
@@ -1957,7 +1957,7 @@ repos:
   - name: fallen-leaves
     description: Fallen Leaves | Will Durant | Twenty-two short, posthumously published essays in which the historian distills his lifetime of reflection on youth, age, religion, race, sex, war, capitalism, art, and the lessons of history.
     url: https://github.com/nplus-father/fallen-leaves
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
   - name: feeling-good
     description: Feeling Good | David D. Burns | The classic self-help manual of cognitive therapy, showing how to identify the ten cognitive distortions that manufacture depression, anger and guilt, and how to talk back to them on paper.
     url: https://github.com/nplus-father/feeling-good
@@ -1965,7 +1965,7 @@ repos:
   - name: fei-style-thinking
     description: 菲式思考：從 22K 到頂尖，一個交易員逆轉人生的關鍵思維 | 菲比斯 | 台股「菲神」十年從 22K 到數億資產的實戰紀錄，核心是以「關聯式思考」建構多空雙向、基本面結合期權的保守型交易體系。
     url: https://github.com/nplus-father/fei-style-thinking
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: fengtang-buer
     description: 不二 | 馮唐 | 馮唐的長篇小說，藉情慾敘事探問肉身、自由與人性
     url: https://github.com/nplus-father/fengtang-buer
@@ -2093,7 +2093,7 @@ repos:
   - name: flying-together-a-christian-marriage-guide
     description: "Flying Together: A Christian Marriage Guide | Mike Mason | A theological reading of marriage as both the supreme metaphor for God's relationship with humanity and an ongoing sacrament—working through the other, love, intimacy, vow, sex, submission, death, and union to show how spouses are shaped into one."
     url: https://github.com/nplus-father/flying-together-a-christian-marriage-guide
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-toolbox, top-faith]
+    topics: [hugobook, leaf-marriage, nplus-kind-book, nplus-portal, sub-relationships, tag-toolbox, top-personal]
   - name: focal-point
     description: Focal Point | Brian Tracy | Uses the 80/20 rule and personal strategic planning to identify high-leverage points across seven life domains—career, finances, health, family—producing maximum results with minimum input.
     url: https://github.com/nplus-father/focal-point
@@ -2105,7 +2105,7 @@ repos:
   - name: fooled-by-randomness
     description: Fooled by Randomness | Nassim Nicholas Taleb | Examines how humans are systematically duped by randomness, exposing the true ratio of luck to skill behind apparent success.
     url: https://github.com/nplus-father/fooled-by-randomness
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
   - name: forget-a-mentor-find-a-sponsor
     description: "Forget a Mentor, Find a Sponsor | Sylvia Ann Hewlett | The new way to fast-track your career: don't seek mentorship — earn sponsorship from senior leaders by delivering, branding, and showing 360-degree loyalty."
     url: https://github.com/nplus-father/forget-a-mentor-find-a-sponsor
@@ -2177,7 +2177,7 @@ repos:
   - name: freedom-of-self-forgetfulness
     description: "The Freedom of Self-Forgetfulness | Timothy Keller | A short exposition of 1 Corinthians 3:21–4:7 that reads self-forgetfulness as the gospel's reshaping of identity—a third path beyond thinking too highly or too poorly of yourself: stop judging yourself."
     url: https://github.com/nplus-father/freedom-of-self-forgetfulness
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, tag-primer, top-faith]
   - name: friend-and-foe
     description: Friend and Foe | Adam Galinsky & Maurice Schweitzer | Explores the dynamic balance of cooperation and competition in human relationships, drawing on social-psychology research to show when to cooperate and when to compete.
     url: https://github.com/nplus-father/friend-and-foe
@@ -2245,7 +2245,7 @@ repos:
   - name: generous-justice
     description: "Generous Justice | Timothy Keller | How God's grace makes us just"
     url: https://github.com/nplus-father/generous-justice
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: genesee-diary
     description: "The Genesee Diary: Report from a Trappist Monastery | Henri J. M. Nouwen | Seven months as a temporary monk at Genesee Abbey, recorded day by day: the restlessness, the manual labour, and the slow discovery that solitude exposes rather than solves the self."
     url: https://github.com/nplus-father/genesee-diary
@@ -2269,7 +2269,7 @@ repos:
   - name: get-rich-now
     description: Get Rich Now | Brian Tracy | Ten chapters on earning more money faster — covering wealth psychology, money goals, the millionaire habit, self-discipline, multiple income streams, and giving back.
     url: https://github.com/nplus-father/get-rich-now
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: get-your-hands-dirty-clean-architecture
     description: Get Your Hands Dirty on Clean Architecture | Tom Hombergs | A hands-on guide to implementing a hexagonal (ports-and-adapters) architecture in Java and Spring Boot, keeping web, persistence, and domain code decoupled, testable, and maintainable.
     url: https://github.com/nplus-father/get-your-hands-dirty-clean-architecture
@@ -2289,7 +2289,7 @@ repos:
   - name: getting-started-in-technical-analysis
     description: Getting Started in Technical Analysis | Jack D. Schwager | An accessible primer covering charts, trends, support and resistance, oscillators, and the trading systems that turn analysis into action.
     url: https://github.com/nplus-father/getting-started-in-technical-analysis
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-primer, tag-toolbox, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-primer, tag-toolbox, top-professional]
   - name: getting-there-a-book-of-mentors
     description: "Getting There: A Book of Mentors | Gillian Zoe Segal | First-person accounts from thirty contemporary leaders across fields, edited from the author's interviews. They revisit their failures, rejections, and pivots, dismantling the myth of inevitable success and showing the next generation how winding the path actually is."
     url: https://github.com/nplus-father/getting-there-a-book-of-mentors
@@ -2341,7 +2341,7 @@ repos:
   - name: god-is-closer-than-you-think
     description: "God Is Closer Than You Think | John Ortberg | Inverts the usual frame of \"seeking God,\" arguing that God is the active pursuer—and trains readers to notice and respond to his presence in everyday life."
     url: https://github.com/nplus-father/god-is-closer-than-you-think
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: godel-escher-bach
     description: "Gödel, Escher, Bach | Douglas R. Hofstadter | A 'metaphorical fugue' that uses Gödel's incompleteness, Escher's prints, and Bach's canons to explore how mind, meaning, and self emerge from strange loops."
     url: https://github.com/nplus-father/godel-escher-bach
@@ -2393,7 +2393,7 @@ repos:
   - name: goodman-gilman-pharmacological-basis
     description: "Goodman & Gilman's The Pharmacological Basis of Therapeutics | Laurence L. Brunton et al. | The definitive reference on pharmacology, linking molecular drug mechanisms to clinical therapeutics across every body system."
     url: https://github.com/nplus-father/goodman-gilman-pharmacological-basis
-    topics: [hugobook, leaf-pharmacology, nplus-kind-book, nplus-portal, sub-science, top-wisdom]
+    topics: [hugobook, leaf-pharmacology, nplus-kind-reference, nplus-portal, sub-science, top-wisdom]
   - name: google-cloud-handbook
     description: Google Cloud 對照手冊 | 不是產品說明書：以一台單機 k3s 平台為對照物，逐章對上 Borg / Spanner / Monarch / Chubby / Maglev 的原始論文與 GCP 產品，並標明自己的做法在什麼規模下會壞掉。
     url: https://github.com/nplus-father/google-cloud-handbook
@@ -2453,7 +2453,7 @@ repos:
   - name: grey-thinking
     description: 灰階思考 | 謝孟恭 | 以 Podcaster 的口吻分享如何跳脫「非黑即白」的極端思維，從認識直覺偏誤、建構投資作業系統，到因地制宜面對多變市場。
     url: https://github.com/nplus-father/grey-thinking
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: grid-notebook
     description: 為什麼聰明人都用方格筆記本？ | 高橋政史 | 以麥肯錫顧問的方格筆記法為核心，教導讀者運用「事實 → 解釋 → 行動」的三分割架構，將筆記從被動記錄轉化為主動思考的工具。
     url: https://github.com/nplus-father/grid-notebook
@@ -2601,7 +2601,7 @@ repos:
   - name: hbr-guide-to-critical-thinking
     description: HBR Guide to Critical Thinking | Harvard Business Review | A workbook for sharpening how you observe, question, and analyze information at work, with techniques to overcome cognitive biases and group dysfunction.
     url: https://github.com/nplus-father/hbr-guide-to-critical-thinking
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, tag-toolbox, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, tag-toolbox, top-personal]
   - name: hbr-guide-to-data-analytics-basics-for-managers
     description: "HBR Guide to Data Analytics Basics for Managers | Harvard Business Review | Data-literacy fundamentals for non-technical managers: how to ask better questions of your data team, interpret analysis, and communicate findings."
     url: https://github.com/nplus-father/hbr-guide-to-data-analytics-basics-for-managers
@@ -2729,7 +2729,7 @@ repos:
   - name: hearing-god
     description: Hearing God | Dallas Willard | Developing a conversational relationship with God
     url: https://github.com/nplus-father/hearing-god
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: heart-of-man
     description: The Heart of Man | Erich Fromm | Fromm explores the roots of good and evil in human nature, analyzing necrophilia, narcissism, and incestuous fixation as the syndrome of human decay.
     url: https://github.com/nplus-father/heart-of-man
@@ -2737,7 +2737,7 @@ repos:
   - name: hedge-fund-market-wizards
     description: Hedge Fund Market Wizards | Jack D. Schwager | In-depth interviews with 15 elite hedge fund traders — from Ray Dalio to Joel Greenblatt — extracting the principles behind sustained outperformance.
     url: https://github.com/nplus-father/hedge-fund-market-wizards
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: hermeneutical-spiral
     description: "The Hermeneutical Spiral | Grant R. Osborne | Replacing \"circle\" with \"spiral,\" Osborne integrates evangelical biblical interpretation across general hermeneutics, genre analysis, and applied hermeneutics into a unified system of principles, methods, and theological application."
     url: https://github.com/nplus-father/hermeneutical-spiral
@@ -2801,7 +2801,7 @@ repos:
   - name: hope-in-times-of-fear
     description: "Hope in Times of Fear | Timothy Keller | Argues that the resurrection is not merely the proof of Christianity but its pattern — a Great Reversal in which weakness becomes strength, reshaping the believer's inner life, relationships, and pursuit of justice."
     url: https://github.com/nplus-father/hope-in-times-of-fear
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: hostage-to-the-devil
     description: Hostage to the Devil | Malachi Martin | Documents five cases of demonic possession and exorcism in America, with a framework for understanding good, evil, and the human spirit.
     url: https://github.com/nplus-father/hostage-to-the-devil
@@ -2861,7 +2861,7 @@ repos:
   - name: how-proust-can-change-your-life
     description: "How Proust Can Change Your Life | Alain de Botton | Reads À la recherche du temps perdu as a practical self-help manual, mining Proust's life and novel for lessons on suffering, friendship, reading, and learning to actually see what is in front of you."
     url: https://github.com/nplus-father/how-proust-can-change-your-life
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: how-successful-people-think
     description: How Successful People Think | John C. Maxwell | The leadership writer identifies eleven thinking patterns—from big-picture and focused to bottom-line thinking—offering a practical framework for upgrading the quality of your thinking, and your life.
     url: https://github.com/nplus-father/how-successful-people-think
@@ -2933,7 +2933,7 @@ repos:
   - name: how-to-make-money-in-stocks
     description: "How to Make Money in Stocks | William J. O'Neil | Distills the pre-breakout traits of more than 100 U.S. super-stocks across 125 years into the seven-letter CAN SLIM rule, paired with strict stop-loss discipline and volume-pattern analysis—a growth-stock system fusing fundamentals and technicals."
     url: https://github.com/nplus-father/how-to-make-money-in-stocks
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
   - name: how-to-read-a-book
     description: How to Read a Book | Mortimer J. Adler & Charles Van Doren | The classic guide to elementary, inspectional, analytical, and syntopical reading — the four levels of skill needed to truly absorb a book.
     url: https://github.com/nplus-father/how-to-read-a-book
@@ -2993,7 +2993,7 @@ repos:
   - name: how-we-know-what-isnt-so
     description: "How We Know What Isn't So | Thomas Gilovich | The Cornell psychologist uses rigorous experimental research to dissect the systematic biases of human cognition—why we misjudge randomness, information, and evidence—and offers practical ways to think better."
     url: https://github.com/nplus-father/how-we-know-what-isnt-so
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
   - name: how-we-learn
     description: "How We Learn | Stanislas Dehaene | Draws on cognitive neuroscience to show why brains still outlearn machines, and distils learning into four pillars: attention, active engagement, error feedback, and consolidation."
     url: https://github.com/nplus-father/how-we-learn
@@ -3029,7 +3029,7 @@ repos:
   - name: i-will-teach-you-to-be-rich
     description: "I Will Teach You to Be Rich | Ramit Sethi | The personal-finance writer's no-nonsense system for young adults: a fully automated money-flow setup—credit-card optimization, banking choices, low-cost index funds—that runs the right financial behaviors while you sleep."
     url: https://github.com/nplus-father/i-will-teach-you-to-be-rich
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
   - name: ichabod-toward-home
     description: "Ichabod Toward Home | Walter Brueggemann | Reading 1 Samuel 4–6 as the journey of the ark—captured, victorious, returning—Brueggemann holds the tension between the departure of glory and its homecoming, challenging today's church habits of triumphalism, denial, and ease."
     url: https://github.com/nplus-father/ichabod-toward-home
@@ -3037,7 +3037,7 @@ repos:
   - name: if-you-want-to-walk-on-water-you-have-got-to-get-out-of-the
     description: 行在水面上 | John Ortberg | 以彼得水上行走為喻，邀人踏出舒適圈、定睛耶穌，展開信心的冒險
     url: https://github.com/nplus-father/if-you-want-to-walk-on-water-you-have-got-to-get-out-of-the
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: if-you-want-to-write
     description: "If You Want to Write | Brenda Ueland | The American writer argues, in vivid prose, that everyone is born with a creative gift—what kills writing isn't lack of talent but fear and criticism—and urges readers to write with courage, honesty, and freedom."
     url: https://github.com/nplus-father/if-you-want-to-write
@@ -3053,7 +3053,7 @@ repos:
   - name: illness-narratives
     description: "The Illness Narratives | Arthur Kleinman | A medical anthropologist argues that listening to chronically ill patients' own stories is the core clinical task — and proposes a meaning-centered model of care."
     url: https://github.com/nplus-father/illness-narratives
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: im-worth-more
     description: "I'm Worth More | Rob Moore | Working from the inner mechanics of self-worth, the British entrepreneur examines the deep links between self-labels, comparison, emotional management, and one's financial value."
     url: https://github.com/nplus-father/im-worth-more
@@ -3181,7 +3181,7 @@ repos:
   - name: intelligent-investor
     description: "The Intelligent Investor | Benjamin Graham | The foundational text of value investing, anchored by the \"margin of safety\" principle and a systematic guide for both defensive and enterprising investors to make rational decisions amid market volatility."
     url: https://github.com/nplus-father/intelligent-investor
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
   - name: intermittent-fasting-low-carb-guide
     description: 快速瘦肚！間歇性斷食減醣全書 | 江部康二 | 以一日兩餐減醣與間歇斷食剷除內臟脂肪、擊退「醣類病」
     url: https://github.com/nplus-father/intermittent-fasting-low-carb-guide
@@ -3205,7 +3205,7 @@ repos:
   - name: invested
     description: "Invested | Charles Schwab | The founder of Charles Schwab tells how he built America's first discount brokerage by relentlessly putting individual investors first."
     url: https://github.com/nplus-father/invested
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: investing-hagstrom
     description: "Investing: The Last Liberal Art | Robert G. Hagstrom | Charlie Munger-inspired multidisciplinary investing — using mental models from physics, biology, sociology, psychology, philosophy, literature, and math."
     url: https://github.com/nplus-father/investing-hagstrom
@@ -3221,7 +3221,7 @@ repos:
   - name: irrational-ape
     description: The Irrational Ape | David Robert Grimes | A physicist-turned-cancer-researcher tour of why we fall for disinformation, conspiracy theories, and propaganda — and the cognitive defenses that work.
     url: https://github.com/nplus-father/irrational-ape
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: irrational-exuberance
     description: Irrational Exuberance | Robert J. Shiller | The Nobel laureate dissects the structural, cultural, and psychological factors behind speculative bubbles.
     url: https://github.com/nplus-father/irrational-exuberance
@@ -3273,11 +3273,11 @@ repos:
   - name: jesus-i-never-knew
     description: The Jesus I Never Knew | Philip Yancey | The journalist returns to the Gospels with fresh eyes, stripping away the Sunday-school and church-tradition images to recover a Jewish, wild, and still-followable Jesus of Nazareth.
     url: https://github.com/nplus-father/jesus-i-never-knew
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
   - name: jesus-the-king
     description: "Jesus the King | Timothy Keller | A passage-by-passage walk through Mark's Gospel, revealing a suffering King who upends every expectation of what kingship should look like."
     url: https://github.com/nplus-father/jesus-the-king
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: jesus-through-middle-eastern-eyes
     description: "Jesus Through Middle Eastern Eyes | Kenneth E. Bailey | Cultural studies in the Gospels that recover the Mediterranean village context behind Jesus' birth, prayers, parables, and engagement with women."
     url: https://github.com/nplus-father/jesus-through-middle-eastern-eyes
@@ -3361,7 +3361,7 @@ repos:
   - name: knowing-christ-today
     description: Knowing Christ Today | Dallas Willard | Why we can trust spiritual knowledge
     url: https://github.com/nplus-father/knowing-christ-today
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: knowing-doing-gap
     description: "The Knowing-Doing Gap | Jeffrey Pfeffer & Robert I. Sutton | Stanford GSB fieldwork on why companies \"know what to do but don't do it\"—five mechanisms (talk over action, memory over thought, fear blocking action, measurement crowding out judgment, internal competition) and remedies for converting knowledge into action."
     url: https://github.com/nplus-father/knowing-doing-gap
@@ -3369,11 +3369,11 @@ repos:
   - name: knowing-god
     description: Knowing God | J. I. Packer | A classic study of the attributes and acts of God that insists doctrine is meant to be lived, moving the reader from knowing about God to knowing God himself.
     url: https://github.com/nplus-father/knowing-god
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: knowledge-illusion
     description: "The Knowledge Illusion | Steven Sloman & Philip Fernbach | Two cognitive scientists expose the illusion that we understand things on our own, arguing that thinking has never been a solo act—it's an activity that depends on the community of knowledge."
     url: https://github.com/nplus-father/knowledge-illusion
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
   - name: kostolany-confessions
     description: "Die Kunst, über Geld nachzudenken | André Kostolany | The legendary European speculator's final book at age 93, distilling 20th-century markets and his investing philosophy into a confession on independent thinking, psychological strength, and patience as the obstinate investor's real capital."
     url: https://github.com/nplus-father/kostolany-confessions
@@ -3397,11 +3397,11 @@ repos:
   - name: last-lecture
     description: The Last Lecture | Randy Pausch & Jeffrey Zaslow | In the final months of his life, Carnegie Mellon professor Randy Pausch leaves behind a lecture and a book—a deep legacy on dreams, life wisdom, and love.
     url: https://github.com/nplus-father/last-lecture
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
   - name: latte-factor
     description: "The Latte Factor | David Bach | A short parable conveying three simple money rules: pay yourself first, automate saving, and live richly today."
     url: https://github.com/nplus-father/latte-factor
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
   - name: laws-of-human-nature
     description: "The Laws of Human Nature | Robert Greene | Through historical case studies and psychological research, Greene distills eighteen laws of human nature for reading the deeper motives behind people's behavior."
     url: https://github.com/nplus-father/laws-of-human-nature
@@ -3501,7 +3501,7 @@ repos:
   - name: let-your-life-speak
     description: "Let Your Life Speak | Parker J. Palmer | Through his own life, Palmer probes the meaning of vocation: before telling your life what you want to do with it, listen to what it is telling you—vocation is a calling heard inward, not a goal pursued outward."
     url: https://github.com/nplus-father/let-your-life-speak
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: lets-eat-right-to-keep-fit
     description: "Let's Eat Right to Keep Fit | Adelle Davis | The 1954 nutrition classic that brought macronutrients, vitamins, minerals, and digestion to general readers, advocating whole foods over processed diets."
     url: https://github.com/nplus-father/lets-eat-right-to-keep-fit
@@ -3525,7 +3525,7 @@ repos:
   - name: life-in-three-dimensions
     description: 心理富足的人生：好奇、探索與體驗如何成就更完整的生活 | Shigehiro Oishi | 跳脫快樂與意義框架，談探索與體驗構成的心理富足人生
     url: https://github.com/nplus-father/life-in-three-dimensions
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: life-is-a-long-term-accumulation
     description: 生命是長期而持續的累積 | 彭明輝 | 以跨越人文與理工的視野，探討幸福、愛情、婚姻、教育與人生意義等核心課題，主張生命的厚度來自長期而持續的累積，而非一時的成就或名利。
     url: https://github.com/nplus-father/life-is-a-long-term-accumulation
@@ -3553,7 +3553,7 @@ repos:
   - name: lifesigns
     description: Lifesigns | Henri J. M. Nouwen | Through three life-signs—intimacy, fecundity, and ecstasy—Nouwen sketches the spiritual journey of moving from the house of fear into the house of love.
     url: https://github.com/nplus-father/lifesigns
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-contemplative, nplus-kind-book, nplus-portal, sub-spiritual-formation, tag-primer, top-faith]
   - name: linchpin
     description: Linchpin | Seth Godin | Argues that the factory-worker bargain is dead and the only safe position is to be indispensable — doing emotional labour, giving gifts, and shipping work no map describes.
     url: https://github.com/nplus-father/linchpin
@@ -3569,7 +3569,7 @@ repos:
   - name: little-book-of-currency-trading
     description: "The Little Book of Currency Trading | Kathy Lien | An accessible primer on the world's largest market — covering major currencies, fundamental and technical analysis, strategies, risk management, and trading psychology."
     url: https://github.com/nplus-father/little-book-of-currency-trading
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
   - name: little-book-of-investing-like-the-pros
     description: The Little Book of Investing Like the Pros | Joshua Pearl & Joshua Rosenbaum | Two Wall Street practitioners systematize the institutional stock-picking process into a five-step framework spanning idea generation, due diligence, valuation, and portfolio management, demonstrated end-to-end on the Delphi Automotive case.
     url: https://github.com/nplus-father/little-book-of-investing-like-the-pros
@@ -3581,7 +3581,7 @@ repos:
   - name: little-book-of-market-wizards
     description: The Little Book of Market Wizards | Jack D. Schwager | A condensed distillation of the lessons from decades of Market Wizards interviews — risk management, discipline, patience, and self-knowledge.
     url: https://github.com/nplus-father/little-book-of-market-wizards
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
   - name: little-book-of-safe-money
     description: "The Little Book of Safe Money | Jason Zweig | The senior WSJ personal-finance columnist combines behavioral-finance research with historical episodes around \"three commandments of investing\" to teach investors to identify risk, resist bias, and avoid scams in uncertain markets."
     url: https://github.com/nplus-father/little-book-of-safe-money
@@ -3601,7 +3601,7 @@ repos:
   - name: little-book-that-still-beats-the-market
     description: The Little Book That Still Beats the Market | Joel Greenblatt | A plain-language introduction to the Magic Formula—a quantitative stock screen combining high return on capital with high earnings yield—validated across seventeen years of backtests.
     url: https://github.com/nplus-father/little-book-that-still-beats-the-market
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, tag-primer, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, tag-primer, top-professional]
   - name: little-history-of-economics
     description: A Little History of Economics | Niall Kishtainy | Traces economic thought from Aristotle to the 2008 crisis through forty short chapters that introduce the ideas, dilemmas, and thinkers who shaped how we understand wealth, markets, and human welfare.
     url: https://github.com/nplus-father/little-history-of-economics
@@ -3649,11 +3649,11 @@ repos:
   - name: live-your-best-life
     description: 活出生命最好的可能 | 彭明輝 | 以人文學者的視角，回應台灣中年世代在現實與理想之間的焦慮，主張「盡己、盡心、盡興」才是真正的自我實現。
     url: https://github.com/nplus-father/live-your-best-life
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: living-church
     description: "The Living Church | John Stott | Using the Jerusalem church of Acts 2 as the prototype, Stott offers eight essential marks of a \"living church,\" responding to postmodern searches for new ecclesial forms."
     url: https://github.com/nplus-father/living-church
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: living-documentation
     description: Living Documentation | Cyrille Martraire | A code-centric methodology for software knowledge that keeps documentation in sync with the system as it evolves, ending the vicious cycle of out-of-date documents.
     url: https://github.com/nplus-father/living-documentation
@@ -3745,7 +3745,7 @@ repos:
   - name: making-sense-of-god
     description: "Making Sense of God | Timothy Keller | A \"prequel\" to The Reason for God that puts Christian faith and secularism side by side as competing answers to meaning, satisfaction, freedom, identity, morality, and hope—inviting skeptics to weigh which actually explains more."
     url: https://github.com/nplus-father/making-sense-of-god
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: man-and-his-symbols
     description: "Man and His Symbols | Carl G. Jung | Jung's accessible introduction to the unconscious—co-written with his closest disciples—covering dreams, archetypes, individuation, symbols in visual art, and a case-study in analysis."
     url: https://github.com/nplus-father/man-and-his-symbols
@@ -3801,7 +3801,7 @@ repos:
   - name: mans-search-for-meaning
     description: "Man's Search for Meaning | Viktor E. Frankl | Drawing on his experience as a Nazi camp survivor, the psychiatrist founds Logotherapy and argues that the core human drive is neither pleasure nor power but the search for meaning—and that even in extreme suffering, we keep the freedom to choose our attitude."
     url: https://github.com/nplus-father/mans-search-for-meaning
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
   - name: many-miles-to-go
     description: "Many Miles to Go | Brian Tracy | A parable about a young man's journey through trials and lessons that reveal the principles of great success in business and personal life."
     url: https://github.com/nplus-father/many-miles-to-go
@@ -3817,7 +3817,7 @@ repos:
   - name: market-wizards
     description: Market Wizards | Jack D. Schwager | Through deep interviews with seventeen elite traders, surfaces the shared wisdom and psychological qualities behind sustained profitability in financial markets.
     url: https://github.com/nplus-father/market-wizards
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: marketing-made-simple
     description: Marketing Made Simple | Donald Miller | A step-by-step StoryBrand sales funnel guide
     url: https://github.com/nplus-father/marketing-made-simple
@@ -4181,7 +4181,7 @@ repos:
   - name: millionaire-fastlane
     description: 百萬富翁快車道 | MJ DeMarco | 對比人行道、慢車道與快車道財富路線，主張以快車道加速致富
     url: https://github.com/nplus-father/millionaire-fastlane
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: millionaire-mind
     description: The Millionaire Mind | Thomas J. Stanley | Surveys decile-one millionaires to find what actually built their wealth — integrity, vocation fit, spouse choice, and frugal households — rather than test scores or elite schooling.
     url: https://github.com/nplus-father/millionaire-mind
@@ -4281,11 +4281,11 @@ repos:
   - name: moses-in-the-clinic
     description: 在診療室遇見摩西：精神科醫師帶你探索隱藏在聖經裡的心靈祕密 | 林信男 | 以大衛、約伯、保羅等聖經人物探索心靈與精神議題
     url: https://github.com/nplus-father/moses-in-the-clinic
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-pastoral, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: most-important-thing
     description: "The Most Important Thing Illuminated | Howard Marks (annotated by Christopher C. Davis, Joel Greenblatt, Paul Johnson & Seth A. Klarman) | A systematic statement of Howard Marks's lifetime investment philosophy, with the 2013 Illuminated edition adding marginal commentary from four leading investors plus a chapter not in the original."
     url: https://github.com/nplus-father/most-important-thing
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: multiple-intelligences-new-horizons
     description: "Multiple Intelligences: New Horizons | Howard Gardner | Twenty-five years on, Gardner revisits the theory of multiple intelligences — what he would revise, how it differs from creativity and expertise, and what a quarter-century of classroom experiments actually showed."
     url: https://github.com/nplus-father/multiple-intelligences-new-horizons
@@ -4361,7 +4361,7 @@ repos:
   - name: new-market-wizards
     description: "The New Market Wizards | Jack D. Schwager | The classic sequel: deep interviews with currency, futures, fund management, and quant traders revealing how each found their edge."
     url: https://github.com/nplus-father/new-market-wizards
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: new-realities
     description: "The New Realities | Peter F. Drucker | Drucker's late social-ecology book diagnoses the historical watershed the West crossed between 1965–1973, dissecting the structural new realities of the knowledge society, the society of organizations, aging, and government overgrowth."
     url: https://github.com/nplus-father/new-realities
@@ -4373,7 +4373,7 @@ repos:
   - name: new-tao-of-warren-buffett
     description: "The New Tao of Warren Buffett | Mary Buffett & David Clark | A curated collection of Warren Buffett's sayings on money, investing, and life — each quote unpacked into a short, practical lesson."
     url: https://github.com/nplus-father/new-tao-of-warren-buffett
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: new-testament-and-the-people-of-god
     description: The New Testament and the People of God | N. T. Wright | Volume 1 of Christian Origins and the Question of God — lays the historical, literary, and worldview groundwork for reading the New Testament within second-Temple Judaism.
     url: https://github.com/nplus-father/new-testament-and-the-people-of-god
@@ -4429,7 +4429,7 @@ repos:
   - name: noise
     description: Noise | Daniel Kahneman, Olivier Sibony & Cass R. Sunstein | Surfaces the long-overlooked problem of noise in human judgment—the same case, different judges, wildly different outcomes—and shows how to measure it and reduce it.
     url: https://github.com/nplus-father/noise
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-classic, top-personal]
   - name: noise-living-and-leading-when-nobody-can-focus
     description: "Noise | Joseph McCormack | In an age of \"infobesity,\" the book exposes how noise erodes attention and human connection, then offers two frameworks—conscious management and attention management—to reclaim focus when nobody else can."
     url: https://github.com/nplus-father/noise-living-and-leading-when-nobody-can-focus
@@ -4469,7 +4469,7 @@ repos:
   - name: obedient-master
     description: "The Obedient Master | Timothy Keller | Short excerpt on Jesus's obedience"
     url: https://github.com/nplus-father/obedient-master
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: object-oriented-design-interview
     description: Object-Oriented Design Interview | Alex Xu | Focused on the OOD interview as a distinct format, the book provides a four-step framework, OOP and SOLID foundations, and eleven canonical problems demonstrating the full low-level design walk-through.
     url: https://github.com/nplus-father/object-oriented-design-interview
@@ -4561,7 +4561,7 @@ repos:
   - name: one-up-on-wall-street
     description: One Up on Wall Street | Peter Lynch | The legendary Magellan fund manager teaches retail investors how to turn everyday observations into a stock-picking edge.
     url: https://github.com/nplus-father/one-up-on-wall-street
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: online-teaching-technique
     description: 線上教學的技術 | 福哥（王永福） | 從同步教學核心技巧、互動提問、分組討論到遊戲化，打造沉浸式線上學習
     url: https://github.com/nplus-father/online-teaching-technique
@@ -4633,7 +4633,7 @@ repos:
   - name: oxford-handbook-clinical-pharmacy
     description: Oxford Handbook of Clinical Pharmacy | Philip Wiffen et al. | A practical bedside reference covering clinical pharmacy skills and therapy-related issues across every major body system.
     url: https://github.com/nplus-father/oxford-handbook-clinical-pharmacy
-    topics: [hugobook, leaf-pharmacology, nplus-kind-book, nplus-portal, sub-science, top-wisdom]
+    topics: [hugobook, leaf-pharmacology, nplus-kind-reference, nplus-portal, sub-science, top-wisdom]
   - name: paradox-of-choice
     description: The Paradox of Choice | Barry Schwartz | Argues that more choice does not produce more happiness — it produces regret, adaptation, and depression — and offers practical strategies for choosing well in an over-optioned world.
     url: https://github.com/nplus-father/paradox-of-choice
@@ -4661,7 +4661,7 @@ repos:
   - name: payback-time
     description: "Payback Time | Phil Town | A 'stockpiling' strategy that buys great companies on the way down, using fundamental analysis (the 'Three Ms' and 'FACs') to load up before the next bull run."
     url: https://github.com/nplus-father/payback-time
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: payoff
     description: 動機背後的隱藏邏輯 | Dan Ariely | 行為經濟學家探討金錢、意義與關係如何影響我們的工作動機
     url: https://github.com/nplus-father/payoff
@@ -4729,11 +4729,11 @@ repos:
   - name: pharmacotherapy-casebook
     description: "Pharmacotherapy Casebook: A Patient-Focused Approach | Terry L. Schwinghammer & Julia M. Koehler | A collection of patient case studies that build clinical problem-solving skills across the full range of disease states."
     url: https://github.com/nplus-father/pharmacotherapy-casebook
-    topics: [hugobook, leaf-pharmacology, nplus-kind-book, nplus-portal, sub-science, top-wisdom]
+    topics: [hugobook, leaf-pharmacology, nplus-kind-reference, nplus-portal, sub-science, top-wisdom]
   - name: pharmacotherapy-principles-and-practice
     description: "Pharmacotherapy: Principles and Practice | Marie A. Chisholm-Burns et al. | A disease-state approach to drug therapy, pairing basic concepts with organ-system disorders and evidence-based treatment."
     url: https://github.com/nplus-father/pharmacotherapy-principles-and-practice
-    topics: [hugobook, leaf-pharmacology, nplus-kind-book, nplus-portal, sub-science, top-wisdom]
+    topics: [hugobook, leaf-pharmacology, nplus-kind-reference, nplus-portal, sub-science, top-wisdom]
   - name: philosophy-and-life
     description: 哲學與人生 | 傅佩榮 | 台大最受歡迎的通識課程——從蘇格拉底到孔子，從存在主義到道家，系統性地探索哲學如何回應人生的根本問題。
     url: https://github.com/nplus-father/philosophy-and-life
@@ -4781,7 +4781,7 @@ repos:
   - name: pleasures-and-sorrows-of-work
     description: The Pleasures and Sorrows of Work | Alain de Botton | Visits ten workplaces, from biscuit factories to rocket launches, to ask what modern work gives us and what it quietly takes away.
     url: https://github.com/nplus-father/pleasures-and-sorrows-of-work
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: podcast-producer-guide
     description: 破億下載 Podcast 製作人的經營指南 | 粘瀚文 Billy Nien | 累積破億收聽的《大人的 Small Talk》製作人，以五年實戰經驗系統化拆解 Podcast 從節目定位、內容規劃到商業變現的完整經營方法論。
     url: https://github.com/nplus-father/podcast-producer-guide
@@ -4793,7 +4793,7 @@ repos:
   - name: poor-charlie-s-almanack
     description: "Poor Charlie's Almanack | Charles T. Munger | The authoritative anthology of decades of Munger's wisdom, covering multidisciplinary mental models, investment philosophy, and the psychology of human misjudgment."
     url: https://github.com/nplus-father/poor-charlie-s-almanack
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-classic, top-personal]
   - name: poor-economics
     description: Poor Economics | Abhijit V. Banerjee & Esther Duflo | Two Nobel-laureate economists rebuild anti-poverty thinking from the ground up using randomized field trials of how poor people actually live, eat, save, learn, and borrow.
     url: https://github.com/nplus-father/poor-economics
@@ -4989,11 +4989,11 @@ repos:
   - name: prodigal-god
     description: The Prodigal God | Timothy Keller | Through the parable of the two lost sons, Keller redefines sin and grace, showing the gospel as a third way beyond moralism and license.
     url: https://github.com/nplus-father/prodigal-god
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, tag-primer, top-faith]
   - name: prodigal-prophet
     description: "The Prodigal Prophet | Timothy Keller | An expository walk through Jonah, treating the short Minor Prophet as a window onto the mystery of God's mercy and a mirror for believers tempted toward idolatry of comfort and indifference to social justice."
     url: https://github.com/nplus-father/prodigal-prophet
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: productivity-project
     description: "The Productivity Project | Chris Bailey | A year-long self-experiment testing thousands of productivity techniques, distilled into 25 evidence-based strategies organized around three resources: time, attention, and energy."
     url: https://github.com/nplus-father/productivity-project
@@ -5033,7 +5033,7 @@ repos:
   - name: psychology-of-money
     description: "The Psychology of Money | Morgan Housel | A behavioral lens on people's relationship with money, arguing that financial success is driven far more by behavior patterns than by IQ."
     url: https://github.com/nplus-father/psychology-of-money
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
+    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: psychology-of-selling
     description: The Psychology of Selling | Brian Tracy | From self-concept and goal-setting to closing techniques, a systematic account of the psychological foundations of sales—arguing that inner mindset is the decisive driver of outer results.
     url: https://github.com/nplus-father/psychology-of-selling
@@ -5053,11 +5053,11 @@ repos:
   - name: pursuit-of-god
     description: The Pursuit of God | A. W. Tozer | Tozer summons believers past the shell of orthodox doctrine to know God personally—through faith, surrender, and worship in everyday life.
     url: https://github.com/nplus-father/pursuit-of-god
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, tag-primer, top-faith]
   - name: pursuit-of-holiness
     description: "The Pursuit of Holiness | Jerry Bridges | Built around \"God and Christian working together,\" Bridges revisits sanctification across five lenses—concept, practice, human nature, environment, joy—correcting evangelical imbalances that emphasize grace without obedience."
     url: https://github.com/nplus-father/pursuit-of-holiness
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, tag-primer, top-faith]
   - name: qbq-question-behind-question
     description: QBQ! The Question Behind the Question | John G. Miller | A method for eliminating blame and complaint by reframing the questions you ask yourself, building personal accountability and a bias to action.
     url: https://github.com/nplus-father/qbq-question-behind-question
@@ -5069,11 +5069,11 @@ repos:
   - name: quants
     description: The Quants | Scott Patterson | Narrative history of the math-and-physics elite (Thorp, Simons, Asness, Muller, Griffin) who built model-driven trading machines that conquered Wall Street and nearly blew it up in 2007–08.
     url: https://github.com/nplus-father/quants
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: question-of-god
     description: 兩種上帝 | Armand M. Nicholi | 對比佛洛伊德與 C.S. 路易斯對信仰與人生意義的兩種世界觀
     url: https://github.com/nplus-father/question-of-god
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-pastoral, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: quirkology
     description: Quirkology | Richard Wiseman | The British psychologist applies scientific method to the strange corners of everyday life—from lie detection and superstition to the nature of humor—revealing the deeper regularities behind ordinary behavior.
     url: https://github.com/nplus-father/quirkology
@@ -5093,7 +5093,7 @@ repos:
   - name: radical-disciple
     description: "The Radical Disciple | John Stott | Stott's final book challenges readers along eight commonly neglected dimensions, calling them past nominal \"Christian\" identity into a life of wholehearted, radical discipleship."
     url: https://github.com/nplus-father/radical-disciple
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: raising-children-with-survival-skills
     description: 教出孩子的生存力 | 大前研一 | 日本管理大師以自身育兒經驗，提出培養孩子「生存力」的教育哲學——讓孩子能在世界任何角落獨立生活。
     url: https://github.com/nplus-father/raising-children-with-survival-skills
@@ -5105,7 +5105,7 @@ repos:
   - name: rang-dale-pharmacology
     description: "Rang & Dale's Pharmacology | James M. Ritter et al. | A leading student textbook explaining drug action mechanisms organised by chemical mediators and major organ systems."
     url: https://github.com/nplus-father/rang-dale-pharmacology
-    topics: [hugobook, leaf-pharmacology, nplus-kind-book, nplus-portal, sub-science, top-wisdom]
+    topics: [hugobook, leaf-pharmacology, nplus-kind-reference, nplus-portal, sub-science, top-wisdom]
   - name: range-why-generalists-triumph
     description: 跨能致勝 | David Epstein | 打破及早專精迷思，論廣泛涉獵、慢學與跨域思考如何讓通才勝出
     url: https://github.com/nplus-father/range-why-generalists-triumph
@@ -5141,7 +5141,7 @@ repos:
   - name: reason-for-god
     description: Reason for God | Timothy Keller | Belief in an age of skepticism
     url: https://github.com/nplus-father/reason-for-god
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
   - name: recommendation-system
     description: 推薦系統
     url: https://github.com/nplus-father/recommendation-system
@@ -5197,7 +5197,7 @@ repos:
   - name: religion-for-atheists
     description: 宗教的慰藉 | Alain de Botton | 從無神論角度，汲取宗教在社群、仁慈、教育、藝術與建築上值得世俗借鏡的智慧
     url: https://github.com/nplus-father/religion-for-atheists
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: remember-who-you-are
     description: Remember Who You Are | Daisy Wademan | Fifteen Harvard Business School professors share life lessons through personal stories, covering perspective, self-management, leadership, and values.
     url: https://github.com/nplus-father/remember-who-you-are
@@ -5205,7 +5205,7 @@ repos:
   - name: reminiscences-of-a-stock-operator
     description: Reminiscences of a Stock Operator | Edwin Lefèvre | The classic novelization of legendary speculator Jesse Livermore, using his rollercoaster trading career to surface timeless laws of market psychology and speculative wisdom.
     url: https://github.com/nplus-father/reminiscences-of-a-stock-operator
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: remote-office-not-required
     description: "Remote: Office Not Required | Jason Fried & David Heinemeier Hansson | Argues that distributed work liberates focused output from office overhead, and lays out concrete practices for collaboration, hiring, and managing remote teams."
     url: https://github.com/nplus-father/remote-office-not-required
@@ -5261,7 +5261,7 @@ repos:
   - name: return-of-the-prodigal-son
     description: "The Return of the Prodigal Son | Henri J. M. Nouwen | Using Rembrandt's painting as the entry point, Nouwen unfolds a spiritual autobiography through the younger son, the elder son, and the father—and concludes that the believer's final calling is to embody the father's compassion."
     url: https://github.com/nplus-father/return-of-the-prodigal-son
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, tag-primer, top-faith]
+    topics: [hugobook, leaf-contemplative, nplus-kind-book, nplus-portal, sub-spiritual-formation, tag-classic, tag-primer, top-faith]
   - name: revenge-of-the-tipping-point
     description: 引爆點的逆襲：超級傳播者、群體比例與集體敘事 | Malcolm Gladwell | 重探引爆點，剖析超級傳播者、群體比例與集體敘事如何形塑社會流行
     url: https://github.com/nplus-father/revenge-of-the-tipping-point
@@ -5277,7 +5277,7 @@ repos:
   - name: rich-brother-rich-sister
     description: "Rich Brother, Rich Sister | Robert T. Kiyosaki & Emi Kiyosaki | Two siblings' divergent paths — one to business wealth, one to Buddhist monastic life — explore money, God, and happiness."
     url: https://github.com/nplus-father/rich-brother-rich-sister
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: rich-dad-poor-dad
     description: "Rich Dad Poor Dad | Robert T. Kiyosaki | Contrasts two fathers' money mindsets to argue that financial literacy, owning assets over liabilities, and making money work for you matter more than a high salary."
     url: https://github.com/nplus-father/rich-dad-poor-dad
@@ -5321,11 +5321,11 @@ repos:
   - name: richer-wiser-happier
     description: "Richer, Wiser, Happier | William Green | Distillation of decades of interviews with the world's greatest investors — Buffett, Munger, Templeton, Pabrai, Marks, Spier — into life lessons on cloning genius, simplicity, resilience, and integrity."
     url: https://github.com/nplus-father/richer-wiser-happier
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: richest-man-in-babylon
     description: "The Richest Man in Babylon | George S. Clason | Ancient Babylonian parables transmit timeless personal-finance wisdom, from \"pay yourself first\" to the Five Laws of Gold, building a basic framework for wealth accumulation."
     url: https://github.com/nplus-father/richest-man-in-babylon
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, tag-primer, top-professional]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, tag-classic, tag-primer, top-professional]
   - name: right-kind-of-wrong
     description: Right Kind of Wrong | Amy C. Edmondson | Distinguishes intelligent, basic, and complex failures, and shows how self, situation, and system awareness let individuals and organizations fail well, learn faster, and avoid the failures that should never happen.
     url: https://github.com/nplus-father/right-kind-of-wrong
@@ -5345,11 +5345,11 @@ repos:
   - name: road-less-traveled
     description: The Road Less Traveled | M. Scott Peck, M.D. | Drawing on his clinical psychiatry, Peck fuses psychotherapy with spiritual growth, mapping mental maturity as a path of discipline, love, faith, and grace—the road few are willing to take.
     url: https://github.com/nplus-father/road-less-traveled
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-brick, tag-classic, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, tag-brick, tag-classic, top-wisdom]
   - name: road-less-traveled-and-beyond
     description: The Road Less Traveled and Beyond | M. Scott Peck | Extends the bestselling spiritual psychology classic with reflections on thinking, moral complexity, organizational life, and the search for God in an age of anxiety.
     url: https://github.com/nplus-father/road-less-traveled-and-beyond
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-brick, tag-classic, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, tag-brick, tag-classic, top-wisdom]
   - name: road-to-character
     description: "The Road to Character | David Brooks | Through lives such as Frances Perkins and Eisenhower, Brooks examines the cultural shift from \"Big Me\" to \"small me,\" arguing character is forged in self-confrontation and humility."
     url: https://github.com/nplus-father/road-to-character
@@ -5405,7 +5405,7 @@ repos:
   - name: rules-of-wealth
     description: The Rules of Wealth | Richard Templar | Over a hundred rules across five stages—mindset, accumulation, acceleration, preservation, and sharing—forming a complete personal code from inner shift to outward action.
     url: https://github.com/nplus-father/rules-of-wealth
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: rules-of-work
     description: The Rules of Work | Richard Templar | More than a hundred workplace rules—from consistency and image to the legitimate use of power—offering a clear, ethical path to career advancement.
     url: https://github.com/nplus-father/rules-of-work
@@ -5437,7 +5437,7 @@ repos:
   - name: sacred-marriage
     description: Sacred Marriage | Gary L. Thomas | Reframes Christian marriage as a means of sanctification rather than personal fulfillment, with chapters on honor, struggle, sacred history, and the daily practice of holy love.
     url: https://github.com/nplus-father/sacred-marriage
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-marriage, nplus-kind-book, nplus-portal, sub-relationships, top-personal]
   - name: safe-people
     description: Safe People | Henry Cloud & John Townsend | Names the traits that make a person unsafe, asks why we keep choosing them, and describes what a safe person actually looks like and how to become one.
     url: https://github.com/nplus-father/safe-people
@@ -5485,7 +5485,7 @@ repos:
   - name: science-of-money
     description: The Science of Money | Brian Tracy & Dan Strutzel | The fundamentals of how to increase your income and become wealthy — from the laws of money and the wealthy mindset to multiple income streams.
     url: https://github.com/nplus-father/science-of-money
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: science-of-storytelling
     description: The Science of Storytelling | Will Storr | Uses cognitive science to show how flawed selves, dramatic questions, and moments of change make stories irresistible to the human brain.
     url: https://github.com/nplus-father/science-of-storytelling
@@ -5545,7 +5545,7 @@ repos:
   - name: secrets-of-the-millionaire-mind
     description: "Secrets of the Millionaire Mind | T. Harv Eker | Argues that everyone carries an inner \"money blueprint\" shaping financial destiny, and offers seventeen rich-versus-poor mindset contrasts for resetting subconscious money beliefs."
     url: https://github.com/nplus-father/secrets-of-the-millionaire-mind
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: secular-age
     description: A Secular Age | Charles Taylor | Traces the conditions of belief that took Western society from a world where God was taken for granted to one where unbelief is a live option.
     url: https://github.com/nplus-father/secular-age
@@ -5553,7 +5553,7 @@ repos:
   - name: security-analysis
     description: Security Analysis | Benjamin Graham & David L. Dodd | The 1940 classic that founded value investing—systematic methods for analyzing bonds, preferred stocks, and common stocks via intrinsic value, earnings, and balance-sheet quality.
     url: https://github.com/nplus-father/security-analysis
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
   - name: security-engineering
     description: Security Engineering | Ross Anderson | The standard reference on building dependable systems, spanning cryptography, access control, psychology, and economics, then testing them against banking, biometrics, weapons, and surveillance.
     url: https://github.com/nplus-father/security-engineering
@@ -5573,7 +5573,7 @@ repos:
   - name: seeking-wisdom
     description: "Seeking Wisdom: From Darwin to Munger | Peter Bevelin | Fuses Darwinian evolution with Munger's multidisciplinary mental models to systematically explain why humans err—and how to think better."
     url: https://github.com/nplus-father/seeking-wisdom
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
   - name: self-esteem-a-proven-program-of-cognitive-techniques-for
     description: Self-Esteem | Matthew McKay | A self-esteem self-help classic grounded in CBT and ACT, offering a structured set of cognitive techniques for assessing, improving, and maintaining a healthy sense of self.
     url: https://github.com/nplus-father/self-esteem-a-proven-program-of-cognitive-techniques-for
@@ -5585,7 +5585,7 @@ repos:
   - name: selfless-way-of-christ
     description: "The Selfless Way of Christ | Henri J. M. Nouwen | Nouwen frames the Christian's calling as a downward movement, choosing self-emptying over the pursuit of relevance, spectacle, and power."
     url: https://github.com/nplus-father/selfless-way-of-christ
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-contemplative, nplus-kind-book, nplus-portal, sub-spiritual-formation, tag-primer, top-faith]
   - name: sell-it-like-serhant
     description: "Sell It Like Serhant | Ryan Serhant | A Million Dollar Listing star's high-energy sales playbook — from the power of yes and master follow-up to the four tenets of work and how to fail smarter."
     url: https://github.com/nplus-father/sell-it-like-serhant
@@ -5661,7 +5661,7 @@ repos:
   - name: signal-and-the-noise
     description: The Signal and the Noise | Nate Silver | Surveys why predictions go wrong across politics, weather, sports, finance, climate, and terrorism, and argues that probabilistic, Bayesian thinking is what separates signal from noise.
     url: https://github.com/nplus-father/signal-and-the-noise
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-classic, top-personal]
   - name: silk-roads
     description: The Silk Roads | Peter Frankopan | Retells world history from the crossroads of Asia rather than Europe, tracing how the trade routes between East and West have repeatedly decided where wealth, faith, and power flow.
     url: https://github.com/nplus-father/silk-roads
@@ -5669,7 +5669,7 @@ repos:
   - name: simple-path-to-wealth
     description: "The Simple Path to Wealth | J.L. Collins | Born from letters to the author's daughter, the leanest possible statement of the FIRE path: avoid debt, save aggressively, buy low-cost index funds, and hold for the long run."
     url: https://github.com/nplus-father/simple-path-to-wealth
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
   - name: simplicity-cycle
     description: The Simplicity Cycle | Dan Ward | A short, illustrated map of the journey every designer takes — adding complexity to gain capability, then peeling complexity away — to reach mature, elegant simplicity.
     url: https://github.com/nplus-father/simplicity-cycle
@@ -5753,7 +5753,7 @@ repos:
   - name: snowball-warren-buffett
     description: "The Snowball | Alice Schroeder | The authorized, deeply researched biography of Warren Buffett — from a coin-flipping Omaha boy to Berkshire Hathaway's chairman — tracing the compounding of money, reputation, and life."
     url: https://github.com/nplus-father/snowball-warren-buffett
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, tag-classic, top-professional]
   - name: so-good-they-cant-ignore-you
     description: "So Good They Can't Ignore You | Cal Newport | Challenges the \"follow your passion\" gospel, arguing that career capital—rare and valuable skills—is what buys you the work you actually want."
     url: https://github.com/nplus-father/so-good-they-cant-ignore-you
@@ -5949,7 +5949,7 @@ repos:
   - name: status-anxiety
     description: Status Anxiety | Alain de Botton | Diagnoses the modern roots of status anxiety and seeks remedies across philosophy, art, politics, religion, and the bohemian tradition.
     url: https://github.com/nplus-father/status-anxiety
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: stay-the-course
     description: "Stay the Course: The Story of Vanguard and the Index Revolution | John C. Bogle | Vanguard's founder recounts how a mutual ownership structure and the first index fund reshaped the fund industry, and why low costs and staying invested remain the individual investor's most dependable edge."
     url: https://github.com/nplus-father/stay-the-course
@@ -5965,7 +5965,7 @@ repos:
   - name: stock-market-wizards
     description: Stock Market Wizards | Jack D. Schwager | The third Market Wizards book interviews 15 elite US stock traders to reveal the diverse approaches that produce sustained outperformance.
     url: https://github.com/nplus-father/stock-market-wizards
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: stocks-for-the-long-run
     description: Stocks for the Long Run | Jeremy J. Siegel | Using two centuries of data, the author makes a systematic case for the long-run superiority of stocks—a scholarly classic for understanding asset allocation and market behavior.
     url: https://github.com/nplus-father/stocks-for-the-long-run
@@ -6061,7 +6061,7 @@ repos:
   - name: super-thinking
     description: "Super Thinking | Gabriel Weinberg & Lauren McCann | The DuckDuckGo CEO's big book of mental models — covering decision-making, statistics, conflict, leadership, and market power across nine practical chapters."
     url: https://github.com/nplus-father/super-thinking
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-toolbox, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-toolbox, top-personal]
   - name: supercommunicators
     description: "Supercommunicators: How to Unlock the Secret Language of Connection | Charles Duhigg | Identifies three kinds of conversation — practical, emotional, and social — and shows that connection comes from matching the kind the other person is actually having."
     url: https://github.com/nplus-father/supercommunicators
@@ -6121,7 +6121,7 @@ repos:
   - name: taking-stock
     description: 盤點人生：一位安寧醫師教你什麼才是真正的財富 | Jordan Grumet | 安寧醫師從臨終者的願望反思財務獨立的迷思與何謂真正的財富
     url: https://github.com/nplus-father/taking-stock
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: talent-code
     description: "The Talent Code | Daniel Coyle | Reports from the world's talent hotbeds and ties them to myelin: deep practice, ignition and master coaching as the three-part mechanism by which skill is physically grown rather than inherited."
     url: https://github.com/nplus-father/talent-code
@@ -6141,7 +6141,7 @@ repos:
   - name: talmud-the-jewish-bible-of-wealth
     description: 塔木德——猶太人的致富聖經 | 佛蘭克．赫爾 | 將猶太經典《塔木德》的智慧改寫為現代商業哲學，以金錢神聖觀、逆境思維、契約精神與自我轉變等主題，論證猶太民族致富的文化根源。
     url: https://github.com/nplus-father/talmud-the-jewish-bible-of-wealth
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: tangled-web
     description: The Tangled Web | Michal Zalewski | Documents how browsers actually behave — URLs, HTTP, HTML, CSS, scripts, plug-ins and the same-origin patchwork — on the premise that web security fails because no one agrees what the rules are.
     url: https://github.com/nplus-father/tangled-web
@@ -6149,7 +6149,7 @@ repos:
   - name: tap-dancing-to-work
     description: "Tap Dancing to Work | Carol J. Loomis | The longtime Fortune writer curates and threads together 46 years of major Fortune pieces on Buffett, capturing his arc from Omaha unknown to global capital-market sage and history's largest philanthropist."
     url: https://github.com/nplus-father/tap-dancing-to-work
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-brick, top-professional]
   - name: tax-secrets-of-the-rich
     description: Tax Secrets of the Rich | Allan Mason | An Australian accountant reveals how business and investment structures, planning, and legal strategies let the rich legally minimise tax and build wealth.
     url: https://github.com/nplus-father/tax-secrets-of-the-rich
@@ -6193,7 +6193,7 @@ repos:
   - name: technical-analysis-of-the-financial-markets
     description: Technical Analysis of the Financial Markets | John J. Murphy | The standard reference on chart-based market analysis, covering trend, reversal and continuation patterns, moving averages, oscillators, Elliott wave, cycles, and intermarket relationships.
     url: https://github.com/nplus-father/technical-analysis-of-the-financial-markets
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: technological-republic
     description: "The Technological Republic | Alexander C. Karp & Nicholas W. Zamiska | Palantir's CEO argues that the West has lost the engineering mindset and shared belief needed to defend itself in the software age."
     url: https://github.com/nplus-father/technological-republic
@@ -6285,11 +6285,11 @@ repos:
   - name: think-again
     description: Think Again | Adam Grant | 知道自己不知道的強大力量
     url: https://github.com/nplus-father/think-again
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
   - name: think-and-grow-rich
     description: "Think and Grow Rich | Napoleon Hill | After interviewing five hundred successful people, Hill distills thirteen principles for wealth, anchored on \"thoughts are things\"—a complete mental framework from desire to realization."
     url: https://github.com/nplus-father/think-and-grow-rich
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: think-big
     description: Think Big | Brian Tracy | Twelve principles for building an extraordinary life — from goal-setting and decision power to bouncing back, networking, and developing personal power.
     url: https://github.com/nplus-father/think-big
@@ -6301,15 +6301,15 @@ repos:
   - name: think-twice-harnessing-the-power-of-counterintuition
     description: 再想一下-好決策的關鍵思考術 | Michael J. Mauboussin | 揭露常見決策陷阱，以外在觀點與反直覺思考提升決策品質
     url: https://github.com/nplus-father/think-twice-harnessing-the-power-of-counterintuition
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: thinking-101
     description: 思考 101：耶魯大學改變人生的一堂思辨課 | Woo-kyoung Ahn (安宇敬) | 耶魯熱門思辨課，剖析流暢度錯覺、確認偏誤等思考謬誤與對策
     url: https://github.com/nplus-father/thinking-101
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-primer, top-personal]
   - name: thinking-fast-and-slow
     description: Thinking, Fast and Slow | Daniel Kahneman | The Nobel laureate exposes the dual-system architecture of the human mind and systematically dissects the cognitive biases and decision traps inside our intuitive judgments.
     url: https://github.com/nplus-father/thinking-fast-and-slow
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-brick, tag-classic, top-personal]
   - name: thinking-in-bets
     description: "Thinking in Bets: Making Smarter Decisions When You Don't Have All the Facts | Annie Duke | A former professional poker player reframes every decision as a bet under uncertainty, separating decision quality from outcome quality and building truth-seeking groups to counter motivated reasoning."
     url: https://github.com/nplus-father/thinking-in-bets
@@ -6321,7 +6321,7 @@ repos:
   - name: thinking-in-systems
     description: Thinking in Systems | Donella H. Meadows | A primer on seeing the world as interlocking systems — stocks, flows, feedback loops, traps, and leverage points — so we can act on causes instead of symptoms.
     url: https://github.com/nplus-father/thinking-in-systems
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, tag-primer, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, tag-primer, top-personal]
   - name: thirty-million-words
     description: "Thirty Million Words | Dana Suskind | A pediatric surgeon shows how the language a parent uses in the first years literally builds a child's brain, and prescribes the Three Ts — Tune In, Talk More, Take Turns."
     url: https://github.com/nplus-father/thirty-million-words
@@ -6341,7 +6341,7 @@ repos:
   - name: thou-shall-prosper
     description: Thou Shall Prosper | Daniel Lapin | A rabbi distills Jewish wisdom about money into ten commandments — from believing in the dignity of business to never retiring — for ethical wealth creation.
     url: https://github.com/nplus-father/thou-shall-prosper
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
   - name: threat-modeling
     description: Threat Modeling | Adam Shostack | Turns threat modeling into a repeatable engineering practice built on STRIDE, attack trees and threat libraries, then covers how to manage, address and validate what you find.
     url: https://github.com/nplus-father/threat-modeling
@@ -6421,11 +6421,11 @@ repos:
   - name: trading-game
     description: "The Trading Game | Gary Stevenson | A Citi rates trader's confessional memoir — from London's East End to becoming the bank's most profitable trader — and walking away with hard truths about finance."
     url: https://github.com/nplus-father/trading-game
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: trading-in-the-zone
     description: Trading in the Zone | Mark Douglas | Consistent trading comes not from better analysis but from a probabilistic mindset — accepting risk, expecting randomness, and holding beliefs that keep fear out of execution.
     url: https://github.com/nplus-father/trading-in-the-zone
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: transforming-mission
     description: 更新變化的宣教：宣教神學的典範變遷 | David J. Bosch | 從新約與歷史的宣教典範，梳理宣教神學變遷，建構切合時代的宣教學
     url: https://github.com/nplus-father/transforming-mission
@@ -6433,11 +6433,11 @@ repos:
   - name: trend-following
     description: Trend Following | Michael Covel | Makes the case for systematic price-following over prediction, combining performance evidence through crashes and panics with interviews and academic research on the strategy.
     url: https://github.com/nplus-father/trend-following
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: trend-following-masters-volume-2
     description: Trend Following Masters Volume 2 | Michael Covel | Long-form podcast interviews with fifteen authorities — Kahneman, Ericsson, Gigerenzer, Tetlock, Annie Duke and others — distilled into a working manual on decision-making under uncertainty for traders.
     url: https://github.com/nplus-father/trend-following-masters-volume-2
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: tribe-of-mentors
     description: Tribe of Mentors | Timothy Ferriss | Ferriss puts the same core questions to more than a hundred outstanding people across fields, gathering their tightest answers on failure, habits, investing, and life.
     url: https://github.com/nplus-father/tribe-of-mentors
@@ -6497,7 +6497,7 @@ repos:
   - name: uncommon-ground
     description: Uncommon Ground | Timothy Keller John Inazu | Living faithfully in a world of difference
     url: https://github.com/nplus-father/uncommon-ground
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: uncommon-grounds
     description: Uncommon Grounds | Mark Pendergrast | A sweeping social and economic history of coffee, tracing how the bean shaped empires, labor, commerce, and culture from its origins to the modern specialty revolution.
     url: https://github.com/nplus-father/uncommon-grounds
@@ -6529,7 +6529,7 @@ repos:
   - name: undoing-project
     description: The Undoing Project | Michael Lewis | Tells the story of Daniel Kahneman and Amos Tversky and how their friendship produced the work that overturned classical assumptions about how the human mind decides.
     url: https://github.com/nplus-father/undoing-project
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, tag-classic, top-personal]
   - name: unfair-advantage
     description: "Unfair Advantage: The Power of Financial Education | Robert T. Kiyosaki | Shows how real financial education creates unfair advantages across knowledge, taxes, debt, risk, and compensation."
     url: https://github.com/nplus-father/unfair-advantage
@@ -6597,11 +6597,11 @@ repos:
   - name: walden
     description: "Walden | Henry David Thoreau | The transcendentalist's reflective account of two years living deliberately in a hand-built cabin by Walden Pond — a meditation on self-reliance, simplicity, nature, and the cost of so-called civilized life."
     url: https://github.com/nplus-father/walden
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, top-wisdom]
   - name: walking-with-god-through-pain-and-suffering
     description: Walking with God through Pain and Suffering | Timothy Keller | 從認識、面對到在苦難煉爐中與神同行，回應受苦的難題
     url: https://github.com/nplus-father/walking-with-god-through-pain-and-suffering
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-classic, top-faith]
   - name: wan-weigang-fo-wei-system
     description: 佛畏系統：用系統思維全面提升你的決策力 | 萬維鋼 | 以「凡夫畏果、菩薩畏因、佛畏系統」為核心，從職業、學習、做事、情感、社會與邏輯數學等面向，提供一整套用「系統」俯瞰人生的高觀點與決策心法。
     url: https://github.com/nplus-father/wan-weigang-fo-wei-system
@@ -6629,7 +6629,7 @@ repos:
   - name: wan-weigang-scientific-thinker
     description: 科學思考者 | 萬維鋼 | 從情緒、事實到貝葉斯推理，系統建構科學思考的完整方法論。
     url: https://github.com/nplus-father/wan-weigang-scientific-thinker
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: wan-weigang-wanwan-meixiangdao
     description: 萬萬沒想到：用理工科思維理解世界 | 萬維鋼 | 以「理工科思維」為主軸，融合行為經濟學、認知心理學、統計學與物理學的研究成果，破除常識與成功學迷思，帶領讀者以科學方法重新理解世界與自身。
     url: https://github.com/nplus-father/wan-weigang-wanwan-meixiangdao
@@ -6657,19 +6657,19 @@ repos:
   - name: warren-buffetts-ground-rules
     description: "Warren Buffett's Ground Rules | Jeremy C. Miller | Using 1956–1969 Buffett Partnership letters as source material, the author thematically reconstructs young Buffett's seven ground rules, three investment categories, and partnership philosophy."
     url: https://github.com/nplus-father/warren-buffetts-ground-rules
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: way-of-munger
     description: 蒙格之道：關於投資、閱讀、工作與幸福的普通常識 | Charles T. Munger | 查理·蒙格關於投資、閱讀、工作與幸福的智慧語錄與人生哲學整理。
     url: https://github.com/nplus-father/way-of-munger
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, top-wisdom]
+    topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: way-of-the-heart
     description: The Way of the Heart | Henri J. M. Nouwen | An exploration of what the fourth-century desert fathers and mothers can still teach us about silence, solitude, and prayer in a noisy world.
     url: https://github.com/nplus-father/way-of-the-heart
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-contemplative, nplus-kind-book, nplus-portal, sub-spiritual-formation, tag-primer, top-faith]
   - name: way-of-the-turtle
     description: "Way of the Turtle | Curtis Faith | An insider's account from the youngest of Richard Dennis's Turtles, revealing the trend-following rules, position-sizing, and risk management that turned a bunch of beginners into one of the most profitable trading experiments ever."
     url: https://github.com/nplus-father/way-of-the-turtle
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: way-of-wisdom
     description: Way of Wisdom | Timothy Kathy Keller | A year of daily devotions in Proverbs
     url: https://github.com/nplus-father/way-of-wisdom
@@ -6749,7 +6749,7 @@ repos:
   - name: what-life-should-mean-to-you
     description: What Life Should Mean to You | Alfred Adler | Individual psychology classic
     url: https://github.com/nplus-father/what-life-should-mean-to-you
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, top-wisdom]
   - name: what-the-dog-saw
     description: "What the Dog Saw | Malcolm Gladwell | A curated collection of Gladwell's New Yorker essays organized into three lenses — minor obsessives, theories under pressure, and what we know about other people — exploring why ordinary things become extraordinary."
     url: https://github.com/nplus-father/what-the-dog-saw
@@ -6781,7 +6781,7 @@ repos:
   - name: when-breath-becomes-air
     description: "When Breath Becomes Air | Paul Kalanithi | Stanford neurosurgeon Paul Kalanithi's memoir, written after his terminal lung cancer diagnosis at thirty-six, asking through the dual lens of literature and medicine: in the face of death, what gives a human life meaning?"
     url: https://github.com/nplus-father/when-breath-becomes-air
-    topics: [hugobook, leaf-ethics, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
+    topics: [hugobook, leaf-life-philosophy, nplus-kind-book, nplus-portal, sub-philosophy, tag-classic, tag-primer, top-wisdom]
   - name: when-daniel-pink
     description: When | Daniel H. Pink | Synthesizes research on the hidden patterns of time — daily peaks and troughs, beginnings, midpoints, endings, group synchrony — into practical guidance for when (not just how) to do important things.
     url: https://github.com/nplus-father/when-daniel-pink
@@ -6821,7 +6821,7 @@ repos:
   - name: who-is-this-man
     description: Who Is This Man? | John Ortberg | A carpenter who taught publicly for only three years left a footprint unlike any other. From dignity, education, and gender to politics, art, and the cross, Ortberg traces how Jesus of Nazareth shaped Western values, institutions, and imagination—pressing the oldest question anew.
     url: https://github.com/nplus-father/who-is-this-man
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: who-says-the-letter-kills
     description: 誰說字句叫人死 | 蔡麗貞 | 從釋經史梳理聖經詮釋典範的轉移，探討無誤論爭議與以經解經的智慧。
     url: https://github.com/nplus-father/who-says-the-letter-kills
@@ -7029,7 +7029,7 @@ repos:
   - name: wujun-abundance
     description: 富足 | 吳軍 | 從數學思維、決策、經驗到系統判斷，探討如何活出精神層面的富足。
     url: https://github.com/nplus-father/wujun-abundance
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
+    topics: [hugobook, leaf-critical-thinking, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: wujun-age-of-intelligence
     description: The Age of Intelligence | 吳軍 | Explains the intelligence revolution as the conversion of intelligence problems into data problems, covering the mechanics of machine intelligence and its impact on business and society.
     url: https://github.com/nplus-father/wujun-age-of-intelligence
@@ -7101,11 +7101,11 @@ repos:
   - name: you-are-what-you-love
     description: You Are What You Love | James K. A. Smith | Argues humans are shaped less by what they think than by what they love — and that Christian liturgies, at church and at home, retrain those loves toward the Kingdom.
     url: https://github.com/nplus-father/you-are-what-you-love
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
+    topics: [hugobook, leaf-practical-theology, nplus-kind-book, nplus-portal, sub-theology, tag-primer, top-faith]
   - name: you-can-be-a-stock-market-genius
     description: "You Can Be a Stock Market Genius | Joel Greenblatt | A primer on special-situation investing — spinoffs, risk arbitrage, restructurings, recapitalizations — where small investors can outperform Wall Street's giants."
     url: https://github.com/nplus-father/you-can-be-a-stock-market-genius
-    topics: [hugobook, leaf-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
   - name: you-can-choose-to-be-rich
     description: You Can Choose to Be Rich | Robert T. Kiyosaki | A home-study course structured around Think, Learn, and Do — the mindset, knowledge, and actions of the rich.
     url: https://github.com/nplus-father/you-can-choose-to-be-rich

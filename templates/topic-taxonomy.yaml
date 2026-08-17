@@ -23,8 +23,11 @@ top-personal:
     # leaf-stoicism deliberately omitted: Stoicism lives at
     # top-wisdom/sub-philosophy/leaf-stoicism. Having it in both tops split the
     # same seven-book shelf across two tiers.
+    # leaf-critical-thinking is personal reasoning — bias, judgment, mental
+    # models. Organisational choice-making stays at
+    # top-professional/sub-leadership/leaf-decision-making.
     sub-mindset:
-      [leaf-growth, leaf-resilience, leaf-self-awareness, leaf-emotion]
+      [leaf-growth, leaf-critical-thinking, leaf-resilience, leaf-self-awareness, leaf-emotion]
     sub-habit:
       [leaf-productivity, leaf-routine, leaf-focus, leaf-discipline]
     sub-wellness:
@@ -39,8 +42,13 @@ top-professional:
   subs:
     sub-business:
       [leaf-strategy, leaf-marketing, leaf-startup, leaf-management, leaf-sales, leaf-operations]
+    # leaf-investing was 134 books. Trading (charts, systems, trader
+    # psychology) and value investing (Graham/Buffett/Lynch) are distinct
+    # enough disciplines to browse separately; the rest — index/passive,
+    # market history, behavioural finance — stays in leaf-investing.
     sub-finance:
-      [leaf-investing, leaf-personal-finance, leaf-economics, leaf-real-estate, leaf-crypto]
+      [leaf-investing, leaf-trading, leaf-value-investing, leaf-personal-finance, leaf-economics,
+       leaf-real-estate, leaf-crypto]
     sub-leadership:
       [leaf-team-building, leaf-decision-making, leaf-culture, leaf-coaching, leaf-vision]
     sub-communication:
@@ -61,8 +69,11 @@ top-craft:
       [leaf-systems-design, leaf-coding-practice, leaf-language-c, leaf-language-rust,
        leaf-ai-ml, leaf-devops, leaf-security, leaf-databases, leaf-agile,
        leaf-engineering-management]
-    sub-tools:
-      [leaf-cli, leaf-editor, leaf-version-control, leaf-build-systems, leaf-coffee]
+    # sub-tools retired 2026-08-17: leaf-cli had already been split out, and the
+    # remaining leaves turned out to hold nothing about their own subject —
+    # version-control held Deep Work and Digital Minimalism, build-systems held
+    # a book of creative routines. Its last two books (coffee) moved to
+    # top-personal/sub-lifestyle/leaf-food-drink.
     sub-design:
       [leaf-ux, leaf-visual, leaf-typography, leaf-product-design, leaf-architecture]
     sub-writing:
@@ -74,7 +85,7 @@ top-wisdom:
     sub-philosophy:
       # philosophy-of-science 於 2026-08-07 自 leaf-ethics 拆出（leaf-ethics 實際是哲學總匯）。
       # 目前只有 Kuhn 一本，刻意留作種子：Popper / Feyerabend / Hacking 一類進來就歸這裡。
-      [leaf-stoicism, leaf-eastern, leaf-existentialism, leaf-ethics, leaf-political-philosophy,
+      [leaf-stoicism, leaf-eastern, leaf-existentialism, leaf-ethics, leaf-life-philosophy, leaf-political-philosophy,
        leaf-philosophy-of-science]
     sub-history:
       [leaf-modern, leaf-ancient, leaf-civilization, leaf-military, leaf-cultural]
@@ -94,8 +105,11 @@ top-faith:
     # leaf-commentary holds verse-by-verse and reference works on the text
     # itself (the BST "Message of" series alone is 52 volumes);
     # leaf-biblical-studies keeps hermeneutics, biblical theology and intros.
+    # leaf-practical-theology is applied/popular theology written for the pew
+    # (Keller, Willard, Ortberg, Tozer); leaf-systematic keeps the doctrinal
+    # works — Calvin, Grudem, Bavinck, Aquinas, the dictionaries and surveys.
     sub-theology:
-      [leaf-systematic, leaf-biblical-studies, leaf-commentary, leaf-historical, leaf-pastoral,
-       leaf-apologetics, leaf-spiritual-warfare]
+      [leaf-systematic, leaf-practical-theology, leaf-biblical-studies, leaf-commentary,
+       leaf-historical, leaf-pastoral, leaf-apologetics, leaf-spiritual-warfare]
     sub-spiritual-formation:
       [leaf-prayer, leaf-discipleship, leaf-devotional, leaf-contemplative]
