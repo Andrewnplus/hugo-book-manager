@@ -110,10 +110,6 @@ repos:
     description: 29張當票2：當舖裡特有的人生風景 | 秦嗣林 | 延續首部曲，秦嗣林以當鋪為舞台，記錄更多人物的悲歡離合與金錢背後的人性百態。
     url: https://github.com/nplus-father/29-pawn-tickets-2
     topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
-  - name: 29-pawn-tickets-3
-    description: 29張當票3：門簾外的人生鑑定 | 秦嗣林 | 系列第三部，秦嗣林以「忠恕之道」為核心，記述教他經營處事與人情世故的十五位人物。
-    url: https://github.com/nplus-father/29-pawn-tickets-3
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: 2nd-iteration
     description: "2nd Iteration | A. P. Blanchard | A science-fiction novel in which a researcher's experiments with hypnosis and memory open a temporal anomaly, forcing him to weigh scientific ambition against the people it endangers."
     url: https://github.com/nplus-father/2nd-iteration

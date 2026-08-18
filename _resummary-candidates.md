@@ -16,8 +16,8 @@
 
 > 重新盤點 2026-08-17・掃描 `books-done` 下 **1,758** 個 repo（已排除 build 產物、template、tmp）。
 > 判準：**總字元**（整本 MD body 量）＋**每頁均**（總字元÷章節頁數）。全庫中位數：總字元 66,916、每頁均 3,512；p10：總字元 24,255、每頁均 1,277。
-> 本輪 vs 2026-07-12：**11 本通過門檻移出**、**1 本新入榜**（🆕）、**1 本已刪**（`kiss-your-but-good-bye`）。目前待處理 **71 本**
-> （2026-08-18 再刪 `whats-left-without-your-business-card`、`hbrs-guide-to-emotional-intelligence`、`zen-programmer`，見文末紀錄）。
+> 本輪 vs 2026-07-12：**11 本通過門檻移出**、**1 本新入榜**（🆕）、**1 本已刪**（`kiss-your-but-good-bye`）。目前待處理 **70 本**
+> （2026-08-18 再刪 `whats-left-without-your-business-card`、`hbrs-guide-to-emotional-intelligence`、`zen-programmer`、`29-pawn-tickets-3`，見文末紀錄）。
 > 全庫較 07-12 明顯變厚：中位數總字元 55,327 → 66,916、每頁均 2,987 → 3,512。
 
 ## 圖例
@@ -58,11 +58,10 @@
 |---|---|---:|---:|---|
 | 說話的品格 | `professional/communication/persuasion/dignity-of-speaking` | 6,648 | 229 | [Readmoo](https://readmoo.com/book/210330713000101) ·韓 |
 
-### 第二優先｜內容稀薄（總字元 < 8,000）（14 本）
+### 第二優先｜內容稀薄（總字元 < 8,000）（13 本）
 
 | 書名 | Repo 路徑 | 總字元 | 每頁均 | 找書連結 |
 |---|---|---:|---:|---|
-| 29張當票3：門簾外的人生鑑定 | `personal/mindset/growth/29-pawn-tickets-3` | 1,250 | 417 | [Readmoo](https://readmoo.com/book/210019712000101) ·中 |
 | 麥肯錫教我的思考武器：從邏輯思考到真正解決問題 | `professional/career/problem-solving/issue-driven` | 3,680 | 613 | [Readmoo](https://readmoo.com/book/210201484000101) ·日 |
 | 學上當 | `personal/habit/productivity/learning-to-be-deceived` | 4,212 | 702 | [Readmoo](https://readmoo.com/book/210072176000101) ·中 |
 | 幽谷之旅 | `faith/theology/apologetics/shadowlands` | 4,567 | 351 | [shadowlands](https://oceanofpdf.com/?s=shadowlands) (?) |
@@ -173,6 +172,7 @@
 | 沒了名片，你還剩下什麼 | `whats-left-without-your-business-card` | 3,284 | 657 | 內容重複、已被其他書涵蓋 |
 | 哈佛教你高EQ管理術 | `hbrs-guide-to-emotional-intelligence` | 13,706 | 1,054 | 內容重複——同一本書已有另一個更厚的 repo |
 | 程式設計師之禪 | `zen-programmer` | 3,470 | 434 | 內容太薄、投報率不足，不列入重寫排程 |
+| 29張當票3：門簾外的人生鑑定 | `29-pawn-tickets-3` | 1,250 | 417 | 內容太薄、投報率不足，不列入重寫排程 |
 
 > 原分類 `professional/career/skill-building/`。張國洋、姚詩豪（大人學）的職場實戰指南——
 > 自我定位、職場規則、累積籌碼、正向心態、轉職勝率五章。刪除理由不是找不到來源
@@ -199,6 +199,14 @@
 > 也不是重複——同 leaf 的 74 本沒有一本蓋掉這個題材。判定純粹是投報率：重做等於整本從零寫起
 > （現有 3,470 字只夠當大綱），而這本的內容偏心境調適、少可操作的工程實作，不列入重寫排程。
 > 刪除前已 `git bundle` 全歷史留底於 `books-management/archive/_deleted/zen-programmer.bundle`。
+
+> 原分類 `personal/mindset/growth/`。秦嗣林當舖系列第三集，以「忠恕之道」記十五位教他經營與人情世故的人物；
+> repo 只有序＋商場貴人＋人生智慧三章，各 262／1,408／1,400 字元，全書 1,250 字（首頁概覽另有 3,004）。
+> **刪除理由不是找不到來源**——[博客來電子書 E050011910](https://www.books.com.tw/products/E050011910)（2019）仍在售。
+> 判定是投報率加上定位：系列第一集 `29-pawn-tickets`（32,430 字）已足以代表這批當舖故事，
+> 而 notes-core 的 [EXCLUDED-BOOKS.md](../../notes/notes-core/docs/EXCLUDED-BOOKS.md) 早在 2026-08-13 就把秦嗣林四本
+> 全裁為「勵志故事集、無主題站可歸」，不進任何 note 站的盤點——既不重寫也不被引用的第三集沒有留著的理由。
+> 同時把該檔的 `29-pawn-tickets-3` 那列移除（repo 已不存在，排除紀錄失去對象）。未留備份。
 
 ## 🗑️ 已刪 repo 紀錄（2026-08-17，remote `nplus-father` ＋ local 一併刪，不重做）
 
