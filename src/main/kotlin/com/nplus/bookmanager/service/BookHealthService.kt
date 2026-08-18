@@ -234,5 +234,15 @@ class BookHealthService(
             b.lastWritten?.let { put("lastWritten", it) }
         }
 
-    private val prettyJson = Json { prettyPrint = true }
+    /**
+     * Two-space indent, matching the portal's prettier config and
+     * `fetch-health.ts`'s `JSON.stringify(_, null, 2)`. kotlinx defaults to four,
+     * which makes `npm run lint` (prettier --check) fail on the very next commit
+     * of `health.json` — it did, on 2026-08-17 and again on the 02:00 UTC rebuild.
+     */
+    private val prettyJson =
+        Json {
+            prettyPrint = true
+            prettyPrintIndent = "  "
+        }
 }
