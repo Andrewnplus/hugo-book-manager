@@ -7134,10 +7134,6 @@ repos:
     description: "You've Got 8 Seconds | Paul Hellman | In an attention economy where you have eight seconds to be heard, the book uses a Focus, Variety, Presence framework to deliver 100 immediately usable communication tactics."
     url: https://github.com/nplus-father/youve-got-8-seconds
     topics: [hugobook, leaf-persuasion, nplus-kind-book, nplus-portal, sub-communication, top-professional]
-  - name: zen-programmer
-    description: The Zen Programmer | Christian Grobmeier | Brings Zen philosophy into programming practice, helping developers reclaim focus, balance, and equanimity in a high-pressure profession.
-    url: https://github.com/nplus-father/zen-programmer
-    topics: [hugobook, leaf-coding-practice, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
   - name: zero-second-thinking
     description: 零秒思考力 | 赤羽雄二 | 透過一套簡單的筆記方法論訓練快速思考與決策能力——每日寫十頁 A4 筆記，幫助讀者在三週內達到「零秒思考」的狀態，瞬間認清現狀、整理問題並決定行動。
     url: https://github.com/nplus-father/zero-second-thinking
