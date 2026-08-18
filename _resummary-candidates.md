@@ -16,7 +16,8 @@
 
 > 重新盤點 2026-08-17・掃描 `books-done` 下 **1,758** 個 repo（已排除 build 產物、template、tmp）。
 > 判準：**總字元**（整本 MD body 量）＋**每頁均**（總字元÷章節頁數）。全庫中位數：總字元 66,916、每頁均 3,512；p10：總字元 24,255、每頁均 1,277。
-> 本輪 vs 2026-07-12：**11 本通過門檻移出**、**1 本新入榜**（🆕）、**1 本已刪**（`kiss-your-but-good-bye`）。目前待處理 **74 本**。
+> 本輪 vs 2026-07-12：**11 本通過門檻移出**、**1 本新入榜**（🆕）、**1 本已刪**（`kiss-your-but-good-bye`）。目前待處理 **73 本**
+> （2026-08-18 再刪 `whats-left-without-your-business-card`，見文末紀錄）。
 > 全庫較 07-12 明顯變厚：中位數總字元 55,327 → 66,916、每頁均 2,987 → 3,512。
 
 ## 圖例
@@ -57,12 +58,11 @@
 |---|---|---:|---:|---|
 | 說話的品格 | `professional/communication/persuasion/dignity-of-speaking` | 6,648 | 229 | [Readmoo](https://readmoo.com/book/210330713000101) ·韓 |
 
-### 第二優先｜內容稀薄（總字元 < 8,000）（16 本）
+### 第二優先｜內容稀薄（總字元 < 8,000）（15 本）
 
 | 書名 | Repo 路徑 | 總字元 | 每頁均 | 找書連結 |
 |---|---|---:|---:|---|
 | 29張當票3：門簾外的人生鑑定 | `personal/mindset/growth/29-pawn-tickets-3` | 1,250 | 417 | [Readmoo](https://readmoo.com/book/210019712000101) ·中 |
-| 沒了名片，你還剩下什麼 | `professional/career/skill-building/whats-left-without-your-business-card` | 3,284 | 657 | [Readmoo](https://readmoo.com/book/210068763000101) ·日 |
 | 程式設計師之禪 | `craft/engineering/coding-practice/zen-programmer` | 3,470 | 434 | [OceanofPDF](https://oceanofpdf.com/?s=the+zen+programmer) ｜ [Readmoo](https://readmoo.com/book/210119373000101) ·英 |
 | 麥肯錫教我的思考武器：從邏輯思考到真正解決問題 | `professional/career/problem-solving/issue-driven` | 3,680 | 613 | [Readmoo](https://readmoo.com/book/210201484000101) ·日 |
 | 學上當 | `personal/habit/productivity/learning-to-be-deceived` | 4,212 | 702 | [Readmoo](https://readmoo.com/book/210072176000101) ·中 |
@@ -167,6 +167,19 @@
 `29-pawn-tickets`, `adversity-quotient`, `aging`, `attitude-of-the-rich`, `bible-suspense-investigation`, `bonhoeffer-spiritual-care-in-a-religionless-age`, `charisma-myth`, `course-of-love`, `deep-work`, `do-over`, `eat-this-book`, `elephant-and-the-flea`, `end-of-average`, `financial-boundaries-with-family`, `god-is-closer-than-you-think`, `great-work-great-career`, `grid-notebook`, `home-tonight`, `how-to-make-anyone-fall-in-love-with-you`, `how-to-win-in-a-winner-take-all-world`, `humble-inquiry`, `if-you-want-to-walk-on-water-you-have-got-to-get-out-of-the`, `intuition-pumps`, `keep-your-love-on`, `life-is-a-long-term-accumulation`, `live-your-best-life`, `living-loving-and-learning`, `mckinsey-writing-technique`, `myself-and-other-more-important-matters`, `orthodoxy`, `own-your-tech-career`, `power-of-the-other`, `qbq-question-behind-question`, `reinforcements-how-to-get-people-to-help-you`, `rich-dads-conspiracy-of-the-rich`, `so-good-they-cant-ignore-you`, `speed-of-trust`, `steal-like-an-artist`, `thats-not-what-i-meant`, `theory-and-practice-of-counseling-and-psychotherapy`, `what-every-body-is-saying`, `when-breath-becomes-air`, `winning`, `world-only-readers-can-reach`
 
 ---
+
+## 🗑️ 已刪 repo 紀錄（2026-08-18，remote `nplus-father` ＋ local 一併刪，不重做）
+
+| 書名 | slug | 總字元 | 每頁均 | 刪除原因 |
+|---|---|---:|---:|---|
+| 沒了名片，你還剩下什麼 | `whats-left-without-your-business-card` | 3,284 | 657 | 內容重複、已被其他書涵蓋 |
+
+> 原分類 `professional/career/skill-building/`。張國洋、姚詩豪（大人學）的職場實戰指南——
+> 自我定位、職場規則、累積籌碼、正向心態、轉職勝率五章。刪除理由不是找不到來源
+> （[Readmoo](https://readmoo.com/book/210068763000101) 有電子書），是**同樣的題材已被庫裡更厚的書蓋過**：
+> 同作者的 `art-of-adult-decision-making`（大人學選擇，9,671 字）講決策框架、
+> `so-good-they-cant-ignore-you`（30,003 字）與 `managing-oneself`（12,822 字）講職涯資本與自我定位。
+> 重做這本只會產出第四份同義筆記，因此連同 remote 一併刪除，不留備份。
 
 ## 🗑️ 已刪 repo 紀錄（2026-08-17，remote `nplus-father` ＋ local 一併刪，不重做）
 

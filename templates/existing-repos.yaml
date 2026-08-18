@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-08-18T13:47:07.431157129+08:00"
+last_updated: "2026-08-18T18:29:44.471909491+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -6758,10 +6758,6 @@ repos:
     description: What You Do Is Who You Are | Ben Horowitz | Draws lessons on building business culture from Toussaint Louverture, the samurai bushido, Genghis Khan, and Shaka Senghor — culture lives in the actions a leader rewards.
     url: https://github.com/nplus-father/what-you-do-is-who-you-are
     topics: [hugobook, leaf-culture, nplus-kind-book, nplus-portal, sub-leadership, tag-classic, top-professional]
-  - name: whats-left-without-your-business-card
-    description: 沒了名片，你還剩下什麼 | 張國洋、姚詩豪 | 兩位管理顧問的職場實戰指南，教你看懂規則、累積籌碼、提升轉職勝率。
-    url: https://github.com/nplus-father/whats-left-without-your-business-card
-    topics: [hugobook, leaf-skill-building, nplus-kind-book, nplus-portal, sub-career, top-professional]
   - name: whats-wrong-with-the-world
     description: "What's Wrong with the World | G. K. Chesterton | A sharp argument that modern society's deepest problem is not that we don't know the symptoms but that we have lost any shared vision of a healthy society."
     url: https://github.com/nplus-father/whats-wrong-with-the-world
