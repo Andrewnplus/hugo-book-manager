@@ -28,7 +28,9 @@ class BookHealthServiceTest {
         }
     }
 
-    private fun service() = BookHealthService(books, portal)
+    private val newBooks get() = File(root, "new-books").apply { mkdirs() }
+
+    private fun service() = BookHealthService(books, portal, newBooks)
 
     // ==================== bodyChars() ====================
 
@@ -80,6 +82,45 @@ class BookHealthServiceTest {
     fun `a book with no docs directory is skipped entirely`() {
         File(books, "craft/engineering/coding-practice/empty/site/content").mkdirs()
         assertTrue(service().scan().isEmpty())
+    }
+
+    // ==================== drafts ====================
+
+    @Test
+    fun `draft chapters are excluded, matching what Hugo actually builds`() {
+        book("with-draft", "01/_index.md" to "aaa")
+        File(books, "craft/engineering/coding-practice/with-draft/site/content/docs/02/_index.md").apply {
+            parentFile.mkdirs()
+            writeText("---\ntitle: \"x\"\ndraft: true\n---\nthis chapter is not published\n")
+        }
+
+        val found = service().scan().single()
+        assertEquals(1, found.pages, "a drafted chapter is absent from the deployed site")
+        assertEquals(4, found.chars)
+    }
+
+    @Test
+    fun `a body line reading draft true does not make the page a draft`() {
+        val f = File(root, "d.md").apply { writeText("---\ntitle: \"x\"\n---\ndraft: true\n") }
+        assertTrue(!BookHealthService.isDraft(f))
+    }
+
+    @Test
+    fun `flat in-progress books are scanned too, with taxonomy left blank`() {
+        // new-books has no category folders yet; dropping them here would delete
+        // them from health.json on every local refresh, since fetch-health.ts
+        // does list them.
+        book("filed", "01/_index.md" to "aaa")
+        File(newBooks, "in-progress/site/content/docs/01/_index.md").apply {
+            parentFile.mkdirs()
+            writeText("---\ntitle: \"x\"\n---\nbbbb\n")
+        }
+
+        val found = service().scan()
+        assertEquals(listOf("filed", "in-progress"), found.map { it.slug })
+        val wip = found.single { it.slug == "in-progress" }
+        assertEquals("", wip.top)
+        assertEquals(5, wip.chars)
     }
 
     // ==================== tier ====================

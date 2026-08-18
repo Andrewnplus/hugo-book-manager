@@ -31,6 +31,14 @@ import java.time.format.DateTimeFormatter
 class BookHealthService(
     private val booksDir: File,
     private val portalDir: File,
+    /**
+     * In-progress books, deliberately kept flat (no category folders) until
+     * `migrate-topic-tiers` files them. Scanned too, because otherwise a run of
+     * this command would drop them from health.json entirely — `fetch-health.ts`
+     * does see them, since repos.json lists every book repo regardless of where
+     * its clone lives.
+     */
+    private val newBooksDir: File? = null,
 ) {
     val healthFile: File get() = File(portalDir, "src/data/health.json")
 
@@ -58,6 +66,26 @@ class BookHealthService(
                 }
             }
             return total
+        }
+
+        /**
+         * A chapter Hugo will not build, and therefore one the published site
+         * does not have. Counting it here would make the local scan disagree
+         * with `fetch-health.ts`, which can only ever see what was deployed —
+         * `dictionary-of-the-later-new-testament` carries 121 such chapters and
+         * the two sources differed by exactly those.
+         */
+        fun isDraft(file: File): Boolean {
+            var fence = 0
+            var draft = false
+            file.forEachLine { line ->
+                if (line.trim() == "---") {
+                    fence++
+                } else if (fence == 1 && line.trim().replace(" ", "") == "draft:true") {
+                    draft = true
+                }
+            }
+            return draft
         }
     }
 
@@ -96,29 +124,47 @@ class BookHealthService(
             for (sub in top.listDirs()) {
                 for (leaf in sub.listDirs()) {
                     for (repo in leaf.listDirs()) {
-                        val docs = File(repo, "site/content/docs")
-                        if (!docs.isDirectory) continue
-                        val pages =
-                            docs
-                                .walkTopDown()
-                                .filter { it.isFile && it.extension == "md" }
-                                .toList()
-                        if (pages.isEmpty()) continue
-                        books +=
-                            Book(
-                                slug = repo.name,
-                                top = top.name,
-                                sub = sub.name,
-                                leaf = leaf.name,
-                                chars = pages.sumOf { bodyChars(it) },
-                                pages = pages.size,
-                                lastWritten = lastWritten(repo),
-                            )
+                        measure(repo, top.name, sub.name, leaf.name)?.let { books += it }
                     }
                 }
             }
         }
+        newBooksDir?.takeIf { it.isDirectory }?.let { dir ->
+            for (repo in dir.listDirs()) {
+                measure(repo, top = "", sub = "", leaf = "")?.let { books += it }
+            }
+        }
         return books.sortedBy { it.slug }
+    }
+
+    /**
+     * Taxonomy is passed in rather than derived: books-done encodes it in the
+     * path, new-books has none yet. The portal fills the blanks from repo
+     * topics, which are the actual source of truth for classification.
+     */
+    private fun measure(
+        repo: File,
+        top: String,
+        sub: String,
+        leaf: String,
+    ): Book? {
+        val docs = File(repo, "site/content/docs")
+        if (!docs.isDirectory) return null
+        val pages =
+            docs
+                .walkTopDown()
+                .filter { it.isFile && it.extension == "md" && !isDraft(it) }
+                .toList()
+        if (pages.isEmpty()) return null
+        return Book(
+            slug = repo.name,
+            top = top,
+            sub = sub,
+            leaf = leaf,
+            chars = pages.sumOf { bodyChars(it) },
+            pages = pages.size,
+            lastWritten = lastWritten(repo),
+        )
     }
 
     private fun File.listDirs(): List<File> =

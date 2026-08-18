@@ -11,7 +11,7 @@ import java.io.File
  * `src/data/health.json`. Commit + push the portal repo afterwards to publish.
  */
 class RefreshBookHealthCommand(
-    private val serviceFactory: (File, File) -> BookHealthService = ::BookHealthService,
+    private val serviceFactory: (File, File, File?) -> BookHealthService = ::BookHealthService,
 ) : CliktCommand(name = "refresh-book-health") {
     override fun help(context: Context) = "Scan local book clones and refresh the portal's content-health artifact"
 
@@ -27,7 +27,7 @@ class RefreshBookHealthCommand(
             return
         }
 
-        val service = serviceFactory(booksDir, portalDir)
+        val service = serviceFactory(booksDir, portalDir, File(AppConfig.defaultWorkDir).takeIf { it.isDirectory })
         val books = service.scan()
         if (books.isEmpty()) {
             println("No books found under ${booksDir.path} — nothing written.")
