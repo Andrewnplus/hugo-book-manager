@@ -16,8 +16,8 @@
 
 > 重新盤點 2026-08-17・掃描 `books-done` 下 **1,758** 個 repo（已排除 build 產物、template、tmp）。
 > 判準：**總字元**（整本 MD body 量）＋**每頁均**（總字元÷章節頁數）。全庫中位數：總字元 66,916、每頁均 3,512；p10：總字元 24,255、每頁均 1,277。
-> 本輪 vs 2026-07-12：**11 本通過門檻移出**、**1 本新入榜**（🆕）、**1 本已刪**（`kiss-your-but-good-bye`）。目前待處理 **73 本**
-> （2026-08-18 再刪 `whats-left-without-your-business-card`，見文末紀錄）。
+> 本輪 vs 2026-07-12：**11 本通過門檻移出**、**1 本新入榜**（🆕）、**1 本已刪**（`kiss-your-but-good-bye`）。目前待處理 **72 本**
+> （2026-08-18 再刪 `whats-left-without-your-business-card`、`hbrs-guide-to-emotional-intelligence`，見文末紀錄）。
 > 全庫較 07-12 明顯變厚：中位數總字元 55,327 → 66,916、每頁均 2,987 → 3,512。
 
 ## 圖例
@@ -78,7 +78,7 @@
 | 讀書這個荒野 | `wisdom/philosophy/ethics/reading-as-a-wilderness` | 7,299 | 912 | [Readmoo](https://readmoo.com/book/210114739000101) ·日 |
 | 29張當票2：當舖裡特有的人生風景 | `personal/mindset/growth/29-pawn-tickets-2` | 7,468 | 2,489 | [Readmoo](https://readmoo.com/book/210003324000101) ·中 |
 
-### 觀察名單｜邊緣偏薄（總字元 8,000–15,000）（57 本）
+### 觀察名單｜邊緣偏薄（總字元 8,000–15,000）（56 本）
 
 | 書名 | Repo 路徑 | 總字元 | 每頁均 | 找書連結 |
 |---|---|---:|---:|---|
@@ -125,7 +125,6 @@
 | 異類僑居者：基督徒的倫理與政治 | `faith/theology/systematic/resident-aliens-life-in-the-christian-colony` | 13,247 | 828 | [resident+aliens](https://oceanofpdf.com/?s=resident+aliens) |
 | 財務自由實踐版 | `professional/career/skill-building/work-optional` | 13,588 | 647 | [work+optional](https://oceanofpdf.com/?s=work+optional) |
 | 世界在等待的門徒 | `faith/theology/systematic/radical-disciple` | 13,601 | 1,511 | [the+radical+disciple](https://oceanofpdf.com/?s=the+radical+disciple) |
-| 哈佛教你高EQ管理術 | `professional/leadership/team-building/hbrs-guide-to-emotional-intelligence` | 13,706 | 1,054 | [hbr+guide+to+emotional+intelligence](https://oceanofpdf.com/?s=hbr+guide+to+emotional+intelligence) |
 | 有錢人想的和你不一樣 | `personal/mindset/growth/secrets-of-the-millionaire-mind` | 14,123 | 673 | [OceanofPDF](https://oceanofpdf.com/?s=secrets+of+the+millionaire+mind) ｜ [Readmoo](https://readmoo.com/search/keyword?q=%E6%9C%89%E9%8C%A2%E4%BA%BA%E6%83%B3%E7%9A%84%E5%92%8C%E4%BD%A0%E4%B8%8D%E4%B8%80%E6%A8%A3) ·英 |
 | HBR 經理人財務基礎指南 | `professional/business/management/hbr-guide-to-finance-basics-for-managers` | 14,153 | 4,718 | [hbr+guide+to+finance+basics+for+managers](https://oceanofpdf.com/?s=hbr+guide+to+finance+basics+for+managers) |
 | 📄 The Prodigal Prophet: Jonah and the Mystery of God's Mercy | `faith/theology/systematic/prodigal-prophet` | 14,214 | 1,093 | [the+prodigal+prophet](https://oceanofpdf.com/?s=the+prodigal+prophet) |
@@ -173,6 +172,7 @@
 | 書名 | slug | 總字元 | 每頁均 | 刪除原因 |
 |---|---|---:|---:|---|
 | 沒了名片，你還剩下什麼 | `whats-left-without-your-business-card` | 3,284 | 657 | 內容重複、已被其他書涵蓋 |
+| 哈佛教你高EQ管理術 | `hbrs-guide-to-emotional-intelligence` | 13,706 | 1,054 | 內容重複——同一本書已有另一個更厚的 repo |
 
 > 原分類 `professional/career/skill-building/`。張國洋、姚詩豪（大人學）的職場實戰指南——
 > 自我定位、職場規則、累積籌碼、正向心態、轉職勝率五章。刪除理由不是找不到來源
@@ -180,6 +180,15 @@
 > 同作者的 `art-of-adult-decision-making`（大人學選擇，9,671 字）講決策框架、
 > `so-good-they-cant-ignore-you`（30,003 字）與 `managing-oneself`（12,822 字）講職涯資本與自我定位。
 > 重做這本只會產出第四份同義筆記，因此連同 remote 一併刪除，不留備份。
+
+> 原分類 `professional/leadership/team-building/`。這個 repo 與 `hbr-s-10-must-reads-on-emotional-intelligence`
+> （19,835 字，2026-04 建）是**同一本書**——兩邊 `_index.md` 書名都是《哈佛教你高EQ管理術》
+> （HBR's 10 Must Reads on Emotional Intelligence 繁中版），12 章逐一相同：成為全方位領導人／好情緒領導力／
+> 公平為什麼這麼難／萬一好領袖作出壞決斷／推升高EQ團隊／有禮才有利／打造復原力／作自我情緒的領導人／
+> 誰怕回饋意見／力阻少年得志＋兩篇導讀。刪除理由不是找不到來源，是重複建檔；留下的是較厚、較新的那份。
+> repo 名與 GitHub description 標成 "HBR's Guide to Emotional Intelligence" 是誤標——真正的
+> HBR Guide to Emotional Intelligence（2017 工作手冊，8 部）是 `hbr-guide-to-emotional-intelligence`（64,241 字），內容不同、保留。
+> 刪除前已 `git bundle` 全歷史留底於 `books-management/archive/_deleted/hbrs-guide-to-emotional-intelligence.bundle`。
 
 ## 🗑️ 已刪 repo 紀錄（2026-08-17，remote `nplus-father` ＋ local 一併刪，不重做）
 

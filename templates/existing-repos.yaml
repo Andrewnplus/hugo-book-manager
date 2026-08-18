@@ -2718,10 +2718,6 @@ repos:
     description: "HBR's 10 Must Reads on Emotional Intelligence | Harvard Business Review | A curated collection of twelve EI essays from Daniel Goleman, Richard Boyatzis, and others, spanning self-awareness, resonant leadership, team EQ, resilience, and emotional agility for senior managers."
     url: https://github.com/nplus-father/hbr-s-10-must-reads-on-emotional-intelligence
     topics: [hugobook, leaf-team-building, nplus-kind-book, nplus-portal, sub-leadership, tag-toolbox, top-professional]
-  - name: hbrs-guide-to-emotional-intelligence
-    description: "HBR's Guide to Emotional Intelligence | Harvard Business Review | Ten classic HBR pieces explore how emotional intelligence shapes leadership effectiveness, teamwork, and organizational culture, covering self-awareness, resilience, and feedback responsiveness."
-    url: https://github.com/nplus-father/hbrs-guide-to-emotional-intelligence
-    topics: [hugobook, leaf-team-building, nplus-kind-book, nplus-portal, sub-leadership, tag-toolbox, top-professional]
   - name: head-first-design-patterns
     description: Head First Design Patterns, 2nd Edition | Eric Freeman & Elisabeth Robson | Teaches design patterns through visual, puzzle-driven exercises, starting with encapsulating what varies and the Observer pattern.
     url: https://github.com/nplus-father/head-first-design-patterns
