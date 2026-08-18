@@ -57,7 +57,16 @@ object RepoIndexLinter {
 
     private val SEPARATOR = Regex("[|｜]")
 
-    fun lint(index: RepoIndex): List<Finding> = index.repos.flatMap(::lintEntry) + lintDuplicates(index)
+    /**
+     * @param links slug → the book's purchase URL, read from each clone's
+     *   `book.link` frontmatter. Optional: the index itself has no such field,
+     *   so callers without local clones simply get the weaker title+author
+     *   match. See [lintDuplicates] for why the link matters.
+     */
+    fun lint(
+        index: RepoIndex,
+        links: Map<String, String> = emptyMap(),
+    ): List<Finding> = index.repos.flatMap(::lintEntry) + lintDuplicates(index, links)
 
     private fun lintEntry(entry: RepoIndex.RepoEntry): List<Finding> {
         val findings = mutableListOf<Finding>()
@@ -118,20 +127,43 @@ object RepoIndexLinter {
      * Two repos for the same book. Real cases found in the library: Cialdini's
      * *Influence*, de Botton's *Status Anxiety*, 安納金's 一個投機者的告白實戰書,
      * and Schwager's *A Complete Guide to the Futures Market* each had two.
-     * Keyed on title+author so genuinely distinct same-titled books — Kahneman's
-     * *Noise* vs McCormack's *Noise* — do not trip it.
+     *
+     * Matched on the purchase link first, because that is the one field that
+     * survives translation: `war-of-words` and `tongue-a-creative-force` were
+     * the same Tripp book under an English and a Chinese title, so a
+     * title-based key filed them apart and both sat in the library for months.
+     *
+     * Title + lead author stays as the fallback for repos whose link is
+     * unknown, and still separates genuinely distinct same-titled books —
+     * Kahneman's *Noise* from McCormack's.
      */
-    private fun lintDuplicates(index: RepoIndex): List<Finding> =
-        index.repos
-            .filter { it.isBook }
-            .mapNotNull { entry ->
-                val parts =
-                    entry.description
-                        .split(SEPARATOR)
-                        .map { it.trim() }
-                        .filter { it.isNotEmpty() }
-                if (parts.size < 2) null else DuplicateKey(parts[0], parts[1]) to entry.name
-            }.groupBy({ it.first }, { it.second })
+    private fun lintDuplicates(
+        index: RepoIndex,
+        links: Map<String, String>,
+    ): List<Finding> {
+        val books = index.repos.filter { it.isBook }
+        val groups = mutableMapOf<Any, MutableList<String>>()
+        val labels = mutableMapOf<Any, String>()
+
+        for (entry in books) {
+            val parts =
+                entry.description
+                    .split(SEPARATOR)
+                    .map { it.trim() }
+                    .filter { it.isNotEmpty() }
+            val link = links[entry.name]?.let(::normalizeLink)
+            val key: Any? =
+                when {
+                    !link.isNullOrBlank() -> LinkKey(link)
+                    parts.size >= 2 -> DuplicateKey(parts[0], parts[1])
+                    else -> null
+                }
+            if (key == null) continue
+            groups.getOrPut(key) { mutableListOf() }.add(entry.name)
+            labels[key] = parts.firstOrNull() ?: entry.name
+        }
+
+        return groups
             .filterValues { it.size > 1 }
             .flatMap { (key, names) ->
                 names.sorted().map { name ->
@@ -139,10 +171,31 @@ object RepoIndexLinter {
                         name,
                         Severity.ERROR,
                         "duplicate-book",
-                        "\"${key.title}\" by ${key.author} also exists as ${(names - name).sorted().joinToString(", ")}",
+                        "\"${labels[key]}\" also exists as ${(names - name).sorted().joinToString(", ")}",
                     )
                 }
             }
+    }
+
+    /**
+     * Amazon URLs for the same product differ in locale prefix, slug text and
+     * tracking query, so only the scheme-less host plus the /dp/<asin> or
+     * /product/<asin> segment identifies the edition.
+     */
+    private fun normalizeLink(raw: String): String {
+        val lower =
+            raw
+                .trim()
+                .lowercase()
+                .substringBefore('?')
+                .substringBefore('#')
+        val asin = Regex("/(?:dp|gp/product|product)/([a-z0-9]{10})").find(lower)?.groupValues?.get(1)
+        return if (asin != null) "asin:$asin" else lower.trimEnd('/')
+    }
+
+    private data class LinkKey(
+        private val value: String,
+    )
 
     /**
      * Case- and whitespace-insensitive identity for a book.

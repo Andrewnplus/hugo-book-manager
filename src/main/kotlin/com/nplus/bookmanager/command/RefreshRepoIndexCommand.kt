@@ -5,6 +5,7 @@ import com.github.ajalt.clikt.core.Context
 import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.service.RepoIndexLinter
 import com.nplus.bookmanager.service.RepoIndexService
+import java.io.File
 
 /**
  * Refresh the cached snapshot of book repos for the configured owner.
@@ -36,7 +37,43 @@ class RefreshRepoIndexCommand(
         service.save(index)
         println("✅ Saved ${index.repos.size} repo(s) to ${service.indexFile.path}")
 
-        reportLint(RepoIndexLinter.lint(index))
+        reportLint(RepoIndexLinter.lint(index, purchaseLinks()))
+    }
+
+    /**
+     * slug → `book.link` from each local clone's home page frontmatter.
+     *
+     * Read here rather than from the index because the index mirrors what the
+     * GitHub API returns — name, description, topics — and the purchase link
+     * lives in the repo's own content. Missing clones simply fall out of the
+     * map; the linter degrades to matching on title and author for those.
+     */
+    private fun purchaseLinks(): Map<String, String> {
+        val roots = listOf(AppConfig.booksDir, AppConfig.defaultWorkDir).map(::File).filter { it.isDirectory }
+        val out = mutableMapOf<String, String>()
+        for (root in roots) {
+            root
+                .walkTopDown()
+                .maxDepth(5)
+                .filter { it.isFile && it.name == "_index.md" && it.parentFile?.name == "content" }
+                .forEach { file ->
+                    val slug =
+                        file.parentFile.parentFile
+                            ?.parentFile
+                            ?.name ?: return@forEach
+                    // Only the `book:` map's link, not a stray `link:` elsewhere
+                    // in the frontmatter; the two-space indent is what marks it.
+                    file
+                        .useLines { lines ->
+                            lines.firstOrNull { it.startsWith("  link: ") }
+                        }?.removePrefix("  link: ")
+                        ?.trim()
+                        ?.trim('"')
+                        ?.takeIf { it.isNotBlank() }
+                        ?.let { out[slug] = it }
+                }
+        }
+        return out
     }
 
     /**

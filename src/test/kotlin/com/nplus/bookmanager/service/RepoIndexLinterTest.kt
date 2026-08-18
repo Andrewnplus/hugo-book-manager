@@ -19,6 +19,11 @@ class RepoIndexLinterTest {
 
     private fun lint(vararg entries: RepoIndex.RepoEntry) = RepoIndexLinter.lint(RepoIndex(lastUpdated = null, repos = entries.toList()))
 
+    private fun lintWithLinks(
+        links: Map<String, String>,
+        vararg entries: RepoIndex.RepoEntry,
+    ) = RepoIndexLinter.lint(RepoIndex(lastUpdated = null, repos = entries.toList()), links)
+
     private fun codes(vararg entries: RepoIndex.RepoEntry) = lint(*entries).map { it.code }
 
     @Test
@@ -117,6 +122,52 @@ class RepoIndexLinterTest {
             )
         assertEquals(listOf("duplicate-book", "duplicate-book"), findings.map { it.code })
         assertTrue(findings.any { it.repo == "influence-cialdini" && it.detail.contains("influence-psychology") })
+    }
+
+    @Test
+    fun `the same book under two languages is caught by its purchase link`() {
+        // The real pair: Tripp's War of Words was filed once in English and
+        // once as 言語的威力, so a title-based key never saw them as one book.
+        val findings =
+            lintWithLinks(
+                mapOf(
+                    "war-of-words" to "https://www.amazon.com/War-Words/dp/B00LUUWA7K",
+                    "tongue-a-creative-force" to "https://www.amazon.com/-/zh_TW/dp/B00LUUWA7K?ref=x",
+                ),
+                book(
+                    "war-of-words",
+                    "War of Words | Paul David Tripp | Reads everyday communication struggles through the gospel, arguing that words reveal the heart before they change anything else.",
+                ),
+                book("tongue-a-creative-force", "言語的威力 | Paul David Tripp | 從改革宗聖經輔導視角切入溝通困境，主張話語顯明心靈。"),
+            )
+        assertEquals(listOf("duplicate-book", "duplicate-book"), findings.map { it.code })
+    }
+
+    @Test
+    fun `different books by one author are not merged just because both have links`() {
+        assertEquals(
+            emptyList(),
+            lintWithLinks(
+                mapOf(
+                    "a" to "https://www.amazon.com/dp/AAAAAAAAAA",
+                    "b" to "https://www.amazon.com/dp/BBBBBBBBBB",
+                ),
+                book("a", "Book One | Same Author | A first book with a perfectly adequate blurb attached."),
+                book("b", "Book Two | Same Author | A second book with a perfectly adequate blurb attached."),
+            ),
+        )
+    }
+
+    @Test
+    fun `a repo without a known link still falls back to title and author`() {
+        assertTrue(
+            "duplicate-book" in
+                lintWithLinks(
+                    emptyMap(),
+                    book("x", "Influence | Robert B. Cialdini | The classic distilled from three years undercover work."),
+                    book("y", "Influence | Robert B. Cialdini | Six principles of persuasion drawn from field research."),
+                ).map { it.code },
+        )
     }
 
     @Test

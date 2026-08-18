@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-08-17T21:51:00.12754933+08:00"
+last_updated: "2026-08-18T13:47:07.431157129+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -6390,10 +6390,6 @@ repos:
     description: "Today Matters: 12 Daily Practices to Guarantee Tomorrow's Success | John C. Maxwell | Argues that success is decided daily, not someday, and names twelve daily practices — attitude, priorities, health, faith, generosity — to decide and manage."
     url: https://github.com/nplus-father/today-matters
     topics: [hugobook, leaf-routine, nplus-kind-book, nplus-portal, sub-habit, top-personal]
-  - name: tongue-a-creative-force
-    description: 言語的威力 | Paul David Tripp | 從改革宗聖經輔導視角切入溝通困境，主張話語顯明心靈——唯有福音能改變心，才能真正改變口舌之戰。
-    url: https://github.com/nplus-father/tongue-a-creative-force
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: too-big-to-fail
     description: Too Big to Fail | Andrew Ross Sorkin | A blow-by-blow reconstruction of the 2008 financial crisis from inside Lehman, Goldman, the Fed, and Treasury—the meetings, calls, and bailouts that kept Wall Street from collapsing.
     url: https://github.com/nplus-father/too-big-to-fail
@@ -6518,10 +6514,6 @@ repos:
     description: Understanding Distributed Systems | Roberto Vitillo | A compact tour of the whole stack — communication, coordination, scalability, resiliency, and testing/operations — aimed at giving working engineers the mental model rather than the proofs.
     url: https://github.com/nplus-father/understanding-distributed-systems
     topics: [hugobook, leaf-systems-design, nplus-kind-book, nplus-portal, sub-engineering, top-craft]
-  - name: understanding-human-nature
-    description: 阿德勒心理學講義 | Alfred Adler | 阿德勒以「個體心理學」為骨幹，將自卑感、人生原型、人生風格與社會興趣串成一個整體視角，說明人如何在童年塑造的劇本中追求優越，又如何藉社會合作走出情結的困局。
-    url: https://github.com/nplus-father/understanding-human-nature
-    topics: [hugobook, leaf-self-learning, nplus-kind-book, nplus-portal, sub-education, tag-classic, top-wisdom]
   - name: understanding-the-bible
     description: "Understanding the Bible: Methods of Bible Study | Dorothy L. Johns | An independent-study course that teaches interpretation principles first, then works the synthetic whole-book method through Habakkuk, before surveying the biographical, topical, and devotional methods."
     url: https://github.com/nplus-father/understanding-the-bible
