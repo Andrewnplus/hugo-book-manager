@@ -9,6 +9,7 @@ import com.nplus.bookmanager.command.MarkReadCommand
 import com.nplus.bookmanager.command.MigrateTopicTiersCommand
 import com.nplus.bookmanager.command.RefreshBookHealthCommand
 import com.nplus.bookmanager.command.RefreshGoalProgressCommand
+import com.nplus.bookmanager.command.RefreshOverviewCoverageCommand
 import com.nplus.bookmanager.command.RefreshRepoIndexCommand
 
 /**
@@ -33,6 +34,7 @@ fun main(args: Array<String>) {
             RefreshRepoIndexCommand(),
             RefreshGoalProgressCommand(),
             RefreshBookHealthCommand(),
+            RefreshOverviewCoverageCommand(),
             MarkReadCommand(),
             MigrateTopicTiersCommand(),
         ).main(args)
