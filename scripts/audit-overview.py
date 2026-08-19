@@ -11,6 +11,10 @@
     audit-overview.py <repo 路徑>          單本，人可讀的結果，FAIL 時 exit 1
     audit-overview.py --all [根目錄]        全庫掃描，輸出統計與最該重做的清單
     audit-overview.py --all --json         全庫掃描，輸出 JSON 供其他工具消費
+
+進度報告（原 --report 產生的 OVERVIEW-PROGRESS.md）已於 2026-08-19 退役：
+統計看 https://nplus.wiki/health/ 的「深度概覽改寫」區塊，機器讀 portal 的
+src/data/overview.json（由 `./gradlew refreshOverviewCoverage` 與 fetch-health.ts 維護）。
 """
 
 import argparse
@@ -26,7 +30,6 @@ import unicodedata
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _BOOKS_MGMT = os.path.dirname(os.path.dirname(_HERE))
 DEFAULT_ROOT = os.path.join(_BOOKS_MGMT, "books-done")
-DEFAULT_OUT = os.path.join(os.path.dirname(_HERE), "OVERVIEW-PROGRESS.md")
 
 SECTIONS = ["作者的位置", "完整摘要", "定位", "這本書的限制"]
 LEGACY = ["作者背景", "完整摘要", "本書的貢獻與定位"]
@@ -344,125 +347,12 @@ def run_all(root, as_json):
     return 0
 
 
-def write_report(root, out_path, stamp):
-    """產生 OVERVIEW-PROGRESS.md：改寫進度的單一真相。
-
-    刻意寫成 markdown 而不是 JSON——這份是給人看的、要能在 GitHub 上直接讀，
-    而且 diff 出來就是進度。機器要吃的話用 --json。
-    """
-    books = find_books(root)
-    rows = []
-    for b in books:
-        checks, meta = check(b)
-        nfail = sum(1 for c in checks if not c[1])
-        rows.append(dict(slug=os.path.relpath(b, root), fails=nfail,
-                         failed=[c[0] for c in checks if not c[1]],
-                         notes=note_volume(b), written=is_written(b), **meta))
-    n = len(rows)
-    done = [r for r in rows if r["fails"] == 0]
-    legacy = [r for r in rows if r.get("legacy")]
-    pct = len(done) * 100.0 / max(n, 1)
-
-    L = []
-    L.append("# 深度概覽改寫進度\n")
-    L.append("> 衍生檔，勿手改。重新產生：`python3 scripts/audit-overview.py --report`\n")
-    L.append("最後更新：%s\n" % stamp)
-    L.append("## 總覽\n")
-    L.append("| | 數量 | 佔比 |")
-    L.append("|---|---:|---:|")
-    L.append("| 全庫 | %d | 100%% |" % n)
-    L.append("| **已改寫並通過品檢** | **%d** | **%.1f%%** |" % (len(done), pct))
-    L.append("| 仍是舊三段格式 | %d | %.1f%% |" % (len(legacy), len(legacy) * 100.0 / max(n, 1)))
-    L.append("")
-    bar = int(pct / 2)
-    L.append("```\n[%s%s] %.1f%%\n```\n" % ("█" * bar, "·" * (50 - bar), pct))
-
-    agg = {}
-    for r in rows:
-        for f in r["failed"]:
-            agg[f] = agg.get(f, 0) + 1
-    L.append("## 各項未通過\n")
-    L.append("| 檢查 | 未通過 | 佔比 |")
-    L.append("|---|---:|---:|")
-    for k, v in sorted(agg.items(), key=lambda x: -x[1]):
-        L.append("| %s | %d | %.0f%% |" % (k, v, v * 100.0 / n))
-    L.append("")
-
-    pending = [r for r in rows if r["fails"]]
-    patch = sorted([r for r in pending if r["written"]], key=lambda r: r["slug"])
-    pending = [r for r in pending if not r["written"]]
-    hollow = sorted([r for r in pending if r["notes"] < MIN_NOTES], key=lambda r: r["slug"])
-    todo = sorted([r for r in pending if r["notes"] >= MIN_NOTES], key=lambda r: r["slug"])
-    L.append("## 待改寫（依 slug 排序）\n")
-    L.append("刻意不按筆記量或未通過項數排序——挑書的順序由人決定，這裡只負責把還沒做的列全。\n")
-    L.append("| # | 書 | 未通過 | 概覽字數 | 筆記 |")
-    L.append("|---:|---|---:|---:|---:|")
-    for i, r in enumerate(todo[:200], 1):
-        L.append("| %d | `%s` | %d | %d | %dk |" % (
-            i, r["slug"], r["fails"], r.get("total", 0), r["notes"] // 1000))
-    if len(todo) > 200:
-        L.append("")
-        L.append("_（只列前 200 本，另有 %d 本未列出）_" % (len(todo) - 200))
-    L.append("")
-
-    if hollow:
-        L.append("## 筆記是空的，寫不了（%d 本）\n" % len(hollow))
-        L.append("docs/ 底下只有章節 frontmatter、沒有內文（< %d bytes）。"
-                 "「完整摘要」規定只能取材自筆記，硬寫等於編造——先補筆記再回來。\n" % MIN_NOTES)
-        for r in hollow:
-            L.append("- `%s` — 筆記 %d bytes" % (r["slug"], r["notes"]))
-        L.append("")
-
-    if patch:
-        L.append("## 已寫過、但有項目未過（%d 本）\n" % len(patch))
-        L.append("四段都在，缺的是個別項目——補那一項就好，不要當成沒寫過整段重寫。"
-                 "`--todo` 不會挑到這些書。\n")
-        for r in patch:
-            L.append("- `%s` — %s" % (r["slug"], "、".join(r["failed"])))
-        L.append("")
-
-    # 通過品檢不等於寫得好。這一節把「剛好踩線」的書挑出來，因為報告的其餘部分
-    # 只分得出合格與不合格，看不出合格者之間的差距。
-    weak = []
-    for r in done:
-        f = thin_flags(r)
-        if f:
-            weak.append((len(f), r["notes"], r, f))
-    weak.sort(key=lambda x: (-x[0], -x[1]))
-    if weak:
-        L.append("## 過了，但貼著下限（%d 本）\n" % len(weak))
-        L.append("品檢是二元關卡，只能回答合不合格；這一節顯示合格者之間的差距。"
-                 "依（貼線維度數 → 筆記量）排序——筆記厚而概覽薄，代表素材就在那裡"
-                 "沒被用上，補強的投報率最高。要補的只是貼線的那幾項，"
-                 "不是整段重寫。查詢：`--weak N`。\n")
-        L.append("| # | 書 | 貼線 | 概覽字數 | 筆記 | 貼線的維度 |")
-        L.append("|---:|---|---:|---:|---:|---|")
-        for i, (cnt, notes, r, f) in enumerate(weak[:60], 1):
-            L.append("| %d | `%s` | %d | %d | %dk | %s |" % (
-                i, r["slug"], cnt, r.get("total", 0), notes // 1000,
-                "；".join("%s %s" % (a, b) for a, b in f)))
-        if len(weak) > 60:
-            L.append("")
-            L.append("_（只列前 60 本，另有 %d 本未列出）_" % (len(weak) - 60))
-        L.append("")
-
-    if done:
-        L.append("## 已完成\n")
-        for r in sorted(done, key=lambda r: r["slug"]):
-            L.append("- `%s` — %d 字" % (r["slug"], r.get("total", 0)))
-        L.append("")
-
-    io.open(out_path, "w", encoding="utf-8").write("\n".join(L))
-    print("寫入 %s（%d 本，已完成 %d）" % (out_path, n, len(done)))
-    return 0
-
-
 def run_todo(root, n):
     """印出接下來該做的 n 本 repo 路徑，一行一個。
 
     這是「中斷後續作」的入口：進度不存在任何狀態檔裡，而是每次重新從書本內容
     算出來——書本自己就是真相，而它們各自有 git remote。所以重開機、換機器、
-    或把 OVERVIEW-PROGRESS.md 刪掉，都不會弄丟進度；重跑一次就回來了。
+    或把任何衍生的進度檔刪掉，都不會弄丟進度；重跑一次就回來了。
 
     整個掃描是純檔案讀取，不經過 LLM，全庫 1618 本約數秒，可以隨便重跑。
 
@@ -543,9 +433,6 @@ def main():
                     help="印出接下來該做的 N 本 repo 路徑（續作用）")
     ap.add_argument("--weak", type=int, metavar="N",
                     help="列出已寫過、品檢全過、但內容貼著下限的前 N 本")
-    ap.add_argument("--report", action="store_true", help="產生 OVERVIEW-PROGRESS.md")
-    ap.add_argument("--stamp", default="", help="報告的時間戳（呼叫端給，腳本不取系統時間）")
-    ap.add_argument("--out", default=DEFAULT_OUT)
     ap.add_argument("--root", default=DEFAULT_ROOT)
     ap.add_argument("--json", action="store_true", help="與 --all 併用，輸出 JSON")
     a = ap.parse_args()
@@ -554,8 +441,6 @@ def main():
         return run_todo(a.root, a.todo)
     if a.weak is not None:
         return run_weak(a.root, a.weak)
-    if a.report:
-        return write_report(a.root, a.out, a.stamp or "（未提供）")
     if a.all:
         return run_all(a.root, a.json)
     if not a.repo:
