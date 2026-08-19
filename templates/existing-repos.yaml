@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-08-18T18:29:44.471909491+08:00"
+last_updated: "2026-08-19T21:39:45.315078028+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -3197,6 +3197,10 @@ repos:
   - name: invested
     description: "Invested | Charles Schwab | The founder of Charles Schwab tells how he built America's first discount brokerage by relentlessly putting individual investors first."
     url: https://github.com/nplus-father/invested
+    topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
+  - name: invested-town
+    description: "Invested: How Warren Buffett and Charlie Munger Taught Me to Master My Mind, My Emotions, and My Money | Danielle Town & Phil Town | A twelve-month, one-practice-per-month apprenticeship in Rule #1 value investing, written by a lawyer who learned the method from her father after years of avoiding money."
+    url: https://github.com/nplus-father/invested-town
     topics: [hugobook, leaf-value-investing, nplus-kind-book, nplus-portal, sub-finance, top-professional]
   - name: investing-hagstrom
     description: "Investing: The Last Liberal Art | Robert G. Hagstrom | Charlie Munger-inspired multidisciplinary investing — using mental models from physics, biology, sociology, psychology, philosophy, literature, and math."
