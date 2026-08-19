@@ -22,6 +22,7 @@ Hugo Book Manager 是 Kotlin + Gradle 的 CLI 工具,為讀書筆記建立 GitHu
 ./gradlew initBooks [-Pid=<book-id>] [-Pstatus=true] [-Preset=true]
 ./gradlew refreshRepoIndex        # 更新既有書本 repo 的快取索引
 ./gradlew refreshGoalProgress     # 重建 portal 的 src/data/progress.json(該檔勿手改)
+./gradlew refreshOverviewCoverage # 重建 portal 的 src/data/overview.json(深度概覽改寫進度;跑 audit-overview.py)
 ./gradlew markRead -Prepo=<repo> [-Pchapter=<dir>]
 ./gradlew migrateTopicTiers -Papply=true -PrepoName=<repo>   # 預設 dry-run
 ```

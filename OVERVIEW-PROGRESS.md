@@ -2,34 +2,35 @@
 
 > 衍生檔，勿手改。重新產生：`python3 scripts/audit-overview.py --report`
 
-最後更新：（未提供）
+最後更新：2026-08-19T14:02Z
 
 ## 總覽
 
 | | 數量 | 佔比 |
 |---|---:|---:|
-| 全庫 | 1758 | 100% |
-| **已改寫並通過品檢** | **686** | **39.0%** |
-| 仍是舊三段格式 | 1072 | 61.0% |
+| 全庫 | 1755 | 100% |
+| **已改寫並通過品檢** | **1731** | **98.6%** |
+| 仍是舊三段格式 | 22 | 1.3% |
 
 ```
-[███████████████████·······························] 39.0%
+[█████████████████████████████████████████████████·] 98.6%
 ```
 
 ## 各項未通過
 
 | 檢查 | 未通過 | 佔比 |
 |---|---:|---:|
-| 四段齊全 | 1072 | 61% |
-| 作者的位置 長度 | 1072 | 61% |
-| 定位 長度 | 1072 | 61% |
-| 這本書的限制 長度 | 1072 | 61% |
-| 限制段有實質內容 | 1072 | 61% |
-| 引用年份 | 931 | 53% |
-| 點名可查證的作品／人名 | 728 | 41% |
-| 完整摘要 長度 | 336 | 19% |
-| 粗體都收得起來 | 38 | 2% |
-| 無空洞讚美 | 37 | 2% |
+| 四段齊全 | 22 | 1% |
+| 作者的位置 長度 | 22 | 1% |
+| 定位 長度 | 22 | 1% |
+| 這本書的限制 長度 | 22 | 1% |
+| 限制段有實質內容 | 22 | 1% |
+| 引用年份 | 21 | 1% |
+| 點名可查證的作品／人名 | 14 | 1% |
+| 完整摘要 長度 | 7 | 0% |
+| 有深度概覽 | 2 | 0% |
+| 無空洞讚美 | 1 | 0% |
+| 粗體都收得起來 | 1 | 0% |
 
 ## 待改寫（依 slug 排序）
 
@@ -37,284 +38,99 @@
 
 | # | 書 | 未通過 | 概覽字數 | 筆記 |
 |---:|---|---:|---:|---:|
-| 1 | `personal/habit/productivity/road-to-character` | 7 | 731 | 110k |
-| 2 | `personal/habit/productivity/slow-productivity` | 6 | 828 | 39k |
-| 3 | `personal/habit/productivity/smarter-faster-better` | 5 | 1591 | 133k |
-| 4 | `personal/habit/productivity/start-now-get-perfect-later` | 6 | 625 | 105k |
-| 5 | `personal/habit/productivity/time-management` | 7 | 683 | 81k |
-| 6 | `personal/habit/productivity/time-smart` | 6 | 733 | 94k |
-| 7 | `personal/habit/productivity/when-daniel-pink` | 7 | 1191 | 90k |
-| 8 | `personal/habit/productivity/why-elites-are-checklist-masters` | 8 | 539 | 185k |
-| 9 | `personal/habit/productivity/why-elites-are-time-masters` | 7 | 614 | 96k |
-| 10 | `personal/habit/productivity/world-only-readers-can-reach` | 8 | 752 | 143k |
-| 11 | `personal/habit/productivity/worries-are-all-in-your-head` | 7 | 616 | 20k |
-| 12 | `personal/habit/routine/power-of-full-engagement` | 7 | 873 | 209k |
-| 13 | `personal/habit/routine/power-of-habit` | 7 | 1318 | 438k |
-| 14 | `personal/habit/routine/tiny-habits` | 6 | 755 | 145k |
-| 15 | `personal/habit/routine/workbook-for-atomic-habits` | 6 | 614 | 83k |
-| 16 | `personal/lifestyle/style/dressing-the-man` | 7 | 535 | 89k |
-| 17 | `personal/lifestyle/style/gentleman-timeless-guide-to-fashion` | 7 | 615 | 253k |
-| 18 | `personal/lifestyle/style/how-to-be-a-man` | 8 | 408 | 361k |
-| 19 | `personal/lifestyle/style/style-and-the-man` | 7 | 673 | 498k |
-| 20 | `personal/lifestyle/style/ultimate-guide-to-mens-style` | 8 | 495 | 60k |
-| 21 | `personal/mindset/critical-thinking/biased` | 6 | 784 | 114k |
-| 22 | `personal/mindset/critical-thinking/chancing-it` | 5 | 1289 | 146k |
-| 23 | `personal/mindset/critical-thinking/clear-thinking` | 6 | 647 | 100k |
-| 24 | `personal/mindset/critical-thinking/critical-thinking-concepts-and-tools` | 6 | 1137 | 36k |
-| 25 | `personal/mindset/critical-thinking/factfulness` | 8 | 371 | 88k |
-| 26 | `personal/mindset/critical-thinking/fooled-by-randomness` | 7 | 530 | 48k |
-| 27 | `personal/mindset/critical-thinking/hbr-guide-to-critical-thinking` | 7 | 729 | 138k |
-| 28 | `personal/mindset/critical-thinking/how-we-know-what-isnt-so` | 7 | 706 | 32k |
-| 29 | `personal/mindset/critical-thinking/irrational-ape` | 6 | 1110 | 178k |
-| 30 | `personal/mindset/critical-thinking/knowledge-illusion` | 6 | 710 | 96k |
-| 31 | `personal/mindset/critical-thinking/noise` | 7 | 901 | 176k |
-| 32 | `personal/mindset/critical-thinking/poor-charlie-s-almanack` | 7 | 519 | 87k |
-| 33 | `personal/mindset/critical-thinking/seeking-wisdom` | 7 | 625 | 115k |
-| 34 | `personal/mindset/critical-thinking/signal-and-the-noise` | 6 | 693 | 192k |
-| 35 | `personal/mindset/critical-thinking/super-thinking` | 6 | 854 | 143k |
-| 36 | `personal/mindset/critical-thinking/think-again` | 7 | 668 | 148k |
-| 37 | `personal/mindset/critical-thinking/think-twice-harnessing-the-power-of-counterintuition` | 7 | 639 | 97k |
-| 38 | `personal/mindset/critical-thinking/thinking-101` | 7 | 768 | 85k |
-| 39 | `personal/mindset/critical-thinking/thinking-fast-and-slow` | 7 | 725 | 228k |
-| 40 | `personal/mindset/critical-thinking/thinking-in-systems` | 7 | 1651 | 110k |
-| 41 | `personal/mindset/critical-thinking/undoing-project` | 6 | 1224 | 158k |
-| 42 | `personal/mindset/critical-thinking/wan-weigang-scientific-thinker` | 8 | 407 | 105k |
-| 43 | `personal/mindset/critical-thinking/wujun-abundance` | 7 | 455 | 332k |
-| 44 | `personal/mindset/emotion/algebra-of-happiness` | 8 | 658 | 51k |
-| 45 | `personal/mindset/emotion/difference-maker` | 6 | 890 | 105k |
-| 46 | `personal/mindset/emotion/emotional-intelligence` | 7 | 700 | 741k |
-| 47 | `personal/mindset/emotion/gift-of-fear` | 7 | 816 | 198k |
-| 48 | `personal/mindset/emotion/hope-for-cynics` | 6 | 657 | 143k |
-| 49 | `personal/mindset/emotion/inner-excellence` | 7 | 827 | 127k |
-| 50 | `personal/mindset/emotion/let-them-theory` | 7 | 732 | 184k |
-| 51 | `personal/mindset/emotion/paradox-of-choice` | 7 | 1157 | 135k |
-| 52 | `personal/mindset/emotion/permission-to-feel` | 5 | 1232 | 156k |
-| 53 | `personal/mindset/emotion/social-animal` | 6 | 915 | 118k |
-| 54 | `personal/mindset/emotion/wisest-one-in-the-room` | 7 | 810 | 90k |
-| 55 | `personal/mindset/emotion/your-mind-an-owners-manual-for-a-better-life` | 8 | 423 | 28k |
-| 56 | `personal/mindset/growth/11-rules-for-life` | 6 | 975 | 71k |
-| 57 | `personal/mindset/growth/15-invaluable-laws-of-growth` | 7 | 471 | 151k |
-| 58 | `personal/mindset/growth/5-types-of-wealth` | 7 | 759 | 200k |
-| 59 | `personal/mindset/growth/achievement-habit` | 7 | 716 | 152k |
-| 60 | `personal/mindset/growth/art-of-adult-decision-making` | 7 | 715 | 24k |
-| 61 | `personal/mindset/growth/art-of-selfishness` | 6 | 1051 | 283k |
-| 62 | `personal/mindset/growth/awaken-the-giant-within` | 8 | 713 | 827k |
-| 63 | `personal/mindset/growth/be-obsessed-or-be-average` | 8 | 524 | 168k |
-| 64 | `personal/mindset/growth/biggest-bluff` | 7 | 895 | 170k |
-| 65 | `personal/mindset/growth/bottom-logic` | 8 | 450 | 151k |
-| 66 | `personal/mindset/growth/bright-sided` | 6 | 629 | 68k |
-| 67 | `personal/mindset/growth/change-your-questions-change-your-life` | 7 | 474 | 64k |
-| 68 | `personal/mindset/growth/change-your-thinking-change-your-life` | 7 | 721 | 101k |
-| 69 | `personal/mindset/growth/change-your-thinking-change-your-life-tracy` | 9 | 4109 | 359k |
-| 70 | `personal/mindset/growth/confidence-game` | 7 | 857 | 103k |
-| 71 | `personal/mindset/growth/courage-to-be-happy` | 7 | 732 | 131k |
-| 72 | `personal/mindset/growth/creativity-and-problem-solving` | 7 | 844 | 72k |
-| 73 | `personal/mindset/growth/daring-greatly` | 7 | 852 | 121k |
-| 74 | `personal/mindset/growth/dark-horse` | 6 | 1494 | 142k |
-| 75 | `personal/mindset/growth/die-empty` | 6 | 647 | 38k |
-| 76 | `personal/mindset/growth/difference-that-makes-the-difference` | 7 | 678 | 97k |
-| 77 | `personal/mindset/growth/everyone-can-succeed` | 7 | 761 | 188k |
-| 78 | `personal/mindset/growth/fengtang-buer` | 8 | 590 | 47k |
-| 79 | `personal/mindset/growth/flight-plan` | 6 | 907 | 79k |
-| 80 | `personal/mindset/growth/flow-psychology-of-happiness` | 7 | 1601 | 586k |
-| 81 | `personal/mindset/growth/formula` | 7 | 886 | 62k |
-| 82 | `personal/mindset/growth/gap-and-the-gain` | 6 | 1017 | 69k |
-| 83 | `personal/mindset/growth/giant-trader-thinking` | 7 | 808 | 107k |
-| 84 | `personal/mindset/growth/goals` | 7 | 759 | 190k |
-| 85 | `personal/mindset/growth/hbr-guide-to-unlocking-creativity` | 7 | 676 | 140k |
-| 86 | `personal/mindset/growth/hidden-potential` | 6 | 802 | 136k |
-| 87 | `personal/mindset/growth/hooked` | 7 | 425 | 44k |
-| 88 | `personal/mindset/growth/how-successful-people-think` | 7 | 679 | 89k |
-| 89 | `personal/mindset/growth/how-to-change` | 7 | 1189 | 72k |
-| 90 | `personal/mindset/growth/ignore-everybody` | 7 | 631 | 81k |
-| 91 | `personal/mindset/growth/inner-game-of-tennis` | 7 | 641 | 36k |
-| 92 | `personal/mindset/growth/innovators-dna` | 6 | 892 | 116k |
-| 93 | `personal/mindset/growth/laws-of-luck` | 7 | 817 | 122k |
-| 94 | `personal/mindset/growth/live-life-in-crescendo` | 7 | 649 | 148k |
-| 95 | `personal/mindset/growth/long-win` | 7 | 599 | 185k |
-| 96 | `personal/mindset/growth/make-it-stick` | 7 | 925 | 154k |
-| 97 | `personal/mindset/growth/many-miles-to-go` | 7 | 474 | 92k |
-| 98 | `personal/mindset/growth/maps-of-meaning` | 8 | 876 | 164k |
-| 99 | `personal/mindset/growth/master-of-change` | 6 | 870 | 103k |
-| 100 | `personal/mindset/growth/maximum-achievement` | 7 | 1233 | 544k |
-| 101 | `personal/mindset/growth/me-myself-and-us` | 8 | 338 | 32k |
-| 102 | `personal/mindset/growth/mindset-dweck` | 7 | 674 | 72k |
-| 103 | `personal/mindset/growth/mindset-secrets-for-winning` | 8 | 725 | 119k |
-| 104 | `personal/mindset/growth/never-too-late-to-be-great` | 6 | 746 | 150k |
-| 105 | `personal/mindset/growth/nine-things-successful-people-do-differently` | 7 | 700 | 32k |
-| 106 | `personal/mindset/growth/no-excuses` | 6 | 747 | 187k |
-| 107 | `personal/mindset/growth/no-one-understands-you-and-what-to-do-about-it` | 7 | 798 | 85k |
-| 108 | `personal/mindset/growth/originals` | 8 | 568 | 100k |
-| 109 | `personal/mindset/growth/payoff` | 6 | 774 | 44k |
-| 110 | `personal/mindset/growth/peak-performance` | 6 | 934 | 178k |
-| 111 | `personal/mindset/growth/peak-secrets-from-the-new-science-of-expertise` | 6 | 761 | 141k |
-| 112 | `personal/mindset/growth/people-of-the-lie` | 7 | 911 | 64k |
-| 113 | `personal/mindset/growth/personality-isnt-permanent` | 6 | 942 | 80k |
-| 114 | `personal/mindset/growth/power-of-computational-thinking` | 8 | 524 | 82k |
-| 115 | `personal/mindset/growth/practice-of-groundedness` | 7 | 617 | 136k |
-| 116 | `personal/mindset/growth/reinventing-your-life` | 7 | 481 | 113k |
-| 117 | `personal/mindset/growth/road-back-to-you` | 7 | 902 | 151k |
-| 118 | `personal/mindset/growth/rules-to-break` | 7 | 789 | 312k |
-| 119 | `personal/mindset/growth/self-esteem-a-proven-program-of-cognitive-techniques-for` | 8 | 435 | 196k |
-| 120 | `personal/mindset/growth/smartcuts` | 6 | 1258 | 110k |
-| 121 | `personal/mindset/growth/take-charge-of-your-life` | 7 | 936 | 125k |
-| 122 | `personal/mindset/growth/think-big` | 7 | 866 | 172k |
-| 123 | `personal/mindset/growth/wan-weigang-fo-wei-system` | 6 | 613 | 341k |
-| 124 | `personal/mindset/growth/wan-weigang-inflection-point` | 8 | 484 | 128k |
-| 125 | `personal/mindset/growth/wan-weigang-intellectuals` | 8 | 478 | 202k |
-| 126 | `personal/mindset/growth/wan-weigang-master` | 7 | 488 | 357k |
-| 127 | `personal/mindset/growth/wan-weigang-people-vs-ai` | 7 | 796 | 267k |
-| 128 | `personal/mindset/growth/wan-weigang-reasoning-with-world` | 6 | 637 | 265k |
-| 129 | `personal/mindset/growth/wan-weigang-wanwan-meixiangdao` | 7 | 617 | 148k |
-| 130 | `personal/mindset/growth/wan-weigang-world-has-another-plan` | 8 | 1318 | 558k |
-| 131 | `personal/mindset/growth/welcome-to-your-brain` | 8 | 458 | 198k |
-| 132 | `personal/mindset/growth/what-the-dog-saw` | 6 | 770 | 346k |
-| 133 | `personal/mindset/growth/why-buddhism-is-true` | 6 | 742 | 157k |
-| 134 | `personal/mindset/growth/winning-grover` | 7 | 933 | 135k |
-| 135 | `personal/mindset/growth/wujun-pattern` | 7 | 678 | 123k |
-| 136 | `personal/mindset/resilience/50th-law` | 6 | 927 | 356k |
-| 137 | `personal/mindset/resilience/becoming-bulletproof` | 8 | 521 | 318k |
-| 138 | `personal/mindset/resilience/cant-hurt-me` | 7 | 1164 | 72k |
-| 139 | `personal/mindset/resilience/failing-forward` | 8 | 550 | 54k |
-| 140 | `personal/mindset/resilience/how-will-you-measure-your-life` | 8 | 566 | 36k |
-| 141 | `personal/mindset/resilience/learned-excellence` | 6 | 889 | 81k |
-| 142 | `personal/mindset/resilience/never-finished` | 6 | 617 | 102k |
-| 143 | `personal/mindset/resilience/option-b` | 7 | 524 | 31k |
-| 144 | `personal/mindset/resilience/resilience-hbr` | 6 | 688 | 81k |
-| 145 | `personal/mindset/resilience/rules-of-thinking` | 8 | 554 | 149k |
-| 146 | `personal/mindset/self-awareness/be-exceptional` | 7 | 955 | 330k |
-| 147 | `personal/mindset/self-awareness/insight` | 7 | 861 | 389k |
-| 148 | `personal/mindset/self-awareness/mastermind-think-like-sherlock-holmes` | 6 | 868 | 90k |
-| 149 | `personal/mindset/self-awareness/mastery` | 7 | 564 | 175k |
-| 150 | `personal/mindset/self-awareness/presence` | 7 | 1036 | 115k |
-| 151 | `personal/mindset/self-awareness/subliminal` | 8 | 588 | 102k |
-| 152 | `personal/mindset/self-awareness/your-turn` | 7 | 690 | 75k |
-| 153 | `personal/relationships/community/different-drum` | 8 | 499 | 200k |
-| 154 | `personal/relationships/community/emily-posts-etiquette-19th-edition` | 8 | 516 | 532k |
-| 155 | `personal/relationships/community/emotional-blackmail` | 7 | 539 | 123k |
-| 156 | `personal/relationships/community/empathy-krznaric` | 7 | 561 | 106k |
-| 157 | `personal/relationships/community/great-good-place` | 7 | 675 | 392k |
-| 158 | `personal/relationships/community/how-to-be-a-gentleman` | 8 | 526 | 82k |
-| 159 | `personal/relationships/community/how-to-know-a-person` | 7 | 702 | 89k |
-| 160 | `personal/relationships/community/how-to-say-it` | 8 | 387 | 185k |
-| 161 | `personal/relationships/community/how-to-speak-how-to-listen` | 7 | 632 | 114k |
-| 162 | `personal/relationships/community/life-is-a-long-term-accumulation` | 9 | 590 | 433k |
-| 163 | `personal/relationships/community/power-of-charm` | 6 | 818 | 60k |
-| 164 | `personal/relationships/community/reading-people` | 8 | 535 | 236k |
-| 165 | `personal/relationships/community/sizing-people-up` | 6 | 719 | 43k |
-| 166 | `personal/relationships/community/sociopath-next-door` | 7 | 663 | 139k |
-| 167 | `personal/relationships/community/when-i-say-no-i-feel-guilty` | 7 | 662 | 140k |
-| 168 | `personal/relationships/community/whos-pulling-your-strings` | 8 | 553 | 99k |
-| 169 | `personal/relationships/community/why-wont-you-apologize` | 8 | 687 | 40k |
-| 170 | `personal/relationships/community/winning-with-people` | 6 | 729 | 196k |
-| 171 | `personal/relationships/community/world-waiting-to-be-born` | 7 | 633 | 242k |
-| 172 | `personal/relationships/community/wujun-attitude` | 8 | 393 | 286k |
-| 173 | `personal/relationships/community/you-just-dont-understand` | 8 | 585 | 107k |
-| 174 | `personal/relationships/community/your-anxiety-comes-from-being-too-used-to-getting-hurt` | 7 | 720 | 16k |
-| 175 | `personal/relationships/dating/attached` | 6 | 1254 | 308k |
-| 176 | `personal/relationships/dating/beast-gentleman` | 8 | 542 | 133k |
-| 177 | `personal/relationships/dating/boundaries-in-dating` | 8 | 507 | 42k |
-| 178 | `personal/relationships/dating/keep-your-love-on` | 6 | 664 | 151k |
-| 179 | `personal/relationships/dating/relationship-bridge-to-the-soul` | 7 | 430 | 25k |
-| 180 | `personal/relationships/dating/secrets-of-sexual-body-language` | 7 | 428 | 31k |
-| 181 | `personal/relationships/friendship/relationships-a-mess-worth-making` | 8 | 371 | 56k |
-| 182 | `personal/relationships/marriage/be-a-better-dad-today` | 8 | 457 | 53k |
-| 183 | `personal/relationships/marriage/boundaries-in-marriage` | 8 | 1896 | 357k |
-| 184 | `personal/relationships/marriage/course-of-love` | 8 | 754 | 139k |
-| 185 | `personal/relationships/marriage/five-love-languages` | 7 | 691 | 118k |
-| 186 | `personal/relationships/marriage/rules-of-love` | 7 | 892 | 285k |
-| 187 | `personal/relationships/marriage/sacred-marriage` | 7 | 581 | 138k |
-| 188 | `personal/relationships/marriage/second-mountain` | 7 | 933 | 83k |
-| 189 | `personal/relationships/marriage/secret-of-loving` | 8 | 301 | 241k |
-| 190 | `personal/relationships/marriage/seven-principles-for-making-marriage-work` | 7 | 1135 | 370k |
-| 191 | `personal/relationships/parenting/7-habits-of-highly-effective-families` | 7 | 775 | 611k |
-| 192 | `personal/relationships/parenting/book-you-wish-your-parents-had-read` | 7 | 714 | 277k |
-| 193 | `personal/relationships/parenting/financial-boundaries-with-family` | 9 | 409 | 170k |
-| 194 | `personal/relationships/parenting/positive-discipline` | 7 | 1350 | 111k |
-| 195 | `personal/relationships/parenting/raising-children-with-survival-skills` | 8 | 527 | 13k |
-| 196 | `personal/relationships/parenting/rules-of-life` | 8 | 449 | 263k |
-| 197 | `personal/relationships/parenting/rules-of-parenting` | 7 | 1590 | 302k |
-| 198 | `personal/relationships/parenting/thirty-million-words` | 7 | 615 | 85k |
-| 199 | `personal/relationships/parenting/toxic-parents` | 7 | 978 | 29k |
-| 200 | `personal/wellness/aging/being-mortal` | 5 | 745 | 419k |
+| 1 | `tmp/summa-theologica` | 1 | 0 | 382k |
+| 2 | `tmp/versioning-in-an-event-sourced-system` | 1 | 0 | 161k |
+| 3 | `wisdom/science/cognitive/revenge-of-the-tipping-point` | 7 | 690 | 113k |
+| 4 | `wisdom/science/cognitive/righteous-mind` | 8 | 511 | 181k |
+| 5 | `wisdom/science/cognitive/science-of-living` | 7 | 621 | 72k |
+| 6 | `wisdom/science/cognitive/synthesizing-mind` | 8 | 583 | 242k |
+| 7 | `wisdom/science/cognitive/ten-types-of-human` | 6 | 640 | 366k |
+| 8 | `wisdom/science/cognitive/through-the-language-glass` | 6 | 841 | 125k |
+| 9 | `wisdom/science/cognitive/what-every-body-is-saying` | 7 | 506 | 160k |
+| 10 | `wisdom/science/cosmology/beginning-of-infinity` | 6 | 790 | 219k |
+| 11 | `wisdom/science/cosmology/everything-is-computation` | 7 | 589 | 116k |
+| 12 | `wisdom/science/evolution/liurun-power-of-evolution` | 6 | 552 | 173k |
+| 13 | `wisdom/science/evolution/liurun-power-of-evolution-2` | 7 | 855 | 239k |
+| 14 | `wisdom/science/evolution/origin-of-species` | 8 | 1454 | 778k |
+| 15 | `wisdom/science/evolution/selfish-gene` | 7 | 1254 | 614k |
+| 16 | `wisdom/science/pharmacology/goodman-gilman-pharmacological-basis` | 7 | 618 | 715k |
+| 17 | `wisdom/science/pharmacology/oxford-handbook-clinical-pharmacy` | 7 | 608 | 652k |
+| 18 | `wisdom/science/pharmacology/pharmacotherapy-casebook` | 7 | 620 | 1121k |
+| 19 | `wisdom/science/pharmacology/rang-dale-pharmacology` | 7 | 669 | 815k |
+| 20 | `wisdom/science/physics/briefer-history-of-time` | 6 | 754 | 111k |
+| 21 | `wisdom/science/physics/six-easy-pieces` | 7 | 1177 | 240k |
+| 22 | `wisdom/science/physics/wan-weigang-what-is-relativity` | 7 | 523 | 87k |
+| 23 | `wisdom/science/statistics/statistical-consequences-of-fat-tails` | 9 | 4535 | 489k |
+| 24 | `wisdom/science/statistics/wujun-information-theory-40` | 7 | 713 | 384k |
 
-_（只列前 200 本，另有 870 本未列出）_
-
-## 筆記是空的，寫不了（2 本）
-
-docs/ 底下只有章節 frontmatter、沒有內文（< 8000 bytes）。「完整摘要」規定只能取材自筆記，硬寫等於編造——先補筆記再回來。
-
-- `personal/mindset/growth/29-pawn-tickets-3` — 筆記 3070 bytes
-- `professional/career/skill-building/whats-left-without-your-business-card` — 筆記 7688 bytes
-
-## 過了，但貼著下限（85 本）
+## 過了，但貼著下限（846 本）
 
 品檢是二元關卡，只能回答合不合格；這一節顯示合格者之間的差距。依（貼線維度數 → 筆記量）排序——筆記厚而概覽薄，代表素材就在那裡沒被用上，補強的投報率最高。要補的只是貼線的那幾項，不是整段重寫。查詢：`--weak N`。
 
 | # | 書 | 貼線 | 概覽字數 | 筆記 | 貼線的維度 |
 |---:|---|---:|---:|---:|---|
-| 1 | `wisdom/science/pharmacology/basic-clinical-pharmacology` | 1 | 3426 | 900k | 引用年份 2 個（門檻 2） |
-| 2 | `craft/engineering/databases/postgresql-14-internals` | 1 | 2858 | 600k | 引用年份 2 個（門檻 2） |
-| 3 | `craft/engineering/systems-design/api-design-patterns` | 1 | 3750 | 573k | 引用年份 2 個（門檻 2） |
-| 4 | `craft/engineering/systems-design/analysis-patterns` | 1 | 2448 | 547k | 完整摘要 681 字（下限 600） |
-| 5 | `craft/engineering/systems-design/release-it` | 1 | 2307 | 539k | 完整摘要 637 字（下限 600） |
-| 6 | `craft/engineering/security/serious-cryptography` | 1 | 2495 | 528k | 完整摘要 689 字（下限 600） |
-| 7 | `faith/theology/biblical-studies/gods-kingdom-through-gods-covenants` | 1 | 3562 | 435k | 引用年份 2 個（門檻 2） |
-| 8 | `craft/engineering/databases/high-performance-mysql` | 1 | 2613 | 348k | 完整摘要 689 字（下限 600） |
-| 9 | `craft/engineering/devops/kubernetes-patterns` | 1 | 2772 | 313k | 完整摘要 753 字（下限 600） |
-| 10 | `craft/engineering/engineering-management/team-topologies` | 1 | 2614 | 308k | 完整摘要 749 字（下限 600） |
-| 11 | `craft/engineering/systems-design/grokking-advanced-system-design-interview` | 1 | 2411 | 307k | 完整摘要 716 字（下限 600） |
-| 12 | `craft/engineering/systems-design/acing-the-system-design-interview` | 1 | 3897 | 302k | 引用年份 2 個（門檻 2） |
-| 13 | `craft/engineering/security/hacking-art-of-exploitation` | 1 | 2491 | 297k | 完整摘要 615 字（下限 600） |
-| 14 | `craft/engineering/coding-practice/object-oriented-design-interview` | 1 | 2431 | 285k | 完整摘要 630 字（下限 600） |
-| 15 | `personal/lifestyle/food-drink/uncommon-grounds` | 1 | 2205 | 282k | 完整摘要 677 字（下限 600） |
-| 16 | `professional/career/job-search/60-seconds-and-youre-hired` | 1 | 3809 | 269k | 引用年份 2 個（門檻 2） |
-| 17 | `craft/engineering/systems-design/understanding-distributed-systems` | 1 | 2377 | 261k | 完整摘要 729 字（下限 600） |
-| 18 | `wisdom/education/pedagogy/why-dont-students-like-school` | 1 | 2958 | 260k | 引用年份 2 個（門檻 2） |
-| 19 | `craft/engineering/security/browser-hackers-handbook` | 1 | 2389 | 244k | 完整摘要 686 字（下限 600） |
-| 20 | `craft/engineering/databases/database-internals` | 1 | 2681 | 239k | 完整摘要 708 字（下限 600） |
-| 21 | `craft/engineering/coding-practice/designing-web-apis` | 1 | 2455 | 228k | 完整摘要 729 字（下限 600） |
-| 22 | `craft/engineering/devops/site-reliability-engineering` | 1 | 2598 | 227k | 完整摘要 650 字（下限 600） |
-| 23 | `craft/engineering/databases/sql-server-2025-query-performance-tuning` | 1 | 2631 | 223k | 完整摘要 747 字（下限 600） |
-| 24 | `craft/engineering/coding-practice/software-developers-career-guide` | 1 | 2637 | 213k | 引用年份 2 個（門檻 2） |
-| 25 | `craft/engineering/systems-design/philosophy-of-software-design` | 1 | 2421 | 211k | 完整摘要 683 字（下限 600） |
-| 26 | `personal/habit/productivity/mindset-for-wealth` | 1 | 2538 | 201k | 完整摘要 633 字（下限 600） |
-| 27 | `craft/engineering/systems-design/building-microservices` | 1 | 2593 | 197k | 完整摘要 719 字（下限 600） |
-| 28 | `craft/engineering/systems-design/implementation-patterns` | 1 | 2344 | 195k | 完整摘要 600 字（下限 600） |
-| 29 | `craft/engineering/systems-design/fundamentals-of-software-architecture` | 1 | 2494 | 193k | 完整摘要 645 字（下限 600） |
-| 30 | `personal/habit/productivity/four-thousand-weeks` | 1 | 2667 | 190k | 完整摘要 709 字（下限 600） |
-| 31 | `personal/habit/productivity/laws-of-winners` | 1 | 2413 | 181k | 完整摘要 640 字（下限 600） |
-| 32 | `craft/engineering/coding-practice/grokking-system-design-interview` | 1 | 2439 | 181k | 完整摘要 677 字（下限 600） |
-| 33 | `craft/engineering/coding-practice/big-talk-design-patterns` | 1 | 2583 | 179k | 完整摘要 699 字（下限 600） |
-| 34 | `craft/engineering/devops/devops-handbook` | 1 | 2447 | 178k | 完整摘要 606 字（下限 600） |
-| 35 | `craft/engineering/systems-design/microservices-patterns` | 1 | 2525 | 177k | 完整摘要 673 字（下限 600） |
-| 36 | `craft/engineering/coding-practice/functional-design-principles-patterns-practices` | 1 | 2767 | 176k | 完整摘要 668 字（下限 600） |
-| 37 | `craft/engineering/devops/site-reliability-engineering-handbook` | 1 | 2371 | 170k | 完整摘要 698 字（下限 600） |
-| 38 | `craft/engineering/systems-design/patterns-of-enterprise-application-architecture` | 1 | 2325 | 169k | 完整摘要 655 字（下限 600） |
-| 39 | `craft/engineering/security/real-world-bug-hunting` | 1 | 2351 | 167k | 完整摘要 621 字（下限 600） |
-| 40 | `craft/engineering/coding-practice/living-documentation` | 1 | 2790 | 160k | 完整摘要 763 字（下限 600） |
-| 41 | `craft/engineering/security/web-security-for-developers` | 1 | 2403 | 155k | 完整摘要 682 字（下限 600） |
-| 42 | `craft/engineering/systems-design/get-your-hands-dirty-clean-architecture` | 1 | 2344 | 153k | 完整摘要 668 字（下限 600） |
-| 43 | `personal/habit/productivity/how-to-have-a-good-day` | 1 | 2335 | 151k | 完整摘要 661 字（下限 600） |
-| 44 | `craft/engineering/systems-design/designing-distributed-systems` | 1 | 2460 | 151k | 完整摘要 730 字（下限 600） |
-| 45 | `wisdom/philosophy/eastern/how-the-world-thinks` | 1 | 2529 | 149k | 引用年份 2 個（門檻 2） |
-| 46 | `craft/engineering/systems-design/beautiful-architecture` | 1 | 2538 | 145k | 完整摘要 703 字（下限 600） |
-| 47 | `craft/engineering/databases/sql-server-2025-unveiled` | 1 | 2663 | 143k | 完整摘要 721 字（下限 600） |
-| 48 | `craft/engineering/engineering-management/become-an-effective-software-engineering-manager` | 1 | 2546 | 138k | 完整摘要 717 字（下限 600） |
-| 49 | `personal/habit/productivity/dont-sweat-the-small-stuff-at-work` | 1 | 2464 | 135k | 完整摘要 747 字（下限 600） |
-| 50 | `craft/engineering/systems-design/system-architecture-design` | 1 | 2155 | 135k | 完整摘要 613 字（下限 600） |
-| 51 | `craft/engineering/engineering-management/staff-engineers-path` | 1 | 2460 | 128k | 完整摘要 721 字（下限 600） |
-| 52 | `personal/relationships/dating/how-to-make-anyone-fall-in-love-with-you` | 1 | 2453 | 128k | 完整摘要 709 字（下限 600） |
-| 53 | `craft/engineering/coding-practice/mis-network-82` | 1 | 2551 | 127k | 完整摘要 760 字（下限 600） |
-| 54 | `professional/career/job-search/behavioral-interviews-for-software-engineers` | 1 | 3364 | 116k | 引用年份 2 個（門檻 2） |
-| 55 | `craft/engineering/systems-design/clean-architecture` | 1 | 2543 | 113k | 完整摘要 705 字（下限 600） |
-| 56 | `craft/engineering/coding-practice/wujun-soul-of-computing` | 1 | 2673 | 111k | 完整摘要 755 字（下限 600） |
-| 57 | `personal/habit/productivity/extreme-productivity` | 1 | 2482 | 110k | 完整摘要 703 字（下限 600） |
-| 58 | `personal/habit/productivity/get-it-done-now` | 1 | 2526 | 109k | 完整摘要 721 字（下限 600） |
-| 59 | `craft/engineering/coding-practice/nine-algorithms-that-changed-the-future` | 1 | 2563 | 104k | 完整摘要 751 字（下限 600） |
-| 60 | `personal/mindset/critical-thinking/asking-the-right-questions` | 1 | 3755 | 104k | 引用年份 2 個（門檻 2） |
+| 1 | `professional/communication/persuasion/secrets-of-power-problem-solving` | 5 | 1984 | 98k | 作者的位置 294 字（下限 250）；完整摘要 743 字（下限 600）；定位 272 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 4 個（門檻 3） |
+| 2 | `professional/communication/public-speaking/hbr-guide-collection` | 4 | 1846 | 387k | 作者的位置 310 字（下限 250）；完整摘要 634 字（下限 600）；定位 254 字（下限 250）；點名對象 4 個（門檻 3） |
+| 3 | `personal/mindset/self-awareness/be-exceptional` | 4 | 2141 | 330k | 完整摘要 742 字（下限 600）；定位 275 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 3 個（門檻 3） |
+| 4 | `professional/finance/investing/cfa-corporate-finance-workbook` | 4 | 1914 | 288k | 完整摘要 601 字（下限 600）；定位 291 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 4 個（門檻 3） |
+| 5 | `professional/communication/persuasion/thank-you-for-arguing` | 4 | 1920 | 247k | 作者的位置 273 字（下限 250）；完整摘要 672 字（下限 600）；定位 311 字（下限 250）；引用年份 2 個（門檻 2） |
+| 6 | `professional/communication/public-speaking/ted-talks` | 4 | 1921 | 216k | 作者的位置 282 字（下限 250）；完整摘要 694 字（下限 600）；定位 266 字（下限 250）；點名對象 4 個（門檻 3） |
+| 7 | `professional/leadership/vision/repeatable-leadership` | 4 | 2124 | 209k | 完整摘要 690 字（下限 600）；定位 271 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 3 個（門檻 3） |
+| 8 | `professional/communication/workplace-relations/hbr-guide-to-smarter-networking` | 4 | 1853 | 166k | 作者的位置 260 字（下限 250）；完整摘要 605 字（下限 600）；定位 313 字（下限 250）；引用年份 2 個（門檻 2） |
+| 9 | `professional/communication/persuasion/next-conversation` | 4 | 1841 | 130k | 作者的位置 310 字（下限 250）；完整摘要 613 字（下限 600）；定位 261 字（下限 250）；點名對象 4 個（門檻 3） |
+| 10 | `professional/leadership/vision/trust-edge` | 4 | 2011 | 126k | 完整摘要 655 字（下限 600）；定位 263 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 4 個（門檻 3） |
+| 11 | `wisdom/philosophy/stoicism/little-book-of-stoicism` | 4 | 2036 | 123k | 完整摘要 634 字（下限 600）；定位 255 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 4 個（門檻 3） |
+| 12 | `professional/communication/public-speaking/presenting-to-win` | 4 | 1826 | 116k | 作者的位置 264 字（下限 250）；完整摘要 634 字（下限 600）；定位 258 字（下限 250）；點名對象 3 個（門檻 3） |
+| 13 | `professional/communication/public-speaking/power-of-eye-contact` | 4 | 1844 | 107k | 作者的位置 275 字（下限 250）；完整摘要 603 字（下限 600）；定位 290 字（下限 250）；點名對象 4 個（門檻 3） |
+| 14 | `professional/finance/trading/fei-style-thinking` | 4 | 2165 | 102k | 完整摘要 622 字（下限 600）；定位 290 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 3 個（門檻 3） |
+| 15 | `professional/communication/persuasion/you-can-read-anyone` | 4 | 1897 | 101k | 作者的位置 277 字（下限 250）；完整摘要 675 字（下限 600）；定位 287 字（下限 250）；點名對象 4 個（門檻 3） |
+| 16 | `wisdom/philosophy/stoicism/meditations` | 4 | 2044 | 96k | 完整摘要 631 字（下限 600）；定位 259 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 3 個（門檻 3） |
+| 17 | `wisdom/philosophy/ethics/29-pawn-tickets` | 4 | 2128 | 92k | 完整摘要 676 字（下限 600）；定位 288 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 4 個（門檻 3） |
+| 18 | `wisdom/philosophy/ethics/golden-rules` | 4 | 2133 | 85k | 完整摘要 658 字（下限 600）；定位 276 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 3 個（門檻 3） |
+| 19 | `professional/communication/persuasion/terrible-truth-about-lawyers` | 4 | 1950 | 80k | 作者的位置 324 字（下限 250）；完整摘要 629 字（下限 600）；定位 281 字（下限 250）；點名對象 4 個（門檻 3） |
+| 20 | `wisdom/philosophy/ethics/theory-and-practice-of-counseling-and-psychotherapy` | 4 | 2203 | 80k | 完整摘要 733 字（下限 600）；定位 272 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 4 個（門檻 3） |
+| 21 | `professional/communication/persuasion/what-to-ask-the-person-in-the-mirror` | 4 | 1925 | 77k | 作者的位置 283 字（下限 250）；完整摘要 677 字（下限 600）；定位 277 字（下限 250）；點名對象 4 個（門檻 3） |
+| 22 | `professional/communication/persuasion/psychology-of-selling` | 4 | 1921 | 58k | 作者的位置 279 字（下限 250）；完整摘要 663 字（下限 600）；定位 283 字（下限 250）；點名對象 4 個（門檻 3） |
+| 23 | `professional/leadership/vision/wont-get-fooled-again` | 4 | 2081 | 29k | 完整摘要 729 字（下限 600）；定位 264 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 4 個（門檻 3） |
+| 24 | `professional/communication/public-speaking/stage-presentation-skills` | 4 | 1834 | 23k | 作者的位置 279 字（下限 250）；完整摘要 644 字（下限 600）；定位 259 字（下限 250）；點名對象 4 個（門檻 3） |
+| 25 | `wisdom/philosophy/ethics/beautiful-thoughts-from-emerson` | 3 | 2146 | 1061k | 完整摘要 666 字（下限 600）；定位 263 字（下限 250）；點名對象 4 個（門檻 3） |
+| 26 | `wisdom/science/biology/behave` | 3 | 2105 | 949k | 完整摘要 698 字（下限 600）；定位 274 字（下限 250）；點名對象 4 個（門檻 3） |
+| 27 | `wisdom/science/cognitive/language-instinct` | 3 | 2502 | 789k | 定位 295 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 4 個（門檻 3） |
+| 28 | `personal/wellness/mental-health/body-keeps-the-score` | 3 | 2265 | 726k | 完整摘要 705 字（下限 600）；定位 302 字（下限 250）；點名對象 4 個（門檻 3） |
+| 29 | `wisdom/philosophy/political-philosophy/discourses-on-livy` | 3 | 2046 | 672k | 完整摘要 666 字（下限 600）；定位 305 字（下限 250）；點名對象 3 個（門檻 3） |
+| 30 | `wisdom/philosophy/ethics/sophies-world` | 3 | 2113 | 583k | 完整摘要 645 字（下限 600）；定位 284 字（下限 250）；點名對象 4 個（門檻 3） |
+| 31 | `professional/finance/real-estate/real-book-of-real-estate` | 3 | 2165 | 563k | 完整摘要 655 字（下限 600）；定位 306 字（下限 250）；引用年份 2 個（門檻 2） |
+| 32 | `wisdom/philosophy/political-philosophy/road-to-serfdom` | 3 | 2152 | 444k | 完整摘要 710 字（下限 600）；定位 291 字（下限 250）；點名對象 4 個（門檻 3） |
+| 33 | `personal/wellness/aging/being-mortal` | 3 | 2311 | 419k | 完整摘要 749 字（下限 600）；定位 304 字（下限 250）；引用年份 2 個（門檻 2） |
+| 34 | `wisdom/philosophy/stoicism/how-to-live` | 3 | 2028 | 418k | 完整摘要 658 字（下限 600）；定位 269 字（下限 250）；點名對象 4 個（門檻 3） |
+| 35 | `professional/finance/personal-finance/retire-young-retire-rich` | 3 | 2193 | 411k | 完整摘要 659 字（下限 600）；定位 315 字（下限 250）；引用年份 2 個（門檻 2） |
+| 36 | `professional/leadership/vision/5-levels-of-leadership` | 3 | 2090 | 381k | 完整摘要 647 字（下限 600）；定位 323 字（下限 250）；引用年份 2 個（門檻 2） |
+| 37 | `wisdom/philosophy/political-philosophy/50-politics-classics` | 3 | 2054 | 375k | 完整摘要 675 字（下限 600）；定位 257 字（下限 250）；引用年份 2 個（門檻 2） |
+| 38 | `professional/leadership/team-building/multipliers` | 3 | 2303 | 360k | 完整摘要 734 字（下限 600）；定位 327 字（下限 250）；引用年份 2 個（門檻 2） |
+| 39 | `professional/finance/investing/who-took-my-money` | 3 | 2292 | 357k | 完整摘要 743 字（下限 600）；定位 311 字（下限 250）；引用年份 2 個（門檻 2） |
+| 40 | `professional/finance/personal-finance/talmud-the-jewish-bible-of-wealth` | 3 | 2161 | 317k | 完整摘要 643 字（下限 600）；定位 306 字（下限 250）；引用年份 2 個（門檻 2） |
+| 41 | `professional/communication/persuasion/how-to-talk-to-anyone` | 3 | 2012 | 305k | 作者的位置 321 字（下限 250）；完整摘要 715 字（下限 600）；定位 311 字（下限 250） |
+| 42 | `professional/leadership/decision-making/thinking-in-bets` | 3 | 2569 | 302k | 定位 324 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 4 個（門檻 3） |
+| 43 | `professional/finance/personal-finance/tax-secrets-of-the-rich` | 3 | 2392 | 295k | 定位 304 字（下限 250）；引用年份 2 個（門檻 2）；點名對象 3 個（門檻 3） |
+| 44 | `wisdom/philosophy/stoicism/letters-from-a-stoic` | 3 | 2068 | 284k | 完整摘要 631 字（下限 600）；定位 297 字（下限 250）；點名對象 4 個（門檻 3） |
+| 45 | `professional/communication/persuasion/ohne-worte` | 3 | 1986 | 269k | 作者的位置 318 字（下限 250）；完整摘要 639 字（下限 600）；定位 321 字（下限 250） |
+| 46 | `professional/communication/storytelling/resonate-visual-stories-transform-audiences` | 3 | 1898 | 267k | 作者的位置 261 字（下限 250）；完整摘要 650 字（下限 600）；定位 308 字（下限 250） |
+| 47 | `professional/career/skill-building/work-optional` | 3 | 2228 | 265k | 完整摘要 702 字（下限 600）；定位 310 字（下限 250）；引用年份 2 個（門檻 2） |
+| 48 | `professional/leadership/vision/360-degree-leader` | 3 | 2000 | 263k | 完整摘要 641 字（下限 600）；定位 277 字（下限 250）；點名對象 4 個（門檻 3） |
+| 49 | `professional/finance/personal-finance/cashflow-quadrant` | 3 | 2164 | 260k | 完整摘要 635 字（下限 600）；定位 317 字（下限 250）；引用年份 2 個（門檻 2） |
+| 50 | `professional/finance/economics/misbehaving` | 3 | 2038 | 250k | 完整摘要 606 字（下限 600）；定位 304 字（下限 250）；引用年份 2 個（門檻 2） |
+| 51 | `professional/communication/persuasion/rules-of-work` | 3 | 1865 | 236k | 作者的位置 286 字（下限 250）；完整摘要 632 字（下限 600）；定位 277 字（下限 250） |
+| 52 | `personal/wellness/fitness/4-hour-body` | 3 | 2213 | 234k | 完整摘要 729 字（下限 600）；定位 324 字（下限 250）；點名對象 4 個（門檻 3） |
+| 53 | `professional/communication/persuasion/repeatable-communication` | 3 | 1940 | 230k | 作者的位置 318 字（下限 250）；完整摘要 673 字（下限 600）；定位 253 字（下限 250） |
+| 54 | `professional/finance/personal-finance/rich-kid-smart-kid` | 3 | 2224 | 226k | 完整摘要 718 字（下限 600）；定位 301 字（下限 250）；引用年份 2 個（門檻 2） |
+| 55 | `professional/finance/investing/power-law` | 3 | 2220 | 224k | 完整摘要 647 字（下限 600）；定位 301 字（下限 250）；引用年份 2 個（門檻 2） |
+| 56 | `wisdom/philosophy/ethics/almanack-of-naval-ravikant` | 3 | 2259 | 224k | 完整摘要 720 字（下限 600）；定位 292 字（下限 250）；點名對象 4 個（門檻 3） |
+| 57 | `professional/finance/personal-finance/art-of-spending-money` | 3 | 2288 | 220k | 完整摘要 732 字（下限 600）；定位 293 字（下限 250）；引用年份 2 個（門檻 2） |
+| 58 | `professional/leadership/vision/ceo-excellence` | 3 | 1929 | 214k | 完整摘要 601 字（下限 600）；定位 303 字（下限 250）；引用年份 2 個（門檻 2） |
+| 59 | `professional/finance/value-investing/essays-of-warren-buffett` | 3 | 2144 | 210k | 完整摘要 607 字（下限 600）；定位 330 字（下限 250）；引用年份 2 個（門檻 2） |
+| 60 | `professional/communication/persuasion/speed-of-trust` | 3 | 1896 | 204k | 作者的位置 270 字（下限 250）；完整摘要 663 字（下限 600）；定位 278 字（下限 250） |
 
-_（只列前 60 本，另有 25 本未列出）_
+_（只列前 60 本，另有 786 本未列出）_
 
 ## 已完成
 
@@ -424,7 +240,6 @@ _（只列前 60 本，另有 25 本未列出）_
 - `craft/engineering/coding-practice/wujun-beauty-of-math` — 2829 字
 - `craft/engineering/coding-practice/wujun-math-general-course` — 3433 字
 - `craft/engineering/coding-practice/wujun-soul-of-computing` — 2673 字
-- `craft/engineering/coding-practice/zen-programmer` — 2679 字
 - `craft/engineering/databases/art-of-postgresql` — 3105 字
 - `craft/engineering/databases/cqrs-command-query-responsibility-segregation` — 2613 字
 - `craft/engineering/databases/data-warehouse-toolkit` — 3329 字
@@ -754,7 +569,7 @@ _（只列前 60 本，另有 25 本未列出）_
 - `faith/theology/practical-theology/desiring-god` — 2907 字
 - `faith/theology/practical-theology/divine-conspiracy` — 2861 字
 - `faith/theology/practical-theology/encounters-with-jesus` — 2704 字
-- `faith/theology/practical-theology/freedom-of-self-forgetfulness` — 2721 字
+- `faith/theology/practical-theology/freedom-of-self-forgetfulness` — 3078 字
 - `faith/theology/practical-theology/generous-justice` — 2777 字
 - `faith/theology/practical-theology/god-is-closer-than-you-think` — 2740 字
 - `faith/theology/practical-theology/hearing-god` — 2862 字
@@ -874,129 +689,1175 @@ _（只列前 60 本，另有 25 本未列出）_
 - `personal/habit/productivity/rich-habits-corley` — 3344 字
 - `personal/habit/productivity/rich-habits-practice` — 3857 字
 - `personal/habit/productivity/rich-kids` — 3687 字
+- `personal/habit/productivity/road-to-character` — 3601 字
+- `personal/habit/productivity/slow-productivity` — 3773 字
+- `personal/habit/productivity/smarter-faster-better` — 3637 字
+- `personal/habit/productivity/start-now-get-perfect-later` — 3629 字
+- `personal/habit/productivity/time-management` — 3572 字
+- `personal/habit/productivity/time-smart` — 3557 字
+- `personal/habit/productivity/when-daniel-pink` — 3472 字
+- `personal/habit/productivity/why-elites-are-checklist-masters` — 3358 字
+- `personal/habit/productivity/why-elites-are-time-masters` — 3348 字
+- `personal/habit/productivity/world-only-readers-can-reach` — 3336 字
+- `personal/habit/productivity/worries-are-all-in-your-head` — 3004 字
 - `personal/habit/routine/daily-rituals` — 3056 字
 - `personal/habit/routine/good-habits-bad-habits` — 3752 字
 - `personal/habit/routine/manage-your-day-to-day` — 3303 字
+- `personal/habit/routine/power-of-full-engagement` — 3236 字
+- `personal/habit/routine/power-of-habit` — 3136 字
+- `personal/habit/routine/tiny-habits` — 3166 字
 - `personal/habit/routine/today-matters` — 4064 字
+- `personal/habit/routine/workbook-for-atomic-habits` — 2657 字
 - `personal/lifestyle/food-drink/uncommon-grounds` — 2205 字
 - `personal/lifestyle/food-drink/world-atlas-of-coffee` — 2716 字
+- `personal/lifestyle/style/dressing-the-man` — 3118 字
+- `personal/lifestyle/style/gentleman-timeless-guide-to-fashion` — 2938 字
+- `personal/lifestyle/style/how-to-be-a-man` — 3040 字
+- `personal/lifestyle/style/style-and-the-man` — 2839 字
 - `personal/lifestyle/style/take-ivy` — 3930 字
+- `personal/lifestyle/style/ultimate-guide-to-mens-style` — 2953 字
 - `personal/mindset/critical-thinking/50-erfolgsmodelle` — 3588 字
 - `personal/mindset/critical-thinking/art-of-action` — 3588 字
 - `personal/mindset/critical-thinking/art-of-thinking-clearly` — 3878 字
 - `personal/mindset/critical-thinking/asking-the-right-questions` — 3755 字
+- `personal/mindset/critical-thinking/biased` — 3909 字
+- `personal/mindset/critical-thinking/chancing-it` — 3952 字
+- `personal/mindset/critical-thinking/clear-thinking` — 3647 字
+- `personal/mindset/critical-thinking/critical-thinking-concepts-and-tools` — 3062 字
+- `personal/mindset/critical-thinking/factfulness` — 3422 字
+- `personal/mindset/critical-thinking/fooled-by-randomness` — 3429 字
+- `personal/mindset/critical-thinking/hbr-guide-to-critical-thinking` — 3841 字
+- `personal/mindset/critical-thinking/how-we-know-what-isnt-so` — 3427 字
+- `personal/mindset/critical-thinking/irrational-ape` — 3715 字
+- `personal/mindset/critical-thinking/knowledge-illusion` — 3423 字
+- `personal/mindset/critical-thinking/noise` — 3754 字
+- `personal/mindset/critical-thinking/poor-charlie-s-almanack` — 3426 字
+- `personal/mindset/critical-thinking/seeking-wisdom` — 3435 字
+- `personal/mindset/critical-thinking/signal-and-the-noise` — 3314 字
+- `personal/mindset/critical-thinking/super-thinking` — 3539 字
+- `personal/mindset/critical-thinking/think-again` — 3344 字
+- `personal/mindset/critical-thinking/think-twice-harnessing-the-power-of-counterintuition` — 3689 字
+- `personal/mindset/critical-thinking/thinking-101` — 3624 字
+- `personal/mindset/critical-thinking/thinking-fast-and-slow` — 3462 字
+- `personal/mindset/critical-thinking/thinking-in-systems` — 3579 字
+- `personal/mindset/critical-thinking/undoing-project` — 3660 字
+- `personal/mindset/critical-thinking/wan-weigang-scientific-thinker` — 3218 字
+- `personal/mindset/critical-thinking/wujun-abundance` — 3581 字
+- `personal/mindset/emotion/algebra-of-happiness` — 3000 字
+- `personal/mindset/emotion/difference-maker` — 3055 字
+- `personal/mindset/emotion/emotional-intelligence` — 3359 字
+- `personal/mindset/emotion/gift-of-fear` — 3271 字
+- `personal/mindset/emotion/hope-for-cynics` — 3005 字
+- `personal/mindset/emotion/inner-excellence` — 3260 字
+- `personal/mindset/emotion/let-them-theory` — 3163 字
+- `personal/mindset/emotion/paradox-of-choice` — 3336 字
+- `personal/mindset/emotion/permission-to-feel` — 3254 字
 - `personal/mindset/emotion/school-of-life-emotional-education` — 3956 字
+- `personal/mindset/emotion/social-animal` — 3202 字
+- `personal/mindset/emotion/wisest-one-in-the-room` — 3258 字
+- `personal/mindset/emotion/your-mind-an-owners-manual-for-a-better-life` — 2847 字
+- `personal/mindset/growth/11-rules-for-life` — 3090 字
+- `personal/mindset/growth/15-invaluable-laws-of-growth` — 2835 字
 - `personal/mindset/growth/29-pawn-tickets-2` — 2583 字
+- `personal/mindset/growth/5-types-of-wealth` — 2999 字
+- `personal/mindset/growth/achievement-habit` — 3130 字
+- `personal/mindset/growth/art-of-adult-decision-making` — 2845 字
+- `personal/mindset/growth/art-of-selfishness` — 3006 字
 - `personal/mindset/growth/artists-way` — 3785 字
+- `personal/mindset/growth/awaken-the-giant-within` — 3177 字
+- `personal/mindset/growth/be-obsessed-or-be-average` — 2795 字
+- `personal/mindset/growth/biggest-bluff` — 2729 字
+- `personal/mindset/growth/bottom-logic` — 2995 字
+- `personal/mindset/growth/bright-sided` — 3065 字
+- `personal/mindset/growth/change-your-questions-change-your-life` — 2831 字
+- `personal/mindset/growth/change-your-thinking-change-your-life` — 2937 字
+- `personal/mindset/growth/change-your-thinking-change-your-life-tracy` — 3793 字
+- `personal/mindset/growth/confidence-game` — 2901 字
+- `personal/mindset/growth/courage-to-be-happy` — 2749 字
+- `personal/mindset/growth/creativity-and-problem-solving` — 2795 字
+- `personal/mindset/growth/daring-greatly` — 3120 字
+- `personal/mindset/growth/dark-horse` — 3203 字
 - `personal/mindset/growth/defining-decade` — 3236 字
+- `personal/mindset/growth/die-empty` — 2948 字
+- `personal/mindset/growth/difference-that-makes-the-difference` — 3144 字
+- `personal/mindset/growth/everyone-can-succeed` — 3147 字
+- `personal/mindset/growth/fengtang-buer` — 3070 字
+- `personal/mindset/growth/flight-plan` — 3043 字
+- `personal/mindset/growth/flow-psychology-of-happiness` — 3550 字
+- `personal/mindset/growth/formula` — 3346 字
+- `personal/mindset/growth/gap-and-the-gain` — 2921 字
+- `personal/mindset/growth/giant-trader-thinking` — 3139 字
+- `personal/mindset/growth/goals` — 2822 字
+- `personal/mindset/growth/hbr-guide-to-unlocking-creativity` — 2757 字
+- `personal/mindset/growth/hidden-potential` — 3032 字
+- `personal/mindset/growth/hooked` — 2879 字
+- `personal/mindset/growth/how-successful-people-think` — 2952 字
+- `personal/mindset/growth/how-to-change` — 3110 字
+- `personal/mindset/growth/ignore-everybody` — 2830 字
+- `personal/mindset/growth/inner-game-of-tennis` — 2879 字
+- `personal/mindset/growth/innovators-dna` — 2790 字
+- `personal/mindset/growth/laws-of-luck` — 2754 字
+- `personal/mindset/growth/live-life-in-crescendo` — 2825 字
+- `personal/mindset/growth/long-win` — 2772 字
+- `personal/mindset/growth/make-it-stick` — 2954 字
+- `personal/mindset/growth/many-miles-to-go` — 2544 字
+- `personal/mindset/growth/maps-of-meaning` — 2704 字
+- `personal/mindset/growth/master-of-change` — 2732 字
+- `personal/mindset/growth/maximum-achievement` — 2490 字
+- `personal/mindset/growth/me-myself-and-us` — 2545 字
+- `personal/mindset/growth/mindset-dweck` — 2636 字
+- `personal/mindset/growth/mindset-secrets-for-winning` — 2669 字
+- `personal/mindset/growth/never-too-late-to-be-great` — 2542 字
+- `personal/mindset/growth/nine-things-successful-people-do-differently` — 2427 字
+- `personal/mindset/growth/no-excuses` — 2363 字
+- `personal/mindset/growth/no-one-understands-you-and-what-to-do-about-it` — 2472 字
+- `personal/mindset/growth/originals` — 2436 字
+- `personal/mindset/growth/payoff` — 2454 字
+- `personal/mindset/growth/peak-performance` — 2442 字
+- `personal/mindset/growth/peak-secrets-from-the-new-science-of-expertise` — 2554 字
+- `personal/mindset/growth/people-of-the-lie` — 2433 字
+- `personal/mindset/growth/personality-isnt-permanent` — 2474 字
+- `personal/mindset/growth/power-of-computational-thinking` — 2281 字
+- `personal/mindset/growth/practice-of-groundedness` — 2424 字
+- `personal/mindset/growth/reinventing-your-life` — 2447 字
+- `personal/mindset/growth/road-back-to-you` — 2322 字
+- `personal/mindset/growth/rules-to-break` — 2345 字
+- `personal/mindset/growth/self-esteem-a-proven-program-of-cognitive-techniques-for` — 2428 字
+- `personal/mindset/growth/smartcuts` — 2285 字
+- `personal/mindset/growth/take-charge-of-your-life` — 2428 字
+- `personal/mindset/growth/think-big` — 2229 字
 - `personal/mindset/growth/tuesdays-with-morrie` — 2847 字
+- `personal/mindset/growth/wan-weigang-fo-wei-system` — 2190 字
+- `personal/mindset/growth/wan-weigang-inflection-point` — 2449 字
+- `personal/mindset/growth/wan-weigang-intellectuals` — 2305 字
+- `personal/mindset/growth/wan-weigang-master` — 2270 字
+- `personal/mindset/growth/wan-weigang-people-vs-ai` — 2401 字
+- `personal/mindset/growth/wan-weigang-reasoning-with-world` — 2389 字
+- `personal/mindset/growth/wan-weigang-wanwan-meixiangdao` — 2262 字
+- `personal/mindset/growth/wan-weigang-world-has-another-plan` — 2356 字
+- `personal/mindset/growth/welcome-to-your-brain` — 2169 字
+- `personal/mindset/growth/what-the-dog-saw` — 2101 字
 - `personal/mindset/growth/whole-new-mind` — 4106 字
+- `personal/mindset/growth/why-buddhism-is-true` — 2206 字
+- `personal/mindset/growth/winning-grover` — 2170 字
+- `personal/mindset/growth/wujun-pattern` — 2115 字
+- `personal/mindset/resilience/50th-law` — 2169 字
+- `personal/mindset/resilience/becoming-bulletproof` — 2263 字
+- `personal/mindset/resilience/cant-hurt-me` — 2225 字
+- `personal/mindset/resilience/failing-forward` — 2238 字
+- `personal/mindset/resilience/how-will-you-measure-your-life` — 2217 字
+- `personal/mindset/resilience/learned-excellence` — 2229 字
+- `personal/mindset/resilience/never-finished` — 2123 字
+- `personal/mindset/resilience/option-b` — 2186 字
+- `personal/mindset/resilience/resilience-hbr` — 2106 字
+- `personal/mindset/resilience/rules-of-thinking` — 2072 字
+- `personal/mindset/self-awareness/be-exceptional` — 2141 字
+- `personal/mindset/self-awareness/insight` — 2355 字
+- `personal/mindset/self-awareness/mastermind-think-like-sherlock-holmes` — 2260 字
+- `personal/mindset/self-awareness/mastery` — 2267 字
+- `personal/mindset/self-awareness/presence` — 2152 字
 - `personal/mindset/self-awareness/scout-mindset` — 2833 字
+- `personal/mindset/self-awareness/subliminal` — 2177 字
+- `personal/mindset/self-awareness/your-turn` — 2117 字
 - `personal/relationships/community/25-ways-to-win-with-people` — 3257 字
 - `personal/relationships/community/art-of-the-table` — 2694 字
 - `personal/relationships/community/asshole-survival-guide` — 3321 字
 - `personal/relationships/community/boundaries` — 3262 字
 - `personal/relationships/community/bowling-alone` — 4150 字
+- `personal/relationships/community/different-drum` — 3426 字
+- `personal/relationships/community/emily-posts-etiquette-19th-edition` — 3189 字
+- `personal/relationships/community/emotional-blackmail` — 3545 字
+- `personal/relationships/community/empathy-krznaric` — 3175 字
+- `personal/relationships/community/great-good-place` — 3190 字
+- `personal/relationships/community/how-to-be-a-gentleman` — 2768 字
+- `personal/relationships/community/how-to-know-a-person` — 3411 字
+- `personal/relationships/community/how-to-say-it` — 2913 字
+- `personal/relationships/community/how-to-speak-how-to-listen` — 3192 字
+- `personal/relationships/community/life-is-a-long-term-accumulation` — 3190 字
+- `personal/relationships/community/power-of-charm` — 2653 字
+- `personal/relationships/community/reading-people` — 2759 字
+- `personal/relationships/community/sizing-people-up` — 3060 字
+- `personal/relationships/community/sociopath-next-door` — 3207 字
+- `personal/relationships/community/when-i-say-no-i-feel-guilty` — 3033 字
+- `personal/relationships/community/whos-pulling-your-strings` — 2891 字
+- `personal/relationships/community/why-wont-you-apologize` — 2956 字
+- `personal/relationships/community/winning-with-people` — 2908 字
+- `personal/relationships/community/world-waiting-to-be-born` — 3211 字
+- `personal/relationships/community/wujun-attitude` — 2769 字
+- `personal/relationships/community/you-just-dont-understand` — 2904 字
+- `personal/relationships/community/your-anxiety-comes-from-being-too-used-to-getting-hurt` — 2833 字
+- `personal/relationships/dating/attached` — 3284 字
+- `personal/relationships/dating/beast-gentleman` — 2909 字
+- `personal/relationships/dating/boundaries-in-dating` — 2673 字
 - `personal/relationships/dating/how-to-make-anyone-fall-in-love-with-you` — 2453 字
+- `personal/relationships/dating/keep-your-love-on` — 2840 字
+- `personal/relationships/dating/relationship-bridge-to-the-soul` — 2802 字
+- `personal/relationships/dating/secrets-of-sexual-body-language` — 2816 字
+- `personal/relationships/friendship/relationships-a-mess-worth-making` — 2738 字
 - `personal/relationships/friendship/safe-people` — 3255 字
 - `personal/relationships/friendship/trust` — 3315 字
+- `personal/relationships/marriage/be-a-better-dad-today` — 2779 字
+- `personal/relationships/marriage/boundaries-in-marriage` — 3658 字
+- `personal/relationships/marriage/course-of-love` — 3048 字
+- `personal/relationships/marriage/five-love-languages` — 3235 字
 - `personal/relationships/marriage/flying-together-a-christian-marriage-guide` — 2612 字
 - `personal/relationships/marriage/hold-me-tight` — 3211 字
+- `personal/relationships/marriage/rules-of-love` — 3068 字
+- `personal/relationships/marriage/sacred-marriage` — 2926 字
+- `personal/relationships/marriage/second-mountain` — 3159 字
+- `personal/relationships/marriage/secret-of-loving` — 2807 字
+- `personal/relationships/marriage/seven-principles-for-making-marriage-work` — 2924 字
+- `personal/relationships/parenting/7-habits-of-highly-effective-families` — 2784 字
+- `personal/relationships/parenting/book-you-wish-your-parents-had-read` — 2929 字
 - `personal/relationships/parenting/boundaries-with-kids` — 3136 字
+- `personal/relationships/parenting/financial-boundaries-with-family` — 2983 字
 - `personal/relationships/parenting/how-to-talk-so-kids-will-listen` — 3304 字
+- `personal/relationships/parenting/positive-discipline` — 2908 字
+- `personal/relationships/parenting/raising-children-with-survival-skills` — 2558 字
+- `personal/relationships/parenting/rules-of-life` — 2662 字
+- `personal/relationships/parenting/rules-of-parenting` — 3211 字
+- `personal/relationships/parenting/thirty-million-words` — 2875 字
+- `personal/relationships/parenting/toxic-parents` — 3393 字
 - `personal/relationships/parenting/whole-brain-child` — 4027 字
+- `personal/wellness/aging/being-mortal` — 2311 字
+- `personal/wellness/aging/outlive` — 2335 字
+- `personal/wellness/fitness/4-hour-body` — 2213 字
+- `personal/wellness/fitness/anatomy-of-exercise` — 2174 字
 - `personal/wellness/fitness/spark` — 3686 字
+- `personal/wellness/mental-health/body-keeps-the-score` — 2265 字
+- `personal/wellness/mental-health/buy-back-your-time` — 2491 字
 - `personal/wellness/mental-health/feeling-good` — 3216 字
+- `personal/wellness/mental-health/fengtang-fearless` — 2491 字
+- `personal/wellness/mental-health/fengtang-have-capability` — 2590 字
+- `personal/wellness/mental-health/fengtang-incredible` — 2387 字
 - `personal/wellness/mental-health/flourish` — 3285 字
+- `personal/wellness/mental-health/forgiveness-and-reconciliation` — 3005 字
+- `personal/wellness/mental-health/good-life` — 2595 字
+- `personal/wellness/mental-health/happier` — 2449 字
+- `personal/wellness/mental-health/happiness-track` — 2374 字
+- `personal/wellness/mental-health/harvard-guide-to-a-healthy-life` — 2403 字
+- `personal/wellness/mental-health/hbr-guide-to-beating-burnout` — 2357 字
+- `personal/wellness/mental-health/hbr-guide-to-better-mental-health-at-work` — 2469 字
+- `personal/wellness/mental-health/hbr-guide-to-managing-stress` — 2406 字
+- `personal/wellness/mental-health/hbr-guide-to-managing-stress-at-work` — 2493 字
+- `personal/wellness/mental-health/joy-of-not-working` — 2471 字
+- `personal/wellness/mental-health/living-without-gout` — 2361 字
 - `personal/wellness/mental-health/running-on-empty` — 2995 字
+- `personal/wellness/mental-health/tools-of-titans` — 2248 字
+- `personal/wellness/mental-health/tribe-of-mentors` — 2398 字
+- `personal/wellness/mental-health/two-awesome-hours` — 2303 字
+- `personal/wellness/nutrition/bigger-leaner-stronger` — 2170 字
 - `personal/wellness/nutrition/how-not-to-die` — 3525 字
 - `personal/wellness/nutrition/in-defense-of-food` — 3412 字
+- `personal/wellness/nutrition/intermittent-fasting-low-carb-guide` — 2215 字
+- `personal/wellness/nutrition/lets-eat-right-to-keep-fit` — 2218 字
+- `personal/wellness/sleep/stanford-method-of-sleep` — 2235 字
+- `personal/wellness/sleep/why-we-sleep` — 2134 字
+- `professional/business/management/5-min-mba-tools` — 2891 字
+- `professional/business/management/age-of-discontinuity` — 3367 字
+- `professional/business/management/concept-of-the-corporation` — 3058 字
+- `professional/business/management/drucker-management` — 3522 字
 - `professional/business/management/drucker-on-asia` — 3241 字
+- `professional/business/management/essential-drucker` — 3076 字
+- `professional/business/management/execution` — 2956 字
+- `professional/business/management/great-game-of-business` — 2893 字
 - `professional/business/management/hbr-10-must-reads-the-essentials` — 4095 字
+- `professional/business/management/hbr-guide-to-ai-basics-for-managers` — 2807 字
+- `professional/business/management/hbr-guide-to-data-analytics-basics-for-managers` — 2945 字
+- `professional/business/management/hbr-guide-to-finance-basics-for-managers` — 2424 字
+- `professional/business/management/hbr-guide-to-project-management` — 2514 字
+- `professional/business/management/high-growth-handbook` — 3327 字
+- `professional/business/management/high-output-management` — 2794 字
+- `professional/business/management/in-search-of-excellence` — 2688 字
+- `professional/business/management/management-challenges-for-21st-century` — 3291 字
+- `professional/business/management/management-memos-of-a-high-performance-manager` — 2542 字
+- `professional/business/management/managing-for-results` — 2686 字
+- `professional/business/management/managing-in-a-time-of-great-change` — 2739 字
 - `professional/business/management/managing-in-the-next-society` — 3260 字
+- `professional/business/management/measure-what-matters` — 2507 字
+- `professional/business/management/out-of-the-crisis` — 2784 字
+- `professional/business/management/peter-drucker-cafe` — 2345 字
+- `professional/business/management/practice-of-management` — 2649 字
+- `professional/business/management/principles` — 2504 字
+- `professional/business/management/simply-managing` — 2865 字
+- `professional/business/management/terry-cheng-business-management` — 2647 字
+- `professional/business/management/terry-cheng-management-power` — 2636 字
+- `professional/business/management/terry-cheng-professional-power` — 2617 字
+- `professional/business/management/working-backwards` — 2683 字
+- `professional/business/marketing/100m-leads` — 1913 字
+- `professional/business/marketing/100m-money-models` — 1955 字
+- `professional/business/marketing/22-immutable-laws-of-marketing` — 2103 字
+- `professional/business/marketing/30-day-mba` — 2103 字
+- `professional/business/marketing/brian-tracys-master-course-for-business-success` — 2360 字
+- `professional/business/marketing/building-a-storybrand` — 2324 字
+- `professional/business/marketing/business-made-simple` — 2294 字
 - `professional/business/marketing/contagious` — 3819 字
+- `professional/business/marketing/crossing-the-chasm` — 2326 字
+- `professional/business/marketing/crushing-it` — 2419 字
+- `professional/business/marketing/day-trading-attention` — 2330 字
+- `professional/business/marketing/gym-launch-secrets` — 2239 字
+- `professional/business/marketing/hacking-growth` — 2255 字
 - `professional/business/marketing/how-brands-grow` — 3637 字
+- `professional/business/marketing/marketing-made-simple` — 2216 字
 - `professional/business/marketing/marketing-management` — 3864 字
+- `professional/business/marketing/marketing-tracy` — 2284 字
 - `professional/business/marketing/obviously-awesome` — 3719 字
+- `professional/business/marketing/ogilvy-on-advertising` — 2463 字
+- `professional/business/marketing/one-million-followers` — 2284 字
+- `professional/business/marketing/peak-experience` — 2254 字
+- `professional/business/marketing/peak-experience-2` — 2340 字
 - `professional/business/marketing/permission-marketing` — 3337 字
+- `professional/business/marketing/positioning` — 2386 字
 - `professional/business/marketing/purple-cow` — 3786 字
+- `professional/business/marketing/social-media-marketing-and-online-business` — 2221 字
+- `professional/business/marketing/this-is-marketing` — 2314 字
+- `professional/business/marketing/traction` — 2574 字
+- `professional/business/marketing/youtube-secrets` — 2159 字
+- `professional/business/operations/checklist-manifesto` — 2565 字
+- `professional/business/operations/goal-ongoing-improvement` — 2492 字
+- `professional/business/operations/hbr-guide-to-generative-ai-for-managers` — 2216 字
 - `professional/business/operations/principles-of-product-development-flow` — 4070 字
+- `professional/business/sales/100-absolutely-unbreakable-laws-of-business` — 2172 字
+- `professional/business/sales/advanced-selling-strategies` — 2355 字
+- `professional/business/sales/business-school-for-people-who-like-helping-people` — 2170 字
+- `professional/business/sales/extreme-sales` — 2220 字
+- `professional/business/sales/if-youre-not-first-youre-last` — 2144 字
 - `professional/business/sales/only-sales-guide` — 3188 字
+- `professional/business/sales/sell-it-like-serhant` — 2111 字
 - `professional/business/sales/spin-selling` — 4166 字
+- `professional/business/sales/to-sell-is-human` — 2190 字
+- `professional/business/startup/10-percent-entrepreneur` — 2131 字
+- `professional/business/startup/10x-entrepreneur` — 2208 字
+- `professional/business/startup/10x-is-easier-than-2x` — 2179 字
+- `professional/business/startup/6-essentials-to-start-and-succeed-in-your-own-business` — 2196 字
+- `professional/business/startup/anything-you-want` — 2097 字
+- `professional/business/startup/art-of-the-start` — 2112 字
+- `professional/business/startup/blitzscaling` — 2511 字
+- `professional/business/startup/built-to-sell` — 2410 字
+- `professional/business/startup/disciplined-entrepreneurship-workbook` — 2181 字
+- `professional/business/startup/emyth-revisited` — 2087 字
+- `professional/business/startup/entrepreneur-mind` — 2082 字
+- `professional/business/startup/entrepreneurship` — 2187 字
+- `professional/business/startup/fail-safe-startup` — 2033 字
+- `professional/business/startup/finish-big` — 2120 字
+- `professional/business/startup/founders-at-work` — 2133 字
+- `professional/business/startup/founders-dilemmas` — 2168 字
+- `professional/business/startup/four-steps-to-the-epiphany` — 2247 字
+- `professional/business/startup/hard-thing-about-hard-things` — 2121 字
 - `professional/business/startup/hbr-10-must-reads-on-innovation` — 4098 字
+- `professional/business/startup/hbr-guide-to-buying-a-small-business` — 2017 字
+- `professional/business/startup/hbr-on-entrepreneurship` — 2080 字
+- `professional/business/startup/innovation-and-entrepreneurship` — 2164 字
+- `professional/business/startup/knack` — 2183 字
+- `professional/business/startup/lean-startup` — 2122 字
+- `professional/business/startup/make-phenomenal-profits` — 2127 字
+- `professional/business/startup/masters-of-scale` — 2202 字
+- `professional/business/startup/million-dollar-weekend` — 2123 字
+- `professional/business/startup/mom-test` — 2039 字
+- `professional/business/startup/never-enough` — 2218 字
+- `professional/business/startup/pour-your-heart-into-it` — 2135 字
+- `professional/business/startup/rework` — 2084 字
+- `professional/business/startup/rich-dads-before-you-quit-your-job` — 2211 字
 - `professional/business/startup/running-lean` — 3255 字
+- `professional/business/startup/scaling-lean` — 2047 字
+- `professional/business/startup/setting-the-table` — 2194 字
+- `professional/business/startup/shoe-dog-young-readers` — 2064 字
+- `professional/business/startup/start-up-of-you` — 2180 字
+- `professional/business/startup/startup-owners-manual` — 2386 字
+- `professional/business/startup/super-founders` — 2231 字
+- `professional/business/startup/that-will-never-work` — 2120 字
+- `professional/business/startup/unscripted` — 2125 字
+- `professional/business/startup/venture-deals` — 2390 字
+- `professional/business/startup/way-to-wealth` — 2189 字
+- `professional/business/startup/your-next-five-moves` — 2098 字
+- `professional/business/strategy/5-min-mba-business` — 2181 字
+- `professional/business/strategy/50-success-classics` — 2205 字
+- `professional/business/strategy/bad-blood` — 2057 字
+- `professional/business/strategy/billion-dollar-secret` — 2140 字
+- `professional/business/strategy/blue-ocean-strategy` — 2417 字
+- `professional/business/strategy/bottom-logic-2` — 2179 字
+- `professional/business/strategy/business-adventures` — 1997 字
+- `professional/business/strategy/business-model-generation` — 2227 字
+- `professional/business/strategy/business-strategy` — 2202 字
+- `professional/business/strategy/company-of-one` — 2019 字
+- `professional/business/strategy/competing-against-luck` — 2138 字
+- `professional/business/strategy/competitive-advantage` — 2145 字
+- `professional/business/strategy/competitive-advantage-of-nations` — 2389 字
+- `professional/business/strategy/competitive-strategy` — 2296 字
+- `professional/business/strategy/four` — 2087 字
 - `professional/business/strategy/good-strategy-bad-strategy` — 4040 字
+- `professional/business/strategy/great-by-choice` — 2341 字
 - `professional/business/strategy/hbr-10-must-reads-on-strategy` — 4149 字
+- `professional/business/strategy/hbr-guide-to-making-every-meeting-matter` — 2004 字
+- `professional/business/strategy/hbr-guide-to-managing-strategic-initiatives` — 2122 字
+- `professional/business/strategy/hbr-guide-to-thinking-strategically` — 2083 字
+- `professional/business/strategy/liurun-evolution-of-business` — 2144 字
+- `professional/business/strategy/liurun-new-retail` — 2199 字
+- `professional/business/strategy/liurun-traditional-enterprise-internet` — 2410 字
+- `professional/business/strategy/mckinsey-problem-solving` — 2148 字
+- `professional/business/strategy/negotiation` — 2127 字
+- `professional/business/strategy/outsiders` — 2123 字
+- `professional/business/strategy/personal-mba` — 2070 字
 - `professional/business/strategy/playing-to-win` — 3446 字
+- `professional/business/strategy/podcast-producer-guide` — 2121 字
+- `professional/business/strategy/post-corona` — 2242 字
+- `professional/business/strategy/prosperity-paradox` — 2193 字
+- `professional/business/strategy/seeing-whats-next` — 2109 字
+- `professional/business/strategy/seven-powers-foundations-business-strategy` — 2208 字
+- `professional/business/strategy/small-giants` — 2013 字
+- `professional/business/strategy/value-proposition-design` — 2106 字
+- `professional/business/strategy/wujun-insight` — 2160 字
+- `professional/business/strategy/zero-to-one` — 2131 字
 - `professional/career/career-change/designing-your-life` — 3608 字
 - `professional/career/career-change/hbr-guide-to-changing-your-career` — 3675 字
 - `professional/career/career-change/pathless-path` — 3679 字
 - `professional/career/career-change/working-identity` — 3957 字
 - `professional/career/job-search/60-seconds-and-youre-hired` — 3809 字
 - `professional/career/job-search/behavioral-interviews-for-software-engineers` — 3364 字
+- `professional/career/job-search/cracking-the-pm-interview` — 3831 字
+- `professional/career/job-search/cracking-the-tech-career` — 3938 字
+- `professional/career/job-search/decode-and-conquer` — 3803 字
+- `professional/career/job-search/first-break-all-the-rules` — 3968 字
+- `professional/career/job-search/getting-there-a-book-of-mentors` — 3486 字
+- `professional/career/job-search/hbr-guide-to-your-job-search` — 3779 字
+- `professional/career/job-search/mastering-behavioral-interviews` — 3544 字
+- `professional/career/job-search/star-interview` — 3125 字
+- `professional/career/job-search/tech-resume` — 3343 字
+- `professional/career/job-search/what-color-is-your-parachute` — 3384 字
+- `professional/career/problem-solving/bcg-problem-solving-power` — 3224 字
+- `professional/career/problem-solving/bulletproof-problem-solving` — 3302 字
+- `professional/career/problem-solving/diagrams-book` — 3012 字
+- `professional/career/problem-solving/fengtang-gold-line` — 3373 字
+- `professional/career/problem-solving/issue-driven` — 3381 字
+- `professional/career/problem-solving/mckinsey-39-work-habits` — 2983 字
+- `professional/career/problem-solving/mckinsey-new-employee-training-7-lessons` — 3228 字
+- `professional/career/problem-solving/mckinsey-note-taking-method` — 2834 字
+- `professional/career/problem-solving/mckinsey-way` — 3489 字
+- `professional/career/problem-solving/mckinsey-work-method` — 3029 字
+- `professional/career/problem-solving/mckinsey-zero-second-execution` — 3120 字
+- `professional/career/problem-solving/mckinsey-zero-second-logical-thinking` — 2906 字
+- `professional/career/problem-solving/minto-pyramid-principle` — 3275 字
+- `professional/career/problem-solving/strategic-thinking` — 3141 字
+- `professional/career/problem-solving/zero-second-thinking` — 2918 字
+- `professional/career/problem-solving/zero-second-thinking-practice` — 2949 字
+- `professional/career/side-hustle/100-startup` — 3282 字
+- `professional/career/skill-building/do-over` — 3179 字
+- `professional/career/skill-building/effective-executive` — 3429 字
+- `professional/career/skill-building/end-of-average` — 2995 字
+- `professional/career/skill-building/end-of-jobs` — 2953 字
+- `professional/career/skill-building/excellent-advice-for-living` — 2860 字
+- `professional/career/skill-building/fengtang-succeeding` — 2947 字
+- `professional/career/skill-building/fengtang-succeeding-method` — 3024 字
+- `professional/career/skill-building/forget-a-mentor-find-a-sponsor` — 2955 字
+- `professional/career/skill-building/great-people-decisions` — 2845 字
+- `professional/career/skill-building/great-work-great-career` — 2892 字
+- `professional/career/skill-building/grit` — 3047 字
+- `professional/career/skill-building/hbr-guide-to-designing-your-retirement` — 2779 字
+- `professional/career/skill-building/hbr-guide-to-remote-work` — 2836 字
+- `professional/career/skill-building/hbr-guide-to-your-professional-growth` — 2794 字
+- `professional/career/skill-building/how-to-win-in-a-winner-take-all-world` — 2953 字
+- `professional/career/skill-building/impact-players` — 2593 字
 - `professional/career/skill-building/linchpin` — 3140 字
+- `professional/career/skill-building/long-view-career-strategies-to-start-strong-reach-high` — 2803 字
+- `professional/career/skill-building/making-of-a-manager` — 3072 字
+- `professional/career/skill-building/managing-oneself` — 2942 字
+- `professional/career/skill-building/myself-and-other-more-important-matters` — 2501 字
+- `professional/career/skill-building/new-talent-for-the-future` — 2269 字
+- `professional/career/skill-building/own-your-tech-career` — 2440 字
+- `professional/career/skill-building/passionate-programmer` — 2424 字
+- `professional/career/skill-building/professional-ohmae` — 2407 字
+- `professional/career/skill-building/range-why-generalists-triumph` — 2550 字
+- `professional/career/skill-building/second-curve` — 2374 字
+- `professional/career/skill-building/smart-not-loud` — 2431 字
 - `professional/career/skill-building/so-good-they-cant-ignore-you` — 2782 字
+- `professional/career/skill-building/soft-skills-thirty-letters` — 2362 字
+- `professional/career/skill-building/staff-engineer` — 2387 字
+- `professional/career/skill-building/strong-product-people` — 2547 字
+- `professional/career/skill-building/terry-cheng-workplace-power` — 2447 字
+- `professional/career/skill-building/twelve-and-a-half` — 2441 字
+- `professional/career/skill-building/what-i-wish-i-knew-when-i-was-20` — 2291 字
+- `professional/career/skill-building/what-you-are-really-meant-to-do` — 2229 字
+- `professional/career/skill-building/work-optional` — 2228 字
+- `professional/career/skill-building/world-class-work-methods-compiled` — 2242 字
 - `professional/communication/negotiation/bargaining-for-advantage` — 4012 字
+- `professional/communication/negotiation/beyond-reason` — 2144 字
+- `professional/communication/negotiation/code-of-trust` — 2095 字
+- `professional/communication/negotiation/difficult-conversations` — 2081 字
+- `professional/communication/negotiation/getting-more` — 2033 字
+- `professional/communication/negotiation/getting-past-no` — 2171 字
+- `professional/communication/negotiation/getting-to-yes` — 2090 字
+- `professional/communication/negotiation/getting-to-yes-with-yourself` — 2124 字
+- `professional/communication/negotiation/hbr-10-must-reads-on-trust` — 2173 字
+- `professional/communication/negotiation/hbr-guide-to-negotiating` — 2060 字
+- `professional/communication/negotiation/how-to-win-friends-and-influence-people` — 1916 字
+- `professional/communication/negotiation/negotiating-the-impossible` — 2089 字
+- `professional/communication/negotiation/negotiating-the-nonnegotiable` — 2071 字
+- `professional/communication/negotiation/never-split-the-difference` — 2079 字
+- `professional/communication/negotiation/pitch-anything` — 1957 字
+- `professional/communication/negotiation/rules-of-people` — 1999 字
+- `professional/communication/negotiation/secrets-of-power-negotiating-for-salespeople` — 2055 字
+- `professional/communication/persuasion/100m-offers` — 2003 字
+- `professional/communication/persuasion/16-undeniable-laws-of-communication` — 2000 字
+- `professional/communication/persuasion/48-laws-of-power` — 2019 字
+- `professional/communication/persuasion/5-min-mba-personal` — 1903 字
+- `professional/communication/persuasion/7-habits-of-highly-effective-people` — 1988 字
+- `professional/communication/persuasion/8th-habit` — 1993 字
+- `professional/communication/persuasion/art-of-seduction` — 1952 字
+- `professional/communication/persuasion/art-of-strategy` — 1990 字
+- `professional/communication/persuasion/ask-more-the-power-of-questions` — 1907 字
 - `professional/communication/persuasion/becoming-a-person-of-influence` — 3844 字
+- `professional/communication/persuasion/catalyst` — 1937 字
+- `professional/communication/persuasion/charisma-myth` — 2008 字
+- `professional/communication/persuasion/communication-methods` — 1991 字
+- `professional/communication/persuasion/crucial-conversations` — 2123 字
+- `professional/communication/persuasion/dictionary-of-body-language` — 2067 字
+- `professional/communication/persuasion/dignity-of-speaking` — 1915 字
+- `professional/communication/persuasion/everyone-communicates-few-connect` — 1924 字
+- `professional/communication/persuasion/four-seconds` — 1982 字
+- `professional/communication/persuasion/friend-and-foe` — 2063 字
+- `professional/communication/persuasion/get-anyone-to-do-anything` — 1888 字
+- `professional/communication/persuasion/give-and-take` — 1885 字
+- `professional/communication/persuasion/good-charts` — 1979 字
+- `professional/communication/persuasion/how-to-become-famous` — 2018 字
+- `professional/communication/persuasion/how-to-talk-to-anyone` — 2012 字
+- `professional/communication/persuasion/how-to-use-power-phrases` — 1909 字
+- `professional/communication/persuasion/humble-inquiry` — 1930 字
+- `professional/communication/persuasion/impromptu` — 1875 字
+- `professional/communication/persuasion/influence-cialdini` — 2013 字
+- `professional/communication/persuasion/laws-of-human-nature` — 1852 字
+- `professional/communication/persuasion/lets-talk` — 2032 字
+- `professional/communication/persuasion/louder-than-words` — 1938 字
+- `professional/communication/persuasion/make-it-clear` — 1985 字
 - `professional/communication/persuasion/mba-confidential` — 3199 字
+- `professional/communication/persuasion/mckinsey-writing-technique` — 1893 字
+- `professional/communication/persuasion/next-conversation` — 1841 字
+- `professional/communication/persuasion/no-thanks-im-just-looking` — 1807 字
+- `professional/communication/persuasion/nonviolent-communication` — 2088 字
+- `professional/communication/persuasion/ohne-worte` — 1986 字
+- `professional/communication/persuasion/one-on-one-with-andy-grove` — 1950 字
+- `professional/communication/persuasion/power-of-the-other` — 1834 字
+- `professional/communication/persuasion/power-questions` — 1882 字
+- `professional/communication/persuasion/pre-suasion` — 1895 字
+- `professional/communication/persuasion/psychology-of-selling` — 1921 字
+- `professional/communication/persuasion/reinforcements-how-to-get-people-to-help-you` — 1920 字
+- `professional/communication/persuasion/remember-who-you-are` — 2010 字
+- `professional/communication/persuasion/repeatable-communication` — 1940 字
+- `professional/communication/persuasion/rules-of-work` — 1865 字
+- `professional/communication/persuasion/secrets-of-consulting` — 1882 字
+- `professional/communication/persuasion/secrets-of-power-problem-solving` — 1984 字
+- `professional/communication/persuasion/simply-put` — 1836 字
+- `professional/communication/persuasion/simply-said` — 1811 字
+- `professional/communication/persuasion/smart-brevity` — 1884 字
+- `professional/communication/persuasion/speak-well` — 1921 字
+- `professional/communication/persuasion/speed-of-trust` — 1896 字
+- `professional/communication/persuasion/start-with-why` — 1873 字
+- `professional/communication/persuasion/stories-that-stick` — 1867 字
 - `professional/communication/persuasion/supercommunicators` — 3689 字
+- `professional/communication/persuasion/telling-true-stories` — 1949 字
+- `professional/communication/persuasion/terrible-truth-about-lawyers` — 1950 字
+- `professional/communication/persuasion/thank-you-for-arguing` — 1920 字
+- `professional/communication/persuasion/thats-not-what-i-meant` — 1923 字
 - `professional/communication/persuasion/three-minutes-to-doomsday` — 3815 字
+- `professional/communication/persuasion/what-to-ask-the-person-in-the-mirror` — 1925 字
+- `professional/communication/persuasion/winning` — 1928 字
+- `professional/communication/persuasion/you-can-read-anyone` — 1897 字
+- `professional/communication/persuasion/youve-got-8-seconds` — 1939 字
+- `professional/communication/public-speaking/hbr-guide-collection` — 1846 字
+- `professional/communication/public-speaking/hbr-guide-to-persuasive-presentations` — 1834 字
+- `professional/communication/public-speaking/hbr-s-10-must-reads-on-communication` — 1915 字
+- `professional/communication/public-speaking/power-of-eye-contact` — 1844 字
+- `professional/communication/public-speaking/presenting-to-win` — 1826 字
+- `professional/communication/public-speaking/say-it-well` — 2017 字
+- `professional/communication/public-speaking/show-and-tell` — 1846 字
 - `professional/communication/public-speaking/slideology` — 2678 字
+- `professional/communication/public-speaking/speak-to-win` — 1888 字
+- `professional/communication/public-speaking/speaking-up` — 1904 字
+- `professional/communication/public-speaking/stage-presentation-skills` — 1834 字
+- `professional/communication/public-speaking/talk-like-ted` — 1865 字
+- `professional/communication/public-speaking/ted-talks` — 1921 字
+- `professional/communication/storytelling/33-strategies-of-war` — 1990 字
+- `professional/communication/storytelling/diary-of-a-ceo` — 1844 字
+- `professional/communication/storytelling/five-stars` — 1936 字
+- `professional/communication/storytelling/leading-matters` — 1865 字
+- `professional/communication/storytelling/leading-minds` — 1978 字
+- `professional/communication/storytelling/made-to-stick` — 1907 字
+- `professional/communication/storytelling/reputation-game` — 1886 字
+- `professional/communication/storytelling/resonate-visual-stories-transform-audiences` — 1898 字
+- `professional/communication/storytelling/science-of-storytelling` — 1999 字
+- `professional/communication/storytelling/story-factor` — 1898 字
 - `professional/communication/storytelling/storytelling-animal` — 3857 字
+- `professional/communication/storytelling/storytelling-with-data` — 1836 字
 - `professional/communication/workplace-relations/fierce-conversations` — 3808 字
+- `professional/communication/workplace-relations/hbr-guide-to-dealing-with-conflict` — 1798 字
+- `professional/communication/workplace-relations/hbr-guide-to-emotional-intelligence` — 1933 字
+- `professional/communication/workplace-relations/hbr-guide-to-managing-up-and-across` — 1927 字
+- `professional/communication/workplace-relations/hbr-guide-to-navigating-the-toxic-workplace` — 1957 字
+- `professional/communication/workplace-relations/hbr-guide-to-office-politics` — 1819 字
+- `professional/communication/workplace-relations/hbr-guide-to-smarter-networking` — 1853 字
 - `professional/communication/workplace-relations/never-eat-alone` — 3482 字
+- `professional/finance/economics/12-economic-indicators` — 2309 字
+- `professional/finance/economics/23-things-they-dont-tell-you-about-capitalism` — 2512 字
+- `professional/finance/economics/50-capitalism-ideas-you-really-need-to-know` — 2298 字
+- `professional/finance/economics/50-economics-ideas` — 2335 字
+- `professional/finance/economics/algebra-of-wealth` — 2392 字
+- `professional/finance/economics/animal-spirits` — 2429 字
+- `professional/finance/economics/ascent-of-money` — 2432 字
+- `professional/finance/economics/basic-economics` — 2299 字
+- `professional/finance/economics/big-debt-crises` — 2217 字
+- `professional/finance/economics/blind-robbery` — 2181 字
+- `professional/finance/economics/capital-in-the-twenty-first-century` — 2274 字
+- `professional/finance/economics/capitalism-and-freedom` — 2584 字
+- `professional/finance/economics/capitalist-manifesto` — 2431 字
+- `professional/finance/economics/cfa-prereq-vol-2-economics` — 2218 字
+- `professional/finance/economics/devil-take-the-hindmost` — 2147 字
+- `professional/finance/economics/economics-in-one-lesson` — 2506 字
+- `professional/finance/economics/exile-on-wall-street` — 2289 字
 - `professional/finance/economics/freakonomics` — 4028 字
+- `professional/finance/economics/free-to-choose` — 2309 字
+- `professional/finance/economics/from-here-to-financial-happiness` — 2125 字
+- `professional/finance/economics/general-theory-of-employment-interest-and-money` — 2536 字
+- `professional/finance/economics/globalization-and-its-discontents-revisited` — 2358 字
+- `professional/finance/economics/great-crash-1929` — 2146 字
+- `professional/finance/economics/how-economics-can-save-the-world` — 2262 字
+- `professional/finance/economics/how-economy-grows` — 2273 字
+- `professional/finance/economics/little-book-of-market-myths` — 2296 字
+- `professional/finance/economics/little-book-that-builds-wealth` — 2203 字
+- `professional/finance/economics/little-history-of-economics` — 2055 字
+- `professional/finance/economics/lombard-street` — 2099 字
+- `professional/finance/economics/lords-of-finance` — 1981 字
+- `professional/finance/economics/manias-panics-and-crashes` — 2073 字
+- `professional/finance/economics/mastering-the-market-cycle` — 2146 字
+- `professional/finance/economics/misbehaving` — 2038 字
+- `professional/finance/economics/naked-economics` — 2179 字
+- `professional/finance/economics/narrative-economics` — 2088 字
+- `professional/finance/economics/nudge` — 2362 字
+- `professional/finance/economics/power-of-gold` — 2125 字
+- `professional/finance/economics/predictably-irrational` — 2258 字
+- `professional/finance/economics/rich-dads-conspiracy-of-the-rich` — 2057 字
+- `professional/finance/economics/superfreakonomics` — 2403 字
+- `professional/finance/economics/this-time-is-different` — 2260 字
 - `professional/finance/economics/undercover-economist` — 4141 字
+- `professional/finance/economics/undercover-economist-strikes-back` — 2058 字
+- `professional/finance/economics/wealth-of-nations` — 2698 字
+- `professional/finance/economics/worldly-philosophers` — 2241 字
+- `professional/finance/economics/your-money-and-your-brain` — 2087 字
+- `professional/finance/investing/50-questions-retail-investors` — 2056 字
+- `professional/finance/investing/7-mistakes-every-investor-makes` — 2148 字
+- `professional/finance/investing/a-random-walk-down-wall-street` — 2134 字
 - `professional/finance/investing/alchemy-of-finance` — 3814 字
+- `professional/finance/investing/all-about-asset-allocation` — 2072 字
+- `professional/finance/investing/anlegerpsychologie` — 2178 字
+- `professional/finance/investing/attitude-of-the-rich` — 2074 字
+- `professional/finance/investing/battle-for-investment-survival` — 2159 字
+- `professional/finance/investing/beat-the-crowd` — 2041 字
+- `professional/finance/investing/big-short` — 2086 字
+- `professional/finance/investing/bogle-on-mutual-funds` — 2163 字
+- `professional/finance/investing/bogleheads-guide-to-investing` — 2150 字
+- `professional/finance/investing/bogleheads-guide-to-three-fund-portfolio` — 2129 字
+- `professional/finance/investing/central-bank-privilege` — 2123 字
+- `professional/finance/investing/cfa-corporate-finance-workbook` — 1914 字
+- `professional/finance/investing/clash-of-the-cultures` — 1994 字
+- `professional/finance/investing/common-sense-on-mutual-funds` — 2076 字
 - `professional/finance/investing/dark-side-of-valuation` — 3525 字
+- `professional/finance/investing/debunkery` — 1999 字
+- `professional/finance/investing/devils-financial-dictionary` — 2032 字
+- `professional/finance/investing/dynamic-hedging` — 2399 字
+- `professional/finance/investing/enough` — 2097 字
+- `professional/finance/investing/expectations-investing` — 2125 字
+- `professional/finance/investing/extraordinary-popular-delusions` — 2069 字
 - `professional/finance/investing/financial-shenanigans` — 3594 字
+- `professional/finance/investing/first-book-for-retail-investors` — 2004 字
+- `professional/finance/investing/five-key-numbers` — 2129 字
+- `professional/finance/investing/fool-and-his-money` — 2029 字
+- `professional/finance/investing/forrest-investing` — 2013 字
+- `professional/finance/investing/four-pillars-of-investing` — 2127 字
+- `professional/finance/investing/grey-thinking` — 2001 字
+- `professional/finance/investing/how-countries-go-broke` — 2092 字
+- `professional/finance/investing/how-finance-works` — 2060 字
+- `professional/finance/investing/how-i-invest-my-money` — 2047 字
+- `professional/finance/investing/how-to-think-about-money` — 2097 字
+- `professional/finance/investing/im-worth-more` — 2019 字
+- `professional/finance/investing/in-pursuit-of-perfect-portfolio` — 2112 字
+- `professional/finance/investing/infinity-investing` — 2135 字
+- `professional/finance/investing/intelligent-asset-allocator` — 2128 字
+- `professional/finance/investing/investing-hagstrom` — 2108 字
 - `professional/finance/investing/investment-philosophies` — 3996 字
+- `professional/finance/investing/investment-valuation` — 2527 字
+- `professional/finance/investing/irrational-exuberance` — 2345 字
+- `professional/finance/investing/joys-of-compounding` — 2551 字
+- `professional/finance/investing/kostolany-confessions` — 2387 字
+- `professional/finance/investing/laws-of-wealth` — 2465 字
+- `professional/finance/investing/liars-poker` — 2361 字
+- `professional/finance/investing/little-book-of-behavioral-investing` — 2641 字
+- `professional/finance/investing/little-book-of-common-sense-investing` — 2256 字
+- `professional/finance/investing/little-book-of-investing-like-the-pros` — 2303 字
+- `professional/finance/investing/little-book-of-safe-money` — 2340 字
+- `professional/finance/investing/little-book-of-valuation` — 2347 字
+- `professional/finance/investing/long-term-investing` — 2431 字
+- `professional/finance/investing/man-who-solved-the-market` — 2440 字
+- `professional/finance/investing/market-sense-and-nonsense` — 2569 字
+- `professional/finance/investing/money-game` — 2482 字
+- `professional/finance/investing/money-rob-moore` — 2426 字
+- `professional/finance/investing/narrative-and-numbers` — 2296 字
+- `professional/finance/investing/nothing-but-net` — 2349 字
+- `professional/finance/investing/only-investment-guide-youll-ever-need` — 2365 字
+- `professional/finance/investing/only-three-questions-that-still-count` — 2395 字
 - `professional/finance/investing/pioneering-portfolio-management` — 3917 字
+- `professional/finance/investing/portfolio-management-in-practice-vol-1` — 2308 字
+- `professional/finance/investing/portfolio-management-in-practice-vol-2` — 2328 字
+- `professional/finance/investing/portfolio-management-in-practice-vol-3` — 2355 字
+- `professional/finance/investing/power-law` — 2220 字
+- `professional/finance/investing/psychology-of-money` — 2330 字
+- `professional/finance/investing/quantitative-investment-analysis` — 2223 字
+- `professional/finance/investing/random-walk-guide-to-investing` — 2150 字
+- `professional/finance/investing/rich-dads-guide-to-investing` — 2390 字
+- `professional/finance/investing/rule` — 2336 字
+- `professional/finance/investing/same-as-ever` — 2288 字
+- `professional/finance/investing/skin-in-the-game` — 2381 字
+- `professional/finance/investing/soul-of-wealth` — 2228 字
+- `professional/finance/investing/speculator-confession-practice` — 2294 字
+- `professional/finance/investing/stay-the-course` — 2482 字
+- `professional/finance/investing/stocks-for-the-long-run` — 2258 字
+- `professional/finance/investing/too-big-to-fail` — 2415 字
+- `professional/finance/investing/unconventional-success` — 2400 字
+- `professional/finance/investing/us-stock-investing-with-jc` — 2123 字
+- `professional/finance/investing/wealth-of-common-sense` — 2362 字
+- `professional/finance/investing/what-i-learned-losing-a-million-dollars` — 2216 字
+- `professional/finance/investing/when-genius-failed` — 2333 字
+- `professional/finance/investing/who-took-my-money` — 2292 字
+- `professional/finance/investing/whoops` — 2366 字
+- `professional/finance/investing/winning-the-losers-game-ellis` — 2242 字
+- `professional/finance/investing/yale-finance-course` — 2283 字
+- `professional/finance/investing/yale-financial-literacy` — 2233 字
+- `professional/finance/personal-finance/21-success-secrets-of-self-made` — 2153 字
+- `professional/finance/personal-finance/all-the-money-in-the-world` — 2266 字
+- `professional/finance/personal-finance/art-of-spending-money` — 2288 字
+- `professional/finance/personal-finance/baby-steps-millionaire` — 2226 字
+- `professional/finance/personal-finance/cashflow-quadrant` — 2164 字
+- `professional/finance/personal-finance/choose-fi` — 2185 字
 - `professional/finance/personal-finance/die-with-zero` — 3166 字
 - `professional/finance/personal-finance/early-retirement-extreme` — 3252 字
+- `professional/finance/personal-finance/elements-of-investing` — 2242 字
+- `professional/finance/personal-finance/fake-money-fake-teachers-fake-assets` — 2205 字
+- `professional/finance/personal-finance/financial-freedom` — 2200 字
+- `professional/finance/personal-finance/get-rich-now` — 2179 字
+- `professional/finance/personal-finance/guide-to-becoming-rich-without-cutting-up-your-credit-cards` — 2121 字
+- `professional/finance/personal-finance/i-will-teach-you-to-be-rich` — 2197 字
+- `professional/finance/personal-finance/increase-your-financial-iq` — 2197 字
+- `professional/finance/personal-finance/just-keep-buying` — 2256 字
+- `professional/finance/personal-finance/latte-factor` — 2121 字
+- `professional/finance/personal-finance/millionaire-fastlane` — 2185 字
 - `professional/finance/personal-finance/millionaire-mind` — 3468 字
+- `professional/finance/personal-finance/millionaire-next-door` — 2273 字
+- `professional/finance/personal-finance/millionaire-teacher` — 2206 字
+- `professional/finance/personal-finance/playing-with-fire` — 2250 字
+- `professional/finance/personal-finance/power-of-passive-income` — 2180 字
 - `professional/finance/personal-finance/quit-like-a-millionaire` — 3646 字
+- `professional/finance/personal-finance/retire-young-retire-rich` — 2193 字
+- `professional/finance/personal-finance/rich-brother-rich-sister` — 2219 字
+- `professional/finance/personal-finance/rich-dad-poor-dad` — 2235 字
+- `professional/finance/personal-finance/rich-dad-poor-dad-for-teens` — 2213 字
+- `professional/finance/personal-finance/rich-dads-success-stories` — 2184 字
+- `professional/finance/personal-finance/rich-kid-smart-kid` — 2224 字
+- `professional/finance/personal-finance/richest-man-in-babylon` — 2208 字
+- `professional/finance/personal-finance/road-to-financial-freedom` — 2260 字
+- `professional/finance/personal-finance/rules-of-wealth` — 2184 字
+- `professional/finance/personal-finance/science-of-money` — 2212 字
+- `professional/finance/personal-finance/second-chance` — 2324 字
+- `professional/finance/personal-finance/secrets-of-the-millionaire-mind` — 2202 字
+- `professional/finance/personal-finance/simple-path-to-wealth` — 2224 字
+- `professional/finance/personal-finance/talmud-the-jewish-bible-of-wealth` — 2161 字
+- `professional/finance/personal-finance/tax-secrets-of-the-rich` — 2392 字
+- `professional/finance/personal-finance/ten-roads-to-riches` — 2197 字
+- `professional/finance/personal-finance/think-and-grow-rich` — 2130 字
+- `professional/finance/personal-finance/thou-shall-prosper` — 2352 字
 - `professional/finance/personal-finance/total-money-makeover` — 3600 字
+- `professional/finance/personal-finance/unfair-advantage` — 2215 字
+- `professional/finance/personal-finance/unknown-market-wizards` — 2227 字
+- `professional/finance/personal-finance/way-of-munger` — 2110 字
 - `professional/finance/personal-finance/wealthy-barber` — 3890 字
 - `professional/finance/personal-finance/wealthy-barber-returns` — 3964 字
+- `professional/finance/personal-finance/who-stole-my-pension` — 2184 字
+- `professional/finance/personal-finance/why-a-students-work-for-c-students` — 2228 字
+- `professional/finance/personal-finance/why-the-rich-are-getting-richer` — 2142 字
+- `professional/finance/personal-finance/why-we-want-you-to-be-rich` — 2245 字
+- `professional/finance/personal-finance/you-can-choose-to-be-rich` — 2125 字
+- `professional/finance/personal-finance/your-money-or-your-life` — 2282 字
+- `professional/finance/real-estate/real-book-of-real-estate` — 2165 字
+- `professional/finance/trading/complete-guide-to-futures-markets` — 2180 字
+- `professional/finance/trading/disciplined-trader` — 2207 字
+- `professional/finance/trading/fei-style-thinking` — 2165 字
+- `professional/finance/trading/getting-started-in-technical-analysis` — 2134 字
+- `professional/finance/trading/hedge-fund-market-wizards` — 2138 字
+- `professional/finance/trading/little-book-of-currency-trading` — 2154 字
+- `professional/finance/trading/little-book-of-market-wizards` — 2106 字
+- `professional/finance/trading/market-wizards` — 2223 字
+- `professional/finance/trading/new-market-wizards` — 2203 字
+- `professional/finance/trading/quants` — 2157 字
+- `professional/finance/trading/reminiscences-of-a-stock-operator` — 2205 字
+- `professional/finance/trading/stock-market-wizards` — 2166 字
 - `professional/finance/trading/technical-analysis-of-the-financial-markets` — 3940 字
+- `professional/finance/trading/trading-game` — 2220 字
+- `professional/finance/trading/trading-in-the-zone` — 2170 字
 - `professional/finance/trading/trend-following` — 3662 字
+- `professional/finance/trading/trend-following-masters-volume-2` — 2170 字
+- `professional/finance/trading/way-of-the-turtle` — 2143 字
 - `professional/finance/value-investing/100-baggers` — 3450 字
+- `professional/finance/value-investing/beating-the-street` — 2275 字
+- `professional/finance/value-investing/common-stocks-and-uncommon-profits` — 2238 字
+- `professional/finance/value-investing/dhandho-investor` — 2289 字
+- `professional/finance/value-investing/education-of-a-value-investor` — 2266 字
+- `professional/finance/value-investing/essays-of-warren-buffett` — 2144 字
+- `professional/finance/value-investing/how-to-make-money-in-stocks` — 2200 字
+- `professional/finance/value-investing/intelligent-investor` — 2270 字
+- `professional/finance/value-investing/invested` — 2186 字
+- `professional/finance/value-investing/little-book-that-still-beats-the-market` — 2137 字
+- `professional/finance/value-investing/most-important-thing` — 2213 字
+- `professional/finance/value-investing/new-tao-of-warren-buffett` — 2148 字
+- `professional/finance/value-investing/one-up-on-wall-street` — 2241 字
+- `professional/finance/value-investing/payback-time` — 2219 字
+- `professional/finance/value-investing/richer-wiser-happier` — 2178 字
+- `professional/finance/value-investing/security-analysis` — 2178 字
+- `professional/finance/value-investing/snowball-warren-buffett` — 2181 字
+- `professional/finance/value-investing/tap-dancing-to-work` — 2068 字
+- `professional/finance/value-investing/warren-buffetts-ground-rules` — 2218 字
+- `professional/finance/value-investing/you-can-be-a-stock-market-genius` — 2208 字
+- `professional/leadership/coaching/coaching-habit` — 2563 字
+- `professional/leadership/coaching/hbr-guide-to-coaching-employees` — 2324 字
+- `professional/leadership/coaching/hbr-guide-to-delivering-effective-feedback` — 2245 字
+- `professional/leadership/coaching/leadership-gold` — 2291 字
+- `professional/leadership/coaching/power-of-flexing` — 2186 字
+- `professional/leadership/coaching/radical-candor` — 2361 字
+- `professional/leadership/coaching/trillion-dollar-coach` — 2857 字
+- `professional/leadership/coaching/what-got-you-here-wont-get-you-there` — 2326 字
+- `professional/leadership/culture/be-the-unicorn` — 2120 字
+- `professional/leadership/culture/culture-code` — 2766 字
+- `professional/leadership/culture/culture-map` — 2269 字
+- `professional/leadership/culture/dare-to-lead` — 2796 字
+- `professional/leadership/culture/delivering-happiness` — 2270 字
+- `professional/leadership/culture/drive` — 2340 字
+- `professional/leadership/culture/five-most-important-questions` — 2095 字
 - `professional/leadership/culture/integrity` — 3315 字
+- `professional/leadership/culture/leaders-eat-last` — 2186 字
+- `professional/leadership/culture/leading-with-questions` — 2260 字
+- `professional/leadership/culture/meetings-that-get-results` — 2119 字
+- `professional/leadership/culture/primal-leadership` — 2486 字
+- `professional/leadership/culture/remote-office-not-required` — 2226 字
+- `professional/leadership/culture/what-you-do-is-who-you-are` — 2126 字
+- `professional/leadership/decision-making/breaking-roberts-rules` — 2172 字
+- `professional/leadership/decision-making/decisive` — 2569 字
+- `professional/leadership/decision-making/great-mental-models-general-thinking` — 2177 字
+- `professional/leadership/decision-making/hbr-guide-to-better-recruiting-and-hiring` — 2167 字
+- `professional/leadership/decision-making/hbr-guide-to-making-better-decisions` — 2253 字
+- `professional/leadership/decision-making/hire-and-keep-the-best-people` — 2122 字
+- `professional/leadership/decision-making/hypothesis-driven-thinking` — 2173 字
+- `professional/leadership/decision-making/issue-driven-thinking` — 2260 字
+- `professional/leadership/decision-making/judgment-in-managerial-decision-making` — 2240 字
+- `professional/leadership/decision-making/knowing-doing-gap` — 2291 字
+- `professional/leadership/decision-making/necessary-endings` — 2404 字
+- `professional/leadership/decision-making/superforecasting` — 2357 字
+- `professional/leadership/decision-making/thinking-in-bets` — 2569 字
 - `professional/leadership/team-building/17-indisputable-laws-of-teamwork` — 4186 字
+- `professional/leadership/team-building/8-lessons-in-military-leadership` — 2189 字
 - `professional/leadership/team-building/alliance` — 3500 字
+- `professional/leadership/team-building/being-the-boss` — 2188 字
+- `professional/leadership/team-building/boundaries-for-leaders` — 2169 字
+- `professional/leadership/team-building/developing-leader-within-and-around-you` — 2080 字
+- `professional/leadership/team-building/empowered-ordinary-people-extraordinary-products` — 2157 字
+- `professional/leadership/team-building/extreme-ownership` — 2425 字
+- `professional/leadership/team-building/first-90-days` — 2539 字
+- `professional/leadership/team-building/five-dysfunctions-of-a-team` — 2026 字
 - `professional/leadership/team-building/hbr-10-must-reads-on-managing-people` — 4041 字
 - `professional/leadership/team-building/hbr-guide-to-leading-through-change` — 2592 字
+- `professional/leadership/team-building/hbr-s-10-must-reads-on-emotional-intelligence` — 2129 字
+- `professional/leadership/team-building/leadership-tracy` — 2028 字
+- `professional/leadership/team-building/leading-change` — 2625 字
+- `professional/leadership/team-building/liurun-key-leap` — 2273 字
+- `professional/leadership/team-building/managers-handbook` — 2373 字
+- `professional/leadership/team-building/multipliers` — 2303 字
+- `professional/leadership/team-building/rules-of-management` — 1983 字
+- `professional/leadership/team-building/sales-management` — 1988 字
+- `professional/leadership/team-building/team-of-teams` — 2154 字
+- `professional/leadership/vision/21-irrefutable-laws-of-leadership` — 1957 字
+- `professional/leadership/vision/360-degree-leader` — 2000 字
+- `professional/leadership/vision/5-levels-of-leadership` — 2090 字
+- `professional/leadership/vision/5-min-mba-management` — 2303 字
+- `professional/leadership/vision/7-rules-of-power` — 2048 字
+- `professional/leadership/vision/adventures-of-bystander` — 2192 字
+- `professional/leadership/vision/adversity-quotient` — 1986 字
+- `professional/leadership/vision/amoeba-management` — 2076 字
+- `professional/leadership/vision/be-2-0` — 2133 字
+- `professional/leadership/vision/built-to-last` — 2017 字
+- `professional/leadership/vision/call-sign-chaos` — 2091 字
+- `professional/leadership/vision/ceo-excellence` — 1929 字
+- `professional/leadership/vision/daily-drucker` — 2133 字
+- `professional/leadership/vision/dear-founder` — 2278 字
+- `professional/leadership/vision/developing-leader-within-you-2` — 2123 字
+- `professional/leadership/vision/drucker-lectures` — 2157 字
+- `professional/leadership/vision/good-to-great` — 2159 字
+- `professional/leadership/vision/good-to-great-and-the-social-sectors` — 2602 字
 - `professional/leadership/vision/hbr-10-must-reads-on-leadership` — 3945 字
+- `professional/leadership/vision/hbr-guide-to-retaining-your-best-people` — 2454 字
+- `professional/leadership/vision/how-big-things-get-done` — 2327 字
+- `professional/leadership/vision/how-leaders-learn` — 2208 字
+- `professional/leadership/vision/how-the-mighty-fall` — 2646 字
+- `professional/leadership/vision/i-will-make-you-an-offer-you-cannot-refuse` — 2111 字
+- `professional/leadership/vision/innovators-dilemma` — 2302 字
 - `professional/leadership/vision/innovators-prescription` — 3668 字
+- `professional/leadership/vision/innovators-solution` — 2397 字
 - `professional/leadership/vision/its-your-ship` — 2649 字
 - `professional/leadership/vision/leadershift` — 3408 字
+- `professional/leadership/vision/leadership-bs` — 2063 字
+- `professional/leadership/vision/leadership-challenge` — 2704 字
+- `professional/leadership/vision/managers-path` — 2328 字
+- `professional/leadership/vision/monday-morning-leadership` — 2064 字
+- `professional/leadership/vision/no-asshole-rule` — 2418 字
+- `professional/leadership/vision/no-rules-rules` — 2166 字
+- `professional/leadership/vision/on-becoming-a-leader` — 2781 字
+- `professional/leadership/vision/only-the-paranoid-survive` — 2364 字
+- `professional/leadership/vision/peter-drucker-and-management` — 2182 字
+- `professional/leadership/vision/power-of-servant-leadership` — 3242 字
+- `professional/leadership/vision/power-pfeffer` — 2443 字
+- `professional/leadership/vision/principle-centered-leadership` — 2556 字
+- `professional/leadership/vision/repeatable-leadership` — 2124 字
+- `professional/leadership/vision/reset` — 2203 字
+- `professional/leadership/vision/right-kind-of-wrong` — 2306 字
+- `professional/leadership/vision/servant-leadership` — 2955 字
+- `professional/leadership/vision/ten-commandments-for-business-failure` — 2158 字
+- `professional/leadership/vision/trust-edge` — 2011 字
+- `professional/leadership/vision/turn-the-ship-around` — 2032 字
+- `professional/leadership/vision/whats-your-problem` — 2101 字
+- `professional/leadership/vision/wont-get-fooled-again` — 2081 字
+- `wisdom/education/curriculum/disciplined-mind` — 3321 字
 - `wisdom/education/curriculum/truth-beauty-and-goodness-reframed` — 3448 字
+- `wisdom/education/pedagogy/disrupting-class` — 3241 字
+- `wisdom/education/pedagogy/how-we-learn` — 3454 字
+- `wisdom/education/pedagogy/unschooled-mind` — 3156 字
 - `wisdom/education/pedagogy/why-dont-students-like-school` — 2958 字
+- `wisdom/education/self-learning/4-hour-chef` — 2980 字
+- `wisdom/education/self-learning/a-mind-for-numbers` — 2996 字
+- `wisdom/education/self-learning/art-of-learning` — 2887 字
 - `wisdom/education/self-learning/building-a-second-brain` — 3566 字
+- `wisdom/education/self-learning/english-is-not-easy` — 2446 字
+- `wisdom/education/self-learning/fifth-discipline` — 2901 字
+- `wisdom/education/self-learning/grid-notebook` — 2385 字
+- `wisdom/education/self-learning/how-to-be-a-high-school-superstar` — 3361 字
 - `wisdom/education/self-learning/how-to-become-a-straight-a-student` — 3395 字
+- `wisdom/education/self-learning/how-to-read-a-book-well` — 2491 字
+- `wisdom/education/self-learning/how-to-take-smart-notes` — 2593 字
 - `wisdom/education/self-learning/how-to-win-at-college` — 3275 字
+- `wisdom/education/self-learning/input-best-learning` — 2778 字
+- `wisdom/education/self-learning/learn-better` — 2649 字
+- `wisdom/education/self-learning/learning-how-to-learn` — 2761 字
+- `wisdom/education/self-learning/living-loving-and-learning` — 2700 字
+- `wisdom/education/self-learning/mckinsey-elite-reading-method` — 2748 字
+- `wisdom/education/self-learning/mental-fitness` — 2854 字
+- `wisdom/education/self-learning/moonwalking-with-einstein` — 2762 字
 - `wisdom/education/self-learning/online-teaching-technique` — 2477 字
+- `wisdom/education/self-learning/output-best-learning` — 2577 字
+- `wisdom/education/self-learning/power-of-reading` — 2763 字
+- `wisdom/education/self-learning/sociology-for-everyone` — 2681 字
+- `wisdom/education/self-learning/talent-code` — 2742 字
+- `wisdom/education/self-learning/talent-is-overrated` — 2608 字
+- `wisdom/education/self-learning/teaching-technique` — 2617 字
+- `wisdom/education/self-learning/ultralearning` — 2843 字
+- `wisdom/education/self-learning/wan-weigang-what-is-learning` — 2706 字
+- `wisdom/education/self-learning/where-do-top-performers-draw-the-line-when-reading` — 2548 字
+- `wisdom/education/self-learning/why-study-the-past` — 2715 字
+- `wisdom/education/self-learning/word-power-made-easy` — 2387 字
+- `wisdom/education/self-learning/wujun-excellence` — 2624 字
+- `wisdom/education/self-learning/wujun-road-to-university` — 2485 字
+- `wisdom/history/ancient/against-the-gods` — 2835 字
+- `wisdom/history/ancient/old-testament-background-and-chronology` — 2463 字
+- `wisdom/history/civilization/autobiography-of-benjamin-franklin` — 2433 字
+- `wisdom/history/civilization/better-angels-of-our-nature` — 2501 字
+- `wisdom/history/civilization/bobos-in-paradise` — 2429 字
+- `wisdom/history/civilization/changing-world-order` — 2315 字
+- `wisdom/history/civilization/collapse` — 2355 字
+- `wisdom/history/civilization/conversations-with-myself` — 2156 字
+- `wisdom/history/civilization/crowds-and-power` — 2447 字
+- `wisdom/history/civilization/dictators-handbook` — 2340 字
+- `wisdom/history/civilization/elephant-and-the-flea` — 2281 字
+- `wisdom/history/civilization/empire-of-things` — 2396 字
+- `wisdom/history/civilization/evicted` — 2235 字
+- `wisdom/history/civilization/fengtang-capable-strategy` — 2282 字
+- `wisdom/history/civilization/fengtang-winner-method` — 2277 字
+- `wisdom/history/civilization/greatest-minds-and-ideas-of-all-time` — 2646 字
+- `wisdom/history/civilization/guns-germs-and-steel` — 2627 字
+- `wisdom/history/civilization/how-i-learned-to-understand-the-world` — 2503 字
+- `wisdom/history/civilization/innovators` — 2398 字
+- `wisdom/history/civilization/little-history-of-the-world` — 2311 字
+- `wisdom/history/civilization/nexus` — 2478 字
+- `wisdom/history/civilization/on-top-of-tides` — 2687 字
+- `wisdom/history/civilization/poor-economics` — 2382 字
+- `wisdom/history/civilization/silk-roads` — 2816 字
+- `wisdom/history/civilization/sovereign-individual` — 2550 字
+- `wisdom/history/civilization/swimming-across` — 2728 字
+- `wisdom/history/civilization/wealth-of-humans` — 2728 字
 - `wisdom/history/civilization/working-poor` — 3663 字
+- `wisdom/history/civilization/wujun-context` — 2957 字
+- `wisdom/history/civilization/wujun-global-history-of-technology` — 2793 字
+- `wisdom/history/civilization/wujun-glory-of-civilization` — 2344 字
+- `wisdom/history/cultural/hustle-and-gig` — 2704 字
+- `wisdom/history/cultural/little-history-of-literature` — 2625 字
 - `wisdom/history/cultural/making-a-monster` — 3524 字
+- `wisdom/history/cultural/price-of-civilization` — 2577 字
+- `wisdom/history/cultural/rituals-of-dinner` — 2886 字
+- `wisdom/history/cultural/sacred-and-profane` — 2719 字
+- `wisdom/history/cultural/sapiens` — 2586 字
+- `wisdom/history/cultural/why-nations-fail` — 2716 字
 - `wisdom/history/military/art-of-war` — 3485 字
+- `wisdom/history/military/lessons-of-history` — 2385 字
+- `wisdom/history/military/technological-republic` — 2700 字
+- `wisdom/history/modern/21-lessons-for-the-21st-century` — 2514 字
+- `wisdom/history/modern/bomber-mafia` — 2514 字
+- `wisdom/history/modern/end-of-economic-man` — 3380 字
+- `wisdom/history/modern/escape-from-freedom` — 2616 字
+- `wisdom/history/modern/gulag-archipelago` — 2431 字
+- `wisdom/history/modern/how-to-fight-a-war` — 2270 字
+- `wisdom/history/modern/post-capitalist-society` — 2745 字
+- `wisdom/history/modern/sane-society` — 2431 字
+- `wisdom/history/modern/whats-wrong-with-the-world` — 2413 字
 - `wisdom/philosophy/eastern/how-the-world-thinks` — 2529 字
 - `wisdom/philosophy/eastern/psychoanalysis-and-zen-buddhism` — 3836 字
+- `wisdom/philosophy/eastern/seven-stages-of-money-maturity` — 2455 字
 - `wisdom/philosophy/ethics/12-rules-for-life` — 2637 字
+- `wisdom/philosophy/ethics/29-pawn-tickets` — 2128 字
+- `wisdom/philosophy/ethics/abolition-of-man` — 2524 字
+- `wisdom/philosophy/ethics/almanack-of-naval-ravikant` — 2259 字
+- `wisdom/philosophy/ethics/anatomy-of-human-destructiveness` — 2277 字
+- `wisdom/philosophy/ethics/antifragile` — 2261 字
+- `wisdom/philosophy/ethics/art-of-asking-life-questions` — 2217 字
+- `wisdom/philosophy/ethics/art-of-being` — 2273 字
+- `wisdom/philosophy/ethics/art-of-loving` — 2299 字
+- `wisdom/philosophy/ethics/autobiography-john-stuart-mill` — 2355 字
+- `wisdom/philosophy/ethics/beautiful-thoughts-from-emerson` — 2146 字
+- `wisdom/philosophy/ethics/bed-of-procrustes` — 2070 字
+- `wisdom/philosophy/ethics/beyond-order` — 2237 字
 - `wisdom/philosophy/ethics/beyond-the-chains-of-illusion` — 4065 字
+- `wisdom/philosophy/ethics/black-swan` — 2227 字
+- `wisdom/philosophy/ethics/civilization-and-its-discontents` — 2398 字
+- `wisdom/philosophy/ethics/essays-of-francis-bacon` — 2113 字
+- `wisdom/philosophy/ethics/fengtang-stable-win` — 2318 字
+- `wisdom/philosophy/ethics/gazing-at-life-theological-aesthetics-of-the-decalogue` — 2161 字
+- `wisdom/philosophy/ethics/golden-rules` — 2133 字
+- `wisdom/philosophy/ethics/good-work` — 2226 字
+- `wisdom/philosophy/ethics/heart-of-man` — 2153 字
+- `wisdom/philosophy/ethics/hero-with-a-thousand-faces` — 2250 字
+- `wisdom/philosophy/ethics/homo-deus` — 2414 字
 - `wisdom/philosophy/ethics/intuition-pumps` — 3021 字
+- `wisdom/philosophy/ethics/justice-whats-the-right-thing-to-do` — 2219 字
+- `wisdom/philosophy/ethics/man-for-himself` — 2307 字
+- `wisdom/philosophy/ethics/marx-capital-and-the-madness-of-economic` — 2294 字
+- `wisdom/philosophy/ethics/marxs-concept-of-man` — 2175 字
+- `wisdom/philosophy/ethics/moral-tribes` — 2271 字
+- `wisdom/philosophy/ethics/nicomachean-ethics` — 2366 字
+- `wisdom/philosophy/ethics/philosophy-and-life` — 2086 字
+- `wisdom/philosophy/ethics/philosophy-the-classics` — 2101 字
+- `wisdom/philosophy/ethics/poor-richard-s-almanack` — 2076 字
+- `wisdom/philosophy/ethics/power-radical-view` — 2208 字
+- `wisdom/philosophy/ethics/psychoanalysis-and-religion` — 2386 字
 - `wisdom/philosophy/ethics/reading-as-a-wilderness` — 2414 字
+- `wisdom/philosophy/ethics/revolution-of-hope` — 2212 字
+- `wisdom/philosophy/ethics/sophies-world` — 2113 字
+- `wisdom/philosophy/ethics/story-of-philosophy-durant` — 2061 字
+- `wisdom/philosophy/ethics/theory-and-practice-of-counseling-and-psychotherapy` — 2203 字
+- `wisdom/philosophy/ethics/think-blackburn` — 2097 字
+- `wisdom/philosophy/ethics/to-have-or-to-be` — 2309 字
+- `wisdom/philosophy/ethics/tyranny-of-merit` — 2236 字
+- `wisdom/philosophy/ethics/wait-what-book` — 2077 字
+- `wisdom/philosophy/ethics/way-of-wisdom` — 2117 字
+- `wisdom/philosophy/ethics/what-does-it-all-mean` — 2206 字
+- `wisdom/philosophy/ethics/wisdom-and-teachings-of-stephen-r-covey` — 2112 字
+- `wisdom/philosophy/ethics/wujun-meta-wisdom` — 2053 字
+- `wisdom/philosophy/ethics/wujun-realm` — 2105 字
+- `wisdom/philosophy/existentialism/myth-of-sisyphus` — 2315 字
+- `wisdom/philosophy/life-philosophy/aging` — 2090 字
 - `wisdom/philosophy/life-philosophy/art-as-therapy` — 4104 字
+- `wisdom/philosophy/life-philosophy/art-of-travel` — 2127 字
+- `wisdom/philosophy/life-philosophy/consolations-of-philosophy` — 2023 字
+- `wisdom/philosophy/life-philosophy/courage-to-be-disliked` — 2208 字
+- `wisdom/philosophy/life-philosophy/death` — 2125 字
+- `wisdom/philosophy/life-philosophy/denial-of-the-soul` — 2003 字
+- `wisdom/philosophy/life-philosophy/essays-in-love` — 2025 字
+- `wisdom/philosophy/life-philosophy/fallen-leaves` — 2110 字
+- `wisdom/philosophy/life-philosophy/how-proust-can-change-your-life` — 2137 字
+- `wisdom/philosophy/life-philosophy/illness-narratives` — 2190 字
+- `wisdom/philosophy/life-philosophy/last-lecture` — 2097 字
+- `wisdom/philosophy/life-philosophy/let-your-life-speak` — 2148 字
+- `wisdom/philosophy/life-philosophy/life-in-three-dimensions` — 2098 字
+- `wisdom/philosophy/life-philosophy/live-your-best-life` — 2090 字
+- `wisdom/philosophy/life-philosophy/mans-search-for-meaning` — 2240 字
 - `wisdom/philosophy/life-philosophy/pleasures-and-sorrows-of-work` — 3648 字
+- `wisdom/philosophy/life-philosophy/religion-for-atheists` — 2185 字
+- `wisdom/philosophy/life-philosophy/road-less-traveled` — 2241 字
+- `wisdom/philosophy/life-philosophy/road-less-traveled-and-beyond` — 1995 字
+- `wisdom/philosophy/life-philosophy/status-anxiety` — 2078 字
+- `wisdom/philosophy/life-philosophy/taking-stock` — 2039 字
+- `wisdom/philosophy/life-philosophy/walden` — 2068 字
+- `wisdom/philosophy/life-philosophy/what-life-should-mean-to-you` — 2179 字
+- `wisdom/philosophy/life-philosophy/when-breath-becomes-air` — 2073 字
 - `wisdom/philosophy/philosophy-of-science/conjectures-and-refutations` — 3570 字
 - `wisdom/philosophy/philosophy-of-science/demon-haunted-world` — 3053 字
+- `wisdom/philosophy/philosophy-of-science/structure-of-scientific-revolutions` — 2228 字
+- `wisdom/philosophy/political-philosophy/50-politics-classics` — 2054 字
+- `wisdom/philosophy/political-philosophy/discourses-on-livy` — 2046 字
+- `wisdom/philosophy/political-philosophy/equality` — 2098 字
+- `wisdom/philosophy/political-philosophy/great-thinkers` — 2053 字
 - `wisdom/philosophy/political-philosophy/on-disobedience` — 4086 字
+- `wisdom/philosophy/political-philosophy/public-philosophy` — 2203 字
+- `wisdom/philosophy/political-philosophy/republic` — 2129 字
+- `wisdom/philosophy/political-philosophy/road-to-serfdom` — 2152 字
+- `wisdom/philosophy/political-philosophy/secular-age` — 2156 字
 - `wisdom/philosophy/political-philosophy/theory-of-justice` — 4170 字
+- `wisdom/philosophy/stoicism/art-of-the-good-life` — 2148 字
+- `wisdom/philosophy/stoicism/daily-stoic` — 2146 字
+- `wisdom/philosophy/stoicism/ego-is-the-enemy` — 2048 字
+- `wisdom/philosophy/stoicism/epictetus-discourses-fragments-handbook` — 2096 字
+- `wisdom/philosophy/stoicism/how-to-live` — 2028 字
+- `wisdom/philosophy/stoicism/letters-from-a-stoic` — 2068 字
+- `wisdom/philosophy/stoicism/little-book-of-stoicism` — 2036 字
+- `wisdom/philosophy/stoicism/meditations` — 2044 字
+- `wisdom/philosophy/stoicism/obstacle-is-the-way` — 2105 字
+- `wisdom/science/biology/behave` — 2105 字
 - `wisdom/science/biology/why-zebras-dont-get-ulcers` — 3668 字
+- `wisdom/science/cognitive/50-psychology-classics` — 2048 字
+- `wisdom/science/cognitive/affective-neuroscience` — 2087 字
+- `wisdom/science/cognitive/answer-to-job` — 2123 字
 - `wisdom/science/cognitive/app-generation` — 3243 字
+- `wisdom/science/cognitive/archetypes-and-collective-unconscious` — 2057 字
+- `wisdom/science/cognitive/being-you` — 2252 字
 - `wisdom/science/cognitive/brain-rules` — 3211 字
+- `wisdom/science/cognitive/changing-minds` — 2258 字
+- `wisdom/science/cognitive/consciousness-explained` — 2282 字
+- `wisdom/science/cognitive/creating-minds` — 1999 字
+- `wisdom/science/cognitive/descartes-error` — 2195 字
+- `wisdom/science/cognitive/five-minds-for-the-future` — 2231 字
 - `wisdom/science/cognitive/forgotten-language` — 3931 字
+- `wisdom/science/cognitive/frames-of-mind` — 2219 字
+- `wisdom/science/cognitive/future-of-illusion` — 2399 字
 - `wisdom/science/cognitive/games-people-play` — 3872 字
+- `wisdom/science/cognitive/godel-escher-bach` — 2290 字
+- `wisdom/science/cognitive/happiness-hypothesis` — 2540 字
+- `wisdom/science/cognitive/how-emotions-are-made` — 2345 字
+- `wisdom/science/cognitive/how-the-mind-works` — 2308 字
+- `wisdom/science/cognitive/intelligence-reframed` — 2430 字
+- `wisdom/science/cognitive/interpretation-of-dreams` — 2296 字
+- `wisdom/science/cognitive/jung-psychological-types` — 2340 字
+- `wisdom/science/cognitive/jung-red-book-readers-edition` — 2288 字
+- `wisdom/science/cognitive/jung-schmid-question-of-psychological-types` — 2263 字
+- `wisdom/science/cognitive/jungs-map-of-the-soul` — 2223 字
+- `wisdom/science/cognitive/know-thyself` — 2477 字
+- `wisdom/science/cognitive/language-instinct` — 2502 字
+- `wisdom/science/cognitive/less-is-more` — 2442 字
+- `wisdom/science/cognitive/man-and-his-symbols` — 2332 字
+- `wisdom/science/cognitive/master-and-his-emissary` — 2356 字
+- `wisdom/science/cognitive/memories-dreams-reflections` — 2272 字
+- `wisdom/science/cognitive/metaphors-we-live-by` — 2475 字
+- `wisdom/science/cognitive/modern-man-in-search-of-soul` — 2410 字
+- `wisdom/science/cognitive/multiple-intelligences-new-horizons` — 2336 字
+- `wisdom/science/cognitive/pleased-to-meet-me` — 2319 字
+- `wisdom/science/cognitive/quirkology` — 2300 字
 - `wisdom/science/cognitive/talking-to-strangers` — 3897 字
 - `wisdom/science/cosmology/cosmos` — 3445 字
 - `wisdom/science/evolution/blind-watchmaker` — 3117 字
