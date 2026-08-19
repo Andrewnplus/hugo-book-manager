@@ -43,11 +43,6 @@ object CliFormatter {
         println("─".repeat(width))
     }
 
-    /** "----...----" 輕量分隔線 */
-    fun printLightDivider(width: Int = DEFAULT_WIDTH) {
-        println("-".repeat(width))
-    }
-
     // ==================== AI Task Prompt Helpers ====================
 
     /**

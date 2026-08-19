@@ -59,7 +59,7 @@ class CheckEnvCommand(
             println("OK")
         } else {
             println("NOT FOUND")
-            println("   Copy .env.example to local.properties and configure")
+            println("   Create local.properties in the project root (key table in README.md)")
             allOk = false
         }
 
