@@ -16,8 +16,8 @@
 
 > 重新盤點 2026-08-17・掃描 `books-done` 下 **1,758** 個 repo（已排除 build 產物、template、tmp）。
 > 判準：**總字元**（整本 MD body 量）＋**每頁均**（總字元÷章節頁數）。全庫中位數：總字元 66,916、每頁均 3,512；p10：總字元 24,255、每頁均 1,277。
-> 本輪 vs 2026-07-12：**11 本通過門檻移出**、**1 本新入榜**（🆕）、**1 本已刪**（`kiss-your-but-good-bye`）。目前待處理 **70 本**
-> （2026-08-18 再刪 `whats-left-without-your-business-card`、`hbrs-guide-to-emotional-intelligence`、`zen-programmer`、`29-pawn-tickets-3`，見文末紀錄）。
+> 本輪 vs 2026-07-12：**11 本通過門檻移出**、**1 本新入榜**（🆕）、**1 本已刪**（`kiss-your-but-good-bye`）。目前待處理 **69 本**
+> （2026-08-18 再刪 `whats-left-without-your-business-card`、`hbrs-guide-to-emotional-intelligence`、`zen-programmer`、`29-pawn-tickets-3`、`new-realities`，見文末紀錄）。
 > 全庫較 07-12 明顯變厚：中位數總字元 55,327 → 66,916、每頁均 2,987 → 3,512。
 
 ## 圖例
@@ -76,7 +76,7 @@
 | 讀書這個荒野 | `wisdom/philosophy/ethics/reading-as-a-wilderness` | 7,299 | 912 | [Readmoo](https://readmoo.com/book/210114739000101) ·日 |
 | 29張當票2：當舖裡特有的人生風景 | `personal/mindset/growth/29-pawn-tickets-2` | 7,468 | 2,489 | [Readmoo](https://readmoo.com/book/210003324000101) ·中 |
 
-### 觀察名單｜邊緣偏薄（總字元 8,000–15,000）（56 本）
+### 觀察名單｜邊緣偏薄（總字元 8,000–15,000）（55 本）
 
 | 書名 | Repo 路徑 | 總字元 | 每頁均 | 找書連結 |
 |---|---|---:|---:|---|
@@ -88,7 +88,6 @@
 | 寫給每個人的社會學讀本 🗑️ | `wisdom/education/self-learning/sociology-for-everyone` | 8,515 | 608 | Readmoo 無｜[搜尋](https://readmoo.com/search/keyword?q=%E5%AF%AB%E7%B5%A6%E6%AF%8F%E5%80%8B%E4%BA%BA%E7%9A%84%E7%A4%BE%E6%9C%83%E5%AD%B8%E8%AE%80%E6%9C%AC) ·日 |
 | 麥肯錫の零秒邏輯思考 🗑️ | `professional/career/problem-solving/mckinsey-zero-second-logical-thinking` | 8,673 | 1,735 | Readmoo 無｜[搜尋](https://readmoo.com/search/keyword?q=McKinsey%20Zero-Second%20Logical%20Thinking) ·日 |
 | 就業的終結 | `professional/career/skill-building/end-of-jobs` | 8,995 | 500 | [the+end+of+jobs](https://oceanofpdf.com/?s=the+end+of+jobs) |
-| 社會的趨勢 | `wisdom/history/civilization/new-realities` | 9,343 | 667 | [the+new+realities+drucker](https://oceanofpdf.com/?s=the+new+realities+drucker) |
 | 読書力 🗑️ | `wisdom/education/self-learning/power-of-reading` | 9,362 | 1,872 | Readmoo 無｜[搜尋](https://readmoo.com/search/keyword?q=%E8%AA%AD%E6%9B%B8%E5%8A%9B) ·日 |
 | 凝視生命--奇士勞斯基《十誡》的神學美學 🗑️ | `wisdom/philosophy/ethics/gazing-at-life-theological-aesthetics-of-the-decalogue` | 9,475 | 592 | Readmoo 無｜[搜尋](https://readmoo.com/search/keyword?q=%E5%87%9D%E8%A6%96%E7%94%9F%E5%91%BD) ·中 |
 | 大人學選擇 | `personal/mindset/growth/art-of-adult-decision-making` | 9,671 | 1,382 | [Readmoo](https://readmoo.com/book/210254770000101) ·中 |
@@ -173,6 +172,7 @@
 | 哈佛教你高EQ管理術 | `hbrs-guide-to-emotional-intelligence` | 13,706 | 1,054 | 內容重複——同一本書已有另一個更厚的 repo |
 | 程式設計師之禪 | `zen-programmer` | 3,470 | 434 | 內容太薄、投報率不足，不列入重寫排程 |
 | 29張當票3：門簾外的人生鑑定 | `29-pawn-tickets-3` | 1,250 | 417 | 內容太薄、投報率不足，不列入重寫排程 |
+| 社會的趨勢 | `new-realities` | 9,343 | 667 | 內容重複——同作者更厚的前作與續作已蓋過 |
 
 > 原分類 `professional/career/skill-building/`。張國洋、姚詩豪（大人學）的職場實戰指南——
 > 自我定位、職場規則、累積籌碼、正向心態、轉職勝率五章。刪除理由不是找不到來源
@@ -207,6 +207,17 @@
 > 而 notes-core 的 [EXCLUDED-BOOKS.md](../../notes/notes-core/docs/EXCLUDED-BOOKS.md) 早在 2026-08-13 就把秦嗣林四本
 > 全裁為「勵志故事集、無主題站可歸」，不進任何 note 站的盤點——既不重寫也不被引用的第三集沒有留著的理由。
 > 同時把該檔的 `29-pawn-tickets-3` 那列移除（repo 已不存在，排除紀錄失去對象）。未留備份。
+
+> 原分類 `wisdom/history/civilization/`。Drucker 1989 年的《The New Realities》——他自稱「社會生態學家」
+> 之後的社會鳥瞰，論點是西方在 1965-1973 年間越過歷史分水嶺，馬克思主義、凱因斯主義與工業社會假設都已失效。
+> repo 有 14 章（大轉換期／知識革命／知識社會／組織的社會／管理／非營利組織／經濟人時代的終結／政治變遷／
+> 國家的巨大化／政府再造／經濟政策／經濟發展／高齡化的社會／社會生態學），每章 400–1,100 字，共 9,343 字。
+> **刪除理由不是找不到來源**（[Amazon 2020 再版電子書](https://www.amazon.com/New-Realities-Peter-Drucker-ebook/dp/B0GFNL7DKG)仍在售），
+> 是**同樣的題材已被庫裡更厚的 Drucker 蓋過**：前作 `age-of-discontinuity`（斷續的時代，133,075 字）談的正是同一組斷裂，
+> 直接續作 `post-capitalist-society`（後資本主義社會，67,427 字）把知識社會論證講完，
+> `managing-in-the-next-society`（132,524 字）與 `managing-in-a-time-of-great-change`（105,100 字）覆蓋其餘。
+> 這本是 drucker-note 認領的 20 本裡最薄的一本，重做只會產出第五份同義筆記。
+> 已同步移除 drucker-note 的 `bibliography.ts` 條目、`profile.ts` 的 slugs 與 `BOOKS.md` 連結。未留備份。
 
 ## 🗑️ 已刪 repo 紀錄（2026-08-17，remote `nplus-father` ＋ local 一併刪，不重做）
 

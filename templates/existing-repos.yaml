@@ -4354,10 +4354,6 @@ repos:
     description: "The New Market Wizards | Jack D. Schwager | The classic sequel: deep interviews with currency, futures, fund management, and quant traders revealing how each found their edge."
     url: https://github.com/nplus-father/new-market-wizards
     topics: [hugobook, leaf-trading, nplus-kind-book, nplus-portal, sub-finance, tag-classic, top-professional]
-  - name: new-realities
-    description: "The New Realities | Peter F. Drucker | Drucker's late social-ecology book diagnoses the historical watershed the West crossed between 1965–1973, dissecting the structural new realities of the knowledge society, the society of organizations, aging, and government overgrowth."
-    url: https://github.com/nplus-father/new-realities
-    topics: [hugobook, leaf-civilization, nplus-kind-book, nplus-portal, sub-history, top-wisdom]
   - name: new-talent-for-the-future
     description: "The New Talent for the Future | Piotr Feliks Grzywacz | Drawing on Silicon Valley practice, Google's former talent-development lead sketches the post-capitalist \"new elite\": altruistic, open, learning-driven, and treating self-actualization and social contribution as one and the same."
     url: https://github.com/nplus-father/new-talent-for-the-future
