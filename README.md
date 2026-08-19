@@ -1,28 +1,29 @@
 # Hugo Book Manager
 
-Kotlin + Gradle 工具，自動建立和管理 Hugo Book 筆記專案的 GitHub Repositories。
+Kotlin + Gradle CLI，替 nplus.wiki 書庫（1,700+ 本 Hugo Book repo）建立與維護
+GitHub repositories，並產生 portal 儀表板吃的衍生資料檔。
 
-## 功能特色
+## 這個 repo 裡有什麼
 
-- **AI 互動式初始化** - 使用 Claude Code 生成書籍 metadata 和目錄結構
-- **批次建立 Repositories** - 從 queue YAML 批次建立 GitHub repos
-
-## 快速開始
-
-### 前置需求
-
-```bash
-# 檢查 GitHub CLI
-gh --version
-gh auth status
-
-# 如需登入
-gh auth login
+```
+src/                  # Kotlin CLI 本體（Clikt subcommands + services）
+scripts/
+├── audit-overview.py     # 深度概覽品檢：單本 gate ＋ 全庫掃描（--all/--json/--todo/--weak）
+└── handbook-cover/       # 手冊站封面產生器（SVG → PNG）
+templates/
+├── books-queue.yaml          # 建書佇列（gitignore；範本見 books-queue.example.yaml）
+├── existing-repos.yaml       # 既有 repo 快取索引（tracked，refreshRepoIndex 重生；重複偵測用）
+├── topic-taxonomy.yaml       # 三層分類白名單
+├── ai-task-guide.md          # 「請處理 AI 任務」的處理指引
+└── prompts/                  # AI 任務的 prompt 模板
+ai-tasks/             # AI 任務交換區（input/ CLI 寫，output/ Claude 寫；內容 gitignore）
+gh-runner/            # self-hosted runner 映像與 compose（CI 有 guard：映像不得內建 Hugo）
+podcasts/             # 兩個 Podcast 頻道的規劃文件與逐字稿工具（與 CLI 無關的同居租戶）
 ```
 
-### 設定
+## 設定
 
-設定放在專案根目錄的 `local.properties`（已 gitignore）。環境變數可作為
+設定放在專案根目錄的 `local.properties`（gitignored）。環境變數可作為
 fallback，但只有下表這幾個 key 會被讀取。
 
 ```properties
@@ -38,47 +39,52 @@ HOMEPAGE_BASE_URL=https://nplus.wiki
 | `DEFAULT_WORK_DIR` | ✅ | 新書 clone 的落地目錄。**這層是扁平的**（`<workDir>/<repoName>`）；三層分類只在書畢業搬進 `books-done/` 時才套用 |
 | `TEMPLATE_REPO` | ✅ | 建新書用的模板 repo，格式 `owner/repo` |
 | `HOMEPAGE_BASE_URL` | ✅ | repo homepage 的前綴，最終為 `{base}/{repoName}/` |
-| `PORTAL_DIR` | — | nplus.wiki portal 的本機 clone，`refreshGoalProgress` 需要 |
+| `PORTAL_DIR` | — | nplus.wiki portal 的本機 clone；`refreshGoalProgress` / `refreshBookHealth` / `refreshOverviewCoverage` 需要 |
 | `NOTES_DIR` | — | Astro note 站所在的工作區，`refreshGoalProgress` 需要 |
-| `BOOKS_DIR` | — | `books-done` 根目錄，`refreshGoalProgress` / `migrateTopicTiers` 需要 |
+| `BOOKS_DIR` | — | `books-done` 根目錄；`refreshBookHealth` / `refreshOverviewCoverage` / `migrateTopicTiers` 需要 |
 
-### 基本指令
+## 指令
 
 ```bash
-# 檢查環境
-./gradlew checkEnv
+./gradlew checkEnv                # 檢查環境（gh CLI、認證、ImageMagick…）
+./gradlew refreshRepoIndex        # 更新既有 book repo 的快取索引（initBooks 前先跑）
 
-# 更新 owner 上既有 book repo 的快照（建議在 initBooks 前先跑）
-./gradlew refreshRepoIndex
-
-# 從 queue 批次初始化書籍專案（兩階段 AI 互動）
+# 從 queue 初始化書籍專案（兩階段 AI 互動；一輪一本）
 ./gradlew initBooks                          # 處理下一本待辦
 ./gradlew initBooks -Pid=<book-id>           # 處理指定 ID
 ./gradlew initBooks -Pstatus=true            # 顯示 queue 狀態
 ./gradlew initBooks -Pid=<book-id> -Preset=true   # 重設為 pending
 
+# portal 衍生檔（跑完要 commit + push portal repo 才會上儀表板）
+./gradlew refreshGoalProgress     # src/data/progress.json（目標追蹤）
+./gradlew refreshBookHealth       # src/data/health.json（內容厚度 → /health/）
+./gradlew refreshOverviewCoverage # src/data/overview.json（深度概覽改寫進度 → /health/）
+
 # 其他
 ./gradlew markRead -Prepo=<repo> [-Pchapter=<dir>]
-./gradlew refreshGoalProgress
 ./gradlew migrateTopicTiers -Papply=true -PrepoName=<repo>   # 預設 dry-run
 ```
 
 > Gradle 不吃裸旗標。`--status` / `--reset` 這類要寫成 `-Pstatus=true` / `-Preset=true`。
+> `-Pname=` 無效——`Project.name` 會遮蔽它，用 `-PrepoName=`。
 
-## 詳細文件
-
-完整的功能說明、指令參數和架構說明請參考 [CLAUDE.md](CLAUDE.md)。
+衍生檔皆為 B 架構的本地端：portal 的 `fetch-*.ts` 每日從部署站台自動更新同一批檔案，
+本地指令給「剛改完想馬上看」。詳見各 service 的 KDoc。
 
 ## AI 任務處理
 
-本工具使用 **Claude Code 互動式工作流程** 取代傳統 API 呼叫：
+本工具用 **Claude Code 互動式工作流程** 取代 API 呼叫：
 
-1. 執行 CLI 指令（Phase 1）→ 生成 AI 任務檔案
+1. 執行 CLI 指令（Phase 1）→ 在 `ai-tasks/input/` 生成任務檔
 2. 告訴 Claude Code：「請處理 AI 任務」
-3. 再次執行相同指令（Phase 2）→ 讀取 AI 結果並繼續
+3. 再次執行相同指令（Phase 2）→ 讀取 `ai-tasks/output/` 的結果並繼續
 
-詳見 `templates/ai-task-guide.md`。
+詳見 `templates/ai-task-guide.md`。注意：檔名叫 `batch-*` 但**一輪只處理一本**。
 
-## 授權
+## 開發
 
-MIT License
+```bash
+./gradlew test spotlessCheck      # commit 前必跑；CI 跑同樣兩項加 CLI smoke test
+```
+
+慣例與 gotchas（ProcessRunner、MigrationPlanner…）見 [CLAUDE.md](CLAUDE.md)。

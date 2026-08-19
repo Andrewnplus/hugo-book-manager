@@ -41,9 +41,9 @@ Hugo Book Manager 是 Kotlin + Gradle 的 CLI 工具,為讀書筆記建立 GitHu
 `local.properties`(gitignored):
 
 ```properties
-GITHUB_USERNAME=Andrewnplus
-DEFAULT_WORK_DIR=/home/andrew/workspace/andrew/books-management/books
-TEMPLATE_REPO=Andrewnplus/hugo-book-template
+GITHUB_USERNAME=nplus-father
+DEFAULT_WORK_DIR=/home/andrew/workspace/andrew/books-management/new-books
+TEMPLATE_REPO=nplus-father/hugo-book-template
 HOMEPAGE_BASE_URL=https://nplus.wiki
 ```
 
@@ -51,6 +51,6 @@ HOMEPAGE_BASE_URL=https://nplus.wiki
 
 | Repo | 用途 |
 |------|------|
-| `Andrewnplus/book-gradle-conventions` | Gradle convention plugin(Hugo 版本、Spotless)— 發佈到 GitHub Packages |
-| `Andrewnplus/nplus-book-core` | Hugo theme(Go module) |
+| `nplus-father/book-gradle-conventions` | Gradle convention plugin(Hugo 版本、Spotless)— 發佈到 GitHub Packages |
+| `nplus-father/nplus-book-core` | Hugo theme(Go module) |
 | `nplus-father/workflows` (`//renovate`) | 共用 Renovate preset — `extends: ["github>nplus-father/workflows//renovate"]` |

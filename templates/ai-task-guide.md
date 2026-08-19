@@ -16,7 +16,9 @@ type is pending and follow the matching section below.
 
 ## Task Type 1: Batch Metadata Generation
 
-**Purpose:** Generate metadata AND docs structure for one or more books.
+**Purpose:** Generate metadata AND docs structure for the queued book.
+Despite the `batch` file names, the CLI writes **one book per cycle** — a queue
+of N books means N rounds of request → response → rerun.
 
 **Input file:** `ai-tasks/input/batch-metadata-request.json`
 
