@@ -125,6 +125,11 @@ When user says **"請處理 AI 任務"** and `batch-metadata-request.json` is pr
 ## Important Notes
 
 - Always use Traditional Chinese (繁體中文) for Chinese text.
+- `chineseTitle` becomes the site title, so it must be the **official Taiwan
+  edition title** copied verbatim (including any English the official title
+  carries). No Traditional Chinese edition → use the English original title;
+  never invent a translation. The description's first segment stays the
+  English original title regardless (Chinese only for Chinese-native books).
 - For `repoName` and `folderName`, use lowercase kebab-case.
 - **Strip a leading "The "/"A "/"An " article** from the English title before
   slugifying. Example: `The Lean Startup` → `lean-startup`. The CLI also

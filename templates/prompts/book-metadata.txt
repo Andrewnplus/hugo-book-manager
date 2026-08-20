@@ -23,7 +23,10 @@ Rules:
      Example: "The 48 Laws of Power" → repoName "48-laws-of-power".
      Example: "A Brief History of Time" → repoName "brief-history-of-time".
      This keeps leading articles out of repo names so they sort naturally.
-2. chineseTitle: Traditional Chinese (繁體中文).
+2. chineseTitle: Traditional Chinese (繁體中文). This becomes the site title (hugo.toml,
+   _index.md), so it must be the OFFICIAL Taiwan edition title — copy it verbatim, including
+   any English the official title carries ("Deep Work 深度工作力"). If no Traditional Chinese
+   edition exists, use the English original title instead — NEVER invent a translation.
 3. description: Format is "Title | Author | Brief". Hard limit 320 chars total.
    - Title: use the full title INCLUDING leading articles ("The", "A", "An") even though the
      repoName drops them. For Chinese-only books (Chinese author writing in Chinese), keep the
