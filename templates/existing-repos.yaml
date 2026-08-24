@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-08-19T21:39:45.315078028+08:00"
+last_updated: "2026-08-24T20:03:26.636208831+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -1134,6 +1134,10 @@ repos:
     description: "Choose FI | Chris Mamula, Brad Barrett & Jonathan Mendonsa | A FIRE roadmap from three practitioners that turns abstract financial independence into a math problem and staged milestones via three levers: spend less, earn more, invest better."
     url: https://github.com/nplus-father/choose-fi
     topics: [hugobook, leaf-personal-finance, nplus-kind-book, nplus-portal, sub-finance, tag-primer, top-professional]
+  - name: christian-theology-introduction
+    description: "Christian Theology: An Introduction | Alister McGrath | A standard one-volume textbook that first maps the periods and personalities of Christian thought, then its sources and methods, before working doctrine by doctrine from God and the Trinity through salvation and the church to the last things."
+    url: https://github.com/nplus-father/christian-theology-introduction
+    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: christian-theology-reader
     description: The Christian Theology Reader | Alister McGrath | A source anthology arranged by doctrine, pairing primary texts from the Fathers to the present with commentary and study questions on each reading.
     url: https://github.com/nplus-father/christian-theology-reader
@@ -3534,6 +3538,10 @@ repos:
     description: Life of the Beloved | Henri J. M. Nouwen | Written for a secular friend who asked what the spiritual life could mean without religion, Nouwen traces the eucharistic movement — taken, blessed, broken, given — as the shape of every life that knows itself beloved.
     url: https://github.com/nplus-father/life-of-the-beloved
     topics: [hugobook, leaf-devotional, nplus-kind-book, nplus-portal, sub-spiritual-formation, top-faith]
+  - name: life-signposts
+    description: 人生路引：我從閱讀中練就的28個基本功 | 楊斯棓 | 以二十八本書為路標，把閱讀轉譯成說書、自律、投資、伴老、慈善等人生各階段的基本功，示範一位醫師如何靠讀書為自己與家人鋪路。
+    url: https://github.com/nplus-father/life-signposts
+    topics: [hugobook, leaf-self-learning, nplus-kind-book, nplus-portal, sub-education, top-wisdom]
   - name: life-together-prayerbook-of-the-bible
     description: Life Together and Prayerbook of the Bible | Dietrich Bonhoeffer | Two short classics in one volume — a vision of Christian community grounded in Christ, paired with an introduction to the Psalms as the prayerbook of the church.
     url: https://github.com/nplus-father/life-together-prayerbook-of-the-bible
@@ -4501,6 +4509,10 @@ repos:
   - name: old-testament-theology-israels-faith
     description: "Old Testament Theology: Israel's Faith (Vol. 2) | John Goldingay | The second volume of Goldingay's trilogy, laying out what Israel believed under the headings of God, Israel, the Nightmare, the Vision, humanity, the world and the nations."
     url: https://github.com/nplus-father/old-testament-theology-israels-faith
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+  - name: old-testament-theology-israels-life
+    description: "Old Testament Theology: Israel's Life (Vol. 3) | John Goldingay | The closing volume of Goldingay's trilogy, moving from what Yhwh did and what Israel believed to how Israel was to live — with God, with one another, and with themselves."
+    url: https://github.com/nplus-father/old-testament-theology-israels-life
     topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: old-testament-theology-waltke
     description: An Old Testament Theology Vol 2 | Bruce K. Waltke with Charles Yu | 華爾基以「神國向歷史闖入」為統合主題，融合釋經、正典與主題進路，把整部舊約的多元聲音編織為救恩歷史推進到彌賽亞的單一見證。
@@ -6265,6 +6277,10 @@ repos:
   - name: theology-of-the-old-testament
     description: "Theology of the Old Testament | Walter Brueggemann | Reads Israel's faith as a courtroom drama of testimony, countertestimony, unsolicited testimony, and embodied testimony, refusing to flatten the tension into a single system."
     url: https://github.com/nplus-father/theology-of-the-old-testament
+    topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
+  - name: theology-of-the-old-testament-eichrodt-vol-1
+    description: "Theology of the Old Testament, Volume One | Walther Eichrodt | The landmark work that organizes Israel's faith around the covenant, working through its statutes in law and cult, the name and nature of the covenant God, and the charismatic and official leaders who served as its instruments."
+    url: https://github.com/nplus-father/theology-of-the-old-testament-eichrodt-vol-1
     topics: [hugobook, leaf-biblical-studies, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: theory-and-practice-of-counseling-and-psychotherapy
     description: Theory and Practice of Counseling and Psychotherapy | Gerald Corey | A systematic introduction to eleven counseling theories and techniques, guiding readers toward an integrative personal therapeutic orientation.
