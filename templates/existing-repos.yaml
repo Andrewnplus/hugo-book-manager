@@ -2210,10 +2210,6 @@ repos:
     description: Fundamentals of Software Architecture | Mark Richards & Neal Ford | An engineering-oriented guide to software architecture, covering foundational theory, architectural styles, and the soft skills the role requires.
     url: https://github.com/nplus-father/fundamentals-of-software-architecture
     topics: [hugobook, leaf-systems-design, nplus-kind-book, nplus-portal, sub-engineering, tag-brick, tag-toolbox, top-craft]
-  - name: further-along-the-road-less-traveled
-    description: 心靈地圖2 | M. Scott Peck | 《心靈地圖》續篇，以演講稿形式延伸探討成癮、責怪、寬恕與靈性成熟，主張心靈成長是一條必須持續行走、無法抄捷徑的路。
-    url: https://github.com/nplus-father/further-along-the-road-less-traveled
-    topics: [hugobook, leaf-growth, nplus-kind-book, nplus-portal, sub-mindset, top-personal]
   - name: future-of-illusion
     description: "The Future of an Illusion | Sigmund Freud | Freud's psychoanalytic critique of religion, arguing that religious beliefs are wish-fulfilling illusions rooted in infantile helplessness, and asking what becomes of culture once those illusions yield to science and reason."
     url: https://github.com/nplus-father/future-of-illusion
@@ -3834,10 +3830,6 @@ repos:
     description: Marketing | Brian Tracy | The 21 essential marketing principles — segmentation, customer focus, the four Ps, positioning, and the military principles of competitive strategy — for any business.
     url: https://github.com/nplus-father/marketing-tracy
     topics: [hugobook, leaf-marketing, nplus-kind-book, nplus-portal, sub-business, top-professional]
-  - name: martin-luthers-catechisms-forming-the-faith
-    description: 馬丁路德的門徒培育班 | Timothy J. Wengert | 路德宗學者逐一解讀十誡、使徒信經、主禱文與洗禮聖餐，說明路德的信仰問答不是教義清單，而是塑造日常信仰生活的操練架構。
-    url: https://github.com/nplus-father/martin-luthers-catechisms-forming-the-faith
-    topics: [hugobook, leaf-systematic, nplus-kind-book, nplus-portal, sub-theology, top-faith]
   - name: marx-capital-and-the-madness-of-economic
     description: "Marx, Capital and the Madness of Economic Reason | David Harvey | A leading Marxist scholar's accessible exposition of Capital — value in motion, anti-value, and the irrationality of contemporary economic reason."
     url: https://github.com/nplus-father/marx-capital-and-the-madness-of-economic
