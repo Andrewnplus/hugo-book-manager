@@ -1,6 +1,6 @@
 # Cached snapshot of book repos on the configured owner.
 # Refresh with: ./gradlew refreshRepoIndex
-last_updated: "2026-08-27T01:07:56.318226843+08:00"
+last_updated: "2026-08-28T15:35:10.758973864+08:00"
 repos:
   - name: 10-percent-entrepreneur
     description: The 10% Entrepreneur | Patrick J. McGinnis | A practical playbook for launching a side venture without quitting the day job, devoting just 10% of your time and resources to entrepreneurship.
@@ -6462,6 +6462,10 @@ repos:
     description: "Turn the Ship Around! | L. David Marquet | A real account of how a U.S. Navy submarine captain turned the worst-performing USS Santa Fe into the fleet's best by replacing the leader-follower model with a leader-leader philosophy of distributed accountability."
     url: https://github.com/nplus-father/turn-the-ship-around
     topics: [hugobook, leaf-vision, nplus-kind-book, nplus-portal, sub-leadership, tag-classic, top-professional]
+  - name: turning-the-flywheel
+    description: "Turning the Flywheel: A Monograph to Accompany Good to Great | Jim Collins | A monograph extending the flywheel effect of Good to Great, showing how to capture the specific flywheel of your own enterprise, extend it into new arenas, and renew it so momentum compounds for decades."
+    url: https://github.com/nplus-father/turning-the-flywheel
+    topics: [hugobook, leaf-vision, nplus-kind-book, nplus-portal, sub-leadership, top-professional]
   - name: twelve-and-a-half
     description: Twelve and a Half | Gary Vaynerchuk | Uses cooking as a metaphor for twelve and a half emotional ingredients—soft skills like empathy, kindness, and accountability—that Vaynerchuk argues are the real long-term differentiators in business and leadership.
     url: https://github.com/nplus-father/twelve-and-a-half
