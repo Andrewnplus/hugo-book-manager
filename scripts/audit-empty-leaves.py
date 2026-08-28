@@ -22,7 +22,12 @@
     blank          完全沒有正文                                        ← 算債
     xref           開頭是「參見 X」——辭典／索引的交叉參照，完整條目      ← 不算債
     source-absent  說明原書此版本就沒有這章（待續、未成稿、無此附錄）    ← 不算債
+    no-source      repo 裡沒有原始檔，寫不了                            ← 不算債
     thin           其他短內容——工具不猜，列出來給人看                   ← 待判
+
+`no-source` 是 2026-08-28 Andrew 定的通則：**以 book repo 為主，它沒有的就當成本來就沒有**。
+書庫裡沒有原始檔（PDF／EPUB／OCR）的章節，不列為內容債——因為要寫只剩「憑模型記憶編造」
+一條路，那正是整套流水線的紅線。日後補進原始檔，把說明換掉重跑即可。
 
 用法:
     audit-empty-leaves.py <repo 路徑>        單本，逐筆列出分類
@@ -52,12 +57,17 @@ SOURCE_ABSENT = re.compile(
     r"|原書定稿無"
 )
 
+# 「原書有這章，但書庫沒有可依據的原始檔」——與 SOURCE_ABSENT 原因不同、後果相同。
+NO_SOURCE = re.compile(r"(未收|未存|沒有|無)原始檔|原始檔.{0,20}(未收|闕如|不在庫)")
+
 
 def body_of(path: Path) -> str:
     return FRONTMATTER.sub("", path.read_text(encoding="utf-8"), count=1).strip()
 
 
 def classify(body: str) -> str:
+    if NO_SOURCE.search(body):
+        return "no-source"
     if PLACEHOLDER.search(body):
         return "placeholder"
     if not body:
@@ -166,7 +176,7 @@ def main() -> int:
         print()
     total = sum(r["debt"] for r in results)
     dismissed = sum(
-        v for r in results for k, v in r["counts"].items() if k in ("xref", "source-absent")
+        v for r in results for k, v in r["counts"].items() if k in ("xref", "source-absent", "no-source")
     )
     print(f"合計：真欠債 {total} 章；門檻撈出但體裁本來就短、不算債的 {dismissed} 章")
     return 0
