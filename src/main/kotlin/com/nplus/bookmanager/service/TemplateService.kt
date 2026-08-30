@@ -6,12 +6,8 @@ import com.nplus.bookmanager.model.GeneratedMetadata
 import com.nplus.bookmanager.util.escapeQuoted
 import java.io.File
 
-/**
- * Service for modifying template files in cloned book repositories
- */
 class TemplateService : TemplateWriter {
     companion object {
-        // Hugo Book repo file paths
         const val README_PATH = "README.md"
         const val SETTINGS_GRADLE_PATH = "settings.gradle.kts"
         const val HUGO_TOML_PATH = "site/hugo.toml"
@@ -20,9 +16,6 @@ class TemplateService : TemplateWriter {
         const val COVER_IMAGE_PATH = "site/content/cover.png"
     }
 
-    /**
-     * Update all template files with full book metadata (for init-books).
-     */
     override fun updateTemplateFiles(
         repoDir: File,
         metadata: GeneratedMetadata,
@@ -30,7 +23,6 @@ class TemplateService : TemplateWriter {
     ): Boolean {
         var allSuccess = true
 
-        // Update README.md
         allSuccess = updateFile(
             File(repoDir, README_PATH),
             mapOf(
@@ -41,18 +33,14 @@ class TemplateService : TemplateWriter {
         ) &&
             allSuccess
 
-        // Update settings.gradle.kts
         allSuccess = updateFile(
             File(repoDir, SETTINGS_GRADLE_PATH),
             mapOf(AppConfig.TEMPLATE_SLUG to metadata.repoName),
         ) &&
             allSuccess
 
-        // Update site/go.mod
         updateGoMod(repoDir, metadata.repoName)
 
-        // Update site/hugo.toml. The title lands inside a TOML basic string, so
-        // it needs escaping; the slug only appears in baseURL and is kebab-case.
         allSuccess = updateFile(
             File(repoDir, HUGO_TOML_PATH),
             mapOf(
@@ -62,7 +50,6 @@ class TemplateService : TemplateWriter {
         ) &&
             allSuccess
 
-        // Update site/content/_index.md with book info
         updateIndexFile(repoDir, metadata, bookInput)
 
         return allSuccess
@@ -79,11 +66,6 @@ class TemplateService : TemplateWriter {
             return
         }
 
-        // The book's own metadata lives in the `book:` frontmatter map rather
-        // than in shortcode arguments, so `layouts/index.json` can publish it —
-        // shortcode arguments are invisible to other templates. Every target is
-        // a double-quoted YAML value, so each replacement is escaped; titles
-        // like `Think "Win-Win"` otherwise break the parse.
         var content = indexFile.readText()
         content =
             content
@@ -106,12 +88,6 @@ class TemplateService : TemplateWriter {
         println("  Updated: _index.md")
     }
 
-    /**
-     * The generated repo description packs three values as `Title | Author |
-     * Blurb`; only the blurb belongs in the book's own frontmatter. Falls back
-     * to the whole string when the description is not in the packed form, so a
-     * hand-written one still reaches the page instead of being dropped.
-     */
     private fun blurbOf(description: String): String {
         val parts = description.split('|', '｜').map { it.trim() }.filter { it.isNotEmpty() }
         return if (parts.size >= 3) parts.drop(2).joinToString(" ") else description.trim()
@@ -137,16 +113,13 @@ class TemplateService : TemplateWriter {
         println("  Updated: go.mod")
     }
 
-    /**
-     * Update a single file with the given replacements
-     */
     private fun updateFile(
         file: File,
         replacements: Map<String, String>,
     ): Boolean {
         if (!file.exists()) {
             println("  Warning: File not found: ${file.path}")
-            return true // Not a failure, just skip
+            return true
         }
 
         return try {

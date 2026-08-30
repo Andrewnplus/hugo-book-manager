@@ -16,18 +16,6 @@ import java.time.OffsetDateTime
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
-/**
- * Computes goal progress by scanning frontmatter across the local clones —
- * the static single source of truth. Output is the derived artifact
- * `src/data/progress.json` in the portal repo; it must never be hand-edited
- * (the portal dashboard and nplus-backend both consume it read-only).
- *
- * Scans three metrics: `note-status-count` (Astro note stations, notes-core
- * schema), `leetcode-count` (leetcode-note problems) and `repo-completion`
- * (books-done chapters carrying read/readAt frontmatter — needs BOOKS_DIR).
- * `article-count` and `podcast-episodes` are computed at portal build time
- * and are deliberately skipped here.
- */
 class GoalProgressService(
     private val portalDir: File,
     private val notesDir: File,
@@ -35,7 +23,6 @@ class GoalProgressService(
 ) {
     private val yaml = Yaml()
 
-    /** Reviews/reads within this many days land in the `recent` activity list. */
     private val recentWindowDays = 14L
 
     val goalsFile: File get() = File(portalDir, "src/data/goals.yaml")
@@ -61,7 +48,6 @@ class GoalProgressService(
         }
     }
 
-    /** Scan all scanner-supported goals; returns progress + recent activity. */
     fun scan(goals: List<GoalDefinition>): Pair<List<GoalProgress>, List<RecentActivity>> {
         val progress = mutableListOf<GoalProgress>()
         val recent = mutableListOf<RecentActivity>()
@@ -97,7 +83,6 @@ class GoalProgressService(
                 }
 
                 GoalDefinition.METRIC_ARTICLES, GoalDefinition.METRIC_PODCAST -> {
-                    // computed at portal build time, not by this scanner
                 }
 
                 else -> {
@@ -108,10 +93,6 @@ class GoalProgressService(
         return progress to recent.sortedByDescending { it.date }
     }
 
-    /**
-     * A note station (notes-core schema): concepts/ and problems/ markdown
-     * with `status: draft|studied|reviewed` and optional `lastReviewed`.
-     */
     private fun scanNoteStation(
         goal: GoalDefinition,
         station: String,
@@ -149,10 +130,6 @@ class GoalProgressService(
         return ScanResult(toProgress(goal.id, byCategory, unit = "notes"), recent)
     }
 
-    /**
-     * leetcode-note problems: `status: draft|written|reviewed`, category
-     * filter via frontmatter `category`, review events via `reviewedDates`.
-     */
     private fun scanLeetcode(
         goal: GoalDefinition,
         since: LocalDate,
@@ -185,10 +162,6 @@ class GoalProgressService(
         return ScanResult(toProgress(goal.id, byCategory, unit = "problems"), recent)
     }
 
-    /**
-     * Book repos in books-done: chapter `_index.md` frontmatter carries
-     * `read: true` + `readAt: YYYY-MM-DD` (see BookChapterService / markRead).
-     */
     private fun scanRepoCompletion(
         goal: GoalDefinition,
         booksDir: File,
@@ -210,8 +183,6 @@ class GoalProgressService(
                 val fm = frontmatter(file, goal.id)
                 val key = CatKey(prefix + chapters.chapterKey(repoDir, file))
                 val read = fm["read"] == true || fm["read"]?.toString() == "true"
-                // Assigned, not tallied: every chapter is its own key, so a
-                // second visit would be a duplicate rather than a second unit.
                 byChapter[key] = Tally(done = if (read) 1 else 0, total = 1)
 
                 val readAt = parseDate(fm["readAt"], file, goal.id)
@@ -223,7 +194,6 @@ class GoalProgressService(
         return ScanResult(toProgress(goal.id, byChapter, unit = "chapters"), recent)
     }
 
-    /** Write the derived artifact with stable ordering for clean git diffs. */
     fun save(
         progress: List<GoalProgress>,
         recent: List<RecentActivity>,
@@ -267,33 +237,21 @@ class GoalProgressService(
             put("item", activity.item)
         }
 
-    /**
-     * What one metric scan produced. Returned rather than appended to a list
-     * the caller owns: the recent-activity side output used to be invisible at
-     * the call site, so a new metric could silently forget to emit it.
-     */
     private data class ScanResult(
         val progress: GoalProgress,
         val recent: List<RecentActivity>,
     )
 
-    /** Breakdown grouping key: the display key plus the station URL segment it lives under. */
     private data class CatKey(
         val displayKey: String,
         val section: String? = null,
     )
 
-    /**
-     * Running done/total for one breakdown row. Named rather than a
-     * `Pair<Int, Int>`, because the two are interchangeable at the type level
-     * and the whole portal dashboard reads whichever way round they end up.
-     */
     private data class Tally(
         val done: Int,
         val total: Int,
     )
 
-    /** Fold one scanned file into the running tally for its category. */
     private fun MutableMap<CatKey, Tally>.tally(
         key: CatKey,
         done: Boolean,
@@ -325,16 +283,6 @@ class GoalProgressService(
             .sortedBy { it.path }
             .toList()
 
-    /**
-     * Parse the YAML frontmatter block between the leading `---` fences.
-     *
-     * A file whose frontmatter is skipped still counts toward `total` but can
-     * never count toward `done`, so every path out of here that returns
-     * nothing has to say so — a silent skip shows up as a progress regression
-     * with nothing pointing at the file that caused it. A BOM or a stray
-     * leading newline is not a broken file, so those are stripped rather than
-     * reported.
-     */
     private fun frontmatter(
         file: File,
         goalId: String,
@@ -358,15 +306,11 @@ class GoalProgressService(
         }
     }
 
-    /** Hugo/Astro have no zod on our side — validate dates and warn loudly. */
     private fun parseDate(
         raw: Any?,
         file: File,
         goalId: String,
     ): LocalDate? {
-        // An unquoted `readAt: 2026-07-21` is a YAML timestamp, which SnakeYAML
-        // hands back as a Date whose toString() ("Tue Jul 21 ...") would fail
-        // the text parse below and silently drop the activity.
         if (raw is java.util.Date) {
             return raw.toInstant().atZone(ZoneOffset.UTC).toLocalDate()
         }

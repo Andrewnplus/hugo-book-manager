@@ -6,15 +6,9 @@ import com.nplus.bookmanager.model.QueuedBook
 import org.yaml.snakeyaml.Yaml
 import java.io.File
 
-/**
- * Service for reading and managing book queue YAML files
- */
 class BookInputService {
     private val yaml = Yaml()
 
-    /**
-     * Load books queue from a YAML file
-     */
     fun loadBooksQueue(queueFile: File): BooksQueue? {
         if (!queueFile.exists()) {
             println("Error: Queue file not found: ${queueFile.absolutePath}")
@@ -51,38 +45,28 @@ class BookInputService {
         }
     }
 
-    /**
-     * Save books queue back to YAML file
-     */
     fun saveBooksQueue(
         queueFile: File,
         queue: BooksQueue,
     ): Boolean =
         try {
-            // Read original file to preserve comments and formatting
             val originalContent = if (queueFile.exists()) queueFile.readText() else ""
 
-            // Update status values in the original content
             var updatedContent = originalContent
             for (book in queue.books) {
-                // Find and replace the status line for each book
-                // Pattern handles various YAML indentation styles: "- id:", "  - id:", "    -   id:", etc.
                 val idPattern = """(\s*-\s+id:\s*${Regex.escape(book.id)}\s*\n\s*status:\s*)\w+""".toRegex()
                 updatedContent =
                     updatedContent.replace(idPattern) { matchResult ->
                         "${matchResult.groupValues[1]}${book.status.name.lowercase()}"
                     }
 
-                // Add or update error_message if present
                 if (book.errorMessage != null) {
-                    // First remove any existing error_message line
                     val removeErrorPattern =
                         """(\s*-\s+id:\s*${Regex.escape(book.id)}\s*\n\s*status:\s*\w+)\s*\n\s*error_message:\s*[^\n]*""".toRegex()
                     updatedContent =
                         updatedContent.replace(removeErrorPattern) { matchResult ->
                             matchResult.groupValues[1]
                         }
-                    // Then inject the new error_message
                     val addErrorPattern =
                         """(\s*-\s+id:\s*${Regex.escape(book.id)}\s*\n\s*status:\s*\w+)""".toRegex()
                     updatedContent =
@@ -109,9 +93,6 @@ class BookInputService {
             else -> BookStatus.PENDING
         }
 
-    /**
-     * Validate a queued book has all required fields
-     */
     fun validateQueuedBook(book: QueuedBook): List<String> {
         val errors = mutableListOf<String>()
         if (book.id.isBlank()) errors.add("id is required")
@@ -143,7 +124,6 @@ class BookInputService {
         if (englishTitle.isBlank()) errors.add("english_title is required")
         if (author.isBlank()) errors.add("author is required")
         if (publicationDate.isBlank()) errors.add("publication_date is required")
-        // cover_url is optional — download will be skipped if blank
         if (purchaseUrl.isBlank()) errors.add("purchase_url is required")
         if (tableOfContents.isBlank()) errors.add("table_of_contents is required")
         return errors

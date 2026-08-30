@@ -13,20 +13,12 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-/**
- * Covers the orchestration in [BookRepoService.createBookRepository]: which
- * collaborator is called, in what order, and when the flow gives up. Every
- * collaborator is a recording fake, so no test here touches GitHub, the
- * network, or a real git repo.
- */
 class BookRepoServiceTest {
     @TempDir
     lateinit var workDir: File
 
-    /** Records the call order across every port so the flow can be asserted as a sequence. */
     private val calls = mutableListOf<String>()
 
-    /** The configuration report only reaches the user as console output. */
     private fun capturingStdout(block: () -> Unit): String {
         val buffer = ByteArrayOutputStream()
         val original = System.out
@@ -212,7 +204,6 @@ class BookRepoServiceTest {
 
         assertFalse(result.success)
         assertEquals(null, result.repoDir)
-        // The whole point: nothing reached GitHub.
         assertEquals(listOf("getUsername"), calls)
     }
 
@@ -238,7 +229,6 @@ class BookRepoServiceTest {
             ),
             calls,
         )
-        // Configured username comes from config, not from a `gh api user` round-trip.
         assertFalse(calls.contains("getUsername"))
     }
 
@@ -282,14 +272,11 @@ class BookRepoServiceTest {
 
         assertFalse(result.success)
         assertEquals(null, result.repoDir)
-        // Nothing was written into a directory that does not exist.
         assertFalse(calls.contains("updateTemplateFiles"))
     }
 
     @Test
     fun `says so when only some topics were applied instead of reporting success`() {
-        // Topics decide which portal category the book files under, so a
-        // partial apply that prints "configured" hides the book, not a detail.
         val gh = FakeGitHub(topicsApplied = 1)
 
         val output =

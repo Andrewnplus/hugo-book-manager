@@ -46,7 +46,6 @@ class TemplateServiceTest {
         isbn = "0735211299",
     )
 
-    /** Writes the placeholder files a freshly cloned hugo-book-template carries. */
     private fun seedTemplate(repoDir: File) {
         File(repoDir, "site/content").mkdirs()
         File(repoDir, TemplateService.README_PATH).writeText(
@@ -88,9 +87,6 @@ class TemplateServiceTest {
 
     @Test
     fun `the blurb is lifted out of the packed description into frontmatter`() {
-        // The generated description packs `Title | Author | Blurb`; only the
-        // third segment describes the book, and until now nothing wrote it back
-        // into the repo — every new book shipped with the template's placeholder.
         val repo = File(root, "atomic-habits").apply { mkdirs() }
         seedTemplate(repo)
 
@@ -142,9 +138,6 @@ class TemplateServiceTest {
             "no placeholder may survive into a published book site",
         )
         assertFalse(index.contains(AppConfig.TEMPLATE_DATE_PLACEHOLDER))
-        // The purchase placeholder is a bare `https://www.amazon.com/`, i.e. a
-        // prefix of every real product URL — only the whole `link="…"` form can
-        // tell "still a placeholder" from "legitimately replaced".
         assertFalse(index.contains("""link="${AppConfig.TEMPLATE_PURCHASE_URL_PLACEHOLDER}""""))
     }
 

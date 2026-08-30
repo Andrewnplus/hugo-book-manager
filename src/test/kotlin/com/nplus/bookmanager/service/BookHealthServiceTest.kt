@@ -32,20 +32,14 @@ class BookHealthServiceTest {
 
     private fun service() = BookHealthService(books, portal, newBooks)
 
-    // ==================== bodyChars() ====================
-
     @Test
     fun `frontmatter is excluded and whitespace inside the body is kept`() {
         val f = File(root, "a.md").apply { writeText("---\ntitle: \"x\"\n---\nab cd\nef\n") }
-        // "ab cd" + newline, "ef" + newline
         assertEquals(9, BookHealthService.bodyChars(f))
     }
 
     @Test
     fun `a horizontal rule in the body is consumed, never counted`() {
-        // The reference implementation treats every `---` line as a fence, so a
-        // body rule is skipped rather than measured; matching that is what keeps
-        // the numbers comparable with the existing re-summary list.
         val f = File(root, "b.md").apply { writeText("---\ntitle: \"x\"\n---\nabc\n---\ndef\n") }
         assertEquals(8, BookHealthService.bodyChars(f))
     }
@@ -55,8 +49,6 @@ class BookHealthServiceTest {
         val f = File(root, "c.md").apply { writeText("---\ntitle: \"x\"\nweight: 1\n---\n") }
         assertEquals(0, BookHealthService.bodyChars(f))
     }
-
-    // ==================== scan() ====================
 
     @Test
     fun `pages are counted across nested sections and the home page is ignored`() {
@@ -73,7 +65,6 @@ class BookHealthServiceTest {
 
     @Test
     fun `density rounds rather than truncates`() {
-        // The published list shows 1,250 chars over 3 pages as 417, not 416.
         val b = BookHealthService.Book("x", "t", "s", "l", chars = 1250, pages = 3)
         assertEquals(417, b.density)
     }
@@ -83,8 +74,6 @@ class BookHealthServiceTest {
         File(books, "craft/engineering/coding-practice/empty/site/content").mkdirs()
         assertTrue(service().scan().isEmpty())
     }
-
-    // ==================== drafts ====================
 
     @Test
     fun `draft chapters are excluded, matching what Hugo actually builds`() {
@@ -107,9 +96,6 @@ class BookHealthServiceTest {
 
     @Test
     fun `flat in-progress books are scanned too, with taxonomy left blank`() {
-        // new-books has no category folders yet; dropping them here would delete
-        // them from health.json on every local refresh, since fetch-health.ts
-        // does list them.
         book("filed", "01/_index.md" to "aaa")
         File(newBooks, "in-progress/site/content/docs/01/_index.md").apply {
             parentFile.mkdirs()
@@ -123,12 +109,8 @@ class BookHealthServiceTest {
         assertEquals(5, wip.chars)
     }
 
-    // ==================== tier ====================
-
     @Test
     fun `low density outranks a healthy total when assigning a tier`() {
-        // 57 chapters averaging 351 chars was the real case: 20k total looks
-        // fine until it is spread over the chapters that actually hold it.
         val b = BookHealthService.Book("x", "t", "s", "l", chars = 20_000, pages = 100)
         assertEquals("near-empty", b.tier)
     }
@@ -141,8 +123,6 @@ class BookHealthServiceTest {
         assertEquals("watch", tierOf(14_999))
         assertEquals("ok", tierOf(15_000))
     }
-
-    // ==================== lastWritten ====================
 
     @Test
     fun `lastWritten reflects the last commit touching chapters, not the repo`() {
@@ -171,7 +151,6 @@ class BookHealthServiceTest {
             "--date",
             "2024-03-05T10:00:00+08:00",
         )
-        // A later commit that leaves the chapters alone must not count as writing.
         File(repo, "README.md").writeText("fleet-wide chore\n")
         git("add", "-A")
         git("-c", "core.hooksPath=/dev/null", "commit", "-q", "-m", "chore")
@@ -184,8 +163,6 @@ class BookHealthServiceTest {
         book("no-git", "01/_index.md" to "aaa")
         assertEquals(null, service().scan().single().lastWritten)
     }
-
-    // ==================== save() ====================
 
     @Test
     fun `the artifact is marked derived and lists books in a stable order`() {

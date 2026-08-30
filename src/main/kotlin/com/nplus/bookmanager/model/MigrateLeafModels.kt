@@ -2,12 +2,6 @@ package com.nplus.bookmanager.model
 
 import kotlinx.serialization.Serializable
 
-/**
- * Request file written by `migrate-topic-tiers` (proposal phase).
- * Claude reads this, looks up each repo against the current taxonomy,
- * and writes a MigrateLeafResponse listing the (top, sub, leaf) triple
- * for every entry.
- */
 @Serializable
 data class MigrateLeafRequest(
     val taskType: String = "migrateLeafTaxonomy",

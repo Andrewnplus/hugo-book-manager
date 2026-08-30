@@ -1,21 +1,4 @@
 #!/usr/bin/env python3
-"""深度概覽品檢。
-
-存在的理由：2026-08-12 掃過全庫 1613 本既有概覽，78% 的「貢獻與定位」段完全
-沒有任何限制／批評字眼、30% 全文沒引用年份、11% 出現空洞讚美詞。撰寫原則早就
-寫著「避免行銷式誇大」，但沒有任何機制檢查，所以沒有被遵守。原則不會自己生效。
-
-這支腳本是 /book-generate-deep-overview 步驟 5 的強制關卡，也是全庫盤點的工具。
-
-用法:
-    audit-overview.py <repo 路徑>          單本，人可讀的結果，FAIL 時 exit 1
-    audit-overview.py --all [根目錄]        全庫掃描，輸出統計與最該重做的清單
-    audit-overview.py --all --json         全庫掃描，輸出 JSON 供其他工具消費
-
-進度報告（原 --report 產生的 OVERVIEW-PROGRESS.md）已於 2026-08-19 退役：
-統計看 https://nplus.wiki/health/ 的「深度概覽改寫」區塊，機器讀 portal 的
-src/data/overview.json（由 `./gradlew refreshOverviewCoverage` 與 fetch-health.ts 維護）。
-"""
 
 import argparse
 import io
@@ -25,8 +8,6 @@ import re
 import sys
 import unicodedata
 
-# 路徑相對於本腳本自己（scripts/ 在 hugo-book-manager 內），這樣 repo 被 clone
-# 到別處也不會壞；books-done 與 hugo-book-manager 是 books-management 下的兄弟目錄。
 _HERE = os.path.dirname(os.path.abspath(__file__))
 _BOOKS_MGMT = os.path.dirname(os.path.dirname(_HERE))
 DEFAULT_ROOT = os.path.join(_BOOKS_MGMT, "books-done")
@@ -34,18 +15,11 @@ DEFAULT_ROOT = os.path.join(_BOOKS_MGMT, "books-done")
 SECTIONS = ["作者的位置", "完整摘要", "定位", "這本書的限制"]
 LEGACY = ["作者背景", "完整摘要", "本書的貢獻與定位"]
 
-# 空洞讚美：說了等於沒說，而且擋住了真正的判斷
 FILLER = [
     "深刻", "精彩", "值得一讀", "發人深省", "令人震撼", "不可多得",
     "經典之作", "必讀", "震撼人心", "淋漓盡致", "鞭辟入裡", "字字珠璣",
 ]
 
-# 每段的下限與上限。分段設定是因為四段的工作量本來就不同：
-#   作者的位置   要交代「從哪說話／跟誰吵／什麼經歷逼他這樣主張／怎麼吵贏他」四件事
-#   定位         要點名書與作者，中英並列很吃字
-#   完整摘要     長度由「書裡有幾條獨立的線」決定，而不是由筆記量決定
-#   這本書的限制 三項可被檢驗的限制，每項寫到能被驗證大約各要 150 字
-# 上限刻意寬鬆：它要擋的是灌水，不是替密度高的書設天花板。
 SECTION_CHARS = {
     "作者的位置": (250, 800),
     "完整摘要": (600, 1700),
@@ -53,36 +27,25 @@ SECTION_CHARS = {
     "這本書的限制": (300, 900),
 }
 
-# 時間錨點。舊版只認 19xx/20xx，於是寫古典作品時「公元前 5 世紀」「1545 年」
-# 「9 世紀」全都不算，逼人繞路去引現代版本或學者的年份，反而背離了這條檢查的
-# 本意——有時間錨點 ≈ 真的讀過筆記，而不是「必須談到二十世紀」。
 YEAR_RE = re.compile(
-    r"公元前\s*\d+"      # 公元前 490 年 / 公元前 5 世紀
-    r"|(?:19|20)\d{2}"   # 1894 / 2016，可不接「年」
-    r"|\d{3,4}\s*年"     # 1545 年 / 800 年
-    r"|\d{1,2}\s*世紀"   # 9 世紀 / 19 世紀
+    r"公元前\s*\d+"
+    r"|(?:19|20)\d{2}"
+    r"|\d{3,4}\s*年"
+    r"|\d{1,2}\s*世紀"
 )
 
-# 「點名可查證的東西」。舊版只認拉丁字母（英文原名、斜體英文書名），結果全中文
-# 的書必定不合格——《29 張當票 2》這種台灣行業見聞錄根本沒有英文專有名詞可寫，
-# 逼人硬塞只會為了過關而扭曲內容。這條的本意是「有沒有點名具體、可查證的對象」，
-# 而中文書名《…》與人名同樣可查證，所以一併認列。
 REF_RE = re.compile(
-    r"（[A-Z][A-Za-z .\-']{3,}）"   # 中文名後接英文原名：柏拉圖（Plato）
-    r"|_[A-Za-z][^_\n]{4,}_"        # 斜體英文書名：_The Republic_（不得跨行）
-    r"|《[^》]{2,}》"                # 中文書名：《做工的人》
+    r"（[A-Z][A-Za-z .\-']{3,}）"
+    r"|_[A-Za-z][^_\n]{4,}_"
+    r"|《[^》]{2,}》"
 )
 
-# 行內程式碼。底線在識別字裡很常見（`pg_visibility`），不先剝掉會讓斜體規則失控。
 CODE_SPAN_RE = re.compile(r"`[^`\n]+`")
 
 MIN_YEARS = 2
 MIN_REFS = 3
 MIN_LIMIT_SENTENCES = 3
 
-# 筆記量低於此值的書，docs/ 底下通常只有章節 frontmatter、沒有任何內文。
-# 這種書寫不出概覽——「完整摘要」規定只能取材自筆記，硬寫等於編造。
-# 2026-08-13 實測：空殼書 21 個檔案合計約 1.5 KB，有內容的書最少也有數十 KB。
 MIN_NOTES = 8000
 
 
@@ -90,12 +53,6 @@ def zh_len(t):
     return len(re.sub(r"\s+", "", t))
 
 
-# CommonMark 的 right-flanking 規則：收尾的 ** 若「前面是標點、後面又不是空白或
-# 標點」，就不算合法的收尾符號，整段粗體會原封不動印出星號。中文特別容易踩到，
-# 因為 `**第一部〈基本原理〉**建立…` 的前面正好是 〉、後面正好是「建」。
-# 2026-08-13 實測：26 本已完成的概覽裡有 8 本中招、共 31 處，線上全是裸星號。
-# 兩種改法都可以：句號移到粗體外（`**…推進**。心`），或收尾後補一個全形冒號
-# （`**第一部〈基本原理〉**：建立`）。goldmark 的 CJK 選項救不了這個，試過了。
 _BOLD_RE = re.compile(r"\*\*([^*\n]{1,120}?)\*\*(.)")
 
 
@@ -113,7 +70,6 @@ def dead_bold(txt):
 
 
 def read_overview(repo):
-    """回傳 (四段 dict, 是否為舊格式, 原始區塊)。找不到就全 None。"""
     p = os.path.join(repo, "site", "content", "_index.md")
     if not os.path.exists(p):
         return None, False, ""
@@ -139,7 +95,6 @@ def read_overview(repo):
 
 
 def check(repo):
-    """回傳 (checks, meta)。checks 是 [(名稱, 通過?, 說明)]。"""
     secs, legacy, blk = read_overview(repo)
     checks = []
     if secs is None:
@@ -171,18 +126,10 @@ def check(repo):
 
     txt = "".join(secs.get(n, "") for n in SECTIONS) or "".join(secs.values())
 
-    # 去重後才算數。舊版用 len()，於是同一本書名重複點名三次、或同一個年份出現
-    # 兩次就過門檻——那不是「點名了三個可查證的對象」，是同一個對象講三遍。
-    # 2026-08-13 實測：37 本已通過的概覽裡有 2 本靠重複刷過（allure-of-gentleness
-    # 的 16 處 refs 只對應 1 個相異年份；29-pawn-tickets-2 去重後 refs 剛好剩 3）。
     years = set(YEAR_RE.findall(txt))
     checks.append(("引用年份", len(years) >= MIN_YEARS,
                    "%d 個相異（需 ≥%d）" % (len(years), MIN_YEARS)))
 
-    # 先把行內程式碼拿掉再找 refs。`pg_visibility`、`full_page_writes` 這類識別字
-    # 帶底線，會被 `_斜體英文書名_` 那條規則當成斜體的起訖，把中間整段文字（連同
-    # 其他所有 refs）吞成一個 match——去重後只剩 1 個，整份概覽就此判不合格。
-    # 2026-08-13 實測：postgresql-14-internals 寫了 4 個人名加 2 本書名，卻被算成 2。
     refs = set(REF_RE.findall(CODE_SPAN_RE.sub(" ", txt)))
     checks.append(("點名可查證的作品／人名", len(refs) >= MIN_REFS,
                    "%d 個相異（需 ≥%d）" % (len(refs), MIN_REFS)))
@@ -194,7 +141,6 @@ def check(repo):
     checks.append(("粗體都收得起來", not dead,
                    "、".join(d[:18] for d in dead[:3]) if dead else "無"))
 
-    # 「限制」段最容易被寫成一句客套話帶過，所以單獨看它的實質內容
     lim = secs.get("這本書的限制", "")
     n_sent = len(re.findall(r"[。！？]", lim))
     checks.append((
@@ -212,21 +158,13 @@ def check(repo):
     return checks, meta
 
 
-# ── 「過了但很勉強」 ────────────────────────────────────────────────
-# 品檢是二元關卡，只能回答合不合格；而合格的書之間差距很大，報告上卻看不出來
-# ——一本各段剛好踩線、年份與引用恰好碰到門檻的概覽，與一本厚實的概覽都是 PASS。
-# 下面這組判準把那個差距顯示出來，讓補強有優先順序可循。
-#
-# 判準刻意只看「離下限多遠」，不另立一套分數：門檻本來就是照「寫到能被驗證大約
-# 要幾字」訂的，貼著下限就代表剛好只寫到能被驗證，沒有餘裕。
-THIN_MARGIN = 0.15   # 落在區間下緣 15% 以內 = 貼著下限
-THIN_YEARS = 2       # 年份恰好卡在門檻
-THIN_REFS = 4        # 引用只比門檻多一個
-THIN_SENT = 5        # 限制段句子數只比門檻多兩句
+THIN_MARGIN = 0.15
+THIN_YEARS = 2
+THIN_REFS = 4
+THIN_SENT = 5
 
 
 def thin_flags(meta):
-    """列出這份概覽貼著下限的維度，回傳 [(維度, 說明)]。"""
     flags = []
     for n in SECTIONS:
         L = meta.get("sections", {}).get(n, 0)
@@ -244,8 +182,6 @@ def thin_flags(meta):
 
 
 def note_volume(repo):
-    """筆記總量（bytes）。只拿來排序，所以用檔案大小就夠——不必把 1618 本、
-    數百 MB 的 markdown 讀進記憶體，那原本是全庫掃描最慢的一步。"""
     total = 0
     d = os.path.join(repo, "site", "content", "docs")
     for r, _, fs in os.walk(d):
@@ -259,12 +195,6 @@ def note_volume(repo):
 
 
 def find_books(root):
-    """找出 root 底下所有 Hugo book（含 site/content/_index.md 的目錄）。
-
-    剪枝必須無條件做。舊版把 `dirs[:] = ...` 寫在過濾條件的 if 內，於是只有「已經
-    走進 .git」的那一層才剪——換句話說每一個 repo 的整個物件庫都被走過一遍。
-    註解宣稱全庫 6 秒，實測 32 秒，差的就是這裡。
-    """
     skip = {".git", "build", "node_modules", "public", "resources"}
     out = []
     for r, dirs, fs in os.walk(root):
@@ -277,16 +207,6 @@ def find_books(root):
 
 
 def is_written(repo):
-    """這本書有沒有被 /book-generate-deep-overview 做過。
-
-    這是「做過」的**正向標記**，而不是從「零 FAIL」反推。兩者平常看起來一樣，
-    但在調整品檢標準的那一刻會分岔：判準若是「有沒有 FAIL」，每次把門檻調緊，
-    做過的書就整批掉回待辦，然後被當成沒寫過的書整段重寫——而它們其實只差一個
-    年份或一句話。做過但沒過品檢的書該進「待補修」，不是「待改寫」。
-
-    標記取新格式區塊 + 四段齊全：舊的 details 三段格式永遠不滿足（段名不同），
-    所以不會有舊書混進來。
-    """
     p = os.path.join(repo, "site", "content", "_index.md")
     if not os.path.exists(p):
         return False
@@ -297,8 +217,6 @@ def is_written(repo):
 
 
 def run_one(repo, verbose=True):
-    # 打錯路徑會走進 check() 然後報「找不到 book-overview 區塊」——聽起來像書有問題，
-    # 其實是路徑有問題。永遠是 FAIL 所以不會放行壞概覽，但會浪費一輪追查。
     if not os.path.isdir(repo):
         print("路徑不存在：%s" % repo)
         return 1, {}
@@ -338,7 +256,6 @@ def run_all(root, as_json):
     for k, v in sorted(agg.items(), key=lambda x: -x[1]):
         print("  %-20s %5d 本  (%.0f%%)" % (k, v, v * 100.0 / n))
 
-    # 筆記厚但概覽薄 = 素材就在那裡沒被用上，重做的投報率最高
     worst = sorted(rows, key=lambda r: (-r["fails"], -r.get("notes", 0)))
     print("\n最該重做的 30 本（未通過項數 → 筆記量）：")
     for r in worst[:30]:
@@ -348,21 +265,6 @@ def run_all(root, as_json):
 
 
 def run_todo(root, n):
-    """印出接下來該做的 n 本 repo 路徑，一行一個。
-
-    這是「中斷後續作」的入口：進度不存在任何狀態檔裡，而是每次重新從書本內容
-    算出來——書本自己就是真相，而它們各自有 git remote。所以重開機、換機器、
-    或把任何衍生的進度檔刪掉，都不會弄丟進度；重跑一次就回來了。
-
-    整個掃描是純檔案讀取，不經過 LLM，全庫 1618 本約數秒，可以隨便重跑。
-
-    排序刻意用 slug（而非未通過項數或筆記量）：挑書的順序是人的判斷，腳本只負責
-    把還沒做的列全、而且每次列的順序一樣。
-
-    stdout 只放「沒寫過的書」。另外兩類移到 stderr，因為它們的處置方式不同：
-      - 筆記是空殼的：不是「還沒做」而是「做不了」，先補筆記。
-      - 寫過但沒過品檢的：該補的是那一項，不是整段重寫（見 is_written）。
-    """
     todo, hollow, patch = [], [], []
     for b in find_books(root):
         checks, _ = check(b)
@@ -393,19 +295,6 @@ def run_todo(root, n):
 
 
 def run_weak(root, n):
-    """列出「已寫過、品檢全過，但內容貼著下限」的書，依補強投報率排序。
-
-    這是 --todo 的補集。--todo 回答「還沒做的是哪些」，這個回答「做過但做得
-    勉強的是哪些」——兩者處置方式不同：前者要整段寫，後者只需要把貼線的那一兩
-    個維度補厚。
-
-    排序是（貼線的維度數 → 筆記量）。筆記厚而概覽薄代表素材就在那裡沒被用上，
-    補強的投報率最高；這與 --all 的「最該重做」用同一個直覺，只是對象換成已經
-    做過的書。
-
-    輸出刻意逐項列出貼線的維度而不給一個總分：總分會讓人去優化那個數字，而
-    列出維度才知道要補什麼。
-    """
     rows = []
     for b in find_books(root):
         checks, meta = check(b)

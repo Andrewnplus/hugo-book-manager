@@ -26,8 +26,6 @@ class MigrationPlannerTest {
         leaf: String = "investing",
     ) = MigrateLeafResult(name = name, topCategory = top, subCategory = sub, leafCategory = leaf)
 
-    // ==================== needsMigration() ====================
-
     @Test
     fun `needsMigration is false only when all three tiers are present`() {
         assertFalse(MigrationPlanner.needsMigration(entry("x", "hugobook", "top-a", "sub-b", "leaf-c")))
@@ -41,8 +39,6 @@ class MigrationPlannerTest {
         assertTrue(MigrationPlanner.needsMigration(entry("x", "hugobook")), "no tiers at all")
     }
 
-    // ==================== buildPlan(): topics ====================
-
     @Test
     fun `buildPlan adds the missing tiers and keeps unrelated topics`() {
         val plan =
@@ -55,7 +51,6 @@ class MigrationPlannerTest {
             )
 
         assertEquals(listOf("sub-finance", "leaf-investing"), plan.topicsToAdd)
-        // hugobook / nplus-portal are not tier topics and must survive untouched.
         assertTrue(plan.topicsToRemove.isEmpty())
     }
 
@@ -103,8 +98,6 @@ class MigrationPlannerTest {
         assertTrue(plan.isNoOp())
         assertNull(plan.moveFrom)
     }
-
-    // ==================== buildPlan(): folder move ====================
 
     @Test
     fun `buildPlan targets the three-tier path under the clone's own work root`() {
@@ -169,9 +162,6 @@ class MigrationPlannerTest {
 
     @Test
     fun `buildPlan refuses to move a directory into its own subtree`() {
-        // Reproduces 2026-05-07: the category directory `…/finance/investing`
-        // was indexed as a clone named "investing", so the plan resolved to
-        // `…/finance/investing/investing`. Only mv's EINVAL stopped it.
         val booksDone = File(root, "books-done")
         val from = File(booksDone, "professional/finance/investing").apply { mkdirs() }
 
@@ -200,8 +190,6 @@ class MigrationPlannerTest {
         )
         assertFalse(MigrationPlanner.isNestedUnder(File(root, "new-books/deep-work"), base))
     }
-
-    // ==================== findWorkRoot() ====================
 
     @Test
     fun `findWorkRoot falls back when the clone sits outside every configured root`() {

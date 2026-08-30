@@ -6,21 +6,7 @@ import com.nplus.bookmanager.model.DocsStructure
 import com.nplus.bookmanager.model.GeneratedMetadata
 import java.io.File
 
-/**
- * The collaborators [BookRepoService] talks to, narrowed to just the calls it
- * makes.
- *
- * (`GitHubClient` is also what InitBooksCommand drives the flow through.)
- *
- * BookRepoService already took its collaborators through the constructor, but
- * the concrete services are final classes, so no test could ever supply a
- * stand-in — the seam looked real and was not. Each port below is the slice of
- * one service that the creation flow actually uses; the concrete services
- * implement them unchanged, and every other caller keeps using those services
- * directly.
- */
 interface GitHubClient {
-    /** `gh` present and authenticated. The gate every write-side call sits behind. */
     fun checkPrerequisites(): Boolean
 
     fun getUsername(): String?
@@ -52,14 +38,6 @@ interface GitHubClient {
     ): ConfigureResult
 }
 
-/**
- * What post-creation configuration actually managed to apply.
- *
- * Returned rather than discarded because topics are how the portal files a
- * book: `addTopics` already counted its successes, but the count went nowhere,
- * so a repo that got 2 of its 6 topics still printed "configured" and then
- * quietly failed to appear under its category.
- */
 data class ConfigureResult(
     val homepageSet: Boolean,
     val topicsSet: Int,
@@ -107,13 +85,6 @@ interface GitOperations {
     ): Boolean
 }
 
-/**
- * The `local.properties` values the creation flow reads.
- *
- * Held as constructor state rather than read from [AppConfig] at each use, so
- * a test can drive the flow without a `local.properties` on disk deciding the
- * outcome — the username in particular changes which branch runs.
- */
 data class BookRepoConfig(
     val githubUsername: String = AppConfig.githubUsername,
     val homepageBaseUrl: String = AppConfig.homepageBaseUrl,

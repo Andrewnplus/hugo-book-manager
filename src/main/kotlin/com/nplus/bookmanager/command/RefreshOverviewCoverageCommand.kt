@@ -6,10 +6,6 @@ import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.service.OverviewCoverageService
 import java.io.File
 
-/**
- * Refresh the portal's `src/data/overview.json` — how far the deep-overview
- * rewrite has got. Commit + push the portal repo afterwards to publish it.
- */
 class RefreshOverviewCoverageCommand(
     private val serviceFactory: (File, File, File?) -> OverviewCoverageService = { books, portal, new ->
         OverviewCoverageService(books, portal, new)
@@ -50,9 +46,6 @@ class RefreshOverviewCoverageCommand(
         println("  legacy  %5d".format(byState["legacy"] ?: 0))
         println("  none    %5d".format(byState["none"] ?: 0))
 
-        // A rewritten book that no longer passes the gate is the one case worth
-        // surfacing here: the campaign's own commits all passed, so any of these
-        // arrived by another route and nothing else in the pipeline would flag it.
         val regressed = books.filter { it.state == "done" && it.fails > 0 }
         if (regressed.isNotEmpty()) {
             println("\n⚠️  ${regressed.size} rewritten book(s) no longer pass the audit:")

@@ -15,7 +15,6 @@ class OverviewCoverageServiceTest {
     private val portal get() = File(root, "portal").apply { mkdirs() }
     private val newBooks get() = File(root, "new-books").apply { mkdirs() }
 
-    /** Writes a home page under `books-done`'s three-folder shape. */
     private fun book(
         slug: String,
         body: String,
@@ -27,7 +26,6 @@ class OverviewCoverageServiceTest {
         writeText("---\ntitle: \"x\"\n---\n\n{{< book-cover />}}\n\n$body")
     }
 
-    /** One row of `audit-overview.py --all --json`, trimmed to the fields we read. */
     private fun row(
         slug: String,
         fails: Int = 0,
@@ -44,8 +42,6 @@ class OverviewCoverageServiceTest {
     private fun service(audit: (File, File) -> String?) =
         OverviewCoverageService(books, portal, newBooks, File("scripts/audit-overview.py"), audit)
 
-    // ==================== stateOf() ====================
-
     @Test
     fun `the four-section marker is what makes a book done`() {
         book("a", "{{% book-overview %}}\n\n## 作者的位置\n\n…\n\n{{% /book-overview %}}")
@@ -60,8 +56,6 @@ class OverviewCoverageServiceTest {
 
     @Test
     fun `a home page with no overview at all is none, not legacy`() {
-        // Every repo under new-books/ is in this state, and the audit's own
-        // `legacy` flag cannot tell it apart from a rewritten one.
         book("c", "書還在寫。")
         assertEquals("none", OverviewCoverageService.stateOf(File(books, "craft/engineering/coding-practice/c")))
     }
@@ -70,8 +64,6 @@ class OverviewCoverageServiceTest {
     fun `a missing home page is none rather than a crash`() {
         assertEquals("none", OverviewCoverageService.stateOf(File(books, "craft/engineering/coding-practice/gone")))
     }
-
-    // ==================== parse() ====================
 
     @Test
     fun `taxonomy comes from the audit's relative path`() {
@@ -102,7 +94,6 @@ class OverviewCoverageServiceTest {
         assertEquals(2, b.fails)
         assertEquals(listOf("引用年份", "無空洞讚美"), b.failed)
         assertEquals(5, b.years)
-        // `latin` in the audit's output is the count of named works and people.
         assertEquals(7, b.refs)
         assertEquals(16, b.limitSentences)
         assertEquals(800, b.sections["完整摘要"])
@@ -110,9 +101,6 @@ class OverviewCoverageServiceTest {
 
     @Test
     fun `a row with no meta - the audit found no overview block - still yields a book`() {
-        // check() returns an empty meta dict when there is no overview at all, so
-        // every numeric field is absent. Dropping those rows would delete exactly
-        // the books that most need to appear in the queue.
         book("e", "書還在寫。")
         val bare = """[{"slug": "craft/engineering/coding-practice/e", "fails": 1, "failed": ["有深度概覽"], "notes": 9}]"""
         val b = service { _, _ -> "[]" }.parse(bare, books, categorised = true).single()
@@ -121,8 +109,6 @@ class OverviewCoverageServiceTest {
         assertEquals(0, b.sections["定位"])
         assertEquals(9, b.notes)
     }
-
-    // ==================== scan() ====================
 
     @Test
     fun `both roots are scanned and the result is sorted by slug`() {
@@ -143,8 +129,6 @@ class OverviewCoverageServiceTest {
         book("a", "{{% book-overview %}}")
         assertNull(service { _, _ -> null }.scan())
     }
-
-    // ==================== save() ====================
 
     @Test
     fun `the artifact is two-space indented and carries the thresholds`() {

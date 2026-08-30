@@ -41,8 +41,6 @@ class AiTaskServiceTest {
         tempDir.deleteRecursively()
     }
 
-    // ==================== Status Tests ====================
-
     @Test
     fun `hasPendingBatchMetadataTask returns false when no files exist`() {
         assertFalse(service.hasPendingBatchMetadataTask())
@@ -75,8 +73,6 @@ class AiTaskServiceTest {
         File(outputDir, "batch-metadata-response.json").writeText("{}")
         assertTrue(service.hasCompletedBatchMetadataTask())
     }
-
-    // ==================== Write/Read Round-Trip Tests ====================
 
     @Test
     fun `writeBatchMetadataRequest creates request file`() {
@@ -179,8 +175,6 @@ class AiTaskServiceTest {
 
         assertNull(service.getBatchResultForBook("nonexistent"))
     }
-
-    // ==================== Clear Tests ====================
 
     @Test
     fun `clearBatchMetadataTasks removes both request and response files`() {

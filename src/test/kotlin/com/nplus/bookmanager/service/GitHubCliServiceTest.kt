@@ -23,8 +23,6 @@ class GitHubCliServiceTest {
 
     @Test
     fun `create command escapes single quotes so apostrophes in titles survive the shell`() {
-        // '\'' closes the quoted run, emits a literal quote, reopens it —
-        // /bin/sh hands gh the description back as one argument.
         assertEquals(
             "--description 'Andrew'\\''s Book'",
             build(description = "Andrew's Book").substringAfter("--private "),
@@ -42,8 +40,6 @@ class GitHubCliServiceTest {
 
     @Test
     fun `create command leaves shell metacharacters in the description literal`() {
-        // Inside single quotes $ and ` are inert; the description must reach
-        // gh unexpanded rather than being substituted by the shell.
         assertEquals(
             "--description '\$HOME and `whoami` stay literal'",
             build(description = "\$HOME and `whoami` stay literal").substringAfter("--private "),

@@ -25,8 +25,6 @@ class QuotedValueTest {
 
     @Test
     fun `escapes backslashes before quotes, not after`() {
-        // A naive implementation that escapes quotes first would turn the
-        // backslash it just inserted into a second backslash.
         assertEquals("""a\\b\"c""", escapeQuoted("""a\b"c"""))
     }
 

@@ -6,9 +6,6 @@ import com.nplus.bookmanager.service.GitHubCliService
 import com.nplus.bookmanager.util.CliFormatter
 import com.nplus.bookmanager.util.ProcessRunner
 
-/**
- * Command to check environment prerequisites
- */
 class CheckEnvCommand(
     private val ghService: GitHubCliService = GitHubCliService(),
 ) : CliktCommand(name = "check-env") {
@@ -20,7 +17,6 @@ class CheckEnvCommand(
 
         var allOk = true
 
-        // 1. Check GitHub CLI installation
         print("1. GitHub CLI (gh)... ")
         if (ghService.isGhInstalled()) {
             val version = ProcessRunner.executeForOutput("gh --version")?.lines()?.firstOrNull() ?: "unknown"
@@ -31,7 +27,6 @@ class CheckEnvCommand(
             allOk = false
         }
 
-        // 2. Check GitHub authentication
         print("2. GitHub authentication... ")
         if (ghService.isAuthenticated()) {
             val username = ghService.getUsername() ?: "unknown"
@@ -42,7 +37,6 @@ class CheckEnvCommand(
             allOk = false
         }
 
-        // 3. Check Git installation
         print("3. Git... ")
         val gitVersion = ProcessRunner.executeForOutput("git --version")
         if (gitVersion != null) {
@@ -52,7 +46,6 @@ class CheckEnvCommand(
             allOk = false
         }
 
-        // 4. Check local.properties
         print("4. local.properties... ")
         val localPropsFile = java.io.File("local.properties")
         if (localPropsFile.exists()) {
@@ -63,7 +56,6 @@ class CheckEnvCommand(
             allOk = false
         }
 
-        // 5. Check default work directory
         print("5. Default work directory... ")
         val workDir = java.io.File(AppConfig.defaultWorkDir)
         if (workDir.exists() && workDir.isDirectory) {
@@ -75,7 +67,6 @@ class CheckEnvCommand(
             println("   Will be created when needed")
         }
 
-        // 6. Check ImageMagick — optional, only shrinks the downloaded cover
         print("6. ImageMagick (convert)... ")
         val convertVersion = ProcessRunner.executeForOutput("convert --version")?.lines()?.firstOrNull()
         if (convertVersion != null) {
@@ -85,12 +76,10 @@ class CheckEnvCommand(
             println("   Covers will be ~3x larger without it: apt install imagemagick")
         }
 
-        // Summary
         println()
         val message = if (allOk) "All checks passed! Ready to use." else "Some checks failed. Please fix the issues above."
         CliFormatter.printSectionHeader(message)
 
-        // Print configuration summary
         println()
         println("Current Configuration:")
         println(AppConfig.toString())

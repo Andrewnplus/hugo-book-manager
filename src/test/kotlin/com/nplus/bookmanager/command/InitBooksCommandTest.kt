@@ -16,14 +16,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-/**
- * Covers which book `init-books` picks and what phase 1 does to the queue.
- *
- * Everything the command touches here is either a temp directory or a fake
- * GitHub client, so no test creates a repo, runs `gh`, or writes into the
- * project's own `ai-tasks/`. Phase 2 is out of scope — it goes through
- * BookRepoService, which is covered by its own test.
- */
 class InitBooksCommandTest {
     @TempDir
     lateinit var root: File
@@ -31,7 +23,6 @@ class InitBooksCommandTest {
     private val queueFile get() = File(root, "books-queue.yaml")
     private val aiTasksDir get() = File(root, "ai-tasks")
 
-    /** `gh` never runs; the gate is the only call phase 1 needs from it. */
     private class FakeGitHub(
         private val ready: Boolean = true,
     ) : GitHubClient {
@@ -93,7 +84,6 @@ class InitBooksCommandTest {
             repoIndexService = RepoIndexService(File(root, "existing-repos.yaml")),
         )
 
-    /** The command reports through println, which Clikt's harness does not capture. */
     private fun run(
         vararg args: String,
         ready: Boolean = true,
@@ -113,16 +103,12 @@ class InitBooksCommandTest {
 
     private fun requestFile() = File(aiTasksDir, "input/batch-metadata-request.json")
 
-    // ==================== queue loading ====================
-
     @Test
     fun `reports a missing queue file instead of throwing`() {
         val output = run("--status")
 
         assertContains(output, "Failed to load queue file")
     }
-
-    // ==================== --status ====================
 
     @Test
     fun `status counts each state and never touches GitHub`() {
@@ -134,11 +120,8 @@ class InitBooksCommandTest {
         assertContains(output, "Pending:    1")
         assertContains(output, "Completed:  1")
         assertContains(output, "Error:      1")
-        // --status returns before the prerequisite gate, so it works unauthenticated.
         assertFalse(output.contains("Checking prerequisites"))
     }
-
-    // ==================== --reset ====================
 
     @Test
     fun `reset with an id puts the book back to pending and persists it`() {
@@ -152,7 +135,6 @@ class InitBooksCommandTest {
 
     @Test
     fun `reset without an id is ignored and the run proceeds to the next pending book`() {
-        // Documents a trap: --reset alone looks like it did something.
         writeQueue(book("a", "pending"))
 
         val output = run("--reset")
@@ -171,8 +153,6 @@ class InitBooksCommandTest {
         assertContains(queueText(), "status: pending")
     }
 
-    // ==================== prerequisites ====================
-
     @Test
     fun `stops before selecting a book when gh is unavailable`() {
         writeQueue(book("a", "pending"))
@@ -183,8 +163,6 @@ class InitBooksCommandTest {
         assertFalse(requestFile().exists())
         assertContains(queueText(), "status: pending")
     }
-
-    // ==================== book selection ====================
 
     @Test
     fun `reports an unknown --id instead of picking some other book`() {
@@ -202,7 +180,6 @@ class InitBooksCommandTest {
 
         val output = run()
 
-        // b is mid-flight; picking a would strand it.
         assertContains(output, "書名-b")
         assertContains(output, "[Phase 2]")
     }
@@ -238,12 +215,6 @@ class InitBooksCommandTest {
         assertFalse(requestFile().exists())
     }
 
-    /**
-     * Selection only ever yields a processing or a pending book, so the
-     * "moving to next pending book" arms inside the completed and duplicate
-     * branches cannot run without --id — and with --id they are skipped. They
-     * are unreachable; this pins the behaviour that makes them so.
-     */
     @Test
     fun `without an id a duplicate is passed over rather than reported`() {
         writeQueue(book("a", "duplicate"), book("b", "pending"))
@@ -264,8 +235,6 @@ class InitBooksCommandTest {
         assertContains(output, "--reset --id=a")
         assertFalse(requestFile().exists())
     }
-
-    // ==================== phase 1 ====================
 
     @Test
     fun `phase 1 writes the metadata request and flips the book to processing`() {
@@ -293,9 +262,8 @@ class InitBooksCommandTest {
     @Test
     fun `phase 1 refuses to queue a second request while one is pending`() {
         writeQueue(book("a", "pending"), book("b", "pending"))
-        run() // leaves a request for a, and a in processing
+        run()
 
-        // Reset a so the command reaches phase 1 again with the request still there.
         queueFile.writeText(queueText().replace("status: processing", "status: pending"))
         val output = run()
 

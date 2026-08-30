@@ -23,19 +23,6 @@ import java.io.File
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
 
-/**
- * Migrate book repos from the two-tier topic schema (top-X, sub-Y) to
- * three-tier (top-X, sub-Y, leaf-Z), and reorganize local folders to mirror
- * `<top>/<sub>/<leaf>/<repo-name>`.
- *
- * Two phases:
- *  - Default (proposal): writes `ai-tasks/input/migrate-leaf-request.json`.
- *    Claude reads it, looks each repo up against `topic-taxonomy.yaml`, and
- *    writes `ai-tasks/output/migrate-leaf-response.json`.
- *  - `--apply`: reads the response, computes the diff per repo
- *    (gh topic add/remove + filesystem move) and applies it in batches,
- *    pausing for user confirmation between batches.
- */
 class MigrateTopicTiersCommand(
     private val repoIndexService: RepoIndexService = RepoIndexService(),
     private val ghService: GitHubCliService = GitHubCliService(),
@@ -75,8 +62,6 @@ class MigrateTopicTiersCommand(
         CliFormatter.printHeader("Migrate Topic Tiers (top → sub → leaf)")
         if (apply) runApply() else runProposal()
     }
-
-    // ==================== Proposal phase ====================
 
     private fun runProposal() {
         val index = repoIndexService.load()
@@ -137,8 +122,6 @@ class MigrateTopicTiersCommand(
         println()
     }
 
-    // ==================== Apply phase ====================
-
     private fun runApply() {
         if (!ghService.checkPrerequisites()) return
 
@@ -159,7 +142,6 @@ class MigrateTopicTiersCommand(
         println("\n🔍 Indexed ${cloneIndex.size} local clones in: $scannedRoots")
         println("   (DEFAULT_WORK_DIR / new-books is intentionally NOT scanned — in-progress books stay put.)")
 
-        // Build full plan, applying --name and --limit filters.
         val plans =
             response.results
                 .let { list -> if (onlyName != null) list.filter { it.name == onlyName } else list }
@@ -298,14 +280,6 @@ class MigrateTopicTiersCommand(
         println(if (anyFailure) "  ⚠ ${plan.name} (some steps failed; see migrate-failed.log)" else "  ✓ ${plan.name}")
     }
 
-    // ==================== Local clone discovery ====================
-
-    /**
-     * Build a name → File index of every directory under any work root that
-     * contains a `.git` subdir. We treat any such dir as a local clone.
-     * Avoids scanning into `.git` itself or into already-organized leaf trees
-     * deeper than necessary.
-     */
     private fun buildLocalCloneIndex(): Map<String, File> {
         val roots = workRoots()
         val out = mutableMapOf<String, File>()
@@ -325,7 +299,6 @@ class MigrateTopicTiersCommand(
         if (depth > maxDepth) return
         val entries = dir.listFiles() ?: return
         if (entries.any { it.isDirectory && it.name == ".git" }) {
-            // This dir is itself a git clone. Record it and stop recursing.
             out.putIfAbsent(dir.name, dir)
             return
         }
@@ -338,13 +311,9 @@ class MigrateTopicTiersCommand(
 
     private fun workRoots(): List<File> {
         val roots = mutableListOf<File>()
-        // ONLY scan books-done (sibling of DEFAULT_WORK_DIR) by default. We
-        // intentionally skip DEFAULT_WORK_DIR (typically new-books) — books
-        // there are in-progress and moving them would disrupt active editing.
         val configured = File(AppConfig.defaultWorkDir)
         val booksDone = File(configured.parentFile, "books-done")
         if (booksDone.isDirectory) roots.add(booksDone)
-        // User-specified extra root (opt-in to additional scan locations).
         extraWorkDir?.let {
             val extra = File(it)
             if (extra.isDirectory) roots.add(extra)

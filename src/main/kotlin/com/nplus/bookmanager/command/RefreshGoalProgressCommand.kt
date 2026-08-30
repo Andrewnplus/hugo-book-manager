@@ -6,11 +6,6 @@ import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.service.GoalProgressService
 import java.io.File
 
-/**
- * Scan local clones (notes stations, leetcode-note; book repos from M2) for
- * goal progress and write the derived `src/data/progress.json` into the
- * portal repo. Commit + push the portal repo afterwards to publish.
- */
 class RefreshGoalProgressCommand : CliktCommand(name = "refresh-goal-progress") {
     override fun help(context: Context) = "Scan local clones and refresh the portal's derived goal progress artifact"
 

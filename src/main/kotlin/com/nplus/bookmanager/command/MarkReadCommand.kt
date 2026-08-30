@@ -9,12 +9,6 @@ import com.nplus.bookmanager.service.BookChapterService
 import java.io.File
 import java.time.LocalDate
 
-/**
- * Mark a book chapter as read (`read: true` + `readAt: today`) in its
- * frontmatter — the static source of truth for repo-completion goals.
- * Without --chapter, lists the repo's chapters with their read state.
- * Run `refreshGoalProgress` afterwards to refresh the derived artifact.
- */
 class MarkReadCommand : CliktCommand(name = "mark-read") {
     override fun help(context: Context) = "Mark a book chapter as read in its frontmatter (omit --chapter to list)"
 

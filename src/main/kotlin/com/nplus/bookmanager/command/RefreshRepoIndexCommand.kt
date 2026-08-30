@@ -7,12 +7,6 @@ import com.nplus.bookmanager.service.RepoIndexLinter
 import com.nplus.bookmanager.service.RepoIndexService
 import java.io.File
 
-/**
- * Refresh the cached snapshot of book repos for the configured owner.
- *
- * Run before `init-books` so duplicate detection knows about the latest
- * state on GitHub. Output goes to `templates/existing-repos.yaml`.
- */
 class RefreshRepoIndexCommand(
     private val service: RepoIndexService = RepoIndexService(),
 ) : CliktCommand(name = "refresh-repo-index") {
@@ -40,14 +34,6 @@ class RefreshRepoIndexCommand(
         reportLint(RepoIndexLinter.lint(index, purchaseLinks()))
     }
 
-    /**
-     * slug → `book.link` from each local clone's home page frontmatter.
-     *
-     * Read here rather than from the index because the index mirrors what the
-     * GitHub API returns — name, description, topics — and the purchase link
-     * lives in the repo's own content. Missing clones simply fall out of the
-     * map; the linter degrades to matching on title and author for those.
-     */
     private fun purchaseLinks(): Map<String, String> {
         val roots = listOf(AppConfig.booksDir, AppConfig.defaultWorkDir).map(::File).filter { it.isDirectory }
         val out = mutableMapOf<String, String>()
@@ -61,8 +47,6 @@ class RefreshRepoIndexCommand(
                         file.parentFile.parentFile
                             ?.parentFile
                             ?.name ?: return@forEach
-                    // Only the `book:` map's link, not a stray `link:` elsewhere
-                    // in the frontmatter; the two-space indent is what marks it.
                     file
                         .useLines { lines ->
                             lines.firstOrNull { it.startsWith("  link: ") }
@@ -76,12 +60,6 @@ class RefreshRepoIndexCommand(
         return out
     }
 
-    /**
-     * The description is edited on GitHub, outside anything this tool controls,
-     * so the freshly-pulled index is the only moment we can reconcile it.
-     * Findings are printed, never auto-fixed — every one of them needs a human
-     * to decide the correct title, author, or which duplicate repo to keep.
-     */
     private fun reportLint(findings: List<RepoIndexLinter.Finding>) {
         if (findings.isEmpty()) {
             println("✅ Description lint: no findings")

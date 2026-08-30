@@ -17,19 +17,14 @@ val serializationVersion = "1.11.0"
 val slf4jVersion = "2.0.18"
 
 dependencies {
-    // kotlinx-serialization for JSON
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
 
-    // Clikt for CLI
     implementation("com.github.ajalt.clikt:clikt:$cliktVersion")
 
-    // YAML parsing
     implementation("org.yaml:snakeyaml:2.6")
 
-    // SLF4J Simple implementation (to suppress SLF4J warnings)
     implementation("org.slf4j:slf4j-simple:$slf4jVersion")
 
-    // Testing
     testImplementation(kotlin("test"))
 }
 
@@ -56,8 +51,6 @@ application {
     mainClass.set("com.nplus.bookmanager.MainKt")
 }
 
-// Custom Gradle Tasks
-
 fun registerCliTask(
     name: String,
     desc: String,
@@ -68,9 +61,6 @@ fun registerCliTask(
     dependsOn("classes")
     classpath = sourceSets["main"].runtimeClasspath
     mainClass.set("com.nplus.bookmanager.MainKt")
-    // CLI uses relative paths like `templates/existing-repos.yaml` and
-    // `ai-tasks/`; pin CWD to the project dir so they resolve regardless of
-    // where gradle was invoked from.
     workingDir = projectDir
     configure()
 }
@@ -136,7 +126,6 @@ registerCliTask("migrateTopicTiers", "Migrate book repos from 2-tier (top/sub) t
         val apply = project.findProperty("apply")?.toString()?.toBoolean() ?: false
         val batch = project.findProperty("batch")?.toString()
         val limit = project.findProperty("limit")?.toString()
-        // NOTE: do not use `name` here — `Project.name` shadows `-Pname=...`.
         val repoName = project.findProperty("repoName")?.toString()
         val extraWorkDir = project.findProperty("extraWorkDir")?.toString()
 
@@ -159,7 +148,6 @@ registerCliTask("migrateTopicTiers", "Migrate book repos from 2-tier (top/sub) t
             argList.add(extraWorkDir)
         }
         args = argList
-        // Apply phase prompts for batch confirmation; needs interactive stdin.
         standardInput = System.`in`
     }
 }

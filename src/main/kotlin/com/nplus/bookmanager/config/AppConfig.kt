@@ -3,18 +3,12 @@ package com.nplus.bookmanager.config
 import java.io.File
 import java.util.Properties
 
-/**
- * Application configuration loaded from local.properties
- */
 object AppConfig {
-    // Rate limit delays (milliseconds)
     const val POST_CREATION_DELAY_MS = 2000L
     const val TOPIC_API_DELAY_MS = 500L
 
-    // Paths
     const val PROMPTS_DIR = "templates/prompts"
 
-    // Template placeholders — values to be replaced when creating a new book repo
     const val TEMPLATE_SLUG = "hugo-book-template"
     const val TEMPLATE_EN_TITLE = "Hugo Book Template"
     const val TEMPLATE_ZH_TITLE = "讀書筆記模版"
@@ -23,7 +17,6 @@ object AppConfig {
     const val TEMPLATE_PURCHASE_URL_PLACEHOLDER = "https://www.amazon.com/"
     const val TEMPLATE_BLURB_PLACEHOLDER = "這裡填寫書籍的簡介..."
 
-    /** The only keys this app reads. Anything else in the environment is ignored. */
     private val configKeys =
         listOf(
             "GITHUB_USERNAME",
@@ -42,10 +35,6 @@ object AppConfig {
                 localPropertiesFile.inputStream().use { props.load(it) }
             }
 
-            // Environment variables are a fallback, but only for the keys above.
-            // Copying the whole environment in used to park unrelated secrets
-            // (GITHUB_TOKEN, AWS_*, …) inside a Properties object that anything
-            // holding AppConfig could dump.
             configKeys.forEach { key ->
                 if (!props.containsKey(key)) {
                     System.getenv(key)?.let { props.setProperty(key, it) }
@@ -66,15 +55,12 @@ object AppConfig {
     val homepageBaseUrl: String
         get() = getProperty("HOMEPAGE_BASE_URL") ?: "https://nplus.wiki"
 
-    /** Local clone of the nplus.wiki portal repo (goals.yaml + progress.json live there). */
     val portalDir: String
         get() = getProperty("PORTAL_DIR") ?: ""
 
-    /** Workspace directory holding the Astro note stations (incl. leetcode-note). */
     val notesDir: String
         get() = getProperty("NOTES_DIR") ?: ""
 
-    /** Root of the filed book repos (books-done, top/sub/leaf tree). */
     val booksDir: String
         get() = getProperty("BOOKS_DIR") ?: ""
 

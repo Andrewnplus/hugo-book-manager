@@ -47,7 +47,6 @@ class GoalProgressServiceTest {
 
     private fun daysAgo(n: Long) = LocalDate.now().minusDays(n).toString()
 
-    /** Warnings are the only signal a skipped file gives, so tests assert on them. */
     private fun capturingStdout(block: () -> Unit): String {
         val buffer = ByteArrayOutputStream()
         val original = System.out
@@ -59,8 +58,6 @@ class GoalProgressServiceTest {
         }
         return buffer.toString()
     }
-
-    // ==================== loadGoals() ====================
 
     @Test
     fun `loadGoals parses id metric and scope`() {
@@ -90,8 +87,6 @@ class GoalProgressServiceTest {
         assertEquals(listOf("array", "graph"), loaded[1].scope.categories)
     }
 
-    // ==================== note-status-count ====================
-
     @Test
     fun `scanNoteStation counts done by status and groups by category and section`() {
         writeNote("writing-note/src/content/concepts/voice/tone.md", "status: reviewed")
@@ -112,7 +107,6 @@ class GoalProgressServiceTest {
         assertEquals("notes", p.unit)
         assertEquals(1 to 2, p.breakdown.single { it.key == "voice" }.let { it.done to it.total })
         assertEquals("concepts", p.breakdown.single { it.key == "voice" }.section)
-        // A file directly under problems/ falls back to the sub-dir as its key.
         assertEquals("problems", p.breakdown.single { it.section == "problems" }.key)
     }
 
@@ -132,10 +126,6 @@ class GoalProgressServiceTest {
         assertEquals(listOf("writing-note/fresh"), recent.map { it.item })
     }
 
-    /**
-     * An unquoted date is a YAML timestamp, not a string. SnakeYAML returns a
-     * Date for it and the naive text parse used to drop the activity silently.
-     */
     @Test
     fun `scan accepts an unquoted yaml date for lastReviewed`() {
         writeNote("writing-note/src/content/concepts/fresh.md", "status: reviewed\nlastReviewed: ${daysAgo(3)}")
@@ -166,16 +156,10 @@ class GoalProgressServiceTest {
             )
         val p = service().scan(listOf(goal)).first.single()
 
-        // _index.md excluded; broken.md counted as not-done rather than crashing.
         assertEquals(1, p.done)
         assertEquals(2, p.total)
     }
 
-    /**
-     * A BOM or a leading blank line used to make the fence check fail, so the
-     * file counted toward total but never toward done — the same shape of
-     * silent progress loss as the unquoted-date bug, with no warning at all.
-     */
     @Test
     fun `scan reads frontmatter behind a BOM or a leading blank line`() {
         val base = "writing-note/src/content/concepts"
@@ -211,7 +195,6 @@ class GoalProgressServiceTest {
         var p: com.nplus.bookmanager.model.GoalProgress? = null
         val warnings = capturingStdout { p = service().scan(listOf(goal)).first.single() }
 
-        // Still counted as not-done, but no longer invisible.
         assertEquals(0, p!!.done)
         assertEquals(2, p!!.total)
         assertContains(warnings, "unterminated frontmatter")
@@ -219,8 +202,6 @@ class GoalProgressServiceTest {
         assertContains(warnings, "no frontmatter fence")
         assertContains(warnings, "no-fence.md")
     }
-
-    // ==================== leetcode-count ====================
 
     @Test
     fun `scanLeetcode filters by category and collects reviewedDates`() {
@@ -240,15 +221,11 @@ class GoalProgressServiceTest {
         val (progress, recent) = service().scan(listOf(goal))
 
         val p = progress.single()
-        // design is outside scope.categories and must not be counted at all.
         assertEquals(1, p.done)
         assertEquals(2, p.total)
         assertEquals("problems", p.unit)
-        // Only the in-window review date becomes an activity item.
         assertEquals(listOf("leetcode/two-sum"), recent.map { it.item })
     }
-
-    // ==================== repo-completion ====================
 
     @Test
     fun `scanRepoCompletion counts read chapters across repos`() {
@@ -264,7 +241,6 @@ class GoalProgressServiceTest {
         assertEquals(1, p.done)
         assertEquals(2, p.total)
         assertEquals("chapters", p.unit)
-        // Single-repo goals keep the bare chapter key (no repo prefix).
         assertEquals(setOf("01-intro", "02-rules"), p.breakdown.map { it.key }.toSet())
         assertEquals(listOf("deep-work/01-intro"), recent.map { it.item })
     }
@@ -301,8 +277,6 @@ class GoalProgressServiceTest {
         assertTrue(service().scan(goals).first.isEmpty())
     }
 
-    // ==================== save() ====================
-
     @Test
     fun `save writes a derived artifact with sorted breakdown and a do-not-edit marker`() {
         writeNote("writing-note/src/content/concepts/zebra/z.md", "status: reviewed")
@@ -323,16 +297,12 @@ class GoalProgressServiceTest {
         assertContains(json, "DERIVED")
         assertContains(json, "\"writing\"")
         assertNotNull(Regex("\"generatedAt\": \"[^\"]+\"").find(json))
-        // Breakdown is sorted by key so the artifact diffs cleanly in git.
         assertTrue(json.indexOf("\"alpha\"") < json.indexOf("\"zebra\""))
         assertTrue(json.endsWith("\n"))
     }
 
     @Test
     fun `save nests done total unit and breakdown under each goal id`() {
-        // progress.json is a contract read by the portal and nplus-backend, so
-        // the shape matters, not just which strings appear. Asserting on text
-        // alone lets a field land at the wrong nesting level unnoticed.
         writeNote("writing-note/src/content/concepts/zebra/z.md", "status: reviewed\nlastReviewed: ${daysAgo(1)}")
         writeNote("writing-note/src/content/concepts/alpha/a.md", "status: draft")
         File(portalDir, "src/data").mkdirs()

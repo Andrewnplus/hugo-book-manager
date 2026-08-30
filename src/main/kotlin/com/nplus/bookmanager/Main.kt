@@ -12,9 +12,6 @@ import com.nplus.bookmanager.command.RefreshGoalProgressCommand
 import com.nplus.bookmanager.command.RefreshOverviewCoverageCommand
 import com.nplus.bookmanager.command.RefreshRepoIndexCommand
 
-/**
- * Main CLI application using Clikt
- */
 class BookManagerCli : CliktCommand(name = "book-manager") {
     override fun help(context: com.github.ajalt.clikt.core.Context) =
         """

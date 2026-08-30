@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Health check for hugobook runners.
-# Usage: ./scripts/health-check.sh
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
@@ -22,11 +20,6 @@ done
 
 echo ""
 echo "=== Image invariant: Hugo must NOT be baked in ==="
-# hugobook-build-deploy.yml installs Hugo per job via actions-hugo and then
-# fails the build if the hugo on PATH is not the version it asked for. A baked
-# hugo in /usr/local/bin can shadow that install, so the image must not carry
-# one — this is also what makes Hugo bumps safe to automerge (single source of
-# truth). A container still running a pre-2026-07 image will fail this check.
 stale=0
 for i in 1 2 3 4; do
   name="hugobook-runner-$i"

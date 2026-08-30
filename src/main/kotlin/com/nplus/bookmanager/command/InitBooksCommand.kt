@@ -23,18 +23,6 @@ import com.nplus.bookmanager.util.CliFormatter
 import com.nplus.bookmanager.util.UserInput
 import java.io.File
 
-/**
- * Command to initialize multiple book repositories from a queue file.
- *
- * This command uses a queue-based workflow:
- *
- * 1. Read books from queue file (books-queue.yaml)
- * 2. Find first pending book
- * 3. Generate AI task for metadata + structure
- * 4. Mark book as "processing" and wait for Claude
- * 5. On re-run, complete the book creation
- * 6. Mark as "completed" and move to next pending book
- */
 class InitBooksCommand(
     private val bookInputService: BookInputService = BookInputService(),
     private val aiTaskService: AiTaskService = AiTaskService(),
@@ -61,29 +49,24 @@ class InitBooksCommand(
     override fun run() {
         printHeader()
 
-        // Load queue
         val queue = bookInputService.loadBooksQueue(File(queueFile))
         if (queue == null) {
             println("Error: Failed to load queue file: $queueFile")
             return
         }
 
-        // Handle --status flag
         if (showStatus) {
             handleStatusCommand(queue)
             return
         }
 
-        // Handle --reset flag
         if (reset && bookId != null) {
             handleResetCommand(queue, bookId!!)
             return
         }
 
-        // Check prerequisites
         if (!ghService.checkPrerequisites()) return
 
-        // Determine which book to process
         val targetBook =
             when {
                 bookId != null -> {
@@ -96,12 +79,10 @@ class InitBooksCommand(
                 }
 
                 else -> {
-                    // Check if there's a book being processed
                     val processingBook = queue.getProcessing()
                     if (processingBook != null) {
                         processingBook
                     } else {
-                        // Get next pending book
                         val pendingBook = queue.getNextPending()
                         if (pendingBook == null) {
                             println("\n✅ All books in queue have been processed!")
@@ -115,7 +96,6 @@ class InitBooksCommand(
 
         println("\n📖 Processing: ${targetBook.chineseTitle} (${targetBook.id})")
 
-        // Validate the book
         val errors = bookInputService.validateQueuedBook(targetBook)
         if (errors.isNotEmpty()) {
             println("Error: Invalid book entry:")
@@ -123,7 +103,6 @@ class InitBooksCommand(
             return
         }
 
-        // Check current status and proceed accordingly
         when (targetBook.status) {
             BookStatus.PENDING -> {
                 runPhase1(queue, targetBook)
@@ -150,11 +129,6 @@ class InitBooksCommand(
         }
     }
 
-    /**
-     * After landing on a book that needs no work, roll forward to the next
-     * pending one — but only in "process the whole queue" mode. An explicit
-     * `--id` means the caller asked about that book and nothing else.
-     */
     private fun advanceToNextPending(queue: BooksQueue) {
         if (bookId != null) return
         val next = queue.getNextPending()
@@ -166,7 +140,6 @@ class InitBooksCommand(
         runPhase1(queue, next)
     }
 
-    /** Persist the queue back to [queueFile]. Every status change goes through here. */
     private fun persist(queue: BooksQueue) = bookInputService.saveBooksQueue(File(queueFile), queue)
 
     private fun handleStatusCommand(queue: BooksQueue) {
@@ -186,29 +159,22 @@ class InitBooksCommand(
         val updatedQueue = queue.updateStatus(id, BookStatus.PENDING)
         persist(updatedQueue)
 
-        // Also clear any pending AI tasks
         aiTaskService.clearBatchMetadataTasks()
 
         println("✅ Reset book '$id' to pending status")
     }
 
-    /**
-     * Phase 1: Generate AI tasks for the book
-     */
     private fun runPhase1(
         queue: BooksQueue,
         book: QueuedBook,
     ) {
         println("\n[Phase 1] Generating AI tasks...")
 
-        // Consult cached repo index before invoking AI; saves a round-trip
-        // to Claude when a matching repo already exists on the org.
         val existing = lookupRepoIndex(book.englishTitle)
         if (existing != null && handleExistingRepo(queue, book, existing)) {
             return
         }
 
-        // Check if batch task already pending
         if (aiTaskService.hasPendingBatchMetadataTask()) {
             CliFormatter.printPendingTaskWarning(
                 message = "AI task is already pending. Please ask Claude Code to process it.",
@@ -216,7 +182,6 @@ class InitBooksCommand(
             return
         }
 
-        // Write batch metadata request (for single book)
         val batchInput =
             BatchBookInput(
                 bookId = book.id,
@@ -228,14 +193,12 @@ class InitBooksCommand(
         val taskFile = aiTaskService.writeBatchMetadataRequest(listOf(batchInput))
         println("  Created: ${taskFile.path}")
 
-        // Update status to processing
         if (!dryRun) {
             val updatedQueue = queue.updateStatus(book.id, BookStatus.PROCESSING)
             persist(updatedQueue)
             println("  Updated status: ${book.id} → processing")
         }
 
-        // Prompt user
         CliFormatter.printBatchMetadataTaskPrompt(
             taskFilePath = taskFile.path,
             promptFile = "templates/prompts/book-metadata.txt",
@@ -244,16 +207,12 @@ class InitBooksCommand(
         )
     }
 
-    /**
-     * Phase 2: Read AI results and create the repository
-     */
     private fun runPhase2(
         queue: BooksQueue,
         book: QueuedBook,
     ) {
         println("\n[Phase 2] Creating repository...")
 
-        // Check if AI task is completed
         if (!aiTaskService.hasCompletedBatchMetadataTask()) {
             CliFormatter.printPendingTaskWarning(
                 message = "AI task not yet completed. Please ask Claude Code to process it.",
@@ -261,7 +220,6 @@ class InitBooksCommand(
             return
         }
 
-        // Read AI results
         val result = aiTaskService.getBatchResultForBook(book.id)
         if (result == null) {
             println("Error: No AI result found for book: ${book.id}")
@@ -271,9 +229,6 @@ class InitBooksCommand(
 
         val (metadata, structure) = result
 
-        // Re-check index against AI-generated repoName. Catches "the-" variants
-        // where the AI emitted (say) `power-of-habit` but the org already has
-        // `the-power-of-habit` (or vice versa).
         val existing = lookupRepoIndex(book.englishTitle, metadata.repoName)
         if (existing != null && handleExistingRepo(queue, book, existing)) {
             return
@@ -296,25 +251,20 @@ class InitBooksCommand(
             return
         }
 
-        // Confirm before proceeding
         if (!UserInput.confirm("\nProceed with creating repository?")) {
             println("Cancelled. Book remains in 'processing' status.")
             return
         }
 
-        // Create repository using shared service
         val createResult = bookRepoService.createBookRepository(metadata, book.toBookInput(), structure)
 
         if (createResult.success) {
-            // Update status to completed
             val updatedQueue = queue.updateStatus(book.id, BookStatus.COMPLETED)
             persist(updatedQueue)
             println("\n✅ Book '${book.id}' completed!")
 
-            // Clean up AI task files
             aiTaskService.clearBatchMetadataTasks()
 
-            // Check for next book
             val nextBook = updatedQueue.getNextPending()
             if (nextBook != null) {
                 println("\n📚 Next pending book: ${nextBook.chineseTitle} (${nextBook.id})")
@@ -327,10 +277,6 @@ class InitBooksCommand(
         }
     }
 
-    /**
-     * Look up an existing repo in the cached index. Returns null on miss
-     * or if the index file is empty / never refreshed.
-     */
     private fun lookupRepoIndex(
         englishTitle: String,
         aiRepoName: String? = null,
@@ -341,13 +287,6 @@ class InitBooksCommand(
         return repoIndexService.findExisting(index, candidates)
     }
 
-    /**
-     * Prompt the user when a matching repo is found in the index.
-     *
-     * Returns true if the situation was handled (book skipped or claimed,
-     * caller should stop). Returns false if the user chose to ignore the
-     * index and proceed with normal creation.
-     */
     private fun handleExistingRepo(
         queue: BooksQueue,
         book: QueuedBook,
@@ -408,8 +347,6 @@ class InitBooksCommand(
             return false
         }
 
-        // new-books is flat: <workDir>/<repoName>. Three-tier layout is only
-        // applied later by migrate-topic-tiers when moving to books-done.
         val targetDir = File(AppConfig.defaultWorkDir, entry.name)
         if (targetDir.exists()) {
             println("  Local folder already exists: ${targetDir.absolutePath} (skipping clone)")
@@ -460,8 +397,6 @@ class InitBooksCommand(
         println("  Error:      ${summary[BookStatus.ERROR] ?: 0}")
         println("  Duplicate:  ${summary[BookStatus.DUPLICATE] ?: 0}")
 
-        // The queue is append-only and now holds hundreds of finished books;
-        // listing every one buries the handful that still need attention.
         val actionable = queue.books.filterNot { it.status == BookStatus.COMPLETED }
         val done = queue.books.size - actionable.size
 

@@ -10,16 +10,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File
 
-/**
- * Service for managing AI task files for Claude Code interactive processing.
- *
- * Workflow:
- * 1. CLI writes request file to ai-tasks/input/
- * 2. CLI pauses and prompts user to ask Claude Code to process
- * 3. Claude Code reads the request, processes it, and writes response to ai-tasks/output/
- * 4. User re-runs the CLI command
- * 5. CLI reads the response and continues
- */
 class AiTaskService(
     baseDir: String = AI_TASKS_DIR,
 ) {
@@ -42,14 +32,6 @@ class AiTaskService(
             isLenient = true
         }
 
-    // ==================== Write Request Methods ====================
-
-    /**
-     * Write a batch metadata request file for multiple books.
-     * This generates both metadata and structure for each book in one request.
-     * @param books List of books to process (each needs id, chineseTitle, englishTitle, tableOfContents)
-     * @return The path to the request file
-     */
     fun writeBatchMetadataRequest(books: List<BatchBookInput>): File {
         ensureDirectories()
 
@@ -66,12 +48,6 @@ class AiTaskService(
         return requestFile
     }
 
-    // ==================== Read Response Methods ====================
-
-    /**
-     * Read the batch metadata response file.
-     * @return Map of bookId to (GeneratedMetadata, DocsStructure) pairs
-     */
     fun readBatchMetadataResponse(): Map<String, Pair<GeneratedMetadata, DocsStructure>>? {
         val response =
             readJsonResponse<BatchMetadataResponse>(BATCH_METADATA_RESPONSE_FILE, "batch metadata response")
@@ -92,22 +68,13 @@ class AiTaskService(
         return metadata.copy(repoName = stripped)
     }
 
-    /**
-     * Get result for a specific book from batch response.
-     */
     fun getBatchResultForBook(bookId: String): Pair<GeneratedMetadata, DocsStructure>? = readBatchMetadataResponse()?.get(bookId)
-
-    // ==================== Task Status Methods ====================
 
     fun hasPendingBatchMetadataTask(): Boolean = isTaskPending(BATCH_METADATA_REQUEST_FILE, BATCH_METADATA_RESPONSE_FILE)
 
     fun hasCompletedBatchMetadataTask(): Boolean = isTaskCompleted(BATCH_METADATA_RESPONSE_FILE)
 
-    // ==================== Cleanup Methods ====================
-
     fun clearBatchMetadataTasks() = clearTaskFiles(BATCH_METADATA_REQUEST_FILE, BATCH_METADATA_RESPONSE_FILE)
-
-    // ==================== Private Helpers ====================
 
     private fun isTaskPending(
         requestFile: String,

@@ -16,8 +16,6 @@ class BookInputServiceTest {
 
     private val service = BookInputService()
 
-    // ==================== validateQueuedBook() Tests ====================
-
     @Test
     fun `validateQueuedBook returns empty list for valid book`() {
         val book = createValidQueuedBook()
@@ -46,11 +44,8 @@ class BookInputServiceTest {
                 tableOfContents = "",
             )
         val errors = service.validateQueuedBook(book)
-        // 6 common fields (coverUrl is optional) + 1 id = 7
         assertEquals(7, errors.size)
     }
-
-    // ==================== loadBooksQueue() Tests ====================
 
     @Test
     fun `loadBooksQueue returns null for non-existent file`() {
@@ -116,8 +111,6 @@ class BookInputServiceTest {
         assertNotNull(result)
         assertEquals(BookStatus.PENDING, result.books[0].status)
     }
-
-    // ==================== Helper Methods ====================
 
     private fun createValidQueuedBook() =
         QueuedBook(

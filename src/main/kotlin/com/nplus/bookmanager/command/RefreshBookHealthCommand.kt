@@ -6,10 +6,6 @@ import com.nplus.bookmanager.config.AppConfig
 import com.nplus.bookmanager.service.BookHealthService
 import java.io.File
 
-/**
- * Measure how much is written in each book repo and refresh the portal's
- * `src/data/health.json`. Commit + push the portal repo afterwards to publish.
- */
 class RefreshBookHealthCommand(
     private val serviceFactory: (File, File, File?) -> BookHealthService = ::BookHealthService,
 ) : CliktCommand(name = "refresh-book-health") {

@@ -8,10 +8,6 @@ import com.nplus.bookmanager.util.CliFormatter
 import com.nplus.bookmanager.util.UserInput
 import java.io.File
 
-/**
- * Service that encapsulates the book-repository creation workflow
- * used by InitBooksCommand.
- */
 class BookRepoService(
     private val ghService: GitHubClient = GitHubCliService(),
     private val templateService: TemplateWriter = TemplateService(),
@@ -26,16 +22,6 @@ class BookRepoService(
         val repoDir: File? = null,
     )
 
-    /**
-     * Full book-repository creation flow:
-     * 1. Create (or reuse) the GitHub repo
-     * 2. Clone locally under the category folder
-     * 3. Update template files with metadata + book input
-     * 4. Download & resize cover image
-     * 5. Create docs folder structure
-     *
-     * @return CreateResult with the local repo directory on success
-     */
     fun createBookRepository(
         metadata: GeneratedMetadata,
         bookInput: BookInput,
@@ -49,24 +35,19 @@ class BookRepoService(
             return CreateResult(false)
         }
 
-        // Step: Create GitHub repo
         if (!createGitHubRepo(username, metadata)) return CreateResult(false)
 
-        // Step: Clone repository
         val repoDir = cloneRepository(username, metadata)
         if (repoDir == null) {
             println("Error: Failed to clone repository")
             return CreateResult(false)
         }
 
-        // Step: Activate the tracked Spotless pre-commit hook
         gitService.setHooksPath(repoDir)
 
-        // Step: Update template files
         println("\n  Updating template files...")
         templateService.updateTemplateFiles(repoDir, metadata, bookInput)
 
-        // Step: Download and resize cover image
         if (bookInput.coverUrl.isNotBlank()) {
             println("\n  Processing cover image...")
             val coverFile = File(repoDir, TemplateService.COVER_IMAGE_PATH)
@@ -77,12 +58,10 @@ class BookRepoService(
             println("\n  Skipping cover image (no URL provided)")
         }
 
-        // Step: Create docs structure
         println("\n  Creating docs folder structure...")
         val createdCount = docsStructureService.createDocsStructure(repoDir, structure)
         println("  Created $createdCount items")
 
-        // Step: Commit and push initial content
         println("\n  Committing and pushing initial content...")
         if (!gitService.commitAndPush(repoDir, "feat: add initial book content")) {
             println("  Warning: Failed to commit and push initial content")
@@ -114,19 +93,12 @@ class BookRepoService(
             Thread.sleep(AppConfig.POST_CREATION_DELAY_MS)
         }
 
-        // Configure repository
         val homepageUrl = "${config.homepageBaseUrl}/${metadata.repoName}/"
         reportConfiguration(ghService.configureRepository(username, metadata.repoName, homepageUrl, metadata.topics))
 
         return true
     }
 
-    /**
-     * Name what did not apply. Configuration failures are not fatal — the repo
-     * exists and the settings can be re-applied — but a missing topic decides
-     * whether the book shows up in the portal at all, so it must not pass for
-     * success.
-     */
     private fun reportConfiguration(result: ConfigureResult) {
         if (result.allSucceeded) {
             println("  Repository configured (homepage, topics, pages)")
@@ -144,9 +116,6 @@ class BookRepoService(
         username: String,
         metadata: GeneratedMetadata,
     ): File? {
-        // new-books is intentionally kept flat: <workDir>/<repoName>.
-        // The 3-tier (top/sub/leaf) layout only applies to books-done after
-        // migrate-topic-tiers, not to in-progress repos under new-books.
         val workDir = config.workDir
         if (!workDir.exists()) {
             workDir.mkdirs()
@@ -167,9 +136,6 @@ class BookRepoService(
         return repoDir
     }
 
-    /**
-     * Print docs structure to console (delegates to DocsStructureService).
-     */
     fun printDocsStructure(structure: DocsStructure) {
         docsStructureService.printDocsStructure(structure)
     }

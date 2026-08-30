@@ -4,12 +4,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 
-/**
- * The queue state machine every `init-books` run drives. InitBooksCommand is
- * interactive orchestration and not worth mocking, but these transitions decide
- * which book gets picked up next and whether a failed run can be retried — so
- * they are pinned here instead.
- */
 class BooksQueueTest {
     private fun book(
         id: String,
@@ -80,8 +74,6 @@ class BooksQueueTest {
         val failed = queue.updateStatus("first", BookStatus.ERROR, "cover download failed")
         assertEquals("cover download failed", failed.getById("first")?.errorMessage)
 
-        // A reset back to PENDING passes no message, which must clear the old one
-        // — otherwise a retried book keeps reporting a failure that no longer applies.
         val reset = failed.updateStatus("first", BookStatus.PENDING)
         assertNull(reset.getById("first")?.errorMessage)
     }

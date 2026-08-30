@@ -3,27 +3,15 @@ package com.nplus.bookmanager.service
 import java.io.File
 import java.time.LocalDate
 
-/**
- * Chapter-level operations on a filed Hugo Book repo (books-done tree).
- *
- * A "chapter" is a deepest `_index.md` under `site/content/docs` — i.e. one
- * whose directory contains no further `_index.md` below it. Flat books
- * (docs/NN-slug/_index.md) and part/chapter books (DDIA style) both resolve
- * naturally under this rule. Reading progress lives in chapter frontmatter:
- * `read: true` + `readAt: YYYY-MM-DD` (absent = unread) — the static single
- * source of truth that `refreshGoalProgress` aggregates.
- */
 class BookChapterService(
     private val booksDir: File,
 ) {
-    /** Locate a book repo dir anywhere in the top/sub/leaf tree by name. */
     fun findRepoDir(repoName: String): File? =
         booksDir
             .walkTopDown()
             .maxDepth(4)
             .firstOrNull { it.isDirectory && it.name == repoName && File(it, "site/content/docs").isDirectory }
 
-    /** All chapter `_index.md` files (deepest ones), sorted by path. */
     fun chapterFiles(repoDir: File): List<File> {
         val docsDir = File(repoDir, "site/content/docs")
         if (!docsDir.isDirectory) return emptyList()
@@ -40,16 +28,11 @@ class BookChapterService(
             }.sortedBy { it.path }
     }
 
-    /** Stable chapter key: path of the chapter dir relative to docs/. */
     fun chapterKey(
         repoDir: File,
         chapterFile: File,
     ): String = chapterFile.parentFile.relativeTo(File(repoDir, "site/content/docs")).path
 
-    /**
-     * Set `read: true` + `readAt` in a chapter's frontmatter, replacing any
-     * existing values. Touches only the frontmatter block; body untouched.
-     */
     fun markRead(
         chapterFile: File,
         date: LocalDate = LocalDate.now(),

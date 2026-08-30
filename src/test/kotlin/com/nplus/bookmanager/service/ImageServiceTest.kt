@@ -21,10 +21,6 @@ class ImageServiceTest {
         ProcessRunner.executeSuccessfully("command -v convert", timeoutSeconds = 10)
     }
 
-    /**
-     * A many-coloured source, so quantising to 256 colours is a real reduction
-     * rather than a no-op on a handful of flat blocks.
-     */
     private fun sourcePng(
         name: String,
         width: Int,

@@ -2,9 +2,6 @@ package com.nplus.bookmanager.model
 
 import kotlinx.serialization.Serializable
 
-/**
- * Status for books in the queue
- */
 enum class BookStatus {
     PENDING,
     PROCESSING,
@@ -13,9 +10,6 @@ enum class BookStatus {
     DUPLICATE,
 }
 
-/**
- * Data class representing book input from YAML file
- */
 data class BookInput(
     val chineseTitle: String,
     val englishTitle: String,
@@ -24,20 +18,9 @@ data class BookInput(
     val coverUrl: String,
     val purchaseUrl: String,
     val tableOfContents: String,
-    /**
-     * ISBN-10 of the edition the other fields describe, read off the book's own
-     * copyright page. Optional, and deliberately not written into the book repo:
-     * it is kept in the queue as the provenance anchor. Resolving metadata from a
-     * title-and-author search silently picks the wrong edition — a hardback date
-     * against a paperback link — whereas the ISBN identifies exactly one printing,
-     * so it is what any later re-verification has to key on.
-     */
     val isbn: String = "",
 )
 
-/**
- * Data class representing a book entry in the queue with status tracking
- */
 data class QueuedBook(
     val id: String,
     val status: BookStatus = BookStatus.PENDING,
@@ -51,9 +34,6 @@ data class QueuedBook(
     val isbn: String = "",
     val errorMessage: String? = null,
 ) {
-    /**
-     * Convert to BookInput for compatibility with existing services
-     */
     fun toBookInput(): BookInput =
         BookInput(
             chineseTitle = chineseTitle,
@@ -67,9 +47,6 @@ data class QueuedBook(
         )
 }
 
-/**
- * Data class representing the books queue file
- */
 data class BooksQueue(
     val books: List<QueuedBook>,
 ) {
@@ -98,21 +75,6 @@ data class BooksQueue(
     fun summary(): Map<BookStatus, Int> = books.groupingBy { it.status }.eachCount()
 }
 
-/**
- * Data class representing AI-generated book metadata.
- *
- * Topic schema v2 (three-tier):
- *  topics = [hugobook, nplus-portal, nplus-kind-book, leaf-<Z>, sub-<Y>, top-<X>]
- *  topCategory  = "<X>"  (no prefix)
- *  subCategory  = "<Y>"  (no prefix)
- *  leafCategory = "<Z>"  (no prefix)
- *
- * Local clone path under DEFAULT_WORK_DIR (new-books) is intentionally flat:
- *   <repoName>
- *
- * The three-tier layout `<topCategory>/<subCategory>/<leafCategory>/<repoName>`
- * is only applied later by migrate-topic-tiers when books move to books-done.
- */
 @Serializable
 data class GeneratedMetadata(
     val repoName: String,
@@ -125,9 +87,6 @@ data class GeneratedMetadata(
     val leafCategory: String,
 )
 
-/**
- * Data class representing AI-generated docs structure
- */
 @Serializable
 data class DocsStructure(
     val sections: List<Section>,

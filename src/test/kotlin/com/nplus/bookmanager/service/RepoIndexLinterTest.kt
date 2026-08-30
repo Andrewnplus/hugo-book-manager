@@ -52,7 +52,6 @@ class RepoIndexLinterTest {
 
     @Test
     fun `a placeholder title is an error`() {
-        // The real case this was written for: grid-notebook shipped as 讀書筆記模版.
         val findings =
             lint(
                 book(
@@ -65,7 +64,6 @@ class RepoIndexLinterTest {
 
     @Test
     fun `a very short blurb warns`() {
-        // The real case: ignore-everybody ships with "40 keys to creativity".
         val findings = lint(book("x", "Ignore Everybody | Hugh MacLeod | 40 keys to creativity"))
         assertEquals(listOf("short-blurb"), findings.map { it.code })
         assertEquals(RepoIndexLinter.Severity.WARNING, findings.single().severity)
@@ -73,8 +71,6 @@ class RepoIndexLinterTest {
 
     @Test
     fun `a short but complete Chinese blurb is accepted`() {
-        // 22 characters, but a full sentence — character count alone would
-        // flag this while letting a 21-character English label through.
         assertEquals(
             emptyList(),
             lint(book("fengtang-buer", "不二 | 馮唐 | 馮唐的長篇小說，藉情慾敘事探問肉身、自由與人性")),
@@ -94,8 +90,6 @@ class RepoIndexLinterTest {
 
     @Test
     fun `author separator style is not policed`() {
-        // Both forms slugify identically in the portal, and "A, B & C" is the
-        // correct way to list three authors.
         assertEquals(
             emptyList(),
             lint(
@@ -126,8 +120,6 @@ class RepoIndexLinterTest {
 
     @Test
     fun `the same book under two languages is caught by its purchase link`() {
-        // The real pair: Tripp's War of Words was filed once in English and
-        // once as 言語的威力, so a title-based key never saw them as one book.
         val findings =
             lintWithLinks(
                 mapOf(
@@ -172,7 +164,6 @@ class RepoIndexLinterTest {
 
     @Test
     fun `same title by different authors is not a duplicate`() {
-        // Kahneman's Noise and McCormack's Noise are genuinely different books.
         assertEquals(
             emptyList(),
             lint(
@@ -190,7 +181,6 @@ class RepoIndexLinterTest {
 
     @Test
     fun `duplicate detection matches on the lead author when co-authors differ`() {
-        // The real pair: one repo credits Schwager alone, the other adds Etzkorn.
         assertTrue(
             "duplicate-book" in
                 codes(

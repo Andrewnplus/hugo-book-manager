@@ -15,8 +15,6 @@ class RepoIndexServiceTest {
 
     private fun serviceWithIndex() = RepoIndexService(File(tempDir, "existing-repos.yaml"))
 
-    // ==================== canonicalize() ====================
-
     @Test
     fun `canonicalize slugifies a title`() {
         assertEquals("power-of-habit", RepoIndexService.canonicalize("The Power of Habit"))
@@ -36,8 +34,6 @@ class RepoIndexServiceTest {
     fun `canonicalize keeps a the that is not a leading word`() {
         assertEquals("all-the-light", RepoIndexService.canonicalize("All the Light"))
     }
-
-    // ==================== findExisting() ====================
 
     private fun indexOf(vararg names: String) =
         RepoIndex(
@@ -78,8 +74,6 @@ class RepoIndexServiceTest {
         assertEquals(listOf("Deep Work"), RepoIndexService.candidatesFor("Deep Work", aiRepoName = null))
         assertEquals(emptyList(), RepoIndexService.candidatesFor("", aiRepoName = " "))
     }
-
-    // ==================== save() / load() ====================
 
     @Test
     fun `save then load round-trips entries`() {

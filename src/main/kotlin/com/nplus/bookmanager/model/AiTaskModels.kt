@@ -2,8 +2,6 @@ package com.nplus.bookmanager.model
 
 import kotlinx.serialization.Serializable
 
-// ==================== Batch Request Models ====================
-
 @Serializable
 data class BatchMetadataRequest(
     val taskType: String = "batchGenerateMetadata",

@@ -40,11 +40,6 @@ class ProcessRunnerTest {
         assertEquals("marker.txt", result.stdout)
     }
 
-    /**
-     * Regression: the timeout used to be unreachable because stdout was read
-     * to EOF on the calling thread *before* waitFor(). A 1s timeout on a 10s
-     * command silently waited the full 10s and reported success.
-     */
     @Test
     fun `execute enforces the timeout instead of waiting for the process`() {
         val startedAt = System.currentTimeMillis()

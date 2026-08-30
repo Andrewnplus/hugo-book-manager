@@ -1,11 +1,5 @@
 package com.nplus.bookmanager.model
 
-/**
- * A mid-term goal definition, read from the portal repo's
- * `src/data/goals.yaml` (the single hand-written source of goal
- * definitions). The scanner only needs id/metric/scope — label, target and
- * due date are presentation concerns handled by the portal build.
- */
 data class GoalDefinition(
     val id: String,
     val metric: String,
@@ -21,17 +15,12 @@ data class GoalDefinition(
 }
 
 data class GoalScope(
-    /** notes/ station name for note-status-count. */
     val station: String? = null,
-    /** Frontmatter statuses that count as done. */
     val statuses: List<String> = emptyList(),
-    /** Category filter (empty = all) for leetcode-count. */
     val categories: List<String> = emptyList(),
-    /** Book repo names for repo-completion (M2+). */
     val repos: List<String> = emptyList(),
 )
 
-/** Scan result for one goal: done/total plus per-category breakdown. */
 data class GoalProgress(
     val goalId: String,
     val done: Int,
@@ -43,12 +32,10 @@ data class GoalProgress(
         val key: String,
         val done: Int,
         val total: Int,
-        /** Station URL segment the key lives under ("concepts"/"problems") — lets the portal deep-link it. */
         val section: String? = null,
     )
 }
 
-/** One recent-activity item (a review/read event within the window). */
 data class RecentActivity(
     val date: String,
     val goalId: String,

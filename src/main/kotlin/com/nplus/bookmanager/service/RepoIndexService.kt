@@ -9,14 +9,6 @@ import java.io.File
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
-/**
- * Manages the cached index of book repos on a GitHub owner.
- *
- * The index lives at `templates/existing-repos.yaml` and is refreshed by
- * `refresh-repo-index`. `findExisting` matches a queue book against the
- * index using a canonical form that strips a leading `the-` on both sides,
- * so `the-power-of-habit` and `power-of-habit` resolve to the same entry.
- */
 class RepoIndexService(
     val indexFile: File = File(DEFAULT_INDEX_PATH),
 ) {
@@ -53,11 +45,6 @@ class RepoIndexService(
         }
     }
 
-    /**
-     * Persist the index as a human-readable YAML.
-     * Hand-written rather than SnakeYAML-dumped so the format stays stable
-     * for git diffs (sorted by name, fixed key order, flow-style topics).
-     */
     fun save(index: RepoIndex) {
         val sb = StringBuilder()
         sb.append("# Cached snapshot of book repos on the configured owner.\n")
@@ -74,18 +61,7 @@ class RepoIndexService(
         indexFile.writeText(sb.toString())
     }
 
-    /**
-     * Query GitHub for the owner's book repos. Lists all repos under the
-     * owner via the paginated REST API and filters client-side to repos with
-     * the `hugobook` topic, so non-book repos under the same org don't
-     * pollute the index. Uses the API directly because `gh repo list` caps
-     * results at 1000 and the org has more than that.
-     */
     fun fetchFromGitHub(owner: String): RepoIndex {
-        // Unset GITHUB_TOKEN inside the subshell so gh falls back to the
-        // keyring-stored OAuth token; an inherited limited PAT can't see
-        // org repos. `jq -s` slurps the per-page arrays that
-        // `gh api --paginate` emits into a single stream before filtering.
         val cmd =
             "unset GITHUB_TOKEN; " +
                 "gh api --paginate '/orgs/$owner/repos?per_page=100' " +
@@ -109,11 +85,6 @@ class RepoIndexService(
         return RepoIndex(lastUpdated = now, repos = repos)
     }
 
-    /**
-     * Find an entry in the index matching any of the candidate names under
-     * canonicalization (lowercased, leading `the-` stripped, non-alnum
-     * collapsed to single dashes).
-     */
     fun findExisting(
         index: RepoIndex,
         candidates: List<String>,
@@ -134,7 +105,6 @@ class RepoIndexService(
 
     private fun quoteIfNeeded(value: String): String {
         if (value.isEmpty()) return "\"\""
-        // Quote if value contains characters that would confuse a YAML scalar.
         val needsQuoting = value.any { it == ':' || it == '#' || it == '\'' || it == '"' || it == '\n' || it == '\r' }
         return if (needsQuoting) "\"${value.replace("\\", "\\\\").replace("\"", "\\\"")}\"" else value
     }
@@ -142,12 +112,6 @@ class RepoIndexService(
     companion object {
         const val DEFAULT_INDEX_PATH = "templates/existing-repos.yaml"
 
-        /**
-         * Canonical form for duplicate detection.
-         * `The Power of Habit` → `power-of-habit`
-         * `the-power-of-habit` → `power-of-habit`
-         * `power-of-habit`     → `power-of-habit`
-         */
         fun canonicalize(name: String): String {
             val collapsed =
                 name
@@ -157,10 +121,6 @@ class RepoIndexService(
             return collapsed.removePrefix("the-")
         }
 
-        /**
-         * Build the candidate name list for a queue book entry. Includes the
-         * AI-generated repo name (if any) and a slug of the english title.
-         */
         fun candidatesFor(
             englishTitle: String,
             aiRepoName: String? = null,

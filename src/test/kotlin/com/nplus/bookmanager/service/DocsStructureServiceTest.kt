@@ -57,7 +57,6 @@ class DocsStructureServiceTest {
                     ),
             )
 
-        // 1 section index + 2 chapters
         assertEquals(3, service.createDocsStructure(tempDir, structure))
 
         val sectionIndex = File(docsDir(), "01-part-one/_index.md")

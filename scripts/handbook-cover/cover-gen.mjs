@@ -1,13 +1,6 @@
 import { writeFileSync } from 'node:fs';
 
-// ============================================================
-//  NPLUS Handbook — unified cover generator
-//  Style A (Editorial Dark), PORTRAIT 3:4 book-cover, 900x1200
-//  Usage: node cover-portrait.mjs <key> <outHtmlPath>
-// ============================================================
-
 const MOTIFS = {
-  // 01 binary tree — algorithms
   tree: (c) => `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <g stroke="${c}" stroke-width="7" opacity=".9" stroke-linecap="round">
       <line x1="200" y1="60" x2="90" y2="200"/><line x1="200" y1="60" x2="310" y2="200"/>
@@ -18,7 +11,6 @@ const MOTIFS = {
       <circle cx="50" cy="340" r="34"/><circle cx="150" cy="340" r="34"/><circle cx="250" cy="340" r="34"/>
       <circle cx="350" cy="340" r="34"/></g></svg>`,
 
-  // 02 CPU chip — computer systems
   chip: (c) => `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <g stroke="${c}" stroke-width="7" stroke-linecap="round">
       ${[130,175,225,270].map(x=>`<line x1="${x}" y1="96" x2="${x}" y2="132"/><line x1="${x}" y1="268" x2="${x}" y2="304"/>`).join('')}
@@ -27,14 +19,12 @@ const MOTIFS = {
     <rect x="130" y="130" width="140" height="140" rx="20" fill="none" stroke="${c}" stroke-width="7"/>
     <rect x="168" y="168" width="64" height="64" rx="10" fill="${c}"/></svg>`,
 
-  // 03 code brackets </> — programming languages
   code: (c) => `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <g stroke="${c}" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <polyline points="150,130 80,200 150,270"/>
       <polyline points="250,130 320,200 250,270"/>
       <line x1="222" y1="120" x2="178" y2="280"/></g></svg>`,
 
-  // 04 coffee mug — java
   mug: (c) => `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <g stroke="${c}" stroke-width="7" fill="none" stroke-linecap="round">
       <path d="M150 120 q-14 -22 8 -40"/><path d="M200 120 q-14 -22 8 -40"/><path d="M250 120 q-14 -22 8 -40"/>
@@ -42,7 +32,6 @@ const MOTIFS = {
     <path d="M132 168 h130 v70 q0 60 -65 60 q-65 0 -65 -60 z" fill="${c}"/>
     <ellipse cx="197" cy="322" rx="86" ry="16" fill="${c}" opacity=".5"/></svg>`,
 
-  // 05 browser window — frontend
   browser: (c) => `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <rect x="86" y="108" width="228" height="184" rx="18" fill="none" stroke="${c}" stroke-width="7"/>
     <line x1="86" y1="152" x2="314" y2="152" stroke="${c}" stroke-width="7"/>
@@ -51,21 +40,18 @@ const MOTIFS = {
     <g stroke="${c}" stroke-width="12" stroke-linecap="round">
       <line x1="216" y1="192" x2="290" y2="192"/><line x1="216" y1="224" x2="290" y2="224"/><line x1="216" y1="256" x2="260" y2="256"/></g></svg>`,
 
-  // 06 database stack — infrastructure & storage
   db: (c) => `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <path d="M110 132 v136 a90 30 0 0 0 180 0 v-136" fill="none" stroke="${c}" stroke-width="7"/>
     <ellipse cx="200" cy="132" rx="90" ry="30" fill="${c}"/>
     <path d="M110 178 a90 30 0 0 0 180 0" fill="none" stroke="${c}" stroke-width="7"/>
     <path d="M110 224 a90 30 0 0 0 180 0" fill="none" stroke="${c}" stroke-width="7"/></svg>`,
 
-  // 07 funnel — recommendation
   funnel: (c) => `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <g fill="${c}"><circle cx="130" cy="96" r="15"/><circle cx="200" cy="96" r="15"/><circle cx="270" cy="96" r="15"/></g>
     <path d="M96 140 h208 l-72 92 v66 l-64 30 v-96 z" fill="${c}"/>
     <path d="M200 316 l16 -30 h-32 z" fill="${c}"/>
     <g fill="${c}"><circle cx="200" cy="352" r="15"/></g></svg>`,
 
-  // 08 git branch — software engineering
   git: (c) => `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <g stroke="${c}" stroke-width="9" fill="none" stroke-linecap="round">
       <line x1="150" y1="96" x2="150" y2="304"/>
@@ -73,14 +59,12 @@ const MOTIFS = {
     <g fill="${c}">
       <circle cx="150" cy="96" r="26"/><circle cx="150" cy="304" r="26"/><circle cx="258" cy="262" r="26"/></g></svg>`,
 
-  // 09 compass — tech leadership & product
   compass: (c) => `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <circle cx="200" cy="200" r="120" fill="none" stroke="${c}" stroke-width="7"/>
     <path d="M200 96 L236 200 L200 214 L164 200 Z" fill="${c}"/>
     <path d="M200 304 L164 200 L200 186 L236 200 Z" fill="${c}" opacity=".45"/>
     <circle cx="200" cy="200" r="12" fill="${c}"/></svg>`,
 
-  // 10 growth steps — career growth
   growth: (c) => `<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <g fill="${c}">
       <rect x="96" y="240" width="56" height="72" rx="8"/>
