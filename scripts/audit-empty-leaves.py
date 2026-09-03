@@ -102,7 +102,7 @@ def print_book(result: dict, verbose: bool = True) -> None:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    ap = argparse.ArgumentParser(description="稽核書 repo 的葉章：分出真欠債與體裁本來就短的章")
     ap.add_argument("target", nargs="?", default=".", help="書 repo 路徑，或 --all 的根目錄")
     ap.add_argument("--all", action="store_true", help="掃描根目錄底下所有書 repo")
     ap.add_argument("--json", action="store_true", help="輸出 JSON")
