@@ -15,7 +15,14 @@ SOURCE_ABSENT = re.compile(
     r"原書.{0,80}?(無|沒有|未收|尚未成稿|不存在|待續|僅列出章名)"
     r"|此一版本.{0,80}?(僅列出章名|待續|尚未成稿)"
     r"|原書定稿無"
+    r"|原版.{0,40}?(未包含|未收錄|不含)"
 )
+
+STRUCTURAL = re.compile(
+    r"^(\d+-)?(forewords?|prefaces?|series-preface|title-page|index|audiobook"
+    r"|note-to-readers|epilogue|afterword|acknowledg\w*|about-the-author|glossary)(-.*)?$"
+)
+EMBED = re.compile(r"<(embed|iframe)\b")
 
 NO_SOURCE = re.compile(r"(未收|未存|沒有|無)原始檔|原始檔.{0,20}(未收|闕如|不在庫)")
 
@@ -24,9 +31,15 @@ def body_of(path: Path) -> str:
     return FRONTMATTER.sub("", path.read_text(encoding="utf-8"), count=1).strip()
 
 
-def classify(body: str) -> str:
+def is_structural(rel: str, body: str) -> bool:
+    return EMBED.search(body) is not None or any(STRUCTURAL.match(seg) for seg in rel.split("/"))
+
+
+def classify(body: str, rel: str = "") -> str:
     if NO_SOURCE.search(body):
         return "no-source"
+    if is_structural(rel, body):
+        return "structural"
     if PLACEHOLDER.search(body):
         return "placeholder"
     if not body:
@@ -53,10 +66,11 @@ def audit(repo: Path) -> dict:
         body = body_of(index)
         if len(body) >= THRESHOLD:
             continue
+        rel = str(chapter.relative_to(docs))
         found.append(
             {
-                "chapter": str(chapter.relative_to(docs)),
-                "kind": classify(body),
+                "chapter": rel,
+                "kind": classify(body, rel),
                 "chars": len(body),
                 "excerpt": body[:70].replace("\n", " "),
             }
@@ -135,7 +149,7 @@ def main() -> int:
         print()
     total = sum(r["debt"] for r in results)
     dismissed = sum(
-        v for r in results for k, v in r["counts"].items() if k in ("xref", "source-absent", "no-source")
+        v for r in results for k, v in r["counts"].items() if k in ("xref", "source-absent", "no-source", "structural")
     )
     print(f"合計：真欠債 {total} 章；門檻撈出但體裁本來就短、不算債的 {dismissed} 章")
     return 0
